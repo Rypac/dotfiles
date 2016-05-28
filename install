@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+set -e
+
+base_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+distro="$(source "${base_dir}/scripts/utilities/distro.sh")"
+
+if [ "$distro" = "Darwin" ]; then
+    environment="osx"
+else
+    environment="linux"
+fi
+
+config="${environment}.conf.yaml"
+dotbot_dir="libs/dotbot"
+
+dotbot_bin="bin/dotbot"
+
+cd "${base_dir}"
+git submodule update --init --recursive "${dotbot_dir}"
+
+"${base_dir}/${dotbot_dir}/${dotbot_bin}" -d "${base_dir}" -c "${config}" "${@}"

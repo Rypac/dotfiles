@@ -1,0 +1,31 @@
+# i3blocks configuration
+
+# Global properties
+separator_block_width=20
+command=/usr/share/i3blocks/$BLOCK_NAME
+markup=none
+
+[window title]
+command=xtitle -s
+interval=persist
+color=#9ac1d9
+
+[volume]
+label= 
+instance=Master
+interval=once
+signal=10
+
+[date]
+label= 
+command=date '+%d/%m/%Y'
+interval=360
+
+[time]
+label= 
+command=date '+%H:%M:%S'
+interval=5
+
+[exit]
+full_text= 
+command=$HOME/scripts/rofi/i3-logout.sh

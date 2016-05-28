@@ -1,0 +1,106 @@
+#!/usr/bin/env bash
+
+function confirmation_prompt() {
+    message="$1"
+    default="${2:-Y}"
+    while true; do
+        read -p "${message} [Y/n] " input
+        case "${input:-$default}" in
+            [Yy]|[Yy][Ee][Ss])
+                return 0
+                ;;
+            [Nn]|[Nn][Oo])
+                return 1
+                ;;
+            *)
+                echo "Invalid selection"
+                ;;
+        esac
+    done
+}
+
+function install_packages() {
+    packages=$1
+    for package in ${packages}; do
+        sudo apt-get install $package --yes
+    done
+}
+
+function install_github_repo() {
+    repo="$1"
+    name="$2"
+    if [ ! -d "$name" ]; then
+        git clone "https://github.com/$repo" "$name"
+    fi
+    (cd "$name" && git pull && make && sudo make install)
+}
+
+function install_git_packages() {
+    git_package_dir="$1"
+    mkdir -p "$git_package_dir"
+    cd "$git_package_dir"
+    install_github_repo Airblader/i3.git i3-gaps
+    install_github_repo baskerville/bspwm.git bspwm
+    install_github_repo LemonBoy/bar.git lemonbar
+    install_github_repo baskerville/sutils.git sutils
+    install_github_repo baskerville/sxhkd.git sxhkd
+    install_github_repo baskerville/xdo.git xdo
+    install_github_repo baskerville/xtitle.git xtitle
+}
+
+function install_fonts() {
+    fonts="$1"
+    mkdir -p /tmp/fonts ~/.local/share/fonts
+    cd /tmp/fonts
+    curl -OL https://github.com/chrissimpkins/codeface/releases/download/font-collection/codeface-fonts.tar.xz
+    tar xf codeface-fonts.tar.xz
+    for font in ${fonts}; do
+        mv fonts/$font ~/.local/share/fonts
+    done
+    cd ~
+    rm -rf /tmp/fonts
+    fc-cache -frv
+}
+
+function install_rust() {
+    which rustup > /dev/null 2>&1 || curl https://sh.rustup.rs -sSf | sh
+    rustup update
+    rustup install stable
+    rustup install nightly
+}
+
+function post_install_configuration() {
+    [ "$SHELL" = "/bin/zsh" ] || chsh -s /bin/zsh
+    sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
+    sudo update-alternatives --set pinentry /usr/bin/pinentry-curses
+    sudo cp -r "${HOME}/.config/urxvt/." /usr/lib/urxvt/perl/
+    "${HOME}/.config/fzf/install" --bin
+    vim +PluginInstall +qall
+}
+
+function silent() {
+    [ "$1" = "-y" ] || [ "$1" = "--yes" ]
+}
+
+script_dir="$(dirname "${BASH_SOURCE[0]}")"
+
+[ -f "${HOME}/.profile" ] && source "${HOME}/.profile"
+
+if silent "$1" || confirmation_prompt "Install packages?"; then
+    install_packages "$(cat "${script_dir}/packages.txt")"
+fi
+if silent "$1" || confirmation_prompt "Clone and install external packages?"; then
+    install_packages "$(cat "${script_dir}/build_deps.txt")"
+    install_git_packages "${HOME}/packages/cloned"
+fi
+if silent "$1" || confirmation_prompt "Install fonts?"; then
+    install_fonts "$(cat "${script_dir}/fonts.txt")"
+fi
+if silent "$1" || confirmation_prompt "Install development tools?"; then
+    install_rust
+fi
+if silent "$1" || confirmation_prompt "Configure environment?"; then
+    post_install_configuration
+fi
+
+exit 0

@@ -1,0 +1,63 @@
+! fonts
+Xft.antialias: true
+Xft.autohint: false
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.dpi: 96
+Xft.rgba: rgb
+Xft.lcdfilter: lcddefault
+
+! urxvt
+URxvt.termName: rxvt-256color
+URxvt.loginShell: true
+URxvt.scrollBar: false
+URxvt.secondaryScroll: true
+URxvt.saveLines: 65535
+URxvt.cursorBlink: true
+URxvt.internalBorder: 20
+URxvt.font: xft:Source Code Pro:pixelsize=15
+URxvt.letterSpace: -1
+URxvt.lineSpace: 0
+URxvt.allowBold: true
+
+URxvt.transparent: false
+URxvt.color0: #101218
+URxvt.color1: #ee829f
+URxvt.color2: #a5ffe1
+URxvt.color3: #ffefcc
+URxvt.color4: #97bbf7
+URxvt.color5: #c0b7f9
+URxvt.color6: #97e0ff
+URxvt.color7: #d1d4e0
+URxvt.color8: #7780a1
+URxvt.color9: #ee829f
+URxvt.color10: #a5ffe1
+URxvt.color11: #ffefcc
+URxvt.color12: #97bbf7
+URxvt.color13: #c0b7f9
+URxvt.color14: #97e0ff
+URxvt.color15: #ffffff
+URxvt.color16: #f99170
+URxvt.color17: #fcc09e
+URxvt.color18: #1f222d
+URxvt.color19: #252936
+URxvt.color20: #c0c5cE
+URxvt.color21: #c9ccdb
+URxvt.background: #101218
+URxvt.foreground: #e6eff7
+URxvt.cursorColor: #e6eff7
+
+URxvt.perl-ext-common: default,clipboard,matcher,resize-font
+URxvt.resize-font.smaller: C-Down
+URxvt.resize-font.bigger: C-Up
+URxvt.resize-font.reset: C-equal
+URxvt.url-launcher: /usr/bin/google-chrome
+URxvt.matcher.button: 1
+URxvt.colorUL: #7780a1
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+URxvt.clipboard.copycmd: xclip -i -selection clipboard
+URxvt.clipboard.pastecmd: xclip -o -selection clipboard
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped

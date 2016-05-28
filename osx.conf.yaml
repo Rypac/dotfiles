@@ -1,0 +1,35 @@
+- defaults:
+    link:
+        create: true
+        relink: true
+
+- clean: ['~', '~/.config', '~/bin', '~/scripts']
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
+  - [git submodule update --remote --merge, Updating submodules]
+
+- link:
+    ~/.config/fzf: libs/fzf
+    ~/.config/git: config/git
+    ~/.config/iterm: config/iterm
+    ~/.config/zsh/.fzf.zsh: config/fzf/fzf.zsh
+    ~/.config/zsh/.zlogin: config/zsh/zlogin
+    ~/.config/zsh/.zlogout: config/zsh/zlogout
+    ~/.config/zsh/.zprezto: libs/prezto
+    ~/.config/zsh/.zpreztorc: config/zsh/zpreztorc
+    ~/.config/zsh/.zprofile: config/zsh/zprofile
+    ~/.config/zsh/.zshrc: config/zsh/zshrc
+    ~/.config/zsh/.zshrc.env: config/zsh/zshrc.osx
+    ~/.profile: config/shell/profile
+    ~/.vim/vimrc: config/vim/vimrc
+    ~/.vim/bundle/Vundle.vim: libs/vundle
+    ~/.zshenv: config/zsh/zshenv
+    ~/bin/fasd: libs/fasd/fasd
+    ~/scripts/enhancd.sh: libs/enhancd/init.sh
+
+- shell:
+  - [mkdir -p ~/bin ~/scripts, Creating directories]
+  - [scripts/misc/link-scripts.sh "$PWD/scripts/utilities" ~/bin, Linking utility executables]
+  - [scripts/misc/link-scripts.sh "$PWD/scripts/osx" ~/bin, Linking platform executables]
+  - [ln -fs $PWD/scripts/* ~/scripts/, Linking scripts]

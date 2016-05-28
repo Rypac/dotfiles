@@ -1,0 +1,16 @@
+# Prezto configuration
+
+zstyle ':prezto:*:*' case-sensitive 'no'
+zstyle ':prezto:*:*' color 'yes'
+
+zstyle ':prezto:load' pmodule \
+    'environment' \
+    'history' \
+    'history-substring-search' \
+    'directory' \
+    'utility' \
+    'completion' \
+    'fasd' \
+    'prompt'
+
+zstyle ':prezto:module:prompt' theme 'sorin'

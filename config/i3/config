@@ -1,0 +1,256 @@
+# i3 config file (v4)
+
+set $mod Mod4
+set $alt Mod1
+set $ctrl Control
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+font pango:Source Code Pro 10
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# kill focused window
+bindsym $mod+q kill
+
+# rofi and script bindings
+bindsym $mod+space exec --no-startup-id rofi -show run
+bindsym $mod+Tab exec --no-startup-id rofi -show window
+bindsym $mod+z exec --no-startup-id ~/scripts/rofi/i3-switch-workspace.sh
+bindsym $mod+Shift+q exec --no-startup-id ~/scripts/rofi/i3-logout.sh
+
+# application bindings
+bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+backslash exec i3-sensible-terminal -e ranger
+bindsym $mod+m exec i3-sensible-terminal -e cmus
+bindsym Print exec --no-startup-id scrot 'screenshot-%Y-%m-%d-%T.png' -e 'mv $f ~/pictures/screenshots/'
+
+# volume control
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/scripts/volume/control.sh up
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/scripts/volume/control.sh down
+bindsym XF86AudioMute exec --no-startup-id ~/scripts/volume/control.sh toggle
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# window split
+bindsym $mod+b split h
+bindsym $mod+v split v
+
+# container layout
+bindsym $mod+s layout stacking
+bindsym $mod+d layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating / fullscreen
+bindsym $mod+f fullscreen toggle
+bindsym $mod+t floating toggle
+bindsym $mod+Shift+t exec --no-startup-id ~/scripts/i3/floating.sh toggle
+
+# change window focus
+bindsym $mod+$ctrl+space focus mode_toggle
+bindsym $mod+a focus parent
+bindsym $mod+x [urgent=latest] focus
+
+# setup workspaces
+set $ws1 1 
+set $ws2 2 
+set $ws3 3 
+set $ws4 4 
+set $ws5 5 
+set $ws6 6 
+set $ws7 7 
+set $ws8 8 
+set $ws9 9 
+set $ws0 10 
+
+# gloabl floating mode
+# for_window [class="^.*"] floating toggle
+# for_window [class="^.*"] floating enable
+
+# floating windows
+for_window [class="feh|Lxappearance|Seahorse|Pavucontrol|Plank"] floating enable
+for_window [window_role="pop-up|task_dialog"] floating enable
+for_window [title="Inbox|Messenger"] floating disable
+
+# workspace specific apps
+assign [class="google-chrome"] $ws2
+assign [class="Atom|Sublime_text|QtCreator"] $ws3
+assign [class="Deadbeef"] $ws4
+for_window [class="Spotify"] move container to workspace $ws4
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+bindsym $mod+grave workspace back_and_forth
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $mod+Shift+grave move container to workspace back_and_forth; workspace back_and_forth
+
+# Arrow key workspace switching
+bindsym $mod+$ctrl+Left workspace prev
+bindsym $mod+$ctrl+Right workspace next
+bindsym $mod+$ctrl+h workspace prev
+bindsym $mod+$ctrl+l workspace next
+
+# Arrow key move selected container to workspace
+bindsym $mod+$ctrl+Shift+Left move container to workspace prev
+bindsym $mod+$ctrl+Shift+Right move container to workspace next
+bindsym $mod+$ctrl+Shift+h move container to workspace prev
+bindsym $mod+$ctrl+Shift+l move container to workspace next
+
+# Restarting i3
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+set $default default
+set $resize resize
+bindsym $mod+r mode "$resize"
+
+mode "$resize" {
+    bindsym j resize shrink width 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym l resize shrink height 10 px or 10 ppt
+    bindsym semicolon resize grow width 10 px or 10 ppt
+
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+
+    bindsym Return mode "$default"
+    bindsym Escape mode "$default"
+    bindsym q mode "$default"
+}
+
+# colour scheme
+set $base00 #1B2B34
+set $base01 #343D46
+set $base02 #4F5B66
+set $base03 #65737E
+set $base04 #A7ADBA
+set $base05 #C0C5CE
+set $base06 #CDD3DE
+set $base07 #D8DEE9
+set $base08 #EC5f67
+set $base09 #F99157
+set $base0A #FAC863
+set $base0B #99C794
+set $base0C #5FB3B3
+set $base0D #6699CC
+set $base0E #C594C5
+set $base0F #AB7967
+
+# colour                border    bg     text    ind
+client.focused          $base0D $base0D $base00 $base01
+client.focused_inactive $base02 $base02 $base03 $base01
+client.unfocused        $base01 $base01 $base03 $base01
+client.urgent           $base02 $base08 $base07 $base08
+
+bar {
+    status_command i3blocks
+    position top
+    height 26
+    font pango:Source Code Pro 10
+    strip_workspace_numbers yes
+    separator_symbol "|"
+    bindsym button4 nop
+    bindsym button5 nop
+
+    colors {
+        separator $base03
+        background $base01
+        statusline $base05
+
+        # colour           border    bg     text
+        focused_workspace  $base0C $base0D $base00
+        active_workspace   $base02 $base02 $base07
+        inactive_workspace $base01 $base01 $base03
+        urgent_workspace   $base08 $base08 $base07
+    }
+}
+
+# gaps
+for_window [class="^.*"] border pixel 1
+gaps inner 20
+gaps outer 5
+smart_borders on
+
+set $mode_gaps gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+    bindsym o mode "$mode_gaps_outer"
+    bindsym i mode "$mode_gaps_inner"
+    bindsym Return mode "$default"
+    bindsym Escape mode "$default"
+    bindsym q mode "$default"
+}
+
+mode "$mode_gaps_inner" {
+    bindsym plus gaps inner current plus 5
+    bindsym minus gaps inner current minus 5
+    bindsym 0 gaps inner current set 0
+
+    bindsym Shift+plus gaps inner all plus 5
+    bindsym Shift+minus gaps inner all minus 5
+    bindsym Shift+0 gaps inner all set 0
+
+    bindsym Return mode "$default"
+    bindsym Escape mode "$default"
+    bindsym q mode "$default"
+}
+
+mode "$mode_gaps_outer" {
+    bindsym plus gaps outer current plus 5
+    bindsym minus gaps outer current minus 5
+    bindsym 0 gaps outer current set 0
+
+    bindsym Shift+plus gaps outer all plus 5
+    bindsym Shift+minus gaps outer all minus 5
+    bindsym Shift+0 gaps outer all set 0
+
+    bindsym Return mode "$default"
+    bindsym Escape mode "$default"
+    bindsym q mode "$default"
+}

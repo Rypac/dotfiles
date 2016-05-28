@@ -1,0 +1,76 @@
+# iTerm2
+if [ -e "$HOME/.config/iterm/shell_integration.sh" ]; then
+    source "$HOME/.config/iterm/shell_integration.sh"
+fi
+
+# Node
+if [ $commands[brew] ] && [ -e "$(brew --prefix nvm)/nvm.sh" ]; then
+    export NVM_DIR=~/.nvm
+    source $(brew --prefix nvm)/nvm.sh
+fi
+
+# Ruby
+if [ $commands[rbenv] ]; then
+    eval "$(rbenv init -)"
+fi
+
+# Go
+if [ $commands[go] ]; then
+    export PATH=$PATH:/usr/local/opt/go/libexec/bin
+fi
+
+# Python
+if [ $commands[pip] ]; then
+    alias pip-upgrade="pip list --outdated | cut -d ' ' -f 1 | xargs -n 1 pip install --upgrade"
+fi
+
+# Docker
+if [ $commands[docker] ]; then
+    alias ds="source /Applications/Docker/Docker\ Quickstart\ Terminal.app/Contents/Resources/Scripts/start.sh"
+fi
+
+# GPG Agent
+if [ -f ~/.gnupg/gpg-agent-info ]; then
+    source ~/.gnupg/gpg-agent-info
+fi
+
+# GPG
+export GPG_TTY=$(tty)
+if [ -S "${GPG_AGENT_INFO%%:*}" ]; then
+    export GPG_AGENT_INFO
+else
+    eval $(gpg-agent --daemon --write-env-file ~/.gnupg/gpg-agent-info)
+fi
+
+# Rust
+export RUST_SRC_PATH="$HOME/Developer/cloned/rust/rust-lang/src"
+
+# Android SDK/NDK
+export ANT_ROOT=/usr/local/Cellar/ant/1.9.7/bin
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export ANDROID_SDK_ROOT=$ANDROID_HOME
+export ANDROID_NDK="$HOME/Library/Android/crystax-ndk"
+export NDK_ROOT=$ANDROID_NDK
+export PATH=$PATH:$JAVA_HOME:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+
+# Aliases
+alias f='open -a Finder ./'
+
+# Package manager
+alias appupdate='brew update && brew upgrade'
+alias appinstall='brew install'
+alias appremove='brew uninstall'
+alias appsearch='brew search'
+alias appclean='brew cleanup && brew cask cleanup && brew prune'
+alias appdoctor='brew doctor && brew cask doctor'
+
+# Moves a file to the MacOS trash
+function trash() {
+    command mv "$@" ~/.Trash
+}
+
+# Opens any file in Preview
+function ql() {
+    qlmanage -p "$*" > /dev/null 2>&1
+}

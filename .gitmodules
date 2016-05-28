@@ -1,0 +1,24 @@
+[submodule "libs/dotbot"]
+	path = libs/dotbot
+	url = https://github.com/anishathalye/dotbot
+	branch = master
+[submodule "libs/enhancd"]
+	path = libs/enhancd
+	url = https://github.com/b4b4r07/enhancd
+	branch = master
+[submodule "libs/fasd"]
+	path = libs/fasd
+	url = https://github.com/clvv/fasd.git
+	branch = master
+[submodule "libs/fzf"]
+	path = libs/fzf
+	url = https://github.com/junegunn/fzf.git
+	branch = master
+[submodule "libs/prezto"]
+	path = libs/prezto
+	url = https://github.com/sorin-ionescu/prezto.git
+	branch = master
+[submodule "libs/vundle"]
+	path = libs/vundle
+	url = https://github.com/VundleVim/Vundle.vim.git
+	branch = master

@@ -1,0 +1,27 @@
+# ~/.profile: executed by the command interpreter for login shells.
+
+# Setup XDG environment variables
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+
+# Set config/data directories for XDG unfriendly programs
+export ATOM_HOME="$XDG_DATA_HOME/atom"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
+export GTK_RC_FILES="$XDG_CONFIG_HOME/gtk-1.0/gtkrc"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+export MPLAYER_HOME="$XDG_CONFIG_HOME/mplayer"
+export SCREENRC="$XDG_CONFIG_HOME/screen/screenrc"
+export TIGRC_USER="$XDG_CONFIG_HOME/tig/tigrc"
+export WEECHAT_HOME="$XDG_CONFIG_HOME/weechat"
+export WINEPREFIX="$XDG_DATA_HOME/wine"
+
+# Set cache/runtime directories for XDG unfriendly programs
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
+export ICEAUTHORITY="$XDG_RUNTIME_DIR/X11/iceauthority"
+export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
+export RXVT_SOCKET="$XDG_RUNTIME_DIR/urxvt/urxvt-$(hostname)"
+export TMUX_TMPDIR="$XDG_RUNTIME_DIR/tmux"
+export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv"

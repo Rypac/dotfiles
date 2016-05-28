@@ -1,0 +1,14 @@
+screen_res=$(xrandr | grep '*' | awk '{ print $1 }')
+screen_width=${screen_res%x*}
+screen_height=${screen_res#*x}
+
+x_offset=0
+y_offset=0
+x_padding=$(($x_offset * 2))
+panel_width=$(($screen_width - $x_padding))
+panel_height=28
+
+panel_geometry="${panel_width}x${panel_height}+${x_offset}+${y_offset}"
+panel_fifo="/tmp/panel-fifo"
+panel_font_1="Source Code Pro-10"
+panel_font_2="FontAwesome-10"

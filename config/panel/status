@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+source ~/.config/panel/colours
+
+function panel_volume() {
+    master_volume=$(amixer get Master | tail -n 1)
+    volume_status=$(echo $master_volume | cut -d '[' -f 3 | cut -d ']' -f 1)
+    volume_level=$(echo $master_volume | cut -d '[' -f 2 | cut -d '%' -f 1)
+
+    if [ "$volume_status" == "on" ]; then
+        volume_colour=$base0B
+    else
+        volume_colour=$base08
+    fi
+
+    echo "%{A:pavucontrol:}%{B$base01}  Volume: %{F$volume_colour}$volume_level%{F-}  %{B-}%{A}"
+}
+
+function panel_date() {
+    echo "%{B$base01}  $(date +'%A, %b %d')  %{B-}"
+}
+
+function panel_time() {
+    echo "%{B$base01}  $(date +'%H:%M')  %{B-}"
+}
+
+while :; do
+    echo "S$(panel_volume)|$(panel_date)|$(panel_time)" && sleep 1s
+done

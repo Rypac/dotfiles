@@ -1,0 +1,7 @@
+atom
+deadbeef-static
+dropbox
+google-chrome-stable
+neofetch
+spotify-client
+sublime-text

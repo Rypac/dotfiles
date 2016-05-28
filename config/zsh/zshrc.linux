@@ -1,0 +1,20 @@
+# GPG
+export GPG_TTY=$(tty)
+gpg-connect-agent updatestartuptty /bye >/dev/null
+
+# Aliases
+alias f='(pcmanfm . > /dev/null 2>&1 &)'
+
+# Package manager
+alias appupdate='sudo apt-get update && sudo apt-get upgrade'
+alias appinstall='sudo apt-get install'
+alias appremove='sudo apt-get remove'
+alias appsearch='sudo apt-cache search'
+alias appclean='sudo apt-get autoremove'
+
+applist() {
+    dpkg-query -f '${binary:Package}\n' -W | less
+}
+
+# Rust
+export RUST_SRC_PATH=$HOME/packages/src/rust/src

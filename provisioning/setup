@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+script_dir="$(dirname "${BASH_SOURCE[0]}")"
+
+if [ "$(source "$script_dir/../scripts/utilities/distro.sh")" = "Darwin" ]; then
+    environment="osx"
+else
+    environment="linux"
+fi
+
+setup_script="$script_dir/$environment/setup"
+
+if [ -x "$setup_script" ]; then
+    source $setup_script
+else
+    echo "Invalid environment" && exit 1
+fi
