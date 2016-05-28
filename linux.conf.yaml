@@ -31,7 +31,6 @@
     ~/.config/user-dirs.locale: config/xdg/user-dirs.locale
     ~/.config/urxvt: config/urxvt
     ~/.config/xfce4: config/xfce4
-    ~/.config/zsh/.fzf.zsh: config/fzf/fzf.zsh
     ~/.config/zsh/.zlogin: config/zsh/zlogin
     ~/.config/zsh/.zlogout: config/zsh/zlogout
     ~/.config/zsh/.zprezto: libs/prezto

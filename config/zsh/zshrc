@@ -31,8 +31,11 @@ if [ $commands[xclip] ]; then
 fi
 
 # Fuzzy command line search
-if [ -s "$ZDOTDIR/.fzf.zsh" ]; then
-    source "$ZDOTDIR/.fzf.zsh"
+if [ -d "$XDG_CONFIG_HOME/fzf" ]; then
+    export FZF_COMPLETION_TRIGGER='~~'
+    export PATH="$PATH:$XDG_CONFIG_HOME/fzf/bin"
+    export MANPATH="$MANPATH:$XDG_CONFIG_HOME/fzf/man"
+    source "$XDG_CONFIG_HOME/fzf/shell/completion.zsh" 2> /dev/null
 fi
 
 # Enhancd
@@ -48,8 +51,9 @@ if [ $commands[bundle] ]; then
 fi
 
 # Rust
-export CARGO_HOME="${CARGO_HOME:-$HOME/.cargo}"
-export PATH="$CARGO_HOME/bin:$PATH"
+if [ "$CARGO_HOME" ]; then
+    export PATH="$PATH:$CARGO_HOME/bin"
+fi
 
 # Common tool aliases
 alias mkdir='mkdir -p'

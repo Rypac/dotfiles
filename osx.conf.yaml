@@ -13,7 +13,6 @@
     ~/.config/fzf: libs/fzf
     ~/.config/git: config/git
     ~/.config/iterm: config/iterm
-    ~/.config/zsh/.fzf.zsh: config/fzf/fzf.zsh
     ~/.config/zsh/.zlogin: config/zsh/zlogin
     ~/.config/zsh/.zlogout: config/zsh/zlogout
     ~/.config/zsh/.zprezto: libs/prezto
