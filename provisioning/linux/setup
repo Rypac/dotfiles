@@ -40,6 +40,7 @@ function install_git_packages() {
     mkdir -p "$git_package_dir"
     cd "$git_package_dir"
     install_github_repo Airblader/i3.git i3-gaps
+    install_github_repo vivien/i3blocks.git i3blocks
     install_github_repo baskerville/bspwm.git bspwm
     install_github_repo LemonBoy/bar.git lemonbar
     install_github_repo baskerville/sutils.git sutils

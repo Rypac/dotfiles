@@ -26,7 +26,6 @@ gitk
 git-gui
 htop
 i3-wm
-i3blocks
 i3lock
 imagemagick
 keepassx

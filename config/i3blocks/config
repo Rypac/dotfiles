@@ -2,7 +2,7 @@
 
 # Global properties
 separator_block_width=20
-command=/usr/share/i3blocks/$BLOCK_NAME
+command=/usr/local/libexec/i3blocks/$BLOCK_NAME
 markup=none
 
 [window title]
