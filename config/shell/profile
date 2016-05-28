@@ -25,3 +25,9 @@ export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
 export RXVT_SOCKET="$XDG_RUNTIME_DIR/urxvt/urxvt-$(hostname)"
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR/tmux"
 export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv"
+
+# Defaults
+export EDITOR='vim'
+export VISUAL='subl'
+export PAGER='less'
+export SELECTED_EDITOR='/usr/bin/vim.basic'
