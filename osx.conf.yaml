@@ -23,7 +23,6 @@
     ~/.vim/vimrc: config/vim/vimrc
     ~/.vim/bundle/Vundle.vim: libs/vundle
     ~/.zshenv: config/zsh/zshenv
-    ~/bin/fasd: libs/fasd/fasd
     ~/scripts/enhancd.sh: libs/enhancd/init.sh
 
 - shell:

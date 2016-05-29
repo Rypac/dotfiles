@@ -49,7 +49,6 @@
     ~/.xsessionrc: config/xfiles/xprofile
     ~/.Xresources: config/xfiles/Xresources
     ~/.zshenv: config/zsh/zshenv
-    ~/bin/fasd: libs/fasd/fasd
     ~/bin/local-packages: scripts/misc/local-packages.sh
     ~/bin/panel: config/panel/panel
     ~/scripts/enhancd.sh: libs/enhancd/init.sh
