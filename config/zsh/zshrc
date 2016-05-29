@@ -65,3 +65,11 @@ alias prettyjson='python -m json.tool'
 function mkcd() {
     mkdir -p "$1" && cd "$1"
 }
+
+# Keybindings
+bindkey '[C' forward-word         # alt+left
+bindkey '[D' backward-word        # alt+right
+bindkey '^0[C' forward-word       # ctrl+left
+bindkey '^0[D' backward-word      # ctrl+right
+bindkey '^[[3^' kill-word         # ctrl+delete
+bindkey '^H' backward-kill-word   # ctrl+backspace
