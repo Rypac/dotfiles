@@ -5,9 +5,9 @@ minimal_status() {
 }
 
 minimal_path() {
-  local path_color="%F{244}"
+  local path_color="%F{blue}"
   local rsc="%f"
-  local sep="$rsc/$path_color"
+  local sep="/"
 
   print "$path_color$(sed s_/_${sep}_g <<< $(short_pwd))$rsc"
 }
