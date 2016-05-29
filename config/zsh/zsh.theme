@@ -1,7 +1,12 @@
 # My minimal theme
 
 minimal_status() {
-  print "%(0?.$on_color.$err_color)$prompt_char%f"
+  local error_colour="%F{red}"
+  local colour_1="%(0?.%F{red}.$error_colour)"
+  local colour_2="%(0?.%F{yellow}.$error_colour)"
+  local colour_3="%(0?.%F{green}.$error_colour)"
+
+  print "${colour_1}❯${colour_2}❯${colour_3}❯%f"
 }
 
 minimal_path() {
@@ -26,11 +31,6 @@ prompt_minimal_precmd() {
 }
 
 prompt_minimal_setup() {
-  prompt_char="❯"
-  on_color="%F{green}"
-  off_color="%f"
-  err_color="%F{red}"
-
   autoload -Uz add-zsh-hook
 
   add-zsh-hook precmd prompt_minimal_precmd
