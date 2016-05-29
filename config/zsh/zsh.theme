@@ -1,0 +1,40 @@
+# My minimal theme
+
+minimal_status() {
+  print "%(0?.$on_color.$err_color)$prompt_char%f"
+}
+
+minimal_path() {
+  local path_color="%F{244}"
+  local rsc="%f"
+  local sep="$rsc/$path_color"
+
+  print "$path_color$(sed s_/_${sep}_g <<< $(short_pwd))$rsc"
+}
+
+function zle-line-init zle-line-finish zle-keymap-select {
+  zle reset-prompt
+  zle -R
+}
+
+prompt_minimal_precmd() {
+  zle -N zle-line-init
+  zle -N zle-keymap-select
+  zle -N zle-line-finish
+
+  PROMPT='$(minimal_path) $(minimal_status) '
+}
+
+prompt_minimal_setup() {
+  prompt_char="❯"
+  on_color="%F{green}"
+  off_color="%f"
+  err_color="%F{red}"
+
+  autoload -Uz add-zsh-hook
+
+  add-zsh-hook precmd prompt_minimal_precmd
+  prompt_opts=(cr subst percent)
+}
+
+prompt_minimal_setup "$@"
