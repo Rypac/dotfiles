@@ -13,10 +13,10 @@
     ~/.config/fzf: libs/fzf
     ~/.config/git: config/git
     ~/.config/iterm: config/iterm
+    ~/.config/zsh/.zim: libs/zim
+    ~/.config/zsh/.zimrc: config/zsh/zimrc
     ~/.config/zsh/.zlogin: config/zsh/zlogin
     ~/.config/zsh/.zlogout: config/zsh/zlogout
-    ~/.config/zsh/.zprezto: libs/prezto
-    ~/.config/zsh/.zpreztorc: config/zsh/zpreztorc
     ~/.config/zsh/.zprofile: config/zsh/zprofile
     ~/.config/zsh/.zshrc: config/zsh/zshrc
     ~/.config/zsh/.zshrc.env: config/zsh/zshrc.osx

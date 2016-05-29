@@ -31,10 +31,10 @@
     ~/.config/user-dirs.locale: config/xdg/user-dirs.locale
     ~/.config/urxvt: config/urxvt
     ~/.config/xfce4: config/xfce4
+    ~/.config/zsh/.zim: libs/zim
+    ~/.config/zsh/.zimrc: config/zsh/zimrc
     ~/.config/zsh/.zlogin: config/zsh/zlogin
     ~/.config/zsh/.zlogout: config/zsh/zlogout
-    ~/.config/zsh/.zprezto: libs/prezto
-    ~/.config/zsh/.zpreztorc: config/zsh/zpreztorc
     ~/.config/zsh/.zprofile: config/zsh/zprofile
     ~/.config/zsh/.zshrc: config/zsh/zshrc
     ~/.config/zsh/.zshrc.env: config/zsh/zshrc.linux

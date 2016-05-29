@@ -1,7 +1,7 @@
 [submodule "libs/dotbot"]
 	path = libs/dotbot
 	url = https://github.com/anishathalye/dotbot
-    branch = master
+	branch = master
 	ignore = all
 [submodule "libs/enhancd"]
 	path = libs/enhancd
@@ -18,13 +18,13 @@
 	url = https://github.com/junegunn/fzf.git
 	branch = master
 	ignore = all
-[submodule "libs/prezto"]
-	path = libs/prezto
-	url = https://github.com/sorin-ionescu/prezto.git
-	branch = master
-	ignore = all
 [submodule "libs/vundle"]
 	path = libs/vundle
 	url = https://github.com/VundleVim/Vundle.vim.git
+	branch = master
+	ignore = all
+[submodule "libs/zim"]
+	path = libs/zim
+	url = https://github.com/Eriner/zim.git
 	branch = master
 	ignore = all
