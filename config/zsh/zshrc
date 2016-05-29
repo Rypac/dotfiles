@@ -64,11 +64,6 @@ alias less='less -FSRXc'
 alias qfind='find . -name'
 alias prettyjson='python -m json.tool'
 
-# Create and navigate to a directory
-function mkcd() {
-    mkdir -p "$1" && cd "$1"
-}
-
 # Keybindings
 bindkey '[C' forward-word         # alt+left
 bindkey '[D' backward-word        # alt+right
