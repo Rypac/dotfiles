@@ -13,6 +13,9 @@
     ~/.config/fzf: libs/fzf
     ~/.config/git: config/git
     ~/.config/zsh/.zim: libs/zim
+    ~/.config/zsh/.zim/modules/prompt/themes/minimal.zsh-theme:
+      force: true
+      path: config/zsh/zsh.theme
     ~/.config/zsh/.zimrc: config/zsh/zimrc
     ~/.config/zsh/.zlogin: config/zsh/zlogin
     ~/.config/zsh/.zlogout: config/zsh/zlogout
