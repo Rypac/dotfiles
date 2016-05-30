@@ -1,26 +1,26 @@
 # Node
-if [ $commands[brew] ] && [ -e "$(brew --prefix nvm)/nvm.sh" ]; then
+if type brew > /dev/null 2>&1 && [ -e "$(brew --prefix nvm)/nvm.sh" ]; then
     export NVM_DIR=~/.nvm
     source $(brew --prefix nvm)/nvm.sh
 fi
 
 # Ruby
-if [ $commands[rbenv] ]; then
+if type rbenv > /dev/null 2>&1; then
     eval "$(rbenv init -)"
 fi
 
 # Go
-if [ $commands[go] ]; then
+if type go > /dev/null 2>&1; then
     export PATH=$PATH:/usr/local/opt/go/libexec/bin
 fi
 
 # Python
-if [ $commands[pip] ]; then
+if type pip > /dev/null 2>&1; then
     alias pip-upgrade="pip list --outdated | cut -d ' ' -f 1 | xargs -n 1 pip install --upgrade"
 fi
 
 # Docker
-if [ $commands[docker] ]; then
+if type docker > /dev/null 2>&1; then
     alias ds="source /Applications/Docker/Docker\ Quickstart\ Terminal.app/Contents/Resources/Scripts/start.sh"
 fi
 

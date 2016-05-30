@@ -18,7 +18,7 @@ xtitle -sf 'T%s' > "$panel_fifo" &
 ~/.config/panel/bar < "$panel_fifo" | \
     lemonbar -p -g "$panel_geometry" -f "$panel_font_1" -f "$panel_font_2" -B "$base01" -F "$base05" | sh &
 
-if [ $commands[stalonetray] ]; then
+if type stalonetray > /dev/null 2>&1; then
     stalonetray --background "$base01" --geometry 1x1-280+6 --icon-size 16 &
 fi
 

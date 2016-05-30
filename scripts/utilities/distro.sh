@@ -5,7 +5,7 @@
 host_name=$(uname | tr '[:upper:]' '[:lower:]')
 
 if [ "$host_name" = "linux" ]; then
-    if [ $commands[lsb_release] ]; then
+    if type lsb_release > /dev/null 2>&1; then
         host_name=$(lsb_release -i | sed 's/^.*:\t//')
     fi
 elif [ "$host_name" = "darwin" ]; then

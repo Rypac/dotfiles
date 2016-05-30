@@ -3,7 +3,7 @@
 # Simulate virtual on-screen typing
 
 function autotype() {
-    if [ $commands[pv] ]; then
+    if type pv > /dev/null 2>&1; then
         echo "$1" | pv -qL 10
     else
         echo "$1"

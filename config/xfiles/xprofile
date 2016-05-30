@@ -25,8 +25,12 @@ fi
 
 # Display
 [ -x ~/.fehbg ] && sh ~/.fehbg &
-[ $commands[nvidia-settings] ] && nvidia-settings --load-config-only
-[ $commands[xcalib] ] && xcalib ~/.config/display/colour_profiles/xcalib-qnix-120-6500k &
+if type nvidia-settings > /dev/null 2>&1; then
+    nvidia-settings --load-config-only
+fi
+if type xcalib > /dev/null 2>&1; then
+    xcalib ~/.config/display/colour_profiles/xcalib-qnix-120-6500k &
+fi
 
 # Applications
 compton -b

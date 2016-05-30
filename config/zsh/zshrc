@@ -18,14 +18,14 @@ if [ -s "$ZDOTDIR/.zshrc.env" ]; then
 fi
 
 # Docker
-if [ $commands[docker] ]; then
+if type docker > /dev/null 2>&1; then
     alias docker-stop="$HOME/scripts/docker/stop_all_containers.sh"
     alias docker-clean="$HOME/scripts/docker/remove_all_containers.sh"
     alias docker-purge="$HOME/scripts/docker/remove_all_images.sh"
 fi
 
 # Clipboard
-if [ $commands[xclip] ]; then
+if type xclip > /dev/null 2>&1; then
     alias setclip='xclip -selection clipboard -i'
     alias getclip='xclip -selection clipboard -o'
 fi
@@ -45,7 +45,7 @@ if [ -s "$HOME/scripts/enhancd.sh" ]; then
 fi
 
 # Bundle
-if [ $commands[bundle] ]; then
+if type bundle > /dev/null 2>&1; then
     alias be='bundle exec'
     alias ber='bundle exec rake'
 fi
