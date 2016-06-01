@@ -1,4 +1,4 @@
 #!/bin/sh
 
 images=$(docker images -aq)
-[ $images ] && docker rmi -f $images
+[ "$images" ] && docker rmi -f $images

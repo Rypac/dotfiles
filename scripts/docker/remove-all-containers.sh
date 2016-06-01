@@ -1,4 +1,4 @@
 #!/bin/sh
 
 containers=$(docker ps -aq)
-[ $containers ] && docker rm -f $containers
+[ "$containers" ] && docker rm -f $containers

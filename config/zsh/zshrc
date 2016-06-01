@@ -19,9 +19,9 @@ fi
 
 # Docker
 if type docker > /dev/null 2>&1; then
-    alias docker-stop="$HOME/scripts/docker/stop_all_containers.sh"
-    alias docker-clean="$HOME/scripts/docker/remove_all_containers.sh"
-    alias docker-purge="$HOME/scripts/docker/remove_all_images.sh"
+    alias docker-stop="$HOME/scripts/docker/stop-all-containers.sh"
+    alias docker-clean="$HOME/scripts/docker/remove-all-containers.sh"
+    alias docker-purge="$HOME/scripts/docker/remove-all-images.sh"
 fi
 
 # Clipboard
