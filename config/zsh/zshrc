@@ -64,18 +64,22 @@ alias less='less -FSRXc'
 alias qfind='find . -name'
 
 # Normal mode keybindings
+bindkey -v
 bindkey '[C' forward-word       # alt+left
 bindkey '[D' backward-word      # alt+right
 bindkey '^0[C' forward-word     # ctrl+left
 bindkey '^0[D' backward-word    # ctrl+right
 bindkey '^[[3^' kill-word       # ctrl+delete
 bindkey '^H' backward-kill-word # ctrl+backspace
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
 bindkey '^K' kill-line
 bindkey '^U' backward-kill-line
 bindkey '^T' transpose-chars
 bindkey '^P' up-history
 bindkey '^N' down-history
 bindkey '^R' history-incremental-search-backward
+bindkey '^F' vi-cmd-mode
 
 # Vim mode keybindings
 bindkey -M vicmd '/' history-incremental-search-backward
@@ -84,4 +88,4 @@ bindkey -M vicmd 'v' edit-command-line
 bindkey -M vicmd 'u' undo
 bindkey -M vicmd '^R' redo
 
-export KEYTIMEOUT=1
+export KEYTIMEOUT=10
