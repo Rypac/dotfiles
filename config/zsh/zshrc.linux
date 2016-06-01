@@ -9,6 +9,7 @@ alias f='(pcmanfm . > /dev/null 2>&1 &)'
 alias appupdate='sudo apt-get update && sudo apt-get upgrade'
 alias appinstall='sudo apt-get install'
 alias appremove='sudo apt-get remove'
+alias apppurge='sudo apt-get purge --autoremove'
 alias appsearch='sudo apt-cache search'
 alias appclean='sudo apt-get autoremove'
 
