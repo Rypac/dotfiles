@@ -20,10 +20,8 @@ function confirmation_prompt() {
 }
 
 function install_homebrew() {
-    if ! which brew > /dev/null 2>&1; then
+    if ! type brew > /dev/null 2>&1; then
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    else
-        echo "Homebrew is already installed"
     fi
     brew update
     brew upgrade
@@ -44,7 +42,7 @@ function install_homebrew_casks() {
 }
 
 function install_rust() {
-    which rustup > /dev/null 2>&1 || curl https://sh.rustup.rs -sSf | sh
+    type rustup > /dev/null 2>&1 || curl https://sh.rustup.rs -sSf | sh
     rustup update
     rustup install stable
     rustup install nightly

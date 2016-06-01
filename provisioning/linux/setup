@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-"$HOME/.config"}
+XDG_CACHE_HOME=${XDG_CACHE_HOME:-"$HOME/.cache"}
+XDG_DATA_HOME=${XDG_DATA_HOME:-"$HOME/.local/share"}
+
 function confirmation_prompt() {
     message="$1"
     default="${2:-Y}"
@@ -51,12 +55,12 @@ function install_git_packages() {
 
 function install_fonts() {
     fonts="$1"
-    mkdir -p /tmp/fonts ~/.local/share/fonts
+    mkdir -p /tmp/fonts "${XDG_DATA_HOME}/fonts"
     cd /tmp/fonts
     curl -OL https://github.com/chrissimpkins/codeface/releases/download/font-collection/codeface-fonts.tar.xz
     tar xf codeface-fonts.tar.xz
     for font in ${fonts}; do
-        mv fonts/$font ~/.local/share/fonts
+        mv fonts/$font "${XDG_DATA_HOME}/fonts"
     done
     cd ~
     rm -rf /tmp/fonts
@@ -64,7 +68,7 @@ function install_fonts() {
 }
 
 function install_rust() {
-    which rustup > /dev/null 2>&1 || curl https://sh.rustup.rs -sSf | sh
+    type rustup > /dev/null 2>&1 || curl https://sh.rustup.rs -sSf | sh
     rustup update
     rustup install stable
     rustup install nightly
@@ -74,12 +78,12 @@ function post_install_configuration() {
     [ "$SHELL" = "/bin/zsh" ] || chsh -s /bin/zsh
     sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
     sudo update-alternatives --set pinentry /usr/bin/pinentry-curses
-    sudo cp -r "${HOME}/.config/urxvt/." /usr/lib/urxvt/perl/
-    "${HOME}/.config/fzf/install" --bin
+    sudo cp -r "${XDG_CONFIG_HOME}/urxvt/." /usr/lib/urxvt/perl/
+    "${XDG_CONFIG_HOME}/fzf/install" --bin
     vim +PluginInstall +qall
 }
 
-function silent() {
+function no_confirmation() {
     [ "$1" = "-y" ] || [ "$1" = "--yes" ]
 }
 
@@ -87,20 +91,20 @@ script_dir="$(dirname "${BASH_SOURCE[0]}")"
 
 [ -f "${HOME}/.profile" ] && source "${HOME}/.profile"
 
-if silent "$1" || confirmation_prompt "Install packages?"; then
+if no_confirmation "$1" || confirmation_prompt "Install packages?"; then
     install_packages "$(cat "${script_dir}/packages.txt")"
 fi
-if silent "$1" || confirmation_prompt "Clone and install external packages?"; then
+if no_confirmation "$1" || confirmation_prompt "Clone and install external packages?"; then
     install_packages "$(cat "${script_dir}/build_deps.txt")"
     install_git_packages "${HOME}/packages/cloned"
 fi
-if silent "$1" || confirmation_prompt "Install fonts?"; then
+if no_confirmation "$1" || confirmation_prompt "Install fonts?"; then
     install_fonts "$(cat "${script_dir}/fonts.txt")"
 fi
-if silent "$1" || confirmation_prompt "Install development tools?"; then
+if no_confirmation "$1" || confirmation_prompt "Install development tools?"; then
     install_rust
 fi
-if silent "$1" || confirmation_prompt "Configure environment?"; then
+if no_confirmation "$1" || confirmation_prompt "Configure environment?"; then
     post_install_configuration
 fi
 
