@@ -1,0 +1,12 @@
+# Ignore everything by default
+*
+
+# Only include settings and keymaps
+!.gitignore
+!*.sublime-settings
+!*.sublime-keymap
+
+# Don't include platform/installation specific settings
+Package\ Control.sublime-settings
+RustAutoComplete.sublime-settings
+Terminal.sublime-settings

@@ -1,0 +1,74 @@
+{
+	"binary_file_patterns":
+	[
+		"*.jpg",
+		"*.jpeg",
+		"*.png",
+		"*.gif",
+		"*.ttf",
+		"*.tga",
+		"*.dds",
+		"*.ico",
+		"*.eot",
+		"*.pdf",
+		"*.swf",
+		"*.jar",
+		"*.zip",
+		"node_modules/**",
+		"bower_components/**",
+		"tmp/**"
+	],
+	"caret_style": "phase",
+	"close_windows_when_empty": false,
+	"color_scheme": "Packages/Boxy Theme/schemes/Boxy Ocean.tmTheme",
+	"draw_white_space": "all",
+	"ensure_newline_at_eof_on_save": true,
+	"font_face": "Hack",
+	"font_size": 12,
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+		"Anaconda",
+		"EasyClangComplete",
+		"ElixirSublime",
+		"SublimeHaskell",
+		"Vintage",
+		"Vintageous"
+	],
+	"indent_guide_options":
+	[
+		"draw_active"
+	],
+	"material_theme_compact_panel": true,
+	"material_theme_compact_sidebar": true,
+	"material_theme_contrast_mode": true,
+	"material_theme_small_tab": true,
+	"material_theme_tabs_separator": true,
+	"predawn_findreplace_small": true,
+	"predawn_quick_panel_small": false,
+	"predawn_sidebar_arrows": true,
+	"predawn_sidebar_narrow": false,
+	"predawn_sidebar_small": true,
+	"predawn_tabs_active_underline": true,
+	"predawn_tabs_small": true,
+	"rulers":
+	[
+		100
+	],
+	"scroll_past_end": false,
+	"sidebar_small": true,
+	"soda_classic_tabs": true,
+	"tabs_small": true,
+	"theme": "Boxy Ocean.sublime-theme",
+	"theme_bar": true,
+	"theme_bar_margin_top_sm": true,
+	"theme_icon_button_highlighted": true,
+	"theme_quick_panel_size_md": true,
+	"theme_sidebar_file_icons_hidden": true,
+	"theme_sidebar_folder_arrow": true,
+	"theme_tab_selected_transparent": true,
+	"theme_tab_selected_underlined": true,
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true
+}

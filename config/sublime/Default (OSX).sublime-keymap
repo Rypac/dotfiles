@@ -1,0 +1,39 @@
+[
+    // File explorer
+    { "keys": ["f1"], "command": "dired", "args": { "immediate": true } },
+
+    // Quick navigation
+    { "keys": ["f2"], "command": "goto_definition" },
+    { "keys": ["f4"], "command": "switch_file", "args": {"extensions": ["cpp", "cxx", "cc", "c", "hpp", "hxx", "hh", "h", "ipp", "inl", "m", "mm"]} },
+    { "keys": ["super+alt+down"], "command": "goto_definition" },
+    { "keys": ["super+alt+up"], "command": "switch_file", "args": {"extensions": ["cpp", "cxx", "cc", "c", "hpp", "hxx", "hh", "h", "ipp", "inl", "m", "mm"]} },
+    { "keys": ["ctrl+minus"], "command": "jump_back" },
+    { "keys": ["ctrl+alt+minus"], "command": "jump_forward" },
+
+    // Deleting
+    { "keys": ["ctrl+backspace"], "command": "delete_word", "args": { "forward": false, "sub_words": true } },
+    { "keys": ["ctrl+shift+backspace"], "command": "delete_word", "args": { "forward": true, "sub_words": true } },
+    { "keys": ["alt+backspace"], "command": "delete_word", "args": { "forward": false, "sub_words": false } },
+    { "keys": ["alt+shift+backspace"], "command": "delete_word", "args": { "forward": true, "sub_words": false } },
+
+    // Case conversion
+    { "keys": ["super+k", "super+c"], "command": "convert_to_camel" },
+    { "keys": ["super+k", "super+s"], "command": "convert_to_snake" },
+    { "keys": ["super+k", "super+p"], "command": "convert_to_pascal"},
+
+    // Find panel key bindings
+    { "keys": ["esc"], "command": "hide_panel", "context":
+        [{"key": "panel", "operand": "find"}, {"key": "panel_has_focus"}]
+    },
+
+    // Incremental find panel key bindings
+    { "keys": ["esc"], "command": "hide_panel", "context":
+        [{"key": "panel", "operand": "incremental_find"}, {"key": "panel_has_focus"}]
+    },
+    { "keys": ["enter"], "command": "find_next", "context":
+        [{"key": "panel", "operand": "incremental_find"}, {"key": "panel_has_focus"}]
+    },
+    { "keys": ["shift+enter"], "command": "find_prev", "context":
+        [{"key": "panel", "operand": "incremental_find"}, {"key": "panel_has_focus"}]
+    },
+]
