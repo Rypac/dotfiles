@@ -8,13 +8,13 @@ xset m 1 0
 xsetroot -cursor_name left_ptr
 
 # Load X resources
-[ -e ~/.Xresources ] && xrdb -merge ~/.Xresources
+[ -f "$HOME/.Xresources" ] && xrdb -merge "$HOME/.Xresources"
 
 # Start the gpg-agent if not already running
 export GPG_TTY=$(tty)
 if ! pgrep -x -u "$USER" gpg-agent >/dev/null 2>&1; then
-    gpg-agent --homedir "$HOME/.gnupg" --enable-ssh-support --daemon >/dev/null 2>&1
-    gpg-connect-agent updatestartuptty /bye >/dev/null
+    gpg-agent --homedir "$HOME/.gnupg" --enable-ssh-support --daemon > /dev/null 2>&1
+    gpg-connect-agent updatestartuptty /bye > /dev/null
 fi
 
 # Set SSH to use gpg-agent
@@ -34,5 +34,5 @@ fi
 
 # Applications
 compton -b
-(sleep 1s && DBUS_SESSION_BUS_ADDRESS="" dropbox start -i) &
+dropbox start -i &
 clipit &
