@@ -13,7 +13,11 @@ alias apppurge='sudo apt-get purge --autoremove'
 alias appsearch='sudo apt-cache search'
 alias appclean='sudo apt-get autoremove'
 
-applist() {
+function appcleanall() {
+    sudo dpkg -P $(dpkg -l | awk '/^rc/ { print($2) }')
+}
+
+function applist() {
     dpkg-query -f '${binary:Package}\n' -W | less
 }
 

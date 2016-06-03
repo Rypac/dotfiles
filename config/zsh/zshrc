@@ -2,9 +2,9 @@
 # Executes commands at the start of an interactive session.
 #
 
-# Export home path
-if [ -d "$HOME/bin" ]; then
-    export PATH="$HOME/bin:$PATH"
+# Source default profile
+if [ -f "$HOME/.profile" ]; then
+    source "$HOME/.profile"
 fi
 
 # Load zim plugins
@@ -40,7 +40,7 @@ fi
 
 # Enhancd
 if [ -s "$HOME/scripts/enhancd.sh" ]; then
-    export ENHANCD_DIR="$XDG_DATA_HOME/enhanced"
+    export ENHANCD_DIR="$XDG_DATA_HOME/enhancd"
     source "$HOME/scripts/enhancd.sh"
 fi
 
@@ -89,3 +89,18 @@ bindkey -M vicmd 'u' undo
 bindkey -M vicmd '^R' redo
 
 export KEYTIMEOUT=10
+
+# De-duplicate array paths
+typeset -gU cdpath fpath mailpath path
+
+if (( $#commands[(i)lesspipe(|.sh)] )); then
+    export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
+fi
+
+# Temporary Files
+if [ ! -d "$TMPDIR" ]; then
+    export TMPDIR="/tmp/$LOGNAME"
+    mkdir -p -m 700 "$TMPDIR"
+fi
+
+TMPPREFIX="${TMPDIR%/}/zsh"
