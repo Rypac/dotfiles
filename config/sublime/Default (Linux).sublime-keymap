@@ -1,0 +1,22 @@
+[
+    {"keys": ["ctrl+alt+m"], "command": "toggle_menu"},
+
+    // Navigation
+    { "keys": ["ctrl+alt+down"], "command": "goto_definition" },
+    { "keys": ["ctrl+alt+up"], "command": "switch_file", "args": {"extensions": ["cpp", "cxx", "cc", "c", "hpp", "hxx", "hh", "h", "ipp", "inl", "m", "mm"]} },
+
+    // Deletion
+    { "keys": ["alt+backspace"], "command": "delete_word", "args": { "forward": false } },
+    { "keys": ["alt+shift+backspace"], "command": "delete_word", "args": { "forward": true } },
+
+    // Incremental find panel key bindings
+    { "keys": ["enter"], "command": "find_next", "context":
+        [{"key": "panel", "operand": "incremental_find"}, {"key": "panel_has_focus"}]
+    },
+    { "keys": ["shift+enter"], "command": "find_prev", "context":
+        [{"key": "panel", "operand": "incremental_find"}, {"key": "panel_has_focus"}]
+    },
+    { "keys": ["alt+enter"], "command": "find_all", "args": {"close_panel": true},
+        "context": [{"key": "panel", "operand": "incremental_find"}, {"key": "panel_has_focus"}]
+    },
+]

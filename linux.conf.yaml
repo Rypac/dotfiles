@@ -25,6 +25,7 @@
     ~/.config/panel: config/panel
     ~/.config/ranger: config/ranger
     ~/.config/rofi: config/rofi
+    ~/.config/sublime-text-3/Packages/User: config/sublime
     ~/.config/sxhkd: config/sxhkd
     ~/.config/tint2: config/tint2
     ~/.config/user-dirs.dirs: config/xdg/user-dirs.dirs
