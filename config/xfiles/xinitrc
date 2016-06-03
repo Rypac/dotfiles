@@ -19,8 +19,14 @@ case $session in
         sxhkd &
         exec bspwm
         ;;
+    gnome)
+        exec gnome-session
+        ;;
     i3|i3wm)
         exec i3
+        ;;
+    openbox)
+        exec openbox-session
         ;;
     xfce|xfce4)
         exec startxfce4
