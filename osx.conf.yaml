@@ -7,7 +7,7 @@
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
-  - [git submodule update --remote --merge, Updating submodules]
+  - [git submodule update --remote --rebase, Updating submodules]
 
 - link:
     ~/.config/fzf: libs/fzf
