@@ -40,7 +40,10 @@
     ~/.config/zsh/.zlogin: config/zsh/zlogin
     ~/.config/zsh/.zlogout: config/zsh/zlogout
     ~/.config/zsh/.zshrc: config/zsh/zshrc
-    ~/.config/zsh/.zshrc.env: config/zsh/zshrc.linux
+    ~/.config/zsh/zsh.aliases: config/zsh/zsh.aliases
+    ~/.config/zsh/zsh.env: config/zsh/zsh.linux
+    ~/.config/zsh/zsh.keys: config/zsh/zsh.keys
+    ~/.config/zsh/zsh.opts: config/zsh/zsh.opts
     ~/.nanorc: config/nano/nanorc
     ~/.profile: config/shell/profile
     ~/.stalonetrayrc: config/stalonetray/stalonetrayrc

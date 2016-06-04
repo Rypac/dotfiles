@@ -1,0 +1,11 @@
+# Navigation
+unsetopt AUTO_CD
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+setopt PUSHD_SILENT
+setopt PUSHD_TO_HOME
+
+# Globbing and fds
+setopt EXTENDED_GLOB
+setopt MULTIOS
+setopt CLOBBER

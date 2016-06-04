@@ -1,0 +1,26 @@
+# Docker
+if type docker > /dev/null 2>&1; then
+    alias docker-stop="$HOME/scripts/docker/stop-all-containers.sh"
+    alias docker-clean="$HOME/scripts/docker/remove-all-containers.sh"
+    alias docker-purge="$HOME/scripts/docker/remove-all-images.sh"
+fi
+
+# Clipboard
+if type xclip > /dev/null 2>&1; then
+    alias setclip='xclip -selection clipboard -i'
+    alias getclip='xclip -selection clipboard -o'
+fi
+
+# Ruby/Bundler
+if type bundle > /dev/null 2>&1; then
+    alias be='bundle exec'
+    alias ber='bundle exec rake'
+fi
+
+# Common tool aliases
+alias j='fasd_cd -d'
+alias jj='fasd_cd -d -i'
+alias la='ls -lAh'
+alias mkdir='mkdir -p'
+alias less='less -FSRXc'
+alias qfind='find . -name'

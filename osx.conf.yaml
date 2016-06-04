@@ -20,14 +20,17 @@
     ~/.config/zsh/.zlogin: config/zsh/zlogin
     ~/.config/zsh/.zlogout: config/zsh/zlogout
     ~/.config/zsh/.zshrc: config/zsh/zshrc
-    ~/.config/zsh/.zshrc.env: config/zsh/zshrc.osx
+    ~/.config/zsh/zsh.aliases: config/zsh/zsh.aliases
+    ~/.config/zsh/zsh.env: config/zsh/zsh.osx
+    ~/.config/zsh/zsh.keys: config/zsh/zsh.keys
+    ~/.config/zsh/zsh.opts: config/zsh/zsh.opts
     ~/.profile: config/shell/profile
     ~/.vim/vimrc: config/vim/vimrc
     ~/.vim/bundle/Vundle.vim: libs/vundle
     ~/.zshenv: config/zsh/zshenv
     ~/scripts/enhancd.sh: libs/enhancd/init.sh
     ~/Library/Application Support/Sublime Text 3/Packages/User: config/sublime
-  
+
 - shell:
   - [mkdir -p ~/bin ~/scripts, Creating directories]
   - [scripts/misc/link-scripts.sh "$PWD/scripts/utilities" ~/bin, Linking utility executables]
