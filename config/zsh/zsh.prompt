@@ -1,6 +1,17 @@
-# My minimal theme
+# zsh prompt setup
 
-minimal_status() {
+function short_pwd {
+    local current_dir="${1:-${PWD}}"
+    current_dir="${current_dir/#${HOME}/~}"
+
+    if [[ ${current_dir} != '~' ]]; then
+        print "${${${${(@j:/:M)${(@s:/:)current_dir}##.#?}:h}%/}//\%/%%}/${${current_dir:t}//\%/%%}"
+    else
+        print '~'
+    fi
+}
+
+function clean_status {
     local error_colour="%F{red}"
     local colour_1="%(0?.%F{red}.$error_colour)"
     local colour_2="%(0?.%F{yellow}.$error_colour)"
@@ -9,7 +20,7 @@ minimal_status() {
     print "${colour_1}❯${colour_2}❯${colour_3}❯%f"
 }
 
-minimal_path() {
+function clean_path {
     local path_color="%F{blue}"
     local rsc="%f"
     local sep="/"
@@ -17,17 +28,17 @@ minimal_path() {
     print "$path_color$(sed s_/_${sep}_g <<< $(short_pwd))$rsc"
 }
 
-minimal_vim_status() {
-    local vim_prompt="%F{yellow} [% NORMAL]% %f"
-    print "${${KEYMAP/vicmd/$vim_prompt}/(main|viins)/}"
+function clean_vim_status {
+    local vicmd_status="%F{yellow} [% NORMAL]% %f"
+    [[ "$KEYMAP" == 'vicmd' ]] && print "$vicmd_status"
 }
 
-git_branch_name() {
+function git_branch_name {
     local branch_name="$(command git rev-parse --abbrev-ref HEAD 2> /dev/null)"
     [[ -n $branch_name ]] && print "$branch_name"
 }
 
-git_repo_status(){
+function git_repo_status {
     local rs="$(command git status --porcelain -b)"
 
     if $(print "$rs" | grep -v '^##' &> /dev/null); then # is dirty
@@ -43,7 +54,7 @@ git_repo_status(){
     fi
 }
 
-minimal_git() {
+function clean_git {
     local bname=$(git_branch_name)
     if [[ -n ${bname} ]]; then
         local info="$(git_repo_status)${bname}%f"
@@ -56,20 +67,21 @@ function zle-line-init zle-line-finish zle-keymap-select {
     zle -R
 }
 
-prompt_minimal_precmd() {
+function prompt_clean_precmd {
     zle -N zle-line-init
     zle -N zle-keymap-select
     zle -N zle-line-finish
 
-    PROMPT='$(minimal_path) $(minimal_status) '
-    RPROMPT='$(minimal_vim_status)'
+    PROMPT="$(clean_path) $(clean_status) "
+    RPROMPT="$(clean_vim_status)"
 }
 
-prompt_minimal_setup() {
+function prompt_clean_setup {
     autoload -Uz add-zsh-hook
-
-    add-zsh-hook precmd prompt_minimal_precmd
+    add-zsh-hook precmd prompt_clean_precmd
     prompt_opts=(cr subst percent)
 }
 
-prompt_minimal_setup "$@"
+if [[ ! ${TERM} == (linux|*bsd*|dumb) ]]; then
+    prompt_clean_setup
+fi

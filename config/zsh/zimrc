@@ -1,15 +1,9 @@
 # Zim settings
 
-zmodules=(directory environment history input utility spectrum fasd history-substring-search prompt completion)
+zmodules=(directory environment history input utility spectrum fasd history-substring-search completion)
 
 # Prompt
-zprompt_theme='minimal'
-
-# Utility
-#zcorrection='true'
-
-# Input
-#zdouble_dot_expand='true'
+#zprompt_theme='clean'
 
 # Syntax-Highlighting
-zhighlighters=(main brackets cursor)
+#zhighlighters=(main brackets cursor)

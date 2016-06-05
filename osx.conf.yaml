@@ -13,9 +13,6 @@
     ~/.config/fzf: libs/fzf
     ~/.config/git: config/git
     ~/.config/zsh/.zim: libs/zim
-    ~/.config/zsh/.zim/modules/prompt/themes/minimal.zsh-theme:
-      force: true
-      path: config/zsh/zsh.theme
     ~/.config/zsh/.zimrc: config/zsh/zimrc
     ~/.config/zsh/.zlogin: config/zsh/zlogin
     ~/.config/zsh/.zlogout: config/zsh/zlogout
@@ -24,6 +21,7 @@
     ~/.config/zsh/zsh.env: config/zsh/zsh.osx
     ~/.config/zsh/zsh.keys: config/zsh/zsh.keys
     ~/.config/zsh/zsh.opts: config/zsh/zsh.opts
+    ~/.config/zsh/zsh.prompt: config/zsh/zsh.prompt
     ~/.profile: config/shell/profile
     ~/.vim/vimrc: config/vim/vimrc
     ~/.vim/bundle/Vundle.vim: libs/vundle

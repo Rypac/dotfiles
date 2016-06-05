@@ -9,6 +9,7 @@
 [ -f "$ZDOTDIR/zsh.env" ] && source "$ZDOTDIR/zsh.env"
 [ -f "$ZDOTDIR/zsh.keys" ] && source "$ZDOTDIR/zsh.keys"
 [ -f "$ZDOTDIR/zsh.opts" ] && source "$ZDOTDIR/zsh.opts"
+[ -f "$ZDOTDIR/zsh.prompt" ] && source "$ZDOTDIR/zsh.prompt"
 
 # Fuzzy command line search
 if [ -d "$XDG_CONFIG_HOME/fzf" ]; then
