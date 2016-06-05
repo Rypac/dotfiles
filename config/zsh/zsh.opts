@@ -9,3 +9,8 @@ setopt PUSHD_TO_HOME
 setopt EXTENDED_GLOB
 setopt MULTIOS
 setopt CLOBBER
+
+# Prompt
+setopt PROMPT_CR
+setopt PROMPT_PERCENT
+setopt PROMPT_SUBST

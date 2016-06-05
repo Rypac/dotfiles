@@ -72,8 +72,8 @@ function prompt_clean_precmd {
     zle -N zle-keymap-select
     zle -N zle-line-finish
 
-    PROMPT="$(clean_path) $(clean_status) "
-    RPROMPT="$(clean_vim_status)"
+    PROMPT='$(clean_path) $(clean_status) '
+    RPROMPT='$(clean_vim_status)'
 }
 
 function prompt_clean_setup {
@@ -83,5 +83,6 @@ function prompt_clean_setup {
 }
 
 if [[ ! ${TERM} == (linux|*bsd*|dumb) ]]; then
+    autoload -Uz promptinit && promptinit
     prompt_clean_setup
 fi
