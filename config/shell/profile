@@ -13,6 +13,7 @@ export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
 export GTK_RC_FILES="$XDG_CONFIG_HOME/gtk-1.0/gtkrc"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export MPLAYER_HOME="$XDG_CONFIG_HOME/mplayer"
+export QT_STYLE_OVERRIDE=GTK+
 export SCREENRC="$XDG_CONFIG_HOME/screen/screenrc"
 export TIGRC_USER="$XDG_CONFIG_HOME/tig/tigrc"
 export WEECHAT_HOME="$XDG_CONFIG_HOME/weechat"
