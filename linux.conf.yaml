@@ -11,6 +11,7 @@
 
 - link:
     ~/.config/bspwm: config/bspwm
+    ~/.config/Code/User: config/vscode
     ~/.config/compton.conf: config/compton/compton.conf
     ~/.config/clipit: config/clipit
     ~/.config/display: config/display

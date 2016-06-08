@@ -1,0 +1,12 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "editor.fontFamily": "'Source Code Pro', 'Droid Sans Mono', 'Courier New', monospace, 'Droid Sans Fallback'",
+    "editor.fontSize": 14,
+    "editor.rulers": [100],
+    "editor.scrollBeyondLastLine": false,
+    "editor.renderWhitespace": true,
+
+    "files.trimTrailingWhitespace": true,
+
+    "telemetry.enableTelemetry": false
+}

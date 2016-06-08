@@ -1,7 +1,4 @@
-#
 # Linux
-#
-
 *~
 
 # temporary files which can be created if a process still has a handle open of a deleted file
@@ -13,10 +10,7 @@
 # Linux trash folder which might appear on any partition or disk
 .Trash-*
 
-#
 # Mac OS X
-#
-
 .DS_Store
 .AppleDouble
 .LSOverride
@@ -34,3 +28,6 @@ Icon
 .TemporaryItems
 .Trashes
 .VolumeIcon.icns
+
+# Editors
+.vscode
