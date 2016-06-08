@@ -15,7 +15,7 @@ gcc
 gdbm
 ghc
 git
-go
+gpg2
 htop-osx
 imagemagick
 lame
@@ -23,8 +23,6 @@ mplayer
 neofetch
 nvm
 ranger
-rbenv
-ruby-build
 tig
 vim
 wget

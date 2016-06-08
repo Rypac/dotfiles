@@ -36,8 +36,17 @@ function install_homebrew_packages() {
 
 function install_homebrew_casks() {
     packages=$1
+    brew tap caskroom/cask
     for package in ${packages}; do
-        brew install Caskroom/cask/$package
+        brew cask install $package
+    done
+}
+
+function install_fonts() {
+    fonts=$1
+    brew tap caskroom/fonts
+    for font in ${fonts}; do
+        brew cask install $font
     done
 }
 
@@ -70,6 +79,9 @@ if silent "$1" || confirmation_prompt "Install homebrew packages?"; then
 fi
 if silent "$1" || confirmation_prompt "Install homebrew casks?"; then
     install_homebrew_casks "$(cat "${script_dir}/casks.txt")"
+fi
+if silent "$1" || confirmation_prompt "Install fonts?"; then
+    install_fonts "$(cat "${script_dir}/fonts.txt")"
 fi
 if silent "$1" || confirmation_prompt "Install development tools?"; then
     install_rust
