@@ -87,7 +87,7 @@ function no_confirmation() {
     [ "$1" = "-y" ] || [ "$1" = "--yes" ]
 }
 
-script_dir="$(dirname "${BASH_SOURCE[0]}")"
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 [ -f "${HOME}/.profile" ] && source "${HOME}/.profile"
 

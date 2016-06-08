@@ -58,7 +58,7 @@ function silent() {
     [ "$1" = "-y" ] || [ "$1" = "--yes" ]
 }
 
-script_dir="$(dirname "${BASH_SOURCE[0]}")"
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 [ -f "${HOME}/.profile" ] && source "${HOME}/.profile"
 
@@ -66,10 +66,10 @@ if silent "$1" || confirmation_prompt "Install homebrew?"; then
     install_homebrew
 fi
 if silent "$1" || confirmation_prompt "Install homebrew packages?"; then
-    install_homebrew_packages "$(cat "$script_dir/packages.txt")"
+    install_homebrew_packages "$(cat "${script_dir}/packages.txt")"
 fi
 if silent "$1" || confirmation_prompt "Install homebrew casks?"; then
-    install_homebrew_casks "$(cat "$script_dir/casks.txt")"
+    install_homebrew_casks "$(cat "${script_dir}/casks.txt")"
 fi
 if silent "$1" || confirmation_prompt "Install development tools?"; then
     install_rust
