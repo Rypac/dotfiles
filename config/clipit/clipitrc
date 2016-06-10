@@ -2,7 +2,7 @@
 use_copy=true
 use_primary=false
 synchronize=false
-automatic_paste=false
+automatic_paste=true
 show_indexes=false
 save_uris=true
 use_rmb_menu=false

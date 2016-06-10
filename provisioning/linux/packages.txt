@@ -60,6 +60,7 @@ tint2
 vim
 wget
 xcb
+xclip
 xorg
 zathura
 zsh
