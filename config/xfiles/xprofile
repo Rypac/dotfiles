@@ -29,7 +29,7 @@ if type nvidia-settings > /dev/null 2>&1; then
     nvidia-settings --load-config-only
 fi
 if type xcalib > /dev/null 2>&1; then
-    xcalib "$HOME/.config/display/colour_profiles/xcalib-qnix-120-6500k" &
+    xcalib "$HOME/.config/display/qnix-120-6500k.profile" &
 fi
 
 # Applications
