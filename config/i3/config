@@ -95,7 +95,7 @@ for_window [title="Inbox|Messenger"] floating disable
 
 # workspace specific apps
 assign [class="google-chrome"] $ws2
-assign [class="Atom|Sublime_text|QtCreator"] $ws3
+assign [class="Atom|Sublime_text|Code|QtCreator"] $ws3
 assign [class="Deadbeef"] $ws4
 for_window [class="Spotify"] move container to workspace $ws4
 
