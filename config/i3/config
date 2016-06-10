@@ -89,7 +89,7 @@ set $ws0 10 
 # for_window [class="^.*"] floating enable
 
 # floating windows
-for_window [class="feh|Lxappearance|Seahorse|Pavucontrol|Plank"] floating enable
+for_window [class="feh|Lxappearance|Seahorse|Pavucontrol|Plank|Xarchiver"] floating enable
 for_window [window_role="pop-up|task_dialog"] floating enable
 for_window [title="Inbox|Messenger"] floating disable
 

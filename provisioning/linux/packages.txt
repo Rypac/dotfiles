@@ -57,10 +57,13 @@ stalonetray
 sudo
 tig
 tint2
+unrar
 vim
 wget
+xarchiver
 xcb
 xclip
 xorg
 zathura
+zip
 zsh
