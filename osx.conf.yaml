@@ -23,6 +23,7 @@
     ~/.config/zsh/zsh.opts: config/zsh/zsh.opts
     ~/.config/zsh/zsh.prompt: config/zsh/zsh.prompt
     ~/.profile: config/shell/profile
+    ~/.kwm: config/kwm
     ~/.vim/vimrc: config/vim/vimrc
     ~/.vim/bundle/Vundle.vim: libs/vundle
     ~/.zshenv: config/zsh/zshenv
