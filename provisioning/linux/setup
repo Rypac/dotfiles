@@ -120,7 +120,7 @@ fi
 if no_confirmation "$1" || confirmation_prompt "Configure environment?"; then
     post_install_configuration
 fi
-if install_everything "$1" || confirmation_prompt "Configure /etc/ environment?"; then
+if install_everything "$1" && confirmation_prompt "Configure /etc/ environment?"; then
     etc_install_configuration
 fi
 
