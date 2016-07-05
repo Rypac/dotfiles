@@ -2,7 +2,7 @@
 
 shopt -s nullglob
 
-if [[ ! -f $1 ]]; then
+if [[ ! -f "$1" ]]; then
     echo "$0: first argument is not a file" >&2
     exit 1
 fi
@@ -15,9 +15,9 @@ shift
 cd -- "$dir"
 
 for i in *; do
-    [[ -f $i ]] || continue
+    [[ -f "$i" ]] || continue
     arr+=("$i")
-    [[ $i == $file ]] && c=$((${#arr[@]} - 1))
+    [[ "$i" == "$file" ]] && c=$((${#arr[@]} - 1))
 done
 
 exec feh "$@" -- "${arr[@]:c}" "${arr[@]:0:c}"
