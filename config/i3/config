@@ -146,15 +146,23 @@ set $resize resize
 bindsym $mod+r mode "$resize"
 
 mode "$resize" {
-    bindsym j resize shrink width 10 px or 10 ppt
-    bindsym k resize grow height 10 px or 10 ppt
-    bindsym l resize shrink height 10 px or 10 ppt
-    bindsym semicolon resize grow width 10 px or 10 ppt
+    bindsym h resize shrink width 10 px or 5 ppt
+    bindsym j resize grow height 10 px or 5 ppt
+    bindsym k resize shrink height 10 px or 5 ppt
+    bindsym l resize grow width 10 px or 5 ppt
+    bindsym Shift+h resize shrink width 150 px or 15 ppt
+    bindsym Shift+j resize grow height 150 px or 15 ppt
+    bindsym Shift+k resize shrink height 150 px or 15 ppt
+    bindsym Shift+l resize grow width 150 px or 15 ppt
 
-    bindsym Left resize shrink width 10 px or 10 ppt
-    bindsym Down resize grow height 10 px or 10 ppt
-    bindsym Up resize shrink height 10 px or 10 ppt
-    bindsym Right resize grow width 10 px or 10 ppt
+    bindsym Left resize shrink width 10 px or 5 ppt
+    bindsym Down resize grow height 10 px or 5 ppt
+    bindsym Up resize shrink height 10 px or 5 ppt
+    bindsym Right resize grow width 10 px or 5 ppt
+    bindsym Shift+Left resize shrink width 150 px or 15 ppt
+    bindsym Shift+Down resize grow height 150 px or 15 ppt
+    bindsym Shift+Up resize shrink height 150 px or 15 ppt
+    bindsym Shift+Right resize grow width 150 px or 15 ppt
 
     bindsym Return mode "$default"
     bindsym Escape mode "$default"
@@ -226,35 +234,46 @@ mode "$mode_gaps" {
     bindsym i mode "$mode_gaps_inner"
     bindsym d gaps outer all set $outer_gaps; gaps inner all set $inner_gaps; mode "$default"
     bindsym n gaps outer all set 0; gaps inner all set 0; mode "$default"
+
     bindsym Return mode "$default"
     bindsym Escape mode "$default"
     bindsym q mode "$default"
 }
 
 mode "$mode_gaps_inner" {
-    bindsym plus gaps inner current plus 5
-    bindsym minus gaps inner current minus 5
+    bindsym k gaps inner current plus 10
+    bindsym j gaps inner current minus 10
+    bindsym up gaps inner current plus 10
+    bindsym down gaps inner current minus 10
     bindsym 0 gaps inner current set 0
 
-    bindsym Shift+plus gaps inner all plus 5
-    bindsym Shift+minus gaps inner all minus 5
+    bindsym Shift+k gaps inner all plus 10
+    bindsym Shift+j gaps inner all minus 10
+    bindsym Shift+up gaps inner all plus 10
+    bindsym Shift+down gaps inner all minus 10
     bindsym Shift+0 gaps inner all set 0
 
     bindsym Return mode "$default"
     bindsym Escape mode "$default"
     bindsym q mode "$default"
+    bindsym b mode "$mode_gaps"
 }
 
 mode "$mode_gaps_outer" {
-    bindsym plus gaps outer current plus 5
-    bindsym minus gaps outer current minus 5
+    bindsym k gaps outer current plus 10
+    bindsym j gaps outer current minus 10
+    bindsym up gaps outer current plus 10
+    bindsym down gaps outer current minus 10
     bindsym 0 gaps outer current set 0
 
-    bindsym Shift+plus gaps outer all plus 5
-    bindsym Shift+minus gaps outer all minus 5
+    bindsym Shift+k gaps outer all plus 10
+    bindsym Shift+j gaps outer all minus 10
+    bindsym Shift+up gaps outer all plus 10
+    bindsym Shift+down gaps outer all minus 10
     bindsym Shift+0 gaps outer all set 0
 
     bindsym Return mode "$default"
     bindsym Escape mode "$default"
     bindsym q mode "$default"
+    bindsym b mode "$mode_gaps"
 }
