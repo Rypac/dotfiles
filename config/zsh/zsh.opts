@@ -14,3 +14,34 @@ setopt CLOBBER
 setopt PROMPT_CR
 setopt PROMPT_PERCENT
 setopt PROMPT_SUBST
+
+# Environment
+setopt AUTO_RESUME
+setopt LONG_LIST_JOBS
+setopt NOTIFY
+unsetopt BG_NICE
+unsetopt HUP
+unsetopt CHECK_JOBS
+
+# History
+HISTFILE="${ZDOTDIR:-${HOME}}/.zhistory"
+HISTSIZE=10000
+SAVEHIST=10000
+
+setopt BANG_HIST
+setopt EXTENDED_HISTORY
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_VERIFY
+
+# Completion
+setopt ALWAYS_TO_END
+setopt AUTO_MENU
+setopt AUTO_LIST
+setopt PATH_DIRS
+unsetopt CASE_GLOB
+unsetopt MENU_COMPLETE
