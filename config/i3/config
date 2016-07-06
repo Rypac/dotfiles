@@ -16,7 +16,9 @@ bindsym $mod+q kill
 
 # rofi and script bindings
 bindsym $mod+space exec --no-startup-id rofi -show run
+bindsym $mod+Shift+p exec --no-startup-id rofi -show run
 bindsym $mod+Tab exec --no-startup-id rofi -show window
+bindsym $mod+p exec --no-startup-id rofi -show window
 bindsym $mod+z exec --no-startup-id ~/scripts/rofi/i3-switch-workspace.sh
 bindsym $mod+Shift+q exec --no-startup-id ~/scripts/rofi/i3-logout.sh
 
@@ -61,6 +63,7 @@ bindsym $mod+v split v
 bindsym $mod+s layout stacking
 bindsym $mod+d layout tabbed
 bindsym $mod+e layout toggle split
+bindsym $mod+a layout toggle
 
 # toggle tiling / floating / fullscreen
 bindsym $mod+f fullscreen toggle
@@ -69,7 +72,7 @@ bindsym $mod+Shift+t exec --no-startup-id ~/scripts/i3/floating.sh toggle
 
 # change window focus
 bindsym $mod+$ctrl+space focus mode_toggle
-bindsym $mod+a focus parent
+bindsym $mod+Shift+a focus parent
 bindsym $mod+x [urgent=latest] focus
 
 # setup workspaces
@@ -137,12 +140,19 @@ bindsym $mod+$ctrl+Shift+Right move container to workspace next
 bindsym $mod+$ctrl+Shift+h move container to workspace prev
 bindsym $mod+$ctrl+Shift+l move container to workspace next
 
+# Scratchpad
+bindsym $mod+Shift+n move scratchpad
+bindsym $mod+n scratchpad show
+
 # Restarting i3
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
+# Modes
 set $default default
-set $resize resize
+
+# Resize mode
+set $resize Resize
 bindsym $mod+r mode "$resize"
 
 mode "$resize" {
@@ -163,6 +173,22 @@ mode "$resize" {
     bindsym Shift+Down resize grow height 150 px or 15 ppt
     bindsym Shift+Up resize shrink height 150 px or 15 ppt
     bindsym Shift+Right resize grow width 150 px or 15 ppt
+
+    bindsym Return mode "$default"
+    bindsym Escape mode "$default"
+    bindsym q mode "$default"
+}
+
+# Layout mode
+set $layout Set layout: h (split horiztonal) | j (split vertical) | k (tabbed) | l (stacking) | t (toggle)
+bindsym $mod+o mode "$layout"
+
+mode "$layout" {
+    bindsym h layout splitv
+    bindsym j layout splith
+    bindsym k layout tabbed
+    bindsym l layout stacking
+    bindsym t layout toggle
 
     bindsym Return mode "$default"
     bindsym Escape mode "$default"
@@ -224,7 +250,7 @@ gaps inner $inner_gaps
 gaps outer $outer_gaps
 smart_borders on
 
-set $mode_gaps gaps: (o) outer, (i) inner, (d) default, (n) none
+set $mode_gaps Gaps: (o) outer, (i) inner, (d) default, (n) none
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
 bindsym $mod+g mode "$mode_gaps"
