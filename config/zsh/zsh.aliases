@@ -20,7 +20,31 @@ fi
 # Common tool aliases
 alias j='fasd_cd -d'
 alias jj='fasd_cd -d -i'
-alias la='ls -lAh'
-alias mkdir='mkdir -p'
 alias less='less -FSRXc'
 alias qfind='find . -name'
+
+# ls
+if type dircolors > /dev/null 2>&1; then
+    eval "$(dircolors --sh)"
+fi
+alias ls='ls --group-directories-first --color=auto'
+alias l='ls -lAh'       # all files, human-readable sizes
+alias la='ls -lAh'
+alias lm="l | ${PAGER}" # all files, human-readable sizes, use pager
+alias ll='ls -lh'       # human-readable sizes
+alias lr='ll -R'        # human-readable sizes, recursive
+
+# grep
+export GREP_COLOR='37;45'
+export GREP_COLORS="mt=${GREP_COLOR}"
+alias grep='grep --color=auto'
+
+# mkdir
+alias mkdir='mkdir -p'
+mkcd() {
+    [[ -n ${1} ]] && mkdir -p ${1} && cd ${1}
+}
+
+# resource usage
+alias df='df -kh'
+alias du='du -kh'
