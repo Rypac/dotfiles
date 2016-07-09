@@ -7,12 +7,13 @@ down='down'
 mixer="default"
 [ -n "$(lsmod | grep pulse)" ] && mixer="pulse"
 [ -n "$(lsmod | grep jack)" ] && mixer="jackplug"
-mixer="${2:-$mixer}"
+mixer="${3:-$mixer}"
 
-scontrol="$(amixer -D $mixer scontrols |
-            sed -n "s/Simple mixer control '\([A-Za-z ]*\)',0/\1/p" |
-            head -n1
-           )"
+scontrol="$(
+    amixer -D $mixer scontrols |
+    sed -n "s/Simple mixer control '\([A-Za-z ]*\)',0/\1/p" |
+    head -n1
+)"
 
 function capability() {
     amixer -D $mixer get $scontrol | sed -n "s/  Capabilities:.*cvolume.*/Capture/p"
