@@ -328,9 +328,9 @@ mode "$mode_mouse" {
     bindsym Shift+s exec xdotool mousedown 3
 
     # left/middle/right drag release
-    bindsym $mod2+f exec xdotool mouseup 1
-    bindsym $mod2+d exec xdotool mouseup 2
-    bindsym $mod2+s exec xdotool mouseup 3
+    bindsym $mod+f exec xdotool mouseup 1
+    bindsym $mod+d exec xdotool mouseup 2
+    bindsym $mod+s exec xdotool mouseup 3
 
     bindsym Return mode "$mode_default"
     bindsym Escape mode "$mode_default"
