@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Various options for the file browser script:
 ROFI_FB_GENERIC_FO="xdg-open" # command used for opening the selection

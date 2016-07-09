@@ -26,7 +26,7 @@ if [ -f "$HOME/scripts/enhancd.sh" ]; then
 fi
 
 # Rust
-if [ "$CARGO_HOME" ]; then
+if [ -n "$CARGO_HOME" ]; then
     export PATH="$PATH:$CARGO_HOME/bin"
 fi
 
