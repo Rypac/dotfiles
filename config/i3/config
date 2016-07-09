@@ -27,6 +27,9 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+backslash exec i3-sensible-terminal -e ranger
 bindsym Print exec --no-startup-id scrot 'screenshot-%Y-%m-%d-%T.png' -e 'mv $f ~/pictures/screenshots/'
 
+# floating terminal
+bindsym $mod+Shift+Return exec --no-startup-id i3-sensible-terminal -geometry 80x26 -name "floating-terminal"
+for_window [class="URxvt" instance="floating-terminal$"] floating toggle
 # volume control
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/scripts/volume/control.sh up
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/scripts/volume/control.sh down
