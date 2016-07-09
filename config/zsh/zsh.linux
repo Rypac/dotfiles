@@ -5,6 +5,16 @@ gpg-connect-agent updatestartuptty /bye >/dev/null
 # Aliases
 alias f='(pcmanfm . > /dev/null 2>&1 &)'
 
+# Modifying permissions
+alias chmod='chmod --preserve-root -v'
+alias chown='chown --preserve-root -v'
+
+# ls colours
+if type dircolors > /dev/null 2>&1; then
+    eval "$(dircolors --sh)"
+fi
+alias ls='ls --group-directories-first --color=auto'
+
 # Package manager
 alias appupdate='sudo apt-get update && sudo apt-get upgrade'
 alias appinstall='sudo apt-get install'

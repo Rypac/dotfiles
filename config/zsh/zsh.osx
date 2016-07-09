@@ -20,11 +20,6 @@ if type pip > /dev/null 2>&1; then
     alias pip-upgrade="pip list --outdated | cut -d ' ' -f 1 | xargs -n 1 pip install --upgrade"
 fi
 
-# Docker
-if type docker > /dev/null 2>&1; then
-    alias ds="source /Applications/Docker/Docker\ Quickstart\ Terminal.app/Contents/Resources/Scripts/start.sh"
-fi
-
 # GPG Agent
 if [ -f ~/.gnupg/gpg-agent-info ]; then
     source ~/.gnupg/gpg-agent-info
@@ -52,6 +47,10 @@ export ANDROID_NDK="$HOME/Library/Android/crystax-ndk"
 export NDK_ROOT="$ANDROID_NDK"
 export PATH="$PATH:$JAVA_HOME:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
 
+# Cocos2d-x
+alias cocos="$HOME/Developer/projects/pulse/libs/cocos2d/tools/cocos2d-console/bin/cocos"
+alias fbx-conv="$HOME/Developer/projects/pulse/libs/cocos2d/tools/fbx-conv/mac/fbx-conv"
+
 # Aliases
 alias f='open -a Finder ./'
 
@@ -62,6 +61,11 @@ alias appremove='brew uninstall'
 alias appsearch='brew search'
 alias appclean='brew cleanup && brew cask cleanup && brew prune'
 alias appdoctor='brew doctor && brew cask doctor'
+
+# ls colours
+export LSCOLORS='exfxcxdxbxGxDxabagacad'
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:'
+alias ls='ls -G'
 
 # Moves a file to the MacOS trash
 function trash() {
