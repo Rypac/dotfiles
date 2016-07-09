@@ -10,7 +10,6 @@
   - [git submodule update --remote --rebase, Updating submodules]
 
 - link:
-    ~/.config/bspwm: config/bspwm
     ~/.config/Code/User: config/vscode
     ~/.config/compton.conf: config/compton/compton.conf
     ~/.config/clipit: config/clipit
@@ -20,14 +19,11 @@
     ~/.config/git: config/git
     ~/.config/i3: config/i3
     ~/.config/i3blocks: config/i3blocks
-    ~/.config/i3status: config/i3status
     ~/.config/neofetch: config/neofetch
     ~/.config/openbox: config/openbox
-    ~/.config/panel: config/panel
     ~/.config/ranger: config/ranger
     ~/.config/rofi: config/rofi
     ~/.config/sublime-text-3/Packages/User: config/sublime
-    ~/.config/sxhkd: config/sxhkd
     ~/.config/tint2: config/tint2
     ~/.config/user-dirs.dirs: config/xdg/user-dirs.dirs
     ~/.config/user-dirs.locale: config/xdg/user-dirs.locale
@@ -42,9 +38,7 @@
     ~/.config/zsh/zsh.keys: config/zsh/zsh.keys
     ~/.config/zsh/zsh.opts: config/zsh/zsh.opts
     ~/.config/zsh/zsh.prompt: config/zsh/zsh.prompt
-    ~/.nanorc: config/nano/nanorc
     ~/.profile: config/shell/profile
-    ~/.stalonetrayrc: config/stalonetray/stalonetrayrc
     ~/.tmux.conf: config/tmux/tmux.conf
     ~/.vim/bundle/Vundle.vim: libs/vundle
     ~/.vim/vimrc: config/vim/vimrc
@@ -54,7 +48,6 @@
     ~/.Xresources: config/xfiles/Xresources
     ~/.zshenv: config/zsh/zshenv
     ~/bin/local-packages: scripts/misc/local-packages.sh
-    ~/bin/panel: config/panel/panel
     ~/scripts/enhancd.sh: libs/enhancd/init.sh
 
 - shell:
