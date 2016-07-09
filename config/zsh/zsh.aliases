@@ -23,6 +23,10 @@ alias jj='fasd_cd -d -i'
 alias less='less -FSRXc'
 alias qfind='find . -name'
 
+# directory ops
+alias cpr='cp -r'
+alias rmr='rm -r'
+
 # ls
 alias l='ls -lAh'       # all files, human-readable sizes
 alias la='ls -lAh'
@@ -44,6 +48,9 @@ mkcd() {
 # resource usage
 alias df='df -kh'
 alias du='du -kh'
+sizeof() {
+    [ -n "$1" ] && du "$1" | tail -1 | cut -f1
+}
 
 # remote fetch
 if type wget > /dev/null 2>&1; then
