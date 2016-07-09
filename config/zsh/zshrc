@@ -25,11 +25,6 @@ if [ -f "$HOME/scripts/enhancd.sh" ]; then
     source "$HOME/scripts/enhancd.sh"
 fi
 
-# Rust
-if [ -n "$CARGO_HOME" ]; then
-    export PATH="$PATH:$CARGO_HOME/bin"
-fi
-
 # De-duplicate array paths
 typeset -gU cdpath fpath mailpath path
 
