@@ -30,6 +30,7 @@ bindsym Print exec --no-startup-id scrot 'screenshot-%Y-%m-%d-%T.png' -e 'mv $f 
 # floating terminal
 bindsym $mod+Shift+Return exec --no-startup-id i3-sensible-terminal -geometry 80x26 -name "floating-terminal"
 for_window [class="URxvt" instance="floating-terminal$"] floating toggle
+
 # volume control
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/scripts/volume/control.sh up
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/scripts/volume/control.sh down
@@ -154,7 +155,7 @@ bindsym $mod+Shift+r restart
 set $mode_default default
 
 # modes menu
-set $mode_menu Modes: [r] resize, [l] layout, [g] gaps, [a] apps, [v] volume, [s] system, [d] default
+set $mode_menu Modes: [r] resize, [l] layout, [g] gaps, [a] apps, [v] volume, [s] system, [m] mouse, [d] default
 bindsym $mod+m mode "$mode_menu"
 
 mode "$mode_menu" {
@@ -164,6 +165,7 @@ mode "$mode_menu" {
     bindsym a mode "$mode_apps"
     bindsym v mode "$mode_volume"
     bindsym s mode "$mode_system"
+    bindsym m mode "$mode_mouse"
     bindsym d mode "$mode_default"
 
     bindsym Return mode "$mode_default"
@@ -269,6 +271,66 @@ mode "$mode_apps" {
     bindsym a exec atom; mode "$mode_default"
     bindsym v exec code; mode "$mode_default"
     bindsym t exec i3-sensible-terminal; mode "$mode_default"
+
+    bindsym Return mode "$mode_default"
+    bindsym Escape mode "$mode_default"
+    bindsym q mode "$mode_default"
+    bindsym b mode "$mode_menu"
+}
+
+# mouse mode
+set $mode_mouse Mouse:
+bindsym $$mod+mod+Shift+m mode "$mode_mouse"
+
+mode "$mode_mouse" {
+    set $slow 2
+    set $medium 20
+    set $fast 200
+
+    # mouse movement (slow)
+    bindsym h exec xdotool mousemove_relative -- -$slow 0
+    bindsym j exec xdotool mousemove_relative 0 $slow
+    bindsym k exec xdotool mousemove_relative -- 0 -$slow
+    bindsym l exec xdotool mousemove_relative $slow 0
+    bindsym Left exec xdotool mousemove_relative -- -$slow 0
+    bindsym Down exec xdotool mousemove_relative 0 $slow
+    bindsym Up exec xdotool mousemove_relative -- 0 -$slow
+    bindsym Right exec xdotool mousemove_relative $slow 0
+
+    # mouse movement (medium)
+    bindsym Shift+h exec xdotool mousemove_relative -- -$medium 0
+    bindsym Shift+j exec xdotool mousemove_relative 0 $medium
+    bindsym Shift+k exec xdotool mousemove_relative -- 0 -$medium
+    bindsym Shift+l exec xdotool mousemove_relative $medium 0
+    bindsym Shift+Left exec xdotool mousemove_relative -- -$medium 0
+    bindsym Shift+Down exec xdotool mousemove_relative 0 $medium
+    bindsym Shift+Up exec xdotool mousemove_relative -- 0 -$medium
+    bindsym Shift+Right exec xdotool mousemove_relative $medium 0
+
+    # mouse movement (fast)
+    bindsym $mod+Shift+h exec xdotool mousemove_relative -- -$fast 0
+    bindsym $mod+Shift+j exec xdotool mousemove_relative 0 $fast
+    bindsym $mod+Shift+k exec xdotool mousemove_relative -- 0 -$fast
+    bindsym $mod+Shift+l exec xdotool mousemove_relative $fast 0
+    bindsym $mod+Shift+Left exec xdotool mousemove_relative -- -$fast 0
+    bindsym $mod+Shift+Down exec xdotool mousemove_relative 0 $fast
+    bindsym $mod+Shift+Up exec xdotool mousemove_relative -- 0 -$fast
+    bindsym $mod+Shift+Right exec xdotool mousemove_relative $fast 0
+
+    # left/middle/right click
+    bindsym f exec xdotool click 1
+    bindsym d exec xdotool click 2
+    bindsym s exec xdotool click 3
+
+    # left/middle/right click-and-drag
+    bindsym Shift+f exec xdotool mousedown 1
+    bindsym Shift+d exec xdotool mousedown 2
+    bindsym Shift+s exec xdotool mousedown 3
+
+    # left/middle/right drag release
+    bindsym $mod2+f exec xdotool mouseup 1
+    bindsym $mod2+d exec xdotool mouseup 2
+    bindsym $mod2+s exec xdotool mouseup 3
 
     bindsym Return mode "$mode_default"
     bindsym Escape mode "$mode_default"
