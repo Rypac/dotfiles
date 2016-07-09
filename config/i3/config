@@ -25,7 +25,6 @@ bindsym $mod+Shift+q exec --no-startup-id ~/scripts/rofi/i3-logout.sh
 # application bindings
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+backslash exec i3-sensible-terminal -e ranger
-bindsym $mod+m exec i3-sensible-terminal -e cmus
 bindsym Print exec --no-startup-id scrot 'screenshot-%Y-%m-%d-%T.png' -e 'mv $f ~/pictures/screenshots/'
 
 # volume control
@@ -128,34 +127,53 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 bindsym $mod+Shift+grave move container to workspace back_and_forth; workspace back_and_forth
 
-# Arrow key workspace switching
+# arrow key workspace switching
 bindsym $mod+$ctrl+Left workspace prev
 bindsym $mod+$ctrl+Right workspace next
 bindsym $mod+$ctrl+h workspace prev
 bindsym $mod+$ctrl+l workspace next
 
-# Arrow key move selected container to workspace
+# arrow key move selected container to workspace
 bindsym $mod+$ctrl+Shift+Left move container to workspace prev
 bindsym $mod+$ctrl+Shift+Right move container to workspace next
 bindsym $mod+$ctrl+Shift+h move container to workspace prev
 bindsym $mod+$ctrl+Shift+l move container to workspace next
 
-# Scratchpad
+# scratchpad
 bindsym $mod+Shift+n move scratchpad
 bindsym $mod+n scratchpad show
 
-# Restarting i3
+# restarting i3
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
-# Modes
-set $default default
+# modes
+set $mode_default default
 
-# Resize mode
-set $resize Resize
-bindsym $mod+r mode "$resize"
+# modes menu
+set $mode_menu Modes: [r] resize, [l] layout, [g] gaps, [a] apps, [v] volume, [s] system, [d] default
+bindsym $mod+m mode "$mode_menu"
 
-mode "$resize" {
+mode "$mode_menu" {
+    bindsym r mode "$mode_resize"
+    bindsym l mode "$mode_layout"
+    bindsym g mode "$mode_gaps"
+    bindsym a mode "$mode_apps"
+    bindsym v mode "$mode_volume"
+    bindsym s mode "$mode_system"
+    bindsym d mode "$mode_default"
+
+    bindsym Return mode "$mode_default"
+    bindsym Escape mode "$mode_default"
+    bindsym q mode "$mode_default"
+    bindsym b mode "$mode_default"
+}
+
+# resize mode
+set $mode_resize Resize
+bindsym $mod+r mode "$mode_resize"
+
+mode "$mode_resize" {
     bindsym h resize shrink width 10 px or 5 ppt
     bindsym j resize grow height 10 px or 5 ppt
     bindsym k resize shrink height 10 px or 5 ppt
@@ -174,25 +192,149 @@ mode "$resize" {
     bindsym Shift+Up resize shrink height 150 px or 15 ppt
     bindsym Shift+Right resize grow width 150 px or 15 ppt
 
-    bindsym Return mode "$default"
-    bindsym Escape mode "$default"
-    bindsym q mode "$default"
+    bindsym Return mode "$mode_default"
+    bindsym Escape mode "$mode_default"
+    bindsym q mode "$mode_default"
+    bindsym b mode "$mode_menu"
 }
 
-# Layout mode
-set $layout Set layout: h (split horiztonal) | j (split vertical) | k (tabbed) | l (stacking) | t (toggle)
-bindsym $mod+o mode "$layout"
+# layout mode
+set $mode_layout Layout: [h] horiztonal split, [v] vertical split, [t] tabbed, [s] stacking, [o] toggle
+bindsym $mod+o mode "$mode_layout"
 
-mode "$layout" {
+mode "$mode_layout" {
     bindsym h layout splitv
-    bindsym j layout splith
-    bindsym k layout tabbed
-    bindsym l layout stacking
-    bindsym t layout toggle
+    bindsym v layout splith
+    bindsym t layout tabbed
+    bindsym s layout stacking
+    bindsym o layout toggle
 
-    bindsym Return mode "$default"
-    bindsym Escape mode "$default"
-    bindsym q mode "$default"
+    bindsym Return mode "$mode_default"
+    bindsym Escape mode "$mode_default"
+    bindsym q mode "$mode_default"
+    bindsym b mode "$mode_menu"
+}
+
+# system mode
+set $mode_system System: [l] lock, [e] logout, [s] sleep, [h] hibernate, [r] reboot, [p] shutdown
+bindsym $mod+Escape mode "$mode_system"
+
+mode "$mode_system" {
+    bindsym l exec --no-startup-id ~/scripts/i3/exit.sh lock; mode "$mode_default"
+    bindsym e exec --no-startup-id ~/scripts/i3/exit.sh logout; mode "$mode_default"
+    bindsym s exec --no-startup-id ~/scripts/i3/exit.sh sleep; mode "$mode_default"
+    bindsym h exec --no-startup-id ~/scripts/i3/exit.sh hibernate; mode "$mode_default"
+    bindsym r exec --no-startup-id ~/scripts/i3/exit.sh reboot; mode "$mode_default"
+    bindsym p exec --no-startup-id ~/scripts/i3/exit.sh shutdown; mode "$mode_default"
+
+    bindsym Return mode "$mode_default"
+    bindsym Escape mode "$mode_default"
+    bindsym q mode "$mode_default"
+    bindsym b mode "$mode_menu"
+}
+
+# volume mode
+set $mode_volume Volume: [k] +10%, [Shift+k] +1%, [j] -10%, [Shift+j] -1%, [m] mute
+bindsym $mod+Shift+o mode "$mode_volume"
+
+mode "$mode_volume" {
+    bindsym k exec --no-startup-id ~/scripts/volume/control.sh up 10%
+    bindsym j exec --no-startup-id ~/scripts/volume/control.sh down 10%
+    bindsym Shift+k exec --no-startup-id ~/scripts/volume/control.sh up 1%
+    bindsym Shift+j exec --no-startup-id ~/scripts/volume/control.sh down 1%
+    bindsym Up exec --no-startup-id ~/scripts/volume/control.sh up
+    bindsym Down exec --no-startup-id ~/scripts/volume/control.sh down
+    bindsym Shift+Up exec --no-startup-id ~/scripts/volume/control.sh up 1%
+    bindsym Shift+Down exec --no-startup-id ~/scripts/volume/control.sh down 1%
+    bindsym m exec --no-startup-id ~/scripts/volume/control.sh toggle
+
+    bindsym Return mode "$mode_default"
+    bindsym Escape mode "$mode_default"
+    bindsym q mode "$mode_default"
+    bindsym b mode "$mode_menu"
+}
+
+# apps mode
+set $mode_apps Apps: [c] chrome, [f] file-manager, [t] terminal, [a] atom, [v] vscode, [d] deadbeef, [s] spotify
+bindsym $mod+Shift+m mode "$mode_apps"
+
+mode "$mode_apps" {
+    bindsym c exec google-chrome; mode "$mode_default"
+    bindsym f exec pcmanfm; mode "$mode_default"
+    bindsym s exec spotify; mode "$mode_default"
+    bindsym d exec deadbeef; mode "$mode_default"
+    bindsym a exec atom; mode "$mode_default"
+    bindsym v exec code; mode "$mode_default"
+    bindsym t exec i3-sensible-terminal; mode "$mode_default"
+
+    bindsym Return mode "$mode_default"
+    bindsym Escape mode "$mode_default"
+    bindsym q mode "$mode_default"
+    bindsym b mode "$mode_menu"
+}
+
+# gaps
+set $inner_gaps 20
+set $outer_gaps 5
+for_window [class="^.*"] border pixel 1
+gaps inner $inner_gaps
+gaps outer $outer_gaps
+smart_borders on
+
+# gaps mode
+set $mode_gaps Gaps: [o] outer, [i] inner, [d] default, [n] none
+set $mode_gaps_outer Outer Gaps: [+|-|0] local, [Shift + +|-|0] global, [b] back
+set $mode_gaps_inner Inner Gaps: [+|-|0] local, [Shift + +|-|0] global, [b] back
+bindsym $mod+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+    bindsym o mode "$mode_gaps_outer"
+    bindsym i mode "$mode_gaps_inner"
+    bindsym d gaps outer all set $outer_gaps; gaps inner all set $inner_gaps; mode "$mode_default"
+    bindsym n gaps outer all set 0; gaps inner all set 0; mode "$mode_default"
+
+    bindsym Return mode "$mode_default"
+    bindsym Escape mode "$mode_default"
+    bindsym q mode "$mode_default"
+    bindsym b mode "$mode_menu"
+}
+
+mode "$mode_gaps_inner" {
+    bindsym k gaps inner current plus 10
+    bindsym j gaps inner current minus 10
+    bindsym Up gaps inner current plus 10
+    bindsym Down gaps inner current minus 10
+    bindsym 0 gaps inner current set 0
+
+    bindsym Shift+k gaps inner all plus 10
+    bindsym Shift+j gaps inner all minus 10
+    bindsym Shift+Up gaps inner all plus 10
+    bindsym Shift+Down gaps inner all minus 10
+    bindsym Shift+0 gaps inner all set 0
+
+    bindsym Return mode "$mode_default"
+    bindsym Escape mode "$mode_default"
+    bindsym q mode "$mode_default"
+    bindsym b mode "$mode_gaps"
+}
+
+mode "$mode_gaps_outer" {
+    bindsym k gaps outer current plus 10
+    bindsym j gaps outer current minus 10
+    bindsym Up gaps outer current plus 10
+    bindsym Down gaps outer current minus 10
+    bindsym 0 gaps outer current set 0
+
+    bindsym Shift+k gaps outer all plus 10
+    bindsym Shift+j gaps outer all minus 10
+    bindsym Shift+Up gaps outer all plus 10
+    bindsym Shift+Down gaps outer all minus 10
+    bindsym Shift+0 gaps outer all set 0
+
+    bindsym Return mode "$mode_default"
+    bindsym Escape mode "$mode_default"
+    bindsym q mode "$mode_default"
+    bindsym b mode "$mode_gaps"
 }
 
 # colour scheme
@@ -240,66 +382,4 @@ bar {
         inactive_workspace $base01 $base01 $base03
         urgent_workspace   $base08 $base08 $base07
     }
-}
-
-# gaps
-set $inner_gaps 20
-set $outer_gaps 5
-for_window [class="^.*"] border pixel 1
-gaps inner $inner_gaps
-gaps outer $outer_gaps
-smart_borders on
-
-set $mode_gaps Gaps: (o) outer, (i) inner, (d) default, (n) none
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-bindsym $mod+g mode "$mode_gaps"
-
-mode "$mode_gaps" {
-    bindsym o mode "$mode_gaps_outer"
-    bindsym i mode "$mode_gaps_inner"
-    bindsym d gaps outer all set $outer_gaps; gaps inner all set $inner_gaps; mode "$default"
-    bindsym n gaps outer all set 0; gaps inner all set 0; mode "$default"
-
-    bindsym Return mode "$default"
-    bindsym Escape mode "$default"
-    bindsym q mode "$default"
-}
-
-mode "$mode_gaps_inner" {
-    bindsym k gaps inner current plus 10
-    bindsym j gaps inner current minus 10
-    bindsym up gaps inner current plus 10
-    bindsym down gaps inner current minus 10
-    bindsym 0 gaps inner current set 0
-
-    bindsym Shift+k gaps inner all plus 10
-    bindsym Shift+j gaps inner all minus 10
-    bindsym Shift+up gaps inner all plus 10
-    bindsym Shift+down gaps inner all minus 10
-    bindsym Shift+0 gaps inner all set 0
-
-    bindsym Return mode "$default"
-    bindsym Escape mode "$default"
-    bindsym q mode "$default"
-    bindsym b mode "$mode_gaps"
-}
-
-mode "$mode_gaps_outer" {
-    bindsym k gaps outer current plus 10
-    bindsym j gaps outer current minus 10
-    bindsym up gaps outer current plus 10
-    bindsym down gaps outer current minus 10
-    bindsym 0 gaps outer current set 0
-
-    bindsym Shift+k gaps outer all plus 10
-    bindsym Shift+j gaps outer all minus 10
-    bindsym Shift+up gaps outer all plus 10
-    bindsym Shift+down gaps outer all minus 10
-    bindsym Shift+0 gaps outer all set 0
-
-    bindsym Return mode "$default"
-    bindsym Escape mode "$default"
-    bindsym q mode "$default"
-    bindsym b mode "$mode_gaps"
 }
