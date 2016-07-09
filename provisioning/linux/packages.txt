@@ -53,7 +53,6 @@ ranger
 rofi
 rxvt-unicode
 scrot
-stalonetray
 sudo
 tig
 tint2

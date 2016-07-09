@@ -46,11 +46,6 @@ function install_git_packages() {
     cd "$git_package_dir"
     install_github_repo Airblader/i3.git i3-gaps
     install_github_repo vivien/i3blocks.git i3blocks
-    install_github_repo baskerville/bspwm.git bspwm
-    install_github_repo LemonBoy/bar.git lemonbar
-    install_github_repo baskerville/sutils.git sutils
-    install_github_repo baskerville/sxhkd.git sxhkd
-    install_github_repo baskerville/xdo.git xdo
     install_github_repo baskerville/xtitle.git xtitle
 }
 
@@ -107,8 +102,10 @@ script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 if no_confirmation "$1" || confirmation_prompt "Install packages?"; then
     install_packages "$(cat "${script_dir}/packages.txt")"
 fi
-if no_confirmation "$1" || confirmation_prompt "Clone and install external packages?"; then
+if no_confirmation "$1" || confirmation_prompt "Install package build dependencies?"; then
     install_packages "$(cat "${script_dir}/build_deps.txt")"
+fi
+if no_confirmation "$1" || confirmation_prompt "Clone and install external packages?"; then
     install_git_packages "${HOME}/packages/cloned"
 fi
 if no_confirmation "$1" || confirmation_prompt "Install fonts?"; then
