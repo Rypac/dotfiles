@@ -1,4 +1,11 @@
 {
+	"auto_complete_triggers":
+	[
+		{
+			"characters": "<",
+			"selector": "text.html"
+		}
+	],
 	"binary_file_patterns":
 	[
 		"*.jpg",
@@ -21,7 +28,7 @@
 	"caret_style": "phase",
 	"close_windows_when_empty": false,
 	"color_scheme": "Packages/Boxy Theme/schemes/Boxy Ocean.tmTheme",
-	"draw_white_space": "all",
+	"draw_white_space": "selection",
 	"ensure_newline_at_eof_on_save": true,
 	"font_face": "Hack",
 	"font_size": 12,
@@ -41,11 +48,14 @@
 	[
 		"draw_active"
 	],
+	"material_theme_accent_cyan": true,
 	"material_theme_compact_panel": true,
 	"material_theme_compact_sidebar": true,
 	"material_theme_contrast_mode": true,
+	"material_theme_panel_separator": true,
 	"material_theme_small_tab": true,
 	"material_theme_tabs_separator": true,
+	"material_theme_tree_headings": true,
 	"predawn_findreplace_small": true,
 	"predawn_quick_panel_small": false,
 	"predawn_sidebar_arrows": true,
