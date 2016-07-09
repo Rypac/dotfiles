@@ -32,9 +32,9 @@ bindsym $mod+Shift+Return exec --no-startup-id i3-sensible-terminal -geometry 80
 for_window [class="URxvt" instance="floating-terminal$"] floating toggle
 
 # volume control
-bindsym XF86AudioRaiseVolume exec --no-startup-id ~/scripts/volume/control.sh up
-bindsym XF86AudioLowerVolume exec --no-startup-id ~/scripts/volume/control.sh down
-bindsym XF86AudioMute exec --no-startup-id ~/scripts/volume/control.sh toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/scripts/volume/control.sh up && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/scripts/volume/control.sh down && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioMute exec --no-startup-id ~/scripts/volume/control.sh toggle && pkill -RTMIN+10 i3blocks
 
 # change focus
 bindsym $mod+h focus left
@@ -221,12 +221,12 @@ mode "$mode_layout" {
 }
 
 # system mode
-set $mode_system System: [l] lock, [e] logout, [s] sleep, [h] hibernate, [r] reboot, [p] shutdown
+set $mode_system System: [l] lock, [o] logout, [s] sleep, [h] hibernate, [r] reboot, [p] shutdown
 bindsym $mod+Escape mode "$mode_system"
 
 mode "$mode_system" {
     bindsym l exec --no-startup-id ~/scripts/i3/exit.sh lock; mode "$mode_default"
-    bindsym e exec --no-startup-id ~/scripts/i3/exit.sh logout; mode "$mode_default"
+    bindsym o exec --no-startup-id ~/scripts/i3/exit.sh logout; mode "$mode_default"
     bindsym s exec --no-startup-id ~/scripts/i3/exit.sh sleep; mode "$mode_default"
     bindsym h exec --no-startup-id ~/scripts/i3/exit.sh hibernate; mode "$mode_default"
     bindsym r exec --no-startup-id ~/scripts/i3/exit.sh reboot; mode "$mode_default"
@@ -243,15 +243,16 @@ set $mode_volume Volume: [k] +10%, [Shift+k] +1%, [j] -10%, [Shift+j] -1%, [m] m
 bindsym $mod+Shift+o mode "$mode_volume"
 
 mode "$mode_volume" {
-    bindsym k exec --no-startup-id ~/scripts/volume/control.sh up 10%
-    bindsym j exec --no-startup-id ~/scripts/volume/control.sh down 10%
-    bindsym Shift+k exec --no-startup-id ~/scripts/volume/control.sh up 1%
-    bindsym Shift+j exec --no-startup-id ~/scripts/volume/control.sh down 1%
-    bindsym Up exec --no-startup-id ~/scripts/volume/control.sh up
-    bindsym Down exec --no-startup-id ~/scripts/volume/control.sh down
-    bindsym Shift+Up exec --no-startup-id ~/scripts/volume/control.sh up 1%
-    bindsym Shift+Down exec --no-startup-id ~/scripts/volume/control.sh down 1%
-    bindsym m exec --no-startup-id ~/scripts/volume/control.sh toggle
+    bindsym k exec --no-startup-id ~/scripts/volume/control.sh up 10% && pkill -RTMIN+10 i3blocks
+    bindsym j exec --no-startup-id ~/scripts/volume/control.sh down 10% && pkill -RTMIN+10 i3blocks
+    bindsym Shift+k exec --no-startup-id ~/scripts/volume/control.sh up 1% && pkill -RTMIN+10 i3blocks
+    bindsym Shift+j exec --no-startup-id ~/scripts/volume/control.sh down 1% && pkill -RTMIN+10 i3blocks
+    bindsym Up exec --no-startup-id ~/scripts/volume/control.sh up && pkill -RTMIN+10 i3blocks
+    bindsym Down exec --no-startup-id ~/scripts/volume/control.sh down && pkill -RTMIN+10 i3blocks
+    bindsym Shift+Up exec --no-startup-id ~/scripts/volume/control.sh up 1% && pkill -RTMIN+10 i3blocks
+    bindsym Shift+Down exec --no-startup-id ~/scripts/volume/control.sh down 1% && pkill -RTMIN+10 i3blocks
+    bindsym m exec --no-startup-id ~/scripts/volume/control.sh toggle && pkill -RTMIN+10 i3blocks
+    bindsym r exec --no-startup-id pkill -RTMIN+10 i3blocks
 
     bindsym Return mode "$mode_default"
     bindsym Escape mode "$mode_default"
@@ -260,15 +261,17 @@ mode "$mode_volume" {
 }
 
 # apps mode
-set $mode_apps Apps: [c] chrome, [f] file-manager, [t] terminal, [a] atom, [v] vscode, [d] deadbeef, [s] spotify
+set $mode_apps Apps: [c] chrome, [f] file-manager, [t] terminal, [a] atom, [v] vscode, [s] sublime, [d] deadbeef, [m] spotify, [k] keepassx
 bindsym $mod+Shift+m mode "$mode_apps"
 
 mode "$mode_apps" {
     bindsym c exec google-chrome; mode "$mode_default"
     bindsym f exec pcmanfm; mode "$mode_default"
-    bindsym s exec spotify; mode "$mode_default"
+    bindsym k exec keepassx; mode "$mode_default"
+    bindsym m exec spotify; mode "$mode_default"
     bindsym d exec deadbeef; mode "$mode_default"
     bindsym a exec atom; mode "$mode_default"
+    bindsym s exec subl; mode "$mode_default"
     bindsym v exec code; mode "$mode_default"
     bindsym t exec i3-sensible-terminal; mode "$mode_default"
 
@@ -279,8 +282,8 @@ mode "$mode_apps" {
 }
 
 # mouse mode
-set $mode_mouse Mouse:
-bindsym $$mod+mod+Shift+m mode "$mode_mouse"
+set $mode_mouse Mouse: [h] left, [j] down, [k] up, [l] right, [f] left click, [d] middle click, [s] right click
+bindsym $mod+Shift+i mode "$mode_mouse"
 
 mode "$mode_mouse" {
     set $slow 2
