@@ -23,3 +23,8 @@
 	url = https://github.com/Eriner/zim.git
 	branch = master
 	ignore = all
+[submodule "libs/zsh-history-substring-search"]
+	path = libs/zsh-history-substring-search
+    url = https://github.com/zsh-users/zsh-history-substring-search.git
+    branch = master
+    ignore = all

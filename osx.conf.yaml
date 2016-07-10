@@ -22,6 +22,7 @@
     ~/.config/zsh/zsh.keys: config/zsh/zsh.keys
     ~/.config/zsh/zsh.opts: config/zsh/zsh.opts
     ~/.config/zsh/zsh.prompt: config/zsh/zsh.prompt
+    ~/.config/zsh/zsh.history-substring-search: libs/zsh-history-substring-search/zsh-history-substring-search.zsh
     ~/.profile: config/shell/profile
     ~/.vim/vimrc: config/vim/vimrc
     ~/.vim/bundle/Vundle.vim: libs/vundle

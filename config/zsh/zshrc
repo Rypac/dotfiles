@@ -11,6 +11,15 @@
 [ -f "$ZDOTDIR/zsh.opts" ] && source "$ZDOTDIR/zsh.opts"
 [ -f "$ZDOTDIR/zsh.prompt" ] && source "$ZDOTDIR/zsh.prompt"
 
+# History substring search
+if [ -f "$ZDOTDIR/zsh.history-substring-search" ]; then
+    source "$ZDOTDIR/zsh.history-substring-search"
+    bindkey '^[[A' history-substring-search-up
+    bindkey '^[[B' history-substring-search-down
+    bindkey -M vicmd 'k' history-substring-search-up
+    bindkey -M vicmd 'j' history-substring-search-down
+fi
+
 # Fuzzy command line search
 if [ -d "$XDG_CONFIG_HOME/fzf" ]; then
     export FZF_COMPLETION_TRIGGER='~~'

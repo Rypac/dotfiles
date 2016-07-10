@@ -28,9 +28,6 @@
     for file in ${zim_mods}/**/functions/^(*.zwc)(.); do
         zcompare ${file}
     done
-
-    # zsh-histery-substring-search
-    zcompare ${zim_mods}/history-substring-search/external/zsh-history-substring-search.zsh
 ) &!
 
 if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
