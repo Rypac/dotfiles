@@ -23,11 +23,6 @@
 	url = https://github.com/VundleVim/Vundle.vim.git
 	branch = master
 	ignore = all
-[submodule "libs/zim"]
-	path = libs/zim
-	url = https://github.com/Eriner/zim.git
-	branch = master
-	ignore = all
 [submodule "libs/zsh-completions"]
 	path = libs/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
