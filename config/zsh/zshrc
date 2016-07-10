@@ -5,6 +5,7 @@
 # Source default profile
 [ -f "$HOME/.profile" ] && source "$HOME/.profile"
 [ -f "$ZDOTDIR/zsh.aliases" ] && source "$ZDOTDIR/zsh.aliases"
+[ -f "$ZDOTDIR/zsh.completions" ] && source "$ZDOTDIR/zsh.completions"
 [ -f "$ZDOTDIR/zsh.env" ] && source "$ZDOTDIR/zsh.env"
 [ -f "$ZDOTDIR/zsh.keys" ] && source "$ZDOTDIR/zsh.keys"
 [ -f "$ZDOTDIR/zsh.opts" ] && source "$ZDOTDIR/zsh.opts"

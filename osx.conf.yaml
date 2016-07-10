@@ -16,6 +16,7 @@
     ~/.config/zsh/.zlogout: config/zsh/zlogout
     ~/.config/zsh/.zshrc: config/zsh/zshrc
     ~/.config/zsh/zsh.aliases: config/zsh/zsh.aliases
+    ~/.config/zsh/zsh.completions: config/zsh/zsh.completions
     ~/.config/zsh/zsh.env: config/zsh/zsh.osx
     ~/.config/zsh/zsh.keys: config/zsh/zsh.keys
     ~/.config/zsh/zsh.opts: config/zsh/zsh.opts
