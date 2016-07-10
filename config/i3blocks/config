@@ -28,4 +28,4 @@ interval=5
 
 [exit]
 full_text= 
-command=$HOME/scripts/rofi/i3-logout.sh
+command=echo ' '; [[ -z "${BLOCK_BUTTON}" ]] || $HOME/scripts/rofi/i3-logout.sh
