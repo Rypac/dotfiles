@@ -11,12 +11,6 @@
 [ -f "$ZDOTDIR/zsh.opts" ] && source "$ZDOTDIR/zsh.opts"
 [ -f "$ZDOTDIR/zsh.prompt" ] && source "$ZDOTDIR/zsh.prompt"
 
-# Completions
-if [ -d "$ZDOTDIR/zsh-completions" ]; then
-    source "$ZDOTDIR/zsh-completions/zsh-completions.plugin.zsh"
-    autoload -Uz compinit && compinit
-fi
-
 # History substring search
 if [ -d "$ZDOTDIR/zsh-history-substring-search" ]; then
     source "$ZDOTDIR/zsh-history-substring-search/zsh-history-substring-search.zsh"

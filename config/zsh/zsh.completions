@@ -1,3 +1,9 @@
+# Load completions plugin
+if [ -d "$ZDOTDIR/zsh-completions" ]; then
+    source "$ZDOTDIR/zsh-completions/zsh-completions.plugin.zsh"
+    autoload -Uz compinit && compinit
+fi
+
 # group matches and describe.
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*:matches' group 'yes'
@@ -39,10 +45,3 @@ zstyle ':completion:*:history-words' stop yes
 zstyle ':completion:*:history-words' remove-all-dups yes
 zstyle ':completion:*:history-words' list false
 zstyle ':completion:*:history-words' menu yes
-
-# ignore multiple entries.
-zstyle ':completion:*:(rm|kill|diff):*' ignore-line other
-zstyle ':completion:*:rm:*' file-patterns '*:all-files'
-
-# smart editor completion
-zstyle ':completion:*:(nano|vim|nvim|vi|emacs|e):*' ignored-patterns '*.(wav|mp3|flac|ogg|mp4|avi|mkv|webm|iso|dmg|so|o|a|bin|exe|dll|pcap|7z|zip|tar|gz|bz2|rar|deb|pkg|gzip|pdf|mobi|epub|png|jpeg|jpg|gif)'
