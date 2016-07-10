@@ -4,20 +4,35 @@
 
 # Source default profile
 [ -f "$HOME/.profile" ] && source "$HOME/.profile"
-[ -f "$ZDOTDIR/.zim/init.zsh" ] && source "$ZDOTDIR/.zim/init.zsh"
 [ -f "$ZDOTDIR/zsh.aliases" ] && source "$ZDOTDIR/zsh.aliases"
 [ -f "$ZDOTDIR/zsh.env" ] && source "$ZDOTDIR/zsh.env"
 [ -f "$ZDOTDIR/zsh.keys" ] && source "$ZDOTDIR/zsh.keys"
 [ -f "$ZDOTDIR/zsh.opts" ] && source "$ZDOTDIR/zsh.opts"
 [ -f "$ZDOTDIR/zsh.prompt" ] && source "$ZDOTDIR/zsh.prompt"
 
+# Completions
+if [ -d "$ZDOTDIR/zsh-completions" ]; then
+    source "$ZDOTDIR/zsh-completions/zsh-completions.plugin.zsh"
+    autoload -Uz compinit && compinit
+fi
+
 # History substring search
-if [ -f "$ZDOTDIR/zsh.history-substring-search" ]; then
-    source "$ZDOTDIR/zsh.history-substring-search"
+if [ -d "$ZDOTDIR/zsh-history-substring-search" ]; then
+    source "$ZDOTDIR/zsh-history-substring-search/zsh-history-substring-search.zsh"
     bindkey '^[[A' history-substring-search-up
     bindkey '^[[B' history-substring-search-down
     bindkey -M vicmd 'k' history-substring-search-up
     bindkey -M vicmd 'j' history-substring-search-down
+fi
+
+# fasd
+if type fasd > /dev/null 2>&1; then
+    export _FASD_DATA="$XDG_DATA_HOME/fasd"
+    fasd_cache="$XDG_CACHE_HOME/fasd-init"
+    if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+      fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install >| "$fasd_cache"
+    fi
+    source "$fasd_cache"
 fi
 
 # Fuzzy command line search

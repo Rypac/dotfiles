@@ -28,8 +28,6 @@
     ~/.config/user-dirs.dirs: config/xdg/user-dirs.dirs
     ~/.config/user-dirs.locale: config/xdg/user-dirs.locale
     ~/.config/urxvt: config/urxvt
-    ~/.config/zsh/.zim: libs/zim
-    ~/.config/zsh/.zimrc: config/zsh/zimrc
     ~/.config/zsh/.zlogin: config/zsh/zlogin
     ~/.config/zsh/.zlogout: config/zsh/zlogout
     ~/.config/zsh/.zshrc: config/zsh/zshrc
@@ -38,7 +36,8 @@
     ~/.config/zsh/zsh.keys: config/zsh/zsh.keys
     ~/.config/zsh/zsh.opts: config/zsh/zsh.opts
     ~/.config/zsh/zsh.prompt: config/zsh/zsh.prompt
-    ~/.config/zsh/zsh.history-substring-search: libs/zsh-history-substring-search/zsh-history-substring-search.zsh
+    ~/.config/zsh/zsh-completions: libs/zsh-completions
+    ~/.config/zsh/zsh-history-substring-search: libs/zsh-history-substring-search
     ~/.profile: config/shell/profile
     ~/.tmux.conf: config/tmux/tmux.conf
     ~/.vim/bundle/Vundle.vim: libs/vundle
@@ -48,6 +47,7 @@
     ~/.xsessionrc: config/xfiles/xprofile
     ~/.Xresources: config/xfiles/Xresources
     ~/.zshenv: config/zsh/zshenv
+    ~/bin/fasd: libs/fasd/fasd
     ~/bin/local-packages: scripts/misc/local-packages.sh
     ~/scripts/enhancd.sh: libs/enhancd/init.sh
 

@@ -8,6 +8,11 @@
 	url = https://github.com/b4b4r07/enhancd
 	branch = master
 	ignore = all
+[submodule "libs/fasd"]
+	path = libs/fasd
+	url = https://github.com/clvv/fasd.git
+	branch = master
+	ignore = all
 [submodule "libs/fzf"]
 	path = libs/fzf
 	url = https://github.com/junegunn/fzf.git
@@ -23,8 +28,13 @@
 	url = https://github.com/Eriner/zim.git
 	branch = master
 	ignore = all
+[submodule "libs/zsh-completions"]
+	path = libs/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions.git
+	branch = master
+	ignore = all
 [submodule "libs/zsh-history-substring-search"]
 	path = libs/zsh-history-substring-search
-    url = https://github.com/zsh-users/zsh-history-substring-search.git
-    branch = master
-    ignore = all
+	url = https://github.com/zsh-users/zsh-history-substring-search.git
+	branch = master
+	ignore = all

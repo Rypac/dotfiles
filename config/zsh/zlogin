@@ -2,34 +2,6 @@
 # Executes commands at login post-zshrc.
 #
 
-(
-    zcompare() {
-        if [[ -s ${1} && ( ! -s ${1}.zwc || ${1} -nt ${1}.zwc) ]]; then
-            zcompile ${1}
-        fi
-    }
-
-    zim_mods=${ZDOTDIR:-${HOME}}/.zim/modules
-    setopt EXTENDED_GLOB
-
-    # zcompile the completion cache; siginificant speedup.
-    for file in ${ZDOTDIR:-${HOME}}/.zcomp^(*.zwc)(.); do
-        zcompare ${file}
-    done
-
-    # zcompile .zshrc
-    zcompare ${ZDOTDIR:-${HOME}}/.zshrc
-
-    # zcompile some light module init scripts
-    zcompare ${zim_mods}/fasd/init.zsh
-    zcompare ${zim_mods}/completion/init.zsh
-
-    # zcompile all autoloaded functions
-    for file in ${zim_mods}/**/functions/^(*.zwc)(.); do
-        zcompare ${file}
-    done
-) &!
-
 if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
     exec startx
 fi

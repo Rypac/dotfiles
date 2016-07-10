@@ -12,8 +12,6 @@
 - link:
     ~/.config/fzf: libs/fzf
     ~/.config/git: config/git
-    ~/.config/zsh/.zim: libs/zim
-    ~/.config/zsh/.zimrc: config/zsh/zimrc
     ~/.config/zsh/.zlogin: config/zsh/zlogin
     ~/.config/zsh/.zlogout: config/zsh/zlogout
     ~/.config/zsh/.zshrc: config/zsh/zshrc
@@ -22,11 +20,13 @@
     ~/.config/zsh/zsh.keys: config/zsh/zsh.keys
     ~/.config/zsh/zsh.opts: config/zsh/zsh.opts
     ~/.config/zsh/zsh.prompt: config/zsh/zsh.prompt
-    ~/.config/zsh/zsh.history-substring-search: libs/zsh-history-substring-search/zsh-history-substring-search.zsh
+    ~/.config/zsh/zsh-completions: libs/zsh-completions
+    ~/.config/zsh/zsh-history-substring-search: libs/zsh-history-substring-search
     ~/.profile: config/shell/profile
     ~/.vim/vimrc: config/vim/vimrc
     ~/.vim/bundle/Vundle.vim: libs/vundle
     ~/.zshenv: config/zsh/zshenv
+    ~/bin/fasd: libs/fasd/fasd
     ~/scripts/enhancd.sh: libs/enhancd/init.sh
     ~/Library/Application Support/Sublime Text 3/Packages/User: config/sublime
     ~/Library/Application Support/Code/User: config/vscode
