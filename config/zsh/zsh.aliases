@@ -17,6 +17,11 @@ if type bundle > /dev/null 2>&1; then
     alias ber='bundle exec rake'
 fi
 
+# gpg2 by default
+if type gpg2 > /dev/null 2>&1; then
+    alias gpg='gpg2'
+fi
+
 # Common tool aliases
 alias j='fasd_cd -d'
 alias jj='fasd_cd -d -i'
