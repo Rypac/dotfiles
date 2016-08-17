@@ -22,8 +22,6 @@ fonts-font-awesome
 fortune
 g++
 git
-gitk
-git-gui
 htop
 i3-wm
 i3lock
@@ -36,13 +34,10 @@ lightdm
 lightdm-gtk-greeter
 lm-sensors
 lxappearance
-lxappearance-obconf
 make
 menu
 mpv
 ntfs-3g
-openbox
-openbox-menu
 pavucontrol
 pcmanfm
 pinentry-curses
@@ -55,7 +50,6 @@ rxvt-unicode
 scrot
 sudo
 tig
-tint2
 unrar
 vim
 wget
