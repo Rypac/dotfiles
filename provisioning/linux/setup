@@ -67,7 +67,6 @@ function install_rust() {
     type rustup > /dev/null 2>&1 || curl https://sh.rustup.rs -sSf | sh
     rustup update
     rustup install stable
-    rustup install nightly
 }
 
 function post_install_configuration() {
