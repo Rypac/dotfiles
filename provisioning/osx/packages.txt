@@ -1,13 +1,11 @@
 autoconf
 automake
 boost
-cabal-install
 carthage
 cmake
 cmatrix
 cmus
 curl
-elixir
 ffmpeg
 flac
 fortune
@@ -21,7 +19,6 @@ imagemagick
 lame
 mplayer
 neofetch
-nvm
 ranger
 tig
 vim
