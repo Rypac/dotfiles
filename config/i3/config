@@ -15,8 +15,8 @@ floating_modifier $mod
 bindsym $mod+q kill
 
 # rofi and script bindings
-bindsym $mod+space exec --no-startup-id rofi -show run
-bindsym $mod+Shift+p exec --no-startup-id rofi -show run
+bindsym $mod+space exec --no-startup-id rofi -show drun
+bindsym $mod+Shift+p exec --no-startup-id rofi -show drun
 bindsym $mod+Tab exec --no-startup-id rofi -show window
 bindsym $mod+p exec --no-startup-id rofi -show window
 bindsym $mod+z exec --no-startup-id ~/scripts/rofi/i3-switch-workspace.sh

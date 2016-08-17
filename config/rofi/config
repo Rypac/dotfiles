@@ -11,7 +11,7 @@ rofi.line-margin: 10
 rofi.eh: 2
 rofi.bw: 0
 rofi.location: 0
-rofi.width: 30
+rofi.width: 25
 rofi.padding: 10
 rofi.fullscreen: false
 
