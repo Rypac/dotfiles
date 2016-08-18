@@ -50,15 +50,11 @@ function install_git_packages() {
 }
 
 function install_fonts() {
-    fonts="$1"
-    mkdir -p /tmp/fonts "${XDG_DATA_HOME}/fonts"
-    cd /tmp/fonts
+    mkdir -p "${XDG_DATA_HOME}/fonts"
+    cd /tmp
     curl -OL https://github.com/chrissimpkins/codeface/releases/download/font-collection/codeface-fonts.tar.xz
-    tar xf codeface-fonts.tar.xz
-    for font in ${fonts}; do
-        mv fonts/$font "${XDG_DATA_HOME}/fonts"
-    done
-    cd ~
+    tar xf codeface-fonts.tar.xz && rm codeface-fonts.tar.xz
+    mv /tmp/fonts/* "${XDG_DATA_HOME}/fonts"
     rm -rf /tmp/fonts
     fc-cache -frv
 }
@@ -108,7 +104,7 @@ if no_confirmation "$1" || confirmation_prompt "Clone and install external packa
     install_git_packages "${HOME}/packages/cloned"
 fi
 if no_confirmation "$1" || confirmation_prompt "Install fonts?"; then
-    install_fonts "$(cat "${script_dir}/fonts.txt")"
+    install_fonts
 fi
 if no_confirmation "$1" || confirmation_prompt "Install development tools?"; then
     install_rust
