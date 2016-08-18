@@ -423,10 +423,10 @@ set $base0D #6699CC
 set $base0E #C594C5
 set $base0F #AB7967
 
-# colour                border    bg     text    ind
-client.focused          $base0D $base0D $base00 $base01
-client.focused_inactive $base02 $base02 $base03 $base01
-client.unfocused        $base01 $base01 $base03 $base01
+# colour                border    bg     text     ind
+client.focused          $base0D $base0D $base01 $base01
+client.focused_inactive $base02 $base02 $base05 $base01
+client.unfocused        $base01 $base01 $base04 $base01
 client.urgent           $base02 $base08 $base07 $base08
 
 bar {
@@ -445,9 +445,9 @@ bar {
         statusline $base05
 
         # colour           border    bg     text
-        focused_workspace  $base0C $base0D $base00
-        active_workspace   $base02 $base02 $base07
-        inactive_workspace $base01 $base01 $base03
+        focused_workspace  $base0D $base0D $base01
+        active_workspace   $base02 $base02 $base05
+        inactive_workspace $base01 $base01 $base04
         urgent_workspace   $base08 $base08 $base07
     }
 }

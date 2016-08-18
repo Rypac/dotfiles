@@ -16,7 +16,7 @@ rofi.padding: 10
 rofi.fullscreen: false
 
 rofi.color-enabled: true
-rofi.color-window: #343D46, #343D46, #848484
-rofi.color-normal: #343D46, #FFFFFF, #343D46, #6699CC, #FFFFFF
-rofi.color-active: #343D46, #61BAF7, #343D46, #268BD2, #FFFFFF
-rofi.color-urgent: #343D46, #FF5D5A, #343D46, #DC322F, #FFFFFF
+rofi.color-window: #343D46, #343D46, #A7ADBA
+rofi.color-normal: #343D46, #D8DEE9, #343D46, #6699CC, #D8DEE9
+rofi.color-active: #343D46, #6699CC, #343D46, #268BD2, #D8DEE9
+rofi.color-urgent: #343D46, #EC5F67, #343D46, #EC5F67, #D8DEE9

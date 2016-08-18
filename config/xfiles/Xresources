@@ -1,3 +1,21 @@
+! base16 colours - Oceanic Next
+#define base00 #1B2B34
+#define base01 #343D46
+#define base02 #4F5B66
+#define base03 #65737E
+#define base04 #A7ADBA
+#define base05 #C0C5CE
+#define base06 #CDD3DE
+#define base07 #D8DEE9
+#define base08 #EC5F67
+#define base09 #F99157
+#define base0A #FAC863
+#define base0B #99C794
+#define base0C #5FB3B3
+#define base0D #6699CC
+#define base0E #C594C5
+#define base0F #AB7967
+
 ! fonts
 Xft.antialias: true
 Xft.autohint: false
@@ -20,40 +38,6 @@ URxvt.letterSpace: -1
 URxvt.lineSpace: 0
 URxvt.allowBold: true
 URxvt.transparent: false
-
-! plugins
-URxvt.perl-ext-common: default,clipboard,matcher,resize-font
-URxvt.resize-font.smaller: C-Down
-URxvt.resize-font.bigger: C-Up
-URxvt.resize-font.reset: C-equal
-URxvt.url-launcher: /usr/bin/google-chrome
-URxvt.matcher.button: 1
-URxvt.colorUL: #7780a1
-URxvt.iso14755: false
-URxvt.iso14755_52: false
-URxvt.clipboard.copycmd: xclip -i -selection clipboard
-URxvt.clipboard.pastecmd: xclip -o -selection clipboard
-URxvt.keysym.M-c: perl:clipboard:copy
-URxvt.keysym.M-v: perl:clipboard:paste
-URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
-
-! base16 - Oceanic Next
-#define base00 #1B2B34
-#define base01 #343D46
-#define base02 #4F5B66
-#define base03 #65737E
-#define base04 #A7ADBA
-#define base05 #C0C5CE
-#define base06 #CDD3DE
-#define base07 #D8DEE9
-#define base08 #EC5f67
-#define base09 #F99157
-#define base0A #FAC863
-#define base0B #99C794
-#define base0C #5FB3B3
-#define base0D #6699CC
-#define base0E #C594C5
-#define base0F #AB7967
 
 ! colours
 URxvt.foreground: base05
@@ -81,3 +65,19 @@ URxvt.color18: base01
 URxvt.color19: base02
 URxvt.color20: base04
 URxvt.color21: base06
+
+! plugins
+URxvt.perl-ext-common: default,clipboard,matcher,resize-font
+URxvt.resize-font.smaller: C-Down
+URxvt.resize-font.bigger: C-Up
+URxvt.resize-font.reset: C-equal
+URxvt.url-launcher: /usr/bin/google-chrome
+URxvt.matcher.button: 1
+URxvt.colorUL: base0D
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+URxvt.clipboard.copycmd: xclip -i -selection clipboard
+URxvt.clipboard.pastecmd: xclip -o -selection clipboard
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
