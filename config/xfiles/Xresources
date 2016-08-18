@@ -19,34 +19,9 @@ URxvt.font: xft:Source Code Pro:pixelsize=15
 URxvt.letterSpace: -1
 URxvt.lineSpace: 0
 URxvt.allowBold: true
-
 URxvt.transparent: false
-URxvt.color0: #101218
-URxvt.color1: #ee829f
-URxvt.color2: #a5ffe1
-URxvt.color3: #ffefcc
-URxvt.color4: #97bbf7
-URxvt.color5: #c0b7f9
-URxvt.color6: #97e0ff
-URxvt.color7: #d1d4e0
-URxvt.color8: #7780a1
-URxvt.color9: #ee829f
-URxvt.color10: #a5ffe1
-URxvt.color11: #ffefcc
-URxvt.color12: #97bbf7
-URxvt.color13: #c0b7f9
-URxvt.color14: #97e0ff
-URxvt.color15: #ffffff
-URxvt.color16: #f99170
-URxvt.color17: #fcc09e
-URxvt.color18: #1f222d
-URxvt.color19: #252936
-URxvt.color20: #c0c5cE
-URxvt.color21: #c9ccdb
-URxvt.background: #101218
-URxvt.foreground: #e6eff7
-URxvt.cursorColor: #e6eff7
 
+! plugins
 URxvt.perl-ext-common: default,clipboard,matcher,resize-font
 URxvt.resize-font.smaller: C-Down
 URxvt.resize-font.bigger: C-Up
@@ -61,3 +36,48 @@ URxvt.clipboard.pastecmd: xclip -o -selection clipboard
 URxvt.keysym.M-c: perl:clipboard:copy
 URxvt.keysym.M-v: perl:clipboard:paste
 URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+
+! base16 - Oceanic Next
+#define base00 #1B2B34
+#define base01 #343D46
+#define base02 #4F5B66
+#define base03 #65737E
+#define base04 #A7ADBA
+#define base05 #C0C5CE
+#define base06 #CDD3DE
+#define base07 #D8DEE9
+#define base08 #EC5f67
+#define base09 #F99157
+#define base0A #FAC863
+#define base0B #99C794
+#define base0C #5FB3B3
+#define base0D #6699CC
+#define base0E #C594C5
+#define base0F #AB7967
+
+! colours
+URxvt.foreground: base05
+URxvt.background: base00
+URxvt.cursorColor: base05
+URxvt.color0: base00
+URxvt.color1: base08
+URxvt.color2: base0B
+URxvt.color3: base0A
+URxvt.color4: base0D
+URxvt.color5: base0E
+URxvt.color6: base0C
+URxvt.color7: base05
+URxvt.color8: base03
+URxvt.color9: base08
+URxvt.color10: base0B
+URxvt.color11: base0A
+URxvt.color12: base0D
+URxvt.color13: base0E
+URxvt.color14: base0C
+URxvt.color15: base07
+URxvt.color16: base09
+URxvt.color17: base0F
+URxvt.color18: base01
+URxvt.color19: base02
+URxvt.color20: base04
+URxvt.color21: base06

@@ -33,12 +33,11 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'chriskempson/base16-vim'
+Plugin 'scrooloose/syntastic'
 " Plugin 'valloric/youcompleteme'
-" Plugin 'scrooloose/syntastic'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -46,14 +45,14 @@ call vundle#end()            " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Syntastic Plugin
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Nerdtree Plugin
@@ -161,13 +160,9 @@ set cursorline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 syntax enable
-
-try
-    colorscheme desert
-catch
-endtry
-
 set background=dark
+let base16colorspace=256
+colorscheme base16-ocean
 
 " Set extra options when running in GUI mode
 if has("gui_running")

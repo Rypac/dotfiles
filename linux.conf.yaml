@@ -33,6 +33,7 @@
     ~/.config/zsh/.zshrc: config/zsh/zshrc
     ~/.config/zsh/zsh.aliases: config/zsh/zsh.aliases
     ~/.config/zsh/zsh.completions: config/zsh/zsh.completions
+    ~/.config/zsh/zsh.colours: config/zsh/zsh.colours
     ~/.config/zsh/zsh.env: config/zsh/zsh.linux
     ~/.config/zsh/zsh.keys: config/zsh/zsh.keys
     ~/.config/zsh/zsh.opts: config/zsh/zsh.opts
