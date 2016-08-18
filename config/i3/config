@@ -172,6 +172,7 @@ mode "$mode_menu" {
     bindsym Escape mode "$mode_default"
     bindsym q mode "$mode_default"
     bindsym b mode "$mode_default"
+    bindsym BackSpace mode "$mode_default"
 }
 
 # resize mode
@@ -201,6 +202,7 @@ mode "$mode_resize" {
     bindsym Escape mode "$mode_default"
     bindsym q mode "$mode_default"
     bindsym b mode "$mode_menu"
+    bindsym BackSpace mode "$mode_menu"
 }
 
 # layout mode
@@ -218,6 +220,7 @@ mode "$mode_layout" {
     bindsym Escape mode "$mode_default"
     bindsym q mode "$mode_default"
     bindsym b mode "$mode_menu"
+    bindsym BackSpace mode "$mode_menu"
 }
 
 # system mode
@@ -236,6 +239,7 @@ mode "$mode_system" {
     bindsym Escape mode "$mode_default"
     bindsym q mode "$mode_default"
     bindsym b mode "$mode_menu"
+    bindsym BackSpace mode "$mode_menu"
 }
 
 # volume mode
@@ -258,6 +262,7 @@ mode "$mode_volume" {
     bindsym Escape mode "$mode_default"
     bindsym q mode "$mode_default"
     bindsym b mode "$mode_menu"
+    bindsym BackSpace mode "$mode_menu"
 }
 
 # apps mode
@@ -279,6 +284,7 @@ mode "$mode_apps" {
     bindsym Escape mode "$mode_default"
     bindsym q mode "$mode_default"
     bindsym b mode "$mode_menu"
+    bindsym BackSpace mode "$mode_menu"
 }
 
 # mouse mode
@@ -339,6 +345,7 @@ mode "$mode_mouse" {
     bindsym Escape mode "$mode_default"
     bindsym q mode "$mode_default"
     bindsym b mode "$mode_menu"
+    bindsym BackSpace mode "$mode_menu"
 }
 
 # gaps
@@ -365,6 +372,7 @@ mode "$mode_gaps" {
     bindsym Escape mode "$mode_default"
     bindsym q mode "$mode_default"
     bindsym b mode "$mode_menu"
+    bindsym BackSpace mode "$mode_menu"
 }
 
 mode "$mode_gaps_inner" {
@@ -384,6 +392,7 @@ mode "$mode_gaps_inner" {
     bindsym Escape mode "$mode_default"
     bindsym q mode "$mode_default"
     bindsym b mode "$mode_gaps"
+    bindsym BackSpace mode "$mode_gaps"
 }
 
 mode "$mode_gaps_outer" {
@@ -403,6 +412,7 @@ mode "$mode_gaps_outer" {
     bindsym Escape mode "$mode_default"
     bindsym q mode "$mode_default"
     bindsym b mode "$mode_gaps"
+    bindsym BackSpace mode "$mode_gaps"
 }
 
 # colour scheme
