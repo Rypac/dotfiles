@@ -10,7 +10,6 @@
   - [git submodule update --remote --rebase, Updating submodules]
 
 - link:
-    ~/.config/Code/User: config/vscode
     ~/.config/compton.conf: config/compton/compton.conf
     ~/.config/clipit: config/clipit
     ~/.config/display: config/display
