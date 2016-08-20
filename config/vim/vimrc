@@ -19,7 +19,6 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'fatih/vim-go'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-" Plugin 'valloric/youcompleteme'
 
 call vundle#end()
 
@@ -70,6 +69,10 @@ set smartcase
 set hlsearch
 set incsearch
 
+" Tabs
+set splitbelow
+set splitright
+
 " Bells and alerts
 set noerrorbells
 set novisualbell
@@ -114,15 +117,14 @@ vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
 
 " Keybindings
+" let mapleader = ","
+" let g:mapleader = ","
+" map <space> /
+" map <c-space> ?
+
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
-
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-" map <space> /
-" map <c-space> ?
-" let mapleader = ","
-" let g:mapleader = ","
 
 " Disable highlight when <leader><cr> is pressed
 nnoremap <silent> <leader><space> :noh<cr>
@@ -166,10 +168,10 @@ endtry
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
 
-" Tabs
-set splitbelow
-set splitright
+" Remember info about open buffers on close
+set viminfo^=%
+set viminfo+=n~/.vim/viminfo
