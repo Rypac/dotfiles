@@ -33,6 +33,12 @@ else
     eval $(gpg-agent --daemon --write-env-file ~/.gnupg/gpg-agent-info)
 fi
 
+# Neovim
+if type nvim > /dev/null 2>&1; then
+    alias vi=nvim
+    alias vim=nvim
+fi
+
 export BROWSER='open'
 
 # Rust
