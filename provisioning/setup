@@ -1,17 +1,123 @@
 #!/usr/bin/env bash
 
+XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-"$HOME/.config"}
+XDG_CACHE_HOME=${XDG_CACHE_HOME:-"$HOME/.cache"}
+XDG_DATA_HOME=${XDG_DATA_HOME:-"$HOME/.local/share"}
+DOTFILES_HOME=${DOTFILES_HOME:-"$HOME/.dotfiles"}
+
+function confirmation_prompt() {
+    message="$1"
+    default="${2:-Y}"
+    while true; do
+        read -p "${message} [Y/n] " input
+        case "${input:-$default}" in
+            [Yy]|[Yy][Ee][Ss])
+                return 0
+                ;;
+            [Nn]|[Nn][Oo])
+                return 1
+                ;;
+            *)
+                echo "Invalid selection"
+                ;;
+        esac
+    done
+}
+
+function install_packages() {
+    packages=$1
+    for package in ${packages}; do
+        sudo apt-get install $package --yes
+    done
+}
+
+function install_github_repo() {
+    repo="$1"
+    name="$2"
+    if [ ! -d "$name" ]; then
+        git clone "https://github.com/$repo" "$name"
+    fi
+    (cd "$name" && git pull && make && sudo make install)
+}
+
+function install_git_packages() {
+    git_package_dir="$1"
+    mkdir -p "$git_package_dir"
+    cd "$git_package_dir"
+    install_github_repo Airblader/i3.git i3-gaps
+    install_github_repo vivien/i3blocks.git i3blocks
+    install_github_repo baskerville/xtitle.git xtitle
+}
+
+function install_fonts() {
+    mkdir -p "${XDG_DATA_HOME}/fonts"
+    cd /tmp
+    curl -OL https://github.com/chrissimpkins/codeface/releases/download/font-collection/codeface-fonts.tar.xz
+    tar xf codeface-fonts.tar.xz && rm codeface-fonts.tar.xz
+    mv /tmp/fonts/* "${XDG_DATA_HOME}/fonts"
+    rm -rf /tmp/fonts
+    fc-cache -frv
+}
+
+function install_rust() {
+    type rustup > /dev/null 2>&1 || curl https://sh.rustup.rs -sSf | sh
+    rustup update
+    rustup install stable
+}
+
+function post_install_configuration() {
+    [ "$SHELL" = "/bin/zsh" ] || chsh -s /bin/zsh
+    "${XDG_CONFIG_HOME}/fzf/install" --bin
+    vim +PluginInstall +qall
+}
+
+function set_default_programs() {
+    sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
+    sudo update-alternatives --set pinentry /usr/bin/pinentry-curses
+}
+
+function etc_install_configuration() {
+    sudo update-ca-certificates --fresh
+    sudo mkdir -p /etc/X11/xorg.conf.d
+    sudo mkdir -p /etc/udev/rules.d
+    sudo cp "${DOTFILES_HOME}/config/nvidia/20-nvidia.conf" /etc/X11/xorg.conf.d/
+    sudo cp "${DOTFILES_HOME}/config/u2f/70-u2f.rules" /etc/udev/rules.d/
+    sudo cp -r "${XDG_CONFIG_HOME}/urxvt/." /usr/lib/urxvt/perl/
+}
+
+function no_confirmation() {
+    [ "$1" = "-y" ] || [ "$1" = "--yes" ]
+}
+
+function install_everything() {
+    [ "$1" = "-a" ] || [ "$1" = "--all" ]
+}
+
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-if [ "$(source "${script_dir}/../scripts/utilities/distro.sh")" = "Darwin" ]; then
-    environment="osx"
-else
-    environment="linux"
+[ -f "${HOME}/.profile" ] && source "${HOME}/.profile"
+
+if no_confirmation "$1" || confirmation_prompt "Install packages?"; then
+    install_packages "$(cat "${script_dir}/packages.txt")"
+fi
+if no_confirmation "$1" || confirmation_prompt "Install package build dependencies?"; then
+    install_packages "$(cat "${script_dir}/build_deps.txt")"
+fi
+if no_confirmation "$1" || confirmation_prompt "Clone and install external packages?"; then
+    install_git_packages "${HOME}/packages/cloned"
+fi
+if no_confirmation "$1" || confirmation_prompt "Install fonts?"; then
+    install_fonts
+fi
+if no_confirmation "$1" || confirmation_prompt "Install development tools?"; then
+    install_rust
+fi
+if no_confirmation "$1" || confirmation_prompt "Configure environment?"; then
+    post_install_configuration
+fi
+if install_everything "$1" && confirmation_prompt "Configure /etc/ environment?"; then
+    set_default_programs
+    etc_install_configuration
 fi
 
-setup_script="${script_dir}/${environment}/setup"
-
-if [ -x "$setup_script" ]; then
-    source "$setup_script"
-else
-    echo "Invalid environment" && exit 1
-fi
+exit 0
