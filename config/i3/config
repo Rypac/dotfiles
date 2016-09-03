@@ -357,8 +357,8 @@ mode "$mode_mouse" {
 }
 
 # gaps
-set $inner_gaps 20
-set $outer_gaps 5
+set $inner_gaps 30
+set $outer_gaps 20
 for_window [class="^.*"] border pixel 1
 gaps inner $inner_gaps
 gaps outer $outer_gaps
@@ -375,6 +375,8 @@ mode "$mode_gaps" {
     bindsym i mode "$mode_gaps_inner"
     bindsym d gaps outer all set $outer_gaps; gaps inner all set $inner_gaps; mode "$mode_default"
     bindsym n gaps outer all set 0; gaps inner all set 0; mode "$mode_default"
+    bindsym Shift+d gaps outer current set $outer_gaps; gaps inner current set $inner_gaps; mode "$mode_default"
+    bindsym Shift+n gaps outer current set 0; gaps inner current set 0; mode "$mode_default"
 
     bindsym Return mode "$mode_default"
     bindsym Escape mode "$mode_default"
