@@ -36,6 +36,14 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id ~/scripts/volume/control.sh up
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/scripts/volume/control.sh down && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioMute exec --no-startup-id ~/scripts/volume/control.sh toggle && pkill -RTMIN+10 i3blocks
 
+# omnipresent floating scratchpads
+for_window [instance="omnipresent-*"] border none; \
+    [instance="omnipresent-*"] floating enable; \
+    [instance="omnipresent-*"] move scratchpad;
+
+bindsym $mod+u exec --no-startup-id ~/scripts/i3/toggle-scratchpad.sh omnipresent-terminal
+bindsym $mod+y exec --no-startup-id ~/scripts/i3/toggle-scratchpad.sh omnipresent-ranger ranger
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
