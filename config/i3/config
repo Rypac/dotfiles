@@ -154,7 +154,6 @@ bindsym $mod+$ctrl+Shift+h move container to workspace prev
 bindsym $mod+$ctrl+Shift+l move container to workspace next
 
 # scratchpad
-bindsym $mod+Shift+n move scratchpad
 bindsym $mod+n scratchpad show
 
 # restarting i3
@@ -165,7 +164,7 @@ bindsym $mod+Shift+r restart
 set $mode_default default
 
 # modes menu
-set $mode_menu Modes: [r] resize, [l] layout, [g] gaps, [a] apps, [v] volume, [s] system, [m] mouse, [d] default
+set $mode_menu Modes: [r] resize, [l] layout, [g] gaps, [a] apps, [v] volume, [s] system, [m] mouse, [p] scratchpad, [d] default
 bindsym $mod+m mode "$mode_menu"
 
 mode "$mode_menu" {
@@ -176,6 +175,7 @@ mode "$mode_menu" {
     bindsym v mode "$mode_volume"
     bindsym s mode "$mode_system"
     bindsym m mode "$mode_mouse"
+    bindsym p mode "$mode_scratchpad"
     bindsym d mode "$mode_default"
 
     bindsym Return mode "$mode_default"
@@ -244,6 +244,22 @@ mode "$mode_system" {
     bindsym h exec --no-startup-id ~/scripts/i3/exit.sh hibernate; mode "$mode_default"
     bindsym r exec --no-startup-id ~/scripts/i3/exit.sh reboot; mode "$mode_default"
     bindsym p exec --no-startup-id ~/scripts/i3/exit.sh shutdown; mode "$mode_default"
+
+    bindsym Return mode "$mode_default"
+    bindsym Escape mode "$mode_default"
+    bindsym q mode "$mode_default"
+    bindsym b mode "$mode_menu"
+    bindsym BackSpace mode "$mode_menu"
+}
+
+# scratchpad mode
+set $mode_scratchpad Scratchpad: [m] move, [s] show, [r] remove
+bindsym $mod+Shift+n mode "$mode_scratchpad"
+
+mode "$mode_scratchpad" {
+    bindsym m move scratchpad
+    bindsym s scratchpad show
+    bindsym r floating disable
 
     bindsym Return mode "$mode_default"
     bindsym Escape mode "$mode_default"
