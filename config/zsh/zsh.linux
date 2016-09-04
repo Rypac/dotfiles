@@ -16,12 +16,12 @@ fi
 alias ls='ls --group-directories-first --color=auto'
 
 # Package manager
-alias appupdate='sudo apt-get update && sudo apt-get upgrade'
-alias appinstall='sudo apt-get install'
-alias appremove='sudo apt-get remove'
-alias apppurge='sudo apt-get purge --autoremove'
-alias appsearch='sudo apt-cache search'
-alias appclean='sudo apt-get autoremove'
+alias appupdate='sudo apt update && sudo apt upgrade'
+alias appinstall='sudo apt install'
+alias appremove='sudo apt remove'
+alias apppurge='sudo apt purge --autoremove'
+alias appsearch='sudo apt search'
+alias appclean='sudo apt autoremove'
 
 function appcleanall() {
     sudo dpkg -P $(dpkg -l | awk '/^rc/ { print($2) }')
