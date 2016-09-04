@@ -79,8 +79,12 @@ bindsym $mod+a layout toggle
 bindsym $mod+f fullscreen toggle
 bindsym $mod+t floating toggle
 bindsym $mod+Shift+t exec --no-startup-id ~/scripts/i3/floating.sh toggle
-bindsym $mod+i floating enable; resize set 1800 1320; move position center
+bindsym $mod+i floating enable; border none; resize set 1800 1320; move position center
 bindsym $mod+c floating enable; move position center
+
+# borders
+bindsym $mod+comma border none
+bindsym $mod+Shift+comma border pixel 1
 
 # change window focus
 bindsym $mod+$ctrl+space focus mode_toggle
