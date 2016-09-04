@@ -190,22 +190,22 @@ set $mode_resize Resize
 bindsym $mod+r mode "$mode_resize"
 
 mode "$mode_resize" {
-    bindsym h resize shrink width 10 px or 5 ppt
-    bindsym j resize grow height 10 px or 5 ppt
-    bindsym k resize shrink height 10 px or 5 ppt
-    bindsym l resize grow width 10 px or 5 ppt
-    bindsym Shift+h resize shrink width 150 px or 15 ppt
-    bindsym Shift+j resize grow height 150 px or 15 ppt
-    bindsym Shift+k resize shrink height 150 px or 15 ppt
-    bindsym Shift+l resize grow width 150 px or 15 ppt
+    bindsym h resize grow left 10 px or 5 ppt
+    bindsym j resize grow down 10 px or 5 ppt
+    bindsym k resize grow up 10 px or 5 ppt
+    bindsym l resize grow right 10 px or 5 ppt
+    bindsym Shift+h resize shrink left 10 px or 5 ppt
+    bindsym Shift+j resize shrink down 10 px or 5 ppt
+    bindsym Shift+k resize shrink up 10 px or 5 ppt
+    bindsym Shift+l resize shrink right 10 px or 5 ppt
 
     bindsym Left resize shrink width 10 px or 5 ppt
-    bindsym Down resize grow height 10 px or 5 ppt
-    bindsym Up resize shrink height 10 px or 5 ppt
+    bindsym Down resize shrink height 10 px or 5 ppt
+    bindsym Up resize grow height 10 px or 5 ppt
     bindsym Right resize grow width 10 px or 5 ppt
     bindsym Shift+Left resize shrink width 150 px or 15 ppt
-    bindsym Shift+Down resize grow height 150 px or 15 ppt
-    bindsym Shift+Up resize shrink height 150 px or 15 ppt
+    bindsym Shift+Down resize shrink height 150 px or 15 ppt
+    bindsym Shift+Up resize grow height 150 px or 15 ppt
     bindsym Shift+Right resize grow width 150 px or 15 ppt
 
     bindsym Return mode "$mode_default"
