@@ -38,7 +38,6 @@
     ~/.config/zsh/zsh-completions: libs/zsh-completions
     ~/.config/zsh/zsh-history-substring-search: libs/zsh-history-substring-search
     ~/.profile: config/shell/profile
-    ~/.tmux.conf: config/tmux/tmux.conf
     ~/.vim/bundle/Vundle.vim: libs/vundle
     ~/.vim/vimrc: config/vim/vimrc
     ~/.xinitrc: config/xfiles/xinitrc
