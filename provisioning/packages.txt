@@ -19,6 +19,7 @@ firmware-linux
 firmware-linux-free
 firmware-linux-nonfree
 fonts-font-awesome
+fonts-symbola
 fortune
 g++
 git
