@@ -292,7 +292,7 @@ mode "$mode_volume" {
 }
 
 # apps mode
-set $mode_apps Apps: [c] chrome, [f] file-manager, [t] terminal, [a] atom, [v] vscode, [s] sublime, [d] deadbeef, [m] spotify, [k] keepassx
+set $mode_apps Apps: [c] chrome, [f] file-manager, [t] terminal, [a] atom, [s] sublime, [d] deadbeef, [m] spotify, [k] keepassx, [r] rofi, [p] pulseaudio, [h] htop, [v] virt-manager
 bindsym $mod+Shift+m mode "$mode_apps"
 
 mode "$mode_apps" {
@@ -303,8 +303,11 @@ mode "$mode_apps" {
     bindsym d exec deadbeef; mode "$mode_default"
     bindsym a exec atom; mode "$mode_default"
     bindsym s exec subl; mode "$mode_default"
-    bindsym v exec code; mode "$mode_default"
+    bindsym v exec virt-manager; mode "$mode_default"
+    bindsym p exec pavucontrol; mode "$mode_default"
+    bindsym r exec rofi -show drun; mode "$mode_default"
     bindsym t exec i3-sensible-terminal; mode "$mode_default"
+    bindsym h exec i3-sensible-terminal -e htop; mode "$mode_default"
 
     bindsym Return mode "$mode_default"
     bindsym Escape mode "$mode_default"
