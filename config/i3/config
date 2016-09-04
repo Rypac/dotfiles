@@ -24,7 +24,6 @@ bindsym $mod+Shift+q exec --no-startup-id ~/scripts/rofi/i3-logout.sh
 
 # application bindings
 bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+backslash exec i3-sensible-terminal -e ranger
 bindsym Print exec --no-startup-id scrot 'screenshot-%Y-%m-%d-%T.png' -e 'mv $f ~/pictures/screenshots/'
 
 # floating terminal
@@ -156,6 +155,9 @@ bindsym $mod+$ctrl+Shift+l move container to workspace next
 # scratchpad
 bindsym $mod+n scratchpad show
 
+# i3bar
+bindsym $mod+backslash bar mode toggle
+
 # restarting i3
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
@@ -165,6 +167,7 @@ set $mode_default default
 
 # modes menu
 set $mode_menu Modes: [r] resize, [l] layout, [g] gaps, [a] apps, [v] volume, [s] system, [m] mouse, [p] scratchpad, [d] default
+bindsym $mod+slash mode "$mode_menu"
 bindsym $mod+m mode "$mode_menu"
 
 mode "$mode_menu" {
