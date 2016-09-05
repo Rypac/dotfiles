@@ -25,6 +25,7 @@ export ICEAUTHORITY="$XDG_RUNTIME_DIR/X11/iceauthority"
 export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
 export RXVT_SOCKET="$XDG_RUNTIME_DIR/urxvt/urxvt-$(hostname)"
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR/tmux"
+export XAUTHORITY="$XDG_RUNTIME_DIR/X11/xauthority"
 export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv"
 
 # Defaults
@@ -35,4 +36,4 @@ export SELECTED_EDITOR='/usr/bin/vim.basic'
 export LESS='-F -g -i -M -R -S -w -X -z-4'
 
 # Setup PATH
-export PATH="$PATH:/usr/local/bin:/usr/local/sbin:$HOME/bin:$CARGO_HOME/bin:$HOME/.local/bin"
+export PATH="$HOME/bin:$CARGO_HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:$PATH"
