@@ -19,6 +19,7 @@
     ~/.config/i3: config/i3
     ~/.config/i3blocks: config/i3blocks
     ~/.config/neofetch: config/neofetch
+    ~/.config/npm: config/npm
     ~/.config/ranger: config/ranger
     ~/.config/rofi: config/rofi
     ~/.config/sublime-text-3/Packages/User: config/sublime
