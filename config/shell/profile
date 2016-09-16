@@ -7,13 +7,9 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 # Set config/data directories for XDG unfriendly programs
 export ATOM_HOME="$XDG_DATA_HOME/atom"
-export CARGO_HOME="$XDG_DATA_HOME/cargo"
-export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-export STACK_ROOT="$XDG_DATA_HOME/stack"
 export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export MPLAYER_HOME="$XDG_CONFIG_HOME/mplayer"
-export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/config"
 export QT_STYLE_OVERRIDE=GTK+
 export SCREENRC="$XDG_CONFIG_HOME/screen/screenrc"
 export TIGRC_USER="$XDG_CONFIG_HOME/tig/tigrc"
@@ -29,8 +25,15 @@ export TMUX_TMPDIR="$XDG_RUNTIME_DIR/tmux"
 export XAUTHORITY="$XDG_RUNTIME_DIR/X11/xauthority"
 export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv"
 
-# Keep the home directory free from node
+# Programming environments
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export STACK_ROOT="$XDG_DATA_HOME/stack"
 export N_PREFIX="/opt/n"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/config"
+export GEM_SPEC_CACHE="$XDG_CACHE_HOME/ruby/gem/spec"
+export RBENV_ROOT="$XDG_DATA_HOME/rbenv"
+export MIX_HOME="$XDG_DATA_HOME/mix"
 
 # Defaults
 export EDITOR='vim'

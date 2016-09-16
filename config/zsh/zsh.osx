@@ -1,18 +1,8 @@
-# Node
-if [ -d "$HOME/.nvm" ]; then
-    export NVM_DIR="$HOME/.nvm"
-    source "$NVM_DIR/nvm.sh"
-fi
-
 # Ruby
 if type rbenv > /dev/null 2>&1; then
     eval "$(rbenv init -)"
     alias rbenv-override="rbenv shell $(rbenv global)"
-fi
-
-# Go
-if type go > /dev/null 2>&1; then
-    export PATH=$PATH:/usr/local/opt/go/libexec/bin
+    alias be='bundle exec'
 fi
 
 # Python
@@ -29,14 +19,6 @@ fi
 export GPG_TTY=$(tty)
 if [ -S "${GPG_AGENT_INFO%%:*}" ]; then
     export GPG_AGENT_INFO
-else
-    eval $(gpg-agent --daemon --write-env-file ~/.gnupg/gpg-agent-info)
-fi
-
-# Neovim
-if type nvim > /dev/null 2>&1; then
-    alias vi=nvim
-    alias vim=nvim
 fi
 
 export BROWSER='open'
