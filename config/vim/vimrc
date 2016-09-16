@@ -13,10 +13,10 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'chriskempson/base16-vim'
+Plugin 'editorconfig/editorconfig-vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'rust-lang/rust.vim'
 Plugin 'elixir-lang/vim-elixir'
-Plugin 'fatih/vim-go'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
@@ -33,6 +33,10 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 2
 
+" Ctrl-P Plugin
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+
 " General
 set history=1000
 set autoread
@@ -41,7 +45,7 @@ filetype plugin on
 filetype indent on
 
 set wildmenu
-set wildignore=*.o,*~,*.pyc,.git/*
+set wildignore+=*.o,*~,*.pyc,*/.git/*
 
 set ruler
 set hidden
@@ -116,17 +120,11 @@ set wrap
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
 
-" Keybindings
-" let mapleader = ","
-" let g:mapleader = ","
-" map <space> /
-" map <c-space> ?
-
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
 
-" Disable highlight when <leader><cr> is pressed
+" Disable highlight
 nnoremap <silent> <leader><space> :noh<cr>
 map <silent> <leader><cr> :noh<cr>
 
@@ -136,18 +134,21 @@ nmap <leader>x :x<cr>
 nmap <leader>q :q<cr>
 nmap <leader>Q :qa<cr>
 
-" Smart way to move between windows
+" Window switching
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+" Tab switching
+map <leader><C-h> gT
+map <leader><C-l> gt
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
-map <leader>t<leader> :tabnext
 
 " Nerdtree
 map <C-m> :NERDTreeToggle<cr>
