@@ -5,19 +5,18 @@ if type docker > /dev/null 2>&1; then
     alias docker-purge='docker rmi -f $(docker images -aq)'
 fi
 
+# Python
+if type pip > /dev/null 2>&1; then
+    alias pip-upgrade="pip list --outdated | cut -d ' ' -f 1 | xargs -n 1 pip install --upgrade"
+fi
+
 # Clipboard
 if type xclip > /dev/null 2>&1; then
     alias setclip='xclip -selection clipboard -i'
     alias getclip='xclip -selection clipboard -o'
 fi
 
-# Ruby/Bundler
-if type bundle > /dev/null 2>&1; then
-    alias be='bundle exec'
-    alias ber='bundle exec rake'
-fi
-
-# gpg2 by default
+# GPG
 if type gpg2 > /dev/null 2>&1; then
     alias gpg='gpg2'
 fi
@@ -46,14 +45,14 @@ alias grep='grep --color=auto'
 
 # mkdir
 alias mkdir='mkdir -p'
-mkcd() {
+function mkcd() {
     [[ -n ${1} ]] && mkdir -p ${1} && cd ${1}
 }
 
 # resource usage
 alias df='df -kh'
 alias du='du -kh'
-sizeof() {
+function sizeof() {
     [ -n "$1" ] && du "$1" | tail -1 | cut -f1
 }
 

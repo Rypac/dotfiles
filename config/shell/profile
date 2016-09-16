@@ -9,6 +9,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export ATOM_HOME="$XDG_DATA_HOME/atom"
 export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+export HTTPIE_CONFIG_DIR="$XDG_CONFIG_HOME/httpie"
 export MPLAYER_HOME="$XDG_CONFIG_HOME/mplayer"
 export QT_STYLE_OVERRIDE=GTK+
 export SCREENRC="$XDG_CONFIG_HOME/screen/screenrc"
