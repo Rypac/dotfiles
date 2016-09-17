@@ -10,12 +10,14 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-surround'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'chriskempson/base16-vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'rust-lang/rust.vim'
+Plugin 'elmcast/elm-vim'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -36,6 +38,21 @@ let g:syntastic_loc_list_height = 2
 " Ctrl-P Plugin
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+
+" Rust Plugin
+let g:rustfmt_autosave = 1
+
+" Elm Plugin
+let g:elm_setup_keybindings = 0
+let g:elm_format_autosave = 1
+let g:elm_syntastic_show_warnings = 1
+let g:elm_detailed_complete = 1
+au Filetype elm nmap <leader>m <Plug>(elm-make)
+au Filetype elm nmap <leader>r <Plug>(elm-repl)
+au Filetype elm nmap <leader>d <Plug>(elm-show-docs)
+
+" Airline Theme
+let g:airline_theme = 'base16'
 
 " General
 set history=1000
@@ -90,8 +107,6 @@ colorscheme base16-ocean
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
-
-" Use Unix as the standard file type
 set ffs=unix,dos,mac
 
 " Turn backup off
@@ -102,8 +117,6 @@ set noswapfile
 " Use spaces instead of tabs
 set expandtab
 set smarttab
-set autoindent
-set smartindent
 set shiftwidth=4
 set tabstop=4
 
