@@ -68,7 +68,7 @@ function install_rust() {
 function post_install_configuration() {
     [ "$SHELL" = "/bin/zsh" ] || chsh -s /bin/zsh
     "${XDG_CONFIG_HOME}/fzf/install" --bin
-    vim +PluginInstall +qall
+    vim +PluginInstall! +qall
 }
 
 function set_default_programs() {
