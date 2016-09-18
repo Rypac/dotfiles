@@ -50,8 +50,8 @@ function mkcd() {
 }
 
 # resource usage
-alias df='df -kh'
-alias du='du -kh'
+alias df='df -khT'
+alias du='du -khsc'
 function sizeof() {
     [ -n "$1" ] && du "$1" | tail -1 | cut -f1
 }
