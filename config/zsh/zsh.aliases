@@ -37,6 +37,7 @@ alias la='ls -lAh'
 alias lm="l | ${PAGER}" # all files, human-readable sizes, use pager
 alias ll='ls -lh'       # human-readable sizes
 alias lr='ll -R'        # human-readable sizes, recursive
+alias lsh='ls -lAhd .?*'
 
 # grep
 export GREP_COLOR='37;45'
