@@ -65,10 +65,17 @@ function install_rust() {
     rustup install stable
 }
 
-function post_install_configuration() {
+function install_vim_plugins() {
+    plug_vim="$HOME/.vim/autoload/plug.vim"
+    if [ ! -f "$plug_vim" ]; then
+        curl -fLo "$plug_vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    fi
+    nvim +PlugUpgrade +PlugInstall +PlugUpdate +qall
+}
+
+function configure_shell() {
     [ "$SHELL" = "/bin/zsh" ] || chsh -s /bin/zsh
     "${XDG_CONFIG_HOME}/fzf/install" --bin
-    vim +PluginInstall! +qall
 }
 
 function set_default_programs() {
@@ -113,7 +120,8 @@ if no_confirmation "$1" || confirmation_prompt "Install development tools?"; the
     install_rust
 fi
 if no_confirmation "$1" || confirmation_prompt "Configure environment?"; then
-    post_install_configuration
+    configure_shell
+    install_vim_plugins
 fi
 if install_everything "$1" && confirmation_prompt "Configure /etc/ environment?"; then
     set_default_programs

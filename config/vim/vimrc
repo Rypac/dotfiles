@@ -1,28 +1,26 @@
+" -----------------------------------------------------
 " Plugins
-set nocompatible
-filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdtree'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-surround'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'chriskempson/base16-vim'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'rust-lang/rust.vim'
-Plugin 'elmcast/elm-vim'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/nerdtree'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-surround'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'scrooloose/syntastic'
+Plug 'Valloric/YouCompleteMe'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'rust-lang/rust.vim'
+Plug 'elmcast/elm-vim'
+Plug 'elixir-lang/vim-elixir'
+Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/base16-vim'
+Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 
-call vundle#end()
+call plug#end()
 
 " Syntastic Plugin
 set statusline+=%#warningmsg#
@@ -54,86 +52,46 @@ au Filetype elm nmap <leader>d <Plug>(elm-show-docs)
 " Airline Theme
 let g:airline_theme = 'base16'
 
-" General
-set history=1000
-set autoread
+" -----------------------------------------------------
+" Options
 
-filetype plugin on
-filetype indent on
-
-set wildmenu
-set wildignore+=*.o,*~,*.pyc,*/.git/*
-
-set ruler
-set hidden
-set cmdheight=1
-set laststatus=2
-set foldcolumn=1
+" UI
 set number
 set cursorline
 set showmatch
 set matchtime=2
-set lazyredraw
-set magic
-
-" Configure backspace so it acts as it should act
-set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
-
-if has('mouse')
-    set mouse=a
-endif
 
 " Searching
 set ignorecase
 set smartcase
-set hlsearch
-set incsearch
 
 " Tabs
 set splitbelow
 set splitright
 
-" Bells and alerts
-set noerrorbells
-set novisualbell
-set tm=500
-
-" Enable syntax highlighting
-syntax enable
+" Colour scheme
 set background=dark
 let base16colorspace=256
 colorscheme base16-ocean
 
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
-set ffs=unix,dos,mac
-
-" Turn backup off
-set nobackup
-set nowb
-set noswapfile
-
-" Use spaces instead of tabs
+" Always replace tabs with 4 spaces
 set expandtab
-set smarttab
 set shiftwidth=4
 set tabstop=4
 
-" Linebreak on 500 characters
-set lbr
-set tw=500
-
 " Indentation
-set autoindent
 set smartindent
 set wrap
 
-" Visual mode pressing * or # searches for the current selection
-vnoremap <silent> * :call VisualSelection('f', '')<CR>
-vnoremap <silent> # :call VisualSelection('b', '')<CR>
+" Ignore certain files and directories
+set wildignore+=*.o,*~,*.pyc,*/.git/*,*/node_modules/*
+set noswapfile
 
-" Treat long lines as break lines (useful when moving around in them)
+" -----------------------------------------------------
+" Keybindings
+
+" Treat long lines as break lines
 map j gj
 map k gk
 
@@ -172,20 +130,3 @@ map <F9> :CtrlP<cr>
 
 " Git Fugitive
 map <F10> :Gstatus<cr>
-
-" Specify the behavior when switching between buffers
-try
-    set switchbuf=useopen,usetab,newtab
-    set showtabline=2
-catch
-endtry
-
-" Return to last edit position when opening files (You want this!)
-autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
-
-" Remember info about open buffers on close
-set viminfo^=%
-set viminfo+=n~/.vim/viminfo
