@@ -22,7 +22,7 @@ Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
-" Syntastic Plugin
+" Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -33,14 +33,17 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 2
 
-" Ctrl-P Plugin
+" Ctrl-P
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 
-" Rust Plugin
+" GitGutter
+let g:gitgutter_sign_column_always=1
+
+" Rust
 let g:rustfmt_autosave = 1
 
-" Elm Plugin
+" Elm
 let g:elm_setup_keybindings = 0
 let g:elm_format_autosave = 1
 let g:elm_syntastic_show_warnings = 1
@@ -49,7 +52,7 @@ au Filetype elm nmap <leader>m <Plug>(elm-make)
 au Filetype elm nmap <leader>r <Plug>(elm-repl)
 au Filetype elm nmap <leader>d <Plug>(elm-show-docs)
 
-" Airline Theme
+" Airline
 let g:airline_theme = 'base16'
 
 " -----------------------------------------------------
@@ -96,8 +99,8 @@ map j gj
 map k gk
 
 " Disable highlight
+nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 nnoremap <silent> <leader><space> :noh<cr>
-map <silent> <leader><cr> :noh<cr>
 
 " Fast saving
 nmap <leader>w :w<cr>
