@@ -38,7 +38,7 @@ export RBENV_ROOT="$XDG_DATA_HOME/rbenv"
 export MIX_HOME="$XDG_DATA_HOME/mix"
 
 # Defaults
-export EDITOR='vim'
+export EDITOR='nvim'
 export VISUAL='subl'
 export PAGER='less'
 export SELECTED_EDITOR='/usr/bin/vim.basic'

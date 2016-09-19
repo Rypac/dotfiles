@@ -21,6 +21,12 @@ if type gpg2 > /dev/null 2>&1; then
     alias gpg='gpg2'
 fi
 
+# Neovim
+if type nvim > /dev/null 2>&1; then
+    alias vi='nvim'
+    alias vim='nvim'
+fi
+
 # Common tool aliases
 alias j='fasd_cd -d'
 alias jj='fasd_cd -d -i'
