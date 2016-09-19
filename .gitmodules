@@ -18,11 +18,6 @@
 	url = https://github.com/junegunn/fzf.git
 	branch = master
 	ignore = all
-[submodule "libs/vundle"]
-	path = libs/vundle
-	url = https://github.com/VundleVim/Vundle.vim.git
-	branch = master
-	ignore = all
 [submodule "libs/zsh-completions"]
 	path = libs/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
