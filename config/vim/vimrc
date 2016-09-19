@@ -11,10 +11,12 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-surround'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'scrooloose/syntastic'
-Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe' | Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'editorconfig/editorconfig-vim'
+Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rust-lang/rust.vim'
 Plug 'elmcast/elm-vim'
+Plug 'neovimhaskell/haskell-vim'
 Plug 'elixir-lang/vim-elixir'
 Plug 'altercation/vim-colors-solarized'
 Plug 'chriskempson/base16-vim'
@@ -43,17 +45,29 @@ let g:gitgutter_sign_column_always=1
 " Rust
 let g:rustfmt_autosave = 1
 
+" Haskell
+let g:haskell_indent_case = 4
+let g:haskell_indent_guard = 4
+let g:haskell_indent_if = 4
+let g:haskell_indent_in = 4
+let g:haskell_indent_let = 4
+let g:haskell_indent_do = 4
+
 " Elm
-let g:elm_setup_keybindings = 0
-let g:elm_format_autosave = 1
-let g:elm_syntastic_show_warnings = 1
 let g:elm_detailed_complete = 1
+let g:elm_format_autosave = 1
+let g:elm_setup_keybindings = 0
+let g:elm_syntastic_show_warnings = 1
 au Filetype elm nmap <leader>m <Plug>(elm-make)
 au Filetype elm nmap <leader>r <Plug>(elm-repl)
 au Filetype elm nmap <leader>d <Plug>(elm-show-docs)
 
 " Airline
 let g:airline_theme = 'base16'
+
+" YouCompleteMe
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_confirm_extra_conf = 0
 
 " -----------------------------------------------------
 " Options
@@ -79,6 +93,7 @@ let base16colorspace=256
 colorscheme base16-ocean
 
 " Always replace tabs with 4 spaces
+retab
 set expandtab
 set shiftwidth=4
 set tabstop=4
@@ -99,7 +114,7 @@ map j gj
 map k gk
 
 " Disable highlight
-nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
+nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<cr>
 nnoremap <silent> <leader><space> :noh<cr>
 
 " Fast saving
@@ -114,6 +129,12 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" Window splitting
+map <leader>tj :split<cr>
+map <leader>tl :vsplit<cr>
+map <leader>ts <C-W>R
+map <leader>t= <C-W>=
+
 " Tab switching
 map <leader><C-h> gT
 map <leader><C-l> gt
@@ -123,6 +144,10 @@ map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
+
+" Jump to definition/between headers
+map <F2> gD
+map <F4> :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<cr>
 
 " Nerdtree
 map <C-m> :NERDTreeToggle<cr>
