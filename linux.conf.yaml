@@ -54,3 +54,4 @@
   - [scripts/misc/link-scripts.sh "$PWD/scripts/utilities" ~/bin, Linking utility executables]
   - [scripts/misc/link-scripts.sh "$PWD/scripts/linux" ~/bin, Linking platform executables]
   - [ln -fs $PWD/scripts/* ~/scripts/, Linking scripts]
+  - [ln -fs $PWD/config/applications/* ~/.local/share/applications, Linking applications]

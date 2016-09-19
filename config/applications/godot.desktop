@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Name=Godot
+Comment=The FOSS game engine
+GenericName=Game Engine
+Exec=~/bin/godot
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Utility;Development;
