@@ -4,6 +4,7 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
@@ -109,41 +110,61 @@ set noswapfile
 " -----------------------------------------------------
 " Keybindings
 
-" Treat long lines as break lines
-map j gj
-map k gk
+" Quick leader actions
+let maplocalleader = "\\"
 
 " Disable highlight
 nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<cr>
-nnoremap <silent> <leader><space> :noh<cr>
+nnoremap <silent> <localleader><space> :noh<cr>
 
-" Fast saving
-nmap <leader>w :w<cr>
-nmap <leader>x :x<cr>
-nmap <leader>q :q<cr>
-nmap <leader>Q :qa<cr>
+" Fast actions
+nmap <localleader>w :write<cr>
+nmap <localleader>x :exit<cr>
+nmap <localleader>q :quit<cr>
+nmap <localleader>Q :quitall<cr>
 
-" Window switching
+let mapleader = "\<space>"
+
+" Window layer
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+nmap <leader>wj <C-W>j
+nmap <leader>wk <C-W>k
+nmap <leader>wh <C-W>h
+nmap <leader>wl <C-W>l
+nmap <leader>wnj :rightbelow :split<cr>
+nmap <leader>wnk :leftabove :split<cr>
+nmap <leader>wnh :leftabove :vsplit<cr>
+nmap <leader>wnl :rightbelow :vsplit<cr>
+nmap <leader>w<C-j> :rightbelow :split<cr>
+nmap <leader>w<C-k> :leftabove :split<cr>
+nmap <leader>w<C-h> :leftabove :vsplit<cr>
+nmap <leader>w<C-l> :rightbelow :vsplit<cr>
+nmap <leader>wnn :vnew<cr>
+nmap <leader>wns <C-W>R
+nmap <leader>w= <C-W>=
+nmap <leader>wq :quit<cr>
 
-" Window splitting
-map <leader>tj :split<cr>
-map <leader>tl :vsplit<cr>
-map <leader>ts <C-W>R
-map <leader>t= <C-W>=
+" Tab layer
+nmap <leader><C-h> :tabprevious<cr>
+nmap <leader><C-l> :tabnext<cr>
+nmap <leader>th :tabprevious<cr>
+nmap <leader>tl :tabnext<cr>
+nmap <leader>tn :tabnew<cr>
+nmap <leader>to :tabonly<cr>
+nmap <leader>tq :tabclose<cr>
+nmap <leader>tm :tabmove<cr>
 
-" Tab switching
-map <leader><C-h> gT
-map <leader><C-l> gt
-
-" Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
+" Git layer
+nmap <leader>gs :Gstatus<cr>
+nmap <leader>gb :Gblame<cr>
+nmap <leader>gl :Glog<cr>
+nmap <leader>gg :Gbrowse<cr>
+nmap <leader>gd :Gdiff<cr>
+nmap <leader>gf :Gfetch<cr>
+nmap <leader>gp :Gpull<cr>
 
 " Jump to definition/between headers
 map <F2> gD
@@ -155,6 +176,3 @@ map <F3> :NERDTreeToggle<cr>
 
 " Ctrl-P
 map <F9> :CtrlP<cr>
-
-" Git Fugitive
-map <F10> :Gstatus<cr>
