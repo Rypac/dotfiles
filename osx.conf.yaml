@@ -26,7 +26,6 @@
     ~/.config/zsh/zsh-completions: libs/zsh-completions
     ~/.config/zsh/zsh-history-substring-search: libs/zsh-history-substring-search
     ~/.profile: config/shell/profile
-    ~/.spacemacs: config/emacs/spacemacs
     ~/.vim/vimrc: config/vim/vimrc
     ~/.zshenv: config/zsh/zshenv
     ~/bin/fasd: libs/fasd/fasd
