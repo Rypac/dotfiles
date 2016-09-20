@@ -2,10 +2,10 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=Godot
-Comment=The FOSS game engine
-GenericName=Game Engine
-Exec=~/bin/godot
+Name=Android Studio
+Comment=The official IDE for Android
+GenericName=IDE
+Exec=~/bin/android-studio
 Terminal=false
 StartupNotify=true
 Categories=Utility;Development;
