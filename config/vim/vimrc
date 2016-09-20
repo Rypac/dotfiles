@@ -79,10 +79,9 @@ let g:ycm_confirm_extra_conf = 0
 
 " UI
 set number
-set cursorline
 set showmatch
 set matchtime=2
-set whichwrap+=<,>,h,l
+set whichwrap+=h,l
 
 " Searching
 set ignorecase
