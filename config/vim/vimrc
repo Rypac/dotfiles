@@ -152,23 +152,40 @@ nmap <leader>w= <C-W>=
 nmap <leader>wq :quit<cr>
 
 " Tab layer
-nmap <leader><C-h> :tabprevious<cr>
-nmap <leader><C-l> :tabnext<cr>
-nmap <leader>th :tabprevious<cr>
-nmap <leader>tl :tabnext<cr>
-nmap <leader>tn :tabnew<cr>
-nmap <leader>to :tabonly<cr>
-nmap <leader>tq :tabclose<cr>
-nmap <leader>tm :tabmove<cr>
+nnoremap <leader><C-h> :tabprevious<cr>
+nnoremap <leader><C-l> :tabnext<cr>
+nnoremap <leader>th :tabprevious<cr>
+nnoremap <leader>tl :tabnext<cr>
+nnoremap <leader>tn :tabnew<cr>
+nnoremap <leader>to :tabonly<cr>
+nnoremap <leader>tq :tabclose<cr>
+nnoremap <leader>tm :tabmove<cr>
 
 " Git layer
-nmap <leader>gs :Gstatus<cr>
-nmap <leader>gb :Gblame<cr>
-nmap <leader>gl :Glog<cr>
-nmap <leader>gg :Gbrowse<cr>
-nmap <leader>gd :Gdiff<cr>
-nmap <leader>gf :Gfetch<cr>
-nmap <leader>gp :Gpull<cr>
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>gl :Glog<cr>
+nnoremap <leader>gg :Gbrowse<cr>
+nnoremap <leader>gd :Gdiff<cr>
+nnoremap <leader>gf :Gfetch<cr>
+nnoremap <leader>gp :Gpull<cr>
+
+" YouCompleteMe layer
+nnoremap <leader>jd :YcmCompleter GoTo<cr>
+nnoremap <leader>ji :YcmCompleter GoToInclude<cr>
+nnoremap <leader>jr :YcmCompleter GoToReferences<cr>
+nnoremap <leader>jt :YcmCompleter GetType<cr>
+nnoremap <leader>jp :YcmCompleter GetParent<cr>
+nnoremap <leader>jc :YcmCompleter GetDoc<cr>
+
+" Terminal
+tnoremap <Esc> <C-\><C-n>
+nnoremap <leader>sn :terminal<cr>
+nnoremap <leader>sj :rightbelow :split<cr> :terminal<cr>
+nnoremap <leader>sk :leftabove :split<cr> :terminal<cr>
+nnoremap <leader>sh :leftabove :vsplit<cr> :terminal<cr>
+nnoremap <leader>sl :rightbelow :vsplit<cr> :terminal<cr>
+nnoremap <leader>sg :rightbelow :vsplit<cr> :terminal<cr> tig<cr>
 
 " Jump to definition/between headers
 map <F2> gD
