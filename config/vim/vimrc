@@ -16,10 +16,11 @@ Plug 'Valloric/YouCompleteMe' | Plug 'rdnetto/YCM-Generator', { 'branch': 'stabl
 Plug 'editorconfig/editorconfig-vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rust-lang/rust.vim'
+Plug 'keith/swift.vim'
 Plug 'elmcast/elm-vim'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'elixir-lang/vim-elixir'
-Plug 'altercation/vim-colors-solarized'
+Plug 'pangloss/vim-javascript' | Plug 'mxw/vim-jsx'
 Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 
@@ -32,7 +33,7 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 2
 
@@ -62,6 +63,9 @@ let g:elm_syntastic_show_warnings = 1
 au Filetype elm nmap <leader>m <Plug>(elm-make)
 au Filetype elm nmap <leader>r <Plug>(elm-repl)
 au Filetype elm nmap <leader>d <Plug>(elm-show-docs)
+
+" Javascript
+let g:jsx_ext_required = 0
 
 " Airline
 let g:airline_theme = 'base16'
