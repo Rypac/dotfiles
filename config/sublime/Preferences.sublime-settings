@@ -32,7 +32,7 @@
 	],
 	"caret_style": "phase",
 	"close_windows_when_empty": false,
-	"color_scheme": "Packages/User/SublimeLinter/base16-oceanicnext (SL).tmTheme",
+	"color_scheme": "Packages/Base16 Color Schemes/Themes/base16-oceanicnext.tmTheme",
 	"draw_white_space": "selection",
 	"ensure_newline_at_eof_on_save": true,
 	"font_face": "Hack",
@@ -61,7 +61,6 @@
 	"material_theme_panel_separator": true,
 	"material_theme_small_tab": true,
 	"material_theme_tabs_separator": true,
-	"material_theme_tree_headings": true,
 	"rulers":
 	[
 		100
