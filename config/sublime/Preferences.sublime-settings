@@ -71,5 +71,7 @@
 	"tabs_small": true,
 	"theme": "Material-Theme.sublime-theme",
 	"translate_tabs_to_spaces": true,
-	"trim_trailing_white_space_on_save": true
+	"trim_trailing_white_space_on_save": true,
+	"vintageous_use_ctrl_keys": true,
+	"vintageous_use_sys_clipboard": true
 }
