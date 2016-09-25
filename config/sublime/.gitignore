@@ -5,6 +5,7 @@
 !.gitignore
 !*.sublime-settings
 !*.sublime-keymap
+!*.py
 
 # Don't include platform/installation specific settings
 ClangAutoComplete.sublime-settings
