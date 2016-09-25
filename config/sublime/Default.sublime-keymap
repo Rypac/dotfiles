@@ -1,4 +1,7 @@
 [
+    { "keys": ["ctrl+c"], "command": "copy" },
+    { "keys": ["ctrl+x"], "command": "cut" },
+    { "keys": ["ctrl+v"], "command": "paste" },
     { "keys": ["ctrl+\\"], "command": "toggle_side_bar" },
     { "keys": ["ctrl+shift+\\"], "command": "toggle_distraction_free" },
     { "keys": ["ctrl+alt+m"], "command": "toggle_menu" },
