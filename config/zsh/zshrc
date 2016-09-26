@@ -29,12 +29,12 @@ if type fasd > /dev/null 2>&1; then
       fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install >| "$fasd_cache"
     fi
     source "$fasd_cache"
+    unset fasd_cache
 fi
 
 # Fuzzy command line search
 if [ -d "$XDG_CONFIG_HOME/fzf" ]; then
-    export FZF_COMPLETION_TRIGGER='~~'
-    export PATH="$PATH:$XDG_CONFIG_HOME/fzf/bin"
+    export PATH="$XDG_CONFIG_HOME/fzf/bin:$PATH"
     export MANPATH="$MANPATH:$XDG_CONFIG_HOME/fzf/man"
     source "$XDG_CONFIG_HOME/fzf/shell/completion.zsh" 2> /dev/null
 fi
