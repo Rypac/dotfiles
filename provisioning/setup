@@ -88,6 +88,7 @@ function etc_install_configuration() {
     sudo mkdir -p /etc/X11/xorg.conf.d
     sudo mkdir -p /etc/udev/rules.d
     sudo cp "${DOTFILES_HOME}/config/nvidia/20-nvidia.conf" /etc/X11/xorg.conf.d/
+    sudo cp "${DOTFILES_HOME}/config/xfiles/10-keyboard.conf" /etc/X11/xorg.conf.d/
     sudo cp -r "${DOTFILES_HOME}/config/rules/." /etc/udev/rules.d/
     sudo cp -r "${XDG_CONFIG_HOME}/urxvt/." /usr/lib/urxvt/perl/
 }
