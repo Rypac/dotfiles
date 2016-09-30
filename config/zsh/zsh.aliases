@@ -5,6 +5,12 @@ if type docker > /dev/null 2>&1; then
     alias docker-purge='docker rmi -f $(docker images -aq)'
 fi
 
+# Stack
+if type stack > /dev/null 2>&1; then
+    alias stack-update='stack --resolver nightly setup --reinstall --install-ghc'
+    alias nstack='stack --resolver nightly'
+fi
+
 # Clipboard
 if type xclip > /dev/null 2>&1; then
     alias setclip='xclip -selection clipboard -i'
