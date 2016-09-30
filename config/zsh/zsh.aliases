@@ -5,11 +5,6 @@ if type docker > /dev/null 2>&1; then
     alias docker-purge='docker rmi -f $(docker images -aq)'
 fi
 
-# Python
-if type pip > /dev/null 2>&1; then
-    alias pip-upgrade="pip list --outdated --user | cut -d ' ' -f 1 | xargs -n 1 pip install --upgrade --user"
-fi
-
 # Clipboard
 if type xclip > /dev/null 2>&1; then
     alias setclip='xclip -selection clipboard -i'

@@ -5,6 +5,11 @@ if type rbenv > /dev/null 2>&1; then
     alias be='bundle exec'
 fi
 
+# Python
+if type pip3 > /dev/null 2>&1; then
+    alias pip-upgrade="pip3 list --outdated | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade"
+fi
+
 # GPG Agent
 if [ -f ~/.gnupg/gpg-agent-info ]; then
     source ~/.gnupg/gpg-agent-info
