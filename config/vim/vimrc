@@ -15,6 +15,7 @@ Plug 'scrooloose/syntastic'
 Plug 'Valloric/YouCompleteMe' | Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'rhysd/vim-clang-format'
 Plug 'rust-lang/rust.vim'
 Plug 'keith/swift.vim'
 Plug 'elmcast/elm-vim'
@@ -73,6 +74,32 @@ let g:airline_theme = 'base16'
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_confirm_extra_conf = 0
+
+" ClangFormat
+autocmd FileType c,cpp,objc ClangFormatAutoEnable
+let g:clang_format#detect_file_style = 1
+let g:clang_format#code_style = 'google'
+let g:clang_format#style_options = {
+    \ "BasedOnStyle": "Google",
+    \ "AccessModifierOffset": -2,
+    \ "AlignAfterOpenBracket": "AlwaysBreak",
+    \ "AlignOperands": "false",
+    \ "AllowShortFunctionsOnASingleLine": "Empty",
+    \ "AllowShortIfStatementsOnASingleLine": "false",
+    \ "AllowShortLoopsOnASingleLine": "false",
+    \ "BinPackArguments": "false",
+    \ "BinPackParameters": "false",
+    \ "BreakBeforeBraces": "Attach",
+    \ "BreakConstructorInitializersBeforeComma": "true",
+    \ "ColumnLimit": 0,
+    \ "ConstructorInitializerIndentWidth": 0,
+    \ "DerivePointerAlignment": "false",
+    \ "IndentWidth": 4,
+    \ "ObjCBlockIndentWidth": 4,
+    \ "ObjCSpaceAfterProperty": "true",
+    \ "ObjCSpaceBeforeProtocolList": "true",
+    \ "Standard": "Cpp11",
+    \ "TabWidth": 4}
 
 " -----------------------------------------------------
 " Options
