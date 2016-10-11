@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Add key
+sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 1C61A2656FB57B7E4DE0F4C1FC918B335044912E
+
+# Add source
+echo 'deb http://linux.dropbox.com/debian sid main' | sudo tee /etc/apt/sources.list.d/dropbox.list
+
+# Update and install
+sudo apt-get update
+sudo apt-get install dropbox

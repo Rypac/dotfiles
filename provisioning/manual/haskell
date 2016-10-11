@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Add key
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 575159689BEFB442
+
+# Add source
+echo 'deb http://download.fpcomplete.com/debian jessie main' | sudo tee /etc/apt/sources.list.d/fpco.list
+
+# Update and install
+sudo apt-get update
+sudo apt-get install stack
