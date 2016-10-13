@@ -56,6 +56,9 @@ function install_fonts() {
     tar xf codeface-fonts.tar.xz && rm codeface-fonts.tar.xz
     mv /tmp/fonts/* "${XDG_DATA_HOME}/fonts"
     rm -rf /tmp/fonts
+    curl -OL https://noto-website.storage.googleapis.com/pkgs/Noto-hinted.zip
+    unzip Noto-hinted.zip -d "${XDG_DATA_HOME}/fonts/noto"
+    rm Nono-hinted.zip
     fc-cache -frv
 }
 
