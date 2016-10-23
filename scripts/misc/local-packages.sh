@@ -18,7 +18,7 @@ function perform_action() {
             git pull --recurse-submodules
         elif [ $action = $install ]; then
             echo "Installing $package"
-            make && sudo make install
+            make clean && make && sudo make install
         elif [ $action = $uninstall ]; then
             echo "Uninstalling $package"
             sudo make uninstall && make clean
