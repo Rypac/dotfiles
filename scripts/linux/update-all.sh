@@ -19,6 +19,7 @@ stack --resolver nightly update
 stack --resolver nightly upgrade
 
 # npm
+n-update -y
 n stable
 npm update -g
 
