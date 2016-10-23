@@ -27,7 +27,6 @@ htop
 i3-wm
 i3lock
 imagemagick
-keepassx
 libpango1.0-0
 libxft2
 libxslt1.1
