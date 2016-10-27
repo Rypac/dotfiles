@@ -7,9 +7,10 @@ update-dotfiles
 sudo apt update
 sudo apt upgrade
 
-# non-apt installed packages
+# non-tracked packages
 local-packages update
 local-packages install
+i3-update
 
 # rust
 rustup update
