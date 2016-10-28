@@ -11,6 +11,7 @@ sudo apt upgrade
 local-packages update
 local-packages install
 i3-update
+"${XDG_CONFIG_HOME}/fzf/install" --bin
 
 # rust
 rustup update
