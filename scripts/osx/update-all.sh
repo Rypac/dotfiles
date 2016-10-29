@@ -12,6 +12,7 @@ brew upgrade
 
 # rust
 rustup update
+cargo install-update -a
 
 # stack
 stack --resolver nightly update

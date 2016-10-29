@@ -28,6 +28,7 @@ i3-wm
 i3lock
 imagemagick
 libpango1.0-0
+libssl-dev
 libxft2
 libxslt1.1
 lightdm
