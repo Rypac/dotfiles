@@ -28,3 +28,6 @@ pip3 list --outdated | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade
 
 # vim
 nvim +PlugUpgrade +PlugInstall +PlugUpdate +qall
+
+# atom
+apm upgrade --no-confirm
