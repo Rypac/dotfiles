@@ -4,13 +4,13 @@
 
 # Source default profile
 [ -f "$HOME/.profile" ] && source "$HOME/.profile"
-[ -f "$ZDOTDIR/zsh.aliases" ] && source "$ZDOTDIR/zsh.aliases"
-[ -f "$ZDOTDIR/zsh.completions" ] && source "$ZDOTDIR/zsh.completions"
-[ -f "$ZDOTDIR/zsh.colours" ] && source "$ZDOTDIR/zsh.colours"
-[ -f "$ZDOTDIR/zsh.env" ] && source "$ZDOTDIR/zsh.env"
-[ -f "$ZDOTDIR/zsh.keys" ] && source "$ZDOTDIR/zsh.keys"
-[ -f "$ZDOTDIR/zsh.opts" ] && source "$ZDOTDIR/zsh.opts"
-[ -f "$ZDOTDIR/zsh.prompt" ] && source "$ZDOTDIR/zsh.prompt"
+[ -f "$ZDOTDIR/aliases" ] && source "$ZDOTDIR/aliases"
+[ -f "$ZDOTDIR/completions" ] && source "$ZDOTDIR/completions"
+[ -f "$ZDOTDIR/colours" ] && source "$ZDOTDIR/colours"
+[ -f "$ZDOTDIR/env" ] && source "$ZDOTDIR/env"
+[ -f "$ZDOTDIR/keybindings" ] && source "$ZDOTDIR/keybindings"
+[ -f "$ZDOTDIR/opts" ] && source "$ZDOTDIR/opts"
+[ -f "$ZDOTDIR/prompt" ] && source "$ZDOTDIR/prompt"
 
 # History substring search
 if [ -d "$ZDOTDIR/zsh-history-substring-search" ]; then
