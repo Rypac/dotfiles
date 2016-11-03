@@ -10,6 +10,12 @@ if type pip3 > /dev/null 2>&1; then
     alias pip-upgrade="pip3 list --outdated | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade"
 fi
 
+# Elixir
+if [ -d "$XDG_DATA_HOME/asdf" ]; then
+    source "$XDG_DATA_HOME/asdf/asdf.sh"
+    source "$XDG_DATA_HOME/asdf/completions/asdf.bash"
+fi
+
 # GPG Agent
 if [ -f ~/.gnupg/gpg-agent-info ]; then
     source ~/.gnupg/gpg-agent-info
@@ -23,8 +29,12 @@ fi
 
 export BROWSER='open'
 
+# OpenSSL
+export OPENSSL_INCLUDE_DIR=/usr/local/opt/openssl/include
+export DEP_OPENSSL_INCLUDE=/usr/local/opt/openssl/include
+
 # Rust
-export RUST_SRC_PATH="$HOME/Developer/cloned/rust/rust-lang/src"
+export RUST_SRC_PATH="$RUSTUP_HOME/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
 
 # Android SDK/NDK
 export ANT_ROOT=/usr/local/Cellar/ant/1.9.7/bin
