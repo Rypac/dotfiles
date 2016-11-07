@@ -25,7 +25,6 @@
     ~/.config/zsh/prompt: config/zsh/prompt
     ~/.config/zsh/zsh-completions: libs/zsh-completions
     ~/.config/zsh/zsh-history-substring-search: libs/zsh-history-substring-search
-    ~/.gnupg/gpg-agent.conf: config/gnupg/gpg-agent.conf
     ~/.profile: config/shell/profile
     ~/.vim/vimrc: config/vim/vimrc
     ~/.zshenv: config/zsh/zshenv
