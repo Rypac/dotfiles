@@ -36,3 +36,4 @@ fi
 compton -b
 dropbox start -i &
 clipit &
+nm-applet &
