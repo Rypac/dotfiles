@@ -17,6 +17,7 @@ export SCREENRC="$XDG_CONFIG_HOME/screen/screenrc"
 export TIGRC_USER="$XDG_CONFIG_HOME/tig/tigrc"
 export WEECHAT_HOME="$XDG_CONFIG_HOME/weechat"
 export WINEPREFIX="$XDG_DATA_HOME/wine"
+export QT_QPA_PLATFORMTHEME="gtk2"
 
 # Set cache/runtime directories for XDG unfriendly programs
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
