@@ -16,6 +16,14 @@ instance=Master
 interval=once
 signal=10
 
+[battery]
+label= 
+interval=30
+
+[wifi]
+label= 
+interval=10
+
 [date]
 label= 
 command=date '+%d/%m/%Y'
