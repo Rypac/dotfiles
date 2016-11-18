@@ -16,6 +16,7 @@ cmus
 compton
 cowsay
 curl
+dunst
 feh
 firmware-linux
 firmware-linux-free
@@ -29,6 +30,7 @@ htop
 i3-wm
 i3lock
 imagemagick
+libnotify-bin
 libpango1.0-0
 libssl-dev
 libxft2
@@ -40,6 +42,7 @@ lxappearance
 make
 menu
 mpv
+neovim
 ntfs-3g
 pavucontrol
 pcmanfm
