@@ -36,6 +36,9 @@ function applist() {
     dpkg-query -f '${binary:Package}\n' -W | less
 }
 
+# Checkinstall
+alias makeinstall='sudo checkinstall --default --install=yes --nodoc --deldoc=yes --deldesc=yes --delspec=yes --backup=no'
+
 # Rust
 export RUST_SRC_PATH="$RUSTUP_HOME/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
 
