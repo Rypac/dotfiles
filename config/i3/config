@@ -31,9 +31,12 @@ bindsym $mod+Shift+Return exec --no-startup-id i3-sensible-terminal -geometry 80
 for_window [class="URxvt" instance="floating-terminal$"] floating toggle
 
 # volume control
-bindsym XF86AudioRaiseVolume exec --no-startup-id ~/scripts/volume/control.sh up && pkill -RTMIN+10 i3blocks
-bindsym XF86AudioLowerVolume exec --no-startup-id ~/scripts/volume/control.sh down && pkill -RTMIN+10 i3blocks
-bindsym XF86AudioMute exec --no-startup-id ~/scripts/volume/control.sh toggle && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/scripts/volume/control.sh up && \
+    pkill -RTMIN+10 i3blocks && ~/scripts/notifications/volume.sh
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/scripts/volume/control.sh down && \
+    pkill -RTMIN+10 i3blocks && ~/scripts/notifications/volume.sh
+bindsym XF86AudioMute exec --no-startup-id ~/scripts/volume/control.sh toggle && \
+    pkill -RTMIN+10 i3blocks && ~/scripts/notifications/volume.sh
 
 # brightness control
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
