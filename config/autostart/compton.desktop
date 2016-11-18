@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Compton
+Comment=Window Compositor
+Exec=compton -b
+Terminal=false
+Type=Application
+OnlyShowIn=i3;

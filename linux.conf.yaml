@@ -10,6 +10,7 @@
   - [git submodule update --remote --rebase, Updating submodules]
 
 - link:
+    ~/.config/autostart: config/autostart
     ~/.config/compton.conf: config/compton/compton.conf
     ~/.config/clipit: config/clipit
     ~/.config/display: config/display
