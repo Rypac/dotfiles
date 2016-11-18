@@ -3,6 +3,7 @@ alsa-tools
 alsa-utils
 apt-listbugs
 apt-listchanges
+arandr
 autoconf
 automake
 borgbackup
