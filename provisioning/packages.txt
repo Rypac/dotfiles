@@ -17,6 +17,7 @@ cmus
 compton
 cowsay
 curl
+dex
 dunst
 feh
 firmware-linux
