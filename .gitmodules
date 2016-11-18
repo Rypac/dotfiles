@@ -2,7 +2,6 @@
 	path = libs/dotbot
 	url = https://github.com/anishathalye/dotbot
 	branch = master
-	ignore = all
 [submodule "libs/enhancd"]
 	path = libs/enhancd
 	url = https://github.com/b4b4r07/enhancd
