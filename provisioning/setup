@@ -37,7 +37,10 @@ function install_github_repo() {
     if [ ! -d "$name" ]; then
         git clone "https://github.com/$repo" "$name"
     fi
-    (cd "$name" && git pull && make && sudo make install)
+    (
+        cd "$name" && git pull
+        make && sudo checkinstall --install=yes --nodoc --deldoc=yes --deldesc=yes --delspec=yes --backup=no
+    )
 }
 
 function install_git_packages() {
