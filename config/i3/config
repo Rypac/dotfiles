@@ -400,8 +400,8 @@ mode "$mode_mouse" {
 }
 
 # gaps
-set $inner_gaps 30
-set $outer_gaps 20
+set $inner_gaps 20
+set $outer_gaps 0
 for_window [class="^.*"] border none
 gaps inner $inner_gaps
 gaps outer $outer_gaps
