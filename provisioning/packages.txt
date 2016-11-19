@@ -25,6 +25,7 @@ firmware-linux
 firmware-linux-free
 firmware-linux-nonfree
 fonts-font-awesome
+fonts-noto
 fonts-symbola
 fortune
 g++
