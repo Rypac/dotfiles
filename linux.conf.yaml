@@ -21,9 +21,11 @@
     ~/.config/i3: config/i3
     ~/.config/i3blocks: config/i3blocks
     ~/.config/npm: config/npm
+    ~/.config/openbox: config/openbox
     ~/.config/ranger: config/ranger
     ~/.config/rofi: config/rofi
     ~/.config/sublime-text-3/Packages/User: config/sublime
+    ~/.config/tint2: config/tint2
     ~/.config/user-dirs.dirs: config/xdg/user-dirs.dirs
     ~/.config/user-dirs.locale: config/xdg/user-dirs.locale
     ~/.config/urxvt: config/urxvt
