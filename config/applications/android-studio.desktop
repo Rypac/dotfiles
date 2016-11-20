@@ -3,9 +3,9 @@
 Version=1.0
 Type=Application
 Name=Android Studio
-Comment=The official IDE for Android
 GenericName=IDE
-Exec=~/bin/android-studio
+Comment=The official IDE for Android
+Exec=android-studio
 Terminal=false
 StartupNotify=true
 Categories=Utility;Development;

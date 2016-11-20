@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=ranger
+GenericName=File Manager
+Comment=Terminal based file manager
+Exec=ranger
+Terminal=true
+StartupNotify=true
+Categories=Utilites;Files;Terminal;

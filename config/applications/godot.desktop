@@ -3,9 +3,9 @@
 Version=1.0
 Type=Application
 Name=Godot
-Comment=The FOSS game engine
 GenericName=Game Engine
-Exec=~/bin/godot
+Comment=The FOSS game engine
+Exec=godot
 Terminal=false
 StartupNotify=true
 Categories=Utility;Development;

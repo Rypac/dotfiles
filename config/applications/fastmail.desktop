@@ -3,9 +3,9 @@
 Version=1.0
 Type=Application
 Name=FastMail
+GenericName=Mail Client
 Comment=FastMail: Professional Email Hosting
-GenericName=FastMail Mail Client
-Exec=~/bin/chrome-app FastMail https://www.fastmail.com
+Exec=chrome-app FastMail https://www.fastmail.com
 Terminal=false
 StartupNotify=true
 Categories=Social;Mail;Web;
