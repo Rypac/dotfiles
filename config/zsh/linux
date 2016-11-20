@@ -28,6 +28,12 @@ alias apppurge='sudo apt purge --autoremove'
 alias appsearch='sudo apt search'
 alias appclean='sudo apt autoremove'
 
+# Chrome apps
+alias fastmail='chrome-app FastMail https://www.fastmail.com'
+alias inbox='chrome-app Inbox https://inbox.google.com'
+alias messenger='chrome-app Messenger https://messenger.com'
+alias whatsapp='chrome-app WhatsApp https://web.whatsapp.com'
+
 function appcleanall() {
     sudo dpkg -P $(dpkg -l | awk '/^rc/ { print($2) }')
 }
