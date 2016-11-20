@@ -34,6 +34,8 @@ htop
 i3-wm
 i3lock
 imagemagick
+kpcli
+keepassx
 libnotify-bin
 libpango1.0-0
 libssl-dev

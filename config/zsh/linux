@@ -10,6 +10,13 @@ fi
 # Aliases
 alias f='(pcmanfm . > /dev/null 2>&1 &)'
 
+# kpcli
+function keepasscli() {
+    keepass_home="$HOME/documents/keepass"
+    kpcli --kdb "$keepass_home/keepass.kdbx" --key "$keepass_home/keepass.key" --histfile /dev/null --readonly
+    unset keepass_home
+}
+
 # Modifying permissions
 alias chmod='chmod --preserve-root -v'
 alias chown='chown --preserve-root -v'
