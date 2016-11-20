@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Messenger
+Comment=Facebook Messenger
+GenericName=Facebook Messenger
+Exec=~/bin/chrome-app Messenger https://messenger.com
+Terminal=false
+StartupNotify=true
+Categories=Social;Web;

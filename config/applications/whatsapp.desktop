@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=WhatsApp
+Comment=WhatsApp Messenger
+GenericName=WhatsApp Messenger
+Exec=~/bin/chrome-app WhatsApp https://web.whatsapp.com
+Terminal=false
+StartupNotify=true
+Categories=Social;Web;
