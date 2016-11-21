@@ -108,16 +108,16 @@ bindsym $mod+Shift+a focus parent
 bindsym $mod+x [urgent=latest] focus
 
 # setup workspaces
-set $ws1 1 
-set $ws2 2 
-set $ws3 3 
-set $ws4 4 
-set $ws5 5 
-set $ws6 6 
-set $ws7 7 
-set $ws8 8 
-set $ws9 9 
-set $ws0 10 
+set $ws1 1   term
+set $ws2 2   www
+set $ws3 3   code
+set $ws4 4   music
+set $ws5 5   msg
+set $ws6 6   files
+set $ws7 7   pics
+set $ws8 8   games
+set $ws9 9   linux
+set $ws10 10   tmp
 
 # global floating mode
 # for_window [class="^.*"] floating toggle
