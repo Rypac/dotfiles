@@ -11,27 +11,22 @@ interval=persist
 color=#9ac1d9
 
 [volume]
-label= 
+label=  
 instance=Master
 interval=once
 signal=10
 
 [battery]
-label= 
+label=  
 interval=30
 
 [wifi]
-label= 
+label=  
 interval=10
 
-[date]
-label= 
-command=date '+%d/%m/%Y'
-interval=360
-
 [time]
-label= 
-command=date '+%H:%M:%S'
+label=  
+command=date '+%A %d %b, %-I:%M%P'
 interval=5
 
 [exit]
