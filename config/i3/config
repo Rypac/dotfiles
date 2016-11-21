@@ -260,12 +260,12 @@ set $mode_system System: [l] lock, [o] logout, [s] sleep, [h] hibernate, [r] reb
 bindsym $mod+Escape mode "$mode_system"
 
 mode "$mode_system" {
-    bindsym l exec --no-startup-id ~/scripts/i3/exit.sh lock; mode "$mode_default"
-    bindsym o exec --no-startup-id ~/scripts/i3/exit.sh logout; mode "$mode_default"
-    bindsym s exec --no-startup-id ~/scripts/i3/exit.sh sleep; mode "$mode_default"
-    bindsym h exec --no-startup-id ~/scripts/i3/exit.sh hibernate; mode "$mode_default"
-    bindsym r exec --no-startup-id ~/scripts/i3/exit.sh reboot; mode "$mode_default"
-    bindsym p exec --no-startup-id ~/scripts/i3/exit.sh shutdown; mode "$mode_default"
+    bindsym l exec --no-startup-id i3-exit lock; mode "$mode_default"
+    bindsym o exec --no-startup-id i3-exit logout; mode "$mode_default"
+    bindsym s exec --no-startup-id i3-exit sleep; mode "$mode_default"
+    bindsym h exec --no-startup-id i3-exit hibernate; mode "$mode_default"
+    bindsym r exec --no-startup-id i3-exit reboot; mode "$mode_default"
+    bindsym p exec --no-startup-id i3-exit shutdown; mode "$mode_default"
 
     bindsym Return mode "$mode_default"
     bindsym Escape mode "$mode_default"
@@ -291,7 +291,7 @@ mode "$mode_scratchpad" {
 }
 
 # volume mode
-set $mode_volume Volume: [k] +10%, [Shift+k] +1%, [j] -10%, [Shift+j] -1%, [m] mute
+set $mode_volume Volume: [k] +10%, [Shift+k] +1%, [j] -10%, [Shift+j] -1%, [m] mute, [r] reset
 bindsym $mod+Shift+o mode "$mode_volume"
 
 mode "$mode_volume" {
