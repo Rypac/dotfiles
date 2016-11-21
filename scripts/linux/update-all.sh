@@ -5,7 +5,7 @@ update-dotfiles
 
 # apt packages
 sudo apt update
-sudo apt upgrade
+sudo apt upgrade -y
 
 # non-tracked packages
 local-packages update
