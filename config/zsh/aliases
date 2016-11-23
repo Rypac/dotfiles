@@ -29,8 +29,6 @@ if type nvim > /dev/null 2>&1; then
 fi
 
 # Common tool aliases
-alias j='fasd_cd -d'
-alias jj='fasd_cd -d -i'
 alias less='less -FSRXc'
 alias qfind='find . -name'
 

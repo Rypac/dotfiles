@@ -28,7 +28,6 @@
     ~/.profile: config/shell/profile
     ~/.vim/vimrc: config/vim/vimrc
     ~/.zshenv: config/zsh/zshenv
-    ~/bin/fasd: libs/fasd/fasd
     ~/scripts/enhancd.sh: libs/enhancd/init.sh
     ~/Library/Application Support/Sublime Text 3/Packages/User: config/sublime
 

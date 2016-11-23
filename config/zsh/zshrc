@@ -21,17 +21,6 @@ if [ -d "$ZDOTDIR/zsh-history-substring-search" ]; then
     bindkey -M vicmd 'j' history-substring-search-down
 fi
 
-# fasd
-if type fasd > /dev/null 2>&1; then
-    export _FASD_DATA="$XDG_DATA_HOME/fasd"
-    fasd_cache="$XDG_CACHE_HOME/fasd-init"
-    if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-      fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install >| "$fasd_cache"
-    fi
-    source "$fasd_cache"
-    unset fasd_cache
-fi
-
 # Fuzzy command line search
 if [ -d "$XDG_CONFIG_HOME/fzf" ]; then
     export PATH="$XDG_CONFIG_HOME/fzf/bin:$PATH"
