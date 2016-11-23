@@ -49,12 +49,11 @@
     ~/.xsessionrc: config/xfiles/xprofile
     ~/.Xresources: config/xfiles/Xresources
     ~/.zshenv: config/zsh/zshenv
-    ~/bin/local-packages: scripts/misc/local-packages.sh
     ~/scripts/enhancd.sh: libs/enhancd/init.sh
 
 - shell:
   - [mkdir -p ~/.config ~/.local/share/applications ~/bin ~/desktop ~/development ~/documents ~/downloads ~/music ~/packages ~/pictures ~/pictures/screenshots ~/scripts ~/videos, Creating directories]
-  - [scripts/misc/link-scripts.sh "$PWD/scripts/utilities" ~/bin, Linking utility executables]
-  - [scripts/misc/link-scripts.sh "$PWD/scripts/linux" ~/bin, Linking platform executables]
+  - [scripts/utilities/link-scripts.sh "$PWD/scripts/utilities" ~/bin, Linking utility executables]
+  - [scripts/utilities/link-scripts.sh "$PWD/scripts/linux" ~/bin, Linking platform executables]
   - [ln -fs $PWD/scripts/* ~/scripts/, Linking scripts]
   - [ln -fs $PWD/config/applications/* ~/.local/share/applications, Linking applications]

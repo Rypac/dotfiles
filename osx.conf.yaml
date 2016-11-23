@@ -31,6 +31,6 @@
 
 - shell:
   - [mkdir -p ~/bin ~/scripts, Creating directories]
-  - [scripts/misc/link-scripts.sh "$PWD/scripts/utilities" ~/bin, Linking utility executables]
-  - [scripts/misc/link-scripts.sh "$PWD/scripts/osx" ~/bin, Linking platform executables]
+  - [scripts/utilities/link-scripts.sh "$PWD/scripts/utilities" ~/bin, Linking utility executables]
+  - [scripts/utilities/link-scripts.sh "$PWD/scripts/osx" ~/bin, Linking platform executables]
   - [ln -fs $PWD/scripts/* ~/scripts/, Linking scripts]
