@@ -11,7 +11,7 @@ function short_pwd {
     fi
 }
 
-function clean_status {
+function status {
     local error_colour="%F{red}"
     local colour_1="%(0?.%F{red}.$error_colour)"
     local colour_2="%(0?.%F{yellow}.$error_colour)"
@@ -20,45 +20,13 @@ function clean_status {
     print "${colour_1}❯${colour_2}❯${colour_3}❯%f"
 }
 
-function clean_path {
-    local path_color="%F{blue}"
-    local rsc="%f"
-    local sep="/"
-
-    print "$path_color$(sed s_/_${sep}_g <<< $(short_pwd))$rsc"
+function path {
+    print "%F{blue}$(sed s_/_/_g <<< $(short_pwd))%f"
 }
 
-function clean_vim_status {
-    local vicmd_status="%F{yellow} [% NORMAL]% %f"
-    [[ "$KEYMAP" == 'vicmd' ]] && print "$vicmd_status"
-}
-
-function git_branch_name {
-    local branch_name="$(command git rev-parse --abbrev-ref HEAD 2> /dev/null)"
-    [[ -n $branch_name ]] && print "$branch_name"
-}
-
-function git_repo_status {
-    local rs="$(command git status --porcelain -b)"
-
-    if $(print "$rs" | grep -v '^##' &> /dev/null); then # is dirty
-        print "%F{red}"
-    elif $(print "$rs" | grep '^## .*diverged' &> /dev/null); then # has diverged
-        print "%F{red}"
-    elif $(print "$rs" | grep '^## .*behind' &> /dev/null); then # is behind
-        print "%F{yellow}"
-    elif $(print "$rs" | grep '^## .*ahead' &> /dev/null); then # is ahead
-        print "%f"
-    else # is clean
-        print "%F{green}"
-    fi
-}
-
-function clean_git {
-    local bname=$(git_branch_name)
-    if [[ -n ${bname} ]]; then
-        local info="$(git_repo_status)${bname}%f"
-        print "$info"
+function vim_status {
+    if [[ "$KEYMAP" == 'vicmd' ]]; then
+        print "%F{yellow} [% NORMAL]% %f"
     fi
 }
 
@@ -67,22 +35,17 @@ function zle-line-init zle-line-finish zle-keymap-select {
     zle -R
 }
 
-function prompt_clean_precmd {
+function prompt_precmd {
     zle -N zle-line-init
     zle -N zle-keymap-select
     zle -N zle-line-finish
 
-    PROMPT='$(clean_path) $(clean_status) '
-    RPROMPT='$(clean_vim_status)'
-}
-
-function prompt_clean_setup {
-    autoload -Uz add-zsh-hook
-    add-zsh-hook precmd prompt_clean_precmd
-    prompt_opts=(cr subst percent)
+    PROMPT='$(path) $(status) '
+    RPROMPT='$(vim_status)'
 }
 
 if [[ ! ${TERM} == (linux|*bsd*|dumb) ]]; then
     autoload -Uz promptinit && promptinit
-    prompt_clean_setup
+    autoload -Uz add-zsh-hook && add-zsh-hook precmd prompt_precmd
+    prompt_opts=(cr subst percent)
 fi

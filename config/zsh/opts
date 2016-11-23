@@ -18,7 +18,7 @@ unsetopt HUP                # don't send hang-up signal when exiting the shell
 unsetopt CHECK_JOBS         # don't report status of background jobs when exiting
 
 # History
-HISTFILE="${ZDOTDIR:-${HOME}}/.zhistory"
+HISTFILE="$ZDOTDIR/.zhistory"
 HISTSIZE=10000
 SAVEHIST=10000
 
