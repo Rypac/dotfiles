@@ -90,10 +90,9 @@ function etc_install_configuration() {
     sudo update-ca-certificates --fresh
     sudo mkdir -p /etc/X11/xorg.conf.d
     sudo mkdir -p /etc/udev/rules.d
-    sudo cp "${DOTFILES_HOME}/config/nvidia/20-nvidia.conf" /etc/X11/xorg.conf.d/
-    sudo cp "${DOTFILES_HOME}/config/xfiles/10-keyboard.conf" /etc/X11/xorg.conf.d/
+    sudo cp -r "${DOTFILES_HOME}/config/xorg/." /etc/X11/xorg.conf.d/
     sudo cp -r "${DOTFILES_HOME}/config/rules/." /etc/udev/rules.d/
-    sudo cp -r "${XDG_CONFIG_HOME}/urxvt/." /usr/lib/urxvt/perl/
+    sudo cp -r "${DOTFILES_HOME}/config/urxvt/." /usr/lib/urxvt/perl/
 }
 
 function no_confirmation() {

@@ -28,7 +28,6 @@
     ~/.config/tint2: config/tint2
     ~/.config/user-dirs.dirs: config/xdg/user-dirs.dirs
     ~/.config/user-dirs.locale: config/xdg/user-dirs.locale
-    ~/.config/urxvt: config/urxvt
     ~/.config/zsh/.zshrc: config/zsh/zshrc
     ~/.config/zsh/aliases: config/zsh/aliases
     ~/.config/zsh/completions: config/zsh/completions
