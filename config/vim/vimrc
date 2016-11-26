@@ -20,6 +20,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'keith/swift.vim'
 Plug 'elmcast/elm-vim'
 Plug 'neovimhaskell/haskell-vim'
+Plug 'raichoo/purescript-vim'
 Plug 'elixir-lang/vim-elixir'
 Plug 'pangloss/vim-javascript' | Plug 'mxw/vim-jsx'
 Plug 'chriskempson/base16-vim'
@@ -55,6 +56,13 @@ let g:haskell_indent_if = 4
 let g:haskell_indent_in = 4
 let g:haskell_indent_let = 4
 let g:haskell_indent_do = 4
+
+" Purescript
+let g:purescript_indent_if = 2
+let g:purescript_indent_case = 2
+let g:purescript_indent_let = 2
+let g:purescript_indent_where = 2
+let g:purescript_indent_do = 2
 
 " Elm
 let g:elm_detailed_complete = 1
