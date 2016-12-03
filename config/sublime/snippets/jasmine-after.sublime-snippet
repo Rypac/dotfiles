@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[
+after${1:All}(() => {
+	$2
+});
+]]></content>
+	<tabTrigger>after</tabTrigger>
+	<scope>source.js</scope>
+	<description>Jasmine - after block</description>
+</snippet>

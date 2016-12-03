@@ -1,11 +1,13 @@
 # Ignore everything by default
-*
+/*
 
 # Only include settings and keymaps
 !.gitignore
 !*.sublime-settings
 !*.sublime-keymap
 !*.py
+!/snippets/
+!/plugins/
 
 # Don't include platform/installation specific settings
 ClangAutoComplete.sublime-settings
