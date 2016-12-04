@@ -37,7 +37,7 @@ export MIX_HOME="$XDG_DATA_HOME/mix"
 export GRADLE_USER_HOME="$XDG_CACHE_HOME/gradle"
 
 # Defaults
-export LC_ALL='C'
+export LC_COLLATE='C'
 export EDITOR='nvim'
 export VISUAL='subl'
 export PAGER='less'
