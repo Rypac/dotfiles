@@ -10,12 +10,6 @@ command=xtitle -s
 interval=persist
 color=#9ac1d9
 
-[volume]
-label=  
-instance=Master
-interval=once
-signal=10
-
 [battery]
 label=  
 interval=30

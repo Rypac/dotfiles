@@ -54,6 +54,7 @@ pavucontrol
 pcmanfm
 pinentry-curses
 pkg-config
+pnmixer
 pulseaudio
 pulseaudio-utils
 ranger

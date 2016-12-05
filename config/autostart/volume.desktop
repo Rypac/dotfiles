@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=PNMixer
+Comment=Simple system tray volume mixer
+Exec=pnmixer
+Terminal=false
+Type=Application
+OnlyShowIn=GNOME;XFCE;LXDE;Unity;i3;
+X-GNOME-Autostart-enabled=true
