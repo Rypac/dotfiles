@@ -24,6 +24,21 @@ function path {
     print "%F{blue}$(sed s_/_/_g <<< $(short_pwd))%f"
 }
 
+function simple_status {
+    print "%(0?.%F{green}.%F{red})$%f"
+}
+
+function simple_path {
+    local current_dir="${1:-${PWD}}"
+    current_dir="${current_dir/#${HOME}/~}"
+
+    if [[ ${current_dir} != '~' ]]; then
+        print "%F{blue}$(basename $current_dir)%f"
+    else
+        print "%F{blue}~%f"
+    fi
+}
+
 function vim_status {
     if [[ "$KEYMAP" == 'vicmd' ]]; then
         print "%F{yellow} [% NORMAL]% %f"
@@ -40,7 +55,7 @@ function prompt_precmd {
     zle -N zle-keymap-select
     zle -N zle-line-finish
 
-    PROMPT='$(path) $(status) '
+    PROMPT='$(simple_path) $(simple_status) '
     RPROMPT='$(vim_status)'
 }
 
