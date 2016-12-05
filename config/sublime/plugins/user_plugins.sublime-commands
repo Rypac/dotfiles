@@ -1,0 +1,4 @@
+[
+    { "caption": "PrettifyJson: Format JSON", "command": "prettify_json" },
+    { "caption": "ToggleVintageous: Toggle Vim Keybindings", "command": "toggle_vintageous" }
+]

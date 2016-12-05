@@ -28,6 +28,7 @@
     ~/.zshenv: config/zsh/zshenv
     ~/scripts/enhancd.sh: libs/enhancd/init.sh
     ~/Library/Application Support/Sublime Text 3/Packages/User: config/sublime
+    ~/Library/Application Support/Sublime Text 3/Packages/UserPlugins: config/sublime/plugins
 
 - shell:
   - [mkdir -p ~/bin ~/scripts, Creating directories]
