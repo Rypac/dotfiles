@@ -1,0 +1,36 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Anaconda",
+		"Babel",
+		"Base16 Color Schemes",
+		"Clang Format",
+		"Dockerfile Syntax Highlighting",
+		"EasyClangComplete",
+		"EditorConfig",
+		"ESLint",
+		"ESLint-Formatter",
+		"FileBrowser",
+		"Git",
+		"GitGutter",
+		"Markdown Preview",
+		"MarkdownEditing",
+		"Material Theme",
+		"Origami",
+		"Package Control",
+		"PackageResourceViewer",
+		"ProjectManager",
+		"Rust Enhanced",
+		"RustAutoComplete",
+		"RustFormat",
+		"SublimeHaskell",
+		"SublimeLinter",
+		"SublimeREPL",
+		"Sublimerge 3",
+		"Vintageous"
+	]
+}

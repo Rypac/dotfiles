@@ -10,8 +10,6 @@
 !/plugins/
 
 # Don't include platform/installation specific settings
-ClangAutoComplete.sublime-settings
 EasyClangComplete.sublime-settings
-Package\ Control.sublime-settings
 RustAutoComplete.sublime-settings
 Terminal.sublime-settings
