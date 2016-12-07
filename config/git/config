@@ -42,6 +42,10 @@
     f = !git ls-files | grep -i
     grep = grep -Ii
 
+    # branches
+    delete = branch --delete
+    remote-delete = push origin --delete
+
     # commits
     cs = commit -S
     cso = commit -s
