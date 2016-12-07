@@ -1,4 +1,5 @@
 {
     "complete_all_parameters": true,
-    "hide_snippets_on_completion": true
+    "hide_snippets_on_completion": true,
+    "mypy": true
 }

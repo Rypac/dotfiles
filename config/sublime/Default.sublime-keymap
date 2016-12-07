@@ -58,6 +58,8 @@
     { "keys": ["ctrl+t", "ctrl+w"], "command": "close" },
     { "keys": ["ctrl+t", "ctrl+h"], "command": "prev_view" },
     { "keys": ["ctrl+t", "ctrl+l"], "command": "next_view" },
+    { "keys": ["ctrl+tab"], "command": "next_view" },
+    { "keys": ["ctrl+shift+tab"], "command": "prev_view" },
 
     // --------------------
     // VIM layers bindings (leader mapped to space)

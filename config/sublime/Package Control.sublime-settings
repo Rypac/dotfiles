@@ -9,8 +9,9 @@
 		"Babel",
 		"Base16 Color Schemes",
 		"Clang Format",
+		"CMake",
+		"Cucumber",
 		"Dockerfile Syntax Highlighting",
-		"EasyClangComplete",
 		"EditorConfig",
 		"ESLint",
 		"ESLint-Formatter",
@@ -28,8 +29,8 @@
 		"RustFormat",
 		"SublimeHaskell",
 		"SublimeLinter",
-		"SublimeREPL",
 		"Sublimerge 3",
+		"Terraform",
 		"Vintageous"
 	]
 }
