@@ -7,15 +7,14 @@ if type pip3 > /dev/null 2>&1; then
     alias pip-upgrade="pip3 list --outdated --user | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade --user"
 fi
 
+# Clipboard
+if type xclip > /dev/null 2>&1; then
+    alias setclip='xclip -selection clipboard -i'
+    alias getclip='xclip -selection clipboard -o'
+fi
+
 # Aliases
 alias f='(pcmanfm . > /dev/null 2>&1 &)'
-
-# kpcli
-function keepasscli() {
-    keepass_home="$HOME/documents/keepass"
-    kpcli --kdb "$keepass_home/keepass.kdbx" --key "$keepass_home/keepass.key" --histfile /dev/null --readonly
-    unset keepass_home
-}
 
 # Modifying permissions
 alias chmod='chmod --preserve-root -v'

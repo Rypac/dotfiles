@@ -1,34 +1,10 @@
-# zsh prompt setup
-
-function short_pwd {
-    local current_dir="${1:-${PWD}}"
-    current_dir="${current_dir/#${HOME}/~}"
-
-    if [[ ${current_dir} != '~' ]]; then
-        print "${${${${(@j:/:M)${(@s:/:)current_dir}##.#?}:h}%/}//\%/%%}/${${current_dir:t}//\%/%%}"
-    else
-        print '~'
-    fi
-}
+# zsh prompt
 
 function status {
-    local error_colour="%F{red}"
-    local colour_1="%(0?.%F{red}.$error_colour)"
-    local colour_2="%(0?.%F{yellow}.$error_colour)"
-    local colour_3="%(0?.%F{green}.$error_colour)"
-
-    print "${colour_1}❯${colour_2}❯${colour_3}❯%f"
-}
-
-function path {
-    print "%F{blue}$(sed s_/_/_g <<< $(short_pwd))%f"
-}
-
-function simple_status {
     print "%(0?.%F{green}.%F{red})$%f"
 }
 
-function simple_path {
+function path {
     local current_dir="${1:-${PWD}}"
     current_dir="${current_dir/#${HOME}/~}"
 
@@ -39,7 +15,7 @@ function simple_path {
     fi
 }
 
-function vim_status {
+function vim {
     if [[ "$KEYMAP" == 'vicmd' ]]; then
         print "%F{yellow} [% NORMAL]% %f"
     fi
@@ -55,8 +31,8 @@ function prompt_precmd {
     zle -N zle-keymap-select
     zle -N zle-line-finish
 
-    PROMPT='$(simple_path) $(simple_status) '
-    RPROMPT='$(vim_status)'
+    PROMPT='$(path) $(status) '
+    RPROMPT='$(vim)'
 }
 
 if [[ ! ${TERM} == (linux|*bsd*|dumb) ]]; then

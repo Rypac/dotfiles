@@ -1,22 +1,3 @@
-# Docker
-if type docker > /dev/null 2>&1; then
-    alias docker-stop='docker stop $(docker ps -aq)'
-    alias docker-clean='docker rm -f $(docker ps -aq)'
-    alias docker-purge='docker rmi -f $(docker images -aq)'
-fi
-
-# Stack
-if type stack > /dev/null 2>&1; then
-    alias stack-update='stack --resolver nightly setup --reinstall --install-ghc'
-    alias nstack='stack --resolver nightly'
-fi
-
-# Clipboard
-if type xclip > /dev/null 2>&1; then
-    alias setclip='xclip -selection clipboard -i'
-    alias getclip='xclip -selection clipboard -o'
-fi
-
 # GPG
 if type gpg2 > /dev/null 2>&1; then
     alias gpg='gpg2'
@@ -27,6 +8,15 @@ if type nvim > /dev/null 2>&1; then
     alias vi='nvim'
     alias vim='nvim'
 fi
+
+# Docker
+alias docker-stop='docker stop $(docker ps -aq)'
+alias docker-clean='docker rm -f $(docker ps -aq)'
+alias docker-purge='docker rmi -f $(docker images -aq)'
+
+# Stack
+alias stack-update='stack --resolver nightly setup --reinstall --install-ghc'
+alias nstack='stack --resolver nightly'
 
 # Common tool aliases
 alias less='less -FSRXc'
