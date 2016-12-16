@@ -19,6 +19,7 @@ compton
 cowsay
 curl
 dex
+docker-engine
 dunst
 feh
 firmware-linux
@@ -31,8 +32,7 @@ fortune
 g++
 git
 htop
-i3-wm
-i3lock
+i3
 imagemagick
 kpcli
 keepassx
@@ -54,7 +54,7 @@ pavucontrol
 pcmanfm
 pinentry-curses
 pkg-config
-pnmixer
+pasystray
 pulseaudio
 pulseaudio-utils
 ranger
