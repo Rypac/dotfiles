@@ -1,8 +1,3 @@
-if [ -d "$DOTFILES_HOME/libs/zsh-completions" ]; then
-    source "$DOTFILES_HOME/libs/zsh-completions/zsh-completions.plugin.zsh"
-    autoload -Uz compinit && compinit
-fi
-
 # group matches and describe.
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*:matches' group 'yes'
@@ -27,7 +22,7 @@ zstyle ':completion:*' squeeze-slashes true
 
 # enable caching
 zstyle ':completion::complete:*' use-cache on
-zstyle ':completion::complete:*' cache-path "${ZDOTDIR:-${HOME}}/.zcompcache"
+zstyle ':completion::complete:*' cache-path "${ZDOTDIR:-$HOME}/.zcompcache"
 
 # ignore useless commands and functions
 zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec)|prompt_*)'

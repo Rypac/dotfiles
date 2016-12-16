@@ -29,10 +29,8 @@
     ~/.config/user-dirs.dirs: config/xdg/user-dirs.dirs
     ~/.config/user-dirs.locale: config/xdg/user-dirs.locale
     ~/.config/zsh/.zshrc: config/zsh/zshrc
-    ~/.config/zsh/aliases: config/zsh/aliases
     ~/.config/zsh/completions: config/zsh/completions
     ~/.config/zsh/colours: config/zsh/colours
-    ~/.config/zsh/env: config/zsh/linux
     ~/.config/zsh/keybindings: config/zsh/keybindings
     ~/.config/zsh/opts: config/zsh/opts
     ~/.config/zsh/prompt: config/zsh/prompt

@@ -1,10 +1,18 @@
-[ -f "$ZDOTDIR/aliases" ] && source "$ZDOTDIR/aliases"
+[ -f "$DOTFILES_HOME/config/shell/aliases" ] && source "$DOTFILES_HOME/config/shell/aliases"
+[ -f "$DOTFILES_HOME/config/shell/aliases.linux" ] && source "$DOTFILES_HOME/config/shell/aliases.linux"
+[ -f "$DOTFILES_HOME/config/shell/aliases.macos" ] && source "$DOTFILES_HOME/config/shell/aliases.macos"
+
 [ -f "$ZDOTDIR/completions" ] && source "$ZDOTDIR/completions"
 [ -f "$ZDOTDIR/colours" ] && source "$ZDOTDIR/colours"
-[ -f "$ZDOTDIR/env" ] && source "$ZDOTDIR/env"
 [ -f "$ZDOTDIR/keybindings" ] && source "$ZDOTDIR/keybindings"
 [ -f "$ZDOTDIR/opts" ] && source "$ZDOTDIR/opts"
 [ -f "$ZDOTDIR/prompt" ] && source "$ZDOTDIR/prompt"
+
+# Completions
+if [ -d "$DOTFILES_HOME/libs/zsh-completions" ]; then
+    source "$DOTFILES_HOME/libs/zsh-completions/zsh-completions.plugin.zsh"
+    autoload -Uz compinit && compinit
+fi
 
 # History substring search
 if [ -d "$DOTFILES_HOME/libs/zsh-history-substring-search" ]; then

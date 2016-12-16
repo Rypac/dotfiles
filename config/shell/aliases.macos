@@ -1,3 +1,5 @@
+[ "$(uname)" = "Darwin" ] || return
+
 # Ruby
 if type rbenv > /dev/null 2>&1; then
     eval "$(rbenv init -)"
@@ -6,9 +8,7 @@ if type rbenv > /dev/null 2>&1; then
 fi
 
 # Python
-if type pip3 > /dev/null 2>&1; then
-    alias pip-upgrade="pip3 list --outdated | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade"
-fi
+alias pip-upgrade="pip3 list --outdated | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade"
 
 # Elixir
 if [ -d "$XDG_DATA_HOME/asdf" ]; then

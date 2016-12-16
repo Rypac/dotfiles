@@ -1,13 +1,11 @@
-# GPG
-if type gpg2 > /dev/null 2>&1; then
-    alias gpg='gpg2'
-fi
-
 # Neovim
 if type nvim > /dev/null 2>&1; then
     alias vi='nvim'
     alias vim='nvim'
 fi
+
+# GPG
+alias gpg='gpg2'
 
 # Docker
 alias docker-stop='docker stop $(docker ps -aq)'

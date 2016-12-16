@@ -1,17 +1,15 @@
+[ "$(uname)" = "Linux" ] || return
+
 # GPG
 export GPG_TTY=$(tty)
 gpg-connect-agent updatestartuptty /bye >/dev/null
 
 # Python
-if type pip3 > /dev/null 2>&1; then
-    alias pip-upgrade="pip3 list --outdated --user | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade --user"
-fi
+alias pip-upgrade="pip3 list --outdated --user | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade --user"
 
 # Clipboard
-if type xclip > /dev/null 2>&1; then
-    alias setclip='xclip -selection clipboard -i'
-    alias getclip='xclip -selection clipboard -o'
-fi
+alias setclip='xclip -selection clipboard -i'
+alias getclip='xclip -selection clipboard -o'
 
 # Aliases
 alias f='(pcmanfm . > /dev/null 2>&1 &)'

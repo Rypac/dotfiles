@@ -6,7 +6,7 @@ base_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 distro="$(source "${base_dir}/scripts/utilities/distro.sh")"
 
 if [ "$distro" = "Darwin" ]; then
-    environment="osx"
+    environment="macos"
 else
     environment="linux"
 fi
