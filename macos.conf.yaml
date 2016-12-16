@@ -1,13 +1,9 @@
 - defaults:
     link:
-        create: true
-        relink: true
+      create: true
+      relink: true
 
 - clean: ['~', '~/.config', '~/bin', '~/scripts']
-
-- shell:
-  - [git submodule update --init --recursive, Installing submodules]
-  - [git submodule update --remote --rebase, Updating submodules]
 
 - link:
     ~/.config/git: config/git
@@ -25,6 +21,8 @@
     ~/Library/Application Support/Sublime Text 3/Packages/UserPlugins: config/sublime/plugins
 
 - shell:
+  - [git submodule update --init --recursive, Installing submodules]
+  - [git submodule update --remote --rebase, Updating submodules]
   - [mkdir -p ~/bin ~/scripts, Creating directories]
   - [scripts/utilities/link-scripts.sh "$PWD/scripts/utilities" ~/bin, Linking utility executables]
   - [scripts/utilities/link-scripts.sh "$PWD/scripts/osx" ~/bin, Linking platform executables]
