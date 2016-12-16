@@ -10,7 +10,6 @@
   - [git submodule update --remote --rebase, Updating submodules]
 
 - link:
-    ~/.config/fzf: libs/fzf
     ~/.config/git: config/git
     ~/.config/npm: config/npm
     ~/.config/zsh/.zshrc: config/zsh/zshrc
@@ -21,12 +20,9 @@
     ~/.config/zsh/keybindings: config/zsh/keybindings
     ~/.config/zsh/opts: config/zsh/opts
     ~/.config/zsh/prompt: config/zsh/prompt
-    ~/.config/zsh/zsh-completions: libs/zsh-completions
-    ~/.config/zsh/zsh-history-substring-search: libs/zsh-history-substring-search
     ~/.profile: config/shell/profile
     ~/.vim/vimrc: config/vim/vimrc
     ~/.zshenv: config/zsh/zshenv
-    ~/scripts/enhancd.sh: libs/enhancd/init.sh
     ~/Library/Application Support/Sublime Text 3/Packages/User: config/sublime
     ~/Library/Application Support/Sublime Text 3/Packages/UserPlugins: config/sublime/plugins
 

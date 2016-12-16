@@ -7,8 +7,8 @@
 [ -f "$ZDOTDIR/prompt" ] && source "$ZDOTDIR/prompt"
 
 # History substring search
-if [ -d "$ZDOTDIR/zsh-history-substring-search" ]; then
-    source "$ZDOTDIR/zsh-history-substring-search/zsh-history-substring-search.zsh"
+if [ -d "$DOTFILES_HOME/libs/zsh-history-substring-search" ]; then
+    source "$DOTFILES_HOME/libs/zsh-history-substring-search/zsh-history-substring-search.zsh"
     bindkey '^[[A' history-substring-search-up
     bindkey '^[[B' history-substring-search-down
     bindkey -M vicmd 'k' history-substring-search-up
@@ -16,16 +16,16 @@ if [ -d "$ZDOTDIR/zsh-history-substring-search" ]; then
 fi
 
 # Fuzzy command line search
-if [ -d "$XDG_CONFIG_HOME/fzf" ]; then
-    export PATH="$XDG_CONFIG_HOME/fzf/bin:$PATH"
-    export MANPATH="$MANPATH:$XDG_CONFIG_HOME/fzf/man"
-    source "$XDG_CONFIG_HOME/fzf/shell/completion.zsh" 2> /dev/null
+if [ -d "$DOTFILES_HOME/libs/fzf" ]; then
+    export PATH="$DOTFILES_HOME/libs/fzf/bin:$PATH"
+    export MANPATH="$DOTFILES_HOME/libs/fzf/man:$MANPATH"
+    source "$DOTFILES_HOME/libs/fzf/shell/completion.zsh" > /dev/null 2>&1
 fi
 
 # Enhancd
-if [ -f "$HOME/scripts/enhancd.sh" ]; then
+if [ -f "$DOTFILES_HOME/libs/enhancd/init.sh" ]; then
     export ENHANCD_DIR="$XDG_DATA_HOME/enhancd"
-    source "$HOME/scripts/enhancd.sh"
+    source "$DOTFILES_HOME/libs/enhancd/init.sh"
 fi
 
 # De-duplicate array paths

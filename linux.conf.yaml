@@ -16,7 +16,6 @@
     ~/.config/display: config/display
     ~/.config/dunst: config/dunst
     ~/.config/fontconfig: config/fontconfig
-    ~/.config/fzf: libs/fzf
     ~/.config/git: config/git
     ~/.config/i3: config/i3
     ~/.config/i3blocks: config/i3blocks
@@ -37,8 +36,6 @@
     ~/.config/zsh/keybindings: config/zsh/keybindings
     ~/.config/zsh/opts: config/zsh/opts
     ~/.config/zsh/prompt: config/zsh/prompt
-    ~/.config/zsh/zsh-completions: libs/zsh-completions
-    ~/.config/zsh/zsh-history-substring-search: libs/zsh-history-substring-search
     ~/.gnupg/gpg-agent.conf: config/gnupg/gpg-agent.conf
     ~/.profile: config/shell/profile
     ~/.vim/vimrc: config/vim/vimrc
@@ -49,7 +46,6 @@
     ~/.xsessionrc: config/xfiles/xprofile
     ~/.Xresources: config/xfiles/Xresources
     ~/.zshenv: config/zsh/zshenv
-    ~/scripts/enhancd.sh: libs/enhancd/init.sh
 
 - shell:
   - [mkdir -p ~/.config ~/.local/share/applications ~/bin ~/desktop ~/development ~/documents ~/downloads ~/music ~/packages ~/pictures ~/pictures/screenshots ~/scripts ~/videos, Creating directories]

@@ -1,5 +1,5 @@
-if [ -d "$ZDOTDIR/zsh-completions" ]; then
-    source "$ZDOTDIR/zsh-completions/zsh-completions.plugin.zsh"
+if [ -d "$DOTFILES_HOME/libs/zsh-completions" ]; then
+    source "$DOTFILES_HOME/libs/zsh-completions/zsh-completions.plugin.zsh"
     autoload -Uz compinit && compinit
 fi
 

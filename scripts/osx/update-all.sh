@@ -3,12 +3,12 @@
 # dotfiles
 update-dotfiles
 
-# apt packages
+# brew packages
 brew update
 brew upgrade
 
 # non-tracked packages
-"${XDG_CONFIG_HOME}/fzf/install" --bin
+"$DOTFILES_HOME/libs/fzf/install" --bin
 
 # rust
 rustup update
