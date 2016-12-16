@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
 XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
 XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
@@ -24,7 +26,7 @@ function confirmation_prompt() {
     done
 }
 
-function install_packages() {
+function install_apt_packages() {
     sudo apt install --yes \
         alsa-base \
         alsa-tools \
@@ -129,7 +131,7 @@ function install_github_repo() {
 }
 
 function install_git_packages() {
-    git_package_dir="$1"
+    git_package_dir="${HOME}/packages/cloned"
     mkdir -p "$git_package_dir"
     cd "$git_package_dir"
     install_github_repo Airblader/i3.git i3-gaps
@@ -139,39 +141,24 @@ function install_git_packages() {
 
 function install_fonts() {
     mkdir -p "${XDG_DATA_HOME}/fonts"
-    cd /tmp
-    curl -OL https://github.com/chrissimpkins/codeface/releases/download/font-collection/codeface-fonts.tar.xz
-    tar xf codeface-fonts.tar.xz && rm codeface-fonts.tar.xz
+    curl -L https://github.com/chrissimpkins/codeface/releases/download/font-collection/codeface-fonts.tar.xz | tar xJ -C /tmp
     mv /tmp/fonts/* "${XDG_DATA_HOME}/fonts"
     rm -rf /tmp/fonts
     fc-cache -frv
 }
 
-function install_rust() {
-    type rustup > /dev/null 2>&1 || curl https://sh.rustup.rs -sSf | sh
-    rustup update
-    rustup install stable
-}
+function configure_shell() {
+    [ "$SHELL" = "/bin/zsh" ] || chsh -s /bin/zsh
+    "${XDG_CONFIG_HOME}/fzf/install" --bin
 
-function install_vim_plugins() {
     plug_vim="${HOME}/.vim/autoload/plug.vim"
     if [ ! -f "$plug_vim" ]; then
         curl -fLo "$plug_vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     fi
-    nvim +PlugUpgrade +PlugInstall +PlugUpdate +qall
 }
 
-function configure_shell() {
-    [ "$SHELL" = "/bin/zsh" ] || chsh -s /bin/zsh
-    "${XDG_CONFIG_HOME}/fzf/install" --bin
-}
-
-function set_default_programs() {
+function configure_environment() {
     sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
-    sudo update-alternatives --set pinentry /usr/bin/pinentry-curses
-}
-
-function etc_install_configuration() {
     sudo update-ca-certificates --fresh
     sudo mkdir -p /etc/X11/xorg.conf.d
     sudo mkdir -p /etc/udev/rules.d
@@ -184,31 +171,20 @@ function no_confirmation() {
     [ "$1" = "-y" ] || [ "$1" = "--yes" ]
 }
 
-function install_everything() {
-    [ "$1" = "-a" ] || [ "$1" = "--all" ]
-}
-
 [ -f "${HOME}/.profile" ] && source "${HOME}/.profile"
 
 if no_confirmation "$1" || confirmation_prompt "Install packages?"; then
-    install_packages
+    install_apt_packages
 fi
 if no_confirmation "$1" || confirmation_prompt "Clone and install external packages?"; then
-    install_git_packages "${HOME}/packages/cloned"
+    install_git_packages
 fi
 if no_confirmation "$1" || confirmation_prompt "Install fonts?"; then
     install_fonts
 fi
-if no_confirmation "$1" || confirmation_prompt "Install development tools?"; then
-    install_rust
+if no_confirmation "$1" || confirmation_prompt "Configure shell?"; then
+    configure_shell
 fi
 if no_confirmation "$1" || confirmation_prompt "Configure environment?"; then
-    configure_shell
-    install_vim_plugins
+    configure_environment
 fi
-if install_everything "$1" && confirmation_prompt "Configure /etc/ environment?"; then
-    set_default_programs
-    etc_install_configuration
-fi
-
-exit 0
