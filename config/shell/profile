@@ -2,6 +2,7 @@
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
+export DOTFILES_HOME="$HOME/.dotfiles"
 
 # Set config/data directories for XDG unfriendly programs
 export ATOM_HOME="$XDG_DATA_HOME/atom"

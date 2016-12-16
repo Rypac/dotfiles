@@ -1,6 +1,2 @@
-export ZDOTDIR="${ZDOTDIR:="$HOME/.config/zsh"}"
-
-# Ensure that a non-login, non-interactive shell has a defined environment.
-if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "$HOME/.profile" ]]; then
-    source "$HOME/.profile"
-fi
+: ${ZDOTDIR:="$HOME/.config/zsh"}
+source "$HOME/.profile"

@@ -2,11 +2,6 @@
 
 set -e
 
-XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
-XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
-XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
-DOTFILES_HOME=${DOTFILES_HOME:-$HOME/.dotfiles}
-
 function confirmation_prompt() {
     message="$1"
     default="${2:-Y}"
@@ -171,7 +166,7 @@ function no_confirmation() {
     [ "$1" = "-y" ] || [ "$1" = "--yes" ]
 }
 
-[ -f "${HOME}/.profile" ] && source "${HOME}/.profile"
+source "$HOME/.profile"
 
 if no_confirmation "$1" || confirmation_prompt "Install packages?"; then
     install_apt_packages
