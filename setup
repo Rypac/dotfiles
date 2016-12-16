@@ -25,22 +25,107 @@ function confirmation_prompt() {
 }
 
 function install_packages() {
-    packages=$1
-    for package in ${packages}; do
-        sudo apt-get install $package --yes
-    done
+    sudo apt install --yes \
+        alsa-base \
+        alsa-tools \
+        alsa-utils \
+        apt-listbugs \
+        apt-listchanges \
+        arandr \
+        autoconf \
+        automake \
+        borgbackup \
+        checkinstall \
+        clang \
+        clang-format \
+        clipit \
+        cmake \
+        cmatrix \
+        cmatrix-xfont \
+        cmus \
+        compton \
+        cowsay \
+        curl \
+        dex \
+        docker-engine \
+        dunst \
+        feh \
+        firmware-linux \
+        firmware-linux-free \
+        firmware-linux-nonfree \
+        fonts-font-awesome \
+        fonts-noto \
+        fonts-symbola \
+        fortune \
+        g++ \
+        git \
+        htop \
+        i3 \
+        imagemagick \
+        kpcli \
+        keepassx \
+        lightdm \
+        lightdm-gtk-greeter \
+        lm-sensors \
+        lxappearance \
+        make \
+        menu \
+        mpv \
+        neovim \
+        ntfs-3g \
+        pavucontrol \
+        pcmanfm \
+        pinentry-curses \
+        pkg-config \
+        pasystray \
+        pulseaudio \
+        pulseaudio-utils \
+        ranger \
+        rofi \
+        rxvt-unicode \
+        scrot \
+        sudo \
+        tig \
+        unrar \
+        vim \
+        wget \
+        xarchiver \
+        xcb \
+        xclip \
+        xorg \
+        zathura \
+        zip \
+        zsh \
+        libasound2-dev \
+        libev-dev \
+        libnotify-bin \
+        libpango1.0-0 \
+        libpango1.0-dev \
+        libssl-dev \
+        libstartup-notification0-dev \
+        libxcb-cursor-dev \
+        libxcb-ewmh-dev \
+        libxcb-icccm4-dev \
+        libxcb-keysyms1-dev \
+        libxcb-randr0-dev \
+        libxcb-util0-dev \
+        libxcb-xrm-dev \
+        libxcb-xinerama0-dev \
+        libxcb-xkb-dev \
+        libxcb1-dev \
+        libxft2 \
+        libxkbcommon-dev \
+        libxkbcommon-x11-dev \
+        libxslt1.1 \
+        libyajl-dev
 }
 
 function install_github_repo() {
     repo="$1"
     name="$2"
     if [ ! -d "$name" ]; then
-        git clone "https://github.com/$repo" "$name"
+        git clone --recursive "https://github.com/$repo" "$name"
     fi
-    (
-        cd "$name" && git pull
-        make && sudo checkinstall --install=yes --nodoc --deldoc=yes --deldesc=yes --delspec=yes --backup=no
-    )
 }
 
 function install_git_packages() {
@@ -69,7 +154,7 @@ function install_rust() {
 }
 
 function install_vim_plugins() {
-    plug_vim="$HOME/.vim/autoload/plug.vim"
+    plug_vim="${HOME}/.vim/autoload/plug.vim"
     if [ ! -f "$plug_vim" ]; then
         curl -fLo "$plug_vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     fi
@@ -103,15 +188,10 @@ function install_everything() {
     [ "$1" = "-a" ] || [ "$1" = "--all" ]
 }
 
-script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
 [ -f "${HOME}/.profile" ] && source "${HOME}/.profile"
 
 if no_confirmation "$1" || confirmation_prompt "Install packages?"; then
-    install_packages "$(cat "${script_dir}/packages.txt")"
-fi
-if no_confirmation "$1" || confirmation_prompt "Install package build dependencies?"; then
-    install_packages "$(cat "${script_dir}/build_deps.txt")"
+    install_packages
 fi
 if no_confirmation "$1" || confirmation_prompt "Clone and install external packages?"; then
     install_git_packages "${HOME}/packages/cloned"
