@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=PulseAudio System Tray
-Comment=Simple PulseAudio system tray volume mixer
-Exec=pasystray
-Terminal=false
-Type=Application
-OnlyShowIn=GNOME;XFCE;LXDE;Unity;i3;
-X-GNOME-Autostart-enabled=true
