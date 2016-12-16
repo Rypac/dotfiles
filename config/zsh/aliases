@@ -27,11 +27,11 @@ alias cpr='cp -r'
 alias rmr='rm -r'
 
 # ls
-alias l='ls -lAh'       # all files, human-readable sizes
+alias l='ls -lAh'
 alias la='ls -lAh'
-alias lm="l | ${PAGER}" # all files, human-readable sizes, use pager
-alias ll='ls -lh'       # human-readable sizes
-alias lr='ll -R'        # human-readable sizes, recursive
+alias lm="l | ${PAGER}"
+alias ll='ls -lh'
+alias lr='ll -R'
 alias lsh='ls -lAhd .?*'
 
 # grep
@@ -54,7 +54,7 @@ function sizeof() {
 
 # remote fetch
 if type wget > /dev/null 2>&1; then
-  alias get='wget --continue --progress=bar --timestamping'
+    alias get='wget --continue --progress=bar --timestamping'
 elif type curl > /dev/null 2>&1; then
-  alias get='curl --continue-at - --location --progress-bar --remote-name --remote-time'
+    alias get='curl --continue-at - --location --progress-bar --remote-name --remote-time'
 fi

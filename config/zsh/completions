@@ -1,4 +1,3 @@
-# Load completions plugin
 if [ -d "$ZDOTDIR/zsh-completions" ]; then
     source "$ZDOTDIR/zsh-completions/zsh-completions.plugin.zsh"
     autoload -Uz compinit && compinit

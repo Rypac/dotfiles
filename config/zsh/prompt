@@ -1,5 +1,3 @@
-# zsh prompt
-
 function current_directory {
     local current_dir="${1:-${PWD}}"
     current_dir="${current_dir/#${HOME}/~}"
