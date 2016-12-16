@@ -21,6 +21,7 @@ alias nstack='stack --resolver nightly'
 # Common tool aliases
 alias less='less -FSRXc'
 alias qfind='find . -name'
+alias get='curl --continue-at - --location --progress-bar --remote-name --remote-time'
 
 # directory ops
 alias cpr='cp -r'
@@ -51,10 +52,3 @@ alias du='du -khsc'
 function sizeof() {
     [ -n "$1" ] && du "$1" | tail -1 | cut -f1
 }
-
-# remote fetch
-if type wget > /dev/null 2>&1; then
-    alias get='wget --continue --progress=bar --timestamping'
-elif type curl > /dev/null 2>&1; then
-    alias get='curl --continue-at - --location --progress-bar --remote-name --remote-time'
-fi

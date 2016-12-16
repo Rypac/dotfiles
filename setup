@@ -117,7 +117,7 @@ function install_apt_packages() {
         libyajl-dev
 }
 
-function install_github_repo() {
+function clone_github_repo() {
     repo="$1"
     name="$2"
     if [ ! -d "$name" ]; then
@@ -125,41 +125,37 @@ function install_github_repo() {
     fi
 }
 
-function install_git_packages() {
-    git_package_dir="${HOME}/packages/cloned"
+function clone_git_packages() {
+    git_package_dir="$HOME/packages/cloned"
     mkdir -p "$git_package_dir"
     cd "$git_package_dir"
-    install_github_repo Airblader/i3.git i3-gaps
-    install_github_repo vivien/i3blocks.git i3blocks
-    install_github_repo baskerville/xtitle.git xtitle
-}
+    clone_github_repo Airblader/i3.git i3-gaps
+    clone_github_repo vivien/i3blocks.git i3blocks
+    clone_github_repo baskerville/xtitle.git xtitle
 
-function install_fonts() {
-    mkdir -p "${XDG_DATA_HOME}/fonts"
-    curl -L https://github.com/chrissimpkins/codeface/releases/download/font-collection/codeface-fonts.tar.xz | tar xJ -C /tmp
-    mv /tmp/fonts/* "${XDG_DATA_HOME}/fonts"
-    rm -rf /tmp/fonts
-    fc-cache -frv
-}
-
-function configure_shell() {
-    [ "$SHELL" = "/bin/zsh" ] || chsh -s /bin/zsh
-    "${XDG_CONFIG_HOME}/fzf/install" --bin
-
-    plug_vim="${HOME}/.vim/autoload/plug.vim"
+    plug_vim="$HOME/.vim/autoload/plug.vim"
     if [ ! -f "$plug_vim" ]; then
         curl -fLo "$plug_vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     fi
 }
 
+function install_fonts() {
+    mkdir -p "$XDG_DATA_HOME/fonts"
+    curl -L https://github.com/chrissimpkins/codeface/releases/download/font-collection/codeface-fonts.tar.xz | tar xJ -C /tmp
+    mv /tmp/fonts/* "$XDG_DATA_HOME/fonts"
+    rm -rf /tmp/fonts
+    fc-cache -frv
+}
+
 function configure_environment() {
+    chsh -s /bin/zsh
     sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
     sudo update-ca-certificates --fresh
     sudo mkdir -p /etc/X11/xorg.conf.d
     sudo mkdir -p /etc/udev/rules.d
-    sudo cp -r "${DOTFILES_HOME}/config/xorg/." /etc/X11/xorg.conf.d/
-    sudo cp -r "${DOTFILES_HOME}/config/rules/." /etc/udev/rules.d/
-    sudo cp -r "${DOTFILES_HOME}/config/urxvt/." /usr/lib/urxvt/perl/
+    sudo cp -r "$DOTFILES_HOME/config/xorg/." /etc/X11/xorg.conf.d/
+    sudo cp -r "$DOTFILES_HOME/config/rules/." /etc/udev/rules.d/
+    sudo cp -r "$DOTFILES_HOME/config/urxvt/." /usr/lib/urxvt/perl/
 }
 
 function no_confirmation() {
@@ -172,13 +168,10 @@ if no_confirmation "$1" || confirmation_prompt "Install packages?"; then
     install_apt_packages
 fi
 if no_confirmation "$1" || confirmation_prompt "Clone and install external packages?"; then
-    install_git_packages
+    clone_git_packages
 fi
 if no_confirmation "$1" || confirmation_prompt "Install fonts?"; then
     install_fonts
-fi
-if no_confirmation "$1" || confirmation_prompt "Configure shell?"; then
-    configure_shell
 fi
 if no_confirmation "$1" || confirmation_prompt "Configure environment?"; then
     configure_environment

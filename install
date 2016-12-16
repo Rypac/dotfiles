@@ -13,7 +13,6 @@ fi
 
 config="${environment}.conf.yaml"
 dotbot_dir="libs/dotbot"
-
 dotbot_bin="bin/dotbot"
 
 cd "${base_dir}"
