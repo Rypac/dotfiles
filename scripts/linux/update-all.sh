@@ -8,10 +8,9 @@ sudo apt update
 sudo apt upgrade -y
 
 # non-tracked packages
-local-packages update
-local-packages install
+local-packages upgrade
 i3-update
-"$DOTILES_HOME/libs/fzf/install" --bin
+"$DOTFILES_HOME/libs/fzf/install" --bin
 
 # rust
 rustup update

@@ -2,46 +2,66 @@
 #
 # Update all packages via their locally cloned git repositories
 
-update="update"
-install="install"
-uninstall="uninstall"
-package_dir="$HOME/packages/cloned"
+package_dir="${2:-$HOME/packages/cloned}"
+
+function needs_update() {
+    [ "$(git rev-parse @)" != "$(git rev-parse @{u})" ]
+}
+
+function update() {
+    echo "Updating $1"
+    git pull --recurse-submodules
+}
+
+function build_and_install() {
+    echo "Installing $1"
+    make clean
+    make
+    sudo checkinstall --default --install=yes --nodoc --deldoc=yes --deldesc=yes --delspec=yes --backup=no
+}
+
+function upgrade() {
+    echo "Upgrading $1"
+    git fetch
+    if needs_update; then
+        update
+        build_and_install
+    else
+        echo "Already up to date"
+    fi
+}
+
+function uninstall() {
+    echo "Uninstalling $1"
+    sudo make uninstall
+    make clean
+}
 
 function perform_action() {
     action="$1"
     cd "$package_dir"
 
     for package in */; do
-        cd "$package_dir/$package"
-        if [ $action = $update ]; then
-            echo "Updating $package"
-            git pull --recurse-submodules
-        elif [ $action = $install ]; then
-            echo "Installing $package"
-            make clean
-            make
-            sudo checkinstall --default --install=yes --nodoc --deldoc=yes --deldesc=yes --delspec=yes --backup=no
-        elif [ $action = $uninstall ]; then
-            echo "Uninstalling $package"
-            sudo make uninstall
-            make clean
-        fi
+        (cd "$package" && $action "$package")
     done
 }
 
 function usage() {
-    echo "usage: $(basename "$0") [$update|$install|$uninstall]"
+    echo "usage: $(basename "$0") [update|install|uninstall]"
 }
 
 case "$1" in
-    $update)
-        echo "Updating packages..." && perform_action $update
+    update)
+        echo "Updating packages..." && perform_action update
         ;;
-    $install)
-        echo "Installing packages..." && perform_action $install
+    install)
+        echo "Installing packages..." && perform_action build_and_install
         ;;
-    $uninstall)
-        echo "Uninstalling packages..." && perform_action $uninstall
+    upgrade)
+        echo "Upgrading packages..." && perform_action upgrade
+        ;;
+    uninstall)
+        echo "Uninstalling packages..." && perform_action uninstall
         ;;
     -h|--help)
         usage
