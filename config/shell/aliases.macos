@@ -5,16 +5,11 @@ if type rbenv > /dev/null 2>&1; then
     eval "$(rbenv init -)"
     alias rbenv-override="rbenv shell $(rbenv global)"
     alias be='bundle exec'
+    alias ber='bundle exec rake'
 fi
 
 # Python
 alias pip-upgrade="pip3 list --outdated | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade"
-
-# Elixir
-if [ -d "$XDG_DATA_HOME/asdf" ]; then
-    source "$XDG_DATA_HOME/asdf/asdf.sh"
-    source "$XDG_DATA_HOME/asdf/completions/asdf.bash"
-fi
 
 # GPG Agent
 if [ -f ~/.gnupg/gpg-agent-info ]; then
