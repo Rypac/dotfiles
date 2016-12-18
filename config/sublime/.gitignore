@@ -14,6 +14,7 @@ clang_format.sublime-settings
 ClangComplete.sublime-settings
 EasyClangComplete.sublime-settings
 Elm Language Support.sublime-settings
+ESLint.sublime-settings
 ESLint-Formatter.sublime-settings
 RustAutoComplete.sublime-settings
 SublimeLinter.sublime-settings
