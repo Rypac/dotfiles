@@ -1,15 +1,7 @@
 #!/bin/sh
 
-borg init /mnt/data/Linux/debian/backup
-sudo borg create -C zlib,5 /mnt/data/Linux/debian/backup::root-{now:%Y-%m-%d} / \
-    --exclude '/dev/*' \
-    --exclude '/media/*' \
-    --exclude '/mnt/*' \
-    --exclude '/proc/*' \
-    --exclude '/sys/*' \
-    --exclude '/tmp/*' \
-    --exclude '/etc/fstab' \
-    --exclude '/var/run/*' \
-    --exclude '/var/lock/*' \
-    --exclude '/var/cache/apt/archives/*' \
-    --one-file-system
+repo="${1:-/mnt/storage/Linux/Backups}"
+
+borg init "$repo"
+borg create -C zlib,5 "$repo"::{hostname}-{user}-{now:%Y-%m-%d} ~ --exclude '~/.cache'
+borg prune --keep-within=1w --keep-weekly=4 "$repo"
