@@ -11,12 +11,12 @@ export GIMP2_DIRECTORY="$XDG_CONFIG_HOME/gimp"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export HTTPIE_CONFIG_DIR="$XDG_CONFIG_HOME/httpie"
 export MPLAYER_HOME="$XDG_CONFIG_HOME/mplayer"
+export QT_QPA_PLATFORMTHEME="gtk2"
 export QT_STYLE_OVERRIDE=GTK+
 export SCREENRC="$XDG_CONFIG_HOME/screen/screenrc"
 export TIGRC_USER="$XDG_CONFIG_HOME/tig/tigrc"
 export WEECHAT_HOME="$XDG_CONFIG_HOME/weechat"
 export WINEPREFIX="$XDG_DATA_HOME/wine"
-export QT_QPA_PLATFORMTHEME="gtk2"
 
 # Set cache/runtime directories for XDG unfriendly programs
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
@@ -36,6 +36,11 @@ export GEM_SPEC_CACHE="$XDG_CACHE_HOME/ruby/gem/spec"
 export RBENV_ROOT="$XDG_DATA_HOME/rbenv"
 export MIX_HOME="$XDG_DATA_HOME/mix"
 export GRADLE_USER_HOME="$XDG_CACHE_HOME/gradle"
+export ANDROID_HOME="$XDG_DATA_HOME/android/sdk"
+export ANDROID_SDK_HOME="$ANDROID_HOME"
+export ANDROID_SDK_ROOT="$ANDROID_HOME"
+export ANDROID_NDK="$ANDROID_HOME/ndk-bundle"
+export NDK_ROOT="$ANDROID_NDK"
 
 # Defaults
 export LC_COLLATE='C'
@@ -46,4 +51,4 @@ export SELECTED_EDITOR='/usr/bin/vim.basic'
 export LESS='-F -g -i -M -R -S -w -X -z-4'
 
 # Setup PATH
-export PATH="$HOME/bin:$HOME/.local/bin:$CARGO_HOME/bin:$N_PREFIX/bin:/usr/local/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:$CARGO_HOME/bin:$N_PREFIX/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/usr/local/bin:$PATH"

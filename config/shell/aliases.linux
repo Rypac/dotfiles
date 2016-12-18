@@ -52,8 +52,4 @@ export RUST_SRC_PATH="$RUSTUP_HOME/toolchains/stable-x86_64-unknown-linux-gnu/li
 
 # Android SDK/NDK
 export JAVA_HOME="/opt/java/jdk"
-export ANDROID_HOME="$XDG_DATA_HOME/android/sdk"
-export ANDROID_SDK_ROOT="$ANDROID_HOME"
-export ANDROID_NDK="$XDG_DATA_HOME/android/crystax-ndk"
-export NDK_ROOT="$ANDROID_NDK"
-export PATH="$PATH:$JAVA_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
+export PATH="$PATH:$JAVA_HOME/bin"

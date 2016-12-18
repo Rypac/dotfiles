@@ -34,11 +34,7 @@ export RUST_SRC_PATH="$RUSTUP_HOME/toolchains/stable-x86_64-apple-darwin/lib/rus
 # Android SDK/NDK
 export ANT_ROOT=/usr/local/Cellar/ant/1.9.7/bin
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home
-export ANDROID_HOME="$HOME/Library/Android/sdk"
-export ANDROID_SDK_ROOT="$ANDROID_HOME"
-export ANDROID_NDK="$HOME/Library/Android/crystax-ndk"
-export NDK_ROOT="$ANDROID_NDK"
-export PATH="$PATH:$JAVA_HOME:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
+export PATH="$PATH:$JAVA_HOME"
 
 # Cocos2d-x
 alias cocos="$HOME/Developer/projects/pulse/libs/cocos2d/tools/cocos2d-console/bin/cocos"
