@@ -35,7 +35,6 @@
     ~/.vim/vimrc: config/vim/vimrc
     ~/.vim/init.vim: config/vim/vimrc
     ~/.config/nvim: ~/.vim
-    ~/.xinitrc: config/xfiles/xinitrc
     ~/.xprofile: config/xfiles/xprofile
     ~/.xsessionrc: config/xfiles/xprofile
     ~/.Xresources: config/xfiles/Xresources
