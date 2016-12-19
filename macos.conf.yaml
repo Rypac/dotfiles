@@ -19,6 +19,7 @@
     ~/.zshenv: config/zsh/zshenv
     ~/Library/Application Support/Sublime Text 3/Packages/User: config/sublime
     ~/Library/Application Support/Sublime Text 3/Packages/UserPlugins: config/sublime/plugins
+    ~/Library/LaunchAgents/env-sync.plist: config/launch-agents/env-sync.plist
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
