@@ -1,18 +1,26 @@
 " -----------------------------------------------------
 " Plugins
 
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'scrooloose/nerdtree'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-vinegar'
+Plug 'justinmk/vim-sneak'
+Plug 'matze/vim-move'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'scrooloose/syntastic'
-Plug 'Valloric/YouCompleteMe' | Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rhysd/vim-clang-format'
@@ -38,9 +46,8 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 2
 
-" Ctrl-P
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+" Deoplete
+let g:deoplete#enable_at_startup = 1
 
 " GitGutter
 let g:gitgutter_sign_column_always=1
@@ -77,13 +84,6 @@ let g:jsx_ext_required = 0
 
 " Airline
 let g:airline_theme = 'base16'
-
-" YouCompleteMe
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_semantic_triggers = {
-     \ 'elm' : ['.'],
-     \}
 
 " ClangFormat
 autocmd FileType c,cpp,objc ClangFormatAutoEnable
@@ -162,6 +162,8 @@ nmap <localleader>w :write<cr>
 nmap <localleader>x :exit<cr>
 nmap <localleader>q :quit<cr>
 nmap <localleader>Q :quitall<cr>
+nmap <localleader>f :Files<cr>
+nmap <localleader>t :Buffers<cr>
 
 let mapleader = "\<space>"
 
@@ -206,16 +208,9 @@ nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gf :Gfetch<cr>
 nnoremap <leader>gp :Gpull<cr>
 
-" YouCompleteMe layer
-nnoremap <leader>jd :YcmCompleter GoTo<cr>
-nnoremap <leader>ji :YcmCompleter GoToInclude<cr>
-nnoremap <leader>jr :YcmCompleter GoToReferences<cr>
-nnoremap <leader>jt :YcmCompleter GetType<cr>
-nnoremap <leader>jp :YcmCompleter GetParent<cr>
-nnoremap <leader>jc :YcmCompleter GetDoc<cr>
-
 " Terminal
 tnoremap <Esc> <C-\><C-n>
+tnoremap <C-q> exit<cr>
 nnoremap <leader>sn :terminal<cr>
 nnoremap <leader>sj :rightbelow :split<cr> :terminal<cr>
 nnoremap <leader>sk :leftabove :split<cr> :terminal<cr>
@@ -227,9 +222,22 @@ nnoremap <leader>sg :rightbelow :vsplit<cr> :terminal<cr> tig<cr>
 map <F2> gD
 map <F4> :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<cr>
 
-" Nerdtree
-map <C-m> :NERDTreeToggle<cr>
-map <F3> :NERDTreeToggle<cr>
+" fzf
+nnoremap <C-p> :Files<cr> 
+nnoremap <C-g> :GFiles<cr> 
+nnoremap <A-`> :Buffers<cr> 
+nnoremap <F9> :Files<cr>
 
-" Ctrl-P
-map <F9> :CtrlP<cr>
+" Sneak
+nmap f <Plug>Sneak_f
+nmap F <Plug>Sneak_F
+xmap f <Plug>Sneak_f
+xmap F <Plug>Sneak_F
+omap f <Plug>Sneak_f
+omap F <Plug>Sneak_F
+nmap t <Plug>Sneak_t
+nmap T <Plug>Sneak_T
+xmap t <Plug>Sneak_t
+xmap T <Plug>Sneak_T
+omap t <Plug>Sneak_t
+omap T <Plug>Sneak_T
