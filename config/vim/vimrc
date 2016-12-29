@@ -164,6 +164,7 @@ nmap <localleader>q :quit<cr>
 nmap <localleader>Q :quitall<cr>
 nmap <localleader>f :Files<cr>
 nmap <localleader>t :Buffers<cr>
+nmap <localleader>c :Commands<cr>
 
 let mapleader = "\<space>"
 
@@ -225,6 +226,7 @@ map <F4> :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<cr>
 " fzf
 nnoremap <C-p> :Files<cr> 
 nnoremap <C-g> :GFiles<cr> 
+nnoremap <C-m> :Commands<cr> 
 nnoremap <A-`> :Buffers<cr> 
 nnoremap <F9> :Files<cr>
 
