@@ -20,6 +20,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'gregsexton/gitv'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'mbbill/undotree'
 Plug 'scrooloose/syntastic'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'editorconfig/editorconfig-vim'
@@ -234,6 +235,9 @@ nnoremap <leader>sg :rightbelow :vsplit<cr> :terminal<cr> tig<cr>
 " Jump to definition/between headers
 map <F2> gD
 map <F4> :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<cr>
+
+" Undotree
+nnoremap <F5> :UndotreeToggle<cr>
 
 " fzf
 nnoremap <C-p> :Files<cr> 
