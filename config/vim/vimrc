@@ -18,7 +18,6 @@ Plug 'matze/vim-move'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'gregsexton/gitv'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'mbbill/undotree'
 Plug 'scrooloose/syntastic'
@@ -219,10 +218,10 @@ nnoremap <leader>gg :Gbrowse<cr>
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gf :Gfetch<cr>
 nnoremap <leader>gp :Gpull<cr>
-nnoremap <leader>gv :Gitv<cr>
-nnoremap <leader>gV :Gitv!<cr>
+nnoremap <leader>gt :terminal tig<cr>
+nnoremap <leader>gh :terminal tig %<cr>
 
-" Terminal
+" Terminal layer
 tnoremap <Esc> <C-\><C-n>
 tnoremap <C-q> exit<cr>
 nnoremap <leader>sn :terminal<cr>
@@ -240,11 +239,10 @@ map <F4> :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<cr>
 nnoremap <F5> :UndotreeToggle<cr>
 
 " fzf
+nnoremap <F9> :Files<cr>
 nnoremap <C-p> :Files<cr> 
 nnoremap <C-g> :GFiles<cr> 
-nnoremap <C-m> :Commands<cr> 
 nnoremap <A-`> :Buffers<cr> 
-nnoremap <F9> :Files<cr>
 
 " Sneak
 nmap f <Plug>Sneak_f
