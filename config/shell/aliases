@@ -4,6 +4,9 @@ if type nvim > /dev/null 2>&1; then
     alias vim='nvim'
 fi
 
+# tmux
+alias tm='tmux attach || tmux new'
+
 # GPG
 alias gpg='gpg2'
 
@@ -17,6 +20,7 @@ alias stack-update='stack --resolver nightly setup --reinstall --install-ghc'
 alias nstack='stack --resolver nightly'
 
 # Common tool aliases
+alias c='clear'
 alias less='less -FSRXc'
 alias qfind='find . -name'
 alias get='curl --continue-at - --location --progress-bar --remote-name --remote-time'
