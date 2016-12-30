@@ -18,6 +18,7 @@ Plug 'matze/vim-move'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'gregsexton/gitv'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'scrooloose/syntastic'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -83,6 +84,7 @@ au Filetype elm nmap <leader>d <Plug>(elm-show-docs)
 let g:jsx_ext_required = 0
 
 " Airline
+let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = 'base16'
 
 " ClangFormat
@@ -169,36 +171,44 @@ nmap <localleader>c :Commands<cr>
 let mapleader = "\<space>"
 
 " Window layer
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-nmap <leader>wj <C-W>j
-nmap <leader>wk <C-W>k
-nmap <leader>wh <C-W>h
-nmap <leader>wl <C-W>l
-nmap <leader>wnj :rightbelow :split<cr>
-nmap <leader>wnk :leftabove :split<cr>
-nmap <leader>wnh :leftabove :vsplit<cr>
-nmap <leader>wnl :rightbelow :vsplit<cr>
-nmap <leader>w<C-j> :rightbelow :split<cr>
-nmap <leader>w<C-k> :leftabove :split<cr>
-nmap <leader>w<C-h> :leftabove :vsplit<cr>
-nmap <leader>w<C-l> :rightbelow :vsplit<cr>
-nmap <leader>wnn :vnew<cr>
-nmap <leader>wns <C-W>R
-nmap <leader>w= <C-W>=
-nmap <leader>wq :quit<cr>
+nnoremap <leader>wj <C-W>j
+nnoremap <leader>wk <C-W>k
+nnoremap <leader>wh <C-W>h
+nnoremap <leader>wl <C-W>l
+nnoremap <leader>wJ <C-W>J
+nnoremap <leader>wK <C-W>K
+nnoremap <leader>wH <C-W>H
+nnoremap <leader>wL <C-W>L
+nnoremap <leader>ws :split<cr>
+nnoremap <leader>wv :vsplit<cr>
+nnoremap <leader>wns :new<cr>
+nnoremap <leader>wnv :vnew<cr>
+nnoremap <leader>wnj :rightbelow :split<cr>
+nnoremap <leader>wnk :leftabove :split<cr>
+nnoremap <leader>wnh :leftabove :vsplit<cr>
+nnoremap <leader>wnl :rightbelow :vsplit<cr>
+nnoremap <leader>w= <C-W>=
+nnoremap <leader>w- :resize -5<cr>
+nnoremap <leader>w+ :resize +5<cr>
+nnoremap <leader>wq :quit<cr>
 
 " Tab layer
-nnoremap <leader><C-h> :tabprevious<cr>
-nnoremap <leader><C-l> :tabnext<cr>
 nnoremap <leader>th :tabprevious<cr>
 nnoremap <leader>tl :tabnext<cr>
+nnoremap <leader>tH :tabfirst<cr>
+nnoremap <leader>tL :tablast<cr>
 nnoremap <leader>tn :tabnew<cr>
 nnoremap <leader>to :tabonly<cr>
 nnoremap <leader>tq :tabclose<cr>
 nnoremap <leader>tm :tabmove<cr>
+
+" Buffer layer
+nnoremap <leader>bh :bprevious<cr>
+nnoremap <leader>bl :bnext<cr>
+nnoremap <leader>bH :bfirst<cr>
+nnoremap <leader>bL :blast<cr>
+nnoremap <leader>bq :bdelete<cr>
+nnoremap <leader>bb :Buffers<cr>
 
 " Git layer
 nnoremap <leader>gs :Gstatus<cr>
@@ -208,6 +218,8 @@ nnoremap <leader>gg :Gbrowse<cr>
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gf :Gfetch<cr>
 nnoremap <leader>gp :Gpull<cr>
+nnoremap <leader>gv :Gitv<cr>
+nnoremap <leader>gV :Gitv!<cr>
 
 " Terminal
 tnoremap <Esc> <C-\><C-n>
