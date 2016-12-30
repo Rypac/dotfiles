@@ -15,6 +15,7 @@
     ~/.config/zsh/opts: config/zsh/opts
     ~/.config/zsh/prompt: config/zsh/prompt
     ~/.profile: config/shell/profile
+    ~/.tmux.conf: config/tmux/tmux.conf
     ~/.vim/vimrc: config/vim/vimrc
     ~/.zshenv: config/zsh/zshenv
     ~/Library/Application Support/Sublime Text 3/Packages/User: config/sublime
