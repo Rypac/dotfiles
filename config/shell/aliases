@@ -5,7 +5,8 @@ if type nvim > /dev/null 2>&1; then
 fi
 
 # tmux
-alias tm='tmux attach || tmux new'
+alias tm='tmux attach -t default || tmux new -s default'
+alias mux='tmuxinator'
 
 # GPG
 alias gpg='gpg2'
