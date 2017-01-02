@@ -48,7 +48,7 @@ export NDK_ROOT="$ANDROID_NDK"
 
 # Defaults
 export LC_COLLATE='C'
-export EDITOR='vim'
+export EDITOR='nvim'
 export VISUAL='subl'
 export PAGER='less'
 export SELECTED_EDITOR='/usr/bin/vim.basic'
