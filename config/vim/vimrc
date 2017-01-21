@@ -22,6 +22,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'mbbill/undotree'
 Plug 'scrooloose/syntastic'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'ternjs/tern_for_vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rhysd/vim-clang-format'
@@ -30,6 +31,7 @@ Plug 'keith/swift.vim'
 Plug 'elmcast/elm-vim'
 Plug 'neovimhaskell/haskell-vim' | Plug 'alx741/vim-hindent'
 Plug 'raichoo/purescript-vim'
+Plug 'frigoeu/psc-ide-vim'
 Plug 'pangloss/vim-javascript' | Plug 'mxw/vim-jsx'
 Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
@@ -57,12 +59,13 @@ let g:gitgutter_sign_column_always=1
 let g:rustfmt_autosave = 1
 
 " Haskell
-let g:haskell_indent_case = 4
-let g:haskell_indent_guard = 4
-let g:haskell_indent_if = 4
-let g:haskell_indent_in = 4
-let g:haskell_indent_let = 4
-let g:haskell_indent_do = 4
+let g:haskell_indent_case = 2
+let g:haskell_indent_guard = 2
+let g:haskell_indent_if = 2
+let g:haskell_indent_in = 2
+let g:haskell_indent_let = 2
+let g:haskell_indent_do = 2
+let g:haskell_indent_where = 2
 
 " Purescript
 let g:purescript_indent_if = 2

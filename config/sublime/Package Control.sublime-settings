@@ -18,6 +18,7 @@
 		"FileBrowser",
 		"Git",
 		"GitGutter",
+		"Kotlin",
 		"Markdown Preview",
 		"MarkdownEditing",
 		"Material Theme",
@@ -29,6 +30,7 @@
 		"RustFormat",
 		"SublimeHaskell",
 		"SublimeLinter",
+		"SublimeLinter-contrib-eslint",
 		"Sublimerge 3",
 		"Terraform",
 		"Vintageous"
