@@ -19,7 +19,6 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'mbbill/undotree'
 Plug 'scrooloose/syntastic'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ternjs/tern_for_vim'
@@ -79,9 +78,6 @@ let g:elm_detailed_complete = 1
 let g:elm_format_autosave = 1
 let g:elm_setup_keybindings = 0
 let g:elm_syntastic_show_warnings = 1
-au Filetype elm nmap <leader>m <Plug>(elm-make)
-au Filetype elm nmap <leader>r <Plug>(elm-repl)
-au Filetype elm nmap <leader>d <Plug>(elm-show-docs)
 
 " Javascript
 let g:jsx_ext_required = 0
@@ -237,9 +233,6 @@ nnoremap <leader>sg :rightbelow :vsplit<cr> :terminal<cr> tig<cr>
 " Jump to definition/between headers
 map <F2> gD
 map <F4> :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<cr>
-
-" Undotree
-nnoremap <F5> :UndotreeToggle<cr>
 
 " fzf
 nnoremap <F9> :Files<cr>

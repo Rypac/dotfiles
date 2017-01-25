@@ -25,6 +25,7 @@ export WINEPREFIX="$XDG_DATA_HOME/wine"
 # Set cache/runtime directories for XDG unfriendly programs
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export LESSHISTFILE="$XDG_CACHE_HOME/less-history"
+export ICEAUTHORITY="$XDG_RUNTIME_DIR/ICEauthority"
 export RXVT_SOCKET="$XDG_RUNTIME_DIR/urxvt"
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv"

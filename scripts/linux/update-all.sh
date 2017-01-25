@@ -24,6 +24,7 @@ stack --resolver nightly upgrade
 n-update -y
 n stable
 npm update -g
+yarn global upgrade
 
 # python
 pip3 list --outdated --user | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade --user
