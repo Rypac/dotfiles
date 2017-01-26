@@ -42,13 +42,13 @@
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
+		"Elm Language Support",
 		"Vintage"
 	],
 	"indent_guide_options":
 	[
 		"draw_active"
 	],
-	"material_theme_accent_cyan": true,
 	"material_theme_arrow_folders": true,
 	"material_theme_compact_panel": true,
 	"material_theme_compact_sidebar": true,
