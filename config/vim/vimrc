@@ -8,6 +8,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+" Features
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -20,22 +21,31 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'editorconfig/editorconfig-vim'
+
+" Completion
 Plug 'scrooloose/syntastic'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ternjs/tern_for_vim'
-Plug 'editorconfig/editorconfig-vim'
+
+" Languages
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rhysd/vim-clang-format'
 Plug 'rust-lang/rust.vim'
 Plug 'keith/swift.vim'
 Plug 'elmcast/elm-vim'
-Plug 'neovimhaskell/haskell-vim' | Plug 'alx741/vim-hindent'
+Plug 'neovimhaskell/haskell-vim'
+Plug 'alx741/vim-hindent'
 Plug 'raichoo/purescript-vim'
 Plug 'frigoeu/psc-ide-vim'
-Plug 'pangloss/vim-javascript' | Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 Plug 'quabug/vim-gdscript'
+
+" Visual/themes
 Plug 'chriskempson/base16-vim'
-Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
@@ -54,7 +64,7 @@ let g:syntastic_loc_list_height = 2
 let g:deoplete#enable_at_startup = 1
 
 " GitGutter
-let g:gitgutter_sign_column_always=1
+let g:gitgutter_sign_column_always = 1
 
 " Rust
 let g:rustfmt_autosave = 1
