@@ -101,7 +101,6 @@ let g:airline_theme = 'base16'
 " ClangFormat
 autocmd FileType c,cpp,objc ClangFormatAutoEnable
 let g:clang_format#detect_file_style = 1
-let g:clang_format#code_style = 'google'
 let g:clang_format#style_options = {
     \ "BasedOnStyle": "Google",
     \ "AccessModifierOffset": -2,
@@ -112,17 +111,14 @@ let g:clang_format#style_options = {
     \ "AllowShortLoopsOnASingleLine": "false",
     \ "BinPackArguments": "false",
     \ "BinPackParameters": "false",
-    \ "BreakBeforeBraces": "Attach",
     \ "BreakConstructorInitializersBeforeComma": "true",
     \ "ColumnLimit": 0,
     \ "ConstructorInitializerIndentWidth": 0,
-    \ "DerivePointerAlignment": "false",
     \ "IndentWidth": 4,
     \ "ObjCBlockIndentWidth": 4,
     \ "ObjCSpaceAfterProperty": "true",
     \ "ObjCSpaceBeforeProtocolList": "true",
-    \ "Standard": "Cpp11",
-    \ "TabWidth": 4}
+    \ }
 
 " -----------------------------------------------------
 " Options
