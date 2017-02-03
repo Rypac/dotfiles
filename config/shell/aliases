@@ -5,8 +5,11 @@ if type nvim > /dev/null 2>&1; then
 fi
 
 # tmux
-alias tm='tmux attach -t default || tmux new -s default'
 alias mux='tmuxinator'
+function tm() {
+    name="${1:-default}"
+    tmux attach -t "$name" || tmux new -s "$name"
+}
 
 # GPG
 alias gpg='gpg2'
@@ -19,6 +22,9 @@ alias docker-purge='docker rmi -f $(docker images -aq)'
 # Stack
 alias stack-update='stack --resolver nightly setup --reinstall --install-ghc'
 alias nstack='stack --resolver nightly'
+
+# NPM
+alias npm-tasks="jq '.scripts' < package.json"
 
 # Common tool aliases
 alias c='clear'
