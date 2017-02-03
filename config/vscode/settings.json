@@ -35,5 +35,6 @@
     "elm.formatOnSave": true,
     "vim.easymotion": true,
     "vim.history": 200,
+    "vim.useSystemClipboard": true,
     "window.menuBarVisibility": "toggle"
 }
