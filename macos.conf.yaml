@@ -18,6 +18,7 @@
     ~/.tmux.conf: config/tmux/tmux.conf
     ~/.vim/vimrc: config/vim/vimrc
     ~/.zshenv: config/zsh/zshenv
+    ~/Library/Application Support/Code/User: config/vscode
     ~/Library/Application Support/Sublime Text 3/Packages/User: config/sublime
     ~/Library/Application Support/Sublime Text 3/Packages/UserPlugins: config/sublime/plugins
     ~/Library/LaunchAgents/env-sync.plist: config/launch-agents/env-sync.plist

@@ -1,0 +1,12 @@
+[
+    {
+        "key": "ctrl+o",
+        "command": "workbench.action.navigateBack",
+        "when": "editorTextFocus && vim.useCtrlKeys && !inDebugRepl && vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "workbench.action.navigateForward",
+        "when": "editorTextFocus && vim.useCtrlKeys && !inDebugRepl && vim.mode != 'Insert'"
+    }
+]

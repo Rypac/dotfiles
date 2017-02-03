@@ -11,10 +11,6 @@ alias mux='tmuxinator'
 # GPG
 alias gpg='gpg2'
 
-# VSCode
-alias code="code --user-data-dir "$XDG_CONFIG_HOME/vscode" --extensions-dir "$XDG_CONFIG_HOME/vscode/extensions""
-alias vscode='code'
-
 # Docker
 alias docker-stop='docker stop $(docker ps -aq)'
 alias docker-clean='docker rm -f $(docker ps -aq)'

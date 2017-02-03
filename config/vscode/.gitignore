@@ -1,0 +1,9 @@
+# Ignore everything by default
+/*
+
+# Only include settings, key shortcuts and snippets
+!.gitignore
+!settings.json
+!keybindings.json
+!/snippets/
+

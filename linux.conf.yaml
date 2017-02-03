@@ -24,6 +24,7 @@
     ~/.config/tint2: config/tint2
     ~/.config/user-dirs.dirs: config/xdg/user-dirs.dirs
     ~/.config/user-dirs.locale: config/xdg/user-dirs.locale
+    ~/.config/vscode: config/vscode
     ~/.config/zsh/.zshrc: config/zsh/zshrc
     ~/.config/zsh/completions: config/zsh/completions
     ~/.config/zsh/colours: config/zsh/colours
