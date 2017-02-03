@@ -1,4 +1,10 @@
 {
-    "dired_header": true,
-    "dired_width": 0.12
+	"dired_header": true,
+	"dired_to_copy":
+	[
+	],
+	"dired_to_move":
+	[
+	],
+	"dired_width": 0.12
 }
