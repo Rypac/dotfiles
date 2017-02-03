@@ -34,5 +34,6 @@
     "prettier.printWidth": 100,
     "elm.formatOnSave": true,
     "vim.easymotion": true,
-    "vim.history": 200
+    "vim.history": 200,
+    "window.menuBarVisibility": "toggle"
 }

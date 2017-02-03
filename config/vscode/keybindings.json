@@ -2,17 +2,42 @@
     {
         "key": "ctrl+o",
         "command": "workbench.action.navigateBack",
-        "when": "editorTextFocus && vim.mode != 'Insert'"
+        "when": "editorTextFocus && !inDebugRepl && vim.useCtrlKeys && vim.mode != 'Insert'"
     },
     {
         "key": "ctrl+i",
         "command": "workbench.action.navigateForward",
-        "when": "editorTextFocus && vim.mode != 'Insert'"
+        "when": "editorTextFocus && !inDebugRepl && vim.useCtrlKeys && vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+f",
+        "command": "actions.find",
+        "when": "editorTextFocus && !inDebugRepl && vim.useCtrlKeys && vim.mode == 'Insert'"
     },
     {
         "key": "ctrl+d",
         "command": "editor.action.addSelectionToNextFindMatch",
-        "when": "editorTextFocus && vim.mode == 'Insert'"
+        "when": "editorTextFocus && !inDebugRepl && vim.useCtrlKeys && vim.mode == 'Insert'"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "editor.action.addSelectionToNextFindMatch",
+        "when": "editorTextFocus && !inDebugRepl && !suggestWidgetVisible && vim.useCtrlKeys && vim.mode == 'Insert'"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "extension.vim_cmd+d",
+        "when": "editorTextFocus && !inDebugRepl && !suggestWidgetVisible && vim.useCtrlKeys && vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "editor.action.moveSelectionToPreviousFindMatch",
+        "when": "editorTextFocus && !inDebugRepl && !suggestWidgetVisible && vim.useCtrlKeys && vim.mode != 'Normal'"
+    },
+    {
+        "key": "ctrl+x",
+        "command": "editor.action.moveSelectionToNextFindMatch",
+        "when": "editorTextFocus && !inDebugRepl && !suggestWidgetVisible && vim.useCtrlKeys && vim.mode != 'Normal'"
     },
     {
         "key": "ctrl+shift+c",
