@@ -2,11 +2,51 @@
     {
         "key": "ctrl+o",
         "command": "workbench.action.navigateBack",
-        "when": "editorTextFocus && vim.useCtrlKeys && !inDebugRepl && vim.mode != 'Insert'"
+        "when": "editorTextFocus && vim.mode != 'Insert'"
     },
     {
         "key": "ctrl+i",
         "command": "workbench.action.navigateForward",
-        "when": "editorTextFocus && vim.useCtrlKeys && !inDebugRepl && vim.mode != 'Insert'"
+        "when": "editorTextFocus && vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "editor.action.addSelectionToNextFindMatch",
+        "when": "editorTextFocus && vim.mode == 'Insert'"
+    },
+    {
+        "key": "ctrl+shift+c",
+        "command": "editor.action.clipboardCopyAction",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+x",
+        "command": "editor.action.clipboardCutAction",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+v",
+        "command": "editor.action.clipboardPasteAction",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+,",
+        "command": "editor.action.outdentLines",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+.",
+        "command": "editor.action.indentLines",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+shift+up",
+        "command": "cursorColumnSelectUp",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+shift+down",
+        "command": "cursorColumnSelectDown",
+        "when": "editorTextFocus"
     }
 ]
