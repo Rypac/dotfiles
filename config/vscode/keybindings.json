@@ -15,11 +15,6 @@
         "when": "editorTextFocus && !inDebugRepl && vim.useCtrlKeys && vim.mode == 'Insert'"
     },
     {
-        "key": "ctrl+d",
-        "command": "editor.action.addSelectionToNextFindMatch",
-        "when": "editorTextFocus && !inDebugRepl && vim.useCtrlKeys && vim.mode == 'Insert'"
-    },
-    {
         "key": "ctrl+n",
         "command": "editor.action.addSelectionToNextFindMatch",
         "when": "editorTextFocus && !inDebugRepl && !suggestWidgetVisible && vim.useCtrlKeys && vim.mode == 'Insert'"
@@ -38,6 +33,56 @@
         "key": "ctrl+x",
         "command": "editor.action.moveSelectionToNextFindMatch",
         "when": "editorTextFocus && !inDebugRepl && !suggestWidgetVisible && vim.useCtrlKeys && vim.mode != 'Normal'"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "workbench.action.quickOpenNavigatePrevious",
+        "when": "inQuickOpen && vim.useCtrlKeys"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "workbench.action.quickOpenNavigateNext",
+        "when": "inQuickOpen && vim.useCtrlKeys"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "workbench.action.closeQuickOpen",
+        "when": "inQuickOpen && vim.useCtrlKeys"
+    },
+    {
+        "key": "ctrl+[",
+        "command": "workbench.action.closeQuickOpen",
+        "when": "inQuickOpen && vim.useCtrlKeys"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "workbench.action.closeMessages",
+        "when": "globalMessageVisible && vim.useCtrlKeys"
+    },
+    {
+        "key": "ctrl+[",
+        "command": "workbench.action.closeMessages",
+        "when": "globalMessageVisible && vim.useCtrlKeys"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "hideSuggestWidget",
+        "when": "editorTextFocus && suggestWidgetVisible && vim.useCtrlKeys"
+    },
+    {
+        "key": "ctrl+[",
+        "command": "hideSuggestWidget",
+        "when": "editorTextFocus && suggestWidgetVisible && vim.useCtrlKeys"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "closeParameterHints",
+        "when": "editorTextFocus && parameterHintsVisible && vim.useCtrlKeys"
+    },
+    {
+        "key": "ctrl+[",
+        "command": "closeParameterHints",
+        "when": "editorTextFocus && parameterHintsVisible && vim.useCtrlKeys"
     },
     {
         "key": "ctrl+shift+c",
@@ -72,6 +117,16 @@
     {
         "key": "alt+shift+down",
         "command": "cursorColumnSelectDown",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+t",
+        "command": "workbench.action.tasks.runTask",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+n",
+        "command": "workbench.action.files.newUntitledFile",
         "when": "editorTextFocus"
     }
 ]
