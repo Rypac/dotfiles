@@ -25,6 +25,7 @@
     ~/.config/user-dirs.dirs: config/xdg/user-dirs.dirs
     ~/.config/user-dirs.locale: config/xdg/user-dirs.locale
     ~/.config/vscode/User: config/vscode
+    ~/.config/x11/Xresources: config/x11/Xresources
     ~/.config/zsh/.zshrc: config/zsh/zshrc
     ~/.config/zsh/completions: config/zsh/completions
     ~/.config/zsh/colours: config/zsh/colours
@@ -38,7 +39,6 @@
     ~/.vim/init.vim: config/vim/vimrc
     ~/.config/nvim: ~/.vim
     ~/.xsessionrc: config/x11/xsessionrc
-    ~/.Xresources: config/x11/Xresources
     ~/.zshenv: config/zsh/zshenv
 
 - shell:

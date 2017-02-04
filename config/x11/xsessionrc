@@ -7,8 +7,10 @@ xset b off
 xset m 1 0
 xsetroot -cursor_name left_ptr
 
-# Load X resources
-[ -f "$HOME/.Xresources" ] && xrdb -merge "$HOME/.Xresources"
+# Load Xresources
+if [ -f "$XDG_CONFIG_HOME/x11/Xresources" ]; then
+    xrdb -merge "$XDG_CONFIG_HOME/x11/Xresources"
+fi
 
 # Start the gpg-agent if not already running
 export GPG_TTY=$(tty)
