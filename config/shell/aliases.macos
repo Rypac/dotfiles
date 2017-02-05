@@ -14,6 +14,9 @@ alias pip-upgrade="pip3 list --outdated | cut -d ' ' -f 1 | xargs -n 1 pip3 inst
 # VSCode
 alias vscode='code'
 
+# Vim (work around tmux issue on macOS sierra)
+alias nvim='reattach-to-user-namespace -l nvim'
+
 # GPG Agent
 if [ -f ~/.gnupg/gpg-agent-info ]; then
     source ~/.gnupg/gpg-agent-info
