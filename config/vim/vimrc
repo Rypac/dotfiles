@@ -129,8 +129,9 @@ set splitright
 
 " Colour scheme
 set background=dark
+let base16colorspace=256
 colorscheme base16-oceanicnext
-if has("termguicolors")
+if has("termguicolors") && $TERM !~# '^rxvt-256color'
     set termguicolors
 endif
 
