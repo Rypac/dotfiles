@@ -486,11 +486,13 @@ set $base0D #6699CC
 set $base0E #C594C5
 set $base0F #AB7967
 
-# colour                border    bg     text     ind
-client.focused          $base0D $base0D $base01 $base01
-client.focused_inactive $base02 $base02 $base05 $base01
-client.unfocused        $base01 $base01 $base04 $base01
-client.urgent           $base02 $base08 $base07 $base08
+# colour                border    bg     text     ind   child
+client.focused          $base05 $base0D $base00 $base0D $base0D
+client.focused_inactive $base01 $base01 $base05 $base03 $base01
+client.unfocused        $base01 $base00 $base05 $base01 $base01
+client.urgent           $base08 $base08 $base00 $base08 $base08
+client.placeholder      $base00 $base00 $base05 $base00 $base00
+client.background       $base07
 
 bar {
     status_command i3blocks
@@ -503,14 +505,15 @@ bar {
     bindsym button5 nop
 
     colors {
-        separator $base03
         background $base01
+        separator  $base03
         statusline $base05
 
-        # colour           border    bg     text
-        focused_workspace  $base0D $base0D $base01
-        active_workspace   $base02 $base02 $base05
-        inactive_workspace $base01 $base01 $base04
-        urgent_workspace   $base08 $base08 $base07
+        # state             border    bg     text
+        focused_workspace  $base0D $base0D $base00
+        active_workspace   $base03 $base03 $base00
+        inactive_workspace $base01 $base01 $base05
+        urgent_workspace   $base08 $base08 $base00
+        binding_mode       $base00 $base0A $base00
     }
 }
