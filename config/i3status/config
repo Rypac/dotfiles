@@ -1,0 +1,28 @@
+general {
+    colors = true
+    interval = 5
+}
+
+order += "wireless _first_"
+order += "ethernet _first_"
+order += "battery all"
+order += "tztime local"
+
+wireless _first_ {
+    format_up = "    %ip (%quality at %essid) "
+    format_down = ""
+}
+
+ethernet _first_ {
+    format_up = "    %ip (%speed) "
+    format_down = ""
+}
+
+battery all {
+    format = "   %status %percentage %remaining "
+    format_down = ""
+}
+
+tztime local {
+    format = " %A %d %b, %-I:%M%P "
+}

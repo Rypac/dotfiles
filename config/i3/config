@@ -495,7 +495,7 @@ client.placeholder      $base00 $base00 $base05 $base00 $base00
 client.background       $base07
 
 bar {
-    status_command i3blocks
+    status_command i3status
     position top
     height 26
     font pango:Source Code Pro 10
