@@ -1,23 +1,8 @@
-# Ignore everything by default
 /*
-
-# Only include settings and keymaps
 !.gitignore
-!*.sublime-settings
-!*.sublime-keymap
-!*.py
+!Package Control.sublime-settings
+!Preferences.sublime-settings
+!Default.sublime-keymap
 !/snippets/
 !/plugins/
 
-# Don't include platform/installation specific settings
-clang_format.sublime-settings
-ClangComplete.sublime-settings
-EasyClangComplete.sublime-settings
-Elm Language Support.sublime-settings
-ESLint.sublime-settings
-ESLint-Formatter.sublime-settings
-RustAutoComplete.sublime-settings
-SublimeLinter.sublime-settings
-Sublimerge*
-Terminal.sublime-settings
-Tern.sublime-settings
