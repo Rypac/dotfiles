@@ -7,9 +7,7 @@ update-dotfiles
 sudo apt update
 sudo apt upgrade -y
 
-# non-tracked packages
-local-packages upgrade
-i3-update
+# fzf
 "$DOTFILES_HOME/libs/fzf/install" --bin
 
 # rust

@@ -21,6 +21,10 @@ function confirmation_prompt() {
     done
 }
 
+function no_confirmation() {
+    [ "$1" = "-y" ] || [ "$1" = "--yes" ]
+}
+
 function install_apt_packages() {
     sudo apt install --yes \
         alsa-base \
@@ -59,7 +63,6 @@ function install_apt_packages() {
         htop \
         i3 \
         imagemagick \
-        kpcli \
         keepassx \
         lightdm \
         lightdm-gtk-greeter \
@@ -92,51 +95,7 @@ function install_apt_packages() {
         xorg \
         zathura \
         zip \
-        zsh \
-        libasound2-dev \
-        libev-dev \
-        libnotify-bin \
-        libpango1.0-0 \
-        libpango1.0-dev \
-        libssl-dev \
-        libstartup-notification0-dev \
-        libxcb-cursor-dev \
-        libxcb-ewmh-dev \
-        libxcb-icccm4-dev \
-        libxcb-keysyms1-dev \
-        libxcb-randr0-dev \
-        libxcb-util0-dev \
-        libxcb-xrm-dev \
-        libxcb-xinerama0-dev \
-        libxcb-xkb-dev \
-        libxcb1-dev \
-        libxft2 \
-        libxkbcommon-dev \
-        libxkbcommon-x11-dev \
-        libxslt1.1 \
-        libyajl-dev
-}
-
-function clone_github_repo() {
-    repo="$1"
-    name="$2"
-    if [ ! -d "$name" ]; then
-        git clone --recursive "https://github.com/$repo" "$name"
-    fi
-}
-
-function clone_git_packages() {
-    git_package_dir="$HOME/packages/cloned"
-    mkdir -p "$git_package_dir"
-    cd "$git_package_dir"
-    clone_github_repo Airblader/i3.git i3-gaps
-    clone_github_repo vivien/i3blocks.git i3blocks
-    clone_github_repo baskerville/xtitle.git xtitle
-
-    plug_vim="$HOME/.vim/autoload/plug.vim"
-    if [ ! -f "$plug_vim" ]; then
-        curl -fLo "$plug_vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    fi
+        zsh
 }
 
 function install_fonts() {
@@ -158,17 +117,10 @@ function configure_environment() {
     sudo cp -r "$DOTFILES_HOME/config/urxvt/." /usr/lib/urxvt/perl/
 }
 
-function no_confirmation() {
-    [ "$1" = "-y" ] || [ "$1" = "--yes" ]
-}
-
 source "$HOME/.profile"
 
 if no_confirmation "$1" || confirmation_prompt "Install packages?"; then
     install_apt_packages
-fi
-if no_confirmation "$1" || confirmation_prompt "Clone and install external packages?"; then
-    clone_git_packages
 fi
 if no_confirmation "$1" || confirmation_prompt "Install fonts?"; then
     install_fonts
