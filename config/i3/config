@@ -497,7 +497,7 @@ client.background       $base07
 bar {
     status_command i3status
     position top
-    font pango:Source Code Pro Medium 9
+    font pango:Source Code Pro Medium, Awesome 9
     strip_workspace_numbers yes
     separator_symbol "|"
     bindsym button4 nop
