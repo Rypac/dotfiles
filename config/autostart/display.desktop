@@ -1,6 +1,0 @@
-[Desktop Entry]
-Name=Display
-Comment=Tweak display settings
-Exec=/home/ryan/scripts/linux/tweak-display.sh
-Terminal=false
-Type=Application

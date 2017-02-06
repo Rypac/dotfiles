@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=Network Manager
-Comment=Network manager applet
-Exec=nm-applet
-Terminal=false
-Type=Application
-OnlyShowIn=i3;
