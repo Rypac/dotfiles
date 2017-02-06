@@ -2,12 +2,12 @@
     {
         "key": "ctrl+o",
         "command": "workbench.action.navigateBack",
-        "when": "editorTextFocus && !inDebugRepl && vim.useCtrlKeys && vim.mode != 'Insert'"
+        "when": "editorTextFocus && !inDebugRepl && vim.useCtrlKeys && vim.mode == 'Normal'"
     },
     {
         "key": "ctrl+i",
         "command": "workbench.action.navigateForward",
-        "when": "editorTextFocus && !inDebugRepl && vim.useCtrlKeys && vim.mode != 'Insert'"
+        "when": "editorTextFocus && !inDebugRepl && vim.useCtrlKeys && vim.mode == 'Normal'"
     },
     {
         "key": "ctrl+f",
