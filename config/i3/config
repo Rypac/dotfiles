@@ -6,7 +6,7 @@ set $ctrl Control
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:Source Code Pro 10
+font pango:Source Code Pro Medium 9
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -403,8 +403,8 @@ mode "$mode_mouse" {
 set $inner_gaps 20
 set $outer_gaps 0
 for_window [class="^.*"] border none
-gaps inner $inner_gaps
-gaps outer $outer_gaps
+#gaps inner $inner_gaps
+#gaps outer $outer_gaps
 hide_edge_borders smart
 
 # gaps mode
@@ -497,8 +497,7 @@ client.background       $base07
 bar {
     status_command i3status
     position top
-    height 26
-    font pango:Source Code Pro 10
+    font pango:Source Code Pro Medium 9
     strip_workspace_numbers yes
     separator_symbol "|"
     bindsym button4 nop
