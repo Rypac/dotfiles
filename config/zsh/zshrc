@@ -1,14 +1,181 @@
-[ -f "$DOTFILES_HOME/config/shell/aliases" ] && source "$DOTFILES_HOME/config/shell/aliases"
-[ -f "$ZDOTDIR/completions" ] && source "$ZDOTDIR/completions"
-[ -f "$ZDOTDIR/colours" ] && source "$ZDOTDIR/colours"
-[ -f "$ZDOTDIR/keybindings" ] && source "$ZDOTDIR/keybindings"
-[ -f "$ZDOTDIR/opts" ] && source "$ZDOTDIR/opts"
-[ -f "$ZDOTDIR/prompt" ] && source "$ZDOTDIR/prompt"
+[ -f "$HOME/.profile" ] && source "$HOME/.profile"
+[ -f "$HOME/.aliases" ] && source "$HOME/.aliases"
+[ -f "$HOME/scripts/colour/shell" ] && source "$HOME/scripts/colour/shell"
+
+## Options
+
+# Navigation
+setopt AUTO_PUSHD           # cd pushes old directory to the stack
+setopt PUSHD_IGNORE_DUPS    # push only unique directories
+setopt PUSHD_SILENT         # don't print directory stach when pushing or popping
+setopt PUSHD_TO_HOME        # push with no arguements pushes to home
+
+# Globbing and fds
+setopt EXTENDED_GLOB        # treat '#', '~' and '^' as part of patterns for filename generation
+
+# Prompt
+setopt PROMPT_SUBST         # substitutions can be used in the prompt
+
+# Environment
+setopt AUTO_RESUME          # single work commands can resume existing jobs
+setopt LONG_LIST_JOBS       # list jobs in the long format by default
+unsetopt BG_NICE            # don't run background jobs at a lower priority
+unsetopt HUP                # don't send hang-up signal when exiting the shell
+unsetopt CHECK_JOBS         # don't report status of background jobs when exiting
+
+# History
+HISTFILE="$XDG_CACHE_HOME/.zhistory"
+HISTSIZE=10000
+SAVEHIST=10000
+setopt EXTENDED_HISTORY     # prepend timestamp to each history entry
+setopt INC_APPEND_HISTORY   # history entries are appended after each command
+setopt SHARE_HISTORY        # imports commands from and writes commands to the history file
+setopt HIST_IGNORE_DUPS     # don't add command to history if it's a duplicate of the previous entry
+setopt HIST_IGNORE_ALL_DUPS # remove previous entry from history and append command to the end
+setopt HIST_IGNORE_SPACE    # ignore commands prepended with a space
+setopt HIST_SAVE_NO_DUPS    # older history commands are removed in favour of newer ones
+setopt HIST_VERIFY          # perform history expansion and reload line into the editing buffer
+
+# Completion
+setopt ALWAYS_TO_END        # move cursor to end of word when inserting completion
+setopt PATH_DIRS            # perform path search completion on commands with slashes
+unsetopt CASE_GLOB          # don't make globbing completion case sensitive
+unsetopt MENU_COMPLETE      # don't insert first completion match immediately
+
+
+## Keybindings
+
+# Use Vim mode
+bindkey -v
+
+# Normal mode keybindings
+bindkey '^[[3~' delete-char         # delete
+bindkey '^?' backward-delete-char   # backspace
+bindkey '^[[D' backward-char        # left
+bindkey '^[[C' forward-char         # right
+bindkey '^[[7~' beginning-of-line   # home
+bindkey '^[[8~' end-of-line         # end
+bindkey '^[[2~' overwrite-mode      # insert
+bindkey '[D' backward-word          # alt+left
+bindkey '[C' forward-word           # alt+right
+bindkey '^[[1;5D' backward-word     # ctrl+left
+bindkey '^[[1;5C' forward-word      # ctrl+right
+bindkey '^[Od' backward-word        # ctrl+left
+bindkey '^[Oc' forward-word         # ctrl+right
+bindkey '^[[3^' kill-word           # ctrl+delete
+bindkey '^H' backward-kill-word     # ctrl+backspace
+bindkey '^A' beginning-of-line      # ctrl+a
+bindkey '^E' end-of-line            # ctrl+e
+bindkey '^L' clear-screen           # ctrl+l
+bindkey '^K' kill-line              # ctrl+k
+bindkey '^U' backward-kill-line     # ctrl+u
+bindkey '^T' transpose-chars        # ctrl+t
+bindkey '^F' vi-cmd-mode            # ctrl+f
+bindkey '^B' push-line-or-edit      # ctrl+b
+bindkey '^I' expand-or-complete     # ctrl+i
+bindkey '^Y' yank                   # ctrl+y
+bindkey ' ' magic-space             # space
+bindkey '^P' up-history             # ctrl+p
+bindkey '^N' down-history           # ctrl+n
+bindkey '^R' history-incremental-search-backward    # ctrl+r
+bindkey '^[[Z' reverse-menu-complete                # shift+tab
+
+# Vim mode keybindings
+bindkey -M vicmd '/' history-incremental-search-backward
+bindkey -M vicmd '?' history-incremental-search-forward
+bindkey -M vicmd 'v' edit-command-line
+bindkey -M vicmd 'u' undo
+bindkey -M vicmd '^R' redo
+
+# Reduce the default timeout
+export KEYTIMEOUT=10
+
+
+## Completions
+
+# group matches and describe.
+zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*:matches' group 'yes'
+zstyle ':completion:*:options' description 'yes'
+zstyle ':completion:*:options' auto-description '%d'
+zstyle ':completion:*:corrections' format ' %F{green}-- %d (errors: %e) --%f'
+zstyle ':completion:*:descriptions' format ' %F{yellow}-- %d --%f'
+zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
+zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
+zstyle ':completion:*:default' list-prompt '%S%M matches%s'
+zstyle ':completion:*' format ' %F{yellow}-- %d --%f'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+# directories
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:*:cd:*' tag-order local-directories directory-stack path-directories
+zstyle ':completion:*:*:cd:*:directory-stack' menu yes select
+zstyle ':completion:*:-tilde-:*' group-order 'named-directories' 'path-directories' 'expand'
+zstyle ':completion:*' squeeze-slashes true
+
+# enable caching
+zstyle ':completion::complete:*' use-cache on
+zstyle ':completion::complete:*' cache-path "$XDG_CACHE_HOME/.zcompcache"
+
+# ignore useless commands and functions
+zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec)|prompt_*)'
+
+# completion sorting
+zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
+
+# man
+zstyle ':completion:*:manuals' separate-sections true
+zstyle ':completion:*:manuals.(^1*)' insert-sections true
+
+# history
+zstyle ':completion:*:history-words' stop yes
+zstyle ':completion:*:history-words' remove-all-dups yes
+zstyle ':completion:*:history-words' list false
+zstyle ':completion:*:history-words' menu yes
+
+
+## Prompt
+
+function left_prompt {
+    local current_directory="%F{blue}%1~"
+    local command_status="%(0?.%F{green}.%F{red})$%f"
+    print "$current_directory $command_status "
+}
+
+function right_prompt {
+    if [ "$KEYMAP" = 'vicmd' ]; then
+        print "%F{yellow} [% NORMAL]% %f"
+    fi
+}
+
+function zle-line-init zle-line-finish zle-keymap-select {
+    zle reset-prompt
+    zle -R
+}
+
+function prompt_precmd {
+    zle -N zle-line-init
+    zle -N zle-keymap-select
+    zle -N zle-line-finish
+    PROMPT='$(left_prompt)'
+    RPROMPT='$(right_prompt)'
+}
+
+if [[ ! ${TERM} == (linux|*bsd*|dumb) ]]; then
+    autoload -Uz promptinit && promptinit
+    autoload -Uz add-zsh-hook && add-zsh-hook precmd prompt_precmd
+    prompt_opts=(cr subst percent)
+fi
+
+
+## Libraries
 
 # Completions
 if [ -d "$DOTFILES_HOME/libs/zsh-completions" ]; then
     source "$DOTFILES_HOME/libs/zsh-completions/zsh-completions.plugin.zsh"
-    autoload -Uz compinit && compinit
+    autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME/.zcompcache"
 fi
 
 # History substring search

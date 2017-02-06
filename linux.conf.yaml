@@ -24,20 +24,15 @@
     ~/.config/user-dirs.locale: config/xdg/user-dirs.locale
     ~/.config/vscode/User: config/vscode
     ~/.config/x11/Xresources: config/x11/Xresources
-    ~/.config/zsh/.zshrc: config/zsh/zshrc
-    ~/.config/zsh/completions: config/zsh/completions
-    ~/.config/zsh/colours: config/zsh/colours
-    ~/.config/zsh/keybindings: config/zsh/keybindings
-    ~/.config/zsh/opts: config/zsh/opts
-    ~/.config/zsh/prompt: config/zsh/prompt
     ~/.gnupg/gpg-agent.conf: config/gnupg/gpg-agent.conf
+    ~/.aliases: config/shell/aliases
     ~/.profile: config/shell/profile
     ~/.tmux.conf: config/tmux/tmux.conf
     ~/.vim/vimrc: config/vim/vimrc
     ~/.vim/init.vim: config/vim/vimrc
     ~/.config/nvim: ~/.vim
     ~/.xsessionrc: config/x11/xsessionrc
-    ~/.zshenv: config/zsh/zshenv
+    ~/.zshrc: config/zsh/zshrc
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

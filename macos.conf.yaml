@@ -8,16 +8,11 @@
 - link:
     ~/.config/git: config/git
     ~/.config/npm: config/npm
-    ~/.config/zsh/.zshrc: config/zsh/zshrc
-    ~/.config/zsh/completions: config/zsh/completions
-    ~/.config/zsh/colours: config/zsh/colours
-    ~/.config/zsh/keybindings: config/zsh/keybindings
-    ~/.config/zsh/opts: config/zsh/opts
-    ~/.config/zsh/prompt: config/zsh/prompt
+    ~/.aliases: config/shell/aliases
     ~/.profile: config/shell/profile
     ~/.tmux.conf: config/tmux/tmux.conf
     ~/.vim/vimrc: config/vim/vimrc
-    ~/.zshenv: config/zsh/zshenv
+    ~/.zshrc: config/zsh/zshrc
     ~/Library/Application Support/Code/User: config/vscode
     ~/Library/Application Support/Sublime Text 3/Packages/User: config/sublime
     ~/Library/Application Support/Sublime Text 3/Packages/UserPlugins: config/sublime/plugins
