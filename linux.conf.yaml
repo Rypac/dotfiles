@@ -7,7 +7,6 @@
 
 - link:
     ~/.config/alacritty: config/alacritty
-    ~/.config/autostart: config/autostart
     ~/.config/compton.conf: config/compton/compton.conf
     ~/.config/clipit: config/clipit
     ~/.config/display: config/display
@@ -18,7 +17,6 @@
     ~/.config/i3blocks: config/i3blocks
     ~/.config/npm: config/npm
     ~/.config/openbox: config/openbox
-    ~/.config/ranger: config/ranger
     ~/.config/rofi: config/rofi
     ~/.config/sublime-text-3/Packages/User: config/sublime
     ~/.config/sublime-text-3/Packages/UserPlugins: config/sublime/plugins
