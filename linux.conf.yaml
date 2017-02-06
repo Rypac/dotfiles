@@ -13,7 +13,7 @@
     ~/.config/fontconfig: config/fontconfig
     ~/.config/git: config/git
     ~/.config/i3: config/i3
-    ~/.config/i3blocks: config/i3blocks
+    ~/.config/i3status: config/i3status
     ~/.config/npm: config/npm
     ~/.config/openbox: config/openbox
     ~/.config/rofi: config/rofi
