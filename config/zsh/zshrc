@@ -1,7 +1,4 @@
 [ -f "$DOTFILES_HOME/config/shell/aliases" ] && source "$DOTFILES_HOME/config/shell/aliases"
-[ -f "$DOTFILES_HOME/config/shell/aliases.linux" ] && source "$DOTFILES_HOME/config/shell/aliases.linux"
-[ -f "$DOTFILES_HOME/config/shell/aliases.macos" ] && source "$DOTFILES_HOME/config/shell/aliases.macos"
-
 [ -f "$ZDOTDIR/completions" ] && source "$ZDOTDIR/completions"
 [ -f "$ZDOTDIR/colours" ] && source "$ZDOTDIR/colours"
 [ -f "$ZDOTDIR/keybindings" ] && source "$ZDOTDIR/keybindings"
