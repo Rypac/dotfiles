@@ -42,7 +42,7 @@
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   - [git submodule update --remote --rebase, Updating submodules]
-  - [mkdir -p ~/.config ~/.local/share/applications ~/bin ~/desktop ~/development ~/documents ~/downloads ~/music ~/packages ~/pictures ~/pictures ~/scripts ~/videos, Creating directories]
+  - [mkdir -p ~/.local/share/applications ~/bin ~/development ~/scripts, Creating directories]
   - [scripts/utilities/link-scripts.sh "$PWD/scripts/utilities" ~/bin, Linking utility executables]
   - [scripts/utilities/link-scripts.sh "$PWD/scripts/linux" ~/bin, Linking platform executables]
   - [ln -fs $PWD/scripts/* ~/scripts/, Linking scripts]
