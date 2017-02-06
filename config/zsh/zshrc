@@ -34,21 +34,8 @@ fi
 
 # Enhancd
 if [ -f "$DOTFILES_HOME/libs/enhancd/init.sh" ]; then
-    export ENHANCD_DIR="$XDG_DATA_HOME/enhancd"
     source "$DOTFILES_HOME/libs/enhancd/init.sh"
 fi
 
 # De-duplicate array paths
 typeset -gU cdpath fpath mailpath path
-
-if (( $#commands[(i)lesspipe(|.sh)] )); then
-    export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
-fi
-
-# Temporary Files
-if [ ! -d "$TMPDIR" ]; then
-    export TMPDIR="/tmp/$LOGNAME"
-    mkdir -p -m 700 "$TMPDIR"
-fi
-
-TMPPREFIX="${TMPDIR%/}/zsh"
