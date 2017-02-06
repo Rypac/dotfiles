@@ -6,7 +6,6 @@
 - clean: ['~', '~/.config', '~/bin', '~/scripts']
 
 - link:
-    ~/.config/alacritty: config/alacritty
     ~/.config/compton.conf: config/compton/compton.conf
     ~/.config/clipit: config/clipit
     ~/.config/display: config/display

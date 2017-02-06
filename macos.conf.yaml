@@ -6,7 +6,6 @@
 - clean: ['~', '~/.config', '~/bin', '~/scripts']
 
 - link:
-    ~/.config/alacritty: config/alacritty
     ~/.config/git: config/git
     ~/.config/npm: config/npm
     ~/.config/zsh/.zshrc: config/zsh/zshrc
