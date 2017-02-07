@@ -155,6 +155,8 @@ let maplocalleader = "\\"
 
 " Disable highlight
 nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<cr>
+nnoremap <silent> <C-C> :nohlsearch<Bar>:echo<cr>
+nnoremap <silent> <C-[> :nohlsearch<Bar>:echo<cr>
 nnoremap <silent> <localleader><space> :noh<cr>
 
 " Fast actions
@@ -165,6 +167,7 @@ nmap <localleader>Q :quitall<cr>
 nmap <localleader>f :Files<cr>
 nmap <localleader>t :Buffers<cr>
 nmap <localleader>c :Commands<cr>
+nmap <localleader>r :redraw!<cr>
 
 let mapleader = "\<space>"
 
@@ -220,8 +223,14 @@ nnoremap <leader>gt :terminal tig<cr>
 nnoremap <leader>gh :terminal tig %<cr>
 
 " Terminal layer
-tnoremap <Esc> <C-\><C-n>
-tnoremap <C-q> exit<cr>
+if has('nvim')
+    tnoremap <Esc> <C-\><C-n>
+    tnoremap <C-q> exit<cr>
+    tnoremap <c-h> <C-\><C-n><C-w>h
+    tnoremap <c-j> <C-\><C-n><C-w>j
+    tnoremap <c-k> <C-\><C-n><C-w>k
+    tnoremap <c-l> <C-\><C-n><C-w>l
+endif
 nnoremap <leader>sn :terminal<cr>
 nnoremap <leader>sj :rightbelow :split<cr> :terminal<cr>
 nnoremap <leader>sk :leftabove :split<cr> :terminal<cr>
@@ -235,8 +244,7 @@ map <F4> :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<cr>
 
 " fzf
 nnoremap <F9> :Files<cr>
-nnoremap <C-p> :Files<cr>
-nnoremap <C-g> :GFiles<cr>
+nnoremap <C-p> :GFiles<cr>
 nnoremap <A-`> :Buffers<cr>
 
 " Sneak
