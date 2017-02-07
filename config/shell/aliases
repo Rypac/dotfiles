@@ -6,7 +6,7 @@ fi
 
 # tmux
 alias mux='tmuxinator'
-function tm() {
+function tm {
     name="${1:-default}"
     tmux attach -t "$name" || tmux new -s "$name"
 }
@@ -34,7 +34,11 @@ alias get='curl --continue-at - --location --progress-bar --remote-name --remote
 
 # directory ops
 alias cpr='cp -r'
-alias rmr='rm -r'
+alias rmr='rm -rf'
+alias mkdir='mkdir -p'
+function mkcd {
+    [ -n "$1" ] && mkdir -p "$1" && cd "$1"
+}
 
 # ls
 alias l='ls -lAh'
@@ -49,25 +53,14 @@ export GREP_COLOR='37;45'
 export GREP_COLORS="mt=${GREP_COLOR}"
 alias grep='grep --color=auto'
 
-# mkdir
-alias mkdir='mkdir -p'
-function mkcd() {
-    [[ -n ${1} ]] && mkdir -p ${1} && cd ${1}
-}
-
 # resource usage
 alias df='df -khT'
 alias du='du -khsc'
-function sizeof() {
+function sizeof {
     [ -n "$1" ] && du "$1" | tail -1 | cut -f1
 }
 
 if [ "$(uname)" = "Linux" ]; then
-
-    # GPG
-    export GPG_TTY=$(tty)
-    gpg-connect-agent updatestartuptty /bye >/dev/null
-
     # Python
     alias pip-upgrade="pip3 list --outdated --user | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade --user"
 
@@ -80,7 +73,9 @@ if [ "$(uname)" = "Linux" ]; then
     alias getclip='xclip -selection clipboard -o'
 
     # Aliases
-    alias f='(pcmanfm . > /dev/null 2>&1 &)'
+    function f {
+        (pcmanfm "${1:-.}" > /dev/null 2>&1 &)
+    }
 
     # Modifying permissions
     alias chmod='chmod --preserve-root -v'
@@ -98,39 +93,27 @@ if [ "$(uname)" = "Linux" ]; then
     alias appsearch='sudo apt search'
     alias appclean='sudo apt autoremove'
 
+    function appcleanall {
+        sudo dpkg -P $(dpkg -l | awk '/^rc/ { print($2) }')
+    }
+    function applist {
+        dpkg-query -f '${binary:Package}\n' -W | less
+    }
+
     # Chrome apps
     alias fastmail='chrome-app FastMail https://www.fastmail.com'
     alias inbox='chrome-app Inbox https://inbox.google.com'
     alias messenger='chrome-app Messenger https://messenger.com'
     alias whatsapp='chrome-app WhatsApp https://web.whatsapp.com'
 
-    function appcleanall() {
-        sudo dpkg -P $(dpkg -l | awk '/^rc/ { print($2) }')
-    }
-
-    function applist() {
-        dpkg-query -f '${binary:Package}\n' -W | less
-    }
-
     # Checkinstall
     alias makeinstall='sudo checkinstall --default --install=yes --nodoc --deldoc=yes --deldesc=yes --delspec=yes --backup=no'
 
-    # Rust
-    export RUST_SRC_PATH="$RUSTUP_HOME/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
-
-    # Android SDK/NDK
-    export JAVA_HOME="/opt/java/jdk"
-    export PATH="$PATH:$JAVA_HOME/bin"
-
 elif [ "$(uname)" = "Darwin" ]; then
-
     # Ruby
-    if type rbenv > /dev/null 2>&1; then
-        eval "$(rbenv init -)"
-        alias rbenv-override="rbenv shell $(rbenv global)"
-        alias be='bundle exec'
-        alias ber='bundle exec rake'
-    fi
+    alias rbenv-override="rbenv shell $(rbenv global)"
+    alias be='bundle exec'
+    alias ber='bundle exec rake'
 
     # Python
     alias pip-upgrade="pip3 list --outdated | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade"
@@ -140,31 +123,6 @@ elif [ "$(uname)" = "Darwin" ]; then
 
     # Vim (work around tmux issue on macOS sierra)
     alias nvim='reattach-to-user-namespace -l nvim'
-
-    # GPG Agent
-    if [ -f ~/.gnupg/gpg-agent-info ]; then
-        source ~/.gnupg/gpg-agent-info
-    fi
-
-    # GPG
-    export GPG_TTY=$(tty)
-    if [ -S "${GPG_AGENT_INFO%%:*}" ]; then
-        export GPG_AGENT_INFO
-    fi
-
-    export BROWSER='open'
-
-    # OpenSSL
-    export OPENSSL_INCLUDE_DIR=/usr/local/opt/openssl/include
-    export DEP_OPENSSL_INCLUDE=/usr/local/opt/openssl/include
-
-    # Rust
-    export RUST_SRC_PATH="$RUSTUP_HOME/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
-
-    # Android SDK/NDK
-    export ANT_ROOT=/usr/local/Cellar/ant/1.9.7/bin
-    export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home
-    export PATH="$PATH:$JAVA_HOME/bin"
 
     # Cocos2d-x
     alias cocos="$HOME/Developer/projects/pulse/libs/cocos2d/tools/cocos2d-console/bin/cocos"
@@ -187,12 +145,12 @@ elif [ "$(uname)" = "Darwin" ]; then
     alias ls='ls -G'
 
     # Moves a file to the MacOS trash
-    function trash() {
+    function trash {
         command mv "$@" ~/.Trash
     }
 
     # Opens any file in Preview
-    function ql() {
+    function ql {
         qlmanage -p "$*" > /dev/null 2>&1
     }
 fi

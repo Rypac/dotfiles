@@ -201,5 +201,52 @@ if [ -f "$DOTFILES_HOME/libs/enhancd/init.sh" ]; then
     source "$DOTFILES_HOME/libs/enhancd/init.sh"
 fi
 
+
+## OS specific settings
+
+if [ "$(uname)" = "Linux" ]; then
+    # GPG
+    export GPG_TTY=$(tty)
+    gpg-connect-agent updatestartuptty /bye >/dev/null
+
+    # Rust
+    export RUST_SRC_PATH="$RUSTUP_HOME/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
+
+    # Android SDK/NDK
+    export JAVA_HOME="/opt/java/jdk"
+    export PATH="$PATH:$JAVA_HOME/bin"
+
+elif [ "$(uname)" = "Darwin" ]; then
+    # GPG Agent
+    if [ -f "$HOME/.gnupg/gpg-agent-info" ]; then
+        source "$HOME/.gnupg/gpg-agent-info"
+    fi
+
+    # GPG
+    export GPG_TTY=$(tty)
+    if [ -S "${GPG_AGENT_INFO%%:*}" ]; then
+        export GPG_AGENT_INFO
+    fi
+
+    # Ruby 
+    if type rbenv > /dev/null 2>&1; then
+        eval "$(rbenv init -)"
+    fi
+
+    export BROWSER='open'
+
+    # OpenSSL
+    export OPENSSL_INCLUDE_DIR=/usr/local/opt/openssl/include
+    export DEP_OPENSSL_INCLUDE=/usr/local/opt/openssl/include
+
+    # Rust
+    export RUST_SRC_PATH="$RUSTUP_HOME/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
+
+    # Android SDK/NDK
+    export ANT_ROOT=/usr/local/Cellar/ant/1.9.7/bin
+    export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home
+    export PATH="$PATH:$JAVA_HOME/bin"
+fi
+
 # De-duplicate array paths
 typeset -gU cdpath fpath mailpath path
