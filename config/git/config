@@ -1,6 +1,7 @@
 [user]
     name = Ryan Davis
-    email = void@rdavis.xyz
+    email = me@rdavis.xyz
+    signingkey = me@rdavis.xyz
 
 [github]
     user = Rypac
