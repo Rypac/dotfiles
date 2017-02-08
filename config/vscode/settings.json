@@ -36,5 +36,6 @@
     "vim.easymotion": true,
     "vim.history": 200,
     "vim.useSystemClipboard": true,
-    "window.menuBarVisibility": "toggle"
+    "window.menuBarVisibility": "toggle",
+    "hindentFormat.command": "hindent --line-length 80"
 }

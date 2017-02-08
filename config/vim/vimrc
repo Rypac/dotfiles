@@ -61,13 +61,8 @@ let g:gitgutter_sign_column_always = 1
 let g:rustfmt_autosave = 1
 
 " Haskell
-let g:haskell_indent_case = 2
-let g:haskell_indent_guard = 2
-let g:haskell_indent_if = 2
-let g:haskell_indent_in = 2
-let g:haskell_indent_let = 2
-let g:haskell_indent_do = 2
-let g:haskell_indent_where = 2
+let g:haskell_indent_disable = 1
+let g:hindent_line_length = 80
 
 " Purescript
 let g:purescript_indent_if = 2
