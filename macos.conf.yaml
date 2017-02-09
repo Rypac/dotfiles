@@ -12,7 +12,6 @@
     ~/.profile: config/shell/profile
     ~/.tmux.conf: config/tmux/tmux.conf
     ~/.vim/vimrc: config/vim/vimrc
-    ~/.zshrc: config/zsh/zshrc
     ~/Library/Application Support/Code/User: config/vscode
     ~/Library/Application Support/Sublime Text 3/Packages/User: config/sublime
     ~/Library/Application Support/Sublime Text 3/Packages/UserPlugins: config/sublime/plugins

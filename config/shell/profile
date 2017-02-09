@@ -23,9 +23,6 @@ export TIGRC_USER="$XDG_CONFIG_HOME/tig/tigrc"
 export WEECHAT_HOME="$XDG_CONFIG_HOME/weechat"
 export WINEPREFIX="$XDG_DATA_HOME/wine"
 export XINITRC="$XDG_CONFIG_HOME/x11/xinitrc"
-export ZPLUG_HOME="$XDG_DATA_HOME/zplug"
-export ZPLUG_REPOS="$ZPLUG_HOME/repos"
-export ZPLUG_CACHE_DIR="$XDG_CACHE_HOME/zplug"
 
 # Set cache/runtime directories for XDG unfriendly programs
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"

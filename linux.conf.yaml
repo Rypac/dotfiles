@@ -32,7 +32,6 @@
     ~/.vim/init.vim: config/vim/vimrc
     ~/.config/nvim: ~/.vim
     ~/.xsessionrc: config/x11/xsessionrc
-    ~/.zshrc: config/zsh/zshrc
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

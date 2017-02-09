@@ -94,8 +94,7 @@ function install_apt_packages() {
         xclip \
         xorg \
         zathura \
-        zip \
-        zsh
+        zip
 }
 
 function install_fonts() {
@@ -107,7 +106,7 @@ function install_fonts() {
 }
 
 function configure_environment() {
-    chsh -s /bin/zsh
+    chsh -s /bin/bash
     sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
     sudo update-ca-certificates --fresh
     sudo mkdir -p /etc/X11/xorg.conf.d
