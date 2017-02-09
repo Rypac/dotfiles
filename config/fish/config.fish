@@ -30,8 +30,8 @@ if test -d "$data_home/fzf"
     set -gx PATH "$data_home/fzf/bin" $PATH
 end
 
-# base16 colour scheme
 if status --is-interactive
+    # base16 colour scheme
     set -l base16_home "$data_home/base16-shell"
 
     if test ! -d "$base16_home"
@@ -39,8 +39,7 @@ if status --is-interactive
     end
 
     eval sh "$base16_home/scripts/base16-oceanicnext.sh"
-end
 
-# alises
-alias vi nvim
-alias vim nvim
+    # aliases
+    source "$config_home/fish/aliases.fish"
+end

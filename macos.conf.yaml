@@ -6,6 +6,7 @@
 - clean: ['~', '~/.config', '~/bin', '~/scripts']
 
 - link:
+    ~/.config/fish/aliases.fish: config/fish/aliases.fish
     ~/.config/fish/config.fish: config/fish/config.fish
     ~/.config/fish/fishfile: config/fish/fishfile
     ~/.config/git: config/git

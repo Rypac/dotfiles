@@ -10,6 +10,7 @@
     ~/.config/clipit: config/clipit
     ~/.config/display: config/display
     ~/.config/dunst: config/dunst
+    ~/.config/fish/aliases.fish: config/fish/aliases.fish
     ~/.config/fish/config.fish: config/fish/config.fish
     ~/.config/fish/fishfile: config/fish/fishfile
     ~/.config/fontconfig: config/fontconfig
