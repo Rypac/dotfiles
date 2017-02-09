@@ -36,7 +36,6 @@ export __GL_SHADER_DISK_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export STACK_ROOT="$XDG_DATA_HOME/stack"
-export N_PREFIX="$XDG_DATA_HOME/n"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/config"
 export BUNDLE_PATH="$XDG_CACHE_HOME/bundle"
 export GEM_SPEC_CACHE="$XDG_CACHE_HOME/ruby/gem/spec"
@@ -58,4 +57,4 @@ export SELECTED_EDITOR='/usr/bin/vim.basic'
 export LESS='-F -g -i -M -R -S -w -X -z-4'
 
 # Setup PATH
-export PATH="$HOME/bin:$HOME/.local/bin:$CARGO_HOME/bin:$N_PREFIX/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/usr/local/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:$CARGO_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"

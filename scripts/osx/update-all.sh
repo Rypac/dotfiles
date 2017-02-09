@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # dotfiles
 update-dotfiles
@@ -8,7 +8,7 @@ brew update
 brew upgrade
 
 # non-tracked packages
-"$DOTFILES_HOME/libs/fzf/install" --bin
+"$XDG_CONFIG_HOME/libs/fzf/install" --bin
 
 # rust
 rustup update

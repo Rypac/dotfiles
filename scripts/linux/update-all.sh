@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # dotfiles
 update-dotfiles
@@ -8,7 +8,7 @@ sudo apt update
 sudo apt upgrade -y
 
 # fzf
-"$DOTFILES_HOME/libs/fzf/install" --bin
+"$XDG_CONFIG_HOME/libs/fzf/install" --bin
 
 # rust
 rustup update
