@@ -4,9 +4,8 @@ alias vim nvim
 
 # tmux
 alias mux tmuxinator
-function tm
-    tmux attach -t "$1"; or tmux new -s "$1"
-end
+alias tn 'tmux new -s'
+alias tm 'tmux attach -t'
 
 # GPG
 alias gpg gpg2
@@ -96,11 +95,7 @@ else if [ (uname) = "Darwin" ]
     # Vim (work around tmux issue on macOS sierra)
     alias nvim 'reattach-to-user-namespace -l nvim'
 
-    # Cocos2d-x
-    alias cocos "$HOME/Developer/projects/pulse/libs/cocos2d/tools/cocos2d-console/bin/cocos"
-    alias fbx-conv "$HOME/Developer/projects/pulse/libs/cocos2d/tools/fbx-conv/mac/fbx-conv"
-
-    # Aliases
+    # Finder
     alias f 'open -a Finder ./'
 
     # Package manager
@@ -110,9 +105,4 @@ else if [ (uname) = "Darwin" ]
     alias appsearch 'brew search'
     alias appclean 'brew cleanup; and brew cask cleanup; and brew prune'
     alias appdoctor 'brew doctor; and brew cask doctor'
-
-    # ls colours
-    export LSCOLORS 'exfxcxdxbxGxDxabagacad'
-    export LS_COLORS 'di 34:ln 35:so 32:pi 33:ex 31:bd 36;01:cd 33;01:su 31;40;07:sg 36;40;07:tw 32;40;07:ow 33;40;07:'
-    alias ls 'ls -G'
 end
