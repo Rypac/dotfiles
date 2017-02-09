@@ -8,7 +8,6 @@
 - link:
     ~/.config/git: config/git
     ~/.config/npm: config/npm
-    ~/.aliases: config/shell/aliases
     ~/.profile: config/shell/profile
     ~/.tmux.conf: config/tmux/tmux.conf
     ~/.vim/vimrc: config/vim/vimrc
