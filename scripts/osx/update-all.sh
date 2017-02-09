@@ -8,7 +8,7 @@ brew update
 brew upgrade
 
 # non-tracked packages
-"$XDG_CONFIG_HOME/libs/fzf/install" --bin
+"$XDG_DATA_HOME/libs/fzf/install" --bin
 
 # rust
 rustup update
