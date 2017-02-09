@@ -40,6 +40,7 @@ Plug 'frigoeu/psc-ide-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'quabug/vim-gdscript'
+Plug 'dag/vim-fish'
 
 " Visual/themes
 Plug 'chriskempson/base16-vim'
