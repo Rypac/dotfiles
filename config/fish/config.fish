@@ -33,3 +33,8 @@ if test ! -d "$data_home/base16-shell"
 end
 
 eval sh "$data_home/base16-shell/scripts/base16-oceanicnext.sh"
+
+if [ (uname) = "Darwin" ]
+    bass source "$HOME/.profile"
+    set -gx GPG_TTY (tty)
+end
