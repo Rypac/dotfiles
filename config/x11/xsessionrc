@@ -1,6 +1,8 @@
 #!/bin/sh
 
-[ -f "$HOME/.profile" ] && . "$HOME/.profile"
+if [ -f "$HOME/.profile" ]; then
+    . "$HOME/.profile"
+fi
 
 # Configure terminal
 xset b off
@@ -14,7 +16,7 @@ fi
 
 # Start the gpg-agent if not already running
 export GPG_TTY=$(tty)
-if ! pgrep -x -u "$USER" gpg-agent >/dev/null 2>&1; then
+if ! pgrep -x -u "$USER" gpg-agent > /dev/null 2>&1; then
     gpg-agent --homedir "$HOME/.gnupg" --enable-ssh-support --daemon > /dev/null 2>&1
     gpg-connect-agent updatestartuptty /bye > /dev/null
 fi
@@ -26,7 +28,9 @@ if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
 fi
 
 # Display
-[ -x ~/.fehbg ] && sh ~/.fehbg &
+if [ -x ~/.fehbg ]; then
+    sh ~/.fehbg &
+fi
 
 # Autostart applications
 dex -a
