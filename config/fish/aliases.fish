@@ -17,8 +17,13 @@ alias unscramble 'gpg2 --decrypt --quiet'
 alias stack-update 'stack --resolver nightly setup --reinstall --install-ghc'
 alias nstack 'stack --resolver nightly'
 
+# Docker
+alias docker-stop 'docker stop (docker ps -aq)'
+alias docker-clean 'docker rm -f (docker ps -aq)'
+alias docker-purge 'docker rmi -f (docker images -aq)'
+
 # NPM
-alias npm-tasks "jq '.scripts' < package.json"
+alias npm-tasks 'jq .scripts < package.json'
 
 # Common tool aliases
 alias qfind 'find . -name'
@@ -28,16 +33,10 @@ alias get 'curl --continue-at - --location --progress-bar --remote-name --remote
 alias cpr 'cp -r'
 alias rmr 'rm -rf'
 alias mkdir 'mkdir -p'
-function mkcd
-    [ -n "$1" ]; and mkdir -p "$1"; and cd "$1"
-end
 
 # resource usage
 alias df 'df -khT'
 alias du 'du -khsc'
-function sizeof
-    [ -n "$1" ]; and du "$1" | tail -1 | cut -f1
-end
 
 if [ (uname) = "Linux" ]
     # Python
@@ -51,10 +50,11 @@ if [ (uname) = "Linux" ]
     alias setclip 'xclip -selection clipboard -i'
     alias getclip 'xclip -selection clipboard -o'
 
-    # Aliases
-    # function f
-    #     (pcmanfm "${1:-.}" > /dev/null 2>&1 &)
-    # end
+    # pcmanfm
+    function f
+        set -l dir $argv[1] .
+        pcmanfm $dir[1] > /dev/null 2>&1 &
+    end
 
     # Modifying permissions
     alias chmod 'chmod --preserve-root -v'
@@ -67,13 +67,8 @@ if [ (uname) = "Linux" ]
     alias apppurge 'sudo apt purge --autoremove'
     alias appsearch 'sudo apt search'
     alias appclean 'sudo apt autoremove'
-
-    # function appcleanall
-    #     sudo dpkg -P (dpkg -l | awk '/^rc/ { print($2) }')
-    # end
-    # function applist
-    #     dpkg-query -f '${binary:Package}\n' -W | less
-    # end
+    alias appcleanall 'sudo dpkg -P (dpkg -l | awk \'/^rc/ { print($2) }\')'
+    alias applist 'dpkg-query -f \'${binary:Package}\n\' -W | less'
 
     # Chrome apps
     alias fastmail 'chrome-app FastMail https://www.fastmail.com'

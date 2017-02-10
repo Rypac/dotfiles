@@ -46,7 +46,25 @@ end
 
 eval sh "$data_home/base16-shell/scripts/base16-oceanicnext.sh"
 
-if [ (uname) = "Darwin" ]
+if [ (uname) = "Linux" ]
+    # Rust
+    set -gx RUST_SRC_PATH "$RUSTUP_HOME/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
+
+    # Android SDK/NDK
+    set -gx JAVA_HOME '/opt/java/jdk'
+    set -gx PATH $PATH "$JAVA_HOME/bin"
+
+else if [ (uname) = "Darwin" ]
     bass source "$HOME/.profile"
+
+    # GPG
     set -gx GPG_TTY (tty)
+
+    # Rust
+    set -gx RUST_SRC_PATH "$RUSTUP_HOME/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
+
+    # Android SDK/NDK
+    set -gx ANT_ROOT '/usr/local/Cellar/ant/1.9.7/bin'
+    set -gx JAVA_HOME '/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home'
+    set -gx PATH $PATH "$JAVA_HOME/bin"
 end
