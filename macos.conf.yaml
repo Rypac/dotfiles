@@ -12,7 +12,6 @@
     ~/.config/fish/functions/fish_prompt.fish: config/fish/fish_prompt.fish
     ~/.config/git: config/git
     ~/.config/npm: config/npm
-    ~/.local/share/fzf: libs/fzf
     ~/.profile: config/shell/profile
     ~/.tmux.conf: config/tmux/tmux.conf
     ~/.vim/vimrc: config/vim/vimrc

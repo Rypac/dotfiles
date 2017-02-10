@@ -29,7 +29,6 @@
     ~/.config/vscode/User: config/vscode
     ~/.config/x11/Xresources: config/x11/Xresources
     ~/.gnupg/gpg-agent.conf: config/gnupg/gpg-agent.conf
-    ~/.local/share/fzf: libs/fzf
     ~/.profile: config/shell/profile
     ~/.tmux.conf: config/tmux/tmux.conf
     ~/.vim/vimrc: config/vim/vimrc

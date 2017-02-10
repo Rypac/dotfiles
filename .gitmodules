@@ -2,8 +2,3 @@
 	path = libs/dotbot
 	url = https://github.com/anishathalye/dotbot
 	branch = master
-[submodule "libs/fzf"]
-	path = libs/fzf
-	url = https://github.com/junegunn/fzf.git
-	branch = master
-	ignore = all

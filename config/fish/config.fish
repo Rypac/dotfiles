@@ -14,7 +14,7 @@ if test -z "$data_home"
 end
 
 # install fisher
-if not type fisher >/dev/null 2>&1
+if not type fisher > /dev/null 2>&1
     curl -Lo "$config_home/fish/functions/fisher.fish" --create-dirs git.io/fisher
     cat "$config_home/fish/fishfile" | fisher install
 end
@@ -26,11 +26,14 @@ fish_vi_key_bindings
 source "$config_home/fish/aliases.fish"
 
 # fzf
-if test -d "$data_home/fzf"
-    set -gx PATH "$data_home/fzf/bin" $PATH
-    set -gx FZF_LEGACY_KEYBINDINGS 0
-    set -gx FZF_TMUX 1
+if test ! -d "$data_home/fzf"
+    git clone https://github.com/junegunn/fzf.git "$data_home/fzf"
+    eval "$data_home/fzf/install --bin"
 end
+
+set -gx PATH "$data_home/fzf/bin" $PATH
+set -gx FZF_LEGACY_KEYBINDINGS 0
+set -gx FZF_TMUX 1
 
 # z
 set -gx Z_CMD "j"
