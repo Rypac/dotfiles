@@ -54,6 +54,7 @@ function install_apt_packages() {
         firmware-linux \
         firmware-linux-free \
         firmware-linux-nonfree \
+        fish \
         fonts-font-awesome \
         fonts-noto \
         fonts-symbola \
