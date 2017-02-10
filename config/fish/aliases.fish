@@ -9,6 +9,9 @@ alias tm 'tmux attach -t'
 
 # GPG
 alias gpg gpg2
+alias to-me 'gpg2 --encrypt --recipient me@rdavis.xyz --armour'
+alias scramble 'gpg2 --output encrypted.gpg --encrypt --recipient me@rdavis.xyz'
+alias unscramble 'gpg2 --decrypt --quiet'
 
 # Stack
 alias stack-update 'stack --resolver nightly setup --reinstall --install-ghc'
