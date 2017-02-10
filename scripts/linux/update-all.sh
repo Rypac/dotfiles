@@ -30,7 +30,7 @@ yarn global upgrade
 pip3 list --outdated --user --format=legacy | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade --user
 
 # vim
-nvim +PlugUpgrade +PlugInstall +PlugUpdate +qall
+nvim +PlugInstall +PlugUpdate +PlugClean! +PlugUpgrade +qall
 
 # atom
 apm upgrade --no-confirm
