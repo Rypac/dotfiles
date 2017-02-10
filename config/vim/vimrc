@@ -42,6 +42,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'quabug/vim-gdscript'
 Plug 'dag/vim-fish'
+Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 
 " Visual/themes
 Plug 'chriskempson/base16-vim'
