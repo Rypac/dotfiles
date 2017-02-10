@@ -8,7 +8,7 @@ sudo apt update
 sudo apt upgrade -y
 
 # shell
-fisher up
+fish -c 'fisher up'
 
 # fzf
 "$XDG_DATA_HOME/fzf/install" --bin
@@ -22,12 +22,12 @@ stack --resolver nightly update
 stack --resolver nightly upgrade
 
 # npm
-fnm latest
+fish -c 'fnm use latest'
 npm update -g
 yarn global upgrade
 
 # python
-pip3 list --outdated --user | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade --user
+pip3 list --outdated --user --format=legacy | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade --user
 
 # vim
 nvim +PlugUpgrade +PlugInstall +PlugUpdate +qall

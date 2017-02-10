@@ -41,7 +41,7 @@ end
 
 if [ (uname) = "Linux" ]
     # Python
-    alias pip-upgrade "pip3 list --outdated --user | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade --user"
+    alias pip-upgrade "pip3 list --outdated --user --format=legacy | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade --user"
 
     # VSCode
     alias code "code --user-data-dir "$XDG_CONFIG_HOME/vscode" --extensions-dir "$XDG_CONFIG_HOME/vscode/extensions""
@@ -90,7 +90,7 @@ else if [ (uname) = "Darwin" ]
     alias ber 'bundle exec rake'
 
     # Python
-    alias pip-upgrade "pip3 list --outdated | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade"
+    alias pip-upgrade "pip3 list --outdated --format=legacy | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade"
 
     # VSCode
     alias vscode 'code'

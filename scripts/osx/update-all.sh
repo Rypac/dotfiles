@@ -8,7 +8,7 @@ brew update
 brew upgrade
 
 # shell
-fisher up
+fish -c 'fisher up'
 
 # non-tracked packages
 "$XDG_DATA_HOME/fzf/install" --bin
@@ -22,12 +22,12 @@ stack --resolver nightly update
 stack --resolver nightly upgrade
 
 # npm
-fnm lts
+fish -c 'fnm use lts'
 npm update -g
 yarn global upgrade
 
 # python
-pip3 list --outdated | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade
+pip3 list --outdated --format=legacy | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade
 
 # vim
 nvim +PlugUpgrade +PlugInstall +PlugUpdate +qall
