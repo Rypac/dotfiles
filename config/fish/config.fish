@@ -1,45 +1,35 @@
-# source profile
-bass source ~/.profile
+if not status --is-interactive
+    exit 0
+end
 
 set -l config_home "$XDG_CONFIG_HOME"
 set -l data_home "$XDG_DATA_HOME"
 
-if test -z "$config_home"
-    set config_home ~/.config
-end
-
-if test -z "$data_home"
-    set cache_home ~/.local/share
-end
-
 # install fisher
 if not type fisher >/dev/null 2>&1
     curl -Lo "$config_home/fish/functions/fisher.fish" --create-dirs git.io/fisher
-    fisher up
+    cat "$config_home/fish/fishfile" | fisher install
 end
 
 # vim bindings
 fish_vi_key_bindings
 
-# z
-set -U Z_CMD "j"
-set -U Z_DATA "$data_home/z"
+# aliases
+source "$config_home/fish/aliases.fish"
 
 # fzf
 if test -d "$data_home/fzf"
     set -gx PATH "$data_home/fzf/bin" $PATH
+    set -gx FZF_LEGACY_KEYBINDINGS 0
 end
 
-if status --is-interactive
-    # base16 colour scheme
-    set -l base16_home "$data_home/base16-shell"
+# z
+set -gx Z_CMD "j"
+set -gx Z_DATA "$data_home/z"
 
-    if test ! -d "$base16_home"
-        git clone https://github.com/chriskempson/base16-shell.git "$base16_home"
-    end
-
-    eval sh "$base16_home/scripts/base16-oceanicnext.sh"
-
-    # aliases
-    source "$config_home/fish/aliases.fish"
+# base16 colour scheme
+if test ! -d "$data_home/base16-shell"
+    git clone https://github.com/chriskempson/base16-shell.git "$data_home/base16-shell"
 end
+
+eval sh "$data_home/base16-shell/scripts/base16-oceanicnext.sh"
