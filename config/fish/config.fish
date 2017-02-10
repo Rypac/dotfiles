@@ -13,8 +13,6 @@ end
 
 # vim bindings
 fish_vi_key_bindings
-bind -M insert \cd '__fzf_cd'
-bind -M insert \cp '__fzf_cd_with_hidden'
 
 # aliases
 source "$config_home/fish/aliases.fish"
@@ -23,6 +21,7 @@ source "$config_home/fish/aliases.fish"
 if test -d "$data_home/fzf"
     set -gx PATH "$data_home/fzf/bin" $PATH
     set -gx FZF_LEGACY_KEYBINDINGS 0
+    set -gx FZF_TMUX 1
 end
 
 # z
