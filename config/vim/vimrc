@@ -150,6 +150,7 @@ set noswapfile
 
 " Quick leader actions
 let maplocalleader = "\\"
+let mapleader = "\<space>"
 
 " Disable highlight
 nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<cr>
@@ -166,8 +167,6 @@ nmap <localleader>f :Files<cr>
 nmap <localleader>t :Buffers<cr>
 nmap <localleader>c :Commands<cr>
 nmap <localleader>r :redraw!<cr>
-
-let mapleader = "\<space>"
 
 " Window layer
 nnoremap <leader>wj <C-W>j
@@ -219,22 +218,6 @@ nnoremap <leader>gf :Gfetch<cr>
 nnoremap <leader>gp :Gpull<cr>
 nnoremap <leader>gt :terminal tig<cr>
 nnoremap <leader>gh :terminal tig %<cr>
-
-" Terminal layer
-if has('nvim')
-    tnoremap <Esc> <C-\><C-n>
-    tnoremap <C-q> exit<cr>
-    tnoremap <c-h> <C-\><C-n><C-w>h
-    tnoremap <c-j> <C-\><C-n><C-w>j
-    tnoremap <c-k> <C-\><C-n><C-w>k
-    tnoremap <c-l> <C-\><C-n><C-w>l
-endif
-nnoremap <leader>sn :terminal<cr>
-nnoremap <leader>sj :rightbelow :split<cr> :terminal<cr>
-nnoremap <leader>sk :leftabove :split<cr> :terminal<cr>
-nnoremap <leader>sh :leftabove :vsplit<cr> :terminal<cr>
-nnoremap <leader>sl :rightbelow :vsplit<cr> :terminal<cr>
-nnoremap <leader>sg :rightbelow :vsplit<cr> :terminal<cr> tig<cr>
 
 " Jump to definition/between headers
 map <F2> gD
