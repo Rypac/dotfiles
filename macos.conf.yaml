@@ -9,7 +9,6 @@
     ~/.config/fish/aliases.fish: config/fish/aliases.fish
     ~/.config/fish/config.fish: config/fish/config.fish
     ~/.config/fish/fishfile: config/fish/fishfile
-    ~/.config/fish/functions/fish_greeting.fish: config/fish/fish_greeting.fish
     ~/.config/fish/functions/fish_prompt.fish: config/fish/fish_prompt.fish
     ~/.config/git: config/git
     ~/.config/npm: config/npm
