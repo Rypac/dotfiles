@@ -7,6 +7,9 @@ update-dotfiles
 brew update
 brew upgrade
 
+# shell
+fisher up
+
 # non-tracked packages
 "$XDG_DATA_HOME/fzf/install" --bin
 
@@ -19,8 +22,7 @@ stack --resolver nightly update
 stack --resolver nightly upgrade
 
 # npm
-n-update -y
-n stable
+fnm lts
 npm update -g
 yarn global upgrade
 

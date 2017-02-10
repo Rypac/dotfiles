@@ -7,6 +7,9 @@ update-dotfiles
 sudo apt update
 sudo apt upgrade -y
 
+# shell
+fisher up
+
 # fzf
 "$XDG_DATA_HOME/fzf/install" --bin
 
@@ -19,8 +22,7 @@ stack --resolver nightly update
 stack --resolver nightly upgrade
 
 # npm
-n-update -y
-n stable
+fnm latest
 npm update -g
 yarn global upgrade
 
