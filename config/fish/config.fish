@@ -5,6 +5,14 @@ end
 set -l config_home "$XDG_CONFIG_HOME"
 set -l data_home "$XDG_DATA_HOME"
 
+if test -z "$config_home"
+    set config_home ~/.config
+end
+
+if test -z "$data_home"
+    set data_home ~/.local/share
+end
+
 # install fisher
 if not type fisher >/dev/null 2>&1
     curl -Lo "$config_home/fish/functions/fisher.fish" --create-dirs git.io/fisher
