@@ -13,10 +13,12 @@ if test -z "$data_home"
     set data_home ~/.local/share
 end
 
-# install fisher
+# install fisher and plugins
 if not type fisher > /dev/null 2>&1
-    curl -Lo "$config_home/fish/functions/fisher.fish" --create-dirs git.io/fisher
-    cat "$config_home/fish/fishfile" | fisher install
+    set -l fisher_home "$config_home/fish/functions/fisher.fish"
+    curl -Lo "$fisher_home" --create-dirs git.io/fisher
+    source "$fisher_home"
+    fisher
 end
 
 # vim bindings

@@ -21,6 +21,7 @@ alias nstack 'stack --resolver nightly'
 alias docker-stop 'docker stop (docker ps -aq)'
 alias docker-clean 'docker rm -f (docker ps -aq)'
 alias docker-purge 'docker rmi -f (docker images -aq)'
+alias docker-connect 'docker start -ai (docker ps -ql)'
 
 # NPM
 alias npm-tasks 'jq .scripts < package.json'
