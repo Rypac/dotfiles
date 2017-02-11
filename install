@@ -3,19 +3,77 @@
 set -e
 
 base_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-distro="$(source "${base_dir}/scripts/utilities/distro.sh")"
 
-if [ "$distro" = "Darwin" ]; then
-    environment="macos"
-else
-    environment="linux"
+base="${DOTFILES_HOME:-$base_dir}"
+home="$HOME"
+config="${XDG_CONFIG_HOME:-$home/.config}"
+data="${XDG_CONFIG_HOME:-$home/.local/share}"
+
+function link() {
+    from="$base/config/$1"
+    from_base="$(dirname "$from")"
+
+    to="$2"
+    to_base="$(dirname "$to")"
+
+    if [ ! -d "$to_base" ]; then
+        mkdir -p "$to_base"
+    fi
+
+    echo "Linking $from to $to"
+    ln -fns "$from" "$to"
+}
+
+# Link config
+if [ "$(uname)" = 'Linux' ]; then
+    link compton/compton.conf $config/compton.conf
+    link openbox $config/openbox
+    link display $config/display
+    link fish/aliases.fish $config/fish/aliases.fish
+    link fish/config.fish $config/fish/config.fish
+    link fish/fishfile $config/fish/fishfile
+    link fish/fish_prompt.fish $config/fish/functions/fish_prompt.fish
+    link fontconfig $config/fontconfig
+    link git $config/git
+    link i3 $config/i3
+    link i3status $config/i3status
+    link npm $config/npm
+    link openbox $config/openbox
+    link rofi $config/rofi
+    link sublime $config/sublime-text-3/Packages/User
+    link sublime/plugins $config/sublime-text-3/Packages/UserPlugins
+    link tint2 $config/tint2
+    link xdg/user-dirs.dirs $config/user-dirs.dirs
+    link xdg/user-dirs.locale $config/user-dirs.locale
+    link vscode $config/vscode/User
+    link x11/Xresources $config/x11/Xresources
+    link gnupg/gpg-agent.conf $home/.gnupg/gpg-agent.conf
+    link shell/profile $home/.profile
+    link tmux/tmux.conf $home/.tmux.conf
+    link vim/vimrc $home/.vim/vimrc
+    link vim/vimrc $home/.vim/init.vim
+    link x11/xsessionrc $home/.xsessionrc
+elif [ "$(uname)" = 'Darwin' ]; then
+    link fish/aliases.fish $config/fish/aliases.fish
+    link fish/config.fish $config/fish/config.fish
+    link fish/fishfile $config/fish/fishfile
+    link fish/fish_prompt.fish $config/fish/functions/fish_prompt.fish
+    link git $config/git
+    link npm $config/npm
+    link shell/profile $home/.profile
+    link tmux/tmux.conf $home/.tmux.conf
+    link vim/vimrc $home/.vim/vimrc
+    link vim/vimrc $home/.vim/init.vim
+    link vscode "$home/Library/Application Support/Code/User"
+    link sublime "$home/Library/Application Support/Sublime Text 3/Packages/User"
+    link sublime/plugins "$home/Library/Application Support/Sublime Text 3/Packages/UserPlugins"
+    link launch-agents/env-sync.plist "$home/Library/LaunchAgents/env-sync.plist"
 fi
 
-config="${environment}.conf.yaml"
-dotbot_dir="libs/dotbot"
-dotbot_bin="bin/dotbot"
-
-cd "${base_dir}"
-git submodule update --init --recursive "${dotbot_dir}"
-
-"${base_dir}/${dotbot_dir}/${dotbot_bin}" -d "${base_dir}" -c "${config}" "${@}"
+# Post shell configuration
+mkdir -p $data/applications $home/bin $home/development $home/scripts
+ln -fns $home/.vim $config/nvim
+ln -fs $base/scripts/* $home/scripts
+ln -fs $base/config/applications/* $data/applications
+$base/scripts/utilities/link-scripts.sh $base/scripts/utilities $home/bin
+$base/scripts/utilities/link-scripts.sh $base/scripts/linux $home/bin

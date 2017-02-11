@@ -1,6 +1,6 @@
 {
     "editor.fontFamily": "'Hasklig', 'Source Code Pro', 'Hack', 'Droid Sans Mono', monospace",
-    "editor.fontSize": 13,
+    "editor.fontSize": 15,
     "editor.fontLigatures": true,
     "editor.rulers": [
         100
