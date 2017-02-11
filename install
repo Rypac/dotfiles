@@ -10,7 +10,7 @@ config="${XDG_CONFIG_HOME:-$home/.config}"
 data="${XDG_CONFIG_HOME:-$home/.local/share}"
 
 function link() {
-    from="$base/config/$1"
+    from="$base/$1"
     from_base="$(dirname "$from")"
 
     to="$2"
