@@ -7,13 +7,13 @@ base_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 base="${DOTFILES_HOME:-$base_dir}"
 home="$HOME"
 config="${XDG_CONFIG_HOME:-$home/.config}"
-data="${XDG_CONFIG_HOME:-$home/.local/share}"
+data="${XDG_DATA_HOME:-$home/.local/share}"
 
 function link() {
     from="$base/$1"
     from_base="$(dirname "$from")"
 
-    to="$2"
+    to="${2:-$config/$1}"
     to_base="$(dirname "$to")"
 
     if [ ! -d "$to_base" ]; then
@@ -26,27 +26,28 @@ function link() {
 
 # Link config
 if [ "$(uname)" = 'Linux' ]; then
+    link clipit
     link compton/compton.conf $config/compton.conf
-    link openbox $config/openbox
-    link display $config/display
+    link display
+    link dunst
     link fish/aliases.fish $config/fish/aliases.fish
     link fish/config.fish $config/fish/config.fish
     link fish/fishfile $config/fish/fishfile
     link fish/fish_prompt.fish $config/fish/functions/fish_prompt.fish
-    link fontconfig $config/fontconfig
-    link git $config/git
-    link i3 $config/i3
-    link i3status $config/i3status
-    link npm $config/npm
-    link openbox $config/openbox
-    link rofi $config/rofi
+    link fontconfig
+    link git
+    link i3
+    link i3status
+    link npm
+    link openbox
+    link rofi
     link sublime $config/sublime-text-3/Packages/User
     link sublime/plugins $config/sublime-text-3/Packages/UserPlugins
-    link tint2 $config/tint2
+    link tint2
     link xdg/user-dirs.dirs $config/user-dirs.dirs
     link xdg/user-dirs.locale $config/user-dirs.locale
     link vscode $config/vscode/User
-    link x11/Xresources $config/x11/Xresources
+    link x11/Xresources
     link gnupg/gpg-agent.conf $home/.gnupg/gpg-agent.conf
     link shell/profile $home/.profile
     link tmux/tmux.conf $home/.tmux.conf
@@ -58,8 +59,8 @@ elif [ "$(uname)" = 'Darwin' ]; then
     link fish/config.fish $config/fish/config.fish
     link fish/fishfile $config/fish/fishfile
     link fish/fish_prompt.fish $config/fish/functions/fish_prompt.fish
-    link git $config/git
-    link npm $config/npm
+    link git
+    link npm
     link shell/profile $home/.profile
     link tmux/tmux.conf $home/.tmux.conf
     link vim/vimrc $home/.vim/vimrc
