@@ -14,5 +14,5 @@ fi
 
 mkdir -p "$DOTFILES_HOME"
 eval "$fetch https://github.com/Rypac/dotfiles/tarball/master | tar -xz -C "$DOTFILES_HOME" --strip-components=1"
-source "$DOTFILES_HOME/setup"
+source "$DOTFILES_HOME/install" "$@"
 
