@@ -13,7 +13,7 @@ USER ryan
 ENV HOME /home/ryan
 WORKDIR $HOME
 
-RUN curl -sSL https://raw.githubusercontent.com/Rypac/dotfiles/master/scripts/dotfiles/bootstrap | sh
+RUN curl -sSL http://dotfiles.rdavis.xyz | sh
 
 COPY ./entrypoint.sh /tmp/
 ENTRYPOINT ["/tmp/entrypoint.sh"]
