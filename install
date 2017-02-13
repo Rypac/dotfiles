@@ -33,6 +33,7 @@ if [ "$(uname)" = 'Linux' ]; then
     link fish/aliases.fish $config/fish/aliases.fish
     link fish/config.fish $config/fish/config.fish
     link fish/fishfile $config/fish/fishfile
+    link fish/dedup_env.fish $config/fish/functions/dedup_env.fish
     link fish/fish_prompt.fish $config/fish/functions/fish_prompt.fish
     link fontconfig
     link git
@@ -58,6 +59,7 @@ elif [ "$(uname)" = 'Darwin' ]; then
     link fish/aliases.fish $config/fish/aliases.fish
     link fish/config.fish $config/fish/config.fish
     link fish/fishfile $config/fish/fishfile
+    link fish/dedup_env.fish $config/fish/functions/dedup_env.fish
     link fish/fish_prompt.fish $config/fish/functions/fish_prompt.fish
     link git
     link npm

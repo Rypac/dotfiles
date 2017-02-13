@@ -13,7 +13,7 @@ if test -z "$data_home"
     set data_home ~/.local/share
 end
 
-# install fisher and plugins
+# Install fisher and plugins
 if not type fisher > /dev/null 2>&1
     set -l fisher_home "$config_home/fish/functions/fisher.fish"
     curl -Lo "$fisher_home" --create-dirs git.io/fisher
@@ -21,11 +21,11 @@ if not type fisher > /dev/null 2>&1
     fisher
 end
 
+# Aliases
+source "$config_home/fish/aliases.fish"
+
 # vim bindings
 fish_vi_key_bindings
-
-# aliases
-source "$config_home/fish/aliases.fish"
 
 # fzf
 if test ! -d "$data_home/fzf"
@@ -54,7 +54,6 @@ if [ (uname) = "Linux" ]
 
     # Android SDK/NDK
     set -gx JAVA_HOME '/opt/java/jdk'
-    set -gx PATH $PATH "$JAVA_HOME/bin"
 
 else if [ (uname) = "Darwin" ]
     bass source "$HOME/.profile"
@@ -68,5 +67,11 @@ else if [ (uname) = "Darwin" ]
     # Android SDK/NDK
     set -gx ANT_ROOT '/usr/local/Cellar/ant/1.9.7/bin'
     set -gx JAVA_HOME '/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home'
+end
+
+if test -z "$JAVA_HOME"
     set -gx PATH $PATH "$JAVA_HOME/bin"
 end
+
+# Remove duplicates from $PATH
+dedup_env PATH
