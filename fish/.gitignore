@@ -1,0 +1,8 @@
+/*
+!aliases.fish
+!config.fish
+!env.fish
+!fishfile
+!/functions/fish_prompt.fish
+!/functions/dedup_env.fish
+

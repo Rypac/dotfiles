@@ -30,12 +30,7 @@ if [ "$(uname)" = 'Linux' ]; then
     link compton/compton.conf $config/compton.conf
     link display
     link dunst
-    link fish/aliases.fish $config/fish/aliases.fish
-    link fish/config.fish $config/fish/config.fish
-    link fish/env.fish $config/fish/env.fish
-    link fish/fishfile $config/fish/fishfile
-    link fish/dedup_env.fish $config/fish/functions/dedup_env.fish
-    link fish/fish_prompt.fish $config/fish/functions/fish_prompt.fish
+    link fish
     link fontconfig
     link git
     link i3
@@ -57,12 +52,7 @@ if [ "$(uname)" = 'Linux' ]; then
     link vim/vimrc $home/.vim/init.vim
     link x11/xsessionrc $home/.xsessionrc
 elif [ "$(uname)" = 'Darwin' ]; then
-    link fish/aliases.fish $config/fish/aliases.fish
-    link fish/config.fish $config/fish/config.fish
-    link fish/env.fish $config/fish/env.fish
-    link fish/fishfile $config/fish/fishfile
-    link fish/dedup_env.fish $config/fish/functions/dedup_env.fish
-    link fish/fish_prompt.fish $config/fish/functions/fish_prompt.fish
+    link fish
     link git
     link npm
     link shell/profile $home/.profile
