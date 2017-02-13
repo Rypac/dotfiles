@@ -22,6 +22,7 @@ if not type fisher > /dev/null 2>&1
 end
 
 # Aliases
+source "$config_home/fish/env.fish"
 source "$config_home/fish/aliases.fish"
 
 # vim bindings
@@ -56,8 +57,6 @@ if [ (uname) = "Linux" ]
     set -gx JAVA_HOME '/opt/java/jdk'
 
 else if [ (uname) = "Darwin" ]
-    bass source "$HOME/.profile"
-
     # GPG
     set -gx GPG_TTY (tty)
 
