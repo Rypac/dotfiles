@@ -26,9 +26,9 @@ link_scripts() {
     from="$base/scripts/$1"
     to="$2"
 
-    for f in "$from/*"; do
+    for f in $from/*; do
         name="$(basename "$f")"
-        ln -fns "$f" "$to/${name%.sh}"
+        ln -fs "$f" "$to/${name%.sh}"
     done
 }
 
