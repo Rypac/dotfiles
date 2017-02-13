@@ -13,6 +13,13 @@ if test -z "$data_home"
     set data_home ~/.local/share
 end
 
+# Aliases
+source "$config_home/fish/env.fish"
+source "$config_home/fish/aliases.fish"
+
+# vim bindings
+fish_vi_key_bindings
+
 # Install fisher and plugins
 if not type fisher > /dev/null 2>&1
     set -l fisher_home "$config_home/fish/functions/fisher.fish"
@@ -20,13 +27,6 @@ if not type fisher > /dev/null 2>&1
     source "$fisher_home"
     fisher
 end
-
-# Aliases
-source "$config_home/fish/env.fish"
-source "$config_home/fish/aliases.fish"
-
-# vim bindings
-fish_vi_key_bindings
 
 # fzf
 if test ! -d "$data_home/fzf"
