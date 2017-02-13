@@ -21,7 +21,7 @@ source "$config_home/fish/aliases.fish"
 fish_vi_key_bindings
 
 # Install fisher and plugins
-if not type fisher > /dev/null 2>&1
+if not functions -q fisher
     set -l fisher_home "$config_home/fish/functions/fisher.fish"
     curl -Lo "$fisher_home" --create-dirs git.io/fisher
     source "$fisher_home"
