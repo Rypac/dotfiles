@@ -73,10 +73,15 @@ elif [ "$(uname)" = 'Darwin' ]; then
     link launch-agents/env-sync.plist "$home/Library/LaunchAgents/env-sync.plist"
 fi
 
-# Post shell configuration
+# Link scripts
 mkdir -p $data/applications $home/bin $home/scripts
 ln -fns $home/.vim $config/nvim
 ln -fs $base/scripts/* $home/scripts
-ln -fs $base/applications/* $data/applications
 link_scripts utilities $home/bin
-link_scripts linux $home/bin
+
+if [ "$(uname)" = 'Linux' ]; then
+    ln -fs $base/applications/* $data/applications
+    link_scripts linux $home/bin
+elif [ "$(uname)" = 'Darwin' ]; then
+    link_scripts mac $home/bin
+fi
