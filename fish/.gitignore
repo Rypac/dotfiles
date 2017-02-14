@@ -6,6 +6,7 @@ conf.d/*
 !/conf.d/00-env.fish
 !/conf.d/01-aliases.fish
 !/conf.d/02-config.fish
+!/conf.d/03-fisher.fish
 
 !functions/
 functions/*

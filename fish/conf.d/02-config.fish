@@ -1,45 +1,35 @@
-set -l config_home "$XDG_CONFIG_HOME"
-set -l data_home "$XDG_DATA_HOME"
-
-if test ! -d "$config_home"
-    mkdir -p "$config_home"
+# Ensure directories exist
+if test ! -d "$XDG_CONFIG_HOME"
+    mkdir -p "$XDG_CONFIG_HOME"
 end
 
-if test ! -d "$data_home"
-    mkdir -p "$data_home"
+if test ! -d "$XDG_DATA_HOME"
+    mkdir -p "$XDG_DATA_HOME"
 end
 
 # vim bindings
 fish_vi_key_bindings
 
-# Install fisher and plugins
-if not functions -q fisher
-    set -l fisher_home "$config_home/fish/functions/fisher.fish"
-    curl -Lo "$fisher_home" --create-dirs git.io/fisher
-    source "$fisher_home"
-    fisher
-end
-
 # fzf
-if test ! -d "$data_home/fzf"
-    git clone https://github.com/junegunn/fzf.git "$data_home/fzf"
-    eval "$data_home/fzf/install --bin"
+if test ! -d "$XDG_DATA_HOME/fzf"
+    git clone https://github.com/junegunn/fzf.git "$XDG_DATA_HOME/fzf"
+    eval "$XDG_DATA_HOME/fzf/install --bin"
 end
 
-set -gx PATH "$data_home/fzf/bin" $PATH
+set -gx PATH "$XDG_DATA_HOME/fzf/bin" $PATH
 set -gx FZF_LEGACY_KEYBINDINGS 0
 set -gx FZF_TMUX 1
 
 # z
 set -gx Z_CMD "j"
-set -gx Z_DATA "$data_home/z"
+set -gx Z_DATA "$XDG_DATA_HOME/z"
 
 # base16 colour scheme
-if test ! -d "$data_home/base16-shell"
-    git clone https://github.com/chriskempson/base16-shell.git "$data_home/base16-shell"
+if test ! -d "$XDG_DATA_HOME/base16-shell"
+    git clone https://github.com/chriskempson/base16-shell.git "$XDG_DATA_HOME/base16-shell"
 end
 
-eval sh "$data_home/base16-shell/scripts/base16-oceanicnext.sh"
+eval sh "$XDG_DATA_HOME/base16-shell/scripts/base16-oceanicnext.sh"
 
 if [ (uname) = "Linux" ]
     # Rust
