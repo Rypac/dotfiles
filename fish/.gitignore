@@ -4,8 +4,8 @@
 !conf.d/
 conf.d/*
 !/conf.d/00-env.fish
-!/conf.d/01-aliases.fish
-!/conf.d/02-config.fish
+!/conf.d/01-config.fish
+!/conf.d/02-aliases.fish
 !/conf.d/03-fisherman.fish
 
 !functions/
