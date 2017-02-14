@@ -22,7 +22,6 @@ set -gx FZF_TMUX 1
 
 # z
 set -gx Z_CMD "j"
-set -gx Z_DATA "$XDG_DATA_HOME/z"
 
 # base16 colour scheme
 if test ! -d "$XDG_DATA_HOME/base16-shell"
