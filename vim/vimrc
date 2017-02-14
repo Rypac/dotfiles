@@ -23,6 +23,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'szw/vim-maximizer'
 
 " Completion
 Plug 'neomake/neomake'
@@ -164,7 +165,7 @@ nmap <localleader>x :exit<cr>
 nmap <localleader>q :quit<cr>
 nmap <localleader>Q :quitall<cr>
 nmap <localleader>f :Files<cr>
-nmap <localleader>t :Buffers<cr>
+nmap <localleader>b :Buffers<cr>
 nmap <localleader>c :Commands<cr>
 nmap <localleader>r :redraw!<cr>
 
@@ -220,13 +221,13 @@ nnoremap <leader>gt :terminal tig<cr>
 nnoremap <leader>gh :terminal tig %<cr>
 
 " Jump to definition/between headers
-map <F2> gD
-map <F4> :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<cr>
+nnoremap <F2> gD
+nnoremap <F4> :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<cr>
 
 " fzf
 nnoremap <F9> :Files<cr>
+nnoremap <F10> :Buffers<cr>
 nnoremap <C-p> :GFiles<cr>
-nnoremap <A-`> :Buffers<cr>
 
 " Sneak
 nmap f <Plug>Sneak_f
