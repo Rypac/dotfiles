@@ -38,15 +38,15 @@ if [ (uname) = "Linux" ]
     set -gx JAVA_HOME '/opt/java/jdk'
 
 else if [ (uname) = "Darwin" ]
-    # GPG
-    set -gx GPG_TTY (tty)
-
     # Rust
     set -gx RUST_SRC_PATH "$RUSTUP_HOME/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
 
     # Android SDK/NDK
-    set -gx ANT_ROOT '/usr/local/Cellar/ant/1.9.7/bin'
     set -gx JAVA_HOME '/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home'
+end
+
+if test -z "$GPG_TTY"
+    set -gx GPG_TTY (tty)
 end
 
 if test -z "$JAVA_HOME"
