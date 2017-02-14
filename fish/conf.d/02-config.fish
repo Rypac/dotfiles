@@ -1,6 +1,14 @@
 set -l config_home "$XDG_CONFIG_HOME"
 set -l data_home "$XDG_DATA_HOME"
 
+if test ! -d "$config_home"
+    mkdir -p "$config_home"
+end
+
+if test ! -d "$data_home"
+    mkdir -p "$data_home"
+end
+
 # vim bindings
 fish_vi_key_bindings
 
