@@ -1,8 +1,13 @@
 /*
-!aliases.fish
-!config.fish
-!env.fish
 !fishfile
+
+!conf.d/
+conf.d/*
+!/conf.d/00-env.fish
+!/conf.d/01-aliases.fish
+!/conf.d/02-config.fish
+
+!functions/
+functions/*
 !/functions/fish_prompt.fish
 !/functions/dedup_env.fish
-

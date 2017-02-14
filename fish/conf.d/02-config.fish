@@ -1,21 +1,5 @@
-if not status --is-interactive
-    exit 0
-end
-
 set -l config_home "$XDG_CONFIG_HOME"
 set -l data_home "$XDG_DATA_HOME"
-
-if test -z "$config_home"
-    set config_home ~/.config
-end
-
-if test -z "$data_home"
-    set data_home ~/.local/share
-end
-
-# Aliases
-source "$config_home/fish/env.fish"
-source "$config_home/fish/aliases.fish"
 
 # vim bindings
 fish_vi_key_bindings
