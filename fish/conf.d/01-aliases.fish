@@ -4,8 +4,12 @@ alias vim nvim
 
 # tmux
 alias mux tmuxinator
-alias tn 'tmux new -s'
-alias tm 'tmux attach -t'
+function tm
+    set -l name $argv[1] 'default'
+    if not tmux new -s "$name" > /dev/null 2>&1
+        tmux attach -t "$name"
+    end
+end
 
 # GPG
 alias gpg gpg2
