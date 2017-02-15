@@ -1,3 +1,7 @@
+if not status --is-interactive
+    exit
+end
+
 # Ensure directories exist
 if test ! -d "$XDG_CONFIG_HOME"
     mkdir -p "$XDG_CONFIG_HOME"

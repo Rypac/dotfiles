@@ -1,3 +1,7 @@
+if not status --is-interactive
+    exit
+end
+
 # Neovim
 alias vi nvim
 alias vim nvim
