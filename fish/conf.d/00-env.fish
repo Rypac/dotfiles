@@ -59,4 +59,4 @@ set -gx LESS '-F -g -i -M -R -S -w -X -z-4'
 set -gx SHELL '/usr/bin/fish'
 
 # Setup PATH
-set -gx PATH "$HOME/bin" "$HOME/.local/bin" "$CARGO_HOME/bin" "$ANDROID_HOME/tools" "$ANDROID_HOME/platform-tools" $PATH
+prepend_to_path "$HOME/bin" "$HOME/.local/bin" "$CARGO_HOME/bin" "$ANDROID_HOME/tools" "$ANDROID_HOME/platform-tools"

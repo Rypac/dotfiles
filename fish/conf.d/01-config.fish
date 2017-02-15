@@ -16,7 +16,7 @@ if test ! -d "$XDG_DATA_HOME/fzf"
     eval "$XDG_DATA_HOME/fzf/install --bin"
 end
 
-set -gx PATH "$XDG_DATA_HOME/fzf/bin" $PATH
+prepend_to_path "$XDG_DATA_HOME/fzf/bin"
 set -gx FZF_LEGACY_KEYBINDINGS 0
 set -gx FZF_TMUX 1
 
@@ -49,9 +49,4 @@ if test -z "$GPG_TTY"
     set -gx GPG_TTY (tty)
 end
 
-if test -z "$JAVA_HOME"
-    set -gx PATH $PATH "$JAVA_HOME/bin"
-end
-
-# Remove duplicates from $PATH
-dedup_env PATH
+append_to_path "$JAVA_HOME/bin"

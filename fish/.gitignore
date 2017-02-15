@@ -11,4 +11,5 @@ conf.d/*
 !functions/
 functions/*
 !/functions/fish_prompt.fish
-!/functions/dedup_env.fish
+!/functions/append_to_path.fish
+!/functions/prepend_to_path.fish
