@@ -57,6 +57,7 @@ set -gx PAGER 'less'
 set -gx SELECTED_EDITOR 'nvim'
 set -gx LESS '-F -g -i -M -R -S -w -X -z-4'
 set -gx SHELL '/usr/bin/fish'
+set -gx HUSHLOGIN_FILE ''
 
 # Setup PATH
 if status --is-interactive
