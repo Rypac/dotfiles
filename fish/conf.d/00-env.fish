@@ -59,6 +59,6 @@ set -gx LESS '-F -g -i -M -R -S -w -X -z-4'
 set -gx SHELL '/usr/bin/fish'
 
 # Setup PATH
-if status --is-login
+if status --is-interactive
     prepend_to_path "$HOME/bin" "$HOME/.local/bin" "$CARGO_HOME/bin" "$ANDROID_HOME/tools" "$ANDROID_HOME/platform-tools"
 end
