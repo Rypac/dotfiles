@@ -47,6 +47,11 @@ else if [ (uname) = "Darwin" ]
 
     # Android SDK/NDK
     set -gx JAVA_HOME '/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home'
+
+    # Ruby
+    if type -q rbenv
+        source (rbenv init -|psub)
+    end
 end
 
 if test -z "$GPG_TTY"
