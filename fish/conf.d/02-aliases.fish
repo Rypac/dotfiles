@@ -8,10 +8,9 @@ alias vim nvim
 
 # tmux
 alias mux tmuxinator
-function tm
-    set -l name $argv[1] 'default'
-    tmux new -s "$name" > /dev/null 2>&1
-    or tmux attach -t "$name"
+function tm --argument-names 'name'
+    test -n "$name"; or set name 'default'
+    tmux attach -t "$name" > /dev/null 2>&1; or tmux new -s "$name"
 end
 
 # GPG
