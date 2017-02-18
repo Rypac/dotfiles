@@ -24,6 +24,8 @@ export WEECHAT_HOME="$XDG_CONFIG_HOME/weechat"
 export WINEPREFIX="$XDG_DATA_HOME/wine"
 export XINITRC="$XDG_CONFIG_HOME/x11/xinitrc"
 export ZPLUG_HOME="$XDG_DATA_HOME/zplug"
+export Z_DATA="$XDG_DATA_HOME/z"
+export _Z_DATA="$Z_DATA"
 
 # Set cache/runtime directories for XDG unfriendly programs
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"

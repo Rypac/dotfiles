@@ -23,7 +23,9 @@ set -gx TIGRC_USER "$XDG_CONFIG_HOME/tig/tigrc"
 set -gx WEECHAT_HOME "$XDG_CONFIG_HOME/weechat"
 set -gx WINEPREFIX "$XDG_DATA_HOME/wine"
 set -gx XINITRC "$XDG_CONFIG_HOME/x11/xinitrc"
+set -gx ZPLUG_HOME "$XDG_DATA_HOME/zplug"
 set -gx Z_DATA "$XDG_DATA_HOME/z"
+set -gx _Z_DATA "$Z_DATA"
 
 # Set cache/runtime directories for XDG unfriendly programs
 set -gx CUDA_CACHE_PATH "$XDG_CACHE_HOME/nv"
