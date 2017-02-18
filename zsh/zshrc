@@ -177,3 +177,105 @@ if [[ ! "$TERM" == (linux|*bsd*|dumb) ]]; then
 fi
 
 typeset -gU PATH FPATH CDPATH MAILPATH
+
+
+## Aliases
+
+# Neovim
+alias vi='nvim'
+alias vim='nvim'
+
+# tmux
+alias mux='tmuxinator'
+function tm {
+    name="${1:-default}"
+    tmux attach -t "$name" || tmux new -s "$name"
+}
+
+# GPG
+alias gpg='gpg2'
+
+# Docker
+alias docker-stop='docker stop $(docker ps -aq)'
+alias docker-clean='docker rm -f $(docker ps -aq)'
+alias docker-purge='docker rmi -f $(docker images -aq)'
+
+# Stack
+alias stack-update='stack --resolver nightly setup --reinstall --install-ghc'
+alias nstack='stack --resolver nightly'
+
+alias grep='grep --color=auto'
+alias cpr='cp -r'
+alias rmr='rm -rf'
+alias mkp='mkdir -p'
+alias l='ls -lAh'
+alias la='ls -lAh'
+alias ll='ls -lh'
+alias lr='ll -R'
+
+if [ "$(uname)" = "Linux" ]; then
+    # Python
+    alias pip-upgrade="pip3 list --outdated --user | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade --user"
+
+    # VSCode
+    alias code="code --user-data-dir "$XDG_CONFIG_HOME/vscode" --extensions-dir "$XDG_CONFIG_HOME/vscode/extensions""
+    alias vscode='code'
+
+    # Clipboard
+    alias setclip='xclip -selection clipboard -i'
+    alias getclip='xclip -selection clipboard -o'
+
+    # Aliases
+    function f {
+        (pcmanfm "${1:-.}" > /dev/null 2>&1 &)
+    }
+
+    # Modifying permissions
+    alias chmod='chmod --preserve-root -v'
+    alias chown='chown --preserve-root -v'
+
+    # ls colours
+    eval "$(dircolors --sh)"
+    alias ls='ls --group-directories-first --color=auto'
+
+    # Package manager
+    alias appupdate='sudo apt update && sudo apt upgrade'
+    alias appinstall='sudo apt install'
+    alias appremove='sudo apt remove'
+    alias apppurge='sudo apt purge --autoremove'
+    alias appsearch='sudo apt search'
+    alias appclean='sudo apt autoremove'
+
+    function appcleanall {
+        sudo dpkg -P $(dpkg -l | awk '/^rc/ { print($2) }')
+    }
+    function applist {
+        dpkg-query -f '${binary:Package}\n' -W | less
+    }
+elif [ "$(uname)" = "Darwin" ]; then
+    # Ruby
+    alias be='bundle exec'
+    alias ber='bundle exec rake'
+
+    # Python
+    alias pip-upgrade="pip3 list --outdated | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade"
+
+    # VSCode
+    alias vscode='code'
+
+    # Vim (work around tmux issue on macOS sierra)
+    alias nvim='reattach-to-user-namespace -l nvim'
+
+    # Aliases
+    alias f='open -a Finder ./'
+
+    # Package manager
+    alias appupdate='brew update && brew upgrade'
+    alias appinstall='brew install'
+    alias appremove='brew uninstall'
+    alias appsearch='brew search'
+    alias appclean='brew cleanup && brew cask cleanup && brew prune'
+    alias appdoctor='brew doctor && brew cask doctor'
+
+    alias ls='ls -G'
+fi
