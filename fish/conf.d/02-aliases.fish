@@ -29,23 +29,17 @@ alias docker-clean 'docker rm -f (docker ps -aq)'
 alias docker-purge 'docker rmi -f (docker images -aq)'
 alias docker-connect 'docker start -ai (docker ps -ql)'
 
-# NPM
-alias npm-tasks 'jq .scripts < package.json'
-
-# Common tool aliases
-alias qfind 'find . -name'
-alias get 'curl --continue-at - --location --progress-bar --remote-name --remote-time'
-
 # directory ops
 alias cpr 'cp -r'
 alias rmr 'rm -rf'
-alias mkdir 'mkdir -p'
 
 # resource usage
 alias df 'df -khT'
 alias du 'du -khsc'
 
-if [ (uname) = "Linux" ]
+set -l os (uname)
+
+if [ "$os" = "Linux" ]
     # Python
     alias pip-upgrade "pip3 list --outdated --user --format=legacy | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade --user"
 
@@ -58,9 +52,9 @@ if [ (uname) = "Linux" ]
     alias getclip 'xclip -selection clipboard -o'
 
     # pcmanfm
-    function f
-        set -l dir $argv[1] .
-        pcmanfm $dir[1] > /dev/null 2>&1 &
+    function f --argument-names 'dir'
+        test -n "$dir"; or set dir '.'
+        pcmanfm "$dir" > /dev/null 2>&1 &
     end
 
     # Modifying permissions
@@ -83,10 +77,7 @@ if [ (uname) = "Linux" ]
     alias messenger 'chrome-app Messenger https://messenger.com'
     alias whatsapp 'chrome-app WhatsApp https://web.whatsapp.com'
 
-    # Checkinstall
-    alias makeinstall 'sudo checkinstall --default --install yes --nodoc --deldoc yes --deldesc yes --delspec yes --backup no'
-
-else if [ (uname) = "Darwin" ]
+else if [ "$os" = "Darwin" ]
     # Ruby
     alias be 'bundle exec'
     alias ber 'bundle exec rake'
@@ -101,7 +92,10 @@ else if [ (uname) = "Darwin" ]
     alias nvim 'reattach-to-user-namespace -l nvim'
 
     # Finder
-    alias f 'open -a Finder ./'
+    function f --argument-names 'dir'
+        test -n "$dir"; or set dir '.'
+        open -a Finder "$dir"
+    end
 
     # Package manager
     alias appupdate 'brew update; and brew upgrade'
