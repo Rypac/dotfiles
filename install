@@ -35,7 +35,7 @@ link_scripts() {
 # Link config
 if [ "$(uname)" = 'Linux' ]; then
     link clipit
-    link compton/compton.conf $config/compton.conf
+    link compton/compton.conf "$config/compton.conf"
     link display
     link dunst
     link fish
@@ -46,27 +46,27 @@ if [ "$(uname)" = 'Linux' ]; then
     link npm
     link openbox
     link rofi
-    link sublime $config/sublime-text-3/Packages/User
+    link sublime "$config/sublime-text-3/Packages/User"
     link tint2
-    link xdg/user-dirs.dirs $config/user-dirs.dirs
-    link xdg/user-dirs.locale $config/user-dirs.locale
-    link vscode $config/vscode/User
+    link xdg/user-dirs.dirs "$config/user-dirs.dirs"
+    link xdg/user-dirs.locale "$config/user-dirs.locale"
+    link vscode "$config/vscode/User"
     link x11/Xresources
-    link gnupg/gpg-agent.conf $home/.gnupg/gpg-agent.conf
-    link shell/profile $home/.profile
-    link tmux/tmux.conf $home/.tmux.conf
-    link vim/vimrc $home/.vim/vimrc
-    link vim/vimrc $home/.vim/init.vim
-    link x11/xsessionrc $home/.xsessionrc
+    link gnupg/gpg-agent.conf "$home/.gnupg/gpg-agent.conf"
+    link shell/profile "$home/.profile"
+    link tmux/tmux.conf "$home/.tmux.conf"
+    link vim/vimrc "$home/.vim/vimrc"
+    link vim/vimrc "$home/.vim/init.vim"
+    link x11/xsessionrc "$home/.xsessionrc"
     link zsh/zshrc "$home/.zshrc"
 elif [ "$(uname)" = 'Darwin' ]; then
     link fish
     link git
     link npm
-    link shell/profile $home/.profile
-    link tmux/tmux.conf $home/.tmux.conf
-    link vim/vimrc $home/.vim/vimrc
-    link vim/vimrc $home/.vim/init.vim
+    link shell/profile "$home/.profile"
+    link tmux/tmux.conf "$home/.tmux.conf"
+    link vim/vimrc "$home/.vim/vimrc"
+    link vim/vimrc "$home/.vim/init.vim"
     link zsh/zshrc "$home/.zshrc"
     link vscode "$home/Library/Application Support/Code/User"
     link sublime "$home/Library/Application Support/Sublime Text 3/Packages/User"
@@ -74,14 +74,14 @@ elif [ "$(uname)" = 'Darwin' ]; then
 fi
 
 # Link scripts
-mkdir -p $data/applications $home/bin $home/scripts
-ln -fns $home/.vim $config/nvim
-ln -fs $base/scripts/* $home/scripts
-link_scripts utilities $home/bin
+mkdir -p "$data/applications" "$home/bin" "$home/scripts"
+ln -fns "$home/.vim" "$config/nvim"
+ln -fs "$base/scripts/*" "$home/scripts"
+link_scripts utilities "$home/bin"
 
 if [ "$(uname)" = 'Linux' ]; then
-    ln -fs $base/applications/* $data/applications
-    link_scripts linux $home/bin
+    ln -fs "$base/applications/*" "$data/applications"
+    link_scripts linux "$home/bin"
 elif [ "$(uname)" = 'Darwin' ]; then
-    link_scripts mac $home/bin
+    link_scripts mac "$home/bin"
 fi
