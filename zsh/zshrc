@@ -8,7 +8,6 @@
 : ${ZPLUG_CACHE_DIR:="$XDG_CACHE_HOME/zplug"}
 
 export TERM='xterm-256color'
-export _Z_CMD='j'
 
 
 ## Plugins
@@ -236,7 +235,7 @@ if [ "$(uname)" = "Linux" ]; then
 
     # ls colours
     eval "$(dircolors --sh)"
-    alias ls='ls --group-directories-first --color=auto'
+    alias ls='ls --color=auto'
 
     # Package manager
     alias appupdate='sudo apt update && sudo apt upgrade'
