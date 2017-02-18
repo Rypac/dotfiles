@@ -23,49 +23,37 @@ alias nstack 'stack --resolver nightly'
 alias df 'df -khT'
 alias du 'du -khsc'
 
-set -l os (uname)
+switch (uname)
+    case Linux
+        # Python
+        alias pip-upgrade "pip3 list --outdated --user --format=legacy | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade --user"
 
-if [ "$os" = "Linux" ]
-    # Python
-    alias pip-upgrade "pip3 list --outdated --user --format=legacy | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade --user"
+        # VSCode
+        alias code "code --user-data-dir "$XDG_CONFIG_HOME/vscode" --extensions-dir "$XDG_CONFIG_HOME/vscode/extensions""
+        alias vscode 'code'
 
-    # VSCode
-    alias code "code --user-data-dir "$XDG_CONFIG_HOME/vscode" --extensions-dir "$XDG_CONFIG_HOME/vscode/extensions""
-    alias vscode 'code'
+        # Clipboard
+        alias setclip 'xclip -selection clipboard -i'
+        alias getclip 'xclip -selection clipboard -o'
 
-    # Clipboard
-    alias setclip 'xclip -selection clipboard -i'
-    alias getclip 'xclip -selection clipboard -o'
+        # pcmanfm
+        function f --argument-names 'dir'
+            test -n "$dir"; or set dir '.'
+            pcmanfm "$dir" > /dev/null 2>&1 &
+        end
+    case Darwin
+        # Python
+        alias pip-upgrade "pip3 list --outdated --format=legacy | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade"
 
-    # pcmanfm
-    function f --argument-names 'dir'
-        test -n "$dir"; or set dir '.'
-        pcmanfm "$dir" > /dev/null 2>&1 &
-    end
+        # VSCode
+        alias vscode 'code'
 
-    # Modifying permissions
-    alias chmod 'chmod --preserve-root -v'
-    alias chown 'chown --preserve-root -v'
+        # Vim (work around tmux issue on macOS sierra)
+        alias nvim 'reattach-to-user-namespace -l nvim'
 
-    # Chrome apps
-    alias fastmail 'chrome-app FastMail https://www.fastmail.com'
-    alias inbox 'chrome-app Inbox https://inbox.google.com'
-    alias messenger 'chrome-app Messenger https://messenger.com'
-    alias whatsapp 'chrome-app WhatsApp https://web.whatsapp.com'
-
-else if [ "$os" = "Darwin" ]
-    # Python
-    alias pip-upgrade "pip3 list --outdated --format=legacy | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade"
-
-    # VSCode
-    alias vscode 'code'
-
-    # Vim (work around tmux issue on macOS sierra)
-    alias nvim 'reattach-to-user-namespace -l nvim'
-
-    # Finder
-    function f --argument-names 'dir'
-        test -n "$dir"; or set dir '.'
-        open -a Finder "$dir"
-    end
+        # Finder
+        function f --argument-names 'dir'
+            test -n "$dir"; or set dir '.'
+            open -a Finder "$dir"
+        end
 end

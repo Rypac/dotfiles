@@ -3,13 +3,8 @@ if not status --is-interactive
 end
 
 # Ensure directories exist
-if not test -d "$XDG_CONFIG_HOME"
-    mkdir -p "$XDG_CONFIG_HOME"
-end
-
-if not test -d "$XDG_DATA_HOME"
-    mkdir -p "$XDG_DATA_HOME"
-end
+mkdir -p "$XDG_CONFIG_HOME"
+mkdir -p "$XDG_DATA_HOME"
 
 # vim bindings
 fish_vi_key_bindings
@@ -31,21 +26,13 @@ end
 
 eval sh "$XDG_DATA_HOME/base16-shell/scripts/base16-oceanicnext.sh"
 
-set -l os (uname)
-
-if [ "$os" = "Linux" ]
-    # Rust
-    setenv RUST_SRC_PATH "$RUSTUP_HOME/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
-
-    # Android SDK/NDK
-    setenv JAVA_HOME '/opt/java/jdk'
-
-else if [ "$os" = "Darwin" ]
-    # Rust
-    setenv RUST_SRC_PATH "$RUSTUP_HOME/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
-
-    # Android SDK/NDK
-    setenv JAVA_HOME '/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home'
+switch (uname)
+    case Linux
+        setenv RUST_SRC_PATH "$RUSTUP_HOME/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
+        setenv JAVA_HOME "/opt/java/jdk"
+    case Darwin
+        setenv RUST_SRC_PATH "$RUSTUP_HOME/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
+        setenv JAVA_HOME "/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home"
 end
 
 if test -z "$GPG_TTY"
