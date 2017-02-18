@@ -103,46 +103,42 @@ autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME/.zcompcache"
 bindkey -v  # Vim mode
 export KEYTIMEOUT=10
 
-bindkey '^[[3~' delete-char
-bindkey '^?' backward-delete-char
-bindkey '^[[D' backward-char
-bindkey '^[[C' forward-char
-bindkey '^[[7~' beginning-of-line
-bindkey '^[[8~' end-of-line
-bindkey '^[[2~' overwrite-mode
-bindkey '[D' backward-word
-bindkey '[C' forward-word
-bindkey '^[[1;5D' backward-word
-bindkey '^[[1;5C' forward-word
-bindkey '^[Od' backward-word
-bindkey '^[Oc' forward-word
-bindkey '^[[3^' kill-word
-bindkey '^H' backward-kill-word
-bindkey '^A' beginning-of-line
-bindkey '^E' end-of-line
-bindkey '^L' clear-screen
-bindkey '^K' kill-line
-bindkey '^U' backward-kill-line
-bindkey '^T' transpose-chars
-bindkey '^F' vi-cmd-mode
-bindkey '^B' push-line-or-edit
-bindkey '^I' expand-or-complete
-bindkey '^Y' yank
-bindkey ' ' magic-space
-bindkey '^P' up-history
-bindkey '^N' down-history
-bindkey '^R' history-incremental-search-backward
-bindkey '^[[Z' reverse-menu-complete
-bindkey '^[[A' history-substring-search-up
-bindkey '^[OA' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-bindkey '^[OB' history-substring-search-down
+bindkey -M viins ' ' magic-space
+bindkey -M viins '^[[3~' delete-char
+bindkey -M viins '^?' backward-delete-char
+bindkey -M viins '^[[D' backward-char
+bindkey -M viins '^[[C' forward-char
+bindkey -M viins '^[[7~' beginning-of-line
+bindkey -M viins '^[[8~' end-of-line
+bindkey -M viins '^[[2~' overwrite-mode
+bindkey -M viins '[D' backward-word
+bindkey -M viins '[C' forward-word
+bindkey -M viins '^[[1;5D' backward-word
+bindkey -M viins '^[[1;5C' forward-word
+bindkey -M viins '^[Od' backward-word
+bindkey -M viins '^[Oc' forward-word
+bindkey -M viins '^[[3^' kill-word
+bindkey -M viins '^H' backward-kill-word
+bindkey -M viins '^A' beginning-of-line
+bindkey -M viins '^E' end-of-line
+bindkey -M viins '^L' clear-screen
+bindkey -M viins '^K' kill-line
+bindkey -M viins '^U' backward-kill-line
+bindkey -M viins '^F' vi-cmd-mode
+bindkey -M viins '^B' push-line-or-edit
+bindkey -M viins '^I' expand-or-complete
+bindkey -M viins '^Y' yank
+bindkey -M viins '^P' history-substring-search-up
+bindkey -M viins '^N' history-substring-search-down
+bindkey -M viins '^[[Z' reverse-menu-complete
+bindkey -M viins '^[[A' history-substring-search-up
+bindkey -M viins '^[OA' history-substring-search-up
+bindkey -M viins '^[[B' history-substring-search-down
+bindkey -M viins '^[OB' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 bindkey -M vicmd '/' history-incremental-search-backward
 bindkey -M vicmd '?' history-incremental-search-forward
-bindkey -M vicmd 'u' undo
-bindkey -M vicmd '^R' redo
 
 
 ## Prompt
