@@ -2,7 +2,7 @@
 
 set -e
 
-function confirmation_prompt() {
+confirmation_prompt() {
     message="$1"
     default="${2:-Y}"
     while true; do
@@ -21,11 +21,11 @@ function confirmation_prompt() {
     done
 }
 
-function no_confirmation() {
+no_confirmation() {
     [ "$1" = "-y" ] || [ "$1" = "--yes" ]
 }
 
-function install_apt_packages() {
+install_apt_packages() {
     sudo apt install --yes \
         alsa-base \
         alsa-tools \
@@ -100,7 +100,7 @@ function install_apt_packages() {
         zsh
 }
 
-function install_fonts() {
+install_fonts() {
     mkdir -p "$XDG_DATA_HOME/fonts"
     curl -L https://github.com/chrissimpkins/codeface/releases/download/font-collection/codeface-fonts.tar.xz | tar xJ -C /tmp
     mv /tmp/fonts/* "$XDG_DATA_HOME/fonts"
@@ -108,7 +108,7 @@ function install_fonts() {
     fc-cache -frv
 }
 
-function configure_environment() {
+configure_environment() {
     sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
     sudo update-ca-certificates --fresh
     sudo mkdir -p /etc/X11/xorg.conf.d

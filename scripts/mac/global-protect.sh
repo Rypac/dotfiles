@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
-function up() {
+up() {
     launchctl load /Library/LaunchAgents/com.paloaltonetworks.gp.pangpa.plist
     launchctl load /Library/LaunchAgents/com.paloaltonetworks.gp.pangps.plist
 }
 
-function down() {
+down() {
     launchctl remove com.paloaltonetworks.gp.pangpa
     launchctl remove com.paloaltonetworks.gp.pangps
 }
 
-function usage() {
+usage() {
     echo "usage: $(basename "$0") [up|down]"
 }
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function lock() {
+lock() {
     if [ -x "$HOME/scripts/i3/lock.sh" ]; then
         "$HOME/scripts/i3/lock.sh"
     else
@@ -8,7 +8,7 @@ function lock() {
     fi
 }
 
-function usage() {
+usage() {
     echo "Usage: $(basename "$0") {lock|logout|sleep|hibernate|reboot|shutdown}"
 }
 

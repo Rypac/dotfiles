@@ -4,23 +4,23 @@
 
 package_dir="${2:-$HOME/packages/cloned}"
 
-function needs_update() {
+needs_update() {
     [ "$(git rev-parse @)" != "$(git rev-parse @{u})" ]
 }
 
-function update() {
+update() {
     echo "Updating $1"
     git pull --recurse-submodules
 }
 
-function build_and_install() {
+build_and_install() {
     echo "Installing $1"
     make clean
     make
     sudo checkinstall --default --install=yes --nodoc --deldoc=yes --deldesc=yes --delspec=yes --backup=no
 }
 
-function upgrade() {
+upgrade() {
     echo "Upgrading $1"
     git fetch
     if needs_update; then
@@ -31,13 +31,13 @@ function upgrade() {
     fi
 }
 
-function uninstall() {
+uninstall() {
     echo "Uninstalling $1"
     sudo make uninstall
     make clean
 }
 
-function perform_action() {
+perform_action() {
     action="$1"
     cd "$package_dir"
 
@@ -46,7 +46,7 @@ function perform_action() {
     done
 }
 
-function usage() {
+usage() {
     echo "usage: $(basename "$0") [update|install|uninstall]"
 }
 

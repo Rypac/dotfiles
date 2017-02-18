@@ -1,9 +1,9 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-dots="${1:-$HOME/.dotfiles}"
+: ${DOTFILES_HOME:="$HOME/.dotfiles"}
 
-if [ -d "$dots" ]; then
-    (cd "$dots" && git fetch --all && git pull && ./install)
+if [ -d "$DOTFILES_HOME" ]; then
+    (cd "$DOTFILES_HOME" && git fetch --all && git pull && ./install)
 else
     echo "Invalid directory" && exit 1
 fi

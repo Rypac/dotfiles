@@ -2,7 +2,7 @@
 #
 # Extract files based on their extension
 
-function usage() {
+usage() {
     echo "usage: $(basename "$0") [file]"
 }
 

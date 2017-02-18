@@ -2,7 +2,7 @@
 #
 # Compress files based on the given extension
 
-function usage() {
+usage() {
     echo "usage: $(basename "$0") [compression_type] [input] [output]"
 }
 

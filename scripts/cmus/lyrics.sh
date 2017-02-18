@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function fetch_tag() {
+fetch_tag() {
     cmus-remote -Q | grep "tag $1 " | cut -d' ' -f3-
 }
 

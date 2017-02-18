@@ -15,11 +15,11 @@ scontrol="$(
     head -n1
 )"
 
-function capability() {
+capability() {
     amixer -D $mixer get $scontrol | sed -n "s/  Capabilities:.*cvolume.*/Capture/p"
 }
 
-function usage() {
+usage() {
     echo "usage: $(basename "$0") [$up|$down|$mute]"
 }
 

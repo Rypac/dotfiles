@@ -2,7 +2,7 @@
 #
 # Simulate virtual on-screen typing
 
-function autotype() {
+autotype() {
     if type pv > /dev/null 2>&1; then
         echo "$1" | pv -qL 10
     else

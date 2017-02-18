@@ -2,15 +2,14 @@
 #
 # Run a chrome app
 
-function usage() {
+usage() {
     echo "usage: $(basename "$0") NAME URL"
 }
 
-function rename_window() {
+rename_window() {
     app_pid="$1"
     app_window=''
-    until [ -n "$app_window" ]
-    do
+    until [ -n "$app_window" ]; do
         sleep 0.1s
         app_window=$(wmctrl -lp | grep $app_pid | cut -d' ' -f1)
     done

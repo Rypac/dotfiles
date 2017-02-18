@@ -2,13 +2,13 @@
 #
 # Remove those inconsiderate .DS_Store files
 
-function purge_ds_store() {
+purge_ds_store() {
     dir="$1"
     [ ! -w "$dir" ] && prefix='sudo' || prefix=''
     $prefix find "$dir" -name '.DS_Store' -exec rm {} \;
 }
 
-function usage() {
+usage() {
     echo "usage: $(basename "$0") [all|home|here]"
 }
 

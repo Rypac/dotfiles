@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 if type sensors > /dev/null 2>&1; then
     sensors

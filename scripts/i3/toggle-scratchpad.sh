@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
-function usage() {
+usage() {
     echo "Usage: $(basename "$0") NAME [COMMAND]"
 }
 
-function scratchpad_exists() {
+scratchpad_exists() {
     i3-msg -t get_tree | grep -Po "\"instance\":\"$1\""
 }
 
-function create_scratchpad() {
+create_scratchpad() {
     [[ ! -z "$2" ]] && args="-e $2" || args=""
     i3-msg -q "exec --no-startup-id urxvt -name $1 $args" && sleep 0.2
     i3-msg -q [instance="$1"] border none
@@ -16,7 +16,7 @@ function create_scratchpad() {
     i3-msg -q [instance="$1"] move scratchpad
 }
 
-function show_scratchpad() {
+show_scratchpad() {
     i3-msg -q [instance="$1"] scratchpad show
 }
 
