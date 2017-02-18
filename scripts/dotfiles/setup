@@ -60,6 +60,7 @@ function install_apt_packages() {
         fonts-symbola \
         fortune \
         g++ \
+        gawk \
         git \
         htop \
         i3 \
@@ -95,7 +96,8 @@ function install_apt_packages() {
         xclip \
         xorg \
         zathura \
-        zip
+        zip \
+        zsh
 }
 
 function install_fonts() {
