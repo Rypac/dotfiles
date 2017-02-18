@@ -17,7 +17,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'justinmk/vim-sneak'
 Plug 'matze/vim-move'
-Plug 'junegunn/fzf', { 'dir': '~/.local/share/fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-multiple-cursors'
