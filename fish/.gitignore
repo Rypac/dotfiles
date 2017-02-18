@@ -13,3 +13,5 @@ functions/*
 !/functions/fish_prompt.fish
 !/functions/append_to_path.fish
 !/functions/prepend_to_path.fish
+!/functions/mkcd.fish
+!/functions/sudo.fish
