@@ -8,6 +8,7 @@
 : ${ZPLUG_CACHE_DIR:="$XDG_CACHE_HOME/zplug"}
 
 export TERM='xterm-256color'
+export _Z_CMD='j'
 
 
 ## Plugins
@@ -21,8 +22,9 @@ source "$ZPLUG_HOME/init.zsh"
 zplug "zplug/zplug", hook-build:"zplug --self-manage"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-history-substring-search", defer:2
+zplug "b4b4r07/zsh-vimode-visual", defer:3
 zplug "junegunn/fzf", as:command, use:bin/fzf, hook-build:"./install --bin"
 zplug "b4b4r07/enhancd", use:init.sh
 zplug "tj/n", as:command, use:bin/n
@@ -139,7 +141,6 @@ bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 bindkey -M vicmd '/' history-incremental-search-backward
 bindkey -M vicmd '?' history-incremental-search-forward
-bindkey -M vicmd 'v' edit-command-line
 bindkey -M vicmd 'u' undo
 bindkey -M vicmd '^R' redo
 
@@ -155,6 +156,8 @@ function left_prompt {
 function right_prompt {
     if [ "$KEYMAP" = 'vicmd' ]; then
         print "%F{yellow} [% NORMAL]% %f"
+    elif [ "$KEYMAP" = 'vivis' ]; then
+        print "%F{yellow} [% VISUAL]% %f"
     fi
 }
 
