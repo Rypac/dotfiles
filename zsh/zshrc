@@ -1,0 +1,179 @@
+[ -f "$HOME/.profile" ] && source "$HOME/.profile"
+
+: ${XDG_CACHE_HOME:="$HOME/.cache"}
+: ${XDG_DATA_HOME:="$HOME/.local/share"}
+
+: ${ZPLUG_HOME:="$XDG_DATA_HOME/zplug"}
+: ${ZPLUG_BIN:="$ZPLUG_HOME/bin"}
+: ${ZPLUG_CACHE_DIR:="$XDG_CACHE_HOME/zplug"}
+
+export TERM='xterm-256color'
+
+
+## Plugins
+
+if [ ! -f "$ZPLUG_HOME/init.zsh" ]; then
+    git clone "https://github.com/zplug/zplug" "$ZPLUG_HOME"
+fi
+
+source "$ZPLUG_HOME/init.zsh"
+
+zplug "zplug/zplug", hook-build:"zplug --self-manage"
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-history-substring-search"
+zplug "junegunn/fzf", as:command, use:bin/fzf, hook-build:"./install --bin"
+zplug "b4b4r07/enhancd", use:init.sh
+zplug "tj/n", as:command, use:bin/n
+zplug "chriskempson/base16-shell", use:scripts/base16-oceanicnext.sh
+
+if ! zplug check; then
+    zplug install
+fi
+
+zplug load
+
+
+## Options
+
+HISTFILE="$XDG_CACHE_HOME/.zhistory"
+HISTSIZE=10000
+SAVEHIST=10000
+setopt EXTENDED_HISTORY     # prepend timestamp to each history entry
+setopt INC_APPEND_HISTORY   # history entries are appended after each command
+setopt SHARE_HISTORY        # imports commands from and writes commands to the history file
+setopt HIST_IGNORE_DUPS     # don't add command to history if it's a duplicate of the previous entry
+setopt HIST_IGNORE_ALL_DUPS # remove previous entry from history and append command to the end
+setopt HIST_IGNORE_SPACE    # ignore commands prepended with a space
+setopt HIST_SAVE_NO_DUPS    # older history commands are removed in favour of newer ones
+setopt HIST_VERIFY          # perform history expansion and reload line into the editing buffer
+setopt AUTO_PUSHD           # cd pushes old directory to the stack
+setopt PUSHD_IGNORE_DUPS    # push only unique directories
+setopt PUSHD_SILENT         # don't print directory stach when pushing or popping
+setopt PUSHD_TO_HOME        # push with no arguements pushes to home
+setopt EXTENDED_GLOB        # treat '#', '~' and '^' as part of patterns for filename generation
+setopt PROMPT_SUBST         # substitutions can be used in the prompt
+setopt AUTO_RESUME          # single work commands can resume existing jobs
+setopt LONG_LIST_JOBS       # list jobs in the long format by default
+setopt ALWAYS_TO_END        # move cursor to end of word when inserting completion
+setopt PATH_DIRS            # perform path search completion on commands with slashes
+unsetopt CASE_GLOB          # don't make globbing completion case sensitive
+unsetopt MENU_COMPLETE      # don't insert first completion match immediately
+
+
+## Completions
+
+zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*:matches' group 'yes'
+zstyle ':completion:*:options' description 'yes'
+zstyle ':completion:*:options' auto-description '%d'
+zstyle ':completion:*:corrections' format ' %F{green}-- %d (errors: %e) --%f'
+zstyle ':completion:*:descriptions' format ' %F{yellow}-- %d --%f'
+zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
+zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
+zstyle ':completion:*:default' list-prompt '%S%M matches%s'
+zstyle ':completion:*' format ' %F{yellow}-- %d --%f'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:*:cd:*' tag-order local-directories directory-stack path-directories
+zstyle ':completion:*:*:cd:*:directory-stack' menu yes select
+zstyle ':completion:*:-tilde-:*' group-order 'named-directories' 'path-directories' 'expand'
+zstyle ':completion:*' squeeze-slashes true
+zstyle ':completion::complete:*' use-cache on
+zstyle ':completion::complete:*' cache-path "$XDG_CACHE_HOME/.zcompcache"
+zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec)|prompt_*)'
+zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
+zstyle ':completion:*:manuals' separate-sections true
+zstyle ':completion:*:manuals.(^1*)' insert-sections true
+zstyle ':completion:*:history-words' stop yes
+zstyle ':completion:*:history-words' remove-all-dups yes
+zstyle ':completion:*:history-words' list false
+zstyle ':completion:*:history-words' menu yes
+autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME/.zcompcache"
+
+
+## Keybindings
+
+bindkey -v  # Vim mode
+export KEYTIMEOUT=10
+
+bindkey '^[[3~' delete-char
+bindkey '^?' backward-delete-char
+bindkey '^[[D' backward-char
+bindkey '^[[C' forward-char
+bindkey '^[[7~' beginning-of-line
+bindkey '^[[8~' end-of-line
+bindkey '^[[2~' overwrite-mode
+bindkey '[D' backward-word
+bindkey '[C' forward-word
+bindkey '^[[1;5D' backward-word
+bindkey '^[[1;5C' forward-word
+bindkey '^[Od' backward-word
+bindkey '^[Oc' forward-word
+bindkey '^[[3^' kill-word
+bindkey '^H' backward-kill-word
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
+bindkey '^L' clear-screen
+bindkey '^K' kill-line
+bindkey '^U' backward-kill-line
+bindkey '^T' transpose-chars
+bindkey '^F' vi-cmd-mode
+bindkey '^B' push-line-or-edit
+bindkey '^I' expand-or-complete
+bindkey '^Y' yank
+bindkey ' ' magic-space
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^R' history-incremental-search-backward
+bindkey '^[[Z' reverse-menu-complete
+bindkey '^[[A' history-substring-search-up
+bindkey '^[OA' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey '^[OB' history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+bindkey -M vicmd '/' history-incremental-search-backward
+bindkey -M vicmd '?' history-incremental-search-forward
+bindkey -M vicmd 'v' edit-command-line
+bindkey -M vicmd 'u' undo
+bindkey -M vicmd '^R' redo
+
+
+## Prompt
+
+function left_prompt {
+    local current_directory="%F{blue}%1~"
+    local command_status="%(0?.%F{green}.%F{red})$%f"
+    print "$current_directory $command_status "
+}
+
+function right_prompt {
+    if [ "$KEYMAP" = 'vicmd' ]; then
+        print "%F{yellow} [% NORMAL]% %f"
+    fi
+}
+
+function zle-line-init zle-line-finish zle-keymap-select {
+    zle reset-prompt
+    zle -R
+}
+
+function prompt_precmd {
+    zle -N zle-line-init
+    zle -N zle-keymap-select
+    zle -N zle-line-finish
+    PROMPT='$(left_prompt)'
+    RPROMPT='$(right_prompt)'
+}
+
+if [[ ! "$TERM" == (linux|*bsd*|dumb) ]]; then
+    autoload -Uz promptinit && promptinit
+    autoload -Uz add-zsh-hook && add-zsh-hook precmd prompt_precmd
+    prompt_opts=(cr subst percent)
+fi
+
+typeset -gU PATH FPATH CDPATH MAILPATH

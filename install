@@ -58,6 +58,7 @@ if [ "$(uname)" = 'Linux' ]; then
     link vim/vimrc $home/.vim/vimrc
     link vim/vimrc $home/.vim/init.vim
     link x11/xsessionrc $home/.xsessionrc
+    link zsh/zshrc "$home/.zshrc"
 elif [ "$(uname)" = 'Darwin' ]; then
     link fish
     link git
@@ -66,6 +67,7 @@ elif [ "$(uname)" = 'Darwin' ]; then
     link tmux/tmux.conf $home/.tmux.conf
     link vim/vimrc $home/.vim/vimrc
     link vim/vimrc $home/.vim/init.vim
+    link zsh/zshrc "$home/.zshrc"
     link vscode "$home/Library/Application Support/Code/User"
     link sublime "$home/Library/Application Support/Sublime Text 3/Packages/User"
     link launch-agents/env-sync.plist "$home/Library/LaunchAgents/env-sync.plist"
