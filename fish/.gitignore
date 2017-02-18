@@ -15,6 +15,7 @@ functions/*
 !/functions/prepend_to_path.fish
 !/functions/app.fish
 !/functions/dock.fish
+!/functions/f.fish
 !/functions/mkcd.fish
 !/functions/rake.fish
 !/functions/sudo.fish
