@@ -61,5 +61,5 @@ set -gx HUSHLOGIN_FILE ''
 
 # Setup PATH
 if status --is-interactive
-    prepend_to_path "$HOME/bin" "$HOME/.local/bin" "$CARGO_HOME/bin" "$ANDROID_HOME/tools" "$ANDROID_HOME/platform-tools"
+    prepend_to_path "$HOME/bin" "$HOME/.local/bin" "$CARGO_HOME/bin" "$ANDROID_HOME/tools" "$ANDROID_HOME/platform-tools" "/usr/local/bin"
 end

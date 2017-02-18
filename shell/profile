@@ -61,4 +61,4 @@ export SHELL='/usr/bin/fish'
 export HUGHLOGIN_FILE=''
 
 # Setup PATH
-export PATH="$HOME/bin:$HOME/.local/bin:$CARGO_HOME/bin:$XDG_CONFIG_HOME/fnm/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:$CARGO_HOME/bin:$XDG_CONFIG_HOME/fnm/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/usr/local/bin:$PATH"
