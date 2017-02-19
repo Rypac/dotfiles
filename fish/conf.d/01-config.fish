@@ -23,12 +23,8 @@ prepend_to_path "$XDG_DATA_HOME/fzf/bin"
 set -gx FZF_LEGACY_KEYBINDINGS 0
 set -gx FZF_TMUX 1
 
-# base16 colour scheme
-if not test -d "$XDG_DATA_HOME/base16-shell"
-    git clone --depth 1 https://github.com/chriskempson/base16-shell.git "$XDG_DATA_HOME/base16-shell"
-end
-
-eval sh "$XDG_DATA_HOME/base16-shell/scripts/base16-oceanicnext.sh"
+# Set terminal colour scheme
+base16-oceanicnext
 
 # Install fisherman and plugins
 set -l fisher_function "$XDG_CONFIG_HOME/fish/functions/fisher.fish"

@@ -12,6 +12,7 @@ functions/*
 !/functions/append_to_path.fish
 !/functions/prepend_to_path.fish
 !/functions/app.fish
+!/functions/base16-oceanicnext.fish
 !/functions/decrypt.fish
 !/functions/dock.fish
 !/functions/encrypt.fish
