@@ -14,7 +14,9 @@ functions/*
 !/functions/append_to_path.fish
 !/functions/prepend_to_path.fish
 !/functions/app.fish
+!/functions/decrypt.fish
 !/functions/dock.fish
+!/functions/encrypt.fish
 !/functions/f.fish
 !/functions/mkcd.fish
 !/functions/pbcopy.fish

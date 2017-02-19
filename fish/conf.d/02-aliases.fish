@@ -3,18 +3,11 @@ if not status --is-interactive
 end
 
 alias g git
-
 alias vi nvim
 alias vim nvim
-
 alias mux tmuxinator
-
 alias gpg gpg2
-alias encrypt 'gpg --encrypt --recipient me@rdavis.xyz --armour --output -'
-alias decrypt 'gpg --decrypt --quiet'
-
 alias nstack 'stack --resolver nightly'
-
 alias vscode code
 
 switch (uname)
