@@ -17,6 +17,8 @@ functions/*
 !/functions/dock.fish
 !/functions/f.fish
 !/functions/mkcd.fish
+!/functions/pbcopy.fish
+!/functions/pbpaste.fish
 !/functions/rake.fish
 !/functions/sudo.fish
 !/functions/tm.fish
