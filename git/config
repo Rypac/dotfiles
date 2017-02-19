@@ -13,53 +13,61 @@
     editor = nvim
 
 [alias]
-    # aliases
-    aliases = !git config -l | grep alias | cut -c 7-
+    # Aliases
+    alias = !git config -l | grep alias | cut -c 7-
 
-    # status
-    si = status --ignore-submodules=dirty
-    s = status --long
+    # Status
+    s = status
+    st = status
+    sl = status --long
     ss = status --short
     sd = status -v
+    si = status --ignore-submodules=dirty
 
-    # logs
-    lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-    lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
-    lg = !git lg2
+    # Logs
+    lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
     ls = log --pretty=format:"%C(yellow)%h%C(red)%d\\ %Creset%s\\ %C(blue)[%cn]" --decorate
-    lfile = log --pretty=format:"%C(yellow)%h%C(red)%d\\ %Creset%s\\ %C(blue)[%cn]" --decorate --numstat
-    ldate = log --pretty=format:"%C(yellow)%h\\ %ad%C(red)%d\\ %Creset%s\\ %C(blue)[%cn]" --decorate --date=short
-    lrel = log --pretty=format:"%C(yellow)%h\\ %ad%C(red)%d\\ %Creset%s\\ %C(blue)[%cn]" --decorate --date=relative
+    lc = log --pretty=format:"%C(yellow)%h%C(red)%d\\ %Creset%s\\ %C(blue)[%cn]" --decorate --numstat
+    ld = log --pretty=format:"%C(yellow)%h\\ %ad%C(red)%d\\ %Creset%s\\ %C(blue)[%cn]" --decorate --date=short
+    lr = log --pretty=format:"%C(yellow)%h\\ %ad%C(red)%d\\ %Creset%s\\ %C(blue)[%cn]" --decorate --date=relative
+    lf = log -u
 
-    # files
-    filelog = log -u
-    fl = log -u
-
-    # diffs
+    # Diffs
     d = diff
     da = diff HEAD
 
-    # searching
+    # Searching
     f = !git ls-files | grep -i
     grep = grep -Ii
 
-    # branches
-    delete = branch --delete
-    remote-delete = push origin --delete
+    # Branches
+    co = checkout
+    b = checkout
+    bn = checkout -b
+    bd = branch --delete
+    brd = push origin --delete
 
-    # commits
+    # Staging
+    a = add
+    aa = add -A
+
+    # Commits
     cs = commit -S
-    cso = commit -s
     cm = commit -m
     cms = commit -S -m
     cmso = commit -s -m
     save = !git add -A && git commit -m 'Save progress'
+
+    # Fixing things
     undo = reset HEAD~1 --mixed
     amend = commit -a --amend
-    yolo = "!git add -A && git commit -m \"$(curl -s whatthecommit.com/index.txt) #yolo\""
+
+    # Fun commits
+    yolo = "!git add -A && git commit -m yolo"
+    wtf = "!git add -A && git commit -m \"$(curl -s whatthecommit.com/index.txt)\""
     fortune = "!git add -A && git commit -m \"$(fortune -sn 64 | tr '[\\n|\\t]' '\\ ')#fortune\""
 
-    # submodules
+    # Submodules
     subdiff = !git diff && git submodule foreach 'git diff'
     subpush = push --recurse-submodules=on-demand
     subinit = submodule update --init --recursive
@@ -67,10 +75,6 @@
 
 [push]
     default = simple
-
-[gui]
-    fontdiff = -family \"Source Code Pro\" -size -12 -weight normal -slant roman -underline 0 -overstrike 0
-    tabsize = 4
 
 [gpg]
     program = gpg2
