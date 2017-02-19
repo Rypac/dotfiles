@@ -1,65 +1,65 @@
 # Setup XDG environment variables
-setenv XDG_DATA_HOME "$HOME/.local/share"
-setenv XDG_CONFIG_HOME "$HOME/.config"
-setenv XDG_CACHE_HOME "$HOME/.cache"
-setenv DOTFILES_HOME "$HOME/.dotfiles"
+set -gx XDG_DATA_HOME "$HOME/.local/share"
+set -gx XDG_CONFIG_HOME "$HOME/.config"
+set -gx XDG_CACHE_HOME "$HOME/.cache"
+set -gx DOTFILES_HOME "$HOME/.dotfiles"
 
 # Set config/data directories for XDG unfriendly programs
-setenv ATOM_HOME "$XDG_DATA_HOME/atom"
-setenv AWS_CONFIG_FILE "$XDG_CONFIG_HOME/aws/config"
-setenv AWS_SHARED_CREDENTIALS_FILE "$XDG_CONFIG_HOME/aws/credentials"
-setenv ELINKS_CONFDIR "$XDG_CONFIG_HOME/elinks"
-setenv ENHANCD_DIR "$XDG_DATA_HOME/enhancd"
-setenv GIMP2_DIRECTORY "$XDG_CONFIG_HOME/gimp"
-setenv GTK2_RC_FILES "$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
-setenv HTTPIE_CONFIG_DIR "$XDG_CONFIG_HOME/httpie"
-setenv MPLAYER_HOME "$XDG_CONFIG_HOME/mplayer"
-setenv PASSWORD_STORE_DIR "$XDG_DATA_HOME/pass"
-setenv QT_QPA_PLATFORMTHEME "gtk2"
-setenv QT_STYLE_OVERRIDE GTK+
-setenv SCREENRC "$XDG_CONFIG_HOME/screen/screenrc"
-setenv TERMINFO "$XDG_DATA_HOME/terminfo"
-setenv TIGRC_USER "$XDG_CONFIG_HOME/tig/tigrc"
-setenv WEECHAT_HOME "$XDG_CONFIG_HOME/weechat"
-setenv WINEPREFIX "$XDG_DATA_HOME/wine"
-setenv XINITRC "$XDG_CONFIG_HOME/x11/xinitrc"
-setenv ZPLUG_HOME "$XDG_DATA_HOME/zplug"
-setenv Z_DATA "$XDG_DATA_HOME/z"
-setenv _Z_DATA "$Z_DATA"
+set -gx ATOM_HOME "$XDG_DATA_HOME/atom"
+set -gx AWS_CONFIG_FILE "$XDG_CONFIG_HOME/aws/config"
+set -gx AWS_SHARED_CREDENTIALS_FILE "$XDG_CONFIG_HOME/aws/credentials"
+set -gx ELINKS_CONFDIR "$XDG_CONFIG_HOME/elinks"
+set -gx ENHANCD_DIR "$XDG_DATA_HOME/enhancd"
+set -gx GIMP2_DIRECTORY "$XDG_CONFIG_HOME/gimp"
+set -gx GTK2_RC_FILES "$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+set -gx HTTPIE_CONFIG_DIR "$XDG_CONFIG_HOME/httpie"
+set -gx MPLAYER_HOME "$XDG_CONFIG_HOME/mplayer"
+set -gx PASSWORD_STORE_DIR "$XDG_DATA_HOME/pass"
+set -gx QT_QPA_PLATFORMTHEME "gtk2"
+set -gx QT_STYLE_OVERRIDE GTK+
+set -gx SCREENRC "$XDG_CONFIG_HOME/screen/screenrc"
+set -gx TERMINFO "$XDG_DATA_HOME/terminfo"
+set -gx TIGRC_USER "$XDG_CONFIG_HOME/tig/tigrc"
+set -gx WEECHAT_HOME "$XDG_CONFIG_HOME/weechat"
+set -gx WINEPREFIX "$XDG_DATA_HOME/wine"
+set -gx XINITRC "$XDG_CONFIG_HOME/x11/xinitrc"
+set -gx ZPLUG_HOME "$XDG_DATA_HOME/zplug"
+set -gx Z_DATA "$XDG_DATA_HOME/z"
+set -gx _Z_DATA "$Z_DATA"
 
 # Set cache/runtime directories for XDG unfriendly programs
-setenv CUDA_CACHE_PATH "$XDG_CACHE_HOME/nv"
-setenv LESSHISTFILE "$XDG_CACHE_HOME/lesshistory"
-setenv ICEAUTHORITY "$XDG_RUNTIME_DIR/ICEauthority"
-setenv RXVT_SOCKET "$XDG_RUNTIME_DIR/urxvtd"
-setenv TMUX_TMPDIR "$XDG_RUNTIME_DIR"
-setenv __GL_SHADER_DISK_CACHE_PATH "$XDG_CACHE_HOME/nv"
+set -gx CUDA_CACHE_PATH "$XDG_CACHE_HOME/nv"
+set -gx LESSHISTFILE "$XDG_CACHE_HOME/lesshistory"
+set -gx ICEAUTHORITY "$XDG_RUNTIME_DIR/ICEauthority"
+set -gx RXVT_SOCKET "$XDG_RUNTIME_DIR/urxvtd"
+set -gx TMUX_TMPDIR "$XDG_RUNTIME_DIR"
+set -gx __GL_SHADER_DISK_CACHE_PATH "$XDG_CACHE_HOME/nv"
 
 # Programming environments
-setenv CARGO_HOME "$XDG_DATA_HOME/cargo"
-setenv RUSTUP_HOME "$XDG_DATA_HOME/rustup"
-setenv STACK_ROOT "$XDG_DATA_HOME/stack"
-setenv NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME/npm/config"
-setenv BUNDLE_PATH "$XDG_CACHE_HOME/bundle"
-setenv GEM_SPEC_CACHE "$XDG_CACHE_HOME/ruby/gem/spec"
-setenv RBENV_ROOT "$XDG_DATA_HOME/rbenv"
-setenv MIX_HOME "$XDG_DATA_HOME/mix"
-setenv GRADLE_USER_HOME "$XDG_CACHE_HOME/gradle"
-setenv ANDROID_SDK_HOME "$XDG_DATA_HOME/android"
-setenv ANDROID_HOME "$ANDROID_SDK_HOME/sdk"
-setenv ANDROID_SDK_ROOT "$ANDROID_HOME"
-setenv ANDROID_NDK "$ANDROID_HOME/ndk-bundle"
-setenv NDK_ROOT "$ANDROID_NDK"
+set -gx CARGO_HOME "$XDG_DATA_HOME/cargo"
+set -gx RUSTUP_HOME "$XDG_DATA_HOME/rustup"
+set -gx STACK_ROOT "$XDG_DATA_HOME/stack"
+set -gx NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME/npm/config"
+set -gx BUNDLE_PATH "$XDG_CACHE_HOME/bundle"
+set -gx GEM_SPEC_CACHE "$XDG_CACHE_HOME/ruby/gem/spec"
+set -gx RBENV_ROOT "$XDG_DATA_HOME/rbenv"
+set -gx MIX_HOME "$XDG_DATA_HOME/mix"
+set -gx GRADLE_USER_HOME "$XDG_CACHE_HOME/gradle"
+set -gx ANDROID_SDK_HOME "$XDG_DATA_HOME/android"
+set -gx ANDROID_HOME "$ANDROID_SDK_HOME/sdk"
+set -gx ANDROID_SDK_ROOT "$ANDROID_HOME"
+set -gx ANDROID_NDK "$ANDROID_HOME/ndk-bundle"
+set -gx NDK_ROOT "$ANDROID_NDK"
 
 # Defaults
-setenv LC_COLLATE 'C'
-setenv EDITOR 'nvim'
-setenv VISUAL 'code'
-setenv PAGER 'less'
-setenv SELECTED_EDITOR 'nvim'
-setenv LESS '-F -g -i -M -R -S -w -X -z-4'
-setenv SHELL '/usr/bin/fish'
-setenv HUSHLOGIN_FILE ''
+set -gx LC_COLLATE 'C'
+set -gx EDITOR 'nvim'
+set -gx VISUAL 'code'
+set -gx PAGER 'less'
+set -gx SELECTED_EDITOR 'nvim'
+set -gx LESS '-F -g -i -M -R -S -w -X -z-4'
+set -gx SHELL '/usr/bin/fish'
+set -gx HUSHLOGIN_FILE ''
 
 # Setup PATH
 if status --is-interactive
