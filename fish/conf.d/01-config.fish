@@ -26,6 +26,14 @@ end
 
 eval sh "$XDG_DATA_HOME/base16-shell/scripts/base16-oceanicnext.sh"
 
+# Install fisherman and plugins
+if not functions -q fisher
+    set -l fisher_home "$XDG_CONFIG_HOME/fish/functions/fisher.fish"
+    curl -Lo "$fisher_home" --create-dirs git.io/fisher
+    source "$fisher_home"
+    fisher
+end
+
 switch (uname)
     case Linux
         setenv RUST_SRC_PATH "$RUSTUP_HOME/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
@@ -40,3 +48,21 @@ if test -z "$GPG_TTY"
 end
 
 append_to_path "$JAVA_HOME/bin"
+
+# Aliases
+
+alias g git
+alias vi nvim
+alias vim nvim
+alias mux tmuxinator
+alias gpg gpg2
+alias nstack 'stack --resolver nightly'
+alias vscode code
+
+switch (uname)
+    case Linux
+        alias pip-upgrade "pip3 list --outdated --user --format=legacy | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade --user"
+        alias code "code --user-data-dir "$XDG_CONFIG_HOME/vscode" --extensions-dir "$XDG_CONFIG_HOME/vscode/extensions""
+    case Darwin
+        alias pip-upgrade "pip3 list --outdated --format=legacy | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade"
+end
