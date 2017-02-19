@@ -2,6 +2,8 @@ if not status --is-interactive
     exit
 end
 
+alias g git
+
 alias vi nvim
 alias vim nvim
 
