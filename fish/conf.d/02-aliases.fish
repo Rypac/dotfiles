@@ -10,8 +10,8 @@ alias vim nvim
 alias mux tmuxinator
 
 alias gpg gpg2
-alias scramble 'gpg --encrypt --recipient me@rdavis.xyz --armour'
-alias unscramble 'gpg --decrypt --quiet'
+alias encrypt 'gpg --encrypt --recipient me@rdavis.xyz --armour --output -'
+alias decrypt 'gpg --decrypt --quiet'
 
 alias nstack 'stack --resolver nightly'
 
