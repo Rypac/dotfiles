@@ -1,5 +1,5 @@
 function app --description 'Wrapper around various package managers'
-    switch (uname)
+    switch (command uname)
         case Linux
             __app_apt $argv
         case Darwin
@@ -8,47 +8,72 @@ function app --description 'Wrapper around various package managers'
 end
 
 function __app_apt
-    set -l subcommand $argv[1]
+    set -l cmd $argv[1]
     set -e argv[1]
 
-    switch $subcommand
-        case i in install
-            sudo apt install $argv
-        case u up update upgrade
-            sudo apt update $argv
-            sudo apt upgrade $argv
+    switch "$cmd"
+        case i install
+            command sudo apt install $argv
+        case u up update
+            command sudo apt update $argv
+            command sudo apt upgrade $argv
         case r rm remove
-            sudo apt remove $argv
-        case l list
-            dpkg-query -f '${binary:Package}\n' -W | less
+            command sudo apt purge --autoremove $argv
+        case l ls list
+            command dpkg-query -f '${binary:Package}\n' -W | less
         case s search
-            apt search $argv
+            command apt search $argv
         case c clean
-            sudo apt autoremove $argv
-            sudo dpkg -P (dpkg -l | awk '/^rc/ { print($2) }')
-        case p purge
-            sudo apt purge --autoremove $argv
+            command sudo apt autoremove
+            command sudo apt clean
+            command sudo dpkg -P (dpkg -l | awk '/^rc/ { print($2) }')
+        case h help -h --help
+            __app_usage
+        case '*'
+            __app_usage
+            return 1
     end
 end
 
 function __app_brew
-    set -l subcommand $argv[1]
+    set -l cmd $argv[1]
     set -e argv[1]
 
-    switch $subcommand
-        case i in install
-            brew install $argv
-        case u up update upgrade
-            brew update $argv
-            brew upgrade $argv
+    switch "$cmd"
+        case i install
+            command brew install $argv
+        case u up update
+            command brew update $argv
+            command brew upgrade $argv
         case r rm remove
-            brew uninstall $argv
-        case l list
-            brew list $argv
+            command brew uninstall $argv
+        case l ls list
+            command brew list $argv
         case s search
-            brew search $argv
+            command brew search $argv
         case c clean
-            brew cleanup
-            brew prune
+            command brew cleanup
+            command brew prune
+        case h help -h --help
+            __app_usage
+        case '*'
+            __app_usage
+            return 1
     end
+end
+
+function __app_usage
+    set -l u (set_color -u)
+    set -l nc (set_color normal)
+
+    echo "Usage: app [COMMAND] [PACKAGES...]"
+    echo
+    echo "where COMMAND is one of:"
+    echo "    "$u"i"$nc"nstall"
+    echo "    "$u"up"$nc"date"
+    echo "    "$u"r"$nc"e"$u"m"$nc"ove"
+    echo "    "$u"l"$nc"i"$u"s"$nc"t"
+    echo "    "$u"s"$nc"earch"
+    echo "    "$u"c"$nc"lean"
+    echo "    "$u"h"$nc"elp"
 end
