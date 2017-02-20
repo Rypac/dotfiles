@@ -38,9 +38,7 @@ if not test -f "$fisher_function"
     fisher
 end
 
-set -l os (uname)
-
-switch "$os"
+switch (uname)
     case Linux
         set -gx RUST_SRC_PATH "$RUSTUP_HOME/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
         set -gx JAVA_HOME "/opt/java/jdk"
@@ -57,7 +55,7 @@ append_to_path "$JAVA_HOME/bin"
 
 # Aliases
 
-function make_alias
+function make_alias --description 'Faster implementation of alias'
     set -l name $argv[1]
     set -l body $argv[2..-1]
     echo "function $name; $body \$argv; end" | source
@@ -68,13 +66,4 @@ make_alias vi nvim
 make_alias vim nvim
 make_alias mux tmuxinator
 make_alias gpg gpg2
-make_alias nstack 'stack --resolver nightly'
 make_alias vscode code
-
-switch "$os"
-    case Linux
-        make_alias pip-upgrade "pip3 list --outdated --user --format=legacy | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade --user"
-        make_alias code "code --user-data-dir "$XDG_CONFIG_HOME/vscode" --extensions-dir "$XDG_CONFIG_HOME/vscode/extensions""
-    case Darwin
-        make_alias pip-upgrade "pip3 list --outdated --format=legacy | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade"
-end
