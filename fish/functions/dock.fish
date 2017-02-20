@@ -5,7 +5,7 @@ function dock --description 'Some handy docker aliases'
         case stop
             docker stop (docker ps -aq)
         case clean
-            docker rm -r (docker ps -aq)
+            docker rm -f (docker ps -aq)
         case purge
             docker rmi -f (docker images -aq)
     end
