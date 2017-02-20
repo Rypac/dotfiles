@@ -12,8 +12,10 @@
     "editor.cursorStyle": "block",
     "editor.formatOnSave": true,
     "terminal.integrated.fontFamily": "'Source Code Pro', 'Hack', 'Droid Sans Mono', monospace",
-    "terminal.external.osxExec": "iTerm.app",
+    "terminal.integrated.shell.linux": "/usr/bin/fish",
+    "terminal.integrated.shell.osx": "/usr/local/bin/fish",
     "terminal.external.linuxExec": "urxvt",
+    "terminal.external.osxExec": "iTerm.app",
     "extensions.autoUpdate": true,
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
@@ -34,5 +36,6 @@
     "vim.history": 200,
     "vim.useSystemClipboard": true,
     "window.menuBarVisibility": "toggle",
-    "hindentFormat.command": "hindent --line-length 80"
+    "hindentFormat.command": "hindent --line-length 80",
+    "code-runner.enableAppInsights": false
 }
