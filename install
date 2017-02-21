@@ -35,7 +35,7 @@ link_all() {
 
     for f in "$from"/*; do
         name="$(basename "$f")"
-        ln -fs "$f" "$to/${name}"
+        ln -fns "$f" "$to/${name}"
     done
 }
 
