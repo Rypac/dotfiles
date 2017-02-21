@@ -19,8 +19,8 @@ bindsym $mod+space exec --no-startup-id rofi -show drun
 bindsym $mod+Shift+p exec --no-startup-id rofi -show drun
 bindsym $mod+Tab exec --no-startup-id rofi -show window
 bindsym $mod+p exec --no-startup-id rofi -show window
-bindsym $mod+z exec --no-startup-id ~/scripts/rofi/i3-switch-workspace.sh
-bindsym $mod+Shift+q exec --no-startup-id ~/scripts/rofi/i3-logout.sh
+bindsym $mod+z exec --no-startup-id rofi-i3-switch-workspace
+bindsym $mod+Shift+q exec --no-startup-id rofi-i3-logout
 
 # application bindings
 bindsym $mod+Return exec i3-sensible-terminal
@@ -31,12 +31,12 @@ bindsym $mod+Shift+Return exec --no-startup-id i3-sensible-terminal -geometry 80
 for_window [class="URxvt" instance="floating-terminal$"] floating toggle
 
 # volume control
-bindsym XF86AudioRaiseVolume exec --no-startup-id ~/scripts/volume/control.sh up && \
-    pkill -RTMIN+10 i3blocks && ~/scripts/notifications/volume.sh
-bindsym XF86AudioLowerVolume exec --no-startup-id ~/scripts/volume/control.sh down && \
-    pkill -RTMIN+10 i3blocks && ~/scripts/notifications/volume.sh
-bindsym XF86AudioMute exec --no-startup-id ~/scripts/volume/control.sh toggle && \
-    pkill -RTMIN+10 i3blocks && ~/scripts/notifications/volume.sh
+bindsym XF86AudioRaiseVolume exec --no-startup-id volume-control up && \
+    pkill -RTMIN+10 i3blocks && notify-volume
+bindsym XF86AudioLowerVolume exec --no-startup-id volume-control down && \
+    pkill -RTMIN+10 i3blocks && notify-volume
+bindsym XF86AudioMute exec --no-startup-id volume-control toggle && \
+    pkill -RTMIN+10 i3blocks && notify-volume
 
 # brightness control
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
@@ -56,8 +56,8 @@ for_window [instance="omnipresent-*"] border none; \
     [instance="omnipresent-*"] floating enable; \
     [instance="omnipresent-*"] move scratchpad;
 
-bindsym $mod+u exec --no-startup-id ~/scripts/i3/toggle-scratchpad.sh omnipresent-terminal
-bindsym $mod+y exec --no-startup-id ~/scripts/i3/toggle-scratchpad.sh omnipresent-ranger ranger
+bindsym $mod+u exec --no-startup-id i3-toggle-scratchpad omnipresent-terminal
+bindsym $mod+y exec --no-startup-id i3-toggle-scratchpad omnipresent-ranger ranger
 
 # change focus
 bindsym $mod+h focus left
@@ -94,7 +94,7 @@ bindsym $mod+a layout toggle
 # toggle tiling / floating / fullscreen
 bindsym $mod+f fullscreen toggle
 bindsym $mod+t floating toggle
-bindsym $mod+Shift+t exec --no-startup-id ~/scripts/i3/floating.sh toggle
+bindsym $mod+Shift+t exec --no-startup-id i3-floating toggle
 bindsym $mod+i floating enable; border none; resize set 1800 1220; move position center
 bindsym $mod+c floating enable; move position center
 
@@ -108,16 +108,16 @@ bindsym $mod+Shift+a focus parent
 bindsym $mod+x [urgent=latest] focus
 
 # setup workspaces
-set $ws1 1     term 
-set $ws2 2     www 
-set $ws3 3     code 
-set $ws4 4     music 
-set $ws5 5     msg 
-set $ws6 6     files 
-set $ws7 7     pics 
-set $ws8 8     games 
-set $ws9 9     linux 
-set $ws10 10     tmp 
+set $ws1 1     term
+set $ws2 2     www
+set $ws3 3     code
+set $ws4 4     music
+set $ws5 5     msg
+set $ws6 6     files
+set $ws7 7     pics
+set $ws8 8     games
+set $ws9 9     linux
+set $ws10 10     tmp
 
 # global floating mode
 # for_window [class="^.*"] floating toggle
@@ -295,15 +295,15 @@ set $mode_volume Volume: [k] +10%, [Shift+k] +1%, [j] -10%, [Shift+j] -1%, [m] m
 bindsym $mod+Shift+o mode "$mode_volume"
 
 mode "$mode_volume" {
-    bindsym k exec --no-startup-id ~/scripts/volume/control.sh up 10% && pkill -RTMIN+10 i3blocks
-    bindsym j exec --no-startup-id ~/scripts/volume/control.sh down 10% && pkill -RTMIN+10 i3blocks
-    bindsym Shift+k exec --no-startup-id ~/scripts/volume/control.sh up 1% && pkill -RTMIN+10 i3blocks
-    bindsym Shift+j exec --no-startup-id ~/scripts/volume/control.sh down 1% && pkill -RTMIN+10 i3blocks
-    bindsym Up exec --no-startup-id ~/scripts/volume/control.sh up && pkill -RTMIN+10 i3blocks
-    bindsym Down exec --no-startup-id ~/scripts/volume/control.sh down && pkill -RTMIN+10 i3blocks
-    bindsym Shift+Up exec --no-startup-id ~/scripts/volume/control.sh up 1% && pkill -RTMIN+10 i3blocks
-    bindsym Shift+Down exec --no-startup-id ~/scripts/volume/control.sh down 1% && pkill -RTMIN+10 i3blocks
-    bindsym m exec --no-startup-id ~/scripts/volume/control.sh toggle && pkill -RTMIN+10 i3blocks
+    bindsym k exec --no-startup-id volume-control up 10% && pkill -RTMIN+10 i3blocks
+    bindsym j exec --no-startup-id volume-control down 10% && pkill -RTMIN+10 i3blocks
+    bindsym Shift+k exec --no-startup-id volume-control up 1% && pkill -RTMIN+10 i3blocks
+    bindsym Shift+j exec --no-startup-id volume-control down 1% && pkill -RTMIN+10 i3blocks
+    bindsym Up exec --no-startup-id volume-control up && pkill -RTMIN+10 i3blocks
+    bindsym Down exec --no-startup-id volume-control down && pkill -RTMIN+10 i3blocks
+    bindsym Shift+Up exec --no-startup-id volume-control up 1% && pkill -RTMIN+10 i3blocks
+    bindsym Shift+Down exec --no-startup-id volume-control down 1% && pkill -RTMIN+10 i3blocks
+    bindsym m exec --no-startup-id volume-control toggle && pkill -RTMIN+10 i3blocks
     bindsym r exec --no-startup-id pkill -RTMIN+10 i3blocks
 
     bindsym Return mode "$mode_default"
@@ -314,7 +314,7 @@ mode "$mode_volume" {
 }
 
 # apps mode
-set $mode_apps Apps: [c] chrome, [f] file-manager, [t] terminal, [a] atom, [s] sublime, [d] deadbeef, [m] spotify, [k] keepassx, [r] rofi, [p] pulseaudio, [h] htop, [v] virt-manager
+set $mode_apps Apps: [c] chrome, [f] file-manager, [t] terminal, [a] atom, [s] sublime, [v] vscode, [d] deadbeef, [m] spotify, [k] keepassx, [r] rofi, [p] pulseaudio, [h] htop
 bindsym $mod+Shift+m mode "$mode_apps"
 
 mode "$mode_apps" {
@@ -325,7 +325,7 @@ mode "$mode_apps" {
     bindsym d exec deadbeef; mode "$mode_default"
     bindsym a exec atom; mode "$mode_default"
     bindsym s exec subl; mode "$mode_default"
-    bindsym v exec virt-manager; mode "$mode_default"
+    bindsym v exec code; mode "$mode_default"
     bindsym p exec pavucontrol; mode "$mode_default"
     bindsym r exec rofi -show drun; mode "$mode_default"
     bindsym t exec i3-sensible-terminal; mode "$mode_default"
