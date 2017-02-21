@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 lock() {
-    if [ -x "$HOME/scripts/i3/lock.sh" ]; then
-        "$HOME/scripts/i3/lock.sh"
+    if type i3-lock > /dev/null 2>&1; then
+        i3-lock
     else
         i3lock
     fi

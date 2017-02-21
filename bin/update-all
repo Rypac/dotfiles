@@ -4,8 +4,7 @@
 update-dotfiles
 
 # apt packages
-sudo apt update
-sudo apt upgrade -y
+fish -c 'app update'
 
 # shell
 fish -c 'fisher up'
@@ -27,7 +26,7 @@ npm update -g
 yarn global upgrade
 
 # python
-pip3 list --outdated --user --format=legacy | cut -d ' ' -f 1 | xargs -n 1 pip3 install --upgrade --user
+fish -c 'pip-upgrade'
 
 # vim
 nvim +PlugInstall +PlugUpdate +PlugClean! +PlugUpgrade +qall
