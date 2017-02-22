@@ -27,6 +27,8 @@ function __app_apt
             command sudo apt autoremove
             command sudo apt clean
             command sudo dpkg -P (dpkg -l | awk '/^rc/ { print($2) }')
+        case --
+            command sudo apt $argv
         case h help -h --help
             __app_usage
         case '*'
@@ -54,6 +56,8 @@ function __app_brew
         case c clean
             command brew cleanup
             command brew prune
+        case --
+            command brew $argv
         case h help -h --help
             __app_usage
         case '*'
