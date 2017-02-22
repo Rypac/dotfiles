@@ -45,6 +45,7 @@ switch (uname)
     case Darwin
         set -gx RUST_SRC_PATH "$RUSTUP_HOME/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
         set -gx JAVA_HOME "/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home"
+        append_to_path "$HOME/Library/Python/3.6/bin"
 end
 
 if test -z "$GPG_TTY"
@@ -66,4 +67,5 @@ make_alias vi nvim
 make_alias vim nvim
 make_alias mux tmuxinator
 make_alias gpg gpg2
+make_alias pip pip3
 make_alias vscode code
