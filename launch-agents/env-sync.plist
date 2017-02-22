@@ -9,9 +9,7 @@
     <string>bash</string>
     <string>-l</string>
     <string>-c</string>
-    <string>
-      $HOME/bin/env-sync
-    </string>
+    <string>$HOME/.local/bin/env-sync --all</string>
   </array>
   <key>RunAtLoad</key>
   <true/>
