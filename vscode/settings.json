@@ -37,5 +37,7 @@
     "vim.useSystemClipboard": true,
     "window.menuBarVisibility": "toggle",
     "hindentFormat.command": "hindent --line-length 80",
-    "code-runner.enableAppInsights": false
+    "code-runner.enableAppInsights": false,
+    "gitlens.blame.annotation.activeLine": "hover",
+    "gitlens.codeLens.location": "document+containers"
 }
