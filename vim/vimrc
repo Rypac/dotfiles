@@ -30,19 +30,21 @@ Plug 'neomake/neomake'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Languages
-Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
 Plug 'rhysd/vim-clang-format'
-Plug 'rust-lang/rust.vim'
-Plug 'keith/swift.vim'
-Plug 'elmcast/elm-vim'
-Plug 'neovimhaskell/haskell-vim'
-Plug 'alx741/vim-hindent'
-Plug 'raichoo/purescript-vim'
-Plug 'frigoeu/psc-ide-vim'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'quabug/vim-gdscript'
-Plug 'dag/vim-fish'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'keith/swift.vim', { 'for': 'swift' }
+Plug 'elmcast/elm-vim', { 'for': 'elm' }
+Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
+Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
+Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
+Plug 'alx741/vim-hindent', { 'for': 'haskell' }
+Plug 'raichoo/purescript-vim', { 'for': 'purescript' }
+Plug 'frigoeu/psc-ide-vim', { 'for': 'purescript' }
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'mxw/vim-jsx', { 'for': 'javascript' }
+Plug 'quabug/vim-gdscript', { 'for': 'gdscript' }
+Plug 'dag/vim-fish', { 'for': 'fish' }
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 
 " Visual/themes
@@ -67,6 +69,7 @@ let g:rustfmt_autosave = 1
 " Haskell
 let g:haskell_indent_disable = 1
 let g:hindent_line_length = 80
+let g:haskellmode_completion_ghc = 0
 
 " Purescript
 let g:purescript_indent_if = 2
@@ -82,6 +85,7 @@ let g:elm_setup_keybindings = 0
 let g:elm_syntastic_show_warnings = 1
 
 " Javascript
+let g:javascript_plugin_flow = 1
 let g:jsx_ext_required = 0
 
 " Airline
@@ -145,6 +149,12 @@ set wrap
 " Ignore certain files and directories
 set wildignore+=*.o,*~,*.pyc,*/.git/*,*/node_modules/*
 set noswapfile
+
+" Set language specific options
+autocmd Filetype haskell setlocal tabstop=2 shiftwidth=2 omnifunc=necoghc#omnifunc
+autocmd Filetype purescript setlocal tabstop=2 shiftwidth=2
+autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2
+autocmd Filetype ruby setlocal tabstop=2 shiftwidth=2
 
 " -----------------------------------------------------
 " Keybindings
