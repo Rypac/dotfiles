@@ -26,7 +26,7 @@ npm update -g
 yarn global upgrade
 
 # python
-fish -c 'pip-upgrade'
+fish -c 'pip3 update'
 
 # vim
 nvim +PlugInstall +PlugUpdate +PlugClean! +PlugUpgrade +qall
