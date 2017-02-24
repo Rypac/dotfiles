@@ -38,6 +38,6 @@
     "window.menuBarVisibility": "toggle",
     "hindentFormat.command": "hindent --line-length 80",
     "code-runner.enableAppInsights": false,
-    "gitlens.blame.annotation.activeLine": "hover",
+    "gitlens.blame.annotation.activeLine": "off",
     "gitlens.codeLens.location": "document+containers"
 }
