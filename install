@@ -55,9 +55,8 @@ link git
 link npm
 link shell/profile "$home/.profile"
 link tmux/tmux.conf "$home/.tmux.conf"
-link vim/vimrc "$home/.vim/vimrc"
-link vim/vimrc "$home/.vim/init.vim"
 link zsh/zshrc "$home/.zshrc"
+link_all vim "$home/.vim"
 link_dir "$home/.vim" "$config/nvim"
 
 # Link host specific config
