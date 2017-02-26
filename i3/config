@@ -17,9 +17,9 @@ bindsym $mod+q kill
 # rofi and script bindings
 bindsym $mod+space exec --no-startup-id rofi -show drun
 bindsym $mod+Shift+p exec --no-startup-id rofi -show drun
-bindsym $mod+Tab exec --no-startup-id rofi -show window
+bindsym $mod+Tab exec --no-startup-id rofi-i3-switch-workspace
+bindsym $alt+Tab exec --no-startup-id rofi -show window
 bindsym $mod+p exec --no-startup-id rofi -show window
-bindsym $mod+z exec --no-startup-id rofi-i3-switch-workspace
 bindsym $mod+Shift+q exec --no-startup-id rofi-i3-logout
 
 # application bindings
