@@ -62,6 +62,7 @@ let g:deoplete#enable_at_startup = 1
 
 " GitGutter
 let g:gitgutter_sign_column_always = 1
+let g:gitgutter_override_sign_column_highlight = 0
 
 " Rust
 let g:rustfmt_autosave = 1
@@ -135,6 +136,8 @@ set splitright
 set background=dark
 let base16colorspace=256
 silent! colorscheme base16-oceanicnext
+highlight LineNr ctermbg=black
+highlight SignColumn ctermbg=black
 
 " Always replace tabs with 4 spaces
 retab
