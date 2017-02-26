@@ -53,7 +53,7 @@ URxvt.scrollBar: false
 URxvt.secondaryScroll: true
 URxvt.saveLines: 65535
 URxvt.cursorBlink: true
-URxvt.internalBorder: 20
+URxvt.internalBorder: 24
 URxvt.font: xft:Source Code Pro:pixelsize=15
 URxvt.letterSpace: -1
 URxvt.lineSpace: 0
