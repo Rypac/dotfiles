@@ -132,10 +132,10 @@
     {
         "key": "-",
         "command": "workbench.files.action.focusFilesExplorer",
-        "when": "!explorerViewletFocus && vim.mode == 'Normal'"
+        "when": "editorTextFocus && vim.mode == 'Normal'"
     },
     {
-        "key": "-",
+        "key": "ctrl+-",
         "command": "workbench.action.toggleSidebarVisibility",
         "when": "explorerViewletFocus"
     },
