@@ -39,5 +39,7 @@
     "hindentFormat.command": "hindent --line-length 80",
     "code-runner.enableAppInsights": false,
     "gitlens.blame.annotation.activeLine": "off",
-    "gitlens.codeLens.location": "document+containers"
+    "gitlens.codeLens.location": "document+containers",
+    "workbench.colorTheme": "Base16 Dark Oceanic Next",
+    "workbench.iconTheme": null
 }
