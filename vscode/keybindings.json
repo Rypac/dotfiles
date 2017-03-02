@@ -85,6 +85,26 @@
         "when": "editorTextFocus && parameterHintsVisible && vim.useCtrlKeys"
     },
     {
+        "key": "ctrl+c",
+        "command": "leaveEditorMessage",
+        "when": "messageVisible && vim.useCtrlKeys"
+    },
+    {
+        "key": "ctrl+[",
+        "command": "leaveEditorMessage",
+        "when": "messageVisible && vim.useCtrlKeys"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "workbench.action.hideInterfaceOverview",
+        "when": "interfaceOverviewVisible"
+    },
+    {
+        "key": "ctrl+[",
+        "command": "workbench.action.hideInterfaceOverview",
+        "when": "interfaceOverviewVisible"
+    },
+    {
         "key": "ctrl+shift+c",
         "command": "editor.action.clipboardCopyAction",
         "when": "editorTextFocus"
