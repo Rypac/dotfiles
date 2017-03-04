@@ -16,23 +16,23 @@
     },
     {
         "key": "ctrl+n",
-        "command": "editor.action.addSelectionToNextFindMatch",
-        "when": "editorTextFocus && !inDebugRepl && !suggestWidgetVisible && vim.useCtrlKeys && vim.mode == 'Insert'"
+        "command": "extension.vim_cmd+d",
+        "when": "editorTextFocus && !inDebugRepl && !suggestWidgetVisible && vim.useCtrlKeys && vim.mode == 'Normal'"
     },
     {
         "key": "ctrl+n",
         "command": "extension.vim_cmd+d",
-        "when": "editorTextFocus && !inDebugRepl && !suggestWidgetVisible && vim.useCtrlKeys && vim.mode != 'Insert'"
+        "when": "editorTextFocus && !inDebugRepl && !suggestWidgetVisible && vim.useCtrlKeys && vim.mode == 'Visual'"
     },
     {
         "key": "ctrl+p",
         "command": "editor.action.moveSelectionToPreviousFindMatch",
-        "when": "editorTextFocus && !inDebugRepl && !suggestWidgetVisible && vim.useCtrlKeys && vim.mode != 'Normal'"
+        "when": "editorTextFocus && !inDebugRepl && !suggestWidgetVisible && vim.useCtrlKeys && vim.mode == 'Visual'"
     },
     {
         "key": "ctrl+x",
         "command": "editor.action.moveSelectionToNextFindMatch",
-        "when": "editorTextFocus && !inDebugRepl && !suggestWidgetVisible && vim.useCtrlKeys && vim.mode != 'Normal'"
+        "when": "editorTextFocus && !inDebugRepl && !suggestWidgetVisible && vim.useCtrlKeys && vim.mode == 'Visual'"
     },
     {
         "key": "ctrl+p",
@@ -66,26 +66,6 @@
     },
     {
         "key": "ctrl+c",
-        "command": "hideSuggestWidget",
-        "when": "editorTextFocus && suggestWidgetVisible && vim.useCtrlKeys"
-    },
-    {
-        "key": "ctrl+[",
-        "command": "hideSuggestWidget",
-        "when": "editorTextFocus && suggestWidgetVisible && vim.useCtrlKeys"
-    },
-    {
-        "key": "ctrl+c",
-        "command": "closeParameterHints",
-        "when": "editorTextFocus && parameterHintsVisible && vim.useCtrlKeys"
-    },
-    {
-        "key": "ctrl+[",
-        "command": "closeParameterHints",
-        "when": "editorTextFocus && parameterHintsVisible && vim.useCtrlKeys"
-    },
-    {
-        "key": "ctrl+c",
         "command": "leaveEditorMessage",
         "when": "messageVisible && vim.useCtrlKeys"
     },
@@ -93,16 +73,6 @@
         "key": "ctrl+[",
         "command": "leaveEditorMessage",
         "when": "messageVisible && vim.useCtrlKeys"
-    },
-    {
-        "key": "ctrl+c",
-        "command": "workbench.action.hideInterfaceOverview",
-        "when": "interfaceOverviewVisible"
-    },
-    {
-        "key": "ctrl+[",
-        "command": "workbench.action.hideInterfaceOverview",
-        "when": "interfaceOverviewVisible"
     },
     {
         "key": "ctrl+shift+c",
@@ -150,14 +120,9 @@
         "when": "editorTextFocus"
     },
     {
-        "key": "-",
+        "key": "ctrl+b",
         "command": "workbench.files.action.focusFilesExplorer",
         "when": "editorTextFocus && vim.mode == 'Normal'"
-    },
-    {
-        "key": "ctrl+-",
-        "command": "workbench.action.toggleSidebarVisibility",
-        "when": "explorerViewletFocus"
     },
     {
         "key": "escape",
