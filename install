@@ -50,6 +50,7 @@ link_dir() {
 
 # Link common config
 link_all bin "$home/.local/bin"
+link alacritty
 link fish
 link git
 link npm
