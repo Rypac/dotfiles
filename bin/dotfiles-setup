@@ -48,7 +48,6 @@ install_apt_packages() {
         cowsay \
         curl \
         dex \
-        docker-engine \
         dunst \
         feh \
         firmware-linux \
@@ -62,6 +61,7 @@ install_apt_packages() {
         g++ \
         gawk \
         git \
+        haskell-stack \
         htop \
         i3 \
         imagemagick \
@@ -113,9 +113,9 @@ configure_environment() {
     sudo update-ca-certificates --fresh
     sudo mkdir -p /etc/X11/xorg.conf.d
     sudo mkdir -p /etc/udev/rules.d
-    sudo cp -r "$DOTFILES_HOME/config/xorg/." /etc/X11/xorg.conf.d/
-    sudo cp -r "$DOTFILES_HOME/config/rules/." /etc/udev/rules.d/
-    sudo cp -r "$DOTFILES_HOME/config/urxvt/." /usr/lib/urxvt/perl/
+    sudo cp -r "$DOTFILES_HOME/xorg/." /etc/X11/xorg.conf.d/
+    sudo cp -r "$DOTFILES_HOME/rules/." /etc/udev/rules.d/
+    sudo cp -r "$DOTFILES_HOME/urxvt/." /usr/lib/urxvt/perl/
 }
 
 source "$HOME/.profile"
