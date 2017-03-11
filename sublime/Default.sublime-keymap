@@ -1,10 +1,11 @@
 [
-    { "keys": ["ctrl+c"], "command": "copy" },
-    { "keys": ["ctrl+x"], "command": "cut" },
-    { "keys": ["ctrl+v"], "command": "paste" },
+    { "keys": ["ctrl+shift+c"], "command": "copy" },
+    { "keys": ["ctrl+shift+x"], "command": "cut" },
+    { "keys": ["ctrl+shift+v"], "command": "paste" },
     { "keys": ["ctrl+\\"], "command": "toggle_side_bar" },
     { "keys": ["ctrl+shift+\\"], "command": "toggle_distraction_free" },
     { "keys": ["ctrl+alt+m"], "command": "toggle_menu" },
+    { "keys": ["-"], "command": "dired", "args": { "immediate": true }, "context": [{ "key": "vi_command_mode_aware" }] },
 
     // File explorer
     { "keys": ["f1"], "command": "dired", "args": { "immediate": true } },
@@ -13,11 +14,9 @@
 
     // Quick navigation
     { "keys": ["f2"], "command": "goto_definition" },
-    { "keys": ["f4"], "command": "switch_file", "args": {"extensions": ["cpp", "cxx", "cc", "c", "hpp", "hxx", "hh", "h", "ipp", "inl", "m", "mm"]} },
+    { "keys": ["f4"], "command": "switch_file", "args": { "extensions": ["cpp", "cxx", "cc", "c", "hpp", "hxx", "hh", "h", "ipp", "inl", "m", "mm"] } },
     { "keys": ["ctrl+alt+down"], "command": "goto_definition" },
-    { "keys": ["ctrl+alt+up"], "command": "switch_file", "args": {"extensions": ["cpp", "cxx", "cc", "c", "hpp", "hxx", "hh", "h", "ipp", "inl", "m", "mm"]} },
-    { "keys": ["ctrl+minus"], "command": "jump_back" },
-    { "keys": ["ctrl+alt+minus"], "command": "jump_forward" },
+    { "keys": ["ctrl+alt+up"], "command": "switch_file", "args": { "extensions": ["cpp", "cxx", "cc", "c", "hpp", "hxx", "hh", "h", "ipp", "inl", "m", "mm" ]} },
 
     // Deletion by words
     { "keys": ["ctrl+backspace"], "command": "delete_word", "args": { "forward": false, "sub_words": true } },
@@ -27,31 +26,26 @@
 
     // Incremental find panel key bindings
     { "keys": ["enter"], "command": "find_next", "context":
-        [{"key": "panel", "operand": "incremental_find"}, {"key": "panel_has_focus"}]
+        [{ "key": "panel", "operand": "incremental_find" }, { "key": "panel_has_focus" }]
     },
     { "keys": ["shift+enter"], "command": "find_prev", "context":
-        [{"key": "panel", "operand": "incremental_find"}, {"key": "panel_has_focus"}]
+        [{ "key": "panel", "operand": "incremental_find" }, { "key": "panel_has_focus" }]
     },
-    { "keys": ["alt+enter"], "command": "find_all", "args": {"close_panel": true},
-        "context": [{"key": "panel", "operand": "incremental_find"}, {"key": "panel_has_focus"}]
+    { "keys": ["alt+enter"], "command": "find_all", "args": { "close_panel": true }, "context":
+        [{ "key": "panel", "operand": "incremental_find" }, { "key": "panel_has_focus" }]
     },
 
     // Pane managment (Origami)
-    { "keys": ["ctrl+h"], "command": "travel_to_pane", "args": {"direction": "left"} },
-    { "keys": ["ctrl+l"], "command": "travel_to_pane", "args": {"direction": "right"} },
-    { "keys": ["ctrl+j"], "command": "travel_to_pane", "args": {"direction": "down"} },
-    { "keys": ["ctrl+k"], "command": "travel_to_pane", "args": {"direction": "up"} },
-    { "keys": ["ctrl+shift+h"], "command": "carry_file_to_pane", "args": {"direction": "left"} },
-    { "keys": ["ctrl+shift+l"], "command": "carry_file_to_pane", "args": {"direction": "right"} },
-    { "keys": ["ctrl+shift+j"], "command": "carry_file_to_pane", "args": {"direction": "down"} },
-    { "keys": ["ctrl+shift+k"], "command": "carry_file_to_pane", "args": {"direction": "up"} },
-    { "keys": ["ctrl+n", "ctrl+h"], "command": "create_pane", "args": {"direction": "left", "give_focus": true} },
-    { "keys": ["ctrl+n", "ctrl+l"], "command": "create_pane", "args": {"direction": "right", "give_focus": true} },
-    { "keys": ["ctrl+n", "ctrl+j"], "command": "create_pane", "args": {"direction": "down", "give_focus": true} },
-    { "keys": ["ctrl+n", "ctrl+k"], "command": "create_pane", "args": {"direction": "up", "give_focus": true} },
-    { "keys": ["ctrl+n", "ctrl+w"], "command": "destroy_pane", "args": {"direction": "self"} },
-    { "keys": ["ctrl+shift+="], "command": "toggle_zoom_pane", "args": {"fraction": 0.9} },
-    { "keys": ["ctrl+="], "command": "unzoom_pane", "args": {} },
+    { "keys": ["ctrl+h"], "command": "travel_to_pane", "args": { "direction": "left" } },
+    { "keys": ["ctrl+l"], "command": "travel_to_pane", "args": { "direction": "right" } },
+    { "keys": ["ctrl+j"], "command": "travel_to_pane", "args": { "direction": "down" } },
+    { "keys": ["ctrl+k"], "command": "travel_to_pane", "args": { "direction": "up" } },
+    { "keys": ["ctrl+shift+h"], "command": "carry_file_to_pane", "args": { "direction": "left" } },
+    { "keys": ["ctrl+shift+l"], "command": "carry_file_to_pane", "args": { "direction": "right" } },
+    { "keys": ["ctrl+shift+j"], "command": "carry_file_to_pane", "args": { "direction": "down" } },
+    { "keys": ["ctrl+shift+k"], "command": "carry_file_to_pane", "args": { "direction": "up" } },
+    { "keys": ["ctrl+="], "command": "toggle_zoom_pane", "args": { "fraction": 0.9 } },
+    { "keys": ["ctrl+-"], "command": "unzoom_pane", "args": {} },
 
     // Tab managment
     { "keys": ["ctrl+t", "ctrl+t"], "command": "new_file" },
@@ -65,52 +59,51 @@
     // VIM layers bindings (leader mapped to space)
 
     // Windows layer
-    { "keys": [" ", "w", "h"], "command": "travel_to_pane", "args": {"direction": "left"}, "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "w", "l"], "command": "travel_to_pane", "args": {"direction": "right"}, "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "w", "j"], "command": "travel_to_pane", "args": {"direction": "down"}, "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "w", "k"], "command": "travel_to_pane", "args": {"direction": "up"}, "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "w", "m", "h"], "command": "carry_file_to_pane", "args": {"direction": "left"}, "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "w", "m", "l"], "command": "carry_file_to_pane", "args": {"direction": "right"}, "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "w", "m", "j"], "command": "carry_file_to_pane", "args": {"direction": "down"}, "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "w", "m", "k"], "command": "carry_file_to_pane", "args": {"direction": "up"}, "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "w", "n", "h"], "command": "create_pane", "args": {"direction": "left", "give_focus": true}, "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "w", "n", "l"], "command": "create_pane", "args": {"direction": "right", "give_focus": true}, "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "w", "n", "j"], "command": "create_pane", "args": {"direction": "down", "give_focus": true}, "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "w", "n", "k"], "command": "create_pane", "args": {"direction": "up", "give_focus": true}, "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "w", "n", "m", "h"], "command": "create_pane_with_file", "args": {"direction": "left"}, "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "w", "n", "m", "l"], "command": "create_pane_with_file", "args": {"direction": "right"}, "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "w", "n", "m", "j"], "command": "create_pane_with_file", "args": {"direction": "down"}, "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "w", "n", "m", "k"], "command": "create_pane_with_file", "args": {"direction": "up"}, "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "w", "+"], "command": "toggle_zoom_pane", "args": {"fraction": 0.9} },
+    { "keys": [" ", "w", "h"], "command": "travel_to_pane", "args": { "direction": "left" }, "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "w", "l"], "command": "travel_to_pane", "args": { "direction": "right" }, "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "w", "j"], "command": "travel_to_pane", "args": { "direction": "down" }, "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "w", "k"], "command": "travel_to_pane", "args": { "direction": "up" }, "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "w", "m", "h"], "command": "carry_file_to_pane", "args": { "direction": "left" }, "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "w", "m", "l"], "command": "carry_file_to_pane", "args": { "direction": "right" }, "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "w", "m", "j"], "command": "carry_file_to_pane", "args": { "direction": "down" }, "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "w", "m", "k"], "command": "carry_file_to_pane", "args": { "direction": "up" }, "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "w", "n", "h"], "command": "create_pane", "args": { "direction": "left", "give_focus": true }, "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "w", "n", "l"], "command": "create_pane", "args": { "direction": "right", "give_focus": true }, "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "w", "n", "j"], "command": "create_pane", "args": { "direction": "down", "give_focus": true }, "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "w", "n", "k"], "command": "create_pane", "args": { "direction": "up", "give_focus": true }, "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "w", "n", "m", "h"], "command": "create_pane_with_file", "args": { "direction": "left" }, "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "w", "n", "m", "l"], "command": "create_pane_with_file", "args": { "direction": "right" }, "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "w", "n", "m", "j"], "command": "create_pane_with_file", "args": { "direction": "down" }, "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "w", "n", "m", "k"], "command": "create_pane_with_file", "args": { "direction": "up" }, "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "w", "+"], "command": "toggle_zoom_pane", "args": { "fraction": 0.9 } },
     { "keys": [" ", "w", "="], "command": "unzoom_pane", "args": {} },
-    { "keys": [" ", "w", "q"], "command": "destroy_pane", "args": {"direction": "self"}, "context": [{"key": "vi_command_mode_aware"}] },
+    { "keys": [" ", "w", "q"], "command": "destroy_pane", "args": { "direction": "self" }, "context": [{"key": "vi_command_mode_aware"}] },
     // Tabs layer
-    { "keys": [" ", "t", "h"], "command": "prev_view", "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "t", "l"], "command": "next_view", "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "t", "n"], "command": "new_file", "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "t", "q"], "command": "close", "context": [{"key": "vi_command_mode_aware"}] },
+    { "keys": [" ", "t", "h"], "command": "prev_view", "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "t", "l"], "command": "next_view", "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "t", "n"], "command": "new_file", "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "t", "q"], "command": "close", "context": [{ "key": "vi_command_mode_aware" }] },
     // Case conversion layer
-    { "keys": [" ", "c", "u"], "command": "upper_case", "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "c", "l"], "command": "lower_case", "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "c", "t"], "command": "toggle_snake_camel_pascal", "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "c", "s"], "command": "convert_to_snake", "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "c", "c"], "command": "convert_to_camel", "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "c", "p"], "command": "convert_to_pascal", "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "c", "d"], "command": "convert_to_dash", "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "c", "w"], "command": "convert_to_separate_words", "context": [{"key": "vi_command_mode_aware"}] },
+    { "keys": [" ", "c", "u"], "command": "upper_case", "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "c", "l"], "command": "lower_case", "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "c", "t"], "command": "toggle_snake_camel_pascal", "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "c", "s"], "command": "convert_to_snake", "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "c", "c"], "command": "convert_to_camel", "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "c", "p"], "command": "convert_to_pascal", "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "c", "d"], "command": "convert_to_dash", "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "c", "w"], "command": "convert_to_separate_words", "context": [{ "key": "vi_command_mode_aware" }] },
     // Overlay/Command palette layer
-    { "keys": [" ", "o", "p"], "command": "show_overlay", "args": {"overlay": "command_palette"}, "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "o", "f"], "command": "show_overlay", "args": {"overlay": "goto", "show_files": true}, "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "o", "r"], "command": "show_overlay", "args": {"overlay": "goto", "text": "@"}, "context": [{"key": "vi_command_mode_aware"}] },
+    { "keys": [" ", "o", "p"], "command": "show_overlay", "args": { "overlay": "command_palette" }, "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "o", "f"], "command": "show_overlay", "args": { "overlay": "goto", "show_files": true }, "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "o", "r"], "command": "show_overlay", "args": { "overlay": "goto", "text": "@" }, "context": [{ "key": "vi_command_mode_aware" }] },
     // Show type/definition layer
-    { "keys": [" ", "s", "d"], "command": "goto_definition", "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "s", "t"], "command": "goto_definition", "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "s", "t"], "command": "elm_show_type_panel", "context": [{"key": "selector", "operator": "equal", "operand": "source.elm"}, {"key": "vi_command_mode_aware"}] },
-    { "keys": [" ", "s", "o"], "command": "elm_oracle_explore", "context": [{"key": "selector", "operator": "equal", "operand": "source.elm"}, {"key": "vi_command_mode_aware"}] },
+    { "keys": [" ", "s", "d"], "command": "goto_definition", "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "s", "t"], "command": "elm_show_type_panel", "context": [{ "key": "selector", "operator": "equal", "operand": "source.elm" }, { "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "s", "o"], "command": "elm_oracle_explore", "context": [{ "key": "selector", "operator": "equal", "operand": "source.elm" }, { "key": "vi_command_mode_aware" }] },
     // Quick saving/closing actions
-    { "keys": ["\\", "w"], "command": "save", "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": ["\\", "q"], "command": "close", "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": ["\\", "p"], "command": "show_overlay", "args": {"overlay": "command_palette"}, "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": ["\\", "f"], "command": "show_overlay", "args": {"overlay": "goto", "show_files": true}, "context": [{"key": "vi_command_mode_aware"}] },
-    { "keys": ["ctrl+["], "command": "_enter_normal_mode", "args": {"mode": "mode_insert"}, "context": [{"key": "vi_insert_mode_aware"}] }
+    { "keys": ["\\", "w"], "command": "save", "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": ["\\", "q"], "command": "close", "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": ["\\", "p"], "command": "show_overlay", "args": { "overlay": "command_palette" }, "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": ["\\", "f"], "command": "show_overlay", "args": { "overlay": "goto", "show_files": true }, "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": ["ctrl+["], "command": "_enter_normal_mode", "args": { "mode": "mode_insert" }, "context": [{ "key": "vi_insert_mode_aware" }] }
 ]
