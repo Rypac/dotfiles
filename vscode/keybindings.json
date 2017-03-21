@@ -1,15 +1,5 @@
 [
     {
-        "key": "ctrl+o",
-        "command": "workbench.action.navigateBack",
-        "when": "editorTextFocus && !inDebugRepl && vim.useCtrlKeys && vim.mode == 'Normal'"
-    },
-    {
-        "key": "ctrl+i",
-        "command": "workbench.action.navigateForward",
-        "when": "editorTextFocus && !inDebugRepl && vim.useCtrlKeys && vim.mode == 'Normal'"
-    },
-    {
         "key": "ctrl+f",
         "command": "actions.find",
         "when": "editorTextFocus && !inDebugRepl && vim.useCtrlKeys && vim.mode == 'Insert'"
@@ -113,6 +103,11 @@
         "key": "ctrl+shift+t",
         "command": "workbench.action.tasks.runTask",
         "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+r",
+        "command": "workbench.action.tasks.runTask",
+        "args": "run"
     },
     {
         "key": "ctrl+shift+n",
