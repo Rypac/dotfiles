@@ -18,6 +18,7 @@ export PASSWORD_STORE_DIR="$XDG_DATA_HOME/pass"
 export QT_QPA_PLATFORMTHEME="gtk2"
 export QT_STYLE_OVERRIDE=GTK+
 export SCREENRC="$XDG_CONFIG_HOME/screen/screenrc"
+export SPACEMACSDIR="$XDG_CONFIG_HOME/spacemacs"
 export TERMINFO="$XDG_DATA_HOME/terminfo"
 export TIGRC_USER="$XDG_CONFIG_HOME/tig/tigrc"
 export WEECHAT_HOME="$XDG_CONFIG_HOME/weechat"
