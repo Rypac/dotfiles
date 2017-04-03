@@ -73,6 +73,8 @@ let g:rustfmt_autosave = 1
 let g:haskell_indent_disable = 1
 let g:hindent_line_length = 80
 let g:haskellmode_completion_ghc = 0
+let g:necoghc_enable_detailed_browse = 1
+let g:hlintRefactor#disableDefaultKeybindings = 1
 
 " Purescript
 let g:purescript_indent_if = 2
