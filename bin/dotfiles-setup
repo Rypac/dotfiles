@@ -27,7 +27,6 @@ no_confirmation() {
 
 install_apt_packages() {
     sudo apt install --yes \
-        alsa-base \
         alsa-tools \
         alsa-utils \
         apt-listbugs \
