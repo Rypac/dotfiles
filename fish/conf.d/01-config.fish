@@ -56,7 +56,6 @@ switch (uname)
         set -gx RUST_SRC_PATH "$RUSTUP_HOME/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
         set -gx JAVA_HOME "/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home"
         append_to_path "$HOME/Library/Python/3.6/bin"
-        append_to_path "/usr/local/opt/gnupg@2.1/bin"
 end
 
 if test -z "$GPG_TTY"
