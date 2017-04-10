@@ -110,8 +110,10 @@ install_fonts() {
 configure_environment() {
     sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
     sudo update-ca-certificates --fresh
+    sudo mkdir -p /etc/chromium.d
     sudo mkdir -p /etc/X11/xorg.conf.d
     sudo mkdir -p /etc/udev/rules.d
+    sudo cp -r "$DOTFILES_HOME/chromium/." /etc/chromium.d/
     sudo cp -r "$DOTFILES_HOME/xorg/." /etc/X11/xorg.conf.d/
     sudo cp -r "$DOTFILES_HOME/rules/." /etc/udev/rules.d/
     sudo cp -r "$DOTFILES_HOME/urxvt/." /usr/lib/urxvt/perl/
