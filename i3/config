@@ -128,7 +128,7 @@ for_window [class="feh|Lxappearance|Seahorse|Pavucontrol|Plank|Xarchiver"] float
 for_window [window_role="pop-up|task_dialog"] floating enable
 
 # workspace specific apps
-assign [class="Google-chrome|Firefox"] $ws2
+assign [class="Google-chrome|Chromium|Firefox"] $ws2
 assign [class="Atom|Sublime_text|Code|QtCreator|jetbrains-studio"] $ws3
 assign [class="Deadbeef"] $ws4
 for_window [class="Spotify"] move container to workspace $ws4
