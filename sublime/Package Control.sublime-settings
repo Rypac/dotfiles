@@ -15,29 +15,35 @@
 		"Dockerfile Syntax Highlighting",
 		"EditorConfig",
 		"Elm Language Support",
-		"ESLint",
 		"ESLint-Formatter",
 		"FileBrowser",
+		"fish-shell",
 		"GDScript (Godot Engine)",
 		"Git",
 		"GitGutter",
-		"Kotlin",
 		"Markdown Preview",
 		"MarkdownEditing",
 		"Material Theme",
 		"Material Theme - Appbar",
+		"NeoVintageous",
 		"Origami",
 		"Package Control",
 		"PackageResourceViewer",
 		"ProjectManager",
+		"PureScript",
 		"Rust Enhanced",
 		"RustFormat",
+		"SideBarEnhancements",
 		"SublimeHaskell",
 		"SublimeLinter",
 		"SublimeLinter-contrib-eslint",
+		"SublimeREPL",
 		"Sublimerge 3",
 		"Terraform",
-		"TOML",
-		"Vintageous"
+		"TOML"
+	],
+	"repositories":
+	[
+		"https://github.com/NeoVintageous/NeoVintageous"
 	]
 }

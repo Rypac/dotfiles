@@ -29,7 +29,8 @@
 		"bower_components/**",
 		"elm-stuff/**",
 		"tmp/**",
-		"__build"
+		"__build",
+		"build/**"
 	],
 	"caret_style": "phase",
 	"close_windows_when_empty": false,
@@ -64,9 +65,8 @@
 	"scroll_past_end": false,
 	"sidebar_small": true,
 	"tabs_small": true,
-	"theme": "Material-Theme.sublime-theme",
+	"theme": "Adaptive.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
-	"vintageous_use_ctrl_keys": true,
-	"vintageous_use_sys_clipboard": true
+	"vintageous_use_ctrl_keys": true
 }
