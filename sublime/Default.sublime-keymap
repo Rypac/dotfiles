@@ -5,12 +5,18 @@
     { "keys": ["ctrl+\\"], "command": "toggle_side_bar" },
     { "keys": ["ctrl+shift+\\"], "command": "toggle_distraction_free" },
     { "keys": ["ctrl+alt+m"], "command": "toggle_menu" },
-    { "keys": ["-"], "command": "dired", "args": { "immediate": true }, "context": [{ "key": "vi_command_mode_aware" }] },
 
     // File explorer
+    { "keys": ["-"], "command": "dired", "args": { "immediate": true }, "context": [{ "key": "vi_command_mode_aware" }] },
     { "keys": ["f1"], "command": "dired", "args": { "immediate": true } },
-    { "keys": ["f3"], "command": "dired", "args": { "immediate": true, "single_pane": true, "other_group": "left", "project": true } },
+    { "keys": ["f3"], "command": "dired_jump", "args": { "new_window": true } },
     { "keys": ["ctrl+m"], "command": "dired", "args": { "immediate": true, "single_pane": true, "other_group": "left", "project": true } },
+    { "keys": ["enter"], "command": "dired_select", "args": { "and_close": true }, "context":
+        [{ "key": "selector", "operator": "equal", "operand": "text.dired" }, { "key": "setting.dired_rename_mode", "operand": false }]
+    },
+    { "keys": ["q"], "command": "close", "context":
+        [{ "key": "selector", "operator": "equal", "operand": "text.dired" }, { "key": "setting.dired_rename_mode", "operand": false }]
+    },
 
     // Quick navigation
     { "keys": ["f2"], "command": "goto_definition" },
@@ -35,18 +41,6 @@
         [{ "key": "panel", "operand": "incremental_find" }, { "key": "panel_has_focus" }]
     },
 
-    // Pane managment (Origami)
-    { "keys": ["ctrl+h"], "command": "travel_to_pane", "args": { "direction": "left" } },
-    { "keys": ["ctrl+l"], "command": "travel_to_pane", "args": { "direction": "right" } },
-    { "keys": ["ctrl+j"], "command": "travel_to_pane", "args": { "direction": "down" } },
-    { "keys": ["ctrl+k"], "command": "travel_to_pane", "args": { "direction": "up" } },
-    { "keys": ["ctrl+shift+h"], "command": "carry_file_to_pane", "args": { "direction": "left" } },
-    { "keys": ["ctrl+shift+l"], "command": "carry_file_to_pane", "args": { "direction": "right" } },
-    { "keys": ["ctrl+shift+j"], "command": "carry_file_to_pane", "args": { "direction": "down" } },
-    { "keys": ["ctrl+shift+k"], "command": "carry_file_to_pane", "args": { "direction": "up" } },
-    { "keys": ["ctrl+="], "command": "toggle_zoom_pane", "args": { "fraction": 0.9 } },
-    { "keys": ["ctrl+-"], "command": "unzoom_pane", "args": {} },
-
     // Tab managment
     { "keys": ["ctrl+t", "ctrl+t"], "command": "new_file" },
     { "keys": ["ctrl+t", "ctrl+w"], "command": "close" },
@@ -56,7 +50,7 @@
     { "keys": ["ctrl+shift+tab"], "command": "prev_view" },
 
     // --------------------
-    // VIM layers bindings (leader mapped to space)
+    // Vim bindings (leader mapped to space)
 
     // Windows layer
     { "keys": [" ", "w", "h"], "command": "travel_to_pane", "args": { "direction": "left" }, "context": [{ "key": "vi_command_mode_aware" }] },
@@ -105,5 +99,20 @@
     { "keys": ["\\", "q"], "command": "close", "context": [{ "key": "vi_command_mode_aware" }] },
     { "keys": ["\\", "p"], "command": "show_overlay", "args": { "overlay": "command_palette" }, "context": [{ "key": "vi_command_mode_aware" }] },
     { "keys": ["\\", "f"], "command": "show_overlay", "args": { "overlay": "goto", "show_files": true }, "context": [{ "key": "vi_command_mode_aware" }] },
-    { "keys": ["ctrl+["], "command": "_enter_normal_mode", "args": { "mode": "mode_insert" }, "context": [{ "key": "vi_insert_mode_aware" }] }
+    // Escape
+    { "keys": ["ctrl+["], "command": "_enter_normal_mode", "args": { "mode": "mode_insert" }, "context": [{ "key": "vi_insert_mode_aware" }, { "key": "vi_use_ctrl_keys" }] },
+    { "keys": ["ctrl+["], "command": "_enter_normal_mode", "args": { "mode": "mode_select" }, "context": [{ "key": "vi_mode_select" }, { "key": "vi_use_ctrl_keys" }] },
+    // Multiple selections
+    { "keys": ["ctrl+n"], "command": "_enter_select_mode", "context": [{ "key": "vi_command_mode_aware" }, { "key": "vi_use_ctrl_keys" }] },
+    { "keys": ["ctrl+n"], "command": "press_key", "args": { "key": "j" }, "context": [{ "key": "vi_mode_select" }, { "key": "vi_use_ctrl_keys" }] },
+    { "keys": ["ctrl+p"], "command": "press_key", "args": { "key": "k" }, "context": [{ "key": "vi_mode_select" }, { "key": "vi_use_ctrl_keys" }] },
+    { "keys": ["ctrl+x"], "command": "press_key", "args": { "key": "l" }, "context": [{ "key": "vi_mode_select" }, { "key": "vi_use_ctrl_keys" }] },
+    // Sidebar
+    { "keys": ["h"], "command": "move", "args": { "by": "characters", "forward": false }, "context": [{"key": "control", "operand": "sidebar_tree"} ] },
+    { "keys": ["j"], "command": "move", "args": { "by": "lines", "forward": true }, "context": [{"key": "control", "operand": "sidebar_tree"}] },
+    { "keys": ["k"], "command": "move", "args": { "by": "lines", "forward": false }, "context": [{"key": "control", "operand": "sidebar_tree"}] },
+    { "keys": ["l"], "command": "move", "args": { "by": "characters", "forward": true }, "context": [{"key": "control", "operand": "sidebar_tree"}] },
+    { "keys": ["%"], "command": "new_file_at", "args": { "dirs": [] }, "context": [{"key": "control", "operand": "sidebar_tree"}] },
+    { "keys": ["d"], "command": "new_folder", "args": { "dirs": [] }, "context": [{"key": "control", "operand": "sidebar_tree"}] },
+    { "keys": ["R"], "command": "rename_path", "args": { "paths": ["$filepath"] }, "context": [{"key": "control", "operand": "sidebar_tree"}] },
 ]
