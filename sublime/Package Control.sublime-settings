@@ -40,7 +40,8 @@
 		"SublimeREPL",
 		"Sublimerge 3",
 		"Terraform",
-		"TOML"
+		"TOML",
+		"UnitTesting"
 	],
 	"repositories":
 	[
