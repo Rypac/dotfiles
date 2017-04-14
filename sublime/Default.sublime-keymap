@@ -7,7 +7,6 @@
     { "keys": ["ctrl+alt+m"], "command": "toggle_menu" },
 
     // File explorer
-    { "keys": ["-"], "command": "dired", "args": { "immediate": true }, "context": [{ "key": "vi_command_mode_aware" }] },
     { "keys": ["f1"], "command": "dired", "args": { "immediate": true } },
     { "keys": ["f3"], "command": "dired_jump", "args": { "new_window": true } },
     { "keys": ["ctrl+m"], "command": "dired", "args": { "immediate": true, "single_pane": true, "other_group": "left", "project": true } },
@@ -21,8 +20,6 @@
     // Quick navigation
     { "keys": ["f2"], "command": "goto_definition" },
     { "keys": ["f4"], "command": "switch_file", "args": { "extensions": ["cpp", "cxx", "cc", "c", "hpp", "hxx", "hh", "h", "ipp", "inl", "m", "mm"] } },
-    { "keys": ["ctrl+alt+down"], "command": "goto_definition" },
-    { "keys": ["ctrl+alt+up"], "command": "switch_file", "args": { "extensions": ["cpp", "cxx", "cc", "c", "hpp", "hxx", "hh", "h", "ipp", "inl", "m", "mm" ]} },
 
     // Deletion by words
     { "keys": ["ctrl+backspace"], "command": "delete_word", "args": { "forward": false, "sub_words": true } },
@@ -75,7 +72,9 @@
     // Tabs layer
     { "keys": [" ", "t", "h"], "command": "prev_view", "context": [{ "key": "vi_command_mode_aware" }] },
     { "keys": [" ", "t", "l"], "command": "next_view", "context": [{ "key": "vi_command_mode_aware" }] },
-    { "keys": [" ", "t", "n"], "command": "new_file", "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "t", "p"], "command": "prev_view", "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "t", "n"], "command": "next_view", "context": [{ "key": "vi_command_mode_aware" }] },
+    { "keys": [" ", "t", "t"], "command": "new_file", "context": [{ "key": "vi_command_mode_aware" }] },
     { "keys": [" ", "t", "q"], "command": "close", "context": [{ "key": "vi_command_mode_aware" }] },
     // Case conversion layer
     { "keys": [" ", "c", "u"], "command": "upper_case", "context": [{ "key": "vi_command_mode_aware" }] },
@@ -100,13 +99,17 @@
     { "keys": ["\\", "p"], "command": "show_overlay", "args": { "overlay": "command_palette" }, "context": [{ "key": "vi_command_mode_aware" }] },
     { "keys": ["\\", "f"], "command": "show_overlay", "args": { "overlay": "goto", "show_files": true }, "context": [{ "key": "vi_command_mode_aware" }] },
     // Escape
-    { "keys": ["ctrl+["], "command": "_enter_normal_mode", "args": { "mode": "mode_insert" }, "context": [{ "key": "vi_insert_mode_aware" }, { "key": "vi_use_ctrl_keys" }] },
-    { "keys": ["ctrl+["], "command": "_enter_normal_mode", "args": { "mode": "mode_select" }, "context": [{ "key": "vi_mode_select" }, { "key": "vi_use_ctrl_keys" }] },
+    { "keys": ["ctrl+["], "command": "press_key", "args": { "key": "<esc>" }, "context": [{ "key": "vi_use_ctrl_keys" }] },
     // Multiple selections
     { "keys": ["ctrl+n"], "command": "_enter_select_mode", "context": [{ "key": "vi_command_mode_aware" }, { "key": "vi_use_ctrl_keys" }] },
     { "keys": ["ctrl+n"], "command": "press_key", "args": { "key": "j" }, "context": [{ "key": "vi_mode_select" }, { "key": "vi_use_ctrl_keys" }] },
     { "keys": ["ctrl+p"], "command": "press_key", "args": { "key": "k" }, "context": [{ "key": "vi_mode_select" }, { "key": "vi_use_ctrl_keys" }] },
     { "keys": ["ctrl+x"], "command": "press_key", "args": { "key": "l" }, "context": [{ "key": "vi_mode_select" }, { "key": "vi_use_ctrl_keys" }] },
+    { "keys": ["ctrl+a"], "command": "press_key", "args": { "key": "A" }, "context": [{ "key": "vi_mode_select" }, { "key": "vi_use_ctrl_keys" }] },
+    { "keys": ["ctrl+c"], "command": "press_key", "args": { "key": "<esc>" }, "context": [{ "key": "vi_mode_select" }, { "key": "vi_use_ctrl_keys" }] },
+    // Command line
+    { "keys": ["ctrl+p"], "command": "cycle_cmdline_history", "args": { "backwards": true }, "context": [{ "key": "vi_is_cmdline" }, { "key": "vi_use_ctrl_keys" }] },
+    { "keys": ["ctrl+n"], "command": "cycle_cmdline_history", "context": [{ "key": "vi_is_cmdline" }, { "key": "vi_use_ctrl_keys" }] },
     // Sidebar
     { "keys": ["h"], "command": "move", "args": { "by": "characters", "forward": false }, "context": [{"key": "control", "operand": "sidebar_tree"} ] },
     { "keys": ["j"], "command": "move", "args": { "by": "lines", "forward": true }, "context": [{"key": "control", "operand": "sidebar_tree"}] },
