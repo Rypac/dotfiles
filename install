@@ -74,6 +74,7 @@ if [ "$(uname)" = 'Linux' ]; then
     link openbox
     link rofi
     link sublime "$config/sublime-text-3/Packages/User"
+    link sublime/plugins "$config/sublime-text-3/Packages/UserPlugins"
     link tint2
     link xdg/user-dirs.dirs "$config/user-dirs.dirs"
     link xdg/user-dirs.locale "$config/user-dirs.locale"
@@ -83,5 +84,6 @@ if [ "$(uname)" = 'Linux' ]; then
 elif [ "$(uname)" = 'Darwin' ]; then
     link launch-agents/env-sync.plist "$home/Library/LaunchAgents/env-sync.plist"
     link sublime "$home/Library/Application Support/Sublime Text 3/Packages/User"
+    link sublime/plugins "$home/Library/Application Support/Sublime Text 3/Packages/UserPlugins"
     link vscode "$home/Library/Application Support/Code/User"
 fi
