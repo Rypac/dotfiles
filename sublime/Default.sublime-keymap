@@ -65,9 +65,13 @@
     { "keys": ["ctrl+x"], "command": "press_key", "args": { "key": "l" }, "context": [{ "key": "vi_mode_select" }, { "key": "vi_use_ctrl_keys" }] },
     { "keys": ["ctrl+a"], "command": "press_key", "args": { "key": "A" }, "context": [{ "key": "vi_mode_select" }, { "key": "vi_use_ctrl_keys" }] },
 
-    // Command line
+    // Forward and back navigation
     { "keys": ["ctrl+p"], "command": "cycle_cmdline_history", "args": { "backwards": true }, "context": [{ "key": "vi_is_cmdline" }, { "key": "vi_use_ctrl_keys" }] },
     { "keys": ["ctrl+n"], "command": "cycle_cmdline_history", "context": [{ "key": "vi_is_cmdline" }, { "key": "vi_use_ctrl_keys" }] },
+    { "keys": ["ctrl+p"], "command": "move", "args": { "by": "lines", "forward": false }, "context": [{ "key": "auto_complete_visible" }, { "key": "vi_use_ctrl_keys" }] },
+    { "keys": ["ctrl+n"], "command": "move", "args": { "by": "lines", "forward": true }, "context": [{ "key": "auto_complete_visible" }, { "key": "vi_use_ctrl_keys" }] },
+    { "keys": ["ctrl+p"], "command": "move", "args": { "by": "lines", "forward": false }, "context": [{ "key": "overlay_visible" }, { "key": "vi_use_ctrl_keys" }] },
+    { "keys": ["ctrl+n"], "command": "move", "args": { "by": "lines", "forward": true }, "context": [{ "key": "overlay_visible" }, { "key": "vi_use_ctrl_keys" }] },
 
     // Sidebar
     { "keys": ["h"], "command": "move", "args": { "by": "characters", "forward": false }, "context": [{"key": "control", "operand": "sidebar_tree"} ] },
