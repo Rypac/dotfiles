@@ -32,7 +32,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Languages
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
-Plug 'rhysd/vim-clang-format'
+Plug 'rhysd/vim-clang-format', { 'for': 'cpp' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'keith/swift.vim', { 'for': 'swift' }
 Plug 'elmcast/elm-vim', { 'for': 'elm' }
