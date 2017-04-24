@@ -4,6 +4,6 @@ function tm --description 'Attach to (or create) a tmux session'
         set name 'default'
     end
 
-    tmux attach -t $name > /dev/null 2>&1
+    tmux attach -t $name >/dev/null 2>&1
     or tmux new -s $name
 end
