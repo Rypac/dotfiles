@@ -1,5 +1,4 @@
-" -----------------------------------------------------
-" Plugins
+" Plugins {{{
 
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -54,6 +53,13 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
+
+" }}}
+
+" Plugin configuration {{{
+
+" netrw
+let g:netrw_liststyle = 3
 
 " Neomake
 autocmd! BufWritePost * Neomake
@@ -120,8 +126,9 @@ let g:clang_format#style_options = {
     \ "ObjCSpaceBeforeProtocolList": "true",
     \ }
 
-" -----------------------------------------------------
-" Options
+" }}}
+
+" Options {{{
 
 " UI
 set number
@@ -137,13 +144,6 @@ set smartcase
 " Tabs
 set splitbelow
 set splitright
-
-" Colour scheme
-set background=dark
-let base16colorspace=256
-silent! colorscheme base16-oceanicnext
-highlight LineNr ctermbg=black
-highlight SignColumn ctermbg=black
 
 " Always replace tabs with 4 spaces
 retab
@@ -165,8 +165,19 @@ autocmd Filetype purescript setlocal tabstop=2 shiftwidth=2
 autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2
 autocmd Filetype ruby setlocal tabstop=2 shiftwidth=2
 
-" -----------------------------------------------------
-" Keybindings
+" }}}
+
+" Colour scheme {{{
+
+set background=dark
+let base16colorspace=256
+silent! colorscheme base16-oceanicnext
+highlight LineNr ctermbg=black
+highlight SignColumn ctermbg=black
+
+" }}}
+
+" Keybindings {{{
 
 " Quick leader actions
 let maplocalleader = "\\"
@@ -261,3 +272,7 @@ xmap t <Plug>Sneak_t
 xmap T <Plug>Sneak_T
 omap t <Plug>Sneak_t
 omap T <Plug>Sneak_T
+
+" }}}
+
+" vim:foldmethod=marker:foldlevel=0
