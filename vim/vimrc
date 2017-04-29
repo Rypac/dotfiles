@@ -37,6 +37,7 @@ Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
 Plug 'alx741/vim-hindent', { 'for': 'haskell' }
+Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }
 Plug 'raichoo/purescript-vim', { 'for': 'purescript' }
 Plug 'frigoeu/psc-ide-vim', { 'for': 'purescript' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
@@ -270,6 +271,34 @@ xmap t <Plug>Sneak_t
 xmap T <Plug>Sneak_T
 omap t <Plug>Sneak_t
 omap T <Plug>Sneak_T
+
+" }}}
+
+" Language specific layers {{{
+
+" Haskell
+au FileType haskell nnoremap <leader>hr :call ApplyOneSuggestion()<cr>
+au FileType haskell nnoremap <leader>hR :call ApplyAllSuggestions()<cr>
+au FileType haskell nnoremap <leader>ht :GhcModType<cr>
+au FileType haskell nnoremap <leader>hT :GhcModTypeInsert<cr>
+au FileType haskell nnoremap <leader>hc :Neomake ghcmod<cr>
+au FileType haskell nnoremap <leader>hh :Hoogle<cr>
+au FileType haskell nnoremap <leader>hH :Hoogle 
+au FileType haskell nnoremap <leader>hi :HoogleInfo<cr>
+au FileType haskell nnoremap <leader>hI :HoogleInfo 
+au FileType haskell nnoremap <leader>hz :HoogleClose<cr>
+
+" Purescript
+au FileType purescript nnoremap <leader>hr :PSCIDEapplySuggestion<cr>
+au FileType purescript nnoremap <leader>ht :PSCIDEtype<cr>
+au FileType purescript nnoremap <leader>hT :PSCIDEaddTypeAnnotation<cr>
+au FileType purescript nnoremap <leader>hi :PSCIDEimportIdentifier<cr>
+au FileType purescript nnoremap <leader>hl :PSCIDEload<cr>
+au FileType purescript nnoremap <leader>hd :PSCIDEgoToDefinition<cr>
+au FileType purescript nnoremap <leader>hh :PSCIDEpursuit<cr>
+au FileType purescript nnoremap <leader>hc :PSCIDEcaseSplit<cr>
+au FileType purescript nnoremap <leader>hq :PSCIDEaddImportQualifications<cr>
+au FileType purescript nnoremap <leader>hQ :PSCIDEremoveImportQualifications<cr>
 
 " }}}
 
