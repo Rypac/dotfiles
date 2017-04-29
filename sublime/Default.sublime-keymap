@@ -44,6 +44,8 @@
     // Escape
     { "keys": ["ctrl+["], "command": "press_key", "args": { "key": "<esc>" }, "context": [{ "key": "vi_use_ctrl_keys" }] },
 
+    { "keys": ["ctrl+t"], "command": "show_overlay", "args": {"overlay": "goto", "text": "@"}, "context": [{ "key": "vi_use_ctrl_keys" }] },
+
     // Local leader actions
     { "keys": ["\\", "w"], "command": "save", "context": [{ "key": "vi_command_mode_aware" }] },
     { "keys": ["\\", "q"], "command": "close", "context": [{ "key": "vi_command_mode_aware" }] },
