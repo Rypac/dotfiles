@@ -21,9 +21,7 @@ Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-multiple-cursors'
-"Plug 'editorconfig/editorconfig-vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'szw/vim-maximizer'
 
 " Completion
 Plug 'neomake/neomake'
