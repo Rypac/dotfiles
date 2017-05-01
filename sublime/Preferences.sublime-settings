@@ -33,6 +33,7 @@
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
+		"EditorConfig",
 		"Elm Language Support",
 		"SublimeHaskell",
 		"Vintage"
