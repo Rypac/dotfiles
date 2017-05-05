@@ -31,5 +31,3 @@ fish -c 'pip3 update'
 # vim
 nvim +PlugInstall +PlugUpdate +PlugClean! +PlugUpgrade +qall
 
-# atom
-apm upgrade --no-confirm
