@@ -48,18 +48,24 @@ if not test -f "$fisher_function"
     fisher
 end
 
+if test -z "$GPG_TTY"
+    set -gx GPG_TTY (tty)
+end
+
 switch (uname)
     case Linux
         set -gx RUST_SRC_PATH "$RUSTUP_HOME/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
         set -gx JAVA_HOME "/opt/java/jdk"
     case Darwin
+        if not count (pgrep -x -u "$USER" gpg-agent) > /dev/null
+            gpg-agent --homedir "$HOME/.gnupg" --enable-ssh-support --daemon > /dev/null 2>&1
+            gpg-connect-agent updatestartuptty /bye > /dev/null
+        end
+
+        set -gx SSH_AUTH_SOCK "$HOME/.gnupg/S.gpg-agent.ssh"
         set -gx RUST_SRC_PATH "$RUSTUP_HOME/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
         set -gx JAVA_HOME "/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home"
         append_to_path "$HOME/Library/Python/3.6/bin"
-end
-
-if test -z "$GPG_TTY"
-    set -gx GPG_TTY (tty)
 end
 
 append_to_path "$JAVA_HOME/bin"
@@ -72,10 +78,8 @@ function make_alias --description 'Faster implementation of alias'
     echo "function $name; $body \$argv; end" | source
 end
 
-make_alias g git
 make_alias vi nvim
 make_alias vim nvim
 make_alias mux tmuxinator
-make_alias gpg gpg2
 make_alias pip pip3
 make_alias vscode code
