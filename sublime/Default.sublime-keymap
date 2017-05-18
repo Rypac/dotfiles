@@ -76,10 +76,6 @@
     { "keys": ["ctrl+n"], "command": "move", "args": { "by": "lines", "forward": true }, "context": [{ "key": "overlay_visible" }, { "key": "vi_use_ctrl_keys" }] },
 
     // Sidebar
-    { "keys": ["h"], "command": "move", "args": { "by": "characters", "forward": false }, "context": [{"key": "control", "operand": "sidebar_tree"} ] },
-    { "keys": ["j"], "command": "move", "args": { "by": "lines", "forward": true }, "context": [{"key": "control", "operand": "sidebar_tree"}] },
-    { "keys": ["k"], "command": "move", "args": { "by": "lines", "forward": false }, "context": [{"key": "control", "operand": "sidebar_tree"}] },
-    { "keys": ["l"], "command": "move", "args": { "by": "characters", "forward": true }, "context": [{"key": "control", "operand": "sidebar_tree"}] },
     { "keys": ["%"], "command": "new_file_at", "args": { "dirs": [] }, "context": [{"key": "control", "operand": "sidebar_tree"}] },
     { "keys": ["d"], "command": "new_folder", "args": { "dirs": [] }, "context": [{"key": "control", "operand": "sidebar_tree"}] },
     { "keys": ["R"], "command": "rename_path", "args": { "paths": ["$filepath"] }, "context": [{"key": "control", "operand": "sidebar_tree"}] },
