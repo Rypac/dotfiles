@@ -36,7 +36,9 @@
 		"EditorConfig",
 		"Elm Language Support",
 		"SublimeHaskell",
-		"Vintage"
+		"Six",
+		"Vintage",
+		"Vintageous"
 	],
 	"indent_guide_options":
 	[

@@ -38,11 +38,13 @@
 		"SublimeREPL",
 		"Sublimerge 3",
 		"Terraform",
+		"ToggleNeoVintageous",
 		"TOML",
 		"UnitTesting"
 	],
 	"repositories":
 	[
-		"https://github.com/NeoVintageous/NeoVintageous"
+		"https://github.com/NeoVintageous/NeoVintageous",
+		"https://github.com/NeoVintageous/ToggleNeoVintageous"
 	]
 }
