@@ -36,6 +36,7 @@ install_apt_packages() {
         automake \
         borgbackup \
         checkinstall \
+        chromium \
         clang \
         clang-format \
         clipit \
@@ -48,6 +49,7 @@ install_apt_packages() {
         curl \
         dex \
         dunst \
+        fail2ban \
         feh \
         firmware-linux \
         firmware-linux-free \
@@ -60,23 +62,27 @@ install_apt_packages() {
         g++ \
         gawk \
         git \
+        hardinfo \
         haskell-stack \
         htop \
         i3 \
         imagemagick \
         keepassx \
+        kpcli \
         lightdm \
         lightdm-gtk-greeter \
         lm-sensors \
         lxappearance \
         make \
         menu \
+        mosh \
         mpv \
         neovim \
         ntfs-3g \
         pavucontrol \
         pcmanfm \
         pinentry-curses \
+        pinentry-gnome3 \
         pkg-config \
         pasystray \
         pulseaudio \
@@ -85,6 +91,8 @@ install_apt_packages() {
         rofi \
         rxvt-unicode \
         scrot \
+        silver-searcher-ag \
+        sshguard \
         sudo \
         tig \
         unrar \
