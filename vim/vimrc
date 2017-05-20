@@ -168,6 +168,10 @@ autocmd Filetype ruby setlocal tabstop=2 shiftwidth=2
 
 " Colour scheme {{{
 
+if (has("termguicolors"))
+    set termguicolors
+endif
+
 set background=dark
 let base16colorspace=256
 silent! colorscheme base16-oceanicnext
