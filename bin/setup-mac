@@ -68,8 +68,8 @@ install_fonts() {
         font-ubuntu \
     )
     for font in "${fonts[@]}"; do
-        if brew cask info "$fonts" | grep --quiet 'Not installed'; then
-            brew cask install "$fonts"
+        if brew cask info "$font" | grep --quiet 'Not installed'; then
+            brew cask install "$font"
         fi
     done
 }
