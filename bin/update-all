@@ -21,7 +21,7 @@ stack --resolver nightly update
 stack --resolver nightly upgrade
 
 # npm
-fish -c 'fnm use latest'
+fish -c 'fnm ls > /dev/null; and fnm use latest'
 npm update -g
 yarn global upgrade
 
