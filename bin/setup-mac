@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+
+set -e
+
+confirmation_prompt() {
+    message="$1"
+    default="${2:-Y}"
+    while true; do
+        read -rp "${message} [Y/n] " input
+        case "${input:-$default}" in
+            [Yy]|[Yy][Ee][Ss])
+                return 0
+                ;;
+            [Nn]|[Nn][Oo])
+                return 1
+                ;;
+            *)
+                echo "Invalid selection"
+                ;;
+        esac
+    done
+}
+
+no_confirmation() {
+    [ "$1" = "-y" ] || [ "$1" = "--yes" ]
+}
+
+install_homebrew() {
+    if ! type brew > /dev/null 2>&1; then
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    else
+        brew update
+        brew upgrade
+    fi
+}
+
+install_homebrew_packages() {
+    packages=( \
+        bash cowsay fish git gnupg haskell-stack neovim node pinentry-mac python3 ranger \
+        reattach-to-user-namespace ripgrep ruby shellcheck swiftformat tig tmux vim \
+        wget yarn zsh \
+    )
+    for package in "${packages[@]}"; do
+        if brew info "$package" | grep --quiet 'Not installed'; then
+            brew install "$package"
+        fi
+    done
+}
+
+install_homebrew_casks() {
+    packages=( \
+        1password alfred bettertouchtool gitkraken google-chrome keeweb launchcontrol \
+        paintbrush postman spotify visual-studio-code \
+    )
+    for package in "${packages[@]}"; do
+        if brew cask info "$package" | grep --quiet 'Not installed'; then
+            brew cask install "$package"
+        fi
+    done
+}
+
+install_fonts() {
+    brew tap caskroom/fonts
+
+    fonts=( \
+        font-fontawesome font-hack font-hasklig font-noto-color-emoji font-noto-mono \
+        font-noto-sans font-noto-serif font-roboto font-roboto-mono font-source-code-pro \
+        font-ubuntu \
+    )
+    for font in "${fonts[@]}"; do
+        if brew cask info "$fonts" | grep --quiet 'Not installed'; then
+            brew cask install "$fonts"
+        fi
+    done
+}
+
+if no_confirmation "$1" || confirmation_prompt "Install homebrew?"; then
+    install_homebrew
+fi
+if no_confirmation "$1" || confirmation_prompt "Install packages?"; then
+    install_homebrew_packages
+fi
+if no_confirmation "$1" || confirmation_prompt "Install casks?"; then
+    install_homebrew_casks
+fi
+if no_confirmation "$1" || confirmation_prompt "Install fonts?"; then
+    install_fonts
+fi
