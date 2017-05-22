@@ -18,9 +18,11 @@ functions/*
 !/functions/encrypt.fish
 !/functions/f.fish
 !/functions/mkcd.fish
+!/functions/nmpurge.fish
 !/functions/pbcopy.fish
 !/functions/pbpaste.fish
 !/functions/pip3.fish
 !/functions/rake.fish
+!/functions/ranger.fish
 !/functions/sudo.fish
 !/functions/tm.fish
