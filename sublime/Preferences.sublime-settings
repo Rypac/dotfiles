@@ -35,8 +35,13 @@
 	[
 		"EditorConfig",
 		"Elm Language Support",
-		"SublimeHaskell",
+		"GDScript (Godot Engine)",
+		"Material Theme",
+		"Material Theme - Appbar",
+		"SideBarEnhancements",
 		"Six",
+		"SublimeHaskell",
+		"UnitTesting",
 		"Vintage",
 		"Vintageous"
 	],
