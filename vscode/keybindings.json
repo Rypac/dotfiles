@@ -224,5 +224,21 @@
         "key": "x",
         "command": "revealFileInOS",
         "when": "explorerViewletVisible && filesExplorerFocus"
+    },
+    {
+        "key": "cmd+k 1",
+        "command": "git.stageSelectedRanges"
+    },
+    {
+        "key": "cmd+k shift+1",
+        "command": "git.unstageSelectedRanges"
+    },
+    {
+        "key": "cmd+k u",
+        "command": "git.stage"
+    },
+    {
+        "key": "shift+alt+cmd+p",
+        "command": "projectManager.listProjectsNewWindow"
     }
 ]

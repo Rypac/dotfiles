@@ -28,7 +28,10 @@
     "prettier.trailingComma": "all",
     "prettier.printWidth": 100,
     "elm.formatOnSave": true,
+    "vim.disableAnnoyingGcMessage": true,
+    "vim.disableAnnoyingNeovimMessage": true,
     "vim.easymotion": true,
+    "vim.enableNeovim": true,
     "vim.history": 200,
     "window.menuBarVisibility": "toggle",
     "vim.statusBarColorControl": true,
@@ -47,4 +50,8 @@
     "workbench.colorTheme": "Base16 Dark Oceanic Next",
     "workbench.iconTheme": null,
     "purescript.autocompleteAddImport": false
+    "python.formatting.provider": "yapf",
+    "git.autofetch": false,
+    "terraform.formatOnSave": true,
+    "search.useIgnoreFilesByDefault": true,
 }
