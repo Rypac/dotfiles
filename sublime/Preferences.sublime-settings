@@ -23,7 +23,7 @@
 	],
 	"caret_style": "phase",
 	"close_windows_when_empty": false,
-	"color_scheme": "Packages/User/SublimeLinter/base16-oceanicnext (SL).tmTheme",
+	"color_scheme": "Packages/Color Scheme - Default/Mariana.tmTheme",
 	"copy_with_empty_selection": false,
 	"draw_white_space": "selection",
 	"ensure_newline_at_eof_on_save": true,
@@ -33,15 +33,11 @@
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
+		"Cucumber",
 		"EditorConfig",
 		"Elm Language Support",
-		"GDScript (Godot Engine)",
-		"Material Theme",
-		"Material Theme - Appbar",
-		"SideBarEnhancements",
 		"Six",
 		"SublimeHaskell",
-		"UnitTesting",
 		"Vintage",
 		"Vintageous"
 	],
