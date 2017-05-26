@@ -45,13 +45,6 @@
 	[
 		"draw_active"
 	],
-	"material_theme_arrow_folders": true,
-	"material_theme_compact_panel": true,
-	"material_theme_compact_sidebar": true,
-	"material_theme_contrast_mode": true,
-	"material_theme_panel_separator": true,
-	"material_theme_small_tab": true,
-	"material_theme_tabs_separator": true,
 	"rulers":
 	[
 		100
