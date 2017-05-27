@@ -33,9 +33,7 @@
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"Cucumber",
 		"EditorConfig",
-		"Elm Language Support",
 		"Six",
 		"SublimeHaskell",
 		"Vintage",
@@ -44,10 +42,6 @@
 	"indent_guide_options":
 	[
 		"draw_active"
-	],
-	"rulers":
-	[
-		100
 	],
 	"scroll_past_end": false,
 	"sidebar_small": true,
