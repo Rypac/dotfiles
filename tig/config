@@ -1,0 +1,2 @@
+bind generic + !git commit --amend
+bind generic I !git add -i %(file)

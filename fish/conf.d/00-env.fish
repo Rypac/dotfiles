@@ -20,7 +20,6 @@ set -gx QT_STYLE_OVERRIDE GTK+
 set -gx SCREENRC "$XDG_CONFIG_HOME/screen/screenrc"
 set -gx SPACEMACSDIR "$XDG_CONFIG_HOME/spacemacs"
 set -gx TERMINFO "$XDG_DATA_HOME/terminfo"
-set -gx TIGRC_USER "$XDG_CONFIG_HOME/tig/tigrc"
 set -gx WEECHAT_HOME "$XDG_CONFIG_HOME/weechat"
 set -gx WINEPREFIX "$XDG_DATA_HOME/wine"
 set -gx XINITRC "$XDG_CONFIG_HOME/x11/xinitrc"

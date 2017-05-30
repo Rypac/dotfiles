@@ -54,6 +54,7 @@ link alacritty
 link fish
 link git
 link npm
+link tig
 link shell/profile "$home/.profile"
 link tmux/tmux.conf "$home/.tmux.conf"
 link zsh/zshrc "$home/.zshrc"
