@@ -1,1 +1,3 @@
 cache=${XDG_CACHE_HOME}/npm
+userconfig=${XDG_CONFIG_HOME}/npm/config
+devdir=${XDG_CACHE_HOME}/node-gyp
