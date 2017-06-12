@@ -10,7 +10,11 @@ fish -c 'app update'
 fish -c 'fisher up'
 
 # fzf
-"$XDG_DATA_HOME/fzf/install" --bin
+(
+    cd "$XDG_DATA_HOME/fzf" || exit
+    git pull
+    ./install --bin
+)
 
 # rust
 rustup update

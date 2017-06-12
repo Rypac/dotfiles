@@ -49,14 +49,16 @@
     "gitlens.codeLens.visibility": "ondemand",
     "workbench.colorTheme": "Base16 Dark Oceanic Next",
     "workbench.iconTheme": null,
+    "purescript.addNpmPath": true,
     "purescript.autocompleteAddImport": false,
     "python.formatting.provider": "yapf",
     "git.autofetch": false,
-    "terraform.formatOnSave": true,
-    "search.useIgnoreFilesByDefault": true,
     "workbench.colorCustomizations": {
         "statusBar.background": "#5b8ec5",
         "statusBar.noFolderBackground": "#5b8ec5",
         "statusBar.debuggingBackground": "#5b8ec5"
-    }
+    },
+    "terraform.formatOnSave": true,
+    "search.useIgnoreFilesByDefault": true,
+    "gitlens.blame.line.enabled": false
 }

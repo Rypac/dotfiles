@@ -6,6 +6,10 @@
     { "keys": ["ctrl+shift+\\"], "command": "toggle_distraction_free" },
     { "keys": ["ctrl+alt+m"], "command": "toggle_menu" },
 
+    // Project manager
+    { "keys": ["super+ctrl+shift+p"], "command": "project_manager", "args": { "action": "new" } },
+    { "keys": ["ctrl+alt+shift+p"], "command": "project_manager", "args": { "action": "new" } },
+
     // File explorer
     { "keys": ["f1"], "command": "dired", "args": { "immediate": true } },
     { "keys": ["f3"], "command": "dired_jump", "args": { "new_window": true } },
