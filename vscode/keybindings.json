@@ -136,16 +136,6 @@
         "when": "explorerViewletFocus && vim.useCtrlKeys"
     },
     {
-        "key": "k",
-        "command": "list.focusUp",
-        "when": "explorerViewletFocus"
-    },
-    {
-        "key": "j",
-        "command": "list.focusDown",
-        "when": "explorerViewletFocus"
-    },
-    {
         "key": "ctrl+p",
         "command": "list.focusUp",
         "when": "explorerViewletFocus"
@@ -156,16 +146,6 @@
         "when": "explorerViewletFocus"
     },
     {
-        "key": "ctrl+d",
-        "command": "list.focusPageDown",
-        "when": "explorerViewletFocus"
-    },
-    {
-        "key": "ctrl+u",
-        "command": "list.focusPageUp",
-        "when": "explorerViewletFocus"
-    },
-    {
         "key": "h",
         "command": "list.collapse",
         "when": "explorerViewletFocus"
@@ -173,11 +153,6 @@
     {
         "key": "l",
         "command": "list.expand",
-        "when": "explorerViewletFocus"
-    },
-    {
-        "key": "o",
-        "command": "list.select",
         "when": "explorerViewletFocus"
     },
     {

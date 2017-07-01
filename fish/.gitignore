@@ -24,6 +24,7 @@ functions/*
 !/functions/pip3.fish
 !/functions/rake.fish
 !/functions/ranger.fish
+!/functions/scratch.fish
 !/functions/serve.fish
 !/functions/sudo.fish
 !/functions/tm.fish
