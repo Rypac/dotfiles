@@ -36,9 +36,9 @@ install_homebrew() {
 
 install_homebrew_packages() {
     packages=( \
-        bash cowsay fish git gnupg haskell-stack neovim node pinentry-mac python3 ranger \
-        reattach-to-user-namespace ripgrep ruby shellcheck swiftformat tig tmux vim \
-        wget yarn zsh \
+        bash carthage cloc cocoapods coreutils curl fish git gnupg haskell-stack jq neovim node \
+        pinentry-mac python3 ranger reattach-to-user-namespace ripgrep ruby shellcheck swiftformat \
+        tig tmux vim wget yarn zsh \
     )
     for package in "${packages[@]}"; do
         if brew info "$package" | grep --quiet 'Not installed'; then
@@ -49,8 +49,8 @@ install_homebrew_packages() {
 
 install_homebrew_casks() {
     packages=( \
-        1password alfred bettertouchtool gitkraken google-chrome keeweb launchcontrol \
-        paintbrush postman spotify visual-studio-code \
+        1password alfred bettertouchtool docker gitkraken google-chrome keeweb keybase \
+        launchcontrol paintbrush postman spotify transmit visual-studio-code \
     )
     for package in "${packages[@]}"; do
         if brew cask info "$package" | grep --quiet 'Not installed'; then
@@ -63,9 +63,9 @@ install_fonts() {
     brew tap caskroom/fonts
 
     fonts=( \
-        font-fontawesome font-hack font-hasklig font-noto-color-emoji font-noto-mono \
-        font-noto-sans font-noto-serif font-roboto font-roboto-mono font-source-code-pro \
-        font-ubuntu \
+        font-fontawesome font-fira-code font-hack font-hasklig font-noto-color-emoji \
+        font-noto-mono font-noto-sans font-noto-serif font-roboto font-roboto-mono \
+        font-source-code-pro font-ubuntu \
     )
     for font in "${fonts[@]}"; do
         if brew cask info "$font" | grep --quiet 'Not installed'; then
