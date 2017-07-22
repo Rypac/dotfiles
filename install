@@ -88,4 +88,5 @@ elif [ "$(uname)" = 'Darwin' ]; then
     link sublime "$home/Library/Application Support/Sublime Text 3/Packages/User"
     link sublime/plugins "$home/Library/Application Support/Sublime Text 3/Packages/UserPlugins"
     link vscode "$home/Library/Application Support/Code/User"
+    link xcode/themes "$home/Library/Developer/Xcode/UserData/FontAndColorThemes"
 fi
