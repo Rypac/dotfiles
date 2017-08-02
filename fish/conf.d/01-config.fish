@@ -56,6 +56,7 @@ switch (uname)
     case Linux
         set -gx RUST_SRC_PATH "$RUSTUP_HOME/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
         set -gx JAVA_HOME "/opt/java/jdk"
+        append_to_path "$JAVA_HOME/bin"
     case Darwin
         if not count (pgrep -x -u "$USER" gpg-agent) > /dev/null
             gpg-agent --homedir "$HOME/.gnupg" --enable-ssh-support --daemon > /dev/null 2>&1
@@ -64,11 +65,8 @@ switch (uname)
 
         set -gx SSH_AUTH_SOCK "$HOME/.gnupg/S.gpg-agent.ssh"
         set -gx RUST_SRC_PATH "$RUSTUP_HOME/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
-        set -gx JAVA_HOME "/Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home"
         append_to_path "$HOME/Library/Python/3.6/bin"
 end
-
-append_to_path "$JAVA_HOME/bin"
 
 # Aliases
 
@@ -80,6 +78,5 @@ end
 
 make_alias vi nvim
 make_alias vim nvim
-make_alias mux tmuxinator
 make_alias pip pip3
 make_alias vscode code

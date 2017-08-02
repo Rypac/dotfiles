@@ -53,6 +53,7 @@ link_all bin "$home/.local/bin"
 link alacritty
 link fish
 link git
+link gnupg/gpg-agent.conf "$home/.gnupg/gpg-agent.conf"
 link npm
 link tig
 link shell/profile "$home/.profile"
@@ -70,7 +71,6 @@ if [ "$(uname)" = Linux ]; then
     link display
     link dunst
     link fontconfig
-    link gnupg/gpg-agent.conf "$home/.gnupg/gpg-agent.conf"
     link i3
     link i3status
     link openbox
