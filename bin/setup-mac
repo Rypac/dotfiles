@@ -36,9 +36,10 @@ install_homebrew() {
 
 install_homebrew_packages() {
     packages=( \
-        bash carthage cloc cocoapods coreutils curl fish git gnupg haskell-stack jq \
-        neovim node pinentry-mac python3 ranger reattach-to-user-namespace ripgrep \
-        ruby shellcheck swiftformat swiftlint tig tmux vim wget yarn zsh \
+        bash carthage cloc cocoapods coreutils curl ffmpeg fish git gnupg haskell-stack \
+        jq neovim node pinentry-mac python3 ranger reattach-to-user-namespace ripgrep \
+        ruby shellcheck swiftformat swiftlint the_silver_searcher tig tmux vim wget \
+        yarn zsh \
     )
     for package in "${packages[@]}"; do
         if brew info "$package" | grep --quiet 'Not installed'; then
@@ -64,7 +65,7 @@ install_fonts() {
     brew tap caskroom/fonts
 
     fonts=( \
-        font-fontawesome font-fira-code font-hack font-hasklig font-noto-color-emoji \
+        font-fira-code font-fontawesome font-hack font-hasklig font-noto-color-emoji \
         font-noto-mono font-noto-sans font-noto-serif font-roboto font-roboto-mono \
         font-source-code-pro font-ubuntu \
     )

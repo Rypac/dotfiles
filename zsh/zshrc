@@ -191,9 +191,6 @@ function tm {
     tmux attach -t "$name" || tmux new -s "$name"
 }
 
-# GPG
-alias gpg='gpg2'
-
 # Docker
 alias docker-stop='docker stop $(docker ps -aq)'
 alias docker-clean='docker rm -f $(docker ps -aq)'

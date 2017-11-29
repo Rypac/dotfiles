@@ -1,3 +1,3 @@
 function decrypt --description 'Decrypt a GPG encrypted file'
-    command gpg2 --decrypt --quiet $argv
+    command gpg --decrypt --quiet $argv
 end

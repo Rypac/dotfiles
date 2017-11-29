@@ -11,7 +11,7 @@ if not test -d "$XDG_DATA_HOME"
 end
 
 # vim bindings
-fish_vi_key_bindings
+fish_hybrid_key_bindings
 
 # colours
 set -gx fish_color_autosuggestion "brblack"

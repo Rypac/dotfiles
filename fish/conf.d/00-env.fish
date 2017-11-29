@@ -15,8 +15,6 @@ set -gx GTK2_RC_FILES "$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 set -gx HTTPIE_CONFIG_DIR "$XDG_CONFIG_HOME/httpie"
 set -gx MPLAYER_HOME "$XDG_CONFIG_HOME/mplayer"
 set -gx PASSWORD_STORE_DIR "$XDG_DATA_HOME/pass"
-set -gx QT_QPA_PLATFORMTHEME "gtk2"
-set -gx QT_STYLE_OVERRIDE GTK+
 set -gx SCREENRC "$XDG_CONFIG_HOME/screen/screenrc"
 set -gx SPACEMACSDIR "$XDG_CONFIG_HOME/spacemacs"
 set -gx TERMINFO "$XDG_DATA_HOME/terminfo"
@@ -61,7 +59,7 @@ set -gx VISUAL 'code'
 set -gx PAGER 'less'
 set -gx SELECTED_EDITOR 'nvim'
 set -gx LESS '-F -g -i -M -R -S -w -X -z-4'
-set -gx SHELL '/usr/bin/fish'
+set -gx SHELL '/usr/local/bin/fish'
 set -gx HUSHLOGIN_FILE ''
 
 # Setup PATH
