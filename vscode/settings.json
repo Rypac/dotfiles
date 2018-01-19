@@ -1,6 +1,6 @@
 {
     "editor.fontFamily": "'Hasklig', 'Source Code Pro', 'Hack', 'Droid Sans Mono', monospace",
-    "editor.fontSize": 15,
+    "editor.fontSize": 13,
     "editor.fontLigatures": true,
     "editor.rulers": [
         100
@@ -49,9 +49,13 @@
         "statusBar.noFolderBackground": "#5b8ec5",
         "statusBar.debuggingBackground": "#5b8ec5"
     },
-    "terraform.formatOnSave": true,
     "search.useIgnoreFilesByDefault": true,
     "editor.minimap.enabled": false,
     "gitlens.codeLens.enabled": false,
-    "gitlens.blame.line.enabled": false
+    "gitlens.blame.line.enabled": false,
+    "[markdown]": {
+        "editor.wordWrap": "on",
+        "editor.quickSuggestions": false,
+        "files.trimTrailingWhitespace": false
+    }
 }
