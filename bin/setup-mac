@@ -50,9 +50,9 @@ install_homebrew_packages() {
 
 install_homebrew_casks() {
     packages=( \
-        1password alfred bettertouchtool coconutbattery dash docker dropbox gitkraken \
-        google-chrome keeweb keybase launchcontrol postman spotify transmit \
-        visual-studio-code whatsapp wwdc \
+        1password alfred coconutbattery dash docker dropbox google-chrome \
+        iterm2 keybase launchcontrol private-internet-access spotify tower transmit \
+        visual-studio-code vlc \
     )
     for package in "${packages[@]}"; do
         if brew cask info "$package" | grep --quiet 'Not installed'; then
