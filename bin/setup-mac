@@ -37,7 +37,7 @@ install_homebrew() {
 install_homebrew_packages() {
     packages=( \
         bash carthage cloc cocoapods coreutils curl ffmpeg fish git gnupg haskell-stack \
-        jq neovim node pinentry-mac python3 ranger reattach-to-user-namespace ripgrep \
+        jq mas neovim node pinentry-mac python3 ranger reattach-to-user-namespace ripgrep \
         ruby shellcheck swiftformat swiftlint the_silver_searcher tig tmux vim wget \
         yarn zsh \
     )
@@ -59,6 +59,22 @@ install_homebrew_casks() {
             brew cask install "$package"
         fi
     done
+}
+
+install_appstore_apps() {
+    packages=( \
+        1091189122 # Bear \
+        441258766 # Magnet \
+        880001334 # Reeder \
+        403504866 # PCalc \
+        937984704 # Amphetamine \
+        917664748 # Bible \
+        1082624744 # Gifox \
+    )
+    for package in "${packages[@]}"; do
+        mas install "$package"
+    done
+    mas upgrade
 }
 
 install_fonts() {
@@ -84,6 +100,9 @@ if no_confirmation "$1" || confirmation_prompt "Install packages?"; then
 fi
 if no_confirmation "$1" || confirmation_prompt "Install casks?"; then
     install_homebrew_casks
+fi
+if no_confirmation "$1" || confirmation_prompt "Install App Store apps?"; then
+    install_appstore_apps
 fi
 if no_confirmation "$1" || confirmation_prompt "Install fonts?"; then
     install_fonts
