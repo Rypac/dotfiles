@@ -50,9 +50,9 @@ install_homebrew_packages() {
 
 install_homebrew_casks() {
     packages=( \
-        1password alfred coconutbattery dash docker dropbox google-chrome \
-        iterm2 keybase launchcontrol private-internet-access spotify tower transmit \
-        visual-studio-code vlc \
+        1password alfred coconutbattery dash docker dropbox duet google-chrome \
+        iina iterm2 launchcontrol pocket-casts spotify tower transmit \
+        tunnelblick visual-studio-code \
     )
     for package in "${packages[@]}"; do
         if brew cask info "$package" | grep --quiet 'Not installed'; then
@@ -64,6 +64,8 @@ install_homebrew_casks() {
 install_appstore_apps() {
     packages=( \
         1091189122 # Bear \
+        904280696 # Things 3 \
+        1026349850 # Copied \
         441258766 # Magnet \
         880001334 # Reeder \
         403504866 # PCalc \
@@ -92,6 +94,15 @@ install_fonts() {
     done
 }
 
+
+configure_system() {
+    # Use list view in all Finder windows by default
+    defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+    # Show the ~/Library folder
+    chflags nohidden ~/Library
+}
+
 if no_confirmation "$1" || confirmation_prompt "Install homebrew?"; then
     install_homebrew
 fi
@@ -106,4 +117,7 @@ if no_confirmation "$1" || confirmation_prompt "Install App Store apps?"; then
 fi
 if no_confirmation "$1" || confirmation_prompt "Install fonts?"; then
     install_fonts
+fi
+if no_confirmation "$1" || confirmation_prompt "Configure system?"; then
+    configure_system
 fi
