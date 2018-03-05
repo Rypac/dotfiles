@@ -33,5 +33,5 @@ yarn global upgrade
 fish -c 'pip3 update'
 
 # vim
-nvim +PlugInstall +PlugUpdate +PlugClean! +PlugUpgrade +qall
+vim +PlugInstall +PlugUpdate +PlugClean! +PlugUpgrade +qall
 
