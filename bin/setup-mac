@@ -2,122 +2,21 @@
 
 set -e
 
-confirmation_prompt() {
-    message="$1"
-    default="${2:-Y}"
-    while true; do
-        read -rp "${message} [Y/n] " input
-        case "${input:-$default}" in
-            [Yy]|[Yy][Ee][Ss])
-                return 0
-                ;;
-            [Nn]|[Nn][Oo])
-                return 1
-                ;;
-            *)
-                echo "Invalid selection"
-                ;;
-        esac
-    done
-}
-
-no_confirmation() {
-    [ "$1" = "-y" ] || [ "$1" = "--yes" ]
-}
-
-install_homebrew() {
-    if ! type brew > /dev/null 2>&1; then
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    else
-        brew update
-        brew upgrade
-    fi
-}
-
-install_homebrew_packages() {
-    packages=( \
-        bash carthage cloc cocoapods coreutils curl ffmpeg fish git gnupg haskell-stack \
-        jq mas neovim node pinentry-mac python3 ranger reattach-to-user-namespace ripgrep \
-        ruby shellcheck swiftformat swiftlint the_silver_searcher tig tmux vim wget \
-        yarn zsh \
-    )
-    for package in "${packages[@]}"; do
-        if brew info "$package" | grep --quiet 'Not installed'; then
-            brew install "$package"
-        fi
-    done
-}
-
-install_homebrew_casks() {
-    packages=( \
-        1password alfred coconutbattery dash docker dropbox duet google-chrome \
-        iina iterm2 launchcontrol pocket-casts spotify tower transmit \
-        tunnelblick visual-studio-code \
-    )
-    for package in "${packages[@]}"; do
-        if brew cask info "$package" | grep --quiet 'Not installed'; then
-            brew cask install "$package"
-        fi
-    done
-}
-
-install_appstore_apps() {
-    packages=( \
-        1091189122 # Bear \
-        904280696 # Things 3 \
-        1026349850 # Copied \
-        441258766 # Magnet \
-        880001334 # Reeder \
-        403504866 # PCalc \
-        937984704 # Amphetamine \
-        917664748 # Bible \
-        1082624744 # Gifox \
-    )
-    for package in "${packages[@]}"; do
-        mas install "$package"
-    done
-    mas upgrade
-}
-
-install_fonts() {
-    brew tap caskroom/fonts
-
-    fonts=( \
-        font-fira-code font-fontawesome font-hack font-hasklig font-noto-color-emoji \
-        font-noto-mono font-noto-sans font-noto-serif font-roboto font-roboto-mono \
-        font-source-code-pro font-ubuntu \
-    )
-    for font in "${fonts[@]}"; do
-        if brew cask info "$font" | grep --quiet 'Not installed'; then
-            brew cask install "$font"
-        fi
-    done
-}
-
-
-configure_system() {
-    # Use list view in all Finder windows by default
-    defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
-
-    # Show the ~/Library folder
-    chflags nohidden ~/Library
-}
-
-if no_confirmation "$1" || confirmation_prompt "Install homebrew?"; then
-    install_homebrew
+# Install and update homebrew
+if ! type brew > /dev/null 2>&1; then
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+else
+    brew update
+    brew upgrade
 fi
-if no_confirmation "$1" || confirmation_prompt "Install packages?"; then
-    install_homebrew_packages
-fi
-if no_confirmation "$1" || confirmation_prompt "Install casks?"; then
-    install_homebrew_casks
-fi
-if no_confirmation "$1" || confirmation_prompt "Install App Store apps?"; then
-    install_appstore_apps
-fi
-if no_confirmation "$1" || confirmation_prompt "Install fonts?"; then
-    install_fonts
-fi
-if no_confirmation "$1" || confirmation_prompt "Configure system?"; then
-    configure_system
-fi
+
+# Install packages
+brew tap homebrew/bundle
+brew bundle --file=~/.dotfiles/homebrew/Brewfile
+
+# Use list view in all Finder windows by default
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+# Show the ~/Library folder
+chflags nohidden ~/Library
+
