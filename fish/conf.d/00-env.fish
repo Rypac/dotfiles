@@ -46,18 +46,20 @@ set -gx RBENV_ROOT "$XDG_DATA_HOME/rbenv"
 set -gx MIX_HOME "$XDG_DATA_HOME/mix"
 set -gx NODE_REPL_HISTORY "$XDG_CACHE_HOME/node-repl-history"
 set -gx GRADLE_USER_HOME "$XDG_CACHE_HOME/gradle"
-set -gx ANDROID_SDK_HOME "$XDG_DATA_HOME/android"
+set -gx ANDROID_SDK_HOME "$HOME/Library/Android"
 set -gx ANDROID_HOME "$ANDROID_SDK_HOME/sdk"
 set -gx ANDROID_SDK_ROOT "$ANDROID_HOME"
+set -gx ANDROID_EMULATOR_HOME "$ANDROID_SDK_HOME/.android"
+set -gx ANDROID_AVD_HOME "$ANDROID_EMULATOR_HOME/avd"
 set -gx ANDROID_NDK "$ANDROID_HOME/ndk-bundle"
 set -gx NDK_ROOT "$ANDROID_NDK"
 
 # Defaults
 set -gx LC_COLLATE 'C'
-set -gx EDITOR 'nvim'
+set -gx EDITOR 'vim'
 set -gx VISUAL 'code'
 set -gx PAGER 'less'
-set -gx SELECTED_EDITOR 'nvim'
+set -gx SELECTED_EDITOR 'vim'
 set -gx LESS '-F -g -i -M -R -S -w -X -z-4'
 set -gx SHELL '/usr/local/bin/fish'
 set -gx HUSHLOGIN_FILE ''

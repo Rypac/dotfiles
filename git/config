@@ -37,15 +37,18 @@
     da = diff HEAD
 
     # Searching
-    f = !git ls-files | grep -i
+    search = !git ls-files | grep -i
     grep = grep -Ii
 
+    # Fetching
+    f = fetch --all --prune
+    p = pull --rebase
+
     # Branches
-    co = checkout
     b = checkout
     bn = checkout -b
     bd = branch --delete
-    brd = push origin --delete
+    bdo = push origin --delete
 
     # Staging
     a = add

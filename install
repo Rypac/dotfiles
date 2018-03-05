@@ -39,15 +39,6 @@ link_all() {
     done
 }
 
-link_dir() {
-    from="$1"
-    to="$2"
-
-    echo "Linking $from to $to"
-
-    ln -fns "$from" "$to"
-}
-
 # Link common config
 link_all bin "$home/.local/bin"
 link alacritty
@@ -61,7 +52,6 @@ link tmux/tmux.conf "$home/.tmux.conf"
 link zsh/zshrc "$home/.zshrc"
 link_all ranger "$config/ranger"
 link_all vim "$home/.vim"
-link_dir "$home/.vim" "$config/nvim"
 
 # Link host specific config
 if [ "$(uname)" = Linux ]; then

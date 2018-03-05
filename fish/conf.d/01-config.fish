@@ -68,15 +68,3 @@ switch (uname)
         append_to_path "$HOME/Library/Python/3.6/bin"
 end
 
-# Aliases
-
-function make_alias --description 'Faster implementation of alias'
-    set -l name $argv[1]
-    set -l body $argv[2..-1]
-    echo "function $name; $body \$argv; end" | source
-end
-
-make_alias vi nvim
-make_alias vim nvim
-make_alias pip pip3
-make_alias vscode code

@@ -33,7 +33,6 @@
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"EditorConfig",
 		"Six",
 		"SublimeHaskell",
 		"Vintage",

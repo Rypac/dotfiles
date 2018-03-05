@@ -180,12 +180,7 @@ typeset -gU PATH FPATH CDPATH MAILPATH
 
 ## Aliases
 
-# Neovim
-alias vi='nvim'
-alias vim='nvim'
-
 # tmux
-alias mux='tmuxinator'
 function tm {
     name="${1:-default}"
     tmux attach -t "$name" || tmux new -s "$name"
@@ -257,9 +252,6 @@ elif [ "$(uname)" = "Darwin" ]; then
 
     # VSCode
     alias vscode='code'
-
-    # Vim (work around tmux issue on macOS sierra)
-    alias nvim='reattach-to-user-namespace -l nvim'
 
     # Aliases
     alias f='open -a Finder ./'

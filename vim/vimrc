@@ -23,26 +23,12 @@ Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'christoomey/vim-tmux-navigator'
 
-" Completion
-Plug 'neomake/neomake'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
 " Languages
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
-Plug 'rhysd/vim-clang-format', { 'for': 'cpp' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'keith/swift.vim', { 'for': 'swift' }
-Plug 'elmcast/elm-vim', { 'for': 'elm' }
-Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
-Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
-Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
-Plug 'alx741/vim-hindent', { 'for': 'haskell' }
-Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }
-Plug 'raichoo/purescript-vim', { 'for': 'purescript' }
-Plug 'frigoeu/psc-ide-vim', { 'for': 'purescript' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
-Plug 'quabug/vim-gdscript', { 'for': 'gdscript' }
 Plug 'dag/vim-fish', { 'for': 'fish' }
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 
@@ -60,12 +46,6 @@ call plug#end()
 " netrw
 let g:netrw_liststyle = 3
 
-" Neomake
-autocmd! BufWritePost * Neomake
-
-" Deoplete
-let g:deoplete#enable_at_startup = 1
-
 " GitGutter
 let g:gitgutter_eager = 1
 let g:gitgutter_realtime = 1
@@ -82,19 +62,6 @@ let g:haskellmode_completion_ghc = 0
 let g:necoghc_enable_detailed_browse = 1
 let g:hlintRefactor#disableDefaultKeybindings = 1
 
-" Purescript
-let g:purescript_indent_if = 2
-let g:purescript_indent_case = 2
-let g:purescript_indent_let = 2
-let g:purescript_indent_where = 2
-let g:purescript_indent_do = 2
-
-" Elm
-let g:elm_detailed_complete = 1
-let g:elm_format_autosave = 1
-let g:elm_setup_keybindings = 0
-let g:elm_syntastic_show_warnings = 1
-
 " Javascript
 let g:javascript_plugin_flow = 1
 let g:jsx_ext_required = 0
@@ -102,28 +69,6 @@ let g:jsx_ext_required = 0
 " Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = 'base16'
-
-" ClangFormat
-autocmd FileType c,cpp,objc ClangFormatAutoEnable
-let g:clang_format#detect_file_style = 1
-let g:clang_format#style_options = {
-    \ "BasedOnStyle": "Google",
-    \ "AccessModifierOffset": -2,
-    \ "AlignAfterOpenBracket": "AlwaysBreak",
-    \ "AlignOperands": "false",
-    \ "AllowShortFunctionsOnASingleLine": "Empty",
-    \ "AllowShortIfStatementsOnASingleLine": "false",
-    \ "AllowShortLoopsOnASingleLine": "false",
-    \ "BinPackArguments": "false",
-    \ "BinPackParameters": "false",
-    \ "BreakConstructorInitializersBeforeComma": "true",
-    \ "ColumnLimit": 0,
-    \ "ConstructorInitializerIndentWidth": 0,
-    \ "IndentWidth": 4,
-    \ "ObjCBlockIndentWidth": 4,
-    \ "ObjCSpaceAfterProperty": "true",
-    \ "ObjCSpaceBeforeProtocolList": "true",
-    \ }
 
 " }}}
 
@@ -156,13 +101,14 @@ set wrap
 
 " Ignore certain files and directories
 set wildignore+=*.o,*~,*.pyc,*/.git/*,*/node_modules/*
+set viminfo=
 set noswapfile
 
 " Set language specific options
-autocmd Filetype haskell setlocal tabstop=2 shiftwidth=2 omnifunc=necoghc#omnifunc
-autocmd Filetype purescript setlocal tabstop=2 shiftwidth=2
+autocmd Filetype haskell setlocal tabstop=2 shiftwidth=2
 autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2
 autocmd Filetype ruby setlocal tabstop=2 shiftwidth=2
+autocmd Filetype swift setlocal tabstop=2 shiftwidth=2
 
 " }}}
 
@@ -251,7 +197,6 @@ nnoremap <leader>gh :terminal tig %<cr>
 
 " Jump to definition/between headers
 nnoremap <F2> gD
-nnoremap <F4> :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<cr>
 
 " fzf
 nnoremap <F9> :Files<cr>
@@ -271,34 +216,6 @@ xmap t <Plug>Sneak_t
 xmap T <Plug>Sneak_T
 omap t <Plug>Sneak_t
 omap T <Plug>Sneak_T
-
-" }}}
-
-" Language specific layers {{{
-
-" Haskell
-au FileType haskell nnoremap <leader>hr :call ApplyOneSuggestion()<cr>
-au FileType haskell nnoremap <leader>hR :call ApplyAllSuggestions()<cr>
-au FileType haskell nnoremap <leader>ht :GhcModType<cr>
-au FileType haskell nnoremap <leader>hT :GhcModTypeInsert<cr>
-au FileType haskell nnoremap <leader>hc :Neomake ghcmod<cr>
-au FileType haskell nnoremap <leader>hh :Hoogle<cr>
-au FileType haskell nnoremap <leader>hH :Hoogle 
-au FileType haskell nnoremap <leader>hi :HoogleInfo<cr>
-au FileType haskell nnoremap <leader>hI :HoogleInfo 
-au FileType haskell nnoremap <leader>hz :HoogleClose<cr>
-
-" Purescript
-au FileType purescript nnoremap <leader>hr :PSCIDEapplySuggestion<cr>
-au FileType purescript nnoremap <leader>ht :PSCIDEtype<cr>
-au FileType purescript nnoremap <leader>hT :PSCIDEaddTypeAnnotation<cr>
-au FileType purescript nnoremap <leader>hi :PSCIDEimportIdentifier<cr>
-au FileType purescript nnoremap <leader>hl :PSCIDEload<cr>
-au FileType purescript nnoremap <leader>hd :PSCIDEgoToDefinition<cr>
-au FileType purescript nnoremap <leader>hh :PSCIDEpursuit<cr>
-au FileType purescript nnoremap <leader>hc :PSCIDEcaseSplit<cr>
-au FileType purescript nnoremap <leader>hq :PSCIDEaddImportQualifications<cr>
-au FileType purescript nnoremap <leader>hQ :PSCIDEremoveImportQualifications<cr>
 
 " }}}
 
