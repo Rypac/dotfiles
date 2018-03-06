@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 
+: "${DOTFILES_HOME:="$HOME/.dotfiles"}"
+
 # dotfiles
 update-dotfiles
 
-# apt packages
-fish -c 'app update'
+# brew packages
+brew update
+brew upgrade
+brew bundle --file="$DOTFILES_HOME/mac/Brewfile"
 
 # shell
 fish -c 'fisher up'

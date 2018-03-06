@@ -2,6 +2,9 @@
 
 set -e
 
+# Setup XDG environment variables
+DOTFILES="${DOTFILES_HOME:-"$HOME/.dotfiles"}"
+
 # Install and update homebrew
 if ! type brew > /dev/null 2>&1; then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -12,11 +15,10 @@ fi
 
 # Install packages
 brew tap homebrew/bundle
-brew bundle --file=~/.dotfiles/homebrew/Brewfile
+brew bundle --file="$DOTFILES/mac/Brewfile"
 
-# Use list view in all Finder windows by default
-defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+# Set preferences
+"$DOTFILES/mac/Preferences"
 
-# Show the ~/Library folder
-chflags nohidden ~/Library
-
+# Update all apps
+"$DOTFILES/bin/update-all"
