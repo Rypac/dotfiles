@@ -30,7 +30,6 @@ if not test -d "$XDG_DATA_HOME/fzf"
 end
 
 prepend_to_path "$XDG_DATA_HOME/fzf/bin"
-set -gx FZF_LEGACY_KEYBINDINGS 0
 set -gx FZF_TMUX 1
 
 # base16 colour scheme
