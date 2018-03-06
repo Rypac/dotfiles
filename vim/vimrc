@@ -52,20 +52,6 @@ let g:gitgutter_realtime = 1
 let g:gitgutter_override_sign_column_highlight = 0
 set signcolumn=yes
 
-" Rust
-let g:rustfmt_autosave = 1
-
-" Haskell
-let g:haskell_indent_disable = 1
-let g:hindent_line_length = 80
-let g:haskellmode_completion_ghc = 0
-let g:necoghc_enable_detailed_browse = 1
-let g:hlintRefactor#disableDefaultKeybindings = 1
-
-" Javascript
-let g:javascript_plugin_flow = 1
-let g:jsx_ext_required = 0
-
 " Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = 'base16'
