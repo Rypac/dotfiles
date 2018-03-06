@@ -10,7 +10,7 @@
     ui = true
 
 [core]
-    editor = nvim
+    editor = vim
 
 [alias]
     # Aliases
