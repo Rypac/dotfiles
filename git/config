@@ -59,14 +59,17 @@
     cm = commit -m
     cms = commit -S -m
     cmso = commit -s -m
-    save = !git add -A && git commit -m 'Save progress'
+    save = !git add -A && git commit -m wip
 
     # Fixing things
     undo = reset HEAD~1 --mixed
     amend = commit -a --amend
 
+    # Branch management
+    rename = branch -m
+    orphan = !git branch --merged | egrep -v \"(^\\*|master)\"
+
     # Fun commits
-    yolo = "!git add -A && git commit -m yolo"
     wtf = "!git add -A && git commit -m \"$(curl -s whatthecommit.com/index.txt)\""
     fortune = "!git add -A && git commit -m \"$(fortune -sn 64 | tr '[\\n|\\t]' '\\ ')#fortune\""
 
@@ -81,3 +84,16 @@
 
 [gpg]
     program = gpg
+
+[merge]
+    tool = sublimerge
+
+[mergetool "sublimerge"]
+    cmd = subl -n --wait \"$REMOTE\" \"$BASE\" \"$LOCAL\" \"$MERGED\" --command \"sublimerge_diff_views\"
+    trustExitCode = false
+
+[diff]
+    tool = sublimerge
+
+[difftool "sublimerge"]
+    cmd = subl -n --wait \"$REMOTE\" \"$LOCAL\" --command \"sublimerge_diff_views {\\\"left_read_only\\\": true, \\\"right_read_only\\\": true}\"

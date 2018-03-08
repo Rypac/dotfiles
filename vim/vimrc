@@ -111,75 +111,23 @@ highlight SignColumn ctermbg=black
 " Keybindings {{{
 
 " Quick leader actions
-let maplocalleader = "\\"
-let mapleader = "\<space>"
+let mapleader = "\\"
 
 " Disable highlight
 nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<cr>
 nnoremap <silent> <C-C> :nohlsearch<Bar>:echo<cr>
 nnoremap <silent> <C-[> :nohlsearch<Bar>:echo<cr>
-nnoremap <silent> <localleader><space> :noh<cr>
+nnoremap <silent> <leader><space> :noh<cr>
 
 " Fast actions
-nmap <localleader>w :write<cr>
-nmap <localleader>x :exit<cr>
-nmap <localleader>q :quit<cr>
-nmap <localleader>Q :quitall<cr>
-nmap <localleader>f :Files<cr>
-nmap <localleader>b :Buffers<cr>
-nmap <localleader>c :Commands<cr>
-nmap <localleader>r :redraw!<cr>
-
-" Window layer
-nnoremap <leader>wj <C-W>j
-nnoremap <leader>wk <C-W>k
-nnoremap <leader>wh <C-W>h
-nnoremap <leader>wl <C-W>l
-nnoremap <leader>wJ <C-W>J
-nnoremap <leader>wK <C-W>K
-nnoremap <leader>wH <C-W>H
-nnoremap <leader>wL <C-W>L
-nnoremap <leader>ws :split<cr>
-nnoremap <leader>wv :vsplit<cr>
-nnoremap <leader>wns :new<cr>
-nnoremap <leader>wnv :vnew<cr>
-nnoremap <leader>wnj :rightbelow :split<cr>
-nnoremap <leader>wnk :leftabove :split<cr>
-nnoremap <leader>wnh :leftabove :vsplit<cr>
-nnoremap <leader>wnl :rightbelow :vsplit<cr>
-nnoremap <leader>w= <C-W>=
-nnoremap <leader>w- :resize -5<cr>
-nnoremap <leader>w+ :resize +5<cr>
-nnoremap <leader>wq :quit<cr>
-
-" Tab layer
-nnoremap <leader>th :tabprevious<cr>
-nnoremap <leader>tl :tabnext<cr>
-nnoremap <leader>tH :tabfirst<cr>
-nnoremap <leader>tL :tablast<cr>
-nnoremap <leader>tn :tabnew<cr>
-nnoremap <leader>to :tabonly<cr>
-nnoremap <leader>tq :tabclose<cr>
-nnoremap <leader>tm :tabmove<cr>
-
-" Buffer layer
-nnoremap <leader>bh :bprevious<cr>
-nnoremap <leader>bl :bnext<cr>
-nnoremap <leader>bH :bfirst<cr>
-nnoremap <leader>bL :blast<cr>
-nnoremap <leader>bq :bdelete<cr>
-nnoremap <leader>bb :Buffers<cr>
-
-" Git layer
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gb :Gblame<cr>
-nnoremap <leader>gl :Glog<cr>
-nnoremap <leader>gg :Gbrowse<cr>
-nnoremap <leader>gd :Gdiff<cr>
-nnoremap <leader>gf :Gfetch<cr>
-nnoremap <leader>gp :Gpull<cr>
-nnoremap <leader>gt :terminal tig<cr>
-nnoremap <leader>gh :terminal tig %<cr>
+nmap <leader>w :write<cr>
+nmap <leader>x :exit<cr>
+nmap <leader>q :quit<cr>
+nmap <leader>Q :quitall<cr>
+nmap <leader>f :Files<cr>
+nmap <leader>b :Buffers<cr>
+nmap <leader>c :Commands<cr>
+nmap <leader>r :redraw!<cr>
 
 " Jump to definition/between headers
 nnoremap <F2> gD

@@ -43,9 +43,7 @@
 		"draw_active"
 	],
 	"scroll_past_end": false,
-	"sidebar_small": true,
 	"tab_size": 2,
-	"tabs_small": true,
 	"theme": "Adaptive.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
