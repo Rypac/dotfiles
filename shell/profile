@@ -64,6 +64,7 @@ export SELECTED_EDITOR='/usr/local/bin/vim'
 export LESS='-F -g -i -M -R -S -w -X -z-4'
 export SHELL='/usr/local/bin/fish'
 export HUGHLOGIN_FILE=''
+export HOMEBREW_NO_ANALYTICS=1
 
 # Setup PATH
 export PATH="$HOME/.local/bin:$CARGO_HOME/bin:$XDG_CONFIG_HOME/fnm/bin:$HOME/Library/Python/3.6/lib/python/site-packages:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/usr/local/bin:$PATH"
