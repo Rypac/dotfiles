@@ -21,7 +21,6 @@ Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'christoomey/vim-tmux-navigator'
 
 " Languages
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
