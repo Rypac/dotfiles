@@ -66,9 +66,7 @@ cask "caskroom/versions/iterm2-nightly"
 
 mas "Amphetamine", id: 937984704
 mas "Bear", id: 1091189122
-mas "Bible", id: 917664748
 mas "Copied", id: 1026349850
-mas "Gifox", id: 1082624744
 mas "Magnet", id: 441258766
 mas "PCalc", id: 403504866
 mas "Reeder", id: 880001334
