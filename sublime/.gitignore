@@ -3,5 +3,6 @@
 !Package Control.sublime-settings
 !Preferences.sublime-settings
 !Default.sublime-keymap
-!/snippets/
+!/build/
 !/plugins/
+!/snippets/
