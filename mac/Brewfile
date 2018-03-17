@@ -27,7 +27,6 @@ brew "ruby"
 brew "shellcheck"
 brew "swiftformat"
 brew "swiftlint"
-brew "the_silver_searcher"
 brew "tig"
 brew "tmux"
 brew "vim"
@@ -67,7 +66,9 @@ cask "caskroom/versions/iterm2-nightly"
 mas "Amphetamine", id: 937984704
 mas "Bear", id: 1091189122
 mas "Copied", id: 1026349850
+mas "GarageBand", id: 682658836
 mas "Magnet", id: 441258766
 mas "PCalc", id: 403504866
 mas "Reeder", id: 880001334
 mas "Things3", id: 904280696
+mas "Tweetbot", id: 557168941
