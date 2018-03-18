@@ -58,9 +58,9 @@ export NDK_ROOT="$ANDROID_NDK"
 # Defaults
 export LC_COLLATE='C'
 export EDITOR='vim'
-export VISUAL='code'
+export VISUAL='subl'
 export PAGER='less'
-export SELECTED_EDITOR='/usr/local/bin/vim'
+export SELECTED_EDITOR='vim'
 export LESS='-F -g -i -M -R -S -w -X -z-4'
 export SHELL='/usr/local/bin/fish'
 export HUGHLOGIN_FILE=''
