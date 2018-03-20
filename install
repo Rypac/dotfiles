@@ -40,7 +40,7 @@ link_all() {
 }
 
 # Link common config
-link_all bin "$home/.local/bin"
+link_all bin/common "$home/.local/bin"
 link alacritty
 link fish
 link git
@@ -56,6 +56,7 @@ link_all vim "$home/.vim"
 # Link host specific config
 if [ "$(uname)" = Linux ]; then
     link_all applications "$data/applications"
+    link_all bin/linux "$home/.local/bin"
     link clipit
     link compton/compton.conf "$config/compton.conf"
     link display
@@ -74,6 +75,7 @@ if [ "$(uname)" = Linux ]; then
     link x11/Xresources
     link x11/xsessionrc "$home/.xsessionrc"
 elif [ "$(uname)" = Darwin ]; then
+    link_all bin/mac "$home/.local/bin"
     link launch-agents/env-sync.plist "$home/Library/LaunchAgents/env-sync.plist"
     link sublime "$home/Library/Application Support/Sublime Text 3/Packages/User"
     link sublime/plugins "$home/Library/Application Support/Sublime Text 3/Packages/UserPlugins"
