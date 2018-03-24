@@ -1,1 +1,0 @@
-export CHROMIUM_FLAGS="$CHROMIUM_FLAGS --enable-remote-extensions"

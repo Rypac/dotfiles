@@ -41,7 +41,6 @@ link_all() {
 
 # Link common config
 link_all bin/common "$home/.local/bin"
-link alacritty
 link fish
 link git
 link gnupg/gpg-agent.conf "$home/.gnupg/gpg-agent.conf"
