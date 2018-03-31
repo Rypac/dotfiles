@@ -35,13 +35,11 @@ brew "yarn"
 brew "zsh"
 
 cask "1password"
-cask "1password-cli"
 cask "alfred"
 cask "coconutbattery"
 cask "dash"
 cask "docker"
 cask "dropbox"
-cask "duet"
 cask "google-chrome"
 cask "iina"
 cask "launchcontrol"
@@ -52,21 +50,15 @@ cask "safari-technology-preview"
 cask "spotify"
 cask "transmit"
 cask "tunnelblick"
-cask "visual-studio-code"
-cask "caskroom/fonts/font-fira-code"
 cask "caskroom/fonts/font-fontawesome"
 cask "caskroom/fonts/font-hack"
 cask "caskroom/fonts/font-hasklig"
-cask "caskroom/fonts/font-roboto"
-cask "caskroom/fonts/font-roboto-mono"
 cask "caskroom/fonts/font-source-code-pro"
-cask "caskroom/fonts/font-ubuntu"
 cask "caskroom/versions/iterm2-nightly"
 
 mas "Amphetamine", id: 937984704
 mas "Bear", id: 1091189122
 mas "Copied", id: 1026349850
-mas "GarageBand", id: 682658836
 mas "Magnet", id: 441258766
 mas "PCalc", id: 403504866
 mas "Reeder", id: 880001334
