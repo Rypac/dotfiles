@@ -30,8 +30,6 @@
 	<string>0.70156 0.723031 0.767213 1</string>
 	<key>DVTDebuggerInstructionPointerColor</key>
 	<string>0.705792 0.8 0.544 1</string>
-	<key>DVTLineSpacing</key>
-	<real>1.1000000238418579</real>
 	<key>DVTMarkupTextBackgroundColor</key>
 	<string>0.196054 0.208679 0.240548 1</string>
 	<key>DVTMarkupTextBorderColor</key>
