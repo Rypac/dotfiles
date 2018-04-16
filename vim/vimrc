@@ -66,6 +66,7 @@ set showmatch
 set matchtime=2
 set whichwrap+=h,l
 set updatetime=500
+set belloff=all
 
 " Searching
 set ignorecase
@@ -150,6 +151,18 @@ xmap t <Plug>Sneak_t
 xmap T <Plug>Sneak_T
 omap t <Plug>Sneak_t
 omap T <Plug>Sneak_T
+
+" iVim
+map <D-o> :idocuments<cr>
+map <D-e> :edit .<cr>
+map <D-s> :write<cr>
+map <D-r> :redraw!<cr>
+map <D-t> :tabnew<cr>
+map <D-w> :bd<cr>
+map <D-q> :quit<cr>
+map <D-}> :tabnext<cr>
+map <D-{> :tabprev<cr>
+map <D-p> :ishare<cr>
 
 " }}}
 
