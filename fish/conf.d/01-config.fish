@@ -39,14 +39,6 @@ end
 
 eval sh "$XDG_DATA_HOME/base16-shell/scripts/base16-oceanicnext.sh"
 
-# Install fisherman and plugins
-set -l fisher_function "$XDG_CONFIG_HOME/fish/functions/fisher.fish"
-if not test -f "$fisher_function"
-    curl -Lo "$fisher_function" --create-dirs git.io/fisher
-    source "$fisher_function"
-    fisher
-end
-
 if test -z "$GPG_TTY"
     set -gx GPG_TTY (tty)
 end
@@ -64,6 +56,5 @@ switch (uname)
 
         set -gx SSH_AUTH_SOCK "$HOME/.gnupg/S.gpg-agent.ssh"
         set -gx RUST_SRC_PATH "$RUSTUP_HOME/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
-        append_to_path "$HOME/Library/Python/3.6/bin"
+        append_to_path "$HOME/Library/Python/3.7/bin"
 end
-

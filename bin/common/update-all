@@ -10,9 +10,6 @@ brew update
 brew upgrade
 brew bundle --file="$DOTFILES_HOME/mac/Brewfile"
 
-# shell
-fish -c 'fisher up'
-
 # fzf
 (
     cd "$XDG_DATA_HOME/fzf" || exit
@@ -29,9 +26,7 @@ stack --resolver nightly update
 stack --resolver nightly upgrade
 
 # npm
-fish -c 'fnm ls > /dev/null; and fnm use latest'
 npm update -g
-yarn global upgrade
 
 # python
 fish -c 'pip3 update'
