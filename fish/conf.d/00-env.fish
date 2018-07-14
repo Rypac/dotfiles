@@ -64,6 +64,7 @@ set -gx LESS '-F -g -i -M -R -S -w -X -z-4'
 set -gx SHELL '/usr/local/bin/fish'
 set -gx HUSHLOGIN_FILE ''
 set -gx HOMEBREW_NO_ANALYTICS 1
+set -gx AUTOJUMP_SOURCED 1
 
 # Setup PATH
 if status --is-interactive

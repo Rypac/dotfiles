@@ -39,6 +39,9 @@ end
 
 eval sh "$XDG_DATA_HOME/base16-shell/scripts/base16-oceanicnext.sh"
 
+# autojump
+complete -x -c j -a '(autojump --complete (commandline -t))'
+
 if test -z "$GPG_TTY"
     set -gx GPG_TTY (tty)
 end
