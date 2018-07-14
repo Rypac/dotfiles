@@ -23,15 +23,6 @@ set -gx fish_color_param "blue"
 set -gx fish_color_quote "green"
 set -gx fish_color_redirection "cyan"
 
-# fzf
-if not test -d "$XDG_DATA_HOME/fzf"
-    git clone --depth 1 https://github.com/junegunn/fzf.git "$XDG_DATA_HOME/fzf"
-    eval "$XDG_DATA_HOME/fzf/install --bin"
-end
-
-prepend_to_path "$XDG_DATA_HOME/fzf/bin"
-set -gx FZF_TMUX 1
-
 # base16 colour scheme
 if not test -d "$XDG_DATA_HOME/base16-shell"
     git clone --depth 1 https://github.com/chriskempson/base16-shell.git "$XDG_DATA_HOME/base16-shell"

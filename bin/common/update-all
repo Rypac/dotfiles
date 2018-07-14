@@ -10,13 +10,6 @@ brew update
 brew upgrade
 brew bundle --file="$DOTFILES_HOME/mac/Brewfile"
 
-# fzf
-(
-    cd "$XDG_DATA_HOME/fzf" || exit
-    git pull
-    ./install --bin
-)
-
 # rust
 rustup update
 cargo install-update -a

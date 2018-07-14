@@ -66,6 +66,7 @@ export SHELL='/usr/local/bin/fish'
 export HUGHLOGIN_FILE=''
 export HOMEBREW_NO_ANALYTICS=1
 export AUTOJUMP_SOURCED=1
+export FZF_TMUX=1
 
 # Setup PATH
 export PATH="$HOME/.local/bin:$CARGO_HOME/bin:$XDG_CONFIG_HOME/fnm/bin:$HOME/Library/Python/3.6/lib/python/site-packages:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:/usr/local/bin:$PATH"
