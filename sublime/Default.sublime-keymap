@@ -42,6 +42,10 @@
     { "keys": ["ctrl+tab"], "command": "next_view" },
     { "keys": ["ctrl+shift+tab"], "command": "prev_view" },
 
+    // Terminus
+    { "keys": ["alt+."], "command": "terminus_open", "args": { "config_name": "Default" } },
+    { "keys": ["alt+,"], "command": "toggle_terminus_panel" },
+
     // --------------------
     // Vim bindings
     // --------------------
