@@ -10,9 +10,6 @@ if not test -d "$XDG_DATA_HOME"
     mkdir -p "$XDG_DATA_HOME"
 end
 
-# vim bindings
-fish_hybrid_key_bindings
-
 # colours
 set -gx fish_color_autosuggestion "brblack"
 set -gx fish_color_command "purple"
