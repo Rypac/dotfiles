@@ -36,6 +36,7 @@ brew "zsh"
 
 cask "1password"
 cask "alfred"
+cask "bartender"
 cask "dash"
 cask "docker"
 cask "dropbox"
