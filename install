@@ -75,7 +75,7 @@ if [ "$(uname)" = Linux ]; then
     link x11/xsessionrc "$home/.xsessionrc"
 elif [ "$(uname)" = Darwin ]; then
     link_all bin/mac "$home/.local/bin"
-    link launch-agents/env-sync.plist "$home/Library/LaunchAgents/env-sync.plist"
+    link_all launch-agents "$home/Library/LaunchAgents"
     link sublime "$home/Library/Application Support/Sublime Text 3/Packages/User"
     link sublime/plugins "$home/Library/Application Support/Sublime Text 3/Packages/UserPlugins"
     link vscode "$home/Library/Application Support/Code/User"
