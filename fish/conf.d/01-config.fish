@@ -40,11 +40,6 @@ switch (uname)
         set -gx JAVA_HOME "/opt/java/jdk"
         append_to_path "$JAVA_HOME/bin"
     case Darwin
-        if not count (pgrep -x -u "$USER" gpg-agent) > /dev/null
-            gpg-agent --homedir "$HOME/.gnupg" --enable-ssh-support --daemon > /dev/null 2>&1
-            gpg-connect-agent updatestartuptty /bye > /dev/null
-        end
-
         set -gx SSH_AUTH_SOCK "$HOME/.gnupg/S.gpg-agent.ssh"
         set -gx RUST_SRC_PATH "$RUSTUP_HOME/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
         append_to_path "$HOME/Library/Python/3.7/bin"
