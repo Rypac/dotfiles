@@ -43,7 +43,7 @@ link_all() {
 link_all bin/common "$home/.local/bin"
 link fish
 link git
-link gnupg/gpg-agent.conf "$home/.gnupg/gpg-agent.conf"
+link_all gnupg "$home/.gnupg"
 link npm
 link shell/profile "$home/.profile"
 link ranger "$config/ranger"
