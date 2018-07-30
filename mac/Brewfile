@@ -32,7 +32,6 @@ brew "tig"
 brew "tmux"
 brew "vim"
 brew "wget"
-brew "zsh"
 
 cask "1password"
 cask "alfred"

@@ -49,7 +49,6 @@ link shell/profile "$home/.profile"
 link ranger "$config/ranger"
 link tig
 link tmux/tmux.conf "$home/.tmux.conf"
-link zsh/zshrc "$home/.zshrc"
 link_all vim "$home/.vim"
 
 # Link host specific config
