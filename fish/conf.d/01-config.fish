@@ -20,13 +20,6 @@ set -gx fish_color_param "blue"
 set -gx fish_color_quote "green"
 set -gx fish_color_redirection "cyan"
 
-# base16 colour scheme
-if not test -d "$XDG_DATA_HOME/base16-shell"
-    git clone --depth 1 https://github.com/chriskempson/base16-shell.git "$XDG_DATA_HOME/base16-shell"
-end
-
-eval sh "$XDG_DATA_HOME/base16-shell/scripts/base16-oceanicnext.sh"
-
 # autojump
 complete -x -c j -a '(autojump --complete (commandline -t))'
 
