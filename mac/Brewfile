@@ -1,7 +1,6 @@
 tap "homebrew/core"
 tap "homebrew/bundle"
 tap "caskroom/fonts"
-tap "caskroom/versions"
 tap "caskroom/cask"
 
 brew "autojump"
@@ -53,13 +52,7 @@ cask "transmit"
 cask "caskroom/fonts/font-fontawesome"
 cask "caskroom/fonts/font-hack"
 cask "caskroom/fonts/font-hasklig"
-cask "caskroom/fonts/font-merriweather"
-cask "caskroom/fonts/font-merriweather-sans"
-cask "caskroom/fonts/font-roboto"
-cask "caskroom/fonts/font-roboto-slab"
 cask "caskroom/fonts/font-source-code-pro"
-cask "caskroom/fonts/font-source-sans-pro"
-cask "caskroom/versions/iterm2-nightly"
 
 mas "Amphetamine", id: 937984704
 mas "Bear", id: 1091189122
