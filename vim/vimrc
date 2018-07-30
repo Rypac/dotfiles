@@ -53,7 +53,7 @@ set signcolumn=yes
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'base16'
+let g:airline_theme = 'nord'
 
 " }}}
 
@@ -101,8 +101,7 @@ autocmd Filetype swift setlocal tabstop=2 shiftwidth=2
 " Colour scheme {{{
 
 set background=dark
-let base16colorspace=256
-silent! colorscheme base16-oceanicnext
+colorscheme nord
 highlight LineNr ctermbg=black
 highlight SignColumn ctermbg=black
 
