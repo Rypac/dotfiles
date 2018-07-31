@@ -45,6 +45,13 @@ defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 ###############################################################################
+# Terminal                                                                    #
+###############################################################################
+
+# Enable focus following mouse
+defaults write com.apple.Terminal FocusFollowsMouse -bool true
+
+###############################################################################
 # Finder                                                                      #
 ###############################################################################
 
