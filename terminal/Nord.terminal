@@ -210,6 +210,16 @@
 	<false/>
 	<key>ShowRepresentedURLInTabTitle</key>
 	<false/>
+	<key>ShowRepresentedURLInTitle</key>
+	<true/>
+	<key>ShowRepresentedURLPathInTitle</key>
+	<false/>
+	<key>ShowShellCommandInTitle</key>
+	<false/>
+	<key>ShowTTYNameInTitle</key>
+	<false/>
+	<key>ShowWindowSettingsNameInTitle</key>
+	<false/>
 	<key>TextBoldColor</key>
 	<data>
 	YnBsaXN0MDDUAQIDBAUGFRZYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3AS
@@ -232,6 +242,8 @@
 	<false/>
 	<key>WindowTitle</key>
 	<string>Nord</string>
+	<key>columnCount</key>
+	<integer>140</integer>
 	<key>name</key>
 	<string>Nord</string>
 	<key>noWarnProcesses</key>
@@ -249,7 +261,11 @@
 			<string>-fish</string>
 		</dict>
 	</array>
+	<key>rowCount</key>
+	<integer>44</integer>
 	<key>type</key>
 	<string>Window Settings</string>
+	<key>useOptionAsMetaKey</key>
+	<true/>
 </dict>
 </plist>
