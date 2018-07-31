@@ -2,23 +2,15 @@ if not status --is-interactive
     exit
 end
 
-# Ensure directories exist
-if not test -d "$XDG_CONFIG_HOME"
-    mkdir -p "$XDG_CONFIG_HOME"
-end
-if not test -d "$XDG_DATA_HOME"
-    mkdir -p "$XDG_DATA_HOME"
-end
-
 # colours
-set -gx fish_color_autosuggestion "brblack"
-set -gx fish_color_command "purple"
-set -gx fish_color_comment "yellow"
-set -gx fish_color_end "purple"
-set -gx fish_color_error "red"
-set -gx fish_color_param "blue"
-set -gx fish_color_quote "green"
-set -gx fish_color_redirection "cyan"
+set -gx fish_color_autosuggestion brblack
+set -gx fish_color_command purple
+set -gx fish_color_comment yellow
+set -gx fish_color_end purple
+set -gx fish_color_error red
+set -gx fish_color_param blue
+set -gx fish_color_quote green
+set -gx fish_color_redirection cyan
 
 # autojump
 complete -x -c j -a '(autojump --complete (commandline -t))'
