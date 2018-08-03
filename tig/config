@@ -1,2 +1,17 @@
-bind generic + !git commit --amend
-bind generic I !git add -i %(file)
+set line-graphics = utf-8
+
+bind status A !git commit --amend
+bind status P !git push origin
+bind status U !git pull --rebase
+bind status F !git fetch --all --prune
+bind status S !git stash push --all -u -m %(prompt Enter stash name: )
+bind status D !@?rm %(file)
+
+bind stash D !?git stash drop %(stash)
+
+bind main ! !git revert %(commit)
+bind main U !git rebase -i %(commit)
+bind main S !git format-patch -1 %(commit)
+bind main A !git checkout -b "%(prompt Enter new branch name: )"
+bind main T !git tag %(prompt Enter tag name: ) %(commit)
+bind main B @sh -c "open 'https://'$(git remote -v | grep -Eo 'github.com[:/].[^ ]+' | head -1 | sed 's/.git//' | tr : /)'/commit/%(commit)'"
