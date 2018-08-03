@@ -5,7 +5,7 @@
 purge_ds_store() {
     dir="$1"
     [ ! -w "$dir" ] && prefix='sudo' || prefix=''
-    $prefix find "$dir" -name '.DS_Store' -exec rm {} \;
+    $prefix find "$dir" -name '.DS_Store' -type f -delete
 }
 
 usage() {
@@ -13,13 +13,13 @@ usage() {
 }
 
 case "$1" in
-    all)
+    all|/)
         purge_ds_store '/'
         ;;
-    home)
+    home|~)
         purge_ds_store "$HOME"
         ;;
-    here)
+    here|.)
         purge_ds_store '.'
         ;;
     -h|--help)
