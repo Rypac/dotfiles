@@ -12,4 +12,4 @@ fi
 
 mkdir -p "$dotfiles"
 eval "$fetch https://github.com/Rypac/dotfiles/tarball/master | tar -xz -C "$dotfiles" --strip-components=1"
-bash "$dotfiles/install" "$@"
+bash "${dotfiles}/install" "$@"

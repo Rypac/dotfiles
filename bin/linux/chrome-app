@@ -11,7 +11,7 @@ rename_window() {
     app_window=''
     until [ -n "$app_window" ]; do
         sleep 0.1s
-        app_window=$(wmctrl -lp | grep $app_pid | cut -d' ' -f1)
+        app_window=$(wmctrl -lp | grep "$app_pid" | cut -d' ' -f1)
     done
 
     wmctrl -i -r "$app_window" -N "ChromeApp: $name"

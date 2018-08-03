@@ -16,7 +16,7 @@ scontrol="$(
 )"
 
 capability() {
-    amixer -D $mixer get $scontrol | sed -n "s/  Capabilities:.*cvolume.*/Capture/p"
+    amixer -D "$mixer" get "$scontrol" | sed -n "s/  Capabilities:.*cvolume.*/Capture/p"
 }
 
 usage() {
@@ -28,13 +28,13 @@ step="${2:-5%}" # This may be in in % or dB (eg. 5% or 3dB)
 
 case "$selection" in
     $mute)
-        amixer -q -D $mixer sset $scontrol $(capability) toggle
+        amixer -q -D "$mixer" sset "$scontrol" "$(capability)" toggle
         ;;
     $up)
-        amixer -q -D $mixer sset $scontrol $(capability) ${step}+ unmute
+        amixer -q -D "$mixer" sset "$scontrol" "$(capability)" "${step}+" unmute
         ;;
     $down)
-        amixer -q -D $mixer sset $scontrol $(capability) ${step}- unmute
+        amixer -q -D "$mixer" sset "$scontrol" "$(capability)" "${step}-" unmute
         ;;
     -h|--help)
         usage

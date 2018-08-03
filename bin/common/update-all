@@ -26,4 +26,3 @@ fish -c 'pip3 update'
 
 # vim
 vim +PlugInstall +PlugUpdate +PlugClean! +PlugUpgrade +qall
-

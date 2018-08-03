@@ -23,4 +23,4 @@ sudo apt install --yes \
     wget \
     zsh
 
-sudo chsh -s "$(which fish)" "$USER"
+sudo chsh -s "$(command -v fish)" "$USER"
