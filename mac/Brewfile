@@ -45,8 +45,8 @@ cask "istat-menus"
 cask "launchcontrol"
 cask "little-snitch"
 cask "marked"
+cask "nordvpn"
 cask "paw"
-cask "private-internet-access"
 cask "safari-technology-preview"
 cask "spotify"
 cask "transmit"
@@ -64,3 +64,4 @@ mas "PCalc", id: 403504866
 mas "Reeder", id: 880001334
 mas "Things3", id: 904280696
 mas "Tweetbot", id: 557168941
+mas "Wipr", id: 1320666476
