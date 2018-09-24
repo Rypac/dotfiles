@@ -1,8 +1,0 @@
-<snippet>
-	<content><![CDATA[
-expect($1).to$2($3);
-]]></content>
-	<tabTrigger>after</tabTrigger>
-	<scope>source.js</scope>
-	<description>Jasmine - expect</description>
-</snippet>
