@@ -64,8 +64,8 @@ if [ "$(uname)" = Linux ]; then
     link i3status
     link openbox
     link rofi
-    link sublime "$config/sublime-text-3/Packages/User"
-    link sublime/plugins "$config/sublime-text-3/Packages/UserPlugins"
+    link sublime-text "$config/sublime-text-3/Packages/User"
+    link sublime-text/plugins "$config/sublime-text-3/Packages/UserPlugins"
     link tint2
     link xdg/user-dirs.dirs "$config/user-dirs.dirs"
     link xdg/user-dirs.locale "$config/user-dirs.locale"
@@ -75,8 +75,8 @@ if [ "$(uname)" = Linux ]; then
 elif [ "$(uname)" = Darwin ]; then
     link_all bin/mac "$home/.local/bin"
     link_all launch-agents "$home/Library/LaunchAgents"
-    link sublime "$home/Library/Application Support/Sublime Text 3/Packages/User"
-    link sublime/plugins "$home/Library/Application Support/Sublime Text 3/Packages/UserPlugins"
+    link sublime-text "$home/Library/Application Support/Sublime Text 3/Packages/User"
+    link sublime-text/plugins "$home/Library/Application Support/Sublime Text 3/Packages/UserPlugins"
     link vscode "$home/Library/Application Support/Code/User"
     link xcode/themes "$home/Library/Developer/Xcode/UserData/FontAndColorThemes"
 fi
