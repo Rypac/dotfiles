@@ -64,6 +64,7 @@ if [ "$(uname)" = Linux ]; then
     link i3status
     link openbox
     link rofi
+    link sublime-merge "$config/sublime-merge/Packages/User"
     link sublime-text "$config/sublime-text-3/Packages/User"
     link sublime-text/plugins "$config/sublime-text-3/Packages/UserPlugins"
     link tint2
@@ -75,6 +76,7 @@ if [ "$(uname)" = Linux ]; then
 elif [ "$(uname)" = Darwin ]; then
     link_all bin/mac "$home/.local/bin"
     link_all launch-agents "$home/Library/LaunchAgents"
+    link sublime-merge "$home/Library/Application Support/Sublime Merge/Packages/User"
     link sublime-text "$home/Library/Application Support/Sublime Text 3/Packages/User"
     link sublime-text/plugins "$home/Library/Application Support/Sublime Text 3/Packages/UserPlugins"
     link vscode "$home/Library/Application Support/Code/User"
