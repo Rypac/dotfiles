@@ -7,6 +7,7 @@
     { "keys": ["ctrl+alt+m"], "command": "toggle_menu" },
 
     // Project manager
+    { "keys": ["super+shift+o"], "command": "project_manager", "args": { "action": "switch" } },
     { "keys": ["super+ctrl+shift+p"], "command": "project_manager", "args": { "action": "new" } },
     { "keys": ["ctrl+alt+shift+p"], "command": "project_manager", "args": { "action": "new" } },
 
