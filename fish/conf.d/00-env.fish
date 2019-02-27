@@ -57,6 +57,4 @@ set -gx AUTOJUMP_SOURCED 1
 set -gx FZF_TMUX 1
 
 # Setup PATH
-if status --is-interactive
-    prepend_to_path "$HOME/.local/bin" "$CARGO_HOME/bin" "$ANDROID_HOME/tools" "$ANDROID_HOME/platform-tools" "/usr/local/bin"
-end
+set -gx PATH "$HOME/.local/bin" "/usr/local/bin" "$ANDROID_HOME/tools" "$ANDROID_HOME/platform-tools" $PATH
