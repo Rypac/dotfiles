@@ -68,6 +68,7 @@
     # Branch management
     rename = branch -m
     orphan = !git branch --merged | egrep -v \"(^\\*|master)\"
+    branch-clean = !git branch --merged | egrep -v \"(^\\*|master)\" | xargs git branch -d
 
     # Fun commits
     wtf = "!git add -A && git commit -m \"$(curl -s whatthecommit.com/index.txt)\""

@@ -1,3 +1,4 @@
+set tab-size = 4
 set line-graphics = utf-8
 
 bind status A !git commit --amend
