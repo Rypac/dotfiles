@@ -14,12 +14,10 @@
 		"*.swf",
 		"*.jar",
 		"*.zip",
-		"node_modules/**",
-		"bower_components/**",
-		"elm-stuff/**",
-		"tmp/**",
+		"node_modules",
+		"tmp",
 		"__build",
-		"build/**"
+		"build"
 	],
 	"caret_style": "phase",
 	"close_windows_when_empty": false,
