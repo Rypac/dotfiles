@@ -1,5 +1,5 @@
 {
-    "editor.fontFamily": "'Hasklig', 'Source Code Pro', 'Hack', 'Droid Sans Mono', monospace",
+    "editor.fontFamily": "'Hack', 'Hasklig', 'Source Code Pro', 'Droid Sans Mono', monospace",
     "editor.fontSize": 13,
     "editor.fontLigatures": true,
     "editor.rulers": [
@@ -7,7 +7,6 @@
     ],
     "editor.scrollBeyondLastLine": false,
     "editor.cursorBlinking": "solid",
-    "editor.formatOnSave": true,
     "terminal.integrated.fontFamily": "'Source Code Pro', 'Hack', 'Droid Sans Mono', monospace",
     "terminal.integrated.shell.linux": "/usr/bin/fish",
     "terminal.integrated.shell.osx": "/usr/local/bin/fish",
@@ -27,7 +26,6 @@
     "vim.disableAnnoyingNeovimMessage": true,
     "vim.easymotion": true,
     "vim.enableNeovim": true,
-    "vim.statusBarColorControl": true,
     "vim.statusBarColors": {
         "normal": "#5b8ec5",
         "insert": "#8ec089",
@@ -38,7 +36,6 @@
     },
     "hindentFormat.command": "hindent --line-length 80",
     "code-runner.enableAppInsights": false,
-    "workbench.colorTheme": "Base16 Dark Oceanic Next",
     "workbench.iconTheme": null,
     "purescript.addNpmPath": true,
     "purescript.autocompleteAddImport": false,
@@ -57,5 +54,8 @@
         "editor.wordWrap": "on",
         "editor.quickSuggestions": false,
         "files.trimTrailingWhitespace": false
-    }
+    },
+    "vim.debug.silent": true,
+    "workbench.colorTheme": "Dracula",
+    "explorer.confirmDelete": false
 }
