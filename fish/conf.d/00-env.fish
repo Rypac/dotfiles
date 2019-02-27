@@ -4,7 +4,7 @@ set -gx XDG_CONFIG_HOME "$HOME/.config"
 set -gx XDG_CACHE_HOME "$HOME/.cache"
 set -gx DOTFILES_HOME "$HOME/.dotfiles"
 
-# Set config/data directories for XDG unfriendly programs
+# Set config/data/cache directories for XDG unfriendly programs
 set -gx ATOM_HOME "$XDG_DATA_HOME/atom"
 set -gx AWS_CONFIG_FILE "$XDG_CONFIG_HOME/aws/config"
 set -gx AWS_SHARED_CREDENTIALS_FILE "$XDG_CONFIG_HOME/aws/credentials"
@@ -15,23 +15,11 @@ set -gx GTK2_RC_FILES "$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 set -gx HTTPIE_CONFIG_DIR "$XDG_CONFIG_HOME/httpie"
 set -gx MPLAYER_HOME "$XDG_CONFIG_HOME/mplayer"
 set -gx PASSWORD_STORE_DIR "$XDG_DATA_HOME/pass"
-set -gx SCREENRC "$XDG_CONFIG_HOME/screen/screenrc"
 set -gx SPACEMACSDIR "$XDG_CONFIG_HOME/spacemacs"
 set -gx TERMINFO "$XDG_DATA_HOME/terminfo"
-set -gx WEECHAT_HOME "$XDG_CONFIG_HOME/weechat"
-set -gx WINEPREFIX "$XDG_DATA_HOME/wine"
 set -gx XINITRC "$XDG_CONFIG_HOME/x11/xinitrc"
-set -gx ZPLUG_HOME "$XDG_DATA_HOME/zplug"
-set -gx Z_DATA "$XDG_DATA_HOME/z"
-set -gx _Z_DATA "$Z_DATA"
-
-# Set cache/runtime directories for XDG unfriendly programs
-set -gx CUDA_CACHE_PATH "$XDG_CACHE_HOME/nv"
 set -gx LESSHISTFILE "$XDG_CACHE_HOME/lesshistory"
-set -gx ICEAUTHORITY "$XDG_RUNTIME_DIR/ICEauthority"
-set -gx RXVT_SOCKET "$XDG_RUNTIME_DIR/urxvtd"
 set -gx TMUX_TMPDIR "$XDG_RUNTIME_DIR"
-set -gx __GL_SHADER_DISK_CACHE_PATH "$XDG_CACHE_HOME/nv"
 
 # Programming environments
 set -gx CARGO_HOME "$XDG_DATA_HOME/cargo"
