@@ -40,6 +40,7 @@
 	[
 		"draw_active"
 	],
+	"native_tabs": "system",
 	"scroll_past_end": false,
 	"tab_size": 2,
 	"theme": "Adaptive.sublime-theme",
