@@ -51,7 +51,18 @@ cask "sublime-merge"
 cask "sublime-text-dev"
 cask "spotify"
 cask "transmit"
-cask "caskroom/fonts/font-fontawesome"
-cask "caskroom/fonts/font-hack"
-cask "caskroom/fonts/font-hasklig"
-cask "caskroom/fonts/font-source-code-pro"
+
+cask "font-fira-code"
+cask "font-fontawesome"
+cask "font-hack"
+cask "font-hasklig"
+cask "font-source-code-pro"
+
+mas "Amphetamine", id: 937984704
+mas "Bear", id: 1091189122
+mas "Clean Text Menu", id: 1222295315
+mas "Gladys", id: 1382386877
+mas "Magnet", id: 441258766
+mas "PCalc", id: 403504866
+mas "Reeder", id: 880001334
+mas "Things3", id: 904280696
