@@ -5,10 +5,8 @@
 	],
 	"installed_packages":
 	[
-		"Dockerfile Syntax Highlighting",
 		"FileBrowser",
 		"fish",
-		"GitGutter",
 		"Kotlin",
 		"NeoVintageous",
 		"Origami",
