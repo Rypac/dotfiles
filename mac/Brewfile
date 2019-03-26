@@ -34,7 +34,6 @@ brew "tmux"
 brew "vim"
 brew "wget"
 
-cask "1password"
 cask "alfred"
 cask "bartender"
 cask "dash"
@@ -58,6 +57,7 @@ cask "font-hack"
 cask "font-hasklig"
 cask "font-source-code-pro"
 
+mas "1Password", id: 1333542190
 mas "Amphetamine", id: 937984704
 mas "Bear", id: 1091189122
 mas "Gladys", id: 1382386877
