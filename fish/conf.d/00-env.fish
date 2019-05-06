@@ -57,4 +57,4 @@ set -gx AUTOJUMP_SOURCED 1
 set -gx FZF_TMUX 1
 
 # Setup PATH
-set -gx PATH "$HOME/.local/bin" "/usr/local/bin" "$ANDROID_HOME/tools" "$ANDROID_HOME/platform-tools" $PATH
+set -gx PATH "$HOME/.local/bin" "/usr/local/sbin" "/usr/local/bin" "$ANDROID_HOME/tools" "$ANDROID_HOME/platform-tools" $PATH
