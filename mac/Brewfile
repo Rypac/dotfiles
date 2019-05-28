@@ -35,14 +35,12 @@ brew "vim"
 brew "wget"
 
 cask "alfred"
-cask "bartender"
 cask "dash"
 cask "docker"
 cask "firefox"
 cask "iina"
 cask "istat-menus"
 cask "launchcontrol"
-cask "little-snitch"
 cask "marked"
 cask "paw"
 cask "private-internet-access"
@@ -61,7 +59,6 @@ mas "1Password", id: 1333542190
 mas "Amphetamine", id: 937984704
 mas "Bear", id: 1091189122
 mas "Gladys", id: 1382386877
-mas "Magnet", id: 441258766
 mas "PCalc", id: 403504866
 mas "Reeder", id: 880001334
 mas "Things3", id: 904280696
