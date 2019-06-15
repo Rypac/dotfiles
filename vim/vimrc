@@ -11,7 +11,7 @@ call plug#begin('~/.vim/plugged')
 " Features
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'justinmk/vim-sneak'
@@ -32,7 +32,7 @@ Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 
 " Themes
 Plug 'arcticicestudio/nord-vim'
-Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline'
 
 call plug#end()
 
@@ -42,6 +42,7 @@ call plug#end()
 
 " netrw
 let g:netrw_liststyle = 3
+let g:netrw_winsize = 75
 
 " GitGutter
 let g:gitgutter_eager = 1
@@ -60,6 +61,7 @@ set matchtime=2
 set whichwrap+=h,l
 set updatetime=500
 set belloff=all
+set nomodeline
 
 " Searching
 set ignorecase
