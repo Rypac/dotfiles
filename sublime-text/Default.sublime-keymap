@@ -66,8 +66,5 @@
     { "keys": ["\\", "z"], "command": "toggle_distraction_free", "context": [{ "key": "vi_command_mode_aware" }] },
 
     // Sidebar
-    { "keys": ["-"], "command": "open_and_focus_side_bar", "context": [{ "key": "vi_command_mode_aware" }] },
-    { "keys": ["%"], "command": "new_file_at", "args": { "dirs": [] }, "context": [{ "key": "control", "operand": "sidebar_tree" }] },
-    { "keys": ["d"], "command": "new_folder", "args": { "dirs": [] }, "context": [{ "key": "control", "operand": "sidebar_tree" }] },
-    { "keys": ["R"], "command": "rename_path", "args": { "paths": ["$filepath"] }, "context": [{ "key": "control", "operand": "sidebar_tree" }] }
+    { "keys": ["-"], "command": "open_and_focus_side_bar", "context": [{ "key": "vi_command_mode_aware" }] }
 ]
