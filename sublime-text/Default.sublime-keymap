@@ -2,10 +2,21 @@
     { "keys": ["ctrl+shift+c"], "command": "copy" },
     { "keys": ["ctrl+shift+x"], "command": "cut" },
     { "keys": ["ctrl+shift+v"], "command": "paste" },
-    { "keys": ["ctrl+\\"], "command": "toggle_side_bar" },
     { "keys": ["ctrl+shift+\\"], "command": "toggle_distraction_free" },
-    { "keys": ["ctrl+alt+m"], "command": "toggle_menu" },
-    { "keys": ["f9"], "command": "open_dir", "args": {"dir": "$file_path", "file": "$file_name"} },
+
+    // Sidebar
+    { "keys": ["ctrl+\\"], "command": "toggle_side_bar" },
+    { "keys": ["super+\\"], "command": "toggle_side_bar" },
+
+    // Finder
+    { "keys": ["super+option+j"], "command": "reveal_in_side_bar" },
+    { "keys": ["super+option+shift+j"], "command": "open_dir", "args": { "dir": "$file_path", "file": "$file_name" } },
+    { "keys": ["f9"], "command": "open_dir", "args": { "dir": "$file_path", "file": "$file_name" } },
+
+    // Sublime Merge
+    { "keys": ["super+shift+y"], "command": "sublime_merge_blame_file" },
+    { "keys": ["super+shift+h"], "command": "sublime_merge_file_history" },
+    { "keys": ["super+option+shift+h"], "command": "sublime_merge_folder_history" },
 
     // Project manager
     { "keys": ["super+shift+o"], "command": "project_manager", "args": { "action": "switch" } },
@@ -29,7 +40,7 @@
     { "keys": ["alt+backspace"], "command": "delete_word", "args": { "forward": false, "sub_words": false } },
     { "keys": ["alt+shift+backspace"], "command": "delete_word", "args": { "forward": true, "sub_words": false } },
 
-    // Incremental find panel key bindings
+    // Incremental find panel
     { "keys": ["enter"], "command": "find_next", "context":
         [{ "key": "panel", "operand": "incremental_find" }, { "key": "panel_has_focus" }]
     },
@@ -44,27 +55,10 @@
     { "keys": ["alt+."], "command": "terminus_open", "args": { "config_name": "Default" } },
     { "keys": ["alt+,"], "command": "toggle_terminus_panel" },
 
-    // --------------------
-    // Vim bindings
-    // --------------------
+    // Zoom pane
+    { "keys": ["alt+z"], "command": "toggle_zoom_pane", "args": { "fraction": 0.98 } },
 
-    // Escape
+    // Vim
     { "keys": ["ctrl+["], "command": "press_key", "args": { "key": "<esc>" }, "context": [{ "key": "vi_use_ctrl_keys" }] },
-
-    // Quick leader actions
-    { "keys": ["\\", "w"], "command": "save", "context": [{ "key": "vi_command_mode_aware" }] },
-    { "keys": ["\\", "q"], "command": "close", "context": [{ "key": "vi_command_mode_aware" }] },
-    { "keys": ["\\", "x"], "command": "run_multiple_commands", "context": [{ "key": "vi_command_mode_aware" }],
-        "args": { "commands": [{ "command": "save" }, { "command": "close", "context": "window" }] }
-    },
-    { "keys": ["\\", "n"], "command": "new_file", "context": [{ "key": "vi_command_mode_aware" }] },
-    { "keys": ["\\", "N"], "command": "new_window", "context": [{ "key": "vi_command_mode_aware" }] },
-    { "keys": ["\\", "Q"], "command": "close_window", "context": [{ "key": "vi_command_mode_aware" }] },
-    { "keys": ["\\", "p"], "command": "show_overlay", "args": { "overlay": "command_palette" }, "context": [{ "key": "vi_command_mode_aware" }] },
-    { "keys": ["\\", "f"], "command": "show_overlay", "args": { "overlay": "goto", "show_files": true }, "context": [{ "key": "vi_command_mode_aware" }] },
-    { "keys": ["\\", "b"], "command": "toggle_side_bar", "context": [{ "key": "vi_command_mode_aware" }] },
-    { "keys": ["\\", "z"], "command": "toggle_distraction_free", "context": [{ "key": "vi_command_mode_aware" }] },
-
-    // Sidebar
     { "keys": ["-"], "command": "open_and_focus_side_bar", "context": [{ "key": "vi_command_mode_aware" }] }
 ]
