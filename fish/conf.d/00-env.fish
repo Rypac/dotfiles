@@ -59,4 +59,4 @@ set -gx FZF_DEFAULT_COMMAND 'rg --files --no-ignore-vcs --hidden'
 set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
 
 # Setup PATH
-set -gx PATH "$HOME/.local/bin" "/usr/local/sbin" "/usr/local/bin" "$ANDROID_HOME/tools" "$ANDROID_HOME/platform-tools" $PATH
+set -gx PATH "$HOME/.local/bin" "/usr/local/sbin" "/usr/local/bin" $PATH
