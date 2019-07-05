@@ -1,0 +1,81 @@
+[
+    // Branches
+    {
+        "keys": ["super+option+b"],
+        "command": "show_command_palette",
+        "args": { "command": "create_branch_from_remote_branch" }
+    },
+    {
+        "keys": ["super+option+r"],
+        "command": "show_command_palette",
+        "args": { "command": "rename_branch" }
+    },
+    {
+        "keys": ["super+option+shift+up"],
+        "command": "show_command_palette",
+        "args": { "command": "push", "args": { "prompt": true } }
+    },
+    // Tags
+    {
+        "keys": ["super+t"],
+        "command": "show_command_palette",
+        "args": { "command": "navigate_to_tag" }
+    },
+    {
+        "keys": ["super+shift+t"],
+        "command": "show_command_palette",
+        "args": { "command": "create_tag" }
+    },
+    // Commits
+    {
+        "keys": ["super+e"],
+        "command": "edit_commit"
+    },
+    {
+        "keys": ["super+shift+e"],
+        "command": "edit_commit_contents",
+        "args": { "commit": "$commit" }
+    },
+    // Files
+    {
+        "keys": ["super+shift+y"],
+        "command": "blame",
+        "args": { "path": "$path" },
+        "context": [{ "key": "is_diff" }]
+    },
+    {
+        "keys": ["super+shift+h"],
+        "command": "file_history",
+        "args": { "path": "$path" },
+        "context": [{ "key": "is_diff" }]
+    },
+    // Navigation
+    {
+        "keys": ["super+k", "super+shift+b"],
+        "command": "view_tree"
+    },
+    {
+        "keys": ["super+option+j"],
+        "command": "open_dir",
+        "args": { "path": "$working_dir/$path" },
+        "context": [{ "key": "is_diff" }]
+    },
+    {
+        "keys": ["super+option+j"],
+        "command": "open_dir",
+        "args": { "path": "$working_dir/$path" },
+        "context": [{ "key": "is_blame" }]
+    },
+    {
+        "keys": ["super+option+shift+j"],
+        "command": "open_dir",
+        "args": { "path": "$working_dir/$path" },
+        "context": [{ "key": "is_diff" }]
+    },
+    {
+        "keys": ["super+option+shift+j"],
+        "command": "open_dir",
+        "args": { "path": "$working_dir/$path" },
+        "context": [{ "key": "is_blame" }]
+    }
+]

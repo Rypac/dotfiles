@@ -1,0 +1,7 @@
+[
+    {
+        "caption": "Cleanup Repo",
+        "command": "git",
+        "args": { "argv": ["gc"] }
+    }
+]
