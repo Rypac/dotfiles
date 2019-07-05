@@ -62,7 +62,6 @@ if [ "$(uname)" = Linux ]; then
     link fontconfig
     link i3
     link i3status
-    link openbox
     link rofi
     link sublime-merge "$config/sublime-merge/Packages/User"
     link sublime-text "$config/sublime-text-3/Packages/User"
@@ -70,7 +69,6 @@ if [ "$(uname)" = Linux ]; then
     link tint2
     link xdg/user-dirs.dirs "$config/user-dirs.dirs"
     link xdg/user-dirs.locale "$config/user-dirs.locale"
-    link vscode "$config/vscode/User"
     link x11/Xresources
     link x11/xsessionrc "$home/.xsessionrc"
 elif [ "$(uname)" = Darwin ]; then
@@ -80,6 +78,5 @@ elif [ "$(uname)" = Darwin ]; then
     link sublime-merge "$home/Library/Application Support/Sublime Merge/Packages/User"
     link sublime-text "$home/Library/Application Support/Sublime Text 3/Packages/User"
     link sublime-text/plugins "$home/Library/Application Support/Sublime Text 3/Packages/UserPlugins"
-    link vscode "$home/Library/Application Support/Code/User"
     link xcode/themes "$home/Library/Developer/Xcode/UserData/FontAndColorThemes"
 fi
