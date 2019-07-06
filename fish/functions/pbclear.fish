@@ -1,5 +1,7 @@
-function pbclear --description "Provide functionality to clear from the pasteboard (the Clipboard) from command line"
-    if test (which pbcopy)
+function pbclear --description 'Clear the clipboard'
+    if command -sq pbcopy
         echo '' | pbcopy
+    else
+        return 1
     end
 end

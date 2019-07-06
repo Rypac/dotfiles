@@ -28,6 +28,6 @@ switch (uname)
         set -gx JAVA_HOME "/opt/java/jdk"
         append_to_path "$JAVA_HOME/bin"
     case Darwin
-        set -gx RUST_SRC_PATH "$RUSTUP_HOME/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
+        # set -gx RUST_SRC_PATH "$RUSTUP_HOME/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
         append_to_path "$HOME/Library/Python/3.7/bin"
 end
