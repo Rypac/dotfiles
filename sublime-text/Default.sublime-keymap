@@ -1,9 +1,4 @@
 [
-    { "keys": ["ctrl+shift+c"], "command": "copy" },
-    { "keys": ["ctrl+shift+x"], "command": "cut" },
-    { "keys": ["ctrl+shift+v"], "command": "paste" },
-    { "keys": ["ctrl+shift+\\"], "command": "toggle_distraction_free" },
-
     // Sidebar
     { "keys": ["ctrl+\\"], "command": "toggle_side_bar" },
     { "keys": ["super+\\"], "command": "toggle_side_bar" },
@@ -11,54 +6,25 @@
     // Finder
     { "keys": ["super+option+j"], "command": "reveal_in_side_bar" },
     { "keys": ["super+option+shift+j"], "command": "open_dir", "args": { "dir": "$file_path", "file": "$file_name" } },
-    { "keys": ["f9"], "command": "open_dir", "args": { "dir": "$file_path", "file": "$file_name" } },
 
     // Sublime Merge
     { "keys": ["super+shift+y"], "command": "sublime_merge_blame_file" },
     { "keys": ["super+shift+h"], "command": "sublime_merge_file_history" },
     { "keys": ["super+option+shift+h"], "command": "sublime_merge_folder_history" },
 
-    // Project manager
+    // Project Manager
     { "keys": ["super+shift+o"], "command": "project_manager", "args": { "action": "switch" } },
     { "keys": ["super+ctrl+shift+p"], "command": "project_manager", "args": { "action": "new" } },
     { "keys": ["ctrl+alt+shift+p"], "command": "project_manager", "args": { "action": "new" } },
 
-    // File explorer
-    { "keys": ["f1"], "command": "dired", "args": { "immediate": true } },
-    { "keys": ["f3"], "command": "dired_jump", "args": { "new_window": true } },
-    { "keys": ["ctrl+m"], "command": "dired", "args": { "immediate": true, "single_pane": true, "other_group": "left", "project": true } },
-    { "keys": ["enter"], "command": "dired_select", "args": { "and_close": true }, "context":
-        [{ "key": "selector", "operator": "equal", "operand": "text.dired" }, { "key": "setting.dired_rename_mode", "operand": false }]
-    },
-    { "keys": ["q"], "command": "close", "context":
-        [{ "key": "selector", "operator": "equal", "operand": "text.dired" }, { "key": "setting.dired_rename_mode", "operand": false }]
-    },
-
-    // Deletion by words
-    { "keys": ["ctrl+backspace"], "command": "delete_word", "args": { "forward": false, "sub_words": true } },
-    { "keys": ["ctrl+shift+backspace"], "command": "delete_word", "args": { "forward": true, "sub_words": true } },
-    { "keys": ["alt+backspace"], "command": "delete_word", "args": { "forward": false, "sub_words": false } },
-    { "keys": ["alt+shift+backspace"], "command": "delete_word", "args": { "forward": true, "sub_words": false } },
-
-    // Incremental find panel
-    { "keys": ["enter"], "command": "find_next", "context":
-        [{ "key": "panel", "operand": "incremental_find" }, { "key": "panel_has_focus" }]
-    },
-    { "keys": ["shift+enter"], "command": "find_prev", "context":
-        [{ "key": "panel", "operand": "incremental_find" }, { "key": "panel_has_focus" }]
-    },
-    { "keys": ["alt+enter"], "command": "find_all", "args": { "close_panel": true }, "context":
-        [{ "key": "panel", "operand": "incremental_find" }, { "key": "panel_has_focus" }]
-    },
-
     // Terminus
-    { "keys": ["alt+."], "command": "terminus_open", "args": { "config_name": "Default" } },
-    { "keys": ["alt+,"], "command": "toggle_terminus_panel" },
+    { "keys": ["option+."], "command": "terminus_open", "args": { "config_name": "Default" } },
+    { "keys": ["option+,"], "command": "toggle_terminus_panel" },
 
-    // Zoom pane
-    { "keys": ["alt+z"], "command": "toggle_zoom_pane", "args": { "fraction": 0.98 } },
+    // Origami
+    { "keys": ["option+z"], "command": "toggle_zoom_pane", "args": { "fraction": 0.98 } },
 
-    // Vim
+    // NeoVintageous
     { "keys": ["ctrl+["], "command": "press_key", "args": { "key": "<esc>" }, "context": [{ "key": "vi_use_ctrl_keys" }] },
     { "keys": ["-"], "command": "open_and_focus_side_bar", "context": [{ "key": "vi_command_mode_aware" }] }
 ]
