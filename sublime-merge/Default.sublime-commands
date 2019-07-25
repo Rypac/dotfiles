@@ -3,5 +3,10 @@
         "caption": "Cleanup Repo",
         "command": "git",
         "args": { "argv": ["gc"] }
+    },
+    {
+        "caption": "Cleanup Branches",
+        "command": "git",
+        "args": { "argv": ["branch-clean"] }
     }
 ]
