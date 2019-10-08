@@ -53,23 +53,10 @@ link_all vim "$home/.vim"
 
 # Link host specific config
 if [ "$(uname)" = Linux ]; then
-    link_all applications "$data/applications"
     link_all bin/linux "$home/.local/bin"
-    link clipit
-    link compton/compton.conf "$config/compton.conf"
-    link dunst
-    link fontconfig
-    link i3
-    link i3status
-    link rofi
     link sublime-merge "$config/sublime-merge/Packages/User"
     link sublime-text "$config/sublime-text-3/Packages/User"
     link sublime-text/plugins "$config/sublime-text-3/Packages/UserPlugins"
-    link tint2
-    link xdg/user-dirs.dirs "$config/user-dirs.dirs"
-    link xdg/user-dirs.locale "$config/user-dirs.locale"
-    link x11/Xresources
-    link x11/xsessionrc "$home/.xsessionrc"
 elif [ "$(uname)" = Darwin ]; then
     link_all bin/mac "$home/.local/bin"
     link_all launch-agents "$home/Library/LaunchAgents"

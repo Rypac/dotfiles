@@ -5,13 +5,10 @@ set -gx XDG_CACHE_HOME "$HOME/.cache"
 set -gx DOTFILES_HOME "$HOME/.dotfiles"
 
 # Set config/data/cache directories for XDG unfriendly programs
-set -gx ATOM_HOME "$XDG_DATA_HOME/atom"
 set -gx AWS_CONFIG_FILE "$XDG_CONFIG_HOME/aws/config"
 set -gx AWS_SHARED_CREDENTIALS_FILE "$XDG_CONFIG_HOME/aws/credentials"
 set -gx ELINKS_CONFDIR "$XDG_CONFIG_HOME/elinks"
 set -gx ENHANCD_DIR "$XDG_DATA_HOME/enhancd"
-set -gx GIMP2_DIRECTORY "$XDG_CONFIG_HOME/gimp"
-set -gx GTK2_RC_FILES "$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 set -gx HTTPIE_CONFIG_DIR "$XDG_CONFIG_HOME/httpie"
 set -gx MPLAYER_HOME "$XDG_CONFIG_HOME/mplayer"
 set -gx PASSWORD_STORE_DIR "$XDG_DATA_HOME/pass"
