@@ -55,6 +55,9 @@ cask "font-source-code-pro"
 mas "1Password", id: 1333542190
 mas "Bear", id: 1091189122
 mas "Gladys", id: 1382386877
+mas "Keynote", id: 409183694
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
 mas "PCalc", id: 403504866
 mas "Reeder", id: 1449412482
 mas "Things", id: 904280696
