@@ -71,11 +71,11 @@ set smartcase
 set splitbelow
 set splitright
 
-" Always replace tabs with 4 spaces
+" Always replace tabs with 2 spaces
 retab
 set expandtab
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 
 " Indentation
 set smartindent
@@ -85,12 +85,6 @@ set wrap
 set wildignore+=*.o,*~,*.pyc,*/.git/*,*/node_modules/*
 set viminfo=
 set noswapfile
-
-" Set language specific options
-autocmd Filetype haskell setlocal tabstop=2 shiftwidth=2
-autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2
-autocmd Filetype ruby setlocal tabstop=2 shiftwidth=2
-autocmd Filetype swift setlocal tabstop=2 shiftwidth=2
 
 " Theme
 colorscheme nord
