@@ -28,7 +28,6 @@
 	"ignored_packages":
 	[
 		"Six",
-		"SublimeHaskell",
 		"Vintage",
 		"Vintageous"
 	],
@@ -37,6 +36,5 @@
 	"theme": "Adaptive.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
-	"vintageous_use_ctrl_keys": true,
-	"vintageous_use_super_keys": null
+	"vintageous_use_ctrl_keys": true
 }
