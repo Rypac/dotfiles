@@ -11,13 +11,11 @@ call plug#begin('~/.vim/plugged')
 " Features
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
-" Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
-Plug 'justinmk/vim-sneak'
 Plug 'matze/vim-move'
 Plug 'junegunn/vim-peekaboo'
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-multiple-cursors'
 
 " Files
@@ -32,7 +30,6 @@ Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 
 " Themes
 Plug 'arcticicestudio/nord-vim'
-" Plug 'vim-airline/vim-airline'
 
 call plug#end()
 
@@ -115,20 +112,6 @@ nmap <leader>r :redraw!<cr>
 " fzf
 nnoremap <F9> :Files<cr>
 nnoremap <F10> :Buffers<cr>
-
-" Sneak
-nmap f <Plug>Sneak_f
-nmap F <Plug>Sneak_F
-xmap f <Plug>Sneak_f
-xmap F <Plug>Sneak_F
-omap f <Plug>Sneak_f
-omap F <Plug>Sneak_F
-nmap t <Plug>Sneak_t
-nmap T <Plug>Sneak_T
-xmap t <Plug>Sneak_t
-xmap T <Plug>Sneak_T
-omap t <Plug>Sneak_t
-omap T <Plug>Sneak_T
 
 " Window resizing
 nnoremap <D-left> :vertical resize -5<cr>
