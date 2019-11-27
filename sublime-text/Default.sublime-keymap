@@ -1,8 +1,4 @@
 [
-    // Sidebar
-    { "keys": ["ctrl+\\"], "command": "toggle_side_bar" },
-    { "keys": ["super+\\"], "command": "toggle_side_bar" },
-
     // Finder
     { "keys": ["super+option+j"], "command": "reveal_in_side_bar" },
     { "keys": ["super+option+shift+j"], "command": "open_dir", "args": { "dir": "$file_path", "file": "$file_name" } },
@@ -15,7 +11,6 @@
     // Project Manager
     { "keys": ["super+shift+o"], "command": "project_manager", "args": { "action": "switch" } },
     { "keys": ["super+ctrl+shift+p"], "command": "project_manager", "args": { "action": "new" } },
-    { "keys": ["ctrl+alt+shift+p"], "command": "project_manager", "args": { "action": "new" } },
 
     // Terminus
     { "keys": ["option+."], "command": "terminus_open", "args": { "config_name": "Default" } },
