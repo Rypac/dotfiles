@@ -39,7 +39,7 @@ link_all() {
 }
 
 # Link common config
-link_all bin/common "$home/.local/bin"
+link_all bin "$home/.local/bin"
 link fish
 link git
 link_all gnupg "$home/.gnupg"
@@ -52,12 +52,10 @@ link_all vim "$home/.vim"
 
 # Link host specific config
 if [ "$(uname)" = Linux ]; then
-    link_all bin/linux "$home/.local/bin"
     link sublime-merge "$config/sublime-merge/Packages/User"
     link sublime-text "$config/sublime-text-3/Packages/User"
     link sublime-text/plugins "$config/sublime-text-3/Packages/UserPlugins"
 elif [ "$(uname)" = Darwin ]; then
-    link_all bin/mac "$home/.local/bin"
     link_all launch-agents "$home/Library/LaunchAgents"
     link_all mac/services "$home/Library/Services"
     link sublime-merge "$home/Library/Application Support/Sublime Merge/Packages/User"
