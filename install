@@ -1,15 +1,14 @@
 #!/usr/bin/env bash
 
-set -e
+set -euo pipefail
 
-base="${DOTFILES_HOME:-"$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"}"
-home="$HOME"
-config="${XDG_CONFIG_HOME:-"$home/.config"}"
+dotfiles="${DOTFILES_HOME:-"$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"}"
+config="${XDG_CONFIG_HOME:-"$HOME/.config"}"
 
 link() {
     target="$1"
-    from="$base/$target"
-    to="${2:-$config/$1}"
+    from="$dotfiles/$target"
+    to="$2"
     to_parent="$(dirname "$to")"
 
     if [ ! -d "$to_parent" ]; then
@@ -23,7 +22,7 @@ link() {
 
 link_all() {
     target="$1"
-    from="$base/$target"
+    from="$dotfiles/$target"
     to="$2"
 
     if [ ! -d "$to" ]; then
@@ -34,21 +33,21 @@ link_all() {
 
     for f in "$from"/*; do
         name="$(basename "$f")"
-        ln -fns "$f" "$to/${name}"
+        ln -fns "$f" "$to/$name"
     done
 }
 
 # Link common config
-link_all bin "$home/.local/bin"
-link fish
-link git
-link_all gnupg "$home/.gnupg"
-link npm
-link shell/profile "$home/.profile"
+link_all bin "$HOME/.local/bin"
+link fish "$config/fish"
+link git "$config/git"
+link_all gnupg "$HOME/.gnupg"
+link npm "$config/npm"
+link shell/profile "$HOME/.profile"
 link ranger "$config/ranger"
-link tig
-link tmux/tmux.conf "$home/.tmux.conf"
-link_all vim "$home/.vim"
+link tig "$config/tig"
+link tmux/tmux.conf "$HOME/.tmux.conf"
+link vim/vimrc "$HOME/.vim/vimrc"
 
 # Link host specific config
 if [ "$(uname)" = Linux ]; then
@@ -56,10 +55,10 @@ if [ "$(uname)" = Linux ]; then
     link sublime-text "$config/sublime-text-3/Packages/User"
     link sublime-text/plugins "$config/sublime-text-3/Packages/UserPlugins"
 elif [ "$(uname)" = Darwin ]; then
-    link_all launch-agents "$home/Library/LaunchAgents"
-    link_all mac/services "$home/Library/Services"
-    link sublime-merge "$home/Library/Application Support/Sublime Merge/Packages/User"
-    link sublime-text "$home/Library/Application Support/Sublime Text 3/Packages/User"
-    link sublime-text/plugins "$home/Library/Application Support/Sublime Text 3/Packages/UserPlugins"
-    link xcode/themes "$home/Library/Developer/Xcode/UserData/FontAndColorThemes"
+    link_all launch-agents "$HOME/Library/LaunchAgents"
+    link_all mac/services "$HOME/Library/Services"
+    link sublime-merge "$HOME/Library/Application Support/Sublime Merge/Packages/User"
+    link sublime-text "$HOME/Library/Application Support/Sublime Text 3/Packages/User"
+    link sublime-text/plugins "$HOME/Library/Application Support/Sublime Text 3/Packages/UserPlugins"
+    link xcode/themes "$HOME/Library/Developer/Xcode/UserData/FontAndColorThemes"
 fi
