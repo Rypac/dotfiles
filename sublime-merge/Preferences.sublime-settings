@@ -1,4 +1,5 @@
 {
     "font_face": "Hack",
+    "tab_size": 2,
     "theme": "Merge Dark.sublime-theme"
 }

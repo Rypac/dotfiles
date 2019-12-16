@@ -70,9 +70,8 @@
     orphan = !git branch --merged | egrep -v \"(^\\*|master)\"
     branch-clean = !git branch --merged | egrep -v \"(^\\*|master)\" | xargs git branch -d
 
-    # Fun commits
-    wtf = "!git add -A && git commit -m \"$(curl -s whatthecommit.com/index.txt)\""
-    fortune = "!git add -A && git commit -m \"$(fortune -sn 64 | tr '[\\n|\\t]' '\\ ')#fortune\""
+    # Review changes
+    review = !sh -c 'git diff master...$1 | subl'
 
     # Submodules
     subdiff = !git diff && git submodule foreach 'git diff'

@@ -36,6 +36,16 @@
         "command": "edit_commit_contents",
         "args": { "commit": "$commit" }
     },
+    {
+        "keys": ["option+shift+up"],
+        "command": "move_commit",
+        "args": { "commit": "$commit", "down": false }
+    },
+    {
+        "keys": ["option+shift+down"],
+        "command": "move_commit",
+        "args": { "commit": "$commit", "down": true }
+    },
     // Files
     {
         "keys": ["super+shift+y"],
