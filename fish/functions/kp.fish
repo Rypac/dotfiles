@@ -1,4 +1,4 @@
-function kp --description "Kill processes"
+function kp --description 'Kill processes'
     set -l __kp__pid ''
 
     if contains -- '--tcp' $argv

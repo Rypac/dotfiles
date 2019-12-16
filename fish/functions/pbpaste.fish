@@ -1,4 +1,4 @@
-function pbpaste --description 'Paste data from the clipboard'
+function pbpaste --description 'Paste from the clipboard'
     if command -sq pbpaste
         command pbpaste $argv
     else if command -sq xclip

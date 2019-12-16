@@ -1,3 +1,3 @@
-function z -d "Jump to a directory"
+function z --description 'Jump to a directory'
     j $argv
 end

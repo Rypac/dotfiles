@@ -1,5 +1,3 @@
-# Key bindings
-# ------------
 function fzf_key_bindings
 
   # Store current token in $dir as root for the 'find' command
