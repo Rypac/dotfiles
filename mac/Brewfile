@@ -36,7 +36,6 @@ cask "marked"
 cask "sublime-merge-dev"
 cask "sublime-text-dev"
 cask "spotify"
-cask "turbo-boost-switcher"
 cask "transmit"
 
 cask "font-fira-code"
@@ -46,9 +45,14 @@ cask "font-hasklig"
 cask "font-source-code-pro"
 
 mas "1Password", id: 1333542190
+mas "Gladys", id: 1382386877
+mas "Jayson", id: 1468691718
 mas "Keynote", id: 409183694
+mas "Magnet", id: 441258766
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "PCalc", id: 403504866
 mas "Reeder", id: 1449412482
+mas "Tot", id: 1491071483
 mas "Things", id: 904280696
+mas "Wipr", id: 1320666476
