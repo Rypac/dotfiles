@@ -47,7 +47,7 @@ link shell/profile "$HOME/.profile"
 link ranger "$config/ranger"
 link tig "$config/tig"
 link tmux/tmux.conf "$HOME/.tmux.conf"
-link vim/vimrc "$HOME/.vim/vimrc"
+link vim "$HOME/.vim"
 
 # Link host specific config
 if [ "$(uname)" = Linux ]; then

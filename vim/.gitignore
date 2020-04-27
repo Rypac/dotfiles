@@ -1,0 +1,12 @@
+/*
+
+!.gitignore
+!vimrc
+
+# Packages
+!pack/
+pack/*
+!pack/packages/
+pack/packages/*
+!pack/packages/start/
+!pack/packages/opt/
