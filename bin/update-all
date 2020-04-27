@@ -12,20 +12,3 @@ brew bundle --file="$DOTFILES_HOME/mac/Brewfile"
 
 # app store
 mas upgrade
-
-# vim
-vim +PlugInstall +PlugUpdate +PlugClean! +PlugUpgrade +qall
-
-# rust
-# rustup update
-# cargo install-update -a
-
-# stack
-# stack --resolver nightly update
-# stack --resolver nightly upgrade
-
-# npm
-# npm update -g
-
-# python
-# fish -c 'pip3 update'
