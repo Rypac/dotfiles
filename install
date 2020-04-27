@@ -55,10 +55,10 @@ if [ "$(uname)" = Linux ]; then
     link sublime-text "$config/sublime-text-3/Packages/User"
     link sublime-text/plugins "$config/sublime-text-3/Packages/UserPlugins"
 elif [ "$(uname)" = Darwin ]; then
-    link_all launch-agents "$HOME/Library/LaunchAgents"
+    link_all mac/launch-agents "$HOME/Library/LaunchAgents"
     link_all mac/services "$HOME/Library/Services"
+    link mac/xcode/themes "$HOME/Library/Developer/Xcode/UserData/FontAndColorThemes"
     link sublime-merge "$HOME/Library/Application Support/Sublime Merge/Packages/User"
     link sublime-text "$HOME/Library/Application Support/Sublime Text 3/Packages/User"
     link sublime-text/plugins "$HOME/Library/Application Support/Sublime Text 3/Packages/UserPlugins"
-    link xcode/themes "$HOME/Library/Developer/Xcode/UserData/FontAndColorThemes"
 fi
