@@ -1,8 +1,8 @@
 # Setup XDG environment variables
-set -gx XDG_DATA_HOME "$HOME/.local/share"
-set -gx XDG_CONFIG_HOME "$HOME/.config"
-set -gx XDG_CACHE_HOME "$HOME/.cache"
-set -gx DOTFILES_HOME "$HOME/.dotfiles"
+set -q "$XDG_DATA_HOME" || set -gx XDG_DATA_HOME "$HOME/.local/share"
+set -q "$XDG_CONFIG_HOME" || set -gx XDG_CONFIG_HOME "$HOME/.config"
+set -q "$XDG_CACHE_HOME" || set -gx XDG_CACHE_HOME "$HOME/.cache"
+set -q "$DOTFILES_HOME" || set -gx DOTFILES_HOME "$HOME/.dotfiles"
 
 # Set config/data/cache directories for XDG unfriendly programs
 set -gx AWS_CONFIG_FILE "$XDG_CONFIG_HOME/aws/config"
@@ -10,34 +10,24 @@ set -gx AWS_SHARED_CREDENTIALS_FILE "$XDG_CONFIG_HOME/aws/credentials"
 set -gx ELINKS_CONFDIR "$XDG_CONFIG_HOME/elinks"
 set -gx ENHANCD_DIR "$XDG_DATA_HOME/enhancd"
 set -gx HTTPIE_CONFIG_DIR "$XDG_CONFIG_HOME/httpie"
+set -gx LESSHISTFILE "$XDG_CACHE_HOME/lesshistory"
 set -gx MPLAYER_HOME "$XDG_CONFIG_HOME/mplayer"
 set -gx PASSWORD_STORE_DIR "$XDG_DATA_HOME/pass"
 set -gx SPACEMACSDIR "$XDG_CONFIG_HOME/spacemacs"
 set -gx TERMINFO "$XDG_DATA_HOME/terminfo"
 set -gx XINITRC "$XDG_CONFIG_HOME/x11/xinitrc"
-set -gx LESSHISTFILE "$XDG_CACHE_HOME/lesshistory"
-set -gx TMUX_TMPDIR "$XDG_RUNTIME_DIR"
 
 # Programming environments
 set -gx CARGO_HOME "$XDG_DATA_HOME/cargo"
 set -gx RUSTUP_HOME "$XDG_DATA_HOME/rustup"
 set -gx STACK_ROOT "$XDG_DATA_HOME/stack"
+set -gx NODE_REPL_HISTORY "$XDG_CACHE_HOME/node-repl-history"
 set -gx NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME/npm/config"
 set -gx CP_HOME_DIR "$XDG_CACHE_HOME/cocoapods"
 set -gx CP_REPOS_DIR "$CP_HOME_DIR/repos"
 set -gx BUNDLE_PATH "$XDG_CACHE_HOME/bundle"
 set -gx GEM_SPEC_CACHE "$XDG_CACHE_HOME/ruby/gem/spec"
 set -gx RBENV_ROOT "$XDG_DATA_HOME/rbenv"
-set -gx MIX_HOME "$XDG_DATA_HOME/mix"
-set -gx NODE_REPL_HISTORY "$XDG_CACHE_HOME/node-repl-history"
-set -gx GRADLE_USER_HOME "$XDG_CACHE_HOME/gradle"
-set -gx ANDROID_SDK_HOME "$HOME/Library/Android"
-set -gx ANDROID_HOME "$ANDROID_SDK_HOME/sdk"
-set -gx ANDROID_SDK_ROOT "$ANDROID_HOME"
-set -gx ANDROID_EMULATOR_HOME "$ANDROID_SDK_HOME/.android"
-set -gx ANDROID_AVD_HOME "$ANDROID_EMULATOR_HOME/avd"
-set -gx ANDROID_NDK "$ANDROID_HOME/ndk-bundle"
-set -gx NDK_ROOT "$ANDROID_NDK"
 
 # Defaults
 set -gx LC_COLLATE 'C'
@@ -46,7 +36,6 @@ set -gx VISUAL 'subl'
 set -gx PAGER 'less'
 set -gx SELECTED_EDITOR 'vim'
 set -gx LESS '-F -g -i -M -R -S -w -X -z-4'
-set -gx SHELL '/usr/local/bin/fish'
 set -gx HUSHLOGIN_FILE ''
 set -gx HOMEBREW_NO_ANALYTICS 1
 set -gx DOTNET_CLI_TELEMETRY_OPTOUT 1
