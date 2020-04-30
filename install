@@ -7,41 +7,41 @@ config="${XDG_CONFIG_HOME:-"$HOME/.config"}"
 
 link() {
     target="$1"
-    from="$dotfiles/$target"
-    to="$2"
-    to_parent="$(dirname "$to")"
+    origin="$dotfiles/$target"
+    destination="$2"
+    destination_parent="$(dirname "$destination")"
 
-    if [ ! -d "$to_parent" ]; then
-        mkdir -p "$to_parent"
+    if [ ! -d "$destination_parent" ]; then
+        mkdir -p "$destination_parent"
     fi
 
-    echo "Linking $target to $to"
+    echo "Linking $target to $destination"
 
-    ln -fns "$from" "$to"
+    ln -fns "$origin" "$destination"
 }
 
-link_all() {
+link_contents() {
     target="$1"
-    from="$dotfiles/$target"
-    to="$2"
+    origin="$dotfiles/$target"
+    destination="$2"
 
-    if [ ! -d "$to" ]; then
-        mkdir -p "$to"
+    if [ ! -d "$destination" ]; then
+        mkdir -p "$destination"
     fi
 
-    echo "Linking all in $target to $to"
+    echo "Linking contents of $target to $destination"
 
-    for f in "$from"/*; do
+    for f in "$origin"/*; do
         name="$(basename "$f")"
-        ln -fns "$f" "$to/$name"
+        ln -fns "$f" "$destination/$name"
     done
 }
 
 # Link common config
-link_all bin "$HOME/.local/bin"
+link_contents bin "$HOME/.local/bin"
 link fish "$config/fish"
 link git "$config/git"
-link_all gnupg "$HOME/.gnupg"
+link_contents gnupg "$HOME/.gnupg"
 link npm "$config/npm"
 link shell/profile "$HOME/.profile"
 link shell/profile "$HOME/.bash_profile"
@@ -57,8 +57,8 @@ if [ "$(uname)" = Linux ]; then
     link sublime-text "$config/sublime-text-3/Packages/User"
     link sublime-text/plugins "$config/sublime-text-3/Packages/UserPlugins"
 elif [ "$(uname)" = Darwin ]; then
-    link_all mac/launch-agents "$HOME/Library/LaunchAgents"
-    link_all mac/services "$HOME/Library/Services"
+    link_contents mac/launch-agents "$HOME/Library/LaunchAgents"
+    link_contents mac/services "$HOME/Library/Services"
     link mac/xcode/themes "$HOME/Library/Developer/Xcode/UserData/FontAndColorThemes"
     link sublime-merge "$HOME/Library/Application Support/Sublime Merge/Packages/User"
     link sublime-text "$HOME/Library/Application Support/Sublime Text 3/Packages/User"
