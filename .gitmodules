@@ -16,3 +16,6 @@
 [submodule "vim/pack/packages/start/vim-peekaboo"]
 	path = vim/pack/packages/start/vim-peekaboo
 	url = https://github.com/junegunn/vim-peekaboo.git
+[submodule "vim/pack/packages/start/vim-sneak"]
+	path = vim/pack/packages/start/vim-sneak
+	url = https://github.com/justinmk/vim-sneak.git
