@@ -3,7 +3,11 @@
 : "${DOTFILES_HOME:="$HOME/.dotfiles"}"
 
 # dotfiles
-update-dotfiles
+(
+    cd "$DOTFILES_HOME"
+    git pull --recurse-submodules
+    ./install
+)
 
 # brew packages
 brew update
@@ -12,3 +16,6 @@ brew bundle --file="$DOTFILES_HOME/mac/Brewfile"
 
 # app store
 mas upgrade
+
+# vim package docs
+vim -c 'helptags all' +qall

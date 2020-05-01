@@ -3,7 +3,7 @@
 set -e
 
 # Setup XDG environment variables
-DOTFILES="${DOTFILES_HOME:-"$HOME/.dotfiles"}"
+: "${DOTFILES_HOME:="$HOME/.dotfiles"}"
 
 # Install and update homebrew
 if ! type brew > /dev/null 2>&1; then
@@ -15,10 +15,10 @@ fi
 
 # Install packages
 brew tap homebrew/bundle
-brew bundle --file="$DOTFILES/mac/Brewfile"
+brew bundle --file="$DOTFILES_HOME/mac/Brewfile"
 
 # Set preferences
-"$DOTFILES/mac/Preferences"
+"$DOTFILES_HOME/mac/Preferences"
 
 # Update all apps
-"$DOTFILES/bin/update-all"
+"$DOTFILES_HOME/bin/update-all"
