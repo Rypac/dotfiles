@@ -1,20 +1,15 @@
 " Options {{{
 
-" Theme
-" colorscheme nord
+set nocompatible
 
 " netrw
-let g:netrw_liststyle = 3
-let g:netrw_winsize = 75
+let g:netrw_banner=0
+let g:netrw_liststyle=3
 
 " UI
-set number
-set showmatch
-set matchtime=2
-set whichwrap+=h,l
-set updatetime=500
-set belloff=all
+" set number
 set nomodeline
+set belloff=all
 
 " Searching
 set hlsearch
@@ -32,7 +27,6 @@ set tabstop=2
 
 " Indentation
 set smartindent
-set wrap
 
 " Ignore certain files and directories
 set wildignore+=*.o,*~,*.pyc,*/.git/*,*/node_modules/*
@@ -42,25 +36,6 @@ set noswapfile
 " }}}
 
 " Keybindings {{{
-
-" Quick leader actions
-let mapleader = "\\"
-
-" Disable highlight
-nnoremap <silent> <cr> :nohlsearch<cr><cr>
-nnoremap <silent> <space> :nohlsearch<cr><space>
-nnoremap <silent> <C-l> :nohlsearch<cr><C-l>
-
-" Fast actions
-nmap <leader>w :write<cr>
-nmap <leader>x :exit<cr>
-nmap <leader>q :quit<cr>
-nmap <leader>Q :quitall<cr>
-nmap <leader>f :Files<cr>
-nmap <leader>g :Goyo<cr>
-nmap <leader>b :Buffers<cr>
-nmap <leader>c :Commands<cr>
-nmap <leader>r :redraw!<cr>
 
 " fzf
 nnoremap <F9> :Files<cr>
