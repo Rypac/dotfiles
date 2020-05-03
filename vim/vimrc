@@ -1,6 +1,7 @@
 " Options {{{
 
 set nocompatible
+set noswapfile
 
 " netrw
 let g:netrw_banner=0
@@ -27,6 +28,12 @@ set tabstop=2
 
 " Indentation
 set smartindent
+
+" Draw whitespace
+" set list listchars=tab:»·,trail:·,nbsp:·
+
+" Use single space after punctuation
+set nojoinspaces
 
 " Ignore certain files and directories
 set wildignore+=*.o,*~,*.pyc,*/.git/*,*/node_modules/*
