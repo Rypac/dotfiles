@@ -28,6 +28,7 @@ brew "vim"
 brew "wget"
 
 cask "alfred"
+cask "airfoil"
 cask "audio-hijack"
 cask "firefox"
 cask "iina"
