@@ -37,6 +37,7 @@ cask "marked"
 cask "loopback"
 cask "sublime-merge-dev"
 cask "sublime-text-dev"
+cask "soundsource"
 cask "spotify"
 cask "transmit"
 
