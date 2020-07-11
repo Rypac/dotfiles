@@ -54,13 +54,13 @@ link vim "$HOME/.vim"
 # Link host specific config
 if [ "$(uname)" = Linux ]; then
     link sublime-merge "$config/sublime-merge/Packages/User"
-    link sublime-text "$config/sublime-text-3/Packages/User"
-    link sublime-text/plugins "$config/sublime-text-3/Packages/UserPlugins"
+    link sublime-text "$config/sublime-text/Packages/User"
+    link sublime-text/plugins "$config/sublime-text/Packages/UserPlugins"
 elif [ "$(uname)" = Darwin ]; then
     link_contents mac/launch-agents "$HOME/Library/LaunchAgents"
     link_contents mac/services "$HOME/Library/Services"
     link mac/xcode/themes "$HOME/Library/Developer/Xcode/UserData/FontAndColorThemes"
     link sublime-merge "$HOME/Library/Application Support/Sublime Merge/Packages/User"
-    link sublime-text "$HOME/Library/Application Support/Sublime Text 3/Packages/User"
-    link sublime-text/plugins "$HOME/Library/Application Support/Sublime Text 3/Packages/UserPlugins"
+    link sublime-text "$HOME/Library/Application Support/Sublime Text/Packages/User"
+    link sublime-text/plugins "$HOME/Library/Application Support/Sublime Text/Packages/UserPlugins"
 fi

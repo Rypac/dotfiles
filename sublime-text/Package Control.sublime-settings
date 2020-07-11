@@ -11,12 +11,9 @@
 		"Origami",
 		"Package Control",
 		"ProjectManager",
-		"SublimeLinter",
-		"SublimeLinter-shellcheck",
-		"Terminus",
-		"ToggleNeoVintageous"
+		"ToggleNeoVintageous",
 	],
 	"repositories":
 	[
-	]
+	],
 }
