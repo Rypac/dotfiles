@@ -1,5 +1,6 @@
 {
-    "font_face": "Hack",
-    "tab_size": 2,
-    "theme": "Merge Dark.sublime-theme"
+	"font_face": "Hack",
+	"tab_size": 2,
+	"theme": "Merge Dark.sublime-theme",
+	"side_bar_layout": "locations_as_column",
 }
