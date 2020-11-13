@@ -48,6 +48,7 @@ cask "font-hasklig"
 cask "font-source-code-pro"
 
 mas "1Password", id: 1333542190
+mas "Craft", id: 1487937127
 mas "Fantastical", id: 975937182
 mas "GoodLinks", id: 1474335294
 mas "Keynote", id: 409183694
