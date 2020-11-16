@@ -30,10 +30,11 @@
 		"Vintage",
 		"Vintageous",
 	],
-	"neovintageous_build_version": 11100,
 	"tab_size": 2,
 	"theme": "Adaptive.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
 	"vintageous_use_ctrl_keys": true,
+	"vintageous_use_super_keys": false,
+	"neovintageous_build_version": 11100,
 }
