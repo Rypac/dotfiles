@@ -22,3 +22,10 @@ brew bundle --file="$DOTFILES_HOME/mac/Brewfile"
 
 # Update all apps
 "$DOTFILES_HOME/bin/update-all"
+
+# Install configuration
+"$DOTFILES_HOME/install"
+
+# Fix GPG permissions
+find ~/.gnupg -type d -exec chmod 700 {} \;
+find ~/.gnupg -type f -exec chmod 600 {} \;
