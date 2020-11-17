@@ -29,7 +29,6 @@ brew "wget"
 
 cask "airfoil"
 cask "audio-hijack"
-cask "firefox"
 cask "iina"
 cask "launchcontrol"
 cask "maccy"
