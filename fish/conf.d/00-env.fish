@@ -29,6 +29,7 @@ set -gx CP_REPOS_DIR "$CP_HOME_DIR/repos"
 set -gx BUNDLE_PATH "$XDG_CACHE_HOME/bundle"
 set -gx GEM_SPEC_CACHE "$XDG_CACHE_HOME/ruby/gem/spec"
 set -gx RBENV_ROOT "$XDG_DATA_HOME/rbenv"
+set -gx GHCUP_USE_XDG_DIRS 1
 
 # Defaults
 set -gx LC_COLLATE 'C'

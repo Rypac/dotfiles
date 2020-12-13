@@ -29,6 +29,7 @@ export CP_REPOS_DIR="$CP_HOME_DIR/repos"
 export BUNDLE_PATH="$XDG_CACHE_HOME/bundle"
 export GEM_SPEC_CACHE="$XDG_CACHE_HOME/ruby/gem/spec"
 export RBENV_ROOT="$XDG_DATA_HOME/rbenv"
+export GHCUP_USE_XDG_DIRS=1
 
 # Defaults
 export LC_COLLATE='C'
