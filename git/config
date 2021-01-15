@@ -67,11 +67,11 @@
 
     # Branch management
     rename = branch -m
-    orphan = !git branch --merged | egrep -v \"(^\\*|master)\"
-    branch-clean = !git branch --merged | egrep -v \"(^\\*|master)\" | xargs git branch -d
+    orphan = !git branch --merged | egrep -v \"(^\\*|master|main)\"
+    branch-clean = !git branch --merged | egrep -v \"(^\\*|master|main)\" | xargs git branch -d
 
     # Review changes
-    review = !sh -c 'git diff master...$1 | subl'
+    review = !sh -c 'git diff main...$1 | subl'
 
     # Submodules
     subdiff = !git diff && git submodule foreach 'git diff'
