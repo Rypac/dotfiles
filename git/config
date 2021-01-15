@@ -82,6 +82,9 @@
 [push]
     default = simple
 
+[pull]
+    ff = only
+
 [gpg]
     program = gpg
 
