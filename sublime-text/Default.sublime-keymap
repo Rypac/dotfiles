@@ -20,6 +20,5 @@
     { "keys": ["option+z"], "command": "toggle_zoom_pane", "args": { "fraction": 0.98 } },
 
     // NeoVintageous
-    { "keys": ["ctrl+["], "command": "press_key", "args": { "key": "<esc>" }, "context": [{ "key": "vi_use_ctrl_keys" }] },
     { "keys": ["-"], "command": "open_and_focus_side_bar", "context": [{ "key": "vi_command_mode_aware" }] }
 ]
