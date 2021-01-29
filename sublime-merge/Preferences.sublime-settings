@@ -1,8 +1,6 @@
 {
 	"font_face": "Hack",
-	"font_size": 12,
 	"tab_size": 2,
-	"theme": "Merge Dark.sublime-theme",
-	"translate_tabs_to_spaces": true,
-	"side_bar_layout": "locations_as_column",
+	"theme": "auto",
+	"translate_tabs_to_spaces": true
 }
