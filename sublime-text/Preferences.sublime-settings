@@ -2,10 +2,8 @@
 	"color_scheme": "auto",
 	"ensure_newline_at_eof_on_save": true,
 	"font_face": "Hack",
-	"font_size": 12,
 	"highlight_modified_tabs": true,
-	"ignored_packages":
-	[
+	"ignored_packages": [
 		"Six",
 		"Vintage",
 		"Vintageous"
@@ -13,5 +11,5 @@
 	"neovintageous_build_version": 11100,
 	"tab_size": 2,
 	"translate_tabs_to_spaces": true,
-	"trim_trailing_white_space_on_save": true,
+	"trim_trailing_white_space_on_save": true
 }
