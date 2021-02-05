@@ -46,7 +46,6 @@ cask "font-hasklig"
 cask "font-source-code-pro"
 
 mas "1Password", id: 1333542190
-mas "Codye", id: 1516894961
 mas "Craft", id: 1487937127
 mas "Fantastical", id: 975937182
 mas "Hush", id: 1544743900
