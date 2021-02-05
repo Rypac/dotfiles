@@ -1,3 +1,18 @@
+#     ____      ____
+#    / __/___  / __/
+#   / /_/_  / / /_
+#  / __/ / /_/ __/
+# /_/   /___/_/ key-bindings.fish
+#
+# - $FZF_TMUX_OPTS
+# - $FZF_CTRL_T_COMMAND
+# - $FZF_CTRL_T_OPTS
+# - $FZF_CTRL_R_OPTS
+# - $FZF_ALT_C_COMMAND
+# - $FZF_ALT_C_OPTS
+
+# Key bindings
+# ------------
 function fzf_key_bindings
 
   # Store current token in $dir as root for the 'find' command
@@ -8,15 +23,15 @@ function fzf_key_bindings
 
     # "-path \$dir'*/\\.*'" matches hidden files/folders inside $dir but not
     # $dir itself, even if hidden.
-    set -q FZF_CTRL_T_COMMAND; or set -l FZF_CTRL_T_COMMAND "
+    test -n "$FZF_CTRL_T_COMMAND"; or set -l FZF_CTRL_T_COMMAND "
     command find -L \$dir -mindepth 1 \\( -path \$dir'*/\\.*' -o -fstype 'sysfs' -o -fstype 'devfs' -o -fstype 'devtmpfs' \\) -prune \
     -o -type f -print \
     -o -type d -print \
     -o -type l -print 2> /dev/null | sed 's@^\./@@'"
 
-    set -q FZF_TMUX_HEIGHT; or set FZF_TMUX_HEIGHT 40%
+    test -n "$FZF_TMUX_HEIGHT"; or set FZF_TMUX_HEIGHT 40%
     begin
-      set -lx FZF_DEFAULT_OPTS "--height $FZF_TMUX_HEIGHT --reverse $FZF_DEFAULT_OPTS $FZF_CTRL_T_OPTS"
+      set -lx FZF_DEFAULT_OPTS "--height $FZF_TMUX_HEIGHT --reverse --bind=ctrl-z:ignore $FZF_DEFAULT_OPTS $FZF_CTRL_T_OPTS"
       eval "$FZF_CTRL_T_COMMAND | "(__fzfcmd)' -m --query "'$fzf_query'"' | while read -l r; set result $result $r; end
     end
     if [ -z "$result" ]
@@ -34,18 +49,18 @@ function fzf_key_bindings
   end
 
   function fzf-history-widget -d "Show command history"
-    set -q FZF_TMUX_HEIGHT; or set FZF_TMUX_HEIGHT 40%
+    test -n "$FZF_TMUX_HEIGHT"; or set FZF_TMUX_HEIGHT 40%
     begin
-      set -lx FZF_DEFAULT_OPTS "--height $FZF_TMUX_HEIGHT $FZF_DEFAULT_OPTS --tiebreak=index --bind=ctrl-r:toggle-sort $FZF_CTRL_R_OPTS +m"
+      set -lx FZF_DEFAULT_OPTS "--height $FZF_TMUX_HEIGHT $FZF_DEFAULT_OPTS --tiebreak=index --bind=ctrl-r:toggle-sort,ctrl-z:ignore $FZF_CTRL_R_OPTS +m"
 
-      set -l FISH_MAJOR (echo $FISH_VERSION | cut -f1 -d.)
-      set -l FISH_MINOR (echo $FISH_VERSION | cut -f2 -d.)
+      set -l FISH_MAJOR (echo $version | cut -f1 -d.)
+      set -l FISH_MINOR (echo $version | cut -f2 -d.)
 
       # history's -z flag is needed for multi-line support.
       # history's -z flag was added in fish 2.4.0, so don't use it for versions
       # before 2.4.0.
       if [ "$FISH_MAJOR" -gt 2 -o \( "$FISH_MAJOR" -eq 2 -a "$FISH_MINOR" -ge 4 \) ];
-        history -z | eval (__fzfcmd) --read0 -q '(commandline)' | perl -pe 'chomp if eof' | read -lz result
+        history -z | eval (__fzfcmd) --read0 --print0 -q '(commandline)' | read -lz result
         and commandline -- $result
       else
         history | eval (__fzfcmd) -q '(commandline)' | read -l result
@@ -60,12 +75,12 @@ function fzf_key_bindings
     set -l dir $commandline[1]
     set -l fzf_query $commandline[2]
 
-    set -q FZF_ALT_C_COMMAND; or set -l FZF_ALT_C_COMMAND "
+    test -n "$FZF_ALT_C_COMMAND"; or set -l FZF_ALT_C_COMMAND "
     command find -L \$dir -mindepth 1 \\( -path \$dir'*/\\.*' -o -fstype 'sysfs' -o -fstype 'devfs' -o -fstype 'devtmpfs' \\) -prune \
     -o -type d -print 2> /dev/null | sed 's@^\./@@'"
-    set -q FZF_TMUX_HEIGHT; or set FZF_TMUX_HEIGHT 40%
+    test -n "$FZF_TMUX_HEIGHT"; or set FZF_TMUX_HEIGHT 40%
     begin
-      set -lx FZF_DEFAULT_OPTS "--height $FZF_TMUX_HEIGHT --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS"
+      set -lx FZF_DEFAULT_OPTS "--height $FZF_TMUX_HEIGHT --reverse --bind=ctrl-z:ignore $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS"
       eval "$FZF_ALT_C_COMMAND | "(__fzfcmd)' +m --query "'$fzf_query'"' | read -l result
 
       if [ -n "$result" ]
@@ -80,10 +95,12 @@ function fzf_key_bindings
   end
 
   function __fzfcmd
-    set -q FZF_TMUX; or set FZF_TMUX 0
-    set -q FZF_TMUX_HEIGHT; or set FZF_TMUX_HEIGHT 40%
-    if [ $FZF_TMUX -eq 1 ]
-      echo "fzf-tmux -d$FZF_TMUX_HEIGHT"
+    test -n "$FZF_TMUX"; or set FZF_TMUX 0
+    test -n "$FZF_TMUX_HEIGHT"; or set FZF_TMUX_HEIGHT 40%
+    if [ -n "$FZF_TMUX_OPTS" ]
+      echo "fzf-tmux $FZF_TMUX_OPTS -- "
+    else if [ $FZF_TMUX -eq 1 ]
+      echo "fzf-tmux -d$FZF_TMUX_HEIGHT -- "
     else
       echo "fzf"
     end
@@ -110,12 +127,12 @@ function fzf_key_bindings
     else
       set dir (__fzf_get_dir $commandline)
 
-      if [ "$dir" = "." -a (string sub -l 1 $commandline) != '.' ]
+      if [ "$dir" = "." -a (string sub -l 1 -- $commandline) != '.' ]
         # if $dir is "." but commandline is not a relative path, this means no file path found
         set fzf_query $commandline
       else
         # Also remove trailing slash after dir, to "split" input properly
-        set fzf_query (string replace -r "^$dir/?" '' "$commandline")
+        set fzf_query (string replace -r "^$dir/?" -- '' "$commandline")
       end
     end
 
@@ -127,15 +144,15 @@ function fzf_key_bindings
     set dir $argv
 
     # Strip all trailing slashes. Ignore if $dir is root dir (/)
-    if [ (string length $dir) -gt 1 ]
-      set dir (string replace -r '/*$' '' $dir)
+    if [ (string length -- $dir) -gt 1 ]
+      set dir (string replace -r '/*$' -- '' $dir)
     end
 
     # Iteratively check if dir exists and strip tail end of path
     while [ ! -d "$dir" ]
       # If path is absolute, this can keep going until ends up at /
       # If path is relative, this can keep going until entire input is consumed, dirname returns "."
-      set dir (dirname "$dir")
+      set dir (dirname -- "$dir")
     end
 
     echo $dir
