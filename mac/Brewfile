@@ -40,7 +40,6 @@ cask "sublime-text-dev"
 cask "transmit"
 
 cask "font-fira-code"
-cask "font-fontawesome"
 cask "font-hack"
 cask "font-hasklig"
 cask "font-source-code-pro"
