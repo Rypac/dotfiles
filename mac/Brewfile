@@ -7,6 +7,7 @@ tap "homebrew/cask-versions"
 
 brew "autojump"
 brew "bash"
+brew "bat"
 brew "cloc"
 brew "coreutils"
 brew "curl"
