@@ -14,8 +14,5 @@ brew update
 brew upgrade
 brew bundle --file="$DOTFILES_HOME/mac/Brewfile"
 
-# app store
-mas upgrade
-
 # vim package docs
 vim -c 'helptags all' +qall
