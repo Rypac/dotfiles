@@ -6,10 +6,10 @@
 	"ignored_packages": [
 		"Six",
 		"Vintage",
-		"Vintageous"
+		"Vintageous",
 	],
 	"neovintageous_build_version": 11100,
 	"tab_size": 2,
 	"translate_tabs_to_spaces": true,
-	"trim_trailing_white_space_on_save": true
+	"trim_trailing_white_space_on_save": true,
 }
