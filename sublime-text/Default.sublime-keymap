@@ -8,16 +8,12 @@
     { "keys": ["super+shift+h"], "command": "sublime_merge_file_history" },
     { "keys": ["super+option+shift+h"], "command": "sublime_merge_folder_history" },
 
-    // Project Manager
-    { "keys": ["super+shift+o"], "command": "project_manager", "args": { "action": "switch" } },
-    { "keys": ["super+ctrl+shift+p"], "command": "project_manager", "args": { "action": "new" } },
+    // Projects
+    { "keys": ["super+shift+o"], "command": "prompt_select_workspace" },
 
     // Terminus
     { "keys": ["option+."], "command": "terminus_open", "args": { "config_name": "Default" } },
     { "keys": ["option+,"], "command": "toggle_terminus_panel" },
-
-    // Origami
-    { "keys": ["option+z"], "command": "toggle_zoom_pane", "args": { "fraction": 0.98 } },
 
     // NeoVintageous
     { "keys": ["-"], "command": "open_and_focus_side_bar", "context": [{ "key": "vi_command_mode_aware" }] }
