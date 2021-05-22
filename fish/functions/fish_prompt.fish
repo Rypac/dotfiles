@@ -11,8 +11,8 @@ function fish_prompt
     set -g __fish_git_prompt_color_invalidstate red
     set -g __fish_git_prompt_color_stagedstate yellow
     set -g __fish_git_prompt_show_informative_status 1 end
-    set -g __fish_git_prompt_showupstream "informative"
-    set -g __fish_git_prompt_showdirtystate "yes"
+    set -g __fish_git_prompt_showupstream informative
+    set -g __fish_git_prompt_showdirtystate yes
 
     set -l prompt_symbol
     switch "$USER"
