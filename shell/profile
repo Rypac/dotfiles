@@ -34,7 +34,7 @@ export GHCUP_USE_XDG_DIRS=1
 # Defaults
 export LC_COLLATE='C'
 export EDITOR='vim'
-export VISUAL='subl'
+export VISUAL='subl -w'
 export PAGER='less'
 export SELECTED_EDITOR='vim'
 export LESS='-F -g -i -M -R -S -w -X -z-4'

@@ -34,7 +34,7 @@ set -gx GHCUP_USE_XDG_DIRS 1
 # Defaults
 set -gx LC_COLLATE 'C'
 set -gx EDITOR 'vim'
-set -gx VISUAL 'subl'
+set -gx VISUAL 'subl -w'
 set -gx PAGER 'less'
 set -gx SELECTED_EDITOR 'vim'
 set -gx LESS '-F -g -i -M -R -S -w -X -z-4'

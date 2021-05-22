@@ -62,5 +62,4 @@ elif [ "$(uname)" = Darwin ]; then
     link mac/xcode/themes "$HOME/Library/Developer/Xcode/UserData/FontAndColorThemes"
     link sublime-merge "$HOME/Library/Application Support/Sublime Merge/Packages/User"
     link sublime-text "$HOME/Library/Application Support/Sublime Text/Packages/User"
-    link sublime-text/plugins "$HOME/Library/Application Support/Sublime Text/Packages/UserPlugins"
 fi

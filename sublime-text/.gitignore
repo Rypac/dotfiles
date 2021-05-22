@@ -1,8 +1,2 @@
-/*
-!.gitignore
-!Package Control.sublime-settings
-!Preferences.sublime-settings
-!Default.sublime-keymap
-!/build/
-!/plugins/
-!/snippets/
+Package Control.user-ca-bundle
+Projects

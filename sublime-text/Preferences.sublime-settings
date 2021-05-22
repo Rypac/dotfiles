@@ -4,6 +4,7 @@
 	"font_face": "Hack",
 	"highlight_modified_tabs": true,
 	"ignored_packages": [
+		"NeoVintageous",
 		"Six",
 		"Vintage",
 		"Vintageous",

@@ -1,0 +1,10 @@
+[
+    {
+        "caption": "Toggle NeoVintageous",
+        "command": "toggle_neovintageous"
+    },
+    {
+        "caption": "View: Open and Focus Side Bar",
+        "command": "open_and_focus_side_bar"
+    }
+]
