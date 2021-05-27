@@ -1,4 +1,0 @@
-{
-  "cmd": ["/usr/local/bin/fish_indent", "--write", "$file"],
-  "selector": "source.shell.fish"
-}
