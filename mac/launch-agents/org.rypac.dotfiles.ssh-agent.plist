@@ -6,8 +6,9 @@
 	<string>org.rypac.dotfiles.ssh-agent</string>
 	<key>ProgramArguments</key>
 	<array>
-		<string>/usr/bin/ssh-add</string>
-		<string>-A</string>
+		<string>/bin/sh</string>
+		<string>-c</string>
+		<string>/bin/ln -sf $HOME/.gnupg/S.gpg-agent.ssh $SSH_AUTH_SOCK</string>
 	</array>
 	<key>RunAtLoad</key>
 	<true/>
