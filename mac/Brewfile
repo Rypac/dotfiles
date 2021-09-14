@@ -1,10 +1,9 @@
-tap "homebrew/core"
-tap "homebrew/services"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
-
+tap "homebrew/core"
+tap "homebrew/services"
 brew "autojump"
 brew "bash"
 brew "bat"
@@ -15,6 +14,7 @@ brew "ffmpeg"
 brew "fish"
 brew "fzf"
 brew "git"
+brew "git-lfs"
 brew "gnupg"
 brew "jq"
 brew "mas"
@@ -23,38 +23,46 @@ brew "ranger"
 brew "rename"
 brew "ripgrep"
 brew "ruby"
+brew "subversion"
 brew "tig"
 brew "tmux"
 brew "vim"
 brew "wget"
-
+brew "ykman"
 cask "airfoil"
 cask "audio-hijack"
+cask "font-fira-code"
+cask "font-hack"
+cask "font-hasklig"
+cask "font-new-york"
+cask "font-sf-mono"
+cask "font-sf-pro"
+cask "font-source-code-pro"
+cask "guitar-pro"
 cask "iina"
+cask "ilok-license-manager"
 cask "launchcontrol"
-cask "maccy"
 cask "loopback"
+cask "maccy"
 cask "rectangle"
 cask "soundsource"
 cask "spotify"
 cask "sublime-merge-dev"
 cask "sublime-text-dev"
 cask "transmit"
-
-cask "font-fira-code"
-cask "font-hack"
-cask "font-hasklig"
-cask "font-source-code-pro"
-
-mas "1Password", id: 1333542190
+mas "1Password 7", id: 1333542190
 mas "Cardhop", id: 1290358394
 mas "Dropzone 4", id: 1485052491
 mas "Fantastical", id: 975937182
+mas "GarageBand", id: 682658836
 mas "Hush", id: 1544743900
 mas "Keynote", id: 409183694
+mas "Meta", id: 558317092
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "PCalc", id: 403504866
+mas "Playgrounds", id: 1496833156
 mas "Reeder", id: 1529448980
 mas "Things", id: 904280696
 mas "Wipr", id: 1320666476
+mas "Xcode", id: 497799835
