@@ -36,7 +36,7 @@ set -gx LC_COLLATE 'C'
 set -gx EDITOR 'vim'
 set -gx VISUAL 'subl -w'
 set -gx PAGER 'less'
-set -gx SELECTED_EDITOR 'vim'
+set -gx SELECTED_EDITOR $EDITOR
 set -gx LESS '-F -g -i -M -R -S -w -X -z-4'
 set -gx HUSHLOGIN_FILE ''
 set -gx HOMEBREW_NO_ANALYTICS 1
@@ -45,6 +45,3 @@ set -gx AUTOJUMP_SOURCED 1
 set -gx FZF_TMUX 1
 set -gx FZF_DEFAULT_COMMAND 'rg --files --no-ignore-vcs --hidden'
 set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
-
-# Setup PATH
-set -gx PATH "$HOME/.local/bin" "/usr/local/sbin" "/usr/local/bin" $PATH
