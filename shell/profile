@@ -6,15 +6,6 @@
 : "${DOTFILES_HOME:="$HOME/.dotfiles"}"
 
 # Set config directories for XDG unfriendly programs
-export AWS_CONFIG_FILE="$XDG_CONFIG_HOME/aws/config"
-export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME/aws/credentials"
-export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
-export ENHANCD_DIR="$XDG_DATA_HOME/enhancd"
-export HTTPIE_CONFIG_DIR="$XDG_CONFIG_HOME/httpie"
-export LESSHISTFILE="$XDG_CACHE_HOME/lesshistory"
-export MPLAYER_HOME="$XDG_CONFIG_HOME/mplayer"
-export PASSWORD_STORE_DIR="$XDG_DATA_HOME/pass"
-export SPACEMACSDIR="$XDG_CONFIG_HOME/spacemacs"
 export TERMINFO="$XDG_DATA_HOME/terminfo"
 export XINITRC="$XDG_CONFIG_HOME/x11/xinitrc"
 
@@ -38,6 +29,7 @@ export VISUAL='subl -w'
 export PAGER='less'
 export SELECTED_EDITOR="$EDITOR"
 export LESS='-F -g -i -M -R -S -w -X -z-4'
+export LESSHISTFILE="$XDG_CACHE_HOME/lesshistory"
 export HUGHLOGIN_FILE=''
 export HOMEBREW_NO_ANALYTICS=1
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
@@ -47,4 +39,4 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Setup PATH
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$XDG_BIN_HOME:$PATH"
