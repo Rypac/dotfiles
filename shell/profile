@@ -2,6 +2,7 @@
 : "${XDG_DATA_HOME:="$HOME/.local/share"}"
 : "${XDG_CONFIG_HOME:="$HOME/.config"}"
 : "${XDG_CACHE_HOME:="$HOME/.cache"}"
+: "${XDG_STATE_HOME:="$HOME/.local/state"}"
 : "${DOTFILES_HOME:="$HOME/.dotfiles"}"
 
 export LC_COLLATE='C'
@@ -9,6 +10,6 @@ export EDITOR='vim'
 export VISUAL='subl -w'
 export PAGER='less'
 export SELECTED_EDITOR="$EDITOR"
-export LESSHISTFILE="$XDG_CACHE_HOME/lesshistory"
+export LESSHISTFILE="$XDG_STATE_HOME/lesshst"
 
 export PATH="$XDG_BIN_HOME:$PATH"
