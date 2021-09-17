@@ -11,5 +11,7 @@ export VISUAL='subl -w'
 export PAGER='less'
 export SELECTED_EDITOR="$EDITOR"
 export LESSHISTFILE="$XDG_STATE_HOME/lesshst"
+export HISTFILE="$XDG_STATE_HOME/zsh_history"
+export SHELL_SESSIONS_DISABLE=1
 
 export PATH="$XDG_BIN_HOME:$PATH"
