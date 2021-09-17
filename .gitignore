@@ -1,15 +1,17 @@
-# Linux
-*~
-.fuse_hidden*
-.directory
-.Trash-*
-
-# Mac OS X
+# macOS
 .DS_Store
 Icon
 ._*
 .fseventsd
 .Spotlight-V100
-.TemporaryItems
+.DocumentRevisions-V100
 .Trashes
-.VolumeIcon.icns
+
+# Linux
+*~
+.fuse_hidden*
+.Trash-*
+
+# Windows
+Thumbs.db
+ehthumbs.db

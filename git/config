@@ -18,10 +18,8 @@
 
     # Status
     s = status
-    st = status
     sl = status --long
     ss = status --short
-    sd = status -v
     si = status --ignore-submodules=dirty
 
     # Logs
@@ -42,7 +40,7 @@
 
     # Fetching
     f = fetch --all --prune
-    p = pull --rebase
+    p = pull --ff-only
 
     # Branches
     b = checkout
