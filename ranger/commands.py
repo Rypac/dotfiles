@@ -31,22 +31,6 @@ class z(Command):
             self.fm.cd(directory)
 
 
-class fasd(Command):
-    """
-    :fasd
-
-    Jump to directory using fasd
-    """
-
-    def execute(self):
-        args = self.rest(1)
-        if args:
-            command = ["fasd", "-d"] + args.split()
-            directory = subprocess.check_output(
-                command, universal_newlines=True).strip()
-            self.fm.cd(directory)
-
-
 class fzf(Command):
     """
     :fzf
