@@ -1,42 +1,14 @@
-# Setup XDG environment variables
 : "${XDG_BIN_HOME:="$HOME/.local/bin"}"
 : "${XDG_DATA_HOME:="$HOME/.local/share"}"
 : "${XDG_CONFIG_HOME:="$HOME/.config"}"
 : "${XDG_CACHE_HOME:="$HOME/.cache"}"
 : "${DOTFILES_HOME:="$HOME/.dotfiles"}"
 
-# Set config directories for XDG unfriendly programs
-export TERMINFO="$XDG_DATA_HOME/terminfo"
-export XINITRC="$XDG_CONFIG_HOME/x11/xinitrc"
-
-# Development environments
-export CARGO_HOME="$XDG_DATA_HOME/cargo"
-export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-export STACK_ROOT="$XDG_DATA_HOME/stack"
-export NODE_REPL_HISTORY="$XDG_CACHE_HOME/node-repl-history"
-export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/config"
-export CP_HOME_DIR="$XDG_CACHE_HOME/cocoapods"
-export CP_REPOS_DIR="$CP_HOME_DIR/repos"
-export BUNDLE_PATH="$XDG_CACHE_HOME/bundle"
-export GEM_SPEC_CACHE="$XDG_CACHE_HOME/ruby/gem/spec"
-export RBENV_ROOT="$XDG_DATA_HOME/rbenv"
-export GHCUP_USE_XDG_DIRS=1
-
-# Defaults
 export LC_COLLATE='C'
 export EDITOR='vim'
 export VISUAL='subl -w'
 export PAGER='less'
 export SELECTED_EDITOR="$EDITOR"
-export LESS='-F -g -i -M -R -S -w -X -z-4'
 export LESSHISTFILE="$XDG_CACHE_HOME/lesshistory"
-export HUGHLOGIN_FILE=''
-export HOMEBREW_NO_ANALYTICS=1
-export DOTNET_CLI_TELEMETRY_OPTOUT=1
-export AUTOJUMP_SOURCED=1
-export FZF_TMUX=1
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-# Setup PATH
 export PATH="$XDG_BIN_HOME:$PATH"
