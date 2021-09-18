@@ -5,11 +5,10 @@
 : "${XDG_STATE_HOME:="$HOME/.local/state"}"
 : "${DOTFILES_HOME:="$HOME/.dotfiles"}"
 
-export LC_COLLATE='C'
-export EDITOR='vim'
+export LC_COLLATE=C
+export EDITOR=vim
 export VISUAL='subl -w'
-export PAGER='less'
-export SELECTED_EDITOR="$EDITOR"
+export PAGER=less
 export LESSHISTFILE="$XDG_STATE_HOME/lesshst"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
