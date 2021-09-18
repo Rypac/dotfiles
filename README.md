@@ -2,16 +2,16 @@
 
 This is a collection of the configuration and preferences I use to personalise my system.
 
-If you don't already backup and synchronise your dotfiles, you should! It's simple to do and makes sharing your system config across various machines or other with people a breeze. GitHub [has a very nice website](https://dotfiles.github.io) which explains the process in greater detail and links to some terrific dotfile resources and examples.
+If you don't already backup and synchronise your dotfiles, you should! It's simple to do and makes sharing your system config across various machines or other with people a breeze. GitHub [has a very nice guide](https://dotfiles.github.io) that explains the process in greater detail and links to some terrific dotfile resources and examples.
 
-**NOTE:** The [`install`](install) script will not play nicely with existing dotfiles. It may overwrite some of your precious configuration. Use it either as a reference, or to holistically replace your own dotfiles. You have been warned!
+**NOTE:** The [`install`](install) script will _not_ play nicely with existing dotfiles. It may overwrite some of your precious configuration. Use it either as a reference, or to holistically replace your own dotfiles. You have been warned!
 
 ## Installation
 
 Simply run:
 
 ```sh
-git clone https://github.com/Rypac/dotfiles.git ~/.dotfiles
+git clone --recursive https://github.com/Rypac/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ./install
 ```
