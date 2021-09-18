@@ -41,7 +41,6 @@ cask "font-source-code-pro"
 cask "iina"
 cask "launchcontrol"
 cask "loopback"
-cask "maccy"
 cask "rectangle"
 cask "soundsource"
 cask "spotify"
@@ -55,6 +54,7 @@ mas "GarageBand", id: 682658836
 mas "Gladys", id: 1382386877
 mas "Hush", id: 1544743900
 mas "Keynote", id: 409183694
+mas "Maccy", id: 1527619437
 mas "Meta", id: 558317092
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
