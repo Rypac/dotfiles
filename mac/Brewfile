@@ -50,9 +50,9 @@ cask "sublime-text-dev"
 cask "transmit"
 mas "1Password 7", id: 1333542190
 mas "Cardhop", id: 1290358394
-mas "Dropzone 4", id: 1485052491
 mas "Fantastical", id: 975937182
 mas "GarageBand", id: 682658836
+mas "Gladys", id: 1382386877
 mas "Hush", id: 1544743900
 mas "Keynote", id: 409183694
 mas "Meta", id: 558317092
