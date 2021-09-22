@@ -1,5 +1,4 @@
 set -gx SHELL (type -p fish)
-set -gx LC_COLLATE C
 set -gx EDITOR vim
 set -gx VISUAL 'subl -w'
 set -gx PAGER less

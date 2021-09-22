@@ -5,7 +5,6 @@
 : "${XDG_STATE_HOME:="$HOME/.local/state"}"
 : "${DOTFILES_HOME:="$HOME/.dotfiles"}"
 
-export LC_COLLATE=C
 export EDITOR=vim
 export VISUAL='subl -w'
 export PAGER=less
