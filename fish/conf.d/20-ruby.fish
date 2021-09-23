@@ -3,10 +3,7 @@ set -gx GEM_SPEC_CACHE "$XDG_CACHE_HOME/gem"
 
 fish_add_path --append "$GEM_HOME/bin"
 
-if status is-interactive; and type -q rbenv
+if status is-interactive; and command -q rbenv
     set -gx RBENV_ROOT "$XDG_DATA_HOME/rbenv"
-
-    if status is-interactive
-        source (rbenv init -|psub)
-    end
+    source (rbenv init -|psub)
 end
