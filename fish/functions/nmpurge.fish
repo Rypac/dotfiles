@@ -4,5 +4,5 @@ function nmpurge --description 'Recursively delete all node_modules folders' --a
         return 1
     end
 
-    find "$target" -name node_modules -type d -prune -exec rm -rf '{}' +
+    command find "$target" -name node_modules -type d -prune -exec rm -rf '{}' +
 end
