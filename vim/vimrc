@@ -36,7 +36,7 @@ set smartindent
 set nojoinspaces
 
 " Ignore certain files and directories
-set wildignore+=*.o,*~,*.pyc,*/.git/*,*/node_modules/*
+set wildignore+=*~,*/.git/*,*/node_modules/*
 set viminfo=
 set noswapfile
 
@@ -56,22 +56,6 @@ nnoremap <C-w>t :tab split<CR>
 nnoremap <C-w><C-t> :tab split<CR>
 nnoremap ]t :tabNext<CR>
 nnoremap [t :tabprevious<CR>
-
-" Errors
-nnoremap ]c :cNext<CR>
-nnoremap [c :cprevious<CR>
-nnoremap ]l :lNext<CR>
-nnoremap [l :lprevious<CR>
-
-" fzf
-nnoremap <F9> :Files<CR>
-nnoremap <F10> :Buffers<CR>
-
-" Window resizing
-nnoremap <D-left> :vertical resize -5<CR>
-nnoremap <D-down> :resize +5<CR>
-nnoremap <D-up> :resize -5<CR>
-nnoremap <D-right> :vertical resize +5<CR>
 
 " }}}
 
