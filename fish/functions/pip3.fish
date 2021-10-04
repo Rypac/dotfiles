@@ -2,7 +2,7 @@ function pip3
     set -l cmd $argv[1]
     set -e argv[1]
 
-    switch "$cmd"
+    switch $cmd
         case install list
             command pip3 $cmd --user $argv
         case update upgrade

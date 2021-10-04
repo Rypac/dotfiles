@@ -1,6 +1,11 @@
 function nmpurge --description 'Recursively delete all node_modules folders' --argument target
-    if test -z "$target"
-        echo "Specify a directory to clean"
+    if test -z $target
+        echo Specify a directory to clean
+        return 1
+    end
+
+    if ! test -d $target
+        echo $target is not a directory
         return 1
     end
 

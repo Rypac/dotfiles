@@ -27,3 +27,9 @@ To keep the dotfiles updated, run:
 ```sh
 update-dotfiles
 ```
+
+To keep both the dotfiles and installed apps updated, run:
+
+```sh
+update-all
+```

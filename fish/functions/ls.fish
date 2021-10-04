@@ -1,7 +1,5 @@
-function ls --wraps=exa --description 'Use exa or fallback to ls'
-    if command -q exa
-        command exa $argv
-    else
-        command ls $argv
+if command -q exa
+    function ls --wraps=exa --description 'List contents of directory'
+        exa $argv
     end
 end

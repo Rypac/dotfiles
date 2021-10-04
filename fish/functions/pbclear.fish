@@ -1,3 +1,5 @@
-function pbclear --description 'Clear the clipboard'
-    command -q pbcopy; and printf '' | pbcopy
+if command -q pbcopy
+    function pbclear --description 'Clear the clipboard'
+        printf '' | command pbcopy
+    end
 end

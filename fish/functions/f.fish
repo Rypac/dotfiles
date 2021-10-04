@@ -1,7 +1,7 @@
 function f --description 'Open the directory in a GUI file manager'
     set -l dir $argv
     if test -z $dir
-        set dir .
+        set dir (pwd)
     end
 
     switch (uname)

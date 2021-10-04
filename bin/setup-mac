@@ -20,9 +20,6 @@ brew bundle --file="$DOTFILES_HOME/mac/Brewfile"
 # Set preferences
 "$DOTFILES_HOME/mac/Preferences"
 
-# Update all apps
-"$DOTFILES_HOME/bin/update-all"
-
 # Install configuration
 "$DOTFILES_HOME/install"
 
