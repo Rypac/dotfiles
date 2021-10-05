@@ -54,9 +54,7 @@ cask "sublime-merge-dev"
 cask "sublime-text-dev"
 cask "transmit"
 mas "1Password 7", id: 1333542190
-mas "Cardhop", id: 1290358394
 mas "Day One", id: 1055511498
-mas "Fantastical", id: 975937182
 mas "GarageBand", id: 682658836
 mas "Gladys", id: 1382386877
 mas "GoodLinks", id: 1474335294
