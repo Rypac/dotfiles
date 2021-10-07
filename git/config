@@ -68,9 +68,6 @@
     orphan = !git branch --merged | egrep -v \"(^\\*|master|main)\"
     branch-clean = !git branch --merged | egrep -v \"(^\\*|master|main)\" | xargs git branch -d
 
-    # Review changes
-    review = !sh -c 'git diff main...$1 | subl'
-
     # Submodules
     subdiff = !git diff && git submodule foreach 'git diff'
     subpush = push --recurse-submodules=on-demand
@@ -87,14 +84,4 @@
     program = gpg
 
 [merge]
-    tool = sublimerge
-
-[mergetool "sublimerge"]
-    cmd = subl -n --wait \"$REMOTE\" \"$BASE\" \"$LOCAL\" \"$MERGED\" --command \"sublimerge_diff_views\"
-    trustExitCode = false
-
-[diff]
-    tool = sublimerge
-
-[difftool "sublimerge"]
-    cmd = subl -n --wait \"$REMOTE\" \"$LOCAL\" --command \"sublimerge_diff_views {\\\"left_read_only\\\": true, \\\"right_read_only\\\": true}\"
+    tool = smerge
