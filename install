@@ -52,6 +52,7 @@ link ranger "$XDG_CONFIG_HOME/ranger"
 link tig "$XDG_CONFIG_HOME/tig"
 link tmux "$XDG_CONFIG_HOME/tmux"
 link vim "$HOME/.vim"
+link zsh/zprofile "$ZDOTDIR/.zprofile"
 
 # Link host specific config
 if [ "$(uname)" = Linux ]; then
