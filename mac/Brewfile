@@ -58,6 +58,7 @@ cask "sublime-text-dev"
 cask "transmit"
 mas "1Password 7", id: 1333542190
 mas "Boop", id: 1518425043
+mas "Data Jar", id: 1453273600
 mas "Day One", id: 1055511498
 mas "GarageBand", id: 682658836
 mas "GoodLinks", id: 1474335294
