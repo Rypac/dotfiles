@@ -16,3 +16,13 @@ brew bundle --file="$DOTFILES_HOME/mac/Brewfile"
 
 # vim package docs
 vim -c 'helptags all' +qall
+
+# rustup
+if command -v rustup >/dev/null 2>&1; then
+    rustup update
+fi
+
+# GHCup
+if command -v ghcup >/dev/null 2>&1; then
+    ghcup upgrade
+fi
