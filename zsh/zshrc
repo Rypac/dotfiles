@@ -1,0 +1,228 @@
+# Setup prompt
+PROMPT='%B%F{cyan}%1~%f%b %(?.%F{green}.%F{red})%(!.#.$)%f '
+
+# Keybindings
+bindkey '^[[A' up-line-or-search
+bindkey '^[[B' down-line-or-search
+bindkey '^P' up-line-or-search
+bindkey '^N' down-line-or-search
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
+bindkey '^F' forward-char
+bindkey '^B' backward-char
+
+# Append unique directory to path if it exists
+function pathappend() {
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+        PATH="${PATH:+"$PATH:"}$1"
+    fi
+}
+
+# Prepend unique directory to path if it exists
+function pathprepend() {
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+        PATH="$1${PATH:+":$PATH"}"
+    fi
+}
+
+# Add local executable directory to path
+pathprepend "$XDG_BIN_HOME"
+
+# Homebrew: the missing package manager for macOS
+# https://brew.sh
+export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_BUNDLE_FILE="$DOTFILES_HOME/mac/Brewfile"
+
+# zoxide: smarter cd command
+# https://github.com/ajeetdsouza/zoxide
+if (( $+commands[zoxide] )); then
+    eval "$(zoxide init zsh)"
+fi
+
+# fzf: general-purpose command-line fuzzy finder
+# https://github.com/junegunn/fzf
+if (( $+commands[fzf] )); then
+    export FZF_TMUX=1
+
+    # Auto-completion
+    if [[ $- == *i* ]]; then
+        source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
+    fi
+
+    # Key bindings
+    source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+
+    # ripgrep: line-oriented search tool
+    # https://github.com/BurntSushi/ripgrep
+    if (( $+commands[rg] )); then
+        export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+    fi
+
+    function preview() {
+        if (( $+commands[bat] )); then
+            fzf --preview 'bat --style=full --color=always {}'
+        else
+            fzf --preview 'cat {}'
+        fi
+    }
+fi
+
+# gpgconf: utility to configure GnuPG
+# https://www.gnupg.org/documentation/manuals/gnupg/gpgconf.html
+if (( $+commands[gpgconf] )); then
+    export GPG_TTY="$(tty)"
+    export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+    gpgconf --launch gpg-agent
+fi
+
+# Android development
+if [[ -d '/Applications/Android Studio.app' ]]; then
+    export JAVA_HOME='/Applications/Android Studio.app/Contents/jre/Contents/Home'
+    pathappend "$HOME/Library/Android/sdk/platform-tools"
+fi
+
+# rustup: installer for Rust
+# https://rustup.rs
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+
+# Cargo: Rust package manager
+# https://doc.rust-lang.org/cargo/
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+pathappend "$CARGO_HOME/bin"
+
+# GHCup: installer for Haskell and development tools
+# https://www.haskell.org/ghcup/
+export GHCUP_USE_XDG_DIRS=1
+
+# Cabal: system for building and packaging Haskell libraries and programs
+# https://www.haskell.org/cabal/
+export CABAL_DIR="$XDG_DATA_HOME/cabal"
+pathappend "$CABAL_DIR/bin"
+
+# Stack: cross-platform program for developing Haskell projects
+# https://docs.haskellstack.org
+if (( $+commands[stack] )); then
+    export STACK_ROOT="$XDG_DATA_HOME/stack"
+fi
+
+# CocoaPods: dependency manager for Swift and Objective-C projects
+# https://cocoapods.org
+if (( $+commands[cocoapods] )); then
+    export CP_HOME_DIR="$XDG_CACHE_HOME/cocoapods"
+    export CP_REPOS_DIR="$CP_HOME_DIR/repos"
+fi
+
+# Node: JavaScript runtime built on Chrome's V8 engine
+# https://nodejs.org
+if (( $+commands[node] )); then
+    export NODE_REPL_HISTORY="$XDG_STATE_HOME/node_repl_history"
+    export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/config"
+fi
+
+# AWS CLI: unified tool to manage AWS services
+# https://aws.amazon.com/cli/
+if (( $+commands[aws] )); then
+    export AWS_CONFIG_FILE="$XDG_CONFIG_HOME/aws/config"
+    export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME/aws/credentials"
+fi
+
+# RubyGems: package management framework for Ruby
+# https://github.com/rubygems/rubygems
+export GEM_HOME="$XDG_DATA_HOME/gem"
+export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
+pathappend "$GEM_HOME/bin"
+
+# rbenv: Ruby environment manager
+# https://github.com/rbenv/rbenv
+if (( $+commands[rbenv] )); then
+    export RBENV_ROOT="$XDG_DATA_HOME/rbenv"
+    eval "$(rbenv init --no-rehash - zsh)"
+fi
+
+# List directory contents
+alias ll='ls -lh'
+alias la='ls -lah'
+
+# Show/hide hidden files in the Finder
+alias showfiles='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder'
+alias hidefiles='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder'
+
+# Function abbreviations
+alias f=finder
+alias ql=quick-look
+alias manp=man-preview
+
+# Clear the clipboard
+function pbclear() {
+    printf '' | pbcopy
+}
+
+# bat: a cat clone with syntax highlighting and Git integration
+# https://github.com/sharkdp/bat
+if (( $+commands[bat] )); then
+    function cat() {
+        bat "$@"
+    }
+fi
+
+# exa: a modern replacement for ls
+# https://the.exa.website
+if (( $+commands[exa] )); then
+    function ls() {
+        exa "$@"
+    }
+fi
+
+# Prevent nested ranger sessions
+function ranger() {
+    if [[ -z "$RANGER_LEVEL" ]]; then
+        builtin ranger "$@"
+    else
+        exit
+    fi
+}
+
+# Open the given directories in Finder, or the current directory if empty
+function finder() {
+    open "${@:-.}" &>/dev/null
+}
+
+# View a file or directory in QuickLook.app
+function quick-look() {
+    (( $# > 0 )) && qlmanage -p $* &>/dev/null &
+}
+
+# View a man page in Preview.app
+function man-preview() {
+    man -w "$@" &>/dev/null && man -t "$@" | open -f -a Preview || man "$@"
+}
+
+# Remove .DS_Store files recursively in a directory, default .
+function dspurge() {
+    find "${@:-.}" -type f -name .DS_Store -delete
+}
+
+# Remove node_modules directories recursively in a directory, default .
+function nmpurge() {
+    find "${@:-.}" -type d -name node_modules -prune -exec rm -rf '{}' +
+}
+
+# Start a simple fileserver
+function serve() {
+    python3 -m http.server "$@"
+}
+
+# Encrypt a file to myself using GPG
+function encrypt() {
+    gpg --encrypt --recipient ryan@rypac.org --armour --output - "$@"
+}
+
+# Decrypt a GPG encrypted file
+function decrypt() {
+    gpg --decrypt --quiet "$@"
+}
+
+# Reset currently active YubiKey
+function reset-yubikey() {
+    gpg-connect-agent 'scd serialno' 'learn --force' /bye
+}
