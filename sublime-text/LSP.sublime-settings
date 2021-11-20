@@ -4,6 +4,11 @@
       "enabled": true,
       "command": ["haskell-language-server-wrapper", "--lsp"],
       "selector": "source.haskell"
+    },
+    "sourcekit-lsp": {
+      "enabled": true,
+      "command": ["xcrun", "sourcekit-lsp"],
+      "selector": "source.swift"
     }
   }
 }
