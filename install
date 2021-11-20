@@ -41,7 +41,6 @@ link_contents() {
 
 # Link common config
 link_contents bin "$XDG_BIN_HOME"
-link fish "$XDG_CONFIG_HOME/fish"
 link git "$XDG_CONFIG_HOME/git"
 link_contents gnupg "$HOME/.gnupg"
 link npm "$XDG_CONFIG_HOME/npm"
