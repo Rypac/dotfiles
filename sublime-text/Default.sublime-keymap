@@ -8,6 +8,10 @@
     { "keys": ["super+shift+h"], "command": "sublime_merge_file_history" },
     { "keys": ["super+option+shift+h"], "command": "sublime_merge_folder_history" },
 
+    // LSP
+    { "keys": ["super+option+l"], "command": "lsp_format_document", "context": [{ "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true }] },
+    { "keys": ["super+option+l"], "command": "lsp_format_document_range", "context": [{ "key": "selection_empty", "operator": "equal", "operand": false, "match_all": true }] },
+
     // Projects
     { "keys": ["super+shift+o"], "command": "prompt_select_workspace" },
 
