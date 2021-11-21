@@ -8,10 +8,5 @@
         "caption": "Cleanup Branches",
         "command": "git",
         "args": { "argv": ["branch-clean"] }
-    },
-    {
-        "caption": "Review Branch",
-        "command": "git",
-        "args": { "argv": ["review"] }
     }
 ]
