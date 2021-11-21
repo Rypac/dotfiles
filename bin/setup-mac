@@ -26,3 +26,6 @@ brew bundle --file="$DOTFILES_HOME/mac/Brewfile"
 # Fix GPG permissions
 find ~/.gnupg -type d -exec chmod 700 {} \;
 find ~/.gnupg -type f -exec chmod 600 {} \;
+
+# Remove last login message from new terminal sessions
+touch ~/.hushlogin
