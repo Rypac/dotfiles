@@ -11,22 +11,18 @@ bindkey '^E' end-of-line
 bindkey '^F' forward-char
 bindkey '^B' backward-char
 
-# Append unique directory to path if it exists
+# Append directory to path if it exists
 function pathappend() {
-    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
-        PATH="${PATH:+"$PATH:"}$1"
+    if [ -d "$1" ]; then
+        path+="$1"
     fi
 }
 
-# Prepend unique directory to path if it exists
-function pathprepend() {
-    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
-        PATH="$1${PATH:+":$PATH"}"
-    fi
-}
+# Remove duplicate entries from path
+typeset -U path
 
 # Add local executable directory to path
-pathprepend "$XDG_BIN_HOME"
+path=("$XDG_BIN_HOME" $path)
 
 # Homebrew: the missing package manager for macOS
 # https://brew.sh
@@ -226,3 +222,6 @@ function decrypt() {
 function reset-yubikey() {
     gpg-connect-agent 'scd serialno' 'learn --force' /bye
 }
+
+# Remove local functions
+unfunction pathappend
