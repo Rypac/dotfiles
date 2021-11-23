@@ -15,6 +15,9 @@ bindkey '^[b' backward-word
 bindkey '^K' kill-line
 bindkey '^[^?' backward-kill-word
 
+# Load completions
+autoload -Uz compinit && compinit
+
 # Append directory to path if it exists
 function pathappend() {
     if [ -d "$1" ]; then
@@ -182,6 +185,11 @@ function ranger() {
     fi
 }
 
+# Create a new directory and automatically naviate there
+function mkcd() {
+    mkdir -p "$@" && cd "$_"
+}
+
 # Open the given directories in Finder, or the current directory if empty
 function finder() {
     open "${@:-.}" &>/dev/null
@@ -227,5 +235,18 @@ function reset-yubikey() {
     gpg-connect-agent 'scd serialno' 'learn --force' /bye
 }
 
-# Remove local functions
+# Load plugins
+plugins=(
+    /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+)
+
+for plugin in $plugins; do
+    if [ -f "$plugin" ]; then
+        source "$plugin"
+    fi
+done
+
+# Remove local functions and variables
+unset plugins
 unfunction pathappend

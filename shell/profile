@@ -5,6 +5,7 @@ export XDG_CACHE_HOME="${XDG_CACHE_HOME:-"$HOME/.cache"}"
 export XDG_STATE_HOME="${XDG_STATE_HOME:-"$HOME/.local/state"}"
 export DOTFILES_HOME="${DOTFILES_HOME:-"$HOME/.dotfiles"}"
 
+export BROWSER=open
 export EDITOR=vim
 export VISUAL='subl -w'
 export PAGER=less
