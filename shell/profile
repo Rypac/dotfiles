@@ -7,7 +7,6 @@ export DOTFILES_HOME="${DOTFILES_HOME:-"$HOME/.dotfiles"}"
 
 export BROWSER=open
 export EDITOR=vim
-export VISUAL='subl -w'
 export PAGER=less
 export HISTFILE="$XDG_STATE_HOME/.bash_history"
 export LESSHISTFILE="$XDG_STATE_HOME/less_history"
