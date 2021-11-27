@@ -275,17 +275,10 @@ function haskell-script() {
 }
 
 # Load plugins
-plugins=(
+for plugin (
     /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
     /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-)
-
-for plugin in $plugins; do
-    if [ -f "$plugin" ]; then
-        source "$plugin"
-    fi
-done
+); source "$plugin"
 
 # Remove local functions and variables
-unset plugins
 unfunction pathappend
