@@ -260,6 +260,24 @@ function reset-yubikey() {
     gpg-connect-agent 'scd serialno' 'learn --force' /bye
 }
 
+# Run a Haskell script in Cabal or Stack
+function haskell-script() {
+    if [ ! -f "$1" ]; then
+        return 1
+    fi
+
+    case "$(head -1 "$1")" in
+        '#!/usr/bin/env cabal'|'{- cabal:')
+            cabal run -v0 "$@" ;;
+        '#!/usr/bin/env stack')
+            stack --silent "$@" ;;
+        '-- stack script'*|'{- stack script'*)
+            stack --silent =(cat <(echo '#!/usr/bin/env stack') "$1") "${@:2}" ;;
+        *)
+            stack --silent --resolver lts script "$@" ;;
+    esac
+}
+
 # Load plugins
 plugins=(
     /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
