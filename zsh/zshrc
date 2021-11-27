@@ -188,17 +188,13 @@ function pbclear() {
 # bat: a cat clone with syntax highlighting and Git integration
 # https://github.com/sharkdp/bat
 if (( $+commands[bat] )); then
-    function cat() {
-        bat "$@"
-    }
+    alias cat=bat
 fi
 
 # exa: a modern replacement for ls
 # https://the.exa.website
 if (( $+commands[exa] )); then
-    function ls() {
-        exa "$@"
-    }
+    alias ls=exa
 fi
 
 # Prevent nested ranger sessions
