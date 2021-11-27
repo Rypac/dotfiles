@@ -274,6 +274,15 @@ function haskell-script() {
     esac
 }
 
+# Wrapper to create or attach to default tmux session
+function tmux() {
+    if [ $# -eq 0 ]; then
+        command tmux attach -t default 2&>/dev/null || command tmux new -s default
+    else
+        command tmux "$@"
+    fi
+}
+
 # Load plugins
 for plugin (
     /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
