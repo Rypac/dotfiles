@@ -104,7 +104,7 @@ if (( $+commands[gpgconf] )); then
 fi
 
 # Android development
-if [[ -d '/Applications/Android Studio.app' ]]; then
+if [ -d '/Applications/Android Studio.app' ]; then
     export JAVA_HOME='/Applications/Android Studio.app/Contents/jre/Contents/Home'
     pathappend "$HOME/Library/Android/sdk/platform-tools"
 fi
@@ -199,7 +199,7 @@ fi
 
 # Prevent nested ranger sessions
 function ranger() {
-    if [[ -z "$RANGER_LEVEL" ]]; then
+    if [ -z "$RANGER_LEVEL" ]; then
         builtin ranger "$@"
     else
         exit
