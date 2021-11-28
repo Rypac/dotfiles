@@ -200,7 +200,7 @@ fi
 # Prevent nested ranger sessions
 function ranger() {
     if [ -z "$RANGER_LEVEL" ]; then
-        builtin ranger "$@"
+        command ranger "$@"
     else
         exit
     fi
