@@ -144,10 +144,6 @@ fi
 alias ll='ls -lh'
 alias la='ls -lah'
 
-# Show/hide hidden files in the Finder
-alias showfiles='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder'
-alias hidefiles='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder'
-
 # Function abbreviations
 alias f=finder
 alias ql=quick-look
