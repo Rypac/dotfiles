@@ -154,19 +154,6 @@ if (( $+commands[aws] )); then
     export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME/aws/credentials"
 fi
 
-# RubyGems: package management framework for Ruby
-# https://github.com/rubygems/rubygems
-export GEM_HOME="$XDG_DATA_HOME/gem"
-export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
-pathappend "$GEM_HOME/bin"
-
-# rbenv: Ruby environment manager
-# https://github.com/rbenv/rbenv
-if (( $+commands[rbenv] )); then
-    export RBENV_ROOT="$XDG_DATA_HOME/rbenv"
-    eval "$(rbenv init --no-rehash - zsh)"
-fi
-
 # List directory contents
 alias ll='ls -lh'
 alias la='ls -lah'
