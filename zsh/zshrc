@@ -133,13 +133,6 @@ if (( $+commands[stack] )); then
     export STACK_ROOT="$XDG_DATA_HOME/stack"
 fi
 
-# CocoaPods: dependency manager for Swift and Objective-C projects
-# https://cocoapods.org
-if (( $+commands[cocoapods] )); then
-    export CP_HOME_DIR="$XDG_CACHE_HOME/cocoapods"
-    export CP_REPOS_DIR="$CP_HOME_DIR/repos"
-fi
-
 # Node: JavaScript runtime built on Chrome's V8 engine
 # https://nodejs.org
 if (( $+commands[node] )); then
