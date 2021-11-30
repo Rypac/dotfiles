@@ -147,13 +147,6 @@ if (( $+commands[node] )); then
     export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/config"
 fi
 
-# AWS CLI: unified tool to manage AWS services
-# https://aws.amazon.com/cli/
-if (( $+commands[aws] )); then
-    export AWS_CONFIG_FILE="$XDG_CONFIG_HOME/aws/config"
-    export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME/aws/credentials"
-fi
-
 # List directory contents
 alias ll='ls -lh'
 alias la='ls -lah'
