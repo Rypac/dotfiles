@@ -141,8 +141,9 @@ if (( $+commands[node] )); then
 fi
 
 # List directory contents
-alias ll='ls -lh'
-alias la='ls -lah'
+alias ls='ls -G'
+alias ll='ls -lhF --color=auto'
+alias la='ls -lahF --color=auto'
 
 # Function abbreviations
 alias f=finder
@@ -158,12 +159,6 @@ function pbclear() {
 # https://github.com/sharkdp/bat
 if (( $+commands[bat] )); then
     alias cat=bat
-fi
-
-# exa: a modern replacement for ls
-# https://the.exa.website
-if (( $+commands[exa] )); then
-    alias ls=exa
 fi
 
 # Prevent nested ranger sessions
