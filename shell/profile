@@ -12,4 +12,4 @@ export HISTFILE="$XDG_STATE_HOME/.bash_history"
 export LESSHISTFILE="$XDG_STATE_HOME/less_history"
 export ZDOTDIR="$XDG_STATE_HOME/zsh"
 
-export PATH="$XDG_BIN_HOME:$PATH"
+export PATH="$XDG_BIN_HOME:/opt/homebrew/bin:$PATH"

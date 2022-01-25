@@ -53,13 +53,16 @@ function pathappend() {
 # Remove duplicate entries from path
 typeset -U path
 
-# Add local executable directory to path
-path=("$XDG_BIN_HOME" $path)
-
 # Homebrew: the missing package manager for macOS
 # https://brew.sh
-export HOMEBREW_NO_ANALYTICS=1
-export HOMEBREW_BUNDLE_FILE="$DOTFILES_HOME/mac/Brewfile"
+path=("/opt/homebrew/bin" $path)
+if (( $+commands[brew] )); then
+    export HOMEBREW_NO_ANALYTICS=1
+    export HOMEBREW_NO_AUTO_UPDATE=1
+    export HOMEBREW_BUNDLE_FILE="$DOTFILES_HOME/mac/Brewfile"
+
+    eval "$(brew shellenv)"
+fi
 
 # zoxide: smarter cd command
 # https://github.com/ajeetdsouza/zoxide
@@ -74,11 +77,11 @@ if (( $+commands[fzf] )); then
 
     # Auto-completion
     if [[ $- == *i* ]]; then
-        source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
+        source "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh" 2>/dev/null
     fi
 
     # Key bindings
-    source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+    source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
 
     # ripgrep: line-oriented search tool
     # https://github.com/BurntSushi/ripgrep
@@ -251,7 +254,12 @@ function tmux() {
 for plugin (
     /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
     /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-); source "$plugin"
+); if [ -f "$plugin" ]; then
+    source "$plugin"
+fi
+
+# Ensure local executable directory is first on path
+path=("$XDG_BIN_HOME" $path)
 
 # Remove local functions and variables
 unfunction pathappend
