@@ -61,6 +61,7 @@ if (( $+commands[brew] )); then
     export HOMEBREW_NO_AUTO_UPDATE=1
     export HOMEBREW_BUNDLE_FILE="$DOTFILES_HOME/mac/Brewfile"
 
+    # Configure shell and set HOMEBREW_PREFIX
     eval "$(brew shellenv)"
 fi
 
@@ -252,10 +253,12 @@ function tmux() {
 
 # Load plugins
 for plugin (
-    /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-    /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+    "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 ); if [ -f "$plugin" ]; then
     source "$plugin"
+else
+    echo "Failed to load plugin $plugin"
 fi
 
 # Ensure local executable directory is first on path
