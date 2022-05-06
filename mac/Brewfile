@@ -33,6 +33,7 @@ brew "ykman"
 brew "zoxide"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
+cask "1password"
 cask "airfoil"
 cask "alfred"
 cask "audio-hijack"
@@ -56,12 +57,10 @@ cask "spotify"
 cask "sublime-merge-dev"
 cask "sublime-text-dev"
 cask "transmit"
-mas "1Password 7", id: 1333542190
 mas "Boop", id: 1518425043
 mas "Data Jar", id: 1453273600
 mas "Day One", id: 1055511498
 mas "GarageBand", id: 682658836
-mas "GoodLinks", id: 1474335294
 mas "Hush", id: 1544743900
 mas "iStat Menus", id: 1319778037
 mas "Keynote", id: 409183694
