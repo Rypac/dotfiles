@@ -139,10 +139,8 @@ fi
 
 # Node: JavaScript runtime built on Chrome's V8 engine
 # https://nodejs.org
-if (( $+commands[node] )); then
-    export NODE_REPL_HISTORY="$XDG_STATE_HOME/node_repl_history"
-    export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/config"
-fi
+export NODE_REPL_HISTORY="$XDG_STATE_HOME/node_repl_history"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 
 # List directory contents
 alias ls='ls -G'
