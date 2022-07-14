@@ -145,6 +145,17 @@ export STACK_ROOT="$XDG_DATA_HOME/stack"
 export NODE_REPL_HISTORY="$XDG_STATE_HOME/node_repl_history"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 
+# RubyGems: package management framework for Ruby
+# https://github.com/rubygems/rubygems
+export GEM_HOME="$XDG_DATA_HOME/gem"
+export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
+
+# Bundler: consistent environment for Ruby projects
+# https://bundler.io
+export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle"
+export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
+export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
+
 # List directory contents
 alias ls='ls -G'
 alias ll='ls -lhF --color=auto'
