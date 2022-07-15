@@ -63,3 +63,6 @@ elif [ "$(uname)" = Darwin ]; then
     link sublime-merge "$HOME/Library/Application Support/Sublime Merge/Packages/User"
     link sublime-text "$HOME/Library/Application Support/Sublime Text/Packages/User"
 fi
+
+# Bootstrap required directories
+mkdir -p "$XDG_DATA_HOME/tig"
