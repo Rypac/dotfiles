@@ -52,7 +52,7 @@ link tig "$XDG_CONFIG_HOME/tig"
 link tmux "$XDG_CONFIG_HOME/tmux"
 link vim "$HOME/.vim"
 link shell/profile "$ZDOTDIR/.zshenv"
-link zsh/zprofile "$ZDOTDIR/.zprofile"
+link shell/environment "$ZDOTDIR/.zprofile"
 link zsh/zshrc "$ZDOTDIR/.zshrc"
 
 # Link host specific config
