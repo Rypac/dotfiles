@@ -1,0 +1,42 @@
+# Gradle: Build system for the JVM
+# https://gradle.org
+export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
+
+# rustup: installer for Rust
+# https://rustup.rs
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+
+# Cargo: Rust package manager
+# https://doc.rust-lang.org/cargo/
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+path=($path "$CARGO_HOME/bin")
+
+# GHCup: installer for Haskell and development tools
+# https://www.haskell.org/ghcup/
+export GHCUP_USE_XDG_DIRS=1
+
+# Cabal: system for building and packaging Haskell libraries and programs
+# https://www.haskell.org/cabal/
+export CABAL_CONFIG="$XDG_CONFIG_HOME/cabal/config"
+export CABAL_DIR="$XDG_DATA_HOME/cabal"
+path=($path "$CABAL_DIR/bin")
+
+# Stack: cross-platform program for developing Haskell projects
+# https://docs.haskellstack.org
+export STACK_ROOT="$XDG_DATA_HOME/stack"
+
+# Node: JavaScript runtime built on Chrome's V8 engine
+# https://nodejs.org
+export NODE_REPL_HISTORY="$XDG_STATE_HOME/node_repl_history"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+
+# RubyGems: package management framework for Ruby
+# https://github.com/rubygems/rubygems
+export GEM_HOME="$XDG_DATA_HOME/gem"
+export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
+
+# Bundler: consistent environment for Ruby projects
+# https://bundler.io
+export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle"
+export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
+export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
