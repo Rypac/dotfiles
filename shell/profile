@@ -3,13 +3,8 @@ export XDG_DATA_HOME="${XDG_DATA_HOME:-"$HOME/.local/share"}"
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-"$HOME/.config"}"
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-"$HOME/.cache"}"
 export XDG_STATE_HOME="${XDG_STATE_HOME:-"$HOME/.local/state"}"
-export DOTFILES_HOME="${DOTFILES_HOME:-"$HOME/.dotfiles"}"
 
-export BROWSER=open
-export EDITOR=vim
-export PAGER=less
-export HISTFILE="$XDG_STATE_HOME/.bash_history"
-export LESSHISTFILE="$XDG_STATE_HOME/less_history"
+export DOTFILES_HOME="${DOTFILES_HOME:-"$HOME/.dotfiles"}"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 export PATH="$XDG_BIN_HOME:/opt/homebrew/bin:$PATH"

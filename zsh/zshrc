@@ -1,3 +1,9 @@
+# Interactive environment variables
+export BROWSER=open
+export EDITOR=vim
+export PAGER=less
+export LESSHISTFILE=-
+
 # Setup prompt
 PROMPT='%B%F{cyan}%1~%f%b %(?.%F{green}.%F{red})%(!.#.$)%f '
 
