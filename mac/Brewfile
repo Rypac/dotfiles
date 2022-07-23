@@ -23,21 +23,17 @@ brew "ranger"
 brew "rename"
 brew "ripgrep"
 brew "ruby"
-brew "subversion"
 brew "tig"
 brew "tmux"
 brew "tokei"
 brew "vim"
 brew "wget"
-brew "ykman"
 brew "zoxide"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 cask "1password"
-cask "airfoil"
 cask "alfred"
 cask "audio-hijack"
-cask "bartender"
 cask "cleanshot"
 cask "font-new-york"
 cask "font-sf-mono"
@@ -53,11 +49,10 @@ cask "spotify"
 cask "sublime-merge-dev"
 cask "sublime-text-dev"
 cask "transmit"
-mas "Data Jar", id: 1453273600
 mas "Day One", id: 1055511498
 mas "GarageBand", id: 682658836
 mas "Hush", id: 1544743900
-mas "iStat Menus", id: 1319778037
+mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
 mas "Meta", id: 558317092
 mas "Numbers", id: 409203825
@@ -65,7 +60,6 @@ mas "Pages", id: 409201541
 mas "PCalc", id: 403504866
 mas "Playgrounds", id: 1496833156
 mas "Reeder", id: 1529448980
-mas "Slack", id: 803453959
 mas "SnippetsLab", id: 1006087419
 mas "Soulver 3", id: 1508732804
 mas "Stave'n'Tabs", id: 1107712488
