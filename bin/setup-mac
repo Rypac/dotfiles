@@ -5,6 +5,9 @@ set -e
 # Setup XDG environment variables
 : "${DOTFILES_HOME:="$HOME/.dotfiles"}"
 
+# Source environment variables
+. "$DOTFILES_HOME/shell/profile"
+
 # Install and update homebrew
 if ! type brew > /dev/null 2>&1; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -29,3 +32,6 @@ find ~/.gnupg -type f -exec chmod 600 {} \;
 
 # Remove last login message from new terminal sessions
 touch ~/.hushlogin
+
+# Bootstrap required directories
+mkdir -p "$XDG_DATA_HOME/tig"
