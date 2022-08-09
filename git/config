@@ -12,6 +12,9 @@
 [core]
     editor = vim
 
+[init]
+    defaultBranch = main
+
 [alias]
     # Aliases
     alias = !git config -l | grep alias | cut -c 7-
