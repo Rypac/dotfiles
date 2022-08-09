@@ -6,6 +6,7 @@
 	"installed_packages":
 	[
 		"Decent Swift Syntax",
+		"LSP",
 		"Origami",
 		"Package Control",
 	],
