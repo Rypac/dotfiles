@@ -8,7 +8,7 @@
 	<string>org.rypac.dotfiles.gpg-agent</string>
 	<key>ProgramArguments</key>
 	<array>
-		<string>/usr/local/bin/gpg-connect-agent</string>
+		<string>/opt/homebrew/bin/gpg-connect-agent</string>
 		<string>/bye</string>
 	</array>
 	<key>RunAtLoad</key>
