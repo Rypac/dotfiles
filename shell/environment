@@ -1,50 +1,53 @@
 # Gradle: Build system for the JVM
-# https://gradle.org
+# https://docs.gradle.org/current/userguide/build_environment.html#sec:gradle_environment_variables
 export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
 
 # Android Studio: IDE for Android development
-# https://developer.android.com/studio
+# https://developer.android.com/studio/command-line/variables#envar
 export ANDROID_USER_HOME="$XDG_DATA_HOME/android"
 
 # Kotlin Native: running Kotlin without the VM
-# https://kotlinlang.org/docs/native-overview.html
+# https://kotlinlang.org/docs/native-improving-compilation-time.html#general-recommendations
 export KONAN_DATA_DIR="$XDG_DATA_HOME/konan"
 
 # rustup: installer for Rust
-# https://rustup.rs
+# https://rust-lang.github.io/rustup/environment-variables.html
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 
 # Cargo: Rust package manager
-# https://doc.rust-lang.org/cargo/
+# https://doc.rust-lang.org/cargo/reference/environment-variables.html
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 PATH="${PATH:+${PATH}:}$CARGO_HOME/bin"
 
 # GHCup: installer for Haskell and development tools
-# https://www.haskell.org/ghcup/
+# https://www.haskell.org/ghcup/guide/#env-variables
 export GHCUP_USE_XDG_DIRS=1
 
 # Cabal: system for building and packaging Haskell libraries and programs
-# https://www.haskell.org/cabal/
+# https://cabal.readthedocs.io/en/latest/config.html#environment-variables
 export CABAL_CONFIG="$XDG_CONFIG_HOME/cabal/config"
 export CABAL_DIR="$XDG_DATA_HOME/cabal"
 PATH="${PATH:+${PATH}:}$CABAL_DIR/bin"
 
 # Stack: cross-platform program for developing Haskell projects
-# https://docs.haskellstack.org
+# https://docs.haskellstack.org/en/stable/GUIDE/#setting-the-stack-root-location
 export STACK_ROOT="$XDG_DATA_HOME/stack"
 
 # Node: JavaScript runtime built on Chrome's V8 engine
-# https://nodejs.org
+# https://nodejs.org/dist/latest/docs/api/repl.html#environment-variable-options
 export NODE_REPL_HISTORY="$XDG_STATE_HOME/node_repl_history"
+
+# NPM: The default package manager for Node
+# https://docs.npmjs.com/cli/v8/using-npm/config#npmrc-files
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 
 # RubyGems: package management framework for Ruby
-# https://github.com/rubygems/rubygems
+# https://docs.ruby-lang.org/en/master/Gem.html
 export GEM_HOME="$XDG_DATA_HOME/gem"
 export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
 
 # Bundler: consistent environment for Ruby projects
-# https://bundler.io
+# https://bundler.io/man/bundle-config.1.html#CONFIGURE-BUNDLER-DIRECTORIES
 export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle"
 export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
 export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
