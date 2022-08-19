@@ -2,6 +2,6 @@
 #
 # Set login environment variables on macOS
 
-grep "^export" "$HOME/.profile" | while IFS=' =' read ignoreexport envvar ignorevalue; do
+grep "^export" "$HOME/.profile" "$HOME/.dotfiles/shell/environment" | while IFS=' =' read ignoreexport envvar ignorevalue; do
     launchctl setenv "${envvar}" "${!envvar}"
 done
