@@ -1,7 +1,7 @@
 [user]
     name = Ryan Davis
     email = ryan@rypac.org
-    signingkey = CE6D33C049E20B7C
+    signingKey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM8mD/3yA57Q/nPT0SQpdgABkn5tVlequOPnKSOxiNMw
 
 [github]
     user = Rypac
@@ -82,8 +82,18 @@
 [pull]
     ff = only
 
-[gpg]
-    program = gpg
-
 [merge]
     tool = smerge
+
+[commit]
+    gpgsign = true
+
+[tag]
+    gpgsign = true
+
+[gpg]
+    program = gpg
+    format = ssh
+
+[gpg "ssh"]
+    allowedSignersFile = ~/.config/git/allowed_signers
