@@ -4,7 +4,7 @@ export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-"$HOME/.config"}"
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-"$HOME/.cache"}"
 export XDG_STATE_HOME="${XDG_STATE_HOME:-"$HOME/.local/state"}"
 
-export DOTFILES_HOME="${DOTFILES_HOME:-"$HOME/.dotfiles"}"
+export DOTFILES_HOME="$HOME/.dotfiles"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 export PATH="$XDG_BIN_HOME:/opt/homebrew/bin:$PATH"

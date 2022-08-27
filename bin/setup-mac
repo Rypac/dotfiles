@@ -6,7 +6,8 @@ set -e
 : "${DOTFILES_HOME:="$HOME/.dotfiles"}"
 
 # Source environment variables
-. "$DOTFILES_HOME/shell/profile"
+. "$DOTFILES_HOME/zsh/zshenv"
+. "$DOTFILES_HOME/zsh/zprofile"
 
 # Install and update homebrew
 if ! type brew > /dev/null 2>&1; then
