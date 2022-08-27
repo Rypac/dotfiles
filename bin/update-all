@@ -3,16 +3,22 @@
 : "${DOTFILES_HOME:="$HOME/.dotfiles"}"
 
 # dotfiles
-(
-    cd "$DOTFILES_HOME"
-    git pull
-    ./install
-)
+if [ -d "$DOTFILES_HOME" ]; then
+    (
+        cd "$DOTFILES_HOME"
+        git pull
+        ./install
+    )
+else
+    echo "Invalid dotfiles directory" && exit 1
+fi
 
 # brew packages
-brew update
-brew upgrade
-brew bundle --file="$DOTFILES_HOME/mac/Brewfile"
+if command -v brew >/dev/null 2>&1; then
+    brew update
+    brew upgrade
+    brew bundle --file="$DOTFILES_HOME/mac/Brewfile"
+fi
 
 # vim package docs
 vim -c 'helptags all' +qall

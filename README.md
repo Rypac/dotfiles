@@ -22,14 +22,8 @@ This will symlink the dotfiles to their appropriate directories. The [`install`]
 
 Some handy scripts to keep these dotfiles up-to-date live in the [`bin`](bin) directory. Additionally, if these dotfiles are managed using the [`install`](install) script they will be linked to `~/.local/bin` and available on your `$PATH`.
 
-To keep the dotfiles updated, run:
+To keep both dotfiles and installed apps updated, run:
 
 ```sh
-update-dotfiles
-```
-
-To keep both the dotfiles and installed apps updated, run:
-
-```sh
-update-all
+./bin/update-all
 ```
