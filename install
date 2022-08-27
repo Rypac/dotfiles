@@ -8,48 +8,42 @@ link() {
     target="$1"
     origin="$dotfiles/$target"
     destination="$2"
-    destination_parent="$(dirname "$destination")"
 
-    if [ ! -d "$destination_parent" ]; then
-        mkdir -p "$destination_parent"
+    if [ -d "$origin" ]; then
+        if [ ! -d "$destination" ]; then
+            mkdir -p "$destination"
+        fi
+
+        echo "Linking $target/* to $destination"
+
+        for f in "$origin"/*; do
+            name="$(basename "$f")"
+            ln -fns "$f" "$destination/$name"
+        done
+    else
+        destination_parent="$(dirname "$destination")"
+
+        if [ ! -d "$destination_parent" ]; then
+            mkdir -p "$destination_parent"
+        fi
+
+        echo "Linking $target to $destination"
+
+        ln -fns "$origin" "$destination"
     fi
-
-    echo "Linking $target to $destination"
-
-    ln -fns "$origin" "$destination"
-}
-
-link_contents() {
-    target="$1"
-    origin="$dotfiles/$target"
-    destination="$2"
-
-    if [ ! -d "$destination" ]; then
-        mkdir -p "$destination"
-    fi
-
-    echo "Linking contents of $target to $destination"
-
-    for f in "$origin"/*; do
-        name="$(basename "$f")"
-        ln -fns "$f" "$destination/$name"
-    done
 }
 
 # Source environment variables
 . "$dotfiles/zsh/zshenv"
 
 # Link common config
-link_contents bin "$XDG_BIN_HOME"
-link git/allowed_signers "$XDG_CONFIG_HOME/git/allowed_signers"
-link git/config "$XDG_CONFIG_HOME/git/config"
-link git/ignore "$XDG_CONFIG_HOME/git/ignore"
-link gnupg/gpg.conf "$HOME/.gnupg/gpg.conf"
-link gnupg/gpg-agent.conf "$HOME/.gnupg/gpg-agent.conf"
-link npm/npmrc "$XDG_CONFIG_HOME/npm/npmrc"
-link ranger/rc.conf "$XDG_CONFIG_HOME/ranger/rc.conf"
-link tig/config "$XDG_CONFIG_HOME/tig/config"
-link tmux/tmux.conf "$XDG_CONFIG_HOME/tmux/tmux.conf"
+link bin "$XDG_BIN_HOME"
+link git "$XDG_CONFIG_HOME/git"
+link gnupg "$HOME/.gnupg"
+link npm "$XDG_CONFIG_HOME/npm"
+link ranger "$XDG_CONFIG_HOME/ranger"
+link tig "$XDG_CONFIG_HOME/tig"
+link tmux "$XDG_CONFIG_HOME/tmux"
 link vim/vimrc "$HOME/.vim/vimrc"
 link zsh/zshenv "$HOME/.profile"
 link zsh/zshenv "$HOME/.zshenv"
@@ -62,8 +56,8 @@ if [ "$(uname)" = Linux ]; then
     link sublime-merge "$XDG_CONFIG_HOME/sublime-merge/Packages/User"
     link sublime-text "$XDG_CONFIG_HOME/sublime-text/Packages/User"
 elif [ "$(uname)" = Darwin ]; then
-    link_contents mac/launch-agents "$HOME/Library/LaunchAgents"
-    link_contents mac/services "$HOME/Library/Services"
+    link mac/launch-agents "$HOME/Library/LaunchAgents"
+    link mac/services "$HOME/Library/Services"
     link sublime-merge "$HOME/Library/Application Support/Sublime Merge/Packages/User"
     link sublime-text "$HOME/Library/Application Support/Sublime Text/Packages/User"
 fi

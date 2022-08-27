@@ -9,6 +9,9 @@ set -e
 . "$DOTFILES_HOME/zsh/zshenv"
 . "$DOTFILES_HOME/zsh/zprofile"
 
+# Bootstrap required directories
+mkdir -p "$XDG_BIN_HOME" "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_CACHE_HOME" "$XDG_STATE_HOME"
+
 # Install and update homebrew
 if ! type brew > /dev/null 2>&1; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -33,6 +36,3 @@ find ~/.gnupg -type f -exec chmod 600 {} \;
 
 # Remove last login message from new terminal sessions
 touch ~/.hushlogin
-
-# Bootstrap required directories
-mkdir -p "$XDG_DATA_HOME/tig"
