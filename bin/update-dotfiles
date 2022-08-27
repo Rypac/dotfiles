@@ -7,7 +7,7 @@ set -e
 if [ -d "$DOTFILES_HOME" ]; then
     (
         cd "$DOTFILES_HOME"
-        git pull --recurse-submodules
+        git pull
         ./install
     )
 else

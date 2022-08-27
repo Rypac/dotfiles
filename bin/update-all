@@ -5,7 +5,7 @@
 # dotfiles
 (
     cd "$DOTFILES_HOME"
-    git pull --recurse-submodules
+    git pull
     ./install
 )
 

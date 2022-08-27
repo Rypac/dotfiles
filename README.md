@@ -11,7 +11,7 @@ If you don't already backup and synchronise your dotfiles, you should! It's simp
 Simply run:
 
 ```sh
-git clone --recursive https://github.com/Rypac/dotfiles.git ~/.dotfiles
+git clone https://github.com/Rypac/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ./install
 ```
