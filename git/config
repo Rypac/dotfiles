@@ -1,99 +1,99 @@
 [user]
-    name = Ryan Davis
-    email = ryan@rypac.org
-    signingKey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM8mD/3yA57Q/nPT0SQpdgABkn5tVlequOPnKSOxiNMw
+	name = Ryan Davis
+	email = ryan@rypac.org
+	signingKey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM8mD/3yA57Q/nPT0SQpdgABkn5tVlequOPnKSOxiNMw
 
 [github]
-    user = Rypac
+	user = Rypac
 
 [color]
-    ui = true
+	ui = true
 
 [core]
-    editor = vim
+	editor = vim
 
 [init]
-    defaultBranch = main
+	defaultBranch = main
 
 [alias]
-    # Aliases
-    alias = !git config -l | grep alias | cut -c 7-
+	# Aliases
+	alias = !git config -l | grep alias | cut -c 7-
 
-    # Status
-    s = status
-    sl = status --long
-    ss = status --short
-    si = status --ignore-submodules=dirty
+	# Status
+	s = status
+	sl = status --long
+	ss = status --short
+	si = status --ignore-submodules=dirty
 
-    # Logs
-    lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
-    ls = log --pretty=format:"%C(yellow)%h%C(red)%d\\ %Creset%s\\ %C(blue)[%cn]" --decorate
-    lc = log --pretty=format:"%C(yellow)%h%C(red)%d\\ %Creset%s\\ %C(blue)[%cn]" --decorate --numstat
-    ld = log --pretty=format:"%C(yellow)%h\\ %ad%C(red)%d\\ %Creset%s\\ %C(blue)[%cn]" --decorate --date=short
-    lr = log --pretty=format:"%C(yellow)%h\\ %ad%C(red)%d\\ %Creset%s\\ %C(blue)[%cn]" --decorate --date=relative
-    lf = log -u
+	# Logs
+	lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+	ls = log --pretty=format:"%C(yellow)%h%C(red)%d\\ %Creset%s\\ %C(blue)[%cn]" --decorate
+	lc = log --pretty=format:"%C(yellow)%h%C(red)%d\\ %Creset%s\\ %C(blue)[%cn]" --decorate --numstat
+	ld = log --pretty=format:"%C(yellow)%h\\ %ad%C(red)%d\\ %Creset%s\\ %C(blue)[%cn]" --decorate --date=short
+	lr = log --pretty=format:"%C(yellow)%h\\ %ad%C(red)%d\\ %Creset%s\\ %C(blue)[%cn]" --decorate --date=relative
+	lf = log -u
 
-    # Diffs
-    d = diff
-    da = diff HEAD
+	# Diffs
+	d = diff
+	da = diff HEAD
 
-    # Searching
-    search = !git ls-files | grep -i
-    grep = grep -Ii
+	# Searching
+	search = !git ls-files | grep -i
+	grep = grep -Ii
 
-    # Fetching
-    f = fetch --all --prune
-    p = pull --ff-only
+	# Fetching
+	f = fetch --all --prune
+	p = pull --ff-only
 
-    # Branches
-    b = checkout
-    bn = checkout -b
-    bd = branch --delete
-    bdo = push origin --delete
+	# Branches
+	b = checkout
+	bn = checkout -b
+	bd = branch --delete
+	bdo = push origin --delete
 
-    # Staging
-    a = add
-    aa = add -A
+	# Staging
+	a = add
+	aa = add -A
 
-    # Commits
-    cs = commit -S
-    cm = commit -m
-    cms = commit -S -m
-    cmso = commit -s -m
+	# Commits
+	cs = commit -S
+	cm = commit -m
+	cms = commit -S -m
+	cmso = commit -s -m
 
-    # Fixing things
-    undo = reset HEAD~1 --mixed
-    amend = commit -a --amend
+	# Fixing things
+	undo = reset HEAD~1 --mixed
+	amend = commit -a --amend
 
-    # Branch management
-    rename = branch -m
-    orphan = !git branch --merged | egrep -v \"(^\\*|master|main)\"
-    branch-clean = !git branch --merged | egrep -v \"(^\\*|master|main)\" | xargs git branch -d
+	# Branch management
+	rename = branch -m
+	orphan = !git branch --merged | egrep -v \"(^\\*|master|main)\"
+	branch-clean = !git branch --merged | egrep -v \"(^\\*|master|main)\" | xargs git branch -d
 
-    # Submodules
-    subdiff = !git diff && git submodule foreach 'git diff'
-    subpush = push --recurse-submodules=on-demand
-    subinit = submodule update --init --recursive
-    subpull = submodule update --init --remote --merge
+	# Submodules
+	subdiff = !git diff && git submodule foreach 'git diff'
+	subpush = push --recurse-submodules=on-demand
+	subinit = submodule update --init --recursive
+	subpull = submodule update --init --remote --merge
 
 [push]
-    default = simple
+	default = simple
 
 [pull]
-    ff = only
+	ff = only
 
 [merge]
-    tool = smerge
+	tool = smerge
 
 [commit]
-    gpgsign = true
+	gpgsign = true
 
 [tag]
-    gpgsign = true
+	gpgsign = true
 
 [gpg]
-    program = gpg
-    format = ssh
+	program = gpg
+	format = ssh
 
 [gpg "ssh"]
-    allowedSignersFile = ~/.config/git/allowed_signers
+	allowedSignersFile = ~/.config/git/allowed_signers
