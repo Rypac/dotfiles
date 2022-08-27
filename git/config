@@ -19,12 +19,6 @@
 	# Aliases
 	alias = !git config -l | grep alias | cut -c 7-
 
-	# Status
-	s = status
-	sl = status --long
-	ss = status --short
-	si = status --ignore-submodules=dirty
-
 	# Logs
 	lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
 	ls = log --pretty=format:"%C(yellow)%h%C(red)%d\\ %Creset%s\\ %C(blue)[%cn]" --decorate
@@ -33,33 +27,9 @@
 	lr = log --pretty=format:"%C(yellow)%h\\ %ad%C(red)%d\\ %Creset%s\\ %C(blue)[%cn]" --decorate --date=relative
 	lf = log -u
 
-	# Diffs
-	d = diff
-	da = diff HEAD
-
 	# Searching
 	search = !git ls-files | grep -i
 	grep = grep -Ii
-
-	# Fetching
-	f = fetch --all --prune
-	p = pull --ff-only
-
-	# Branches
-	b = checkout
-	bn = checkout -b
-	bd = branch --delete
-	bdo = push origin --delete
-
-	# Staging
-	a = add
-	aa = add -A
-
-	# Commits
-	cs = commit -S
-	cm = commit -m
-	cms = commit -S -m
-	cmso = commit -s -m
 
 	# Fixing things
 	undo = reset HEAD~1 --mixed
