@@ -2,6 +2,14 @@
 #
 # Set login environment variables on macOS
 
-grep "^export" "$HOME/.dotfiles/zsh/zshenv" "$HOME/.dotfiles/zsh/zprofile" | while IFS=' =' read ignoreexport envvar ignorevalue; do
+zshenv="$HOME/.dotfiles/zsh/zshenv"
+zprofile="$HOME/.dotfiles/zsh/zprofile"
+
+# Source files to expand necessary environment variables
+. "$zshenv"
+. "$zprofile"
+
+# Read exported variables into the macOS launchctl environment
+grep "^export" "$zshenv" "$zprofile" | while IFS=' =' read ignoreexport envvar ignorevalue; do
     launchctl setenv "${envvar}" "${!envvar}"
 done
