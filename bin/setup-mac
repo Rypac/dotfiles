@@ -30,9 +30,10 @@ brew bundle --file="$DOTFILES_HOME/mac/Brewfile"
 # Install configuration
 "$DOTFILES_HOME/install"
 
-# Fix GPG permissions
-find ~/.gnupg -type d -exec chmod 700 {} \;
-find ~/.gnupg -type f -exec chmod 600 {} \;
+# Create necessary directories and fix permissions
+mkdir -p ~/.gnupg ~/.ssh
+find ~/.gnupg ~/.ssh -type d -exec chmod 700 {} \;
+find ~/.gnupg ~/.ssh -type f -exec chmod 600 {} \;
 
 # Remove last login message from new terminal sessions
 touch ~/.hushlogin
