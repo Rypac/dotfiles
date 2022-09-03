@@ -64,12 +64,6 @@ if (( $+commands[brew] )); then
     eval "$(brew shellenv)"
 fi
 
-# zoxide: smarter cd command
-# https://github.com/ajeetdsouza/zoxide
-if (( $+commands[zoxide] )); then
-    eval "$(zoxide init zsh)"
-fi
-
 # fzf: general-purpose command-line fuzzy finder
 # https://github.com/junegunn/fzf
 if (( $+commands[fzf] )); then
@@ -96,6 +90,12 @@ if (( $+commands[fzf] )); then
             fzf --preview 'cat {}'
         fi
     }
+fi
+
+# zoxide: smarter cd command
+# https://github.com/ajeetdsouza/zoxide
+if (( $+commands[zoxide] )); then
+    eval "$(zoxide init zsh)"
 fi
 
 # gpgconf: utility to configure GnuPG
