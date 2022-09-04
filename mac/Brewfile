@@ -42,7 +42,9 @@ cask "sublime-merge-dev"
 cask "sublime-text-dev"
 cask "transmit"
 mas "Day One", id: 1055511498
+mas "Dropover", id: 1355679052
 mas "GarageBand", id: 682658836
+mas "Hand Mirror", id: 1502839586
 mas "Hush", id: 1544743900
 mas "iA Writer", id: 775737590
 mas "Image2icon", id: 992115977
