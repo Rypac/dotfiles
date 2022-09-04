@@ -20,6 +20,12 @@ if command -v brew >/dev/null 2>&1; then
     brew bundle --file="$DOTFILES_HOME/mac/Brewfile"
 fi
 
+# /etc/hosts content blocking
+diff -bq /etc/hosts <(curl -s 'https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts') >/dev/null 2>&1
+if [ "$?" -ne 0 ]; then
+    echo 'Hosts update available: https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts'
+fi
+
 # vim package docs
 vim -c 'helptags all' +qall
 
