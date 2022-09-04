@@ -1,0 +1,24 @@
+[
+    { "caption": "-", "id": "file" },
+    {
+        "command": "reveal_tab_in_finder",
+        "args": { "group": -1, "index": -1 },
+        "caption": "Reveal in Finder"
+    },
+    {
+        "command": "copy_tab_file_path",
+        "args": { "group": -1, "index": -1 },
+        "caption": "Copy File Path"
+    },
+    {
+        "command": "reveal_tab_in_side_bar",
+        "args": { "group": -1, "index": -1 },
+        "caption": "Reveal in Side Bar"
+    },
+    { "caption": "-", "id": "window" },
+    {
+        "command": "open_tab_in_new_window",
+        "args": { "group": -1, "index": -1 },
+        "caption": "Open in New Window"
+    }
+]

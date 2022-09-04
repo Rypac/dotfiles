@@ -1,0 +1,24 @@
+[
+    {
+        "command": "toggle_setting",
+        "args": { "setting": "line_numbers" },
+        "caption": "Line Numbers: Toggle"
+    },
+    {
+        "command": "toggle_setting",
+        "args": { "setting": "draw_centered" },
+        "caption": "Draw Centered: Toggle"
+    },
+    {
+        "command": "toggle_neovintageous",
+        "caption": "Toggle NeoVintageous"
+    },
+    {
+        "command": "open_and_focus_side_bar",
+        "caption": "View: Open and Focus Side Bar"
+    },
+    {
+        "command": "open_view_in_new_window",
+        "caption": "View: Open in New Window"
+    }
+]

@@ -30,6 +30,13 @@
         "command": "prompt_select_workspace"
     },
 
+    // NeoVintageous
+    {
+        "keys": ["-"],
+        "command": "open_and_focus_side_bar",
+        "context": [{ "key": "vi_command_mode_aware" }]
+    },
+
     // LSP
     {
         "keys": ["super+option+l"],

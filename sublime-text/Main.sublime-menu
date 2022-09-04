@@ -1,0 +1,14 @@
+[
+    {
+        "id": "view",
+        "children": [
+            { "caption": "-", "id": "focus" },
+            {
+                "command": "toggle_setting",
+                "args": { "setting": "line_numbers" },
+                "caption": "Line Numbers",
+                "checkbox": true
+            }
+        ]
+    }
+]

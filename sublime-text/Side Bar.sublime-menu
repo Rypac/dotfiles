@@ -1,0 +1,23 @@
+[
+    {
+        "command": "copy_file_path",
+        "args": { "files": [] },
+        "caption": "Copy File Path"
+    },
+    {
+        "command": "copy_folder_path",
+        "args": { "dirs": [] },
+        "caption": "Copy Folder Path"
+    },
+    { "caption": "-", "id": "window" },
+    {
+        "command": "open_file_in_new_window",
+        "args": { "files": [] },
+        "caption": "Open in New Window"
+    },
+    {
+        "command": "float_file_in_window",
+        "args": { "files": [] },
+        "caption": "Float Window"
+    }
+]

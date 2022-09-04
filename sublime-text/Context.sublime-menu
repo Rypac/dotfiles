@@ -1,0 +1,7 @@
+[
+    { "caption": "-", "id": "window" },
+    {
+        "command": "open_view_in_new_window",
+        "caption": "Open in New Window"
+    }
+]
