@@ -8,30 +8,19 @@
         "command": "open_view_in_focus_mode",
         "caption": "Open in Focus Mode"
     },
-    { "caption": "-", "id": "split" },
+    { "caption": "-", "id": "group" },
     {
-        "command": "clone_file_to_pane",
-        "args": { "direction": "right" },
-        "caption": "Split Right"
+        "command": "split_to_next_group",
+        "args": { "move": false },
+        "caption": "Split to Next Group"
     },
     {
-        "command": "carry_file_to_pane",
-        "args": { "direction": "right" },
-        "caption": "Split and Move Right"
+        "command": "split_to_next_group",
+        "args": { "move": true },
+        "caption": "Move to Next Group"
     },
     {
-        "command": "clone_file_to_pane",
-        "args": { "direction": "below" },
-        "caption": "Split Down"
-    },
-    {
-        "command": "carry_file_to_pane",
-        "args": { "direction": "below" },
-        "caption": "Split and Move Down"
-    },
-    {
-        "command": "destroy_pane",
-        "args": { "direction": "self" },
-        "caption": "Close Split"
+        "command": "close_group",
+        "caption": "Close Group"
     }
 ]
