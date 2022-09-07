@@ -16,8 +16,8 @@
         "caption": "Open in New Window"
     },
     {
-        "command": "float_file_in_window",
+        "command": "open_file_in_focus_mode",
         "args": { "files": [] },
-        "caption": "Float Window"
+        "caption": "Open in Focus Mode"
     }
 ]

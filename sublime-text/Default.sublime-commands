@@ -20,5 +20,13 @@
     {
         "command": "open_view_in_new_window",
         "caption": "View: Open in New Window"
+    },
+    {
+        "command": "enter_focus_mode",
+        "caption": "View: Enter Focus Mode"
+    },
+    {
+        "command": "exit_focus_mode",
+        "caption": "View: Exit Focus Mode"
     }
 ]

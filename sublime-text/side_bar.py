@@ -5,13 +5,13 @@ import sublime_plugin
 class OpenAndFocusSideBarCommand(sublime_plugin.WindowCommand):
     def run(self):
         self.window.set_sidebar_visible(True)
-        sublime.set_timeout_async(lambda: self.window.run_command("focus_side_bar"), 100)
+        sublime.set_timeout(lambda: self.window.run_command("focus_side_bar"), 100)
 
 
 class CopyFilePathCommand(sublime_plugin.WindowCommand):
     def run(self, files):
         sublime.set_clipboard(files[0])
-        sublime.status_message("Copied file path")
+        self.window.status_message("Copied file path")
 
     def is_visible(self, files):
         return len(files) == 1
@@ -20,7 +20,7 @@ class CopyFilePathCommand(sublime_plugin.WindowCommand):
 class CopyFolderPathCommand(sublime_plugin.WindowCommand):
     def run(self, dirs):
         sublime.set_clipboard(dirs[0])
-        sublime.status_message("Copied folder path")
+        self.window.status_message("Copied folder path")
 
     def is_visible(self, dirs):
         return len(dirs) == 1
@@ -41,15 +41,13 @@ class OpenFileInNewWindowCommand(sublime_plugin.WindowCommand):
         return len(files) > 0
 
 
-class FloatFileInWindowCommand(sublime_plugin.WindowCommand):
+class OpenFileInFocusModeCommand(sublime_plugin.WindowCommand):
     def run(self, files):
         sublime.run_command("new_window")
         new_window = sublime.active_window()
 
         new_window.run_command("open_file", {"file": files[0]})
-
-        new_window.set_tabs_visible(False)
-        new_window.set_sidebar_visible(False)
+        new_window.run_command("enter_focus_mode")
 
     def is_visible(self, files):
         return len(files) == 1

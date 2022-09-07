@@ -36,7 +36,7 @@ class CopyTabFilePathCommand(TabContextCommand):
 
         if file_name is not None:
             sublime.set_clipboard(file_name)
-            sublime.status_message("Copied file path")
+            self.window.status_message("Copied file path")
 
 
 class RevealTabInSideBarCommand(TabContextCommand):
@@ -60,3 +60,15 @@ class OpenTabInNewWindowCommand(TabContextCommand):
 
             new_window.set_tabs_visible(True)
             new_window.set_sidebar_visible(False)
+
+
+class OpenTabInFocusModeCommand(TabContextCommand):
+    def run(self, group=-1, index=-1):
+        file_name = self.file_name(group, index)
+
+        if file_name is not None:
+            sublime.run_command("new_window")
+            new_window = sublime.active_window()
+
+            new_window.run_command("open_file", {"file": file_name})
+            new_window.run_command("enter_focus_mode")

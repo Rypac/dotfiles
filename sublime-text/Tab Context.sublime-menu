@@ -20,5 +20,10 @@
         "command": "open_tab_in_new_window",
         "args": { "group": -1, "index": -1 },
         "caption": "Open in New Window"
+    },
+    {
+        "command": "open_tab_in_focus_mode",
+        "args": { "group": -1, "index": -1 },
+        "caption": "Open in Focus Mode"
     }
 ]
