@@ -16,6 +16,11 @@
         "caption": "Open in New Window"
     },
     {
+        "command": "open_folder_in_new_window",
+        "args": { "dirs": [] },
+        "caption": "Open in New Window"
+    },
+    {
         "command": "open_file_in_focus_mode",
         "args": { "files": [] },
         "caption": "Open in Focus Mode"

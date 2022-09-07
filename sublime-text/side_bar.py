@@ -41,6 +41,23 @@ class OpenFileInNewWindowCommand(sublime_plugin.WindowCommand):
         return len(files) > 0
 
 
+class OpenFolderInNewWindowCommand(sublime_plugin.WindowCommand):
+    def run(self, dirs):
+        import os
+        import subprocess
+
+        executable_path = sublime.executable_path()
+
+        if sublime.platform() == "osx":
+            app_path = executable_path[: executable_path.rfind(".app/") + 5]
+            executable_path = os.path.join(app_path, "Contents/SharedSupport/bin/subl")
+
+        subprocess.Popen([executable_path, "--new-window"] + dirs)
+
+    def is_visible(self, dirs):
+        return len(dirs) > 0
+
+
 class OpenFileInFocusModeCommand(sublime_plugin.WindowCommand):
     def run(self, files):
         sublime.run_command("new_window")
