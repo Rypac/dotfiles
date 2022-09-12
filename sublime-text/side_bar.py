@@ -53,7 +53,7 @@ class OpenFolderInNewWindowCommand(sublime_plugin.WindowCommand):
             executable_path = os.path.join(app_path, "Contents/SharedSupport/bin/subl")
 
         try:
-            subprocess.check_call([executable_path, "--new-window"] + dirs)
+            subprocess.Popen([executable_path, "--new-window"] + dirs)
         except Exception as e:
             sublime.error_message(str(e))
 
