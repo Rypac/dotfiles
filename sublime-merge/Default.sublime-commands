@@ -8,5 +8,10 @@
         "caption": "Cleanup Branches",
         "command": "git",
         "args": { "argv": ["branch-clean"] }
+    },
+    {
+        "caption": "Stash With Message…",
+        "command": "git",
+        "args": { "argv": ["stash", "-m", "$text"] }
     }
 ]
