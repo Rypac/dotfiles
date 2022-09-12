@@ -11,6 +11,7 @@ set -e
 
 # Bootstrap required directories
 mkdir -p "$XDG_BIN_HOME" "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_CACHE_HOME" "$XDG_STATE_HOME"
+chmod 0700 "$XDG_BIN_HOME" "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_CACHE_HOME" "$XDG_STATE_HOME"
 
 # Install and update homebrew
 if ! type brew > /dev/null 2>&1; then
