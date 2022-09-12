@@ -7,15 +7,14 @@ class ToggleNeovintageousCommand(sublime_plugin.ApplicationCommand):
         settings = sublime.load_settings("Preferences.sublime-settings")
         ignored_packages = settings.get("ignored_packages", [])
 
-        if "NeoVintageous" in ignored_packages:
+        if was_ignored := "NeoVintageous" in ignored_packages:
             ignored_packages.remove("NeoVintageous")
-            status = "enabled"
         else:
             ignored_packages.append("NeoVintageous")
-            status = "disabled"
 
         ignored_packages.sort()
         settings.set("ignored_packages", ignored_packages)
         sublime.save_settings("Preferences.sublime-settings")
 
-        sublime.status_message("NeoVintageous {}".format(status))
+        status = "enabled" if was_ignored else "disabled"
+        sublime.status_message(f"NeoVintageous {status}")

@@ -1,5 +1,3 @@
-import os
-
 import sublime
 import sublime_plugin
 
@@ -13,50 +11,42 @@ class TabContextCommand(sublime_plugin.WindowCommand):
         return sheets[index] if -1 < index < len(sheets) else None
 
     def view(self, group, index):
-        sheet = self.sheet(group, index)
-        return sheet.view() if sheet is not None else None
+        return sheet.view() if (sheet := self.sheet(group, index)) else None
 
     def file_name(self, group, index):
-        view = self.view(group, index)
-        return view.file_name() if view is not None else None
+        return view.file_name() if (view := self.view(group, index)) else None
 
 
 class RevealTabInFinderCommand(TabContextCommand):
     def run(self, group=-1, index=-1):
-        file_name = self.file_name(group, index)
+        import os
 
-        if file_name is not None:
-            path, name = os.path.split(file_name)
-            self.window.run_command("open_dir", {"dir": path, "file": name})
+        if path := self.file_name(group, index):
+            dir, file = os.path.split(path)
+            self.window.run_command("open_dir", {"dir": dir, "file": file})
 
 
 class CopyTabFilePathCommand(TabContextCommand):
     def run(self, group=-1, index=-1):
-        file_name = self.file_name(group, index)
-
-        if file_name is not None:
-            sublime.set_clipboard(file_name)
+        if path := self.file_name(group, index):
+            sublime.set_clipboard(path)
             self.window.status_message("Copied file path")
 
 
 class RevealTabInSideBarCommand(TabContextCommand):
     def run(self, group=-1, index=-1):
-        view = self.view(group, index)
-
-        if view is not None:
+        if view := self.view(group, index):
             self.window.focus_view(view)
-            self.window.run_command('reveal_in_side_bar')
+            self.window.run_command("reveal_in_side_bar")
 
 
 class OpenTabInNewWindowCommand(TabContextCommand):
     def run(self, group=-1, index=-1):
-        file_name = self.file_name(group, index)
-
-        if file_name is not None:
+        if path := self.file_name(group, index):
             sublime.run_command("new_window")
             new_window = sublime.active_window()
 
-            new_window.run_command("open_file", {"file": file_name})
+            new_window.run_command("open_file", {"file": path})
 
             new_window.set_tabs_visible(True)
             new_window.set_sidebar_visible(False)
@@ -64,11 +54,9 @@ class OpenTabInNewWindowCommand(TabContextCommand):
 
 class OpenTabInFocusModeCommand(TabContextCommand):
     def run(self, group=-1, index=-1):
-        file_name = self.file_name(group, index)
-
-        if file_name is not None:
+        if path := self.file_name(group, index):
             sublime.run_command("new_window")
             new_window = sublime.active_window()
 
-            new_window.run_command("open_file", {"file": file_name})
+            new_window.run_command("open_file", {"file": path})
             new_window.run_command("enter_focus_mode")

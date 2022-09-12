@@ -9,6 +9,11 @@
         "args": { "dirs": [] },
         "caption": "Copy Folder Path"
     },
+    {
+        "command": "launch_file",
+        "args": { "files": [] },
+        "caption": "Open File"
+    },
     { "caption": "-", "id": "window" },
     {
         "command": "open_file_in_new_window",

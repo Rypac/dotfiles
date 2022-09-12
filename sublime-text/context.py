@@ -37,29 +37,27 @@ class SplitToNextGroupCommand(sublime_plugin.WindowCommand):
         if view is None:
             return
 
-        group, original_index = self.window.get_view_index(view)
+        group, index = self.window.get_view_index(view)
         self.window.run_command("clone_file")
 
-        new_view = self.window.active_view()
-        if new_view is None:
+        if (new_view := self.window.active_view()) is None:
             return
 
-        self.window.set_view_index(new_view, group, original_index)
+        self.window.set_view_index(new_view, group, index)
 
         new_selections = new_view.sel()
         new_selections.clear()
         for selection in view.sel():
             new_selections.add(selection)
+
         sublime.set_timeout(lambda: new_view.set_viewport_position(view.viewport_position(), False))
 
     def run(self, move=False):
         if not move:
             self.clone_view(self.window.active_view())
 
-        active_group = self.window.active_group()
-
-        if active_group < self.window.num_groups() - 1:
-            self.window.run_command("move_to_group", {"group": active_group + 1})
+        if (group := self.window.active_group()) < self.window.num_groups() - 1:
+            self.window.run_command("move_to_group", {"group": group + 1})
         else:
             self.window.run_command("new_pane", {"move": True})
 

@@ -52,7 +52,10 @@ class OpenFolderInNewWindowCommand(sublime_plugin.WindowCommand):
             app_path = executable_path[: executable_path.rfind(".app/") + 5]
             executable_path = os.path.join(app_path, "Contents/SharedSupport/bin/subl")
 
-        subprocess.Popen([executable_path, "--new-window"] + dirs)
+        try:
+            subprocess.check_call([executable_path, "--new-window"] + dirs)
+        except Exception as e:
+            sublime.error_message(str(e))
 
     def is_visible(self, dirs):
         return len(dirs) > 0
@@ -68,3 +71,25 @@ class OpenFileInFocusModeCommand(sublime_plugin.WindowCommand):
 
     def is_visible(self, files):
         return len(files) == 1
+
+
+class LaunchFileCommand(sublime_plugin.WindowCommand):
+    def run(self, files):
+        import os
+        import subprocess
+
+        try:
+            if sublime.platform() == "windows":
+                os.startfile(files[0])
+            elif sublime.platform() == "osx":
+                subprocess.check_call(["open", *files])
+            else:
+                subprocess.check_call(["xdg-open", files[0]])
+        except Exception as e:
+            sublime.error_message(str(e))
+
+    def is_visible(self, files):
+        return len(files) > 0
+
+    def is_enabled(self, files):
+        return sublime.platform() == "osx" or len(files) == 1
