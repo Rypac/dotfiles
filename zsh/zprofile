@@ -54,3 +54,7 @@ export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
 # https://bundler.io/man/bundle-config.1.html#CONFIGURE-BUNDLER-DIRECTORIES
 export BUNDLE_USER_HOME="$XDG_CONFIG_HOME/bundle"
 export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
+
+# SQLite: Set location of sqlite_history file
+# https://www.sqlite.org/releaselog/3_26_0.html
+export SQLITE_HISTORY="$XDG_STATE_HOME/sqlite_history"
