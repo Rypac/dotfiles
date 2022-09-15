@@ -58,3 +58,7 @@ export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
 # SQLite: Set location of sqlite_history file
 # https://www.sqlite.org/releaselog/3_26_0.html
 export SQLITE_HISTORY="$XDG_STATE_HOME/sqlite_history"
+
+# Visual Studio Code: Open source code editor
+# https://github.com/microsoft/vscode/blob/main/src/vs/platform/environment/node/userDataPath.js
+export VSCODE_PORTABLE="$XDG_DATA_HOME/vscode"
