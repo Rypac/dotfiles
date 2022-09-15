@@ -1,0 +1,29 @@
+{
+    "cmd": ["cabal", "run"],
+    "selector": "source.haskell",
+    "file_patterns": ["*.cabal"],
+    "keyfiles": ["*.cabal"],
+    "working_dir": "${project_path:${folder}}",
+    "variants": [
+        {
+            "name": "Build",
+            "cmd": ["cabal", "build"]
+        },
+        {
+            "name": "Test",
+            "cmd": ["cabal", "test"]
+        },
+        {
+            "name": "Update",
+            "cmd": ["cabal", "update"]
+        },
+        {
+            "name": "Outdated",
+            "cmd": ["cabal", "outdated"]
+        },
+        {
+            "name": "Clean",
+            "cmd": ["cabal", "clean"]
+        }
+    ]
+}
