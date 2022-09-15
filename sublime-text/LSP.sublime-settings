@@ -5,6 +5,11 @@
             "command": ["haskell-language-server-wrapper", "--lsp"],
             "selector": "source.haskell"
         },
+        "rust-analyzer": {
+            "enabled": true,
+            "command": ["rust-analyzer"],
+            "selector": "source.rust"
+        },
         "sourcekit-lsp": {
             "enabled": true,
             "command": ["xcrun", "sourcekit-lsp"],
