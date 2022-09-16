@@ -22,7 +22,7 @@ class EnterFocusModeCommand(sublime_plugin.WindowCommand):
 
         for view in self.window.views():
             if (view_prefs := view.settings()) is None:
-              continue
+                continue
 
             for setting, default in focus_prefs.items():
                 view_prefs.set(setting, df_prefs.get(setting, default))
@@ -55,11 +55,18 @@ class ExitFocusModeCommand(sublime_plugin.WindowCommand):
                 continue
 
             syntax = view_prefs.get("syntax").split("/")[-1].split(".")[0]
-            syntax_prefs = sublime.load_settings(f"{syntax}.sublime-settings") if syntax is not None else None
-            
+            syntax_prefs = (
+                sublime.load_settings(f"{syntax}.sublime-settings")
+                if syntax is not None
+                else None
+            )
+
             if syntax_prefs is not None:
                 for setting, default in focus_prefs.items():
-                    view_prefs.set(setting, syntax_prefs.get(setting, prefs.get(setting, default)))
+                    view_prefs.set(
+                        setting,
+                        syntax_prefs.get(setting, prefs.get(setting, default)),
+                    )
             else:
                 for setting, default in focus_prefs.items():
                     view_prefs.set(setting, prefs.get(setting, default))
