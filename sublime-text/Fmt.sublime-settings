@@ -1,0 +1,24 @@
+{
+    "rules": [
+        {
+            "selector": "source.python",
+            "cmd": ["black", "-"]
+        },
+        {
+            "selector": "source.json",
+            "cmd": ["jq", "--indent", "$tab_size", "."]
+        },
+        {
+            "selector": "source.swift",
+            "cmd": ["swiftformat", "--indent", "$tab_size"]
+        },
+        {
+            "selector": "source.rust",
+            "cmd": ["rustfmt"]
+        },
+        {
+            "selector": "source.c",
+            "cmd": ["clang-format", "--assume-filename=c"]
+        }
+    ]
+}
