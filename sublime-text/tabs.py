@@ -1,19 +1,21 @@
+from typing import Optional
+
 import sublime
 import sublime_plugin
 
 
 class TabContextCommand(sublime_plugin.WindowCommand):
-    def sheet(self, group, index):
+    def sheet(self, group, index) -> Optional[sublime.View]:
         if group < 0 or index < 0:
             return None
 
         sheets = self.window.sheets_in_group(int(group))
         return sheets[index] if -1 < index < len(sheets) else None
 
-    def view(self, group, index):
+    def view(self, group, index) -> Optional[sublime.View]:
         return sheet.view() if (sheet := self.sheet(group, index)) else None
 
-    def file_name(self, group, index):
+    def file_name(self, group, index) -> Optional[str]:
         return view.file_name() if (view := self.view(group, index)) else None
 
 
