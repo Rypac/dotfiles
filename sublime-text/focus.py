@@ -27,10 +27,22 @@ class EnterFocusModeCommand(sublime_plugin.WindowCommand):
             for setting, default in focus_prefs.items():
                 view_prefs.set(setting, df_prefs.get(setting, default))
 
+        pre_focus_state = {
+            "minimap": self.window.is_minimap_visible(),
+            "sidebar": self.window.is_sidebar_visible(),
+            "status_bar": self.window.is_status_bar_visible(),
+            "tabs": self.window.get_tabs_visible(),
+        }
+
         self.window.set_tabs_visible(False)
         self.window.set_status_bar_visible(False)
         self.window.set_sidebar_visible(False)
         self.window.set_minimap_visible(False)
+
+        self.window.settings().set("focus_mode_state", pre_focus_state)
+
+    def is_enabled(self):
+        return not self.window.settings().has("focus_mode_state")
 
 
 class ExitFocusModeCommand(sublime_plugin.WindowCommand):
@@ -71,7 +83,14 @@ class ExitFocusModeCommand(sublime_plugin.WindowCommand):
                 for setting, default in focus_prefs.items():
                     view_prefs.set(setting, prefs.get(setting, default))
 
-        self.window.set_tabs_visible(True)
-        self.window.set_status_bar_visible(True)
-        self.window.set_sidebar_visible(True)
-        self.window.set_minimap_visible(True)
+        saved_state = self.window.settings().get("focus_mode_state", default={})
+
+        self.window.set_minimap_visible(saved_state.get("minimap", True))
+        self.window.set_sidebar_visible(saved_state.get("sidebar", True))
+        self.window.set_status_bar_visible(saved_state.get("status_bar", True))
+        self.window.set_tabs_visible(saved_state.get("tabs", True))
+
+        self.window.settings().erase("focus_mode_state")
+
+    def is_enabled(self):
+        return self.window.settings().has("focus_mode_state")
