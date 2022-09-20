@@ -1,5 +1,13 @@
 [
     {
+        "command": "set_view_font_size",
+        "caption": "View: Set Font Size"
+    },
+    {
+        "command": "reset_view_font_size",
+        "caption": "View: Reset Font Size"
+    },
+    {
         "command": "toggle_setting",
         "args": { "setting": "line_numbers" },
         "caption": "Line Numbers: Toggle"
