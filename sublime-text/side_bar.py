@@ -16,7 +16,7 @@ class CopyFilePathCommand(sublime_plugin.WindowCommand):
         self.window.status_message("Copied file path")
 
     def is_visible(self, files: List[str]) -> bool:
-        return len(files) == 1
+        return len(files) == 1 and len(files[0]) > 0
 
 
 class CopyFolderPathCommand(sublime_plugin.WindowCommand):
@@ -25,7 +25,7 @@ class CopyFolderPathCommand(sublime_plugin.WindowCommand):
         self.window.status_message("Copied folder path")
 
     def is_visible(self, dirs: List[str]) -> bool:
-        return len(dirs) == 1
+        return len(dirs) == 1 and len(dirs[0]) > 0
 
 
 class OpenFileInNewWindowCommand(sublime_plugin.WindowCommand):
@@ -36,7 +36,6 @@ class OpenFileInNewWindowCommand(sublime_plugin.WindowCommand):
         for file in files:
             new_window.run_command("open_file", {"file": file})
 
-        new_window.set_tabs_visible(True)
         new_window.set_sidebar_visible(False)
 
     def is_visible(self, files: List[str]) -> bool:

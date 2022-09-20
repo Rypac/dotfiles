@@ -28,7 +28,7 @@ class RevealTabInFinderCommand(TabContextCommand):
             self.window.run_command("open_dir", {"dir": dir, "file": file})
 
     def is_visible(self, group=-1, index=-1) -> bool:
-        return self.file_name(group, index) is not None
+        return (name := self.file_name(group, index)) is not None and len(name) > 0
 
 
 class CopyTabFilePathCommand(TabContextCommand):
@@ -38,7 +38,7 @@ class CopyTabFilePathCommand(TabContextCommand):
             self.window.status_message("Copied file path")
 
     def is_visible(self, group=-1, index=-1) -> bool:
-        return self.file_name(group, index) is not None
+        return (name := self.file_name(group, index)) is not None and len(name) > 0
 
 
 class RevealTabInSideBarCommand(TabContextCommand):
@@ -48,7 +48,7 @@ class RevealTabInSideBarCommand(TabContextCommand):
             self.window.run_command("reveal_in_side_bar")
 
     def is_visible(self, group=-1, index=-1) -> bool:
-        return self.file_name(group, index) is not None
+        return (name := self.file_name(group, index)) is not None and len(name) > 0
 
 
 class OpenTabInNewWindowCommand(TabContextCommand):
@@ -58,8 +58,6 @@ class OpenTabInNewWindowCommand(TabContextCommand):
             new_window = sublime.active_window()
 
             new_window.run_command("open_file", {"file": path})
-
-            new_window.set_tabs_visible(True)
             new_window.set_sidebar_visible(False)
 
 

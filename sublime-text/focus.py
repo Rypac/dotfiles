@@ -83,7 +83,7 @@ class ExitFocusModeCommand(sublime_plugin.WindowCommand):
                 for setting, default in focus_prefs.items():
                     view_prefs.set(setting, prefs.get(setting, default))
 
-        saved_state = self.window.settings().get("focus_mode_state", default={})
+        saved_state = self.window.settings().get("focus_mode_state", {})
 
         self.window.set_minimap_visible(saved_state.get("minimap", True))
         self.window.set_sidebar_visible(saved_state.get("sidebar", True))
