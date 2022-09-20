@@ -70,6 +70,11 @@ class SplitToNextGroupCommand(sublime_plugin.WindowCommand):
 
 class CloseGroupCommand(sublime_plugin.WindowCommand):
     def run(self):
+        active_group = self.window.active_group()
+        for view in self.window.views_in_group(active_group):
+            if not view.is_dirty():
+                view.close()
+
         self.window.run_command("close_pane")
 
     def is_visible(self) -> bool:
