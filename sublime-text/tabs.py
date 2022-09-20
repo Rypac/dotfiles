@@ -71,3 +71,35 @@ class OpenTabInFocusModeCommand(TabContextCommand):
 
             new_window.run_command("open_file", {"file": path})
             new_window.run_command("enter_focus_mode")
+
+
+class SplitTabToNextGroupCommand(TabContextCommand):
+    def clone_view(self, view: sublime.View):
+        group, index = self.window.get_view_index(view)
+        self.window.run_command("clone_file")
+
+        if (new_view := self.window.active_view()) is None:
+            return
+
+        self.window.set_view_index(new_view, group, index)
+
+        new_selections = new_view.sel()
+        new_selections.clear()
+        for selection in view.sel():
+            new_selections.add(selection)
+
+        sublime.set_timeout(
+            lambda: new_view.set_viewport_position(view.viewport_position(), False)
+        )
+
+    def run(self, group=-1, index=-1, move=False):
+        if view := self.view(group, index):
+            self.window.focus_view(view)
+
+            if not move:
+                self.clone_view(view)
+
+            if (group := self.window.active_group()) < self.window.num_groups() - 1:
+                self.window.run_command("move_to_group", {"group": group + 1})
+            else:
+                self.window.run_command("new_pane", {"move": True})

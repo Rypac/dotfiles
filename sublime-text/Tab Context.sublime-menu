@@ -25,5 +25,20 @@
         "command": "open_tab_in_focus_mode",
         "args": { "group": -1, "index": -1 },
         "caption": "Open in Focus Mode"
+    },
+    { "caption": "-", "id": "group" },
+    {
+        "command": "split_tab_to_next_group",
+        "args": { "group": -1, "index": -1, "move": false },
+        "caption": "Split to Next Group"
+    },
+    {
+        "command": "split_tab_to_next_group",
+        "args": { "group": -1, "index": -1, "move": true },
+        "caption": "Move to Next Group"
+    },
+    {
+        "command": "close_group",
+        "caption": "Close Group"
     }
 ]
