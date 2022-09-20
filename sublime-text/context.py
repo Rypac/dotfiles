@@ -1,3 +1,5 @@
+from typing import Optional
+
 import sublime
 import sublime_plugin
 
@@ -14,7 +16,7 @@ class OpenViewInNewWindowCommand(sublime_plugin.TextCommand):
         new_window.set_tabs_visible(True)
         new_window.set_sidebar_visible(False)
 
-    def is_visible(self):
+    def is_visible(self) -> bool:
         return self.view.file_name() is not None
 
 
@@ -28,15 +30,12 @@ class OpenViewInFocusModeCommand(sublime_plugin.TextCommand):
         new_window.run_command("open_file", {"file": file_name})
         new_window.run_command("enter_focus_mode")
 
-    def is_visible(self):
+    def is_visible(self) -> bool:
         return self.view.file_name() is not None
 
 
 class SplitToNextGroupCommand(sublime_plugin.WindowCommand):
-    def clone_view(self, view):
-        if view is None:
-            return
-
+    def clone_view(self, view: sublime.View):
         group, index = self.window.get_view_index(view)
         self.window.run_command("clone_file")
 
@@ -55,15 +54,15 @@ class SplitToNextGroupCommand(sublime_plugin.WindowCommand):
         )
 
     def run(self, move=False):
-        if not move:
-            self.clone_view(self.window.active_view())
+        if not move and (view := self.window.active_view()):
+            self.clone_view(view)
 
         if (group := self.window.active_group()) < self.window.num_groups() - 1:
             self.window.run_command("move_to_group", {"group": group + 1})
         else:
             self.window.run_command("new_pane", {"move": True})
 
-    def is_visible(self):
+    def is_visible(self) -> bool:
         group = self.window.active_group()
         sheets = self.window.sheets_in_group(group)
         return len(sheets) > 0
@@ -73,5 +72,5 @@ class CloseGroupCommand(sublime_plugin.WindowCommand):
     def run(self):
         self.window.run_command("close_pane")
 
-    def is_visible(self):
+    def is_visible(self) -> bool:
         return self.window.num_groups() > 1

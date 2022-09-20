@@ -1,3 +1,5 @@
+from typing import List
+
 import sublime
 import sublime_plugin
 
@@ -9,25 +11,25 @@ class OpenAndFocusSideBarCommand(sublime_plugin.WindowCommand):
 
 
 class CopyFilePathCommand(sublime_plugin.WindowCommand):
-    def run(self, files):
+    def run(self, files: List[str]):
         sublime.set_clipboard(files[0])
         self.window.status_message("Copied file path")
 
-    def is_visible(self, files):
+    def is_visible(self, files: List[str]) -> bool:
         return len(files) == 1
 
 
 class CopyFolderPathCommand(sublime_plugin.WindowCommand):
-    def run(self, dirs):
+    def run(self, dirs: List[str]):
         sublime.set_clipboard(dirs[0])
         self.window.status_message("Copied folder path")
 
-    def is_visible(self, dirs):
+    def is_visible(self, dirs: List[str]) -> bool:
         return len(dirs) == 1
 
 
 class OpenFileInNewWindowCommand(sublime_plugin.WindowCommand):
-    def run(self, files):
+    def run(self, files: List[str]):
         sublime.run_command("new_window")
         new_window = sublime.active_window()
 
@@ -37,12 +39,12 @@ class OpenFileInNewWindowCommand(sublime_plugin.WindowCommand):
         new_window.set_tabs_visible(True)
         new_window.set_sidebar_visible(False)
 
-    def is_visible(self, files):
+    def is_visible(self, files: List[str]) -> bool:
         return len(files) > 0
 
 
 class OpenFolderInNewWindowCommand(sublime_plugin.WindowCommand):
-    def run(self, dirs):
+    def run(self, dirs: List[str]):
         import os
         import subprocess
 
@@ -57,24 +59,24 @@ class OpenFolderInNewWindowCommand(sublime_plugin.WindowCommand):
         except Exception as e:
             sublime.error_message(str(e))
 
-    def is_visible(self, dirs):
+    def is_visible(self, dirs: List[str]) -> bool:
         return len(dirs) > 0
 
 
 class OpenFileInFocusModeCommand(sublime_plugin.WindowCommand):
-    def run(self, files):
+    def run(self, files: List[str]):
         sublime.run_command("new_window")
         new_window = sublime.active_window()
 
         new_window.run_command("open_file", {"file": files[0]})
         new_window.run_command("enter_focus_mode")
 
-    def is_visible(self, files):
+    def is_visible(self, files: List[str]) -> bool:
         return len(files) == 1
 
 
 class LaunchFileCommand(sublime_plugin.WindowCommand):
-    def run(self, files):
+    def run(self, files: List[str]):
         import os
         import subprocess
 
@@ -88,8 +90,8 @@ class LaunchFileCommand(sublime_plugin.WindowCommand):
         except Exception as e:
             sublime.error_message(str(e))
 
-    def is_visible(self, files):
+    def is_visible(self, files: List[str]) -> bool:
         return len(files) > 0
 
-    def is_enabled(self, files):
+    def is_enabled(self, files: List[str]) -> bool:
         return sublime.platform() == "osx" or len(files) == 1

@@ -41,7 +41,7 @@ class EnterFocusModeCommand(sublime_plugin.WindowCommand):
 
         self.window.settings().set("focus_mode_state", pre_focus_state)
 
-    def is_enabled(self):
+    def is_enabled(self) -> bool:
         return not self.window.settings().has("focus_mode_state")
 
 
@@ -92,5 +92,5 @@ class ExitFocusModeCommand(sublime_plugin.WindowCommand):
 
         self.window.settings().erase("focus_mode_state")
 
-    def is_enabled(self):
+    def is_enabled(self) -> bool:
         return self.window.settings().has("focus_mode_state")
