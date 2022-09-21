@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Optional
 
 import sublime
@@ -47,7 +49,7 @@ class SplitToNextGroupCommand(sublime_plugin.WindowCommand):
             lambda: new_view.set_viewport_position(view.viewport_position(), False)
         )
 
-    def run(self, move=False):
+    def run(self, move: bool = False):
         if not move and (view := self.window.active_view()):
             self.clone_view(view)
 

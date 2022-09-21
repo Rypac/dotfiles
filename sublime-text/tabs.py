@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Optional
 
 import sublime
@@ -20,39 +22,39 @@ class TabContextCommand(sublime_plugin.WindowCommand):
 
 
 class RevealTabInFinderCommand(TabContextCommand):
-    def run(self, group=-1, index=-1):
+    def run(self, group: int = -1, index: int = -1):
         import os
 
         if path := self.file_name(group, index):
             dir, file = os.path.split(path)
             self.window.run_command("open_dir", {"dir": dir, "file": file})
 
-    def is_visible(self, group=-1, index=-1) -> bool:
+    def is_visible(self, group: int = -1, index: int = -1) -> bool:
         return (name := self.file_name(group, index)) is not None and len(name) > 0
 
 
 class CopyTabFilePathCommand(TabContextCommand):
-    def run(self, group=-1, index=-1):
+    def run(self, group: int = -1, index: int = -1):
         if path := self.file_name(group, index):
             sublime.set_clipboard(path)
             self.window.status_message("Copied file path")
 
-    def is_visible(self, group=-1, index=-1) -> bool:
+    def is_visible(self, group: int = -1, index: int = -1) -> bool:
         return (name := self.file_name(group, index)) is not None and len(name) > 0
 
 
 class RevealTabInSideBarCommand(TabContextCommand):
-    def run(self, group=-1, index=-1):
+    def run(self, group: int = -1, index: int = -1):
         if view := self.view(group, index):
             self.window.focus_view(view)
             self.window.run_command("reveal_in_side_bar")
 
-    def is_visible(self, group=-1, index=-1) -> bool:
+    def is_visible(self, group: int = -1, index: int = -1) -> bool:
         return (name := self.file_name(group, index)) is not None and len(name) > 0
 
 
 class OpenTabInNewWindowCommand(TabContextCommand):
-    def run(self, group=-1, index=-1):
+    def run(self, group: int = -1, index: int = -1):
         if path := self.file_name(group, index):
             sublime.run_command("new_window")
             new_window = sublime.active_window()
@@ -62,7 +64,7 @@ class OpenTabInNewWindowCommand(TabContextCommand):
 
 
 class OpenTabInFocusModeCommand(TabContextCommand):
-    def run(self, group=-1, index=-1):
+    def run(self, group: int = -1, index: int = -1):
         if path := self.file_name(group, index):
             sublime.run_command("new_window")
             new_window = sublime.active_window()
@@ -90,7 +92,7 @@ class SplitTabToNextGroupCommand(TabContextCommand):
             lambda: new_view.set_viewport_position(view.viewport_position(), False)
         )
 
-    def run(self, group=-1, index=-1, move=False):
+    def run(self, group: int = -1, index: int = -1, move: bool = False):
         if view := self.view(group, index):
             self.window.focus_view(view)
 
