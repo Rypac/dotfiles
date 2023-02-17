@@ -19,6 +19,10 @@
         {
             "selector": "source.c",
             "cmd": ["clang-format", "--assume-filename=c"]
+        },
+        {
+            "selector": "source.haskell",
+            "cmd": ["ormolu", "--stdin-input-file", "-"]
         }
     ]
 }
