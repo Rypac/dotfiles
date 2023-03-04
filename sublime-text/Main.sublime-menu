@@ -1,5 +1,21 @@
 [
     {
+        "id": "selection",
+        "children": [
+            { "caption": "-", "id": "open" },
+            {
+                "command": "open_selection",
+                "args": { "new_window": true },
+                "caption": "Open in New Window"
+            },
+            {
+                "command": "open_selection",
+                "args": { "new_window": false },
+                "caption": "Open in New File"
+            }
+        ]
+    },
+    {
         "id": "view",
         "children": [
             { "caption": "-", "id": "font" },

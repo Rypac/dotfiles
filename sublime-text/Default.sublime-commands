@@ -36,5 +36,15 @@
     {
         "command": "exit_focus_mode",
         "caption": "View: Exit Focus Mode"
+    },
+    {
+        "command": "open_selection",
+        "args": { "new_window": true },
+        "caption": "Selection: Open in New Window"
+    },
+    {
+        "command": "open_selection",
+        "args": { "new_window": false },
+        "caption": "Selection: Open in New File"
     }
 ]
