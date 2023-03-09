@@ -3,7 +3,10 @@
         "haskell-language-server": {
             "enabled": true,
             "command": ["haskell-language-server-wrapper", "--lsp"],
-            "selector": "source.haskell"
+            "selector": "source.haskell",
+            "settings": {
+                "haskell.formattingProvider": "fourmolu"
+            }
         },
         "rust-analyzer": {
             "enabled": true,

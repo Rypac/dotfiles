@@ -38,6 +38,7 @@ link() {
 
 # Link common config
 link bin "$XDG_BIN_HOME"
+link fourmolu "$XDG_CONFIG_HOME"
 link git "$XDG_CONFIG_HOME/git"
 link gnupg "$HOME/.gnupg"
 link npm "$XDG_CONFIG_HOME/npm"

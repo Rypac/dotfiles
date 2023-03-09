@@ -22,7 +22,7 @@
         },
         {
             "selector": "source.haskell",
-            "cmd": ["ormolu", "--stdin-input-file", "-"]
+            "cmd": ["fourmolu", "--indentation", "$tab_size", "--stdin-input-file", "-"]
         }
     ]
 }
