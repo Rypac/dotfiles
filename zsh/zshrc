@@ -230,3 +230,6 @@ fi
 
 # Ensure local executable directory is first on path
 path=("$XDG_BIN_HOME" $path)
+
+# Source dotfiles management functions
+. "$DOTFILES_HOME/dotfiles"

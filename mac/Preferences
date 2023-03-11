@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
