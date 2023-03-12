@@ -38,6 +38,7 @@ dotfiles_link() {
 
     link fourmolu "$XDG_CONFIG_HOME"
     link git "$XDG_CONFIG_HOME/git"
+    link ghc "$XDG_CONFIG_HOME/ghc"
     link gnupg "$HOME/.gnupg"
     link npm "$XDG_CONFIG_HOME/npm"
     link ranger "$XDG_CONFIG_HOME/ranger"
