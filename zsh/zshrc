@@ -198,6 +198,10 @@ function haskell-script() {
     fi
 
     case "$(head -1 "$1")" in
+        '#!/usr/bin/env runghc')
+            runghc "$@" ;;
+        '#!/usr/bin/env runhaskell')
+            runhaskell "$@" ;;
         '#!/usr/bin/env cabal'|'{- cabal:')
             cabal run -v0 "$@" ;;
         '#!/usr/bin/env stack')
