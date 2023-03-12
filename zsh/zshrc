@@ -4,8 +4,9 @@ export EDITOR=vim
 export PAGER=less
 export LESSHISTFILE=-
 
-# Setup prompt
-PROMPT='%B%F{cyan}%1~%f%b %(?.%F{green}.%F{red})%(!.#.$)%f '
+# Enable vi mode
+bindkey -v
+KEYTIMEOUT=1
 
 # Keybindings
 bindkey '^[[A' up-line-or-search
@@ -22,6 +23,7 @@ bindkey '^K' kill-line
 bindkey '^U' backward-kill-line
 bindkey '^Y' yank
 bindkey '^[^?' backward-kill-word
+bindkey "^?" backward-delete-char
 
 # Enable line editor
 autoload -Uz edit-command-line
@@ -29,16 +31,14 @@ zle -N edit-command-line
 bindkey '^X^E' edit-command-line
 bindkey -M vicmd '^V' edit-command-line
 
-# Disable timeout when changing vi mode
-KEYTIMEOUT=1
-
-# Display right prompt when in vi command mode
+# Display keymap aware prompt
 function zle-line-init zle-keymap-select {
+    local mode='I'
     if [ "$KEYMAP" = vicmd ]; then
-        RPS1='-- NORMAL --'
-    else
-        RPS1=''
+        mode='N'
     fi
+
+    PROMPT="%F{blue}[$mode] %B%F{cyan}%1~%f%b %(?.%F{green}.%F{red})%(!.#.$)%f "
     zle reset-prompt
 }
 
