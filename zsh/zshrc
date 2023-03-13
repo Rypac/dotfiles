@@ -224,3 +224,8 @@ path=("$XDG_BIN_HOME" $path)
 
 # Source dotfiles management functions
 . "$DOTFILES_HOME/dotfiles"
+
+# Source local zshrc
+if [ -f "$ZDOTDIR/.zshrc.local" ]; then
+    . "$ZDOTDIR/.zshrc.local"
+fi

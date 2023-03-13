@@ -2,14 +2,16 @@
 #
 # Set login environment variables on macOS
 
-: "${DOTFILES_HOME:="$HOME/.dotfiles"}"
+: "${ZDOTDIR:="$HOME/.config/zsh"}"
 
-for zshfile in "$DOTFILES_HOME/zsh/zshenv" "$DOTFILES_HOME/zsh/zprofile"; do
-    # Source file to expand necessary environment variables
-    . "$zshfile"
+for zshfile in "$ZDOTDIR/.zshenv" "$ZDOTDIR/.zprofile" "$ZDOTDIR/.zprofile.local"; do
+    if [ -f "$zshfile" ]; then
+        # Source file to expand necessary environment variables
+        . "$zshfile"
 
-    # Read exported variables into the macOS launchctl environment
-    grep "^export" "$zshfile" | while IFS=' =' read ignoreexport envvar ignorevalue; do
-        launchctl setenv "${envvar}" "${!envvar}"
-    done
+        # Read exported variables into the macOS launchctl environment
+        grep "^export" "$zshfile" | while IFS=' =' read ignoreexport envvar ignorevalue; do
+            launchctl setenv "${envvar}" "${!envvar}"
+        done
+    fi
 done

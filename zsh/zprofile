@@ -19,3 +19,8 @@ export BUNDLE_USER_HOME="$XDG_CONFIG_HOME/bundle"
 export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
 
 export SQLITE_HISTORY="$XDG_STATE_HOME/sqlite_history"
+
+# Source local zprofile
+if [ -f "$ZDOTDIR/.zprofile.local" ]; then
+    . "$ZDOTDIR/.zprofile.local"
+fi
