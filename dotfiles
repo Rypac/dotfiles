@@ -105,26 +105,6 @@ dotfiles_provision() {
     fi
 }
 
-dotfiles_update() {
-    if command -v brew >/dev/null 2>&1; then
-        brew update
-        brew upgrade
-        brew bundle --file="$DOTFILES_HOME/mac/Brewfile"
-    fi
-
-    if command -v vim >/dev/null 2>&1; then
-        vim -c 'helptags ALL' +qall
-    fi
-
-    if command -v ghcup >/dev/null 2>&1; then
-        ghcup upgrade
-    fi
-
-    if command -v rustup >/dev/null 2>&1; then
-        rustup update
-    fi
-}
-
 dotfiles_environment() {
     . "$DOTFILES_HOME/zsh/zshenv"
     . "$DOTFILES_HOME/zsh/zprofile"
@@ -146,7 +126,7 @@ fi
 if [ "$sourced" -eq 0 ]; then
     set -eu
 
-    usage="usage: $(basename "$0") [link|provision|update|environment]"
+    usage="usage: $(basename "$0") [link|provision|environment]"
     command="${1:-}"
 
     case "$command" in
@@ -155,9 +135,6 @@ if [ "$sourced" -eq 0 ]; then
             ;;
         provision)
             dotfiles_provision
-            ;;
-        update)
-            dotfiles_update
             ;;
         environment)
             dotfiles_environment
