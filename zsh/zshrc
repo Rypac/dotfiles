@@ -54,14 +54,8 @@ typeset -U path manpath infopath
 
 # Homebrew: the missing package manager for macOS
 # https://brew.sh
-path=("/opt/homebrew/bin" $path)
-if (( $+commands[brew] )); then
-    export HOMEBREW_NO_ANALYTICS=1
-    export HOMEBREW_NO_AUTO_UPDATE=1
-    export HOMEBREW_BUNDLE_FILE="$DOTFILES_HOME/mac/Brewfile"
-
-    # Configure shell and set HOMEBREW_PREFIX
-    eval "$(brew shellenv)"
+if [ -x /opt/homebrew/bin/brew ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 # fzf: general-purpose command-line fuzzy finder
@@ -226,6 +220,6 @@ path=("$XDG_BIN_HOME" $path)
 . "$DOTFILES_HOME/dotfiles"
 
 # Source local zshrc
-if [ -f "$ZDOTDIR/.zshrc.local" ]; then
+if [ -r "$ZDOTDIR/.zshrc.local" ]; then
     . "$ZDOTDIR/.zshrc.local"
 fi

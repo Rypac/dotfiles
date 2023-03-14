@@ -46,7 +46,6 @@ dotfiles_link() {
     link tmux "$XDG_CONFIG_HOME/tmux"
     link vim "$HOME/.vim"
     link zsh/zshenv "$HOME/.zshenv"
-    link zsh/zshenv "$XDG_CONFIG_HOME/zsh/.zshenv"
     link zsh/zprofile "$XDG_CONFIG_HOME/zsh/.zprofile"
     link zsh/zshrc "$XDG_CONFIG_HOME/zsh/.zshrc"
 

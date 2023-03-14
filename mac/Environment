@@ -4,8 +4,8 @@
 
 : "${ZDOTDIR:="$HOME/.config/zsh"}"
 
-for zshfile in "$ZDOTDIR/.zshenv" "$ZDOTDIR/.zprofile" "$ZDOTDIR/.zprofile.local"; do
-    if [ -f "$zshfile" ]; then
+for zshfile in "$HOME/.zshenv" "$ZDOTDIR/.zshenv.local" "$ZDOTDIR/.zprofile" "$ZDOTDIR/.zprofile.local"; do
+    if [ -r "$zshfile" ]; then
         # Source file to expand necessary environment variables
         . "$zshfile"
 
