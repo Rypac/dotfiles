@@ -4,7 +4,7 @@ if [ -x /opt/homebrew/bin/brew ]; then
 fi
 
 # Prepend directories to path
-export PATH="$XDG_BIN_HOME:$CABAL_DIR/bin:$CARGO_HOME/bin${PATH:+:"${PATH}"}"
+export PATH="$XDG_BIN_HOME:$CABAL_DIR/bin${PATH:+:"${PATH}"}"
 
 # Source local zprofile
 if [ -r "$ZDOTDIR/.zprofile.local" ]; then
