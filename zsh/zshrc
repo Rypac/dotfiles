@@ -136,7 +136,7 @@ function quick-look() {
 
 # View a man page in Preview.app
 function man-preview() {
-    man -w "$@" &>/dev/null && man -t "$@" | open -f -a Preview || man "$@"
+    mandoc -T pdf "$(/usr/bin/man -w $@)" | open -f -a Preview
 }
 
 # Remove .DS_Store files recursively in a directory, default .
