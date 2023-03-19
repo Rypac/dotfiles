@@ -54,5 +54,9 @@
         "command": "open_selection",
         "args": { "new_window": false },
         "caption": "Selection: Open in New File"
+    },
+    {
+        "command": "dash",
+        "caption": "Dash: View Documentation For Selection",
     }
 ]
