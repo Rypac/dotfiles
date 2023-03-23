@@ -23,6 +23,10 @@
         {
             "selector": "source.haskell",
             "cmd": ["fourmolu", "--indentation", "$tab_size", "--stdin-input-file", "-"]
+        },
+        {
+            "selector": "text.html.markdown",
+            "cmd": ["prettier", "--parser", "markdown", "--tab-width", "$tab_size"]
         }
     ]
 }
