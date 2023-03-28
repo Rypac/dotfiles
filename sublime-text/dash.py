@@ -12,16 +12,15 @@ class DashCommand(sublime_plugin.TextCommand):
             selection = self.view.word(selection)
         query = self.view.substr(selection)
 
-        scope_names = self.view.scope_name(selection.a).split(' ')
-        source = next(name.split('.')[1] for name in scope_names if name.startswith('source.'))
+        scope_names = self.view.scope_name(selection.a).split(" ")
+        source = next(
+            name.split(".")[1] for name in scope_names if name.startswith("source.")
+        )
 
-        if source:
-            subprocess.call([
-                '/usr/bin/open', '-g',
-                f"dash-plugin://keys={source}&query={quote(query)}"
-            ])
-        else:
-            subprocess.call([
-                '/usr/bin/open', '-g',
-                f"dash-plugin://query={quote(query)}"
-            ])
+        dash_url = (
+            f"dash-plugin://keys={source}&query={quote(query)}"
+            if source
+            else f"dash-plugin://query={quote(query)}"
+        )
+
+        subprocess.call(["/usr/bin/open", "-g", dash_url])

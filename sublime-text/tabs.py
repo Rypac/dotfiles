@@ -86,9 +86,7 @@ class SplitTabToNextGroupCommand(TabContextCommand):
         for selection in view.sel():
             new_selections.add(selection)
 
-        sublime.set_timeout(
-            lambda: new_view.set_viewport_position(view.viewport_position(), False)
-        )
+        new_view.set_viewport_position(view.viewport_position(), False)
 
     def run(self, group: int = -1, index: int = -1, move: bool = False):
         if view := self.view(group, index):

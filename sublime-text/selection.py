@@ -11,6 +11,7 @@ class OpenSelectionCommand(sublime_plugin.TextCommand):
 
         syntax = syntax.path if (syntax := self.view.syntax()) is not None else ""
         new_view = window.new_file(syntax=syntax)
+        new_view.settings().update(self.view.settings().to_dict())
         new_view.set_scratch(True)
 
         for region in self.view.sel():
