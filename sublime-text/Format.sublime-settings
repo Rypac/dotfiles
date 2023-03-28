@@ -1,0 +1,32 @@
+{
+    "formatters": {
+        "Python": {
+            "selector": "source.python",
+            "cmd": ["black", "-"],
+        },
+        "JSON": {
+            "selector": "source.json",
+            "cmd": ["jq", "--indent", "$tab_size", "."],
+        },
+        "Swift": {
+            "selector": "source.swift",
+            "cmd": ["swiftformat", "--indent", "$tab_size"],
+        },
+        "Rust": {
+            "selector": "source.rust",
+            "cmd": ["rustfmt"],
+        },
+        "C": {
+            "selector": "source.c",
+            "cmd": ["clang-format", "--assume-filename=c"],
+        },
+        "Haskell": {
+            "selector": "source.haskell",
+            "cmd": ["fourmolu", "--indentation", "$tab_size", "--stdin-input-file", "-"],
+        },
+        "Markdown": {
+            "selector": "text.html.markdown",
+            "cmd": ["prettier", "--parser", "markdown", "--tab-width", "$tab_size"],
+        },
+    },
+}
