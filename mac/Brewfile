@@ -11,7 +11,6 @@ brew "git"
 brew "git-lfs"
 brew "gnupg"
 brew "jq"
-brew "mas"
 brew "pinentry-mac"
 brew "ranger"
 brew "ripgrep"
@@ -39,25 +38,3 @@ cask "spotify"
 cask "sublime-merge-dev"
 cask "sublime-text-dev"
 cask "transmit"
-mas "Day One", id: 1055511498
-mas "Dropover", id: 1355679052
-mas "GarageBand", id: 682658836
-mas "Hand Mirror", id: 1502839586
-mas "Hush", id: 1544743900
-mas "iA Writer", id: 775737590
-mas "Image2icon", id: 992115977
-mas "iMovie", id: 408981434
-mas "Keynote", id: 409183694
-mas "Meta", id: 558317092
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "PCalc", id: 403504866
-mas "Peek", id: 1554235898
-mas "Playgrounds", id: 1496833156
-mas "Reeder", id: 1529448980
-mas "SnippetsLab", id: 1006087419
-mas "Soulver 3", id: 1508732804
-mas "Stave'n'Tabs", id: 1107712488
-mas "Things", id: 904280696
-mas "Vinegar", id: 1591303229
-mas "Wipr", id: 1320666476
