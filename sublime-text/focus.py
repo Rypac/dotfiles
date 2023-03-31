@@ -5,7 +5,7 @@ from typing import List
 
 
 class FocusModeListener(sublime_plugin.EventListener):
-    focus_mode_enabled_settings = {
+    focus_mode_settings = {
         "draw_centered": True,
         "draw_indent_guides": True,
         "indent_guide_options": [],
@@ -17,19 +17,6 @@ class FocusModeListener(sublime_plugin.EventListener):
         "scroll_past_end": True,
         "word_wrap": True,
         "wrap_width": 80,
-    }
-
-    focus_mode_disabled_settings = {
-        "draw_centered": False,
-        "draw_indent_guides": True,
-        "draw_white_space": "selection",
-        "fold_buttons": True,
-        "gutter": True,
-        "line_numbers": True,
-        "rulers": [],
-        "scroll_past_end": False,
-        "word_wrap": "auto",
-        "wrap_width": 0,
     }
 
     def on_init(self, views: List[sublime.View]):
@@ -47,24 +34,24 @@ class FocusModeListener(sublime_plugin.EventListener):
         if (window := view.window()) is None:
             return
 
-        if window.settings().has("focus_mode"):
+        if window.settings().get("focus_mode", False):
             self.enter_view_focus_mode(view)
 
     def on_load(self, view: sublime.View):
         if (window := view.window()) is None:
             return
 
-        if window.settings().has("focus_mode"):
+        if window.settings().get("focus_mode", False):
             self.enter_view_focus_mode(view)
         else:
             self.exit_view_focus_mode(view)
 
     def on_new_window(self, window: sublime.Window):
-        was_in_focus_mode = window.settings().has("focus_mode")
+        was_in_focus_mode = window.settings().get("focus_mode", False)
 
         def update_focus_mode():
             nonlocal was_in_focus_mode
-            now_in_focus_mode = window.settings().has("focus_mode")
+            now_in_focus_mode = window.settings().get("focus_mode", False)
 
             if not was_in_focus_mode and now_in_focus_mode:
                 self.enter_focus_mode(window)
@@ -79,7 +66,8 @@ class FocusModeListener(sublime_plugin.EventListener):
         window.settings().clear_on_change("focus_mode")
 
     def enter_focus_mode(self, window: sublime.Window):
-        self.enter_view_focus_mode(*window.views(include_transient=True))
+        for view in window.views(include_transient=True):
+            self.enter_view_focus_mode(view)
 
         pre_focus_state = {
             "minimap": window.is_minimap_visible(),
@@ -96,7 +84,8 @@ class FocusModeListener(sublime_plugin.EventListener):
         window.settings().set("focus_mode_state", pre_focus_state)
 
     def exit_focus_mode(self, window: sublime.Window):
-        self.exit_view_focus_mode(*window.views(include_transient=True))
+        for view in window.views(include_transient=True):
+            self.exit_view_focus_mode(view)
 
         pre_focus_state = window.settings().get("focus_mode_state", {})
 
@@ -107,55 +96,32 @@ class FocusModeListener(sublime_plugin.EventListener):
 
         window.settings().erase("focus_mode_state")
 
-    def enter_view_focus_mode(self, *args: sublime.View):
+    def enter_view_focus_mode(self, view: sublime.View):
+        view_settings = view.settings()
+
+        if view_settings.has("focus_mode_state"):
+            return
+
         df_settings = sublime.load_settings("Distraction Free.sublime-settings")
+        pre_focus_state = {}
 
-        for view in args:
-            view_settings = view.settings()
+        for key, value in self.focus_mode_settings.items():
+            pre_focus_state[key] = view_settings.get(key)
+            view_settings.set(key, df_settings.get(key, value))
 
-            if view_settings.has("focus_mode"):
-                continue
+        view_settings.set("focus_mode_state", pre_focus_state)
 
-            for key, value in self.focus_mode_enabled_settings.items():
-                view_settings.set(key, df_settings.get(key, value))
+    def exit_view_focus_mode(self, view: sublime.View):
+        view_settings = view.settings()
 
-            view_settings.set("focus_mode", True)
-
-    def exit_view_focus_mode(self, *args: sublime.View):
-        settings = sublime.load_settings("Preferences.sublime-settings")
-
-        for view in args:
-            view_settings = view.settings()
-
-            if not view_settings.has("focus_mode"):
-                continue
-
-            syntax = view_settings.get("syntax").split("/")[-1].split(".")[0]
-            syntax_settings = (
-                sublime.load_settings(f"{syntax}.sublime-settings")
-                if syntax is not None
-                else None
-            )
-
-            if syntax_settings is not None:
-                for setting, default in self.focus_mode_disabled_settings.items():
-                    view_settings.set(
-                        setting,
-                        syntax_settings.get(setting, settings.get(setting, default)),
-                    )
-            else:
-                for setting, default in self.focus_mode_disabled_settings.items():
-                    view_settings.set(setting, settings.get(setting, default))
-
-            view_settings.erase("focus_mode")
+        if (pre_focus_state := view_settings.get("focus_mode_state")) is not None:
+            view_settings.update(pre_focus_state)
+            view_settings.erase("focus_mode_state")
 
 
 class FocusModeCommand(sublime_plugin.WindowCommand):
     def run(self, enable: bool):
-        if enable:
-            self.window.settings().set("focus_mode", True)
-        else:
-            self.window.settings().erase("focus_mode")
+        self.window.settings().set("focus_mode", enable)
 
     def is_enabled(self, enable: bool) -> bool:
-        return self.window.settings().has("focus_mode") != enable
+        return self.window.settings().get("focus_mode", False) != enable
