@@ -3,14 +3,14 @@ import sublime_plugin
 
 
 class FontSizeInputHandler(sublime_plugin.TextInputHandler):
-    def __init__(self, view: sublime.View):
-        self.view = view
+    def __init__(self, initial_size: int):
+        self.initial_size = initial_size
 
     def placeholder(self) -> str:
         return "Font Size"
 
     def initial_text(self) -> str:
-        return str(self.view.settings().get("font_size"))
+        return str(self.initial_size)
 
     def validate(self, size: str) -> bool:
         try:
@@ -24,7 +24,7 @@ class SetViewFontSizeCommand(sublime_plugin.TextCommand):
         self.view.settings().set("font_size", int(font_size))
 
     def input(self, args):
-        return FontSizeInputHandler(self.view)
+        return FontSizeInputHandler(initial_size=self.view.settings().get("font_size"))
 
 
 class ResetViewFontSizeCommand(sublime_plugin.TextCommand):
