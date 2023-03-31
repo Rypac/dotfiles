@@ -30,11 +30,13 @@
         "caption": "View: Open in New Window"
     },
     {
-        "command": "enter_focus_mode",
+        "command": "focus_mode",
+        "args": { "enable": true },
         "caption": "View: Enter Focus Mode"
     },
     {
-        "command": "exit_focus_mode",
+        "command": "focus_mode",
+        "args": { "enable": false },
         "caption": "View: Exit Focus Mode"
     },
     {
