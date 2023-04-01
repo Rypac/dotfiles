@@ -1,39 +1,11 @@
 import sublime
 import sublime_plugin
 
-from typing import List
-
-
-def plugin_loaded():
-    for window in sublime.windows():
-        add_focus_mode_change_listener(window)
-
 
 def plugin_unloaded():
     for window in sublime.windows():
-        clear_focus_mode_change_listener(window)
-        exit_focus_mode(window)
-
-
-def add_focus_mode_change_listener(window: sublime.Window):
-    was_in_focus_mode = window.settings().get("focus_mode", False)
-
-    def update_focus_mode():
-        nonlocal was_in_focus_mode
-        now_in_focus_mode = window.settings().get("focus_mode", False)
-
-        if not was_in_focus_mode and now_in_focus_mode:
-            enter_focus_mode(window)
-        elif was_in_focus_mode and not now_in_focus_mode:
+        if window.settings().has("focus_mode_state"):
             exit_focus_mode(window)
-
-        was_in_focus_mode = now_in_focus_mode
-
-    window.settings().add_on_change("focus_mode", update_focus_mode)
-
-
-def clear_focus_mode_change_listener(window: sublime.Window):
-    window.settings().clear_on_change("focus_mode")
 
 
 def enter_focus_mode(window: sublime.Window):
@@ -113,28 +85,25 @@ class FocusModeListener(sublime_plugin.EventListener):
         if (window := view.window()) is None:
             return
 
-        if window.settings().get("focus_mode", False):
+        if window.settings().has("focus_mode_state"):
             enter_view_focus_mode(view)
 
     def on_load(self, view: sublime.View):
         if (window := view.window()) is None:
             return
 
-        if window.settings().get("focus_mode", False):
+        if window.settings().has("focus_mode_state"):
             enter_view_focus_mode(view)
         else:
             exit_view_focus_mode(view)
 
-    def on_new_window(self, window: sublime.Window):
-        add_focus_mode_change_listener(window)
-
-    def on_pre_close_window(self, window: sublime.Window):
-        clear_focus_mode_change_listener(window)
-
 
 class FocusModeCommand(sublime_plugin.WindowCommand):
-    def run(self, enable: bool):
-        self.window.settings().set("focus_mode", enable)
+    def run(self, enable: bool = True):
+        if enable:
+            enter_focus_mode(self.window)
+        else:
+            exit_focus_mode(self.window)
 
-    def is_enabled(self, enable: bool) -> bool:
-        return self.window.settings().get("focus_mode", False) != enable
+    def is_enabled(self, enable: bool = True) -> bool:
+        return self.window.settings().has("focus_mode_state") != enable
