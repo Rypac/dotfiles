@@ -29,5 +29,10 @@
         "command": "open_file_in_focus_mode",
         "args": { "files": [] },
         "caption": "Open in Focus Mode"
+    },
+    {
+        "command": "open_folder_in_focus_mode",
+        "args": { "dirs": [] },
+        "caption": "Open in Focus Mode"
     }
 ]
