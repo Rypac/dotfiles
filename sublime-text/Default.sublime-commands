@@ -30,16 +30,6 @@
         "caption": "View: Open in New Window"
     },
     {
-        "command": "focus_mode",
-        "args": { "enable": true },
-        "caption": "View: Enter Focus Mode"
-    },
-    {
-        "command": "focus_mode",
-        "args": { "enable": false },
-        "caption": "View: Exit Focus Mode"
-    },
-    {
         "command": "enable_view_scratch",
         "caption": "View: Enable Scratch"
     },
