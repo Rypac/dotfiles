@@ -49,6 +49,6 @@
     },
     {
         "command": "dash",
-        "caption": "Dash: View Documentation For Selection",
+        "caption": "Dash: Open Documentation for Selection",
     }
 ]
