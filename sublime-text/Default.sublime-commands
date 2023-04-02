@@ -30,12 +30,8 @@
         "caption": "View: Open in New Window"
     },
     {
-        "command": "enable_view_scratch",
-        "caption": "View: Enable Scratch"
-    },
-    {
-        "command": "disable_view_scratch",
-        "caption": "View: Disable Scratch"
+        "command": "toggle_view_scratch",
+        "caption": "View: Toggle Scratch"
     },
     {
         "command": "open_selection",
