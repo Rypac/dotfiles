@@ -74,17 +74,6 @@ class OpenFileInFocusModeCommand(sublime_plugin.WindowCommand):
         return len(files) == 1
 
 
-class OpenFolderInFocusModeCommand(sublime_plugin.WindowCommand):
-    def run(self, dirs: list[str]):
-        sublime.run_command("new_window")
-        new_window = sublime.active_window()
-
-        new_window.run_command("toggle_focus_mode")
-
-    def is_visible(self, dirs: list[str]) -> bool:
-        return len(dirs) == 1
-
-
 class LaunchFileCommand(sublime_plugin.WindowCommand):
     def run(self, files: list[str]):
         import os
