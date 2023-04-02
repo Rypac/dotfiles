@@ -23,4 +23,7 @@ class DashCommand(sublime_plugin.TextCommand):
             else f"dash-plugin://query={quote(query)}"
         )
 
-        subprocess.call(["/usr/bin/open", "-g", dash_url])
+        try:
+            subprocess.run(["/usr/bin/open", "-g", dash_url], check=True)
+        except Exception as e:
+            sublime.error_message(str(e))
