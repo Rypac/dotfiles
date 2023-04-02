@@ -20,7 +20,7 @@ class OpenViewInFocusModeCommand(sublime_plugin.TextCommand):
         new_window = sublime.active_window()
 
         new_window.run_command("open_file", {"file": self.view.file_name()})
-        new_window.run_command("focus_mode", {"enable": True})
+        new_window.run_command("toggle_focus_mode")
 
     def is_visible(self) -> bool:
         return (name := self.view.file_name()) is not None and len(name) > 0

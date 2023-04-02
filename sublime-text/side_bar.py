@@ -68,7 +68,7 @@ class OpenFileInFocusModeCommand(sublime_plugin.WindowCommand):
         new_window = sublime.active_window()
 
         new_window.run_command("open_file", {"file": files[0]})
-        new_window.run_command("focus_mode", {"enable": True})
+        new_window.run_command("toggle_focus_mode")
 
     def is_visible(self, files: list[str]) -> bool:
         return len(files) == 1
@@ -79,7 +79,7 @@ class OpenFolderInFocusModeCommand(sublime_plugin.WindowCommand):
         sublime.run_command("new_window")
         new_window = sublime.active_window()
 
-        new_window.run_command("focus_mode", {"enable": True})
+        new_window.run_command("toggle_focus_mode")
 
     def is_visible(self, dirs: list[str]) -> bool:
         return len(dirs) == 1

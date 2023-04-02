@@ -68,7 +68,7 @@ class OpenTabInFocusModeCommand(TabContextCommand):
             new_window = sublime.active_window()
 
             new_window.run_command("open_file", {"file": path})
-            new_window.run_command("focus_mode", {"enable": True})
+            new_window.run_command("toggle_focus_mode")
 
 
 class SplitTabToNextGroupCommand(TabContextCommand):
