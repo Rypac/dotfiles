@@ -28,7 +28,7 @@ class CopyFolderPathCommand(sublime_plugin.WindowCommand):
         return len(dirs) == 1 and len(dirs[0]) > 0
 
 
-class OpenFileInNewWindowCommand(sublime_plugin.WindowCommand):
+class OpenFileInNewWindowCommand(sublime_plugin.ApplicationCommand):
     def run(self, files: list[str]):
         sublime.run_command("new_window")
         new_window = sublime.active_window()
@@ -42,7 +42,7 @@ class OpenFileInNewWindowCommand(sublime_plugin.WindowCommand):
         return len(files) > 0
 
 
-class OpenFolderInNewWindowCommand(sublime_plugin.WindowCommand):
+class OpenFolderInNewWindowCommand(sublime_plugin.ApplicationCommand):
     def run(self, dirs: list[str]):
         sublime.run_command("new_window")
         new_window = sublime.active_window()
@@ -59,7 +59,7 @@ class OpenFolderInNewWindowCommand(sublime_plugin.WindowCommand):
         return len(dirs) > 0
 
 
-class OpenFileInFocusModeCommand(sublime_plugin.WindowCommand):
+class OpenFileInFocusModeCommand(sublime_plugin.ApplicationCommand):
     def run(self, files: list[str]):
         sublime.run_command("new_window")
         new_window = sublime.active_window()
@@ -71,7 +71,7 @@ class OpenFileInFocusModeCommand(sublime_plugin.WindowCommand):
         return len(files) == 1
 
 
-class LaunchFileCommand(sublime_plugin.WindowCommand):
+class LaunchFileCommand(sublime_plugin.ApplicationCommand):
     def run(self, files: list[str]):
         import os
         import subprocess
