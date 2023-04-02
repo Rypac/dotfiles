@@ -44,19 +44,16 @@ class OpenFileInNewWindowCommand(sublime_plugin.WindowCommand):
 
 class OpenFolderInNewWindowCommand(sublime_plugin.WindowCommand):
     def run(self, dirs: list[str]):
-        import os
-        import subprocess
+        sublime.run_command("new_window")
+        new_window = sublime.active_window()
 
-        executable_path = sublime.executable_path()
+        project = new_window.project_data() or {}
+        folders = project.setdefault("folders", [])
 
-        if sublime.platform() == "osx":
-            app_path = executable_path[: executable_path.rfind(".app/") + 5]
-            executable_path = os.path.join(app_path, "Contents/SharedSupport/bin/subl")
+        for dir in dirs:
+            folders.append({"path": dir})
 
-        try:
-            subprocess.Popen([executable_path, "--new-window"] + dirs)
-        except Exception as e:
-            sublime.error_message(str(e))
+        new_window.set_project_data(project)
 
     def is_visible(self, dirs: list[str]) -> bool:
         return len(dirs) > 0
