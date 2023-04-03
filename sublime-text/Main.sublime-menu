@@ -31,15 +31,15 @@
                         "caption": "Reset"
                     },
                     { "caption": "-" },
-                    { "command": "set_setting", "args": {"setting": "font_size", "value": 8}, "caption": "8", "checkbox": true },
-                    { "command": "set_setting", "args": {"setting": "font_size", "value": 10}, "caption": "10", "checkbox": true },
-                    { "command": "set_setting", "args": {"setting": "font_size", "value": 12}, "caption": "12", "checkbox": true },
-                    { "command": "set_setting", "args": {"setting": "font_size", "value": 14}, "caption": "14", "checkbox": true },
-                    { "command": "set_setting", "args": {"setting": "font_size", "value": 16}, "caption": "16", "checkbox": true },
-                    { "command": "set_setting", "args": {"setting": "font_size", "value": 18}, "caption": "18", "checkbox": true },
-                    { "command": "set_setting", "args": {"setting": "font_size", "value": 20}, "caption": "20", "checkbox": true },
-                    { "command": "set_setting", "args": {"setting": "font_size", "value": 22}, "caption": "22", "checkbox": true },
-                    { "command": "set_setting", "args": {"setting": "font_size", "value": 24}, "caption": "24", "checkbox": true }
+                    { "command": "set_setting", "args": { "setting": "font_size", "value": 8 }, "caption": "8", "checkbox": true },
+                    { "command": "set_setting", "args": { "setting": "font_size", "value": 10 }, "caption": "10", "checkbox": true },
+                    { "command": "set_setting", "args": { "setting": "font_size", "value": 12 }, "caption": "12", "checkbox": true },
+                    { "command": "set_setting", "args": { "setting": "font_size", "value": 14 }, "caption": "14", "checkbox": true },
+                    { "command": "set_setting", "args": { "setting": "font_size", "value": 16 }, "caption": "16", "checkbox": true },
+                    { "command": "set_setting", "args": { "setting": "font_size", "value": 18 }, "caption": "18", "checkbox": true },
+                    { "command": "set_setting", "args": { "setting": "font_size", "value": 20 }, "caption": "20", "checkbox": true },
+                    { "command": "set_setting", "args": { "setting": "font_size", "value": 22 }, "caption": "22", "checkbox": true },
+                    { "command": "set_setting", "args": { "setting": "font_size", "value": 24 }, "caption": "24", "checkbox": true }
                 ]
             }
         ]
