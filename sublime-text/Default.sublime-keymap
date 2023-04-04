@@ -37,6 +37,22 @@
         "context": [{ "key": "vi_command_mode_aware" }]
     },
 
+    // Format
+    {
+        "keys": ["super+option+l"],
+        "command": "format_file",
+        "context": [
+            { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true }
+        ]
+    },
+    {
+        "keys": ["super+option+l"],
+        "command": "format_selection",
+        "context": [
+            { "key": "selection_empty", "operator": "equal", "operand": false, "match_all": true }
+        ]
+    },
+
     // LSP
     {
         "keys": ["super+option+l"],
