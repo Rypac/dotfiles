@@ -24,12 +24,6 @@
         "command": "sublime_merge_folder_history"
     },
 
-    // Projects
-    {
-        "keys": ["super+shift+o"],
-        "command": "prompt_select_workspace"
-    },
-
     // NeoVintageous
     {
         "keys": ["-"],
