@@ -1,0 +1,9 @@
+<snippet>
+  <content><![CDATA[<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  Marked.hooks.register('update', async function() { await mermaid.run() });
+</script>
+]]></content>
+  <scope>text.html.markdown</scope>
+  <description>Import Mermaid for Markdown rendering</description>
+</snippet>
