@@ -1,7 +1,6 @@
 {
     "clients": {
         "haskell-language-server": {
-            "enabled": true,
             "command": ["haskell-language-server-wrapper", "--lsp"],
             "selector": "source.haskell",
             "settings": {
