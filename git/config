@@ -16,21 +16,6 @@
 	defaultBranch = main
 
 [alias]
-	# Aliases
-	alias = !git config -l | grep alias | cut -c 7-
-
-	# Logs
-	lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
-	ls = log --pretty=format:"%C(yellow)%h%C(red)%d\\ %Creset%s\\ %C(blue)[%cn]" --decorate
-	lc = log --pretty=format:"%C(yellow)%h%C(red)%d\\ %Creset%s\\ %C(blue)[%cn]" --decorate --numstat
-	ld = log --pretty=format:"%C(yellow)%h\\ %ad%C(red)%d\\ %Creset%s\\ %C(blue)[%cn]" --decorate --date=short
-	lr = log --pretty=format:"%C(yellow)%h\\ %ad%C(red)%d\\ %Creset%s\\ %C(blue)[%cn]" --decorate --date=relative
-	lf = log -u
-
-	# Searching
-	search = !git ls-files | grep -i
-	grep = grep -Ii
-
 	# Fixing things
 	undo = reset HEAD~1 --mixed
 	amend = commit -a --amend
