@@ -18,10 +18,6 @@
         "caption": "Draw Centered: Toggle"
     },
     {
-        "command": "toggle_neovintageous",
-        "caption": "Toggle NeoVintageous"
-    },
-    {
         "command": "open_and_focus_side_bar",
         "caption": "View: Open and Focus Side Bar"
     },
