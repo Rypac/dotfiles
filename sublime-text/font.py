@@ -1,7 +1,7 @@
+from __future__ import annotations
+
 import sublime
 import sublime_plugin
-
-from typing import Optional
 
 
 class FontSizeInputHandler(sublime_plugin.TextInputHandler):
@@ -22,11 +22,11 @@ class FontSizeInputHandler(sublime_plugin.TextInputHandler):
 
 
 class SetViewFontSizeCommand(sublime_plugin.TextCommand):
-    def run(self, edit: sublime.Edit, font_size: Optional[str] = None):
+    def run(self, edit: sublime.Edit, font_size: str | None = None):
         if font_size is not None:
             self.view.settings().set("font_size", int(font_size))
 
-    def input(self, args) -> Optional[sublime_plugin.CommandInputHandler]:
+    def input(self, args) -> sublime_plugin.CommandInputHandler | None:
         return (
             FontSizeInputHandler(current_size=self.view.settings().get("font_size"))
             if args.get("font_size") is None

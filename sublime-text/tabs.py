@@ -1,21 +1,21 @@
-from typing import Optional
+from __future__ import annotations
 
 import sublime
 import sublime_plugin
 
 
 class TabContextCommand(sublime_plugin.WindowCommand):
-    def sheet(self, group: int, index: int) -> Optional[sublime.View]:
+    def sheet(self, group: int, index: int) -> sublime.Sheet | None:
         if group < 0 or index < 0:
             return None
 
         sheets = self.window.sheets_in_group(int(group))
         return sheets[index] if -1 < index < len(sheets) else None
 
-    def view(self, group: int, index: int) -> Optional[sublime.View]:
+    def view(self, group: int, index: int) -> sublime.View | None:
         return sheet.view() if (sheet := self.sheet(group, index)) else None
 
-    def file_name(self, group: int, index: int) -> Optional[str]:
+    def file_name(self, group: int, index: int) -> str | None:
         return view.file_name() if (view := self.view(group, index)) else None
 
 

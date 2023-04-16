@@ -76,12 +76,14 @@ class LaunchFileCommand(sublime_plugin.ApplicationCommand):
         import os
         import subprocess
 
+        platform = sublime.platform()
+
         try:
-            if sublime.platform() == "windows":
+            if platform == "windows":
                 os.startfile(files[0])
-            elif sublime.platform() == "osx":
+            elif platform == "osx":
                 subprocess.run(["/usr/bin/open", *files], check=True)
-            else:
+            elif platform == "linux":
                 subprocess.run(["/usr/bin/xdg-open", files[0]], check=True)
         except Exception as e:
             sublime.error_message(str(e))
