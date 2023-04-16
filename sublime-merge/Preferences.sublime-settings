@@ -1,7 +1,7 @@
 {
-	"font_face": "SF Mono",
-	"tab_size": 2,
-	"theme": "auto",
-	"translate_tabs_to_spaces": true,
-	"git_binary": "bundled",
+    "font_face": "SF Mono",
+    "tab_size": 2,
+    "theme": "auto",
+    "translate_tabs_to_spaces": true,
+    "git_binary": "bundled"
 }
