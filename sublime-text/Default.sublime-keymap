@@ -16,11 +16,11 @@
         "command": "sublime_merge_blame_file"
     },
     {
-        "keys": ["super+shift+h"],
+        "keys": ["super+shift+m"],
         "command": "sublime_merge_file_history"
     },
     {
-        "keys": ["super+option+shift+h"],
+        "keys": ["super+option+shift+m"],
         "command": "sublime_merge_folder_history"
     },
 

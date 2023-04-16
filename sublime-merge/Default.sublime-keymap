@@ -10,17 +10,7 @@
         "command": "show_command_palette",
         "args": { "command": "push", "args": { "prompt": true } }
     },
-    // Tags
-    {
-        "keys": ["super+t"],
-        "command": "show_command_palette",
-        "args": { "command": "navigate_to_tag" }
-    },
-    {
-        "keys": ["super+shift+t"],
-        "command": "show_command_palette",
-        "args": { "command": "create_tag" }
-    },
+
     // Commits
     {
         "keys": ["super+e"],
@@ -41,6 +31,7 @@
         "command": "move_commit",
         "args": { "commit": "$commit", "down": true }
     },
+
     // Files
     {
         "keys": ["super+shift+y"],
@@ -49,11 +40,12 @@
         "context": [{ "key": "is_diff" }]
     },
     {
-        "keys": ["super+shift+h"],
+        "keys": ["super+shift+m"],
         "command": "file_history",
         "args": { "path": "$path" },
         "context": [{ "key": "is_diff" }]
     },
+
     // Navigation
     {
         "keys": ["super+k", "super+shift+b"],
