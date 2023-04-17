@@ -23,6 +23,15 @@
                 "caption": "Font Size",
                 "children": [
                     {
+                        "command": "increase_view_font_size",
+                        "caption": "Larger"
+                    },
+                    {
+                        "command": "decrease_view_font_size",
+                        "caption": "Smaller"
+                    },
+                    { "caption": "-" },
+                    {
                         "command": "set_view_font_size",
                         "caption": "Set…"
                     },

@@ -44,6 +44,16 @@
         "context": [{ "key": "vi_command_mode_aware" }]
     },
 
+    // Font
+    {
+        "keys": ["super+shift+plus"],
+        "command": "increase_view_font_size"
+    },
+    {
+        "keys": ["super+shift+minus"],
+        "command": "decrease_view_font_size"
+    },
+
     // Format
     {
         "keys": ["super+option+l"],
