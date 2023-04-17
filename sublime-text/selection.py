@@ -23,3 +23,16 @@ class OpenSelectionCommand(sublime_plugin.TextCommand):
 
     def is_visible(self) -> bool:
         return any(not region.empty() for region in self.view.sel())
+
+
+class ClearSelectionCommand(sublime_plugin.TextCommand):
+    def run(self, edit: sublime.Edit):
+        selection = self.view.sel()
+        carets = [region.b for region in selection]
+
+        selection.clear()
+        for caret in carets:
+            selection.add(caret)
+
+    def is_visible(self) -> bool:
+        return any(not region.empty() for region in self.view.sel())
