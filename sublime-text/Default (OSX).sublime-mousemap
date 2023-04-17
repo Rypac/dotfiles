@@ -1,0 +1,13 @@
+[
+    {
+        "button": "button1",
+        "modifiers": ["super", "shift"],
+        "command": "goto_definition"
+    },
+    {
+        "button": "button1",
+        "modifiers": ["super", "shift", "ctrl"],
+        "command": "goto_definition",
+        "args": { "side_by_side": true, "clear_to_right": true }
+    }
+]
