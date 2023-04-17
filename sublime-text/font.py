@@ -36,14 +36,30 @@ class SetViewFontSizeCommand(sublime_plugin.TextCommand):
 
 class IncreaseViewFontSize(sublime_plugin.TextCommand):
     def run(self, edit: sublime.Edit):
-        if (font_size := self.view.settings().get("font_size")) is not None:
-            self.view.settings().set("font_size", min(128, font_size + 1))
+        font_size = self.view.settings().get("font_size", 10)
+
+        if font_size >= 36:
+            font_size += 4
+        elif font_size >= 24:
+            font_size += 2
+        else:
+            font_size += 1
+
+        self.view.settings().set("font_size", min(128, font_size))
 
 
 class DecreaseViewFontSize(sublime_plugin.TextCommand):
     def run(self, edit: sublime.Edit):
-        if (font_size := self.view.settings().get("font_size")) is not None:
-            self.view.settings().set("font_size", max(8, font_size - 1))
+        font_size = self.view.settings().get("font_size", 10)
+
+        if font_size >= 40:
+            font_size -= 4
+        elif font_size >= 26:
+            font_size -= 2
+        else:
+            font_size -= 1
+
+        self.view.settings().set("font_size", max(8, font_size))
 
 
 class ResetViewFontSizeCommand(sublime_plugin.TextCommand):
