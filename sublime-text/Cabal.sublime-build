@@ -3,7 +3,7 @@
     "selector": "source.haskell",
     "file_patterns": ["*.cabal"],
     "keyfiles": ["*.cabal"],
-    "working_dir": "${project_path:${folder}}",
+    "working_dir": "$folder",
     "variants": [
         {
             "name": "Build",
