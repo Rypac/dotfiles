@@ -9,5 +9,15 @@
         "modifiers": ["super", "shift", "ctrl"],
         "command": "goto_definition",
         "args": { "side_by_side": true, "clear_to_right": true }
+    },
+    {
+        "button": "scroll_down",
+        "modifiers": ["ctrl"],
+        "command": "increase_view_font_size"
+    },
+    {
+        "button": "scroll_up",
+        "modifiers": ["ctrl"],
+        "command": "decrease_view_font_size"
     }
 ]
