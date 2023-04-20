@@ -56,6 +56,20 @@
 
     // Format
     {
+        "keys": ["super+k", "super+f"],
+        "command": "format_file",
+        "context": [
+            { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true }
+        ]
+    },
+    {
+        "keys": ["super+k", "super+f"],
+        "command": "format_selection",
+        "context": [
+            { "key": "selection_empty", "operator": "equal", "operand": false, "match_all": true }
+        ]
+    },
+    {
         "keys": ["super+option+l"],
         "command": "format_file",
         "context": [
