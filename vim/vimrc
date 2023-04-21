@@ -61,12 +61,6 @@ set smartindent
 " Draw whitespace
 " set list listchars=tab:»·,trail:·,nbsp:·
 
-" Use single space after punctuation
-set nojoinspaces
-
-" Delete comment character when joining commented lines
-set formatoptions+=j
-
 " Ignore certain files and directories
 set wildignore+=*~,*/.git/*,*/node_modules/*
 set viminfo=
