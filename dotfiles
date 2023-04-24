@@ -40,6 +40,7 @@ dotfiles_link() {
     link git "$XDG_CONFIG_HOME/git"
     link ghc "$XDG_CONFIG_HOME/ghc"
     link gnupg "$HOME/.gnupg"
+    link helix "$XDG_CONFIG_HOME/helix"
     link npm "$XDG_CONFIG_HOME/npm"
     link nvim "$XDG_CONFIG_HOME/nvim"
     link ranger "$XDG_CONFIG_HOME/ranger"
