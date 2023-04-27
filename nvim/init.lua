@@ -1,17 +1,17 @@
+-- General
+vim.cmd([[filetype plugin indent on]])
+
 -- UI
+vim.opt.breakindent = true
 vim.opt.number = true
-
--- Searching
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-
--- Tabs
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
--- Whitespace
+-- Editing
 vim.opt.expandtab = true
+vim.opt.ignorecase = true
 vim.opt.shiftwidth = 2
+vim.opt.smartcase = true
 vim.opt.tabstop = 2
 vim.opt.smartindent = true
 
