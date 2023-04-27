@@ -1,6 +1,6 @@
 # Interactive environment variables
 export BROWSER=open
-export EDITOR=vim
+export EDITOR=nvim
 export PAGER=less
 export LESSHISTFILE=-
 
