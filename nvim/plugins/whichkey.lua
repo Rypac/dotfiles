@@ -13,6 +13,7 @@ return {
       ["["] = { name = "+prev" },
       ["<leader>b"] = { name = "+buffer" },
       ["<leader>c"] = { name = "+code" },
+      ["<leader>d"] = { name = "+diff" },
       ["<leader>f"] = { name = "+file/find" },
       ["<leader>s"] = { name = "+search" },
       ["<leader>t"] = { name = "+tabs" },
