@@ -14,7 +14,6 @@ return {
       ["<leader>b"] = { name = "+buffer" },
       ["<leader>c"] = { name = "+code" },
       ["<leader>f"] = { name = "+file/find" },
-      ["<leader>g"] = { name = "+goto" },
       ["<leader>s"] = { name = "+search" },
       ["<leader>t"] = { name = "+tabs" },
       ["<leader>u"] = { name = "+ui" },

@@ -1,8 +1,8 @@
 return {
-  "echasnovski/mini.comment",
+  "echasnovski/mini.surround",
   version = "*",
   event = "VeryLazy",
   config = function()
-    require("mini.comment").setup()
+    require("mini.surround").setup()
   end,
 }
