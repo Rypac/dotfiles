@@ -104,6 +104,12 @@ function pbclear() {
     printf '' | pbcopy
 }
 
+# lazygit: simple terminal UI for git commands
+# https://github.com/jesseduffield/lazygit
+if (( $+commands[lazygit] )); then
+    alias lg=lazygit
+fi
+
 # bat: a cat clone with syntax highlighting and Git integration
 # https://github.com/sharkdp/bat
 if (( $+commands[bat] )); then
