@@ -4,6 +4,7 @@ vim.cmd([[filetype plugin indent on]])
 -- UI
 vim.opt.breakindent = true
 vim.opt.number = true
+vim.opt.signcolumn = "number"
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
