@@ -1,3 +1,6 @@
+[core]
+	editor = nvim
+
 [user]
 	name = Ryan Davis
 	email = ryan@rypac.org
@@ -9,23 +12,17 @@
 [color]
 	ui = true
 
-[core]
-	editor = nvim
-
 [init]
 	defaultBranch = main
 
 [alias]
-	# Fixing things
 	undo = reset HEAD~1 --mixed
 	amend = commit -a --amend
 
-	# Branch management
 	rename = branch -m
 	orphan = !git branch --merged | egrep -v \"(^\\*|master|main)\"
 	branch-clean = !git branch --merged | egrep -v \"(^\\*|master|main)\" | xargs git branch -d
 
-	# Submodules
 	subdiff = !git diff && git submodule foreach 'git diff'
 	subpush = push --recurse-submodules=on-demand
 	subinit = submodule update --init --recursive
