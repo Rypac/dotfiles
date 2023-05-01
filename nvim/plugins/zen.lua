@@ -3,6 +3,7 @@ return {
   cmd = "ZenMode",
   opts = {
     window = {
+      backdrop = 1,
       width = 100,
       options = {
         number = false,
