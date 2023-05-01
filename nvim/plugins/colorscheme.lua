@@ -1,9 +1,17 @@
 return {
   {
-    "shaunsingh/nord.nvim",
+    "arcticicestudio/nord-vim",
     version = false,
     lazy = false,
     priority = 1000,
+    config = function()
+      vim.cmd([[colorscheme nord]])
+    end,
+  },
+  {
+    "shaunsingh/nord.nvim",
+    version = false,
+    lazy = true,
     config = function()
       vim.g.nord_contrast = true
       vim.g.nord_italic = false
