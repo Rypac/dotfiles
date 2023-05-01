@@ -1,6 +1,7 @@
 return {
   "echasnovski/mini.move",
   version = "*",
+  event = "VeryLazy",
   opts = {
     mappings = {
       line_right = "",
