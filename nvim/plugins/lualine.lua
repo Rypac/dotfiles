@@ -3,7 +3,7 @@ return {
   event = "VeryLazy",
   opts = {
     options = {
-      theme = "nord",
+      theme = "gruvbox-material",
       icons_enabled = false,
       section_separators = "",
       component_separators = "",

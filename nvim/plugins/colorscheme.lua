@@ -2,8 +2,7 @@ return {
   {
     "arcticicestudio/nord-vim",
     version = false,
-    lazy = false,
-    priority = 1000,
+    lazy = true,
     config = function()
       vim.cmd([[colorscheme nord]])
     end,
@@ -22,11 +21,18 @@ return {
     end,
   },
   {
-    "ellisonleao/gruvbox.nvim",
+    "sainnhe/gruvbox-material",
     version = false,
-    lazy = true,
+    lazy = false,
+    priority = 1000,
     config = function()
-      vim.cmd([[colorscheme gruvbox]])
+      vim.opt.termguicolors = true
+
+      vim.g.gruvbox_material_background = "medium"
+      vim.g.gruvbox_material_foreground = "mix"
+      vim.g.gruvbox_material_statusline_style = "mix"
+
+      vim.cmd([[colorscheme gruvbox-material]])
     end,
   },
   {
@@ -68,6 +74,7 @@ return {
     version = false,
     lazy = true,
     config = function()
+      vim.opt.termguicolors = true
       vim.cmd([[colorscheme everforest]])
     end,
   },
