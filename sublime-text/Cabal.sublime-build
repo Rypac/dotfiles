@@ -1,6 +1,6 @@
 {
     "cmd": ["cabal", "run"],
-    "selector": "source.haskell",
+    "selector": "source.haskell | source.cabal",
     "file_patterns": ["*.cabal"],
     "keyfiles": ["*.cabal"],
     "working_dir": "$folder",
