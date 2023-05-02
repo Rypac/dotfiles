@@ -1,9 +1,8 @@
 {
 	"color_scheme": "auto",
 	"ensure_newline_at_eof_on_save": true,
-	"font_face": "SF Mono",
 	"highlight_modified_tabs": true,
 	"tab_size": 2,
 	"translate_tabs_to_spaces": true,
-	"trim_trailing_white_space_on_save": "all",
+	"trim_trailing_white_space_on_save": "all"
 }
