@@ -1,5 +1,6 @@
 set tab-size = 2
 set line-graphics = utf-8
+set diff-options = -m
 
 bind status A !git commit --amend
 bind status P !git push origin
