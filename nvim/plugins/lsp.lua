@@ -7,13 +7,14 @@ return {
   opts = {
     servers = {
       hls = {
+        filetypes = { "haskell", "lhaskell", "cabal" },
         settings = {
           haskell = {
             formattingProvider = "fourmolu",
             plugin = {
               rename = {
                 config = {
-                   crossModule = true,
+                  crossModule = true,
                 },
               },
             },
