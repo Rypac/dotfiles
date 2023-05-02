@@ -3,6 +3,7 @@ return {
   event = "VeryLazy",
   opts = {
     options = {
+      theme = "nord",
       icons_enabled = false,
       section_separators = "",
       component_separators = "",
