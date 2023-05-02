@@ -4,7 +4,7 @@ return {
     event = "VeryLazy",
     opts = {
       options = {
-        theme = "gruvbox-material",
+        theme = "nord",
         icons_enabled = false,
         section_separators = "",
         component_separators = "",

@@ -1,8 +1,11 @@
+local is_apple_terminal = vim.env.TERM_PROGRAM == "Apple_Terminal"
+
 return {
   {
     "arcticicestudio/nord-vim",
     version = false,
-    lazy = true,
+    lazy = not is_apple_terminal,
+    priority = 1000,
     config = function()
       vim.cmd([[colorscheme nord]])
     end,
@@ -23,7 +26,7 @@ return {
   {
     "sainnhe/gruvbox-material",
     version = false,
-    lazy = false,
+    lazy = is_apple_terminal,
     priority = 1000,
     config = function()
       vim.opt.termguicolors = true
@@ -90,11 +93,8 @@ return {
     "navarasu/onedark.nvim",
     version = false,
     lazy = true,
-    opts = {
-      style = "warm",
-    },
-    config = function(_, opts)
-      require("onedark").setup(opts)
+    config = function()
+      require("onedark").setup({ style = "warm" })
       vim.cmd([[colorscheme onedark]])
     end,
   },

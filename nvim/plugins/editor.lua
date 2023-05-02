@@ -75,5 +75,8 @@ return {
       { "<C-RightMouse>", "<Plug>(VM-Mouse-Word)" },
       { "<M-C-RightMouse>", "<Plug>(VM-Mouse-Column)" },
     },
+    config = function()
+      vim.g.VM_theme = "nord"
+    end,
   },
 }
