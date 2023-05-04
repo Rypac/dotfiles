@@ -2,7 +2,7 @@ return {
   {
     "echasnovski/mini.align",
     version = "*",
-    event = "VeryLazy",
+    event = "BufReadPost",
     config = function()
       require("mini.align").setup()
     end,
@@ -10,7 +10,7 @@ return {
   {
     "echasnovski/mini.bracketed",
     version = "*",
-    event = "VeryLazy",
+    event = "BufReadPost",
     config = function()
       require("mini.bracketed").setup()
     end,
@@ -18,7 +18,7 @@ return {
   {
     "echasnovski/mini.comment",
     version = "*",
-    event = "VeryLazy",
+    event = "BufReadPost",
     config = function()
       require("mini.comment").setup()
     end,
@@ -26,7 +26,7 @@ return {
   {
     "echasnovski/mini.jump",
     version = "*",
-    event = "VeryLazy",
+    event = "BufReadPost",
     config = function()
       require("mini.jump").setup()
     end,
@@ -34,7 +34,7 @@ return {
   {
     "echasnovski/mini.move",
     version = "*",
-    event = "VeryLazy",
+    event = "BufReadPost",
     opts = {
       mappings = {
         line_right = "",
@@ -50,7 +50,7 @@ return {
   {
     "echasnovski/mini.pairs",
     version = "*",
-    event = "VeryLazy",
+    event = "BufReadPost",
     config = function()
       require("mini.pairs").setup()
     end,
@@ -58,7 +58,7 @@ return {
   {
     "echasnovski/mini.surround",
     version = "*",
-    event = "VeryLazy",
+    event = "BufReadPost",
     config = function()
       require("mini.surround").setup()
     end,
