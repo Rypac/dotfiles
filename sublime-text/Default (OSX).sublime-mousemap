@@ -2,13 +2,21 @@
     {
         "button": "button1",
         "modifiers": ["super", "shift"],
-        "command": "goto_definition"
+        "command": "goto_definition",
+        "context": [
+            { "key": "num_selections", "operator": "equal", "operand": 1 },
+            { "key": "selection_empty", "operator": "equal", "operand": true }
+        ]
     },
     {
         "button": "button1",
         "modifiers": ["super", "shift", "ctrl"],
         "command": "goto_definition",
-        "args": { "side_by_side": true, "clear_to_right": true }
+        "args": { "side_by_side": true, "clear_to_right": true },
+        "context": [
+            { "key": "num_selections", "operator": "equal", "operand": 1 },
+            { "key": "selection_empty", "operator": "equal", "operand": true }
+        ]
     },
     {
         "button": "scroll_down",
