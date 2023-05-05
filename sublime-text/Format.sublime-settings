@@ -1,8 +1,12 @@
 {
     "formatters": {
         "Haskell": {
-            "command": ["fourmolu", "--indentation", "$tab_size", "--stdin-input-file", "-"],
+            "command": ["fourmolu", "--indentation", "$tab_size", "--stdin-input-file", "$file"],
             "selector": "source.haskell"
+        },
+        "Cabal": {
+            "command": ["cabal-fmt", "--stdout"],
+            "selector": "source.cabal",
         },
         "JSON": {
             "command": ["jq", "--indent", "$tab_size", "."],
