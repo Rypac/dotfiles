@@ -27,6 +27,10 @@ vim.opt.wildignore = { ".git/", "node_modules/" }
 -- Keybindings
 vim.g.mapleader = " "
 
+vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste silently" })
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Copy to clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete silently" })
+
 -- Plugins
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

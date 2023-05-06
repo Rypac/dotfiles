@@ -37,6 +37,8 @@ return {
     event = "BufReadPost",
     opts = {
       mappings = {
+        down = "J",
+        up = "K",
         line_right = "",
         line_left = "",
         line_down = "",
