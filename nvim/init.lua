@@ -7,14 +7,19 @@ vim.opt.number = true
 vim.opt.signcolumn = "number"
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+vim.opt.wrap = false
 
 -- Editing
 vim.opt.expandtab = true
 vim.opt.ignorecase = true
 vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
 vim.opt.smartcase = true
-vim.opt.tabstop = 2
 vim.opt.smartindent = true
+vim.opt.tabstop = 2
+
+-- Backup
+vim.opt.swapfile = false
 
 -- Ignore
 vim.opt.wildignore = { ".git/", "node_modules/" }
