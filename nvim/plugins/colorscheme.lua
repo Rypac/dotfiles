@@ -11,7 +11,8 @@ return {
   },
   {
     "shaunsingh/nord.nvim",
-    lazy = true,
+    lazy = is_apple_terminal,
+    priority = 1000,
     config = function()
       vim.g.nord_contrast = true
       vim.g.nord_italic = false
@@ -23,8 +24,7 @@ return {
   },
   {
     "sainnhe/gruvbox-material",
-    lazy = is_apple_terminal,
-    priority = 1000,
+    lazy = true,
     config = function()
       vim.opt.termguicolors = true
 
