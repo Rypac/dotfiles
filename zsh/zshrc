@@ -96,6 +96,10 @@ function pbclear() {
     printf '' | pbcopy
 }
 
+if (( $+commands[nvim] )); then
+    alias vim=nvim
+fi
+
 if (( $+commands[lazygit] )); then
     alias lg=lazygit
 fi
