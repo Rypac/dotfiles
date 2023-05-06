@@ -66,6 +66,7 @@ return {
   {
     "mg979/vim-visual-multi",
     version = false,
+    event = "BufReadPost",
     keys = {
       { "<M-j>", ":call vm#commands#add_cursor_down(0, v:count1)<cr>" },
       { "<M-k>", ":call vm#commands#add_cursor_up(0, v:count1)<cr>" },
