@@ -1,7 +1,6 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    version = false,
     build = ":TSUpdate",
     event = {
       "BufReadPost",
@@ -60,7 +59,6 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
-    version = false,
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
@@ -74,7 +72,6 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    version = false,
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },

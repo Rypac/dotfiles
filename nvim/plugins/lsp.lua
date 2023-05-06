@@ -88,7 +88,6 @@ return {
       "BufReadPre",
       "BufNewFile",
     },
-    version = false,
     opts = function()
       local null_ls = require("null-ls")
       return {

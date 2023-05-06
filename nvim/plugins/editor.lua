@@ -1,7 +1,6 @@
 return {
   {
     "echasnovski/mini.align",
-    version = "*",
     event = "BufReadPost",
     config = function()
       require("mini.align").setup()
@@ -9,7 +8,6 @@ return {
   },
   {
     "echasnovski/mini.bracketed",
-    version = "*",
     event = "BufReadPost",
     config = function()
       require("mini.bracketed").setup()
@@ -17,7 +15,6 @@ return {
   },
   {
     "echasnovski/mini.comment",
-    version = "*",
     event = "BufReadPost",
     config = function()
       require("mini.comment").setup()
@@ -25,7 +22,6 @@ return {
   },
   {
     "echasnovski/mini.jump",
-    version = "*",
     event = "BufReadPost",
     config = function()
       require("mini.jump").setup()
@@ -33,7 +29,6 @@ return {
   },
   {
     "echasnovski/mini.move",
-    version = "*",
     event = "BufReadPost",
     opts = {
       mappings = {
@@ -51,7 +46,6 @@ return {
   },
   {
     "echasnovski/mini.pairs",
-    version = "*",
     event = "BufReadPost",
     config = function()
       require("mini.pairs").setup()
@@ -59,7 +53,6 @@ return {
   },
   {
     "echasnovski/mini.surround",
-    version = "*",
     event = "BufReadPost",
     config = function()
       require("mini.surround").setup()
@@ -67,7 +60,6 @@ return {
   },
   {
     "mg979/vim-visual-multi",
-    version = false,
     event = "BufReadPost",
     keys = {
       { "<M-j>", ":call vm#commands#add_cursor_down(0, v:count1)<cr>" },

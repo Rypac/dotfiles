@@ -3,7 +3,6 @@ local is_apple_terminal = vim.env.TERM_PROGRAM == "Apple_Terminal"
 return {
   {
     "arcticicestudio/nord-vim",
-    version = false,
     lazy = not is_apple_terminal,
     priority = 1000,
     config = function()
@@ -12,7 +11,6 @@ return {
   },
   {
     "shaunsingh/nord.nvim",
-    version = false,
     lazy = true,
     config = function()
       vim.g.nord_contrast = true
@@ -25,7 +23,6 @@ return {
   },
   {
     "sainnhe/gruvbox-material",
-    version = false,
     lazy = is_apple_terminal,
     priority = 1000,
     config = function()
@@ -41,7 +38,6 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    version = false,
     lazy = true,
     config = function()
       vim.cmd([[colorscheme catppuccin]])
@@ -50,7 +46,6 @@ return {
   {
     "rose-pine/neovim",
     name = "rose-pine",
-    version = false,
     lazy = true,
     config = function()
       vim.cmd([[colorscheme rose-pine]])
@@ -58,7 +53,6 @@ return {
   },
   {
     "kaiuri/nvim-juliana",
-    version = false,
     lazy = true,
     config = function()
       vim.cmd([[colorscheme juliana]])
@@ -66,7 +60,6 @@ return {
   },
   {
     "EdenEast/nightfox.nvim",
-    version = false,
     lazy = true,
     config = function()
       vim.cmd([[colorscheme nightfox]])
@@ -74,7 +67,6 @@ return {
   },
   {
     "sainnhe/everforest",
-    version = false,
     lazy = true,
     config = function()
       vim.opt.termguicolors = true
@@ -83,7 +75,6 @@ return {
   },
   {
     "rebelot/kanagawa.nvim",
-    version = false,
     lazy = true,
     config = function()
       vim.cmd([[colorscheme kanagawa]])
@@ -91,7 +82,6 @@ return {
   },
   {
     "navarasu/onedark.nvim",
-    version = false,
     lazy = true,
     config = function()
       require("onedark").setup({ style = "warm" })
