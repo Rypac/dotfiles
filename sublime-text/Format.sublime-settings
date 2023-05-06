@@ -1,16 +1,20 @@
 {
     "formatters": {
+        "Cabal": {
+            "command": ["cabal-fmt", "--stdout"],
+            "selector": "source.cabal"
+        },
         "Haskell": {
             "command": ["fourmolu", "--indentation", "$tab_size", "--stdin-input-file", "$file"],
             "selector": "source.haskell"
         },
-        "Cabal": {
-            "command": ["cabal-fmt", "--stdout"],
-            "selector": "source.cabal",
-        },
         "JSON": {
             "command": ["jq", "--indent", "$tab_size", "."],
             "selector": "source.json"
+        },
+        "Lua": {
+            "command": ["stylua", "--indent-type", "Spaces", "--indent-width", "$tab_size", "--stdin-filepath", "$file", "-"],
+            "selector": "source.lua"
         },
         "Markdown": {
             "command": ["prettier", "--parser", "markdown", "--tab-width", "$tab_size"],
