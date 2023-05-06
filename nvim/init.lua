@@ -31,6 +31,13 @@ vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste silently" })
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Copy to clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete silently" })
 
+-- Highlight yanks
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function()
+    vim.highlight.on_yank({ higroup = "IncSearch", timeout = 200 })
+  end,
+})
+
 -- Plugins
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
