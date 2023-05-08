@@ -16,9 +16,11 @@ dotfiles_link() {
 
             echo "Linking $target/* to $destination"
 
-            for f in "$origin"/*; do
-                name="$(basename "$f")"
-                ln -fns "$f" "$destination/$name"
+            for f in "$origin"/* "$origin"/.[^.]*; do
+                if [ -f "$f" ]; then
+                    name="$(basename "$f")"
+                    ln -fns "$f" "$destination/$name"
+                fi
             done
         else
             destination_parent="$(dirname "$destination")"
