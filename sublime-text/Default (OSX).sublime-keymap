@@ -105,10 +105,25 @@
     {
         "keys": ["super+f12"],
         "command": "lsp_symbol_definition",
-        "args": {"side_by_side": true },
+        "args": { "side_by_side": true },
         "context": [
             { "key": "lsp.session_with_capability", "operand": "definitionProvider" },
             { "key": "auto_complete_visible", "operand": false }
+        ]
+    },
+    {
+        "keys": ["shift+f12"],
+        "command": "lsp_symbol_references",
+        "context": [
+            {"key": "lsp.session_with_capability", "operand": "referencesProvider"}
+        ]
+    },
+    {
+        "keys": ["super+shift+f12"],
+        "command": "lsp_symbol_references",
+        "args": { "side_by_side": true },
+        "context": [
+            {"key": "lsp.session_with_capability", "operand": "referencesProvider"}
         ]
     },
     {
