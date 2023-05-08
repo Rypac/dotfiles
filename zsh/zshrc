@@ -4,6 +4,9 @@ export EDITOR=nvim
 export PAGER=less
 export LESSHISTFILE=-
 
+# Options
+setopt inc_append_history
+
 # Enable vi mode
 bindkey -v
 KEYTIMEOUT=1
