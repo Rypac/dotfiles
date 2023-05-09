@@ -1,4 +1,0 @@
-[[language]]
-name = "haskell"
-auto-format = true
-config = { haskell = { formattingProvider = "fourmolu" } }
