@@ -84,8 +84,8 @@ return {
         select = {
           enable = true,
           keymaps = {
-            ["af"] = { query = "@function.outer", desc = "a function" },
-            ["if"] = { query = "@function.inner", desc = "inner function" },
+            ["am"] = { query = "@function.outer", desc = "a function" },
+            ["im"] = { query = "@function.inner", desc = "inner function" },
             ["ac"] = { query = "@class.outer", desc = "a class" },
             ["ic"] = { query = "@class.inner", desc = "inner class" },
           },
