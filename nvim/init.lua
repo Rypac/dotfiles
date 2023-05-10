@@ -18,6 +18,11 @@ vim.opt.smartcase = true
 vim.opt.smartindent = true
 vim.opt.tabstop = 2
 
+-- Folding
+vim.opt.foldenable = false
+vim.opt.foldlevel = 99
+vim.opt.foldmethod = "indent"
+
 -- Backup
 vim.opt.swapfile = false
 

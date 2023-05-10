@@ -58,8 +58,9 @@ set tabstop=2
 " Indentation
 set smartindent
 
-" Draw whitespace
-" set list listchars=tab:»·,trail:·,nbsp:·
+set nofoldenable
+set foldlevel=99
+set foldmethod=indent
 
 " Ignore certain files and directories
 set wildignore+=*~,*/.git/*,*/node_modules/*
