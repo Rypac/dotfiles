@@ -1,12 +1,5 @@
 return {
   {
-    "echasnovski/mini.align",
-    event = "BufReadPost",
-    config = function()
-      require("mini.align").setup()
-    end,
-  },
-  {
     "echasnovski/mini.bracketed",
     event = "BufReadPost",
     config = function()
@@ -32,8 +25,6 @@ return {
     event = "BufReadPost",
     opts = {
       mappings = {
-        down = "J",
-        up = "K",
         line_right = "",
         line_left = "",
         line_down = "",
