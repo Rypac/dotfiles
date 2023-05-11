@@ -50,7 +50,7 @@ return {
       },
     },
     keys = {
-      { "<c-space>", desc = "Increment selection" },
+      { "<C-space>", desc = "Increment selection" },
       { "<bs>", desc = "Decrement selection", mode = "x" },
     },
     config = function(_, opts)
@@ -65,6 +65,15 @@ return {
     event = {
       "BufReadPost",
       "BufNewFile",
+    },
+    keys = {
+      {
+        "[@",
+        function()
+          require("treesitter-context").go_to_context()
+        end,
+        desc = "Context start",
+      },
     },
     config = function()
       require("treesitter-context").setup()
@@ -101,6 +110,7 @@ return {
         },
         move = {
           enable = true,
+          set_jumps = true,
           goto_next_start = {
             ["]m"] = { query = "@function.outer", desc = "Next function start" },
             ["]]"] = { query = "@class.outer", desc = "Next class start" },
