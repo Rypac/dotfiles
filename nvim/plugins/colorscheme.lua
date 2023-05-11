@@ -23,6 +23,14 @@ return {
     end,
   },
   {
+    "dracula/vim",
+    name = "dracula",
+    lazy = true,
+    config = function()
+      vim.cmd([[colorscheme dracula]])
+    end,
+  },
+  {
     "sainnhe/gruvbox-material",
     lazy = true,
     config = function()
