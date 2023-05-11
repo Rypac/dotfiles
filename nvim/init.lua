@@ -1,10 +1,7 @@
--- General
-vim.cmd([[filetype plugin indent on]])
-
 -- UI
 vim.opt.breakindent = true
 vim.opt.number = true
-vim.opt.signcolumn = "number"
+vim.opt.signcolumn = "yes"
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.wrap = false
