@@ -40,6 +40,10 @@
         "caption": "Selection: Open in New File"
     },
     {
+        "command": "goto_bookmark",
+        "caption": "Goto: Bookmark"
+    },
+    {
         "command": "dash",
         "caption": "Dash: Open Documentation for Selection",
     }
