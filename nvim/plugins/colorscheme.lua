@@ -1,24 +1,43 @@
-local is_apple_terminal = vim.env.TERM_PROGRAM == "Apple_Terminal"
+local colorscheme = function(opts)
+  return {
+    opts[1],
+    name = opts.name,
+    dependencies = {
+      "echasnovski/mini.colors",
+    },
+    lazy = not (opts.enabled or false),
+    priority = 1000,
+    build = function()
+      if opts.config then
+        opts.config()
+      end
+
+      require("mini.colors")
+        .get_colorscheme(opts.colorscheme, { new_name = "custom-" .. opts.colorscheme })
+        :add_cterm_attributes()
+        :add_terminal_colors()
+        :write()
+    end,
+    config = function()
+      if opts.config then
+        opts.config()
+      end
+
+      if vim.env.TERM_PROGRAM == "Apple_Terminal" then
+        vim.cmd("colorscheme custom-" .. opts.colorscheme)
+      else
+        vim.cmd("colorscheme " .. opts.colorscheme)
+      end
+    end,
+  }
+end
 
 return {
   {
     "arcticicestudio/nord-vim",
-    lazy = not is_apple_terminal,
+    lazy = true,
     priority = 1000,
     config = function()
-      vim.cmd([[colorscheme nord]])
-    end,
-  },
-  {
-    "shaunsingh/nord.nvim",
-    lazy = is_apple_terminal,
-    priority = 1000,
-    config = function()
-      vim.g.nord_contrast = true
-      vim.g.nord_italic = false
-
-      require("nord").set()
-
       vim.cmd([[colorscheme nord]])
     end,
   },
@@ -26,74 +45,48 @@ return {
     "dracula/vim",
     name = "dracula",
     lazy = true,
+    priority = 1000,
     config = function()
       vim.cmd([[colorscheme dracula]])
     end,
   },
-  {
-    "sainnhe/gruvbox-material",
-    lazy = true,
+  colorscheme({
+    "navarasu/onedark.nvim",
+    colorscheme = "onedark",
+  }),
+  colorscheme({
+    "shaunsingh/nord.nvim",
+    colorscheme = "nord",
     config = function()
-      vim.opt.termguicolors = true
-
+      vim.g.nord_contrast = true
+      vim.g.nord_italic = false
+    end,
+  }),
+  colorscheme({
+    "sainnhe/gruvbox-material",
+    colorscheme = "gruvbox-material",
+    enabled = true,
+    config = function()
       vim.g.gruvbox_material_background = "medium"
       vim.g.gruvbox_material_foreground = "mix"
       vim.g.gruvbox_material_statusline_style = "mix"
-
-      vim.cmd([[colorscheme gruvbox-material]])
     end,
-  },
-  {
+  }),
+  colorscheme({
     "catppuccin/nvim",
     name = "catppuccin",
-    lazy = true,
-    config = function()
-      vim.cmd([[colorscheme catppuccin]])
-    end,
-  },
-  {
-    "rose-pine/neovim",
-    name = "rose-pine",
-    lazy = true,
-    config = function()
-      vim.cmd([[colorscheme rose-pine]])
-    end,
-  },
-  {
-    "kaiuri/nvim-juliana",
-    lazy = true,
-    config = function()
-      vim.cmd([[colorscheme juliana]])
-    end,
-  },
-  {
+    colorscheme = "catppuccin",
+  }),
+  colorscheme({
     "EdenEast/nightfox.nvim",
-    lazy = true,
-    config = function()
-      vim.cmd([[colorscheme nightfox]])
-    end,
-  },
-  {
+    colorscheme = "nightfox",
+  }),
+  colorscheme({
     "sainnhe/everforest",
-    lazy = true,
-    config = function()
-      vim.opt.termguicolors = true
-      vim.cmd([[colorscheme everforest]])
-    end,
-  },
-  {
+    colorscheme = "everforest",
+  }),
+  colorscheme({
     "rebelot/kanagawa.nvim",
-    lazy = true,
-    config = function()
-      vim.cmd([[colorscheme kanagawa]])
-    end,
-  },
-  {
-    "navarasu/onedark.nvim",
-    lazy = true,
-    config = function()
-      require("onedark").setup({ style = "warm" })
-      vim.cmd([[colorscheme onedark]])
-    end,
-  },
+    colorscheme = "kanagawa",
+  }),
 }
