@@ -50,7 +50,7 @@ return {
       },
     },
     keys = {
-      { "<C-space>", desc = "Increment selection" },
+      { "<C-space>", desc = "Increment selection", mode = "x" },
       { "<bs>", desc = "Decrement selection", mode = "x" },
     },
     config = function(_, opts)
