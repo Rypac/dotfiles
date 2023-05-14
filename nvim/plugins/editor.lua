@@ -15,6 +15,15 @@ return {
     config = true,
   },
   {
+    "echasnovski/mini.completion",
+    event = "InsertEnter",
+    opts = {
+      delay = {
+        completion = 9999999,
+      },
+    },
+  },
+  {
     "echasnovski/mini.jump",
     event = "BufReadPost",
     config = true,

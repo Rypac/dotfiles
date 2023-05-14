@@ -123,9 +123,6 @@ end
 return {
   {
     "neovim/nvim-lspconfig",
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-    },
     event = {
       "BufReadPre",
       "BufNewFile",
@@ -152,13 +149,11 @@ return {
     },
     config = function(_, opts)
       local lspconfig = require("lspconfig")
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       local servers = opts.servers or {}
       for server, server_opts in pairs(servers) do
         local merged_opts = vim.tbl_deep_extend("force", {}, server_opts, {
           on_attach = on_attach,
-          capabilities = capabilities,
         })
         lspconfig[server].setup(merged_opts)
       end
@@ -185,58 +180,6 @@ return {
           }),
         },
       }
-    end,
-  },
-  {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "dcampos/nvim-snippy",
-      "dcampos/cmp-snippy",
-    },
-    event = "InsertEnter",
-    config = function()
-      local cmp = require("cmp")
-
-      cmp.setup({
-        completion = {
-          autocomplete = false,
-        },
-        snippet = {
-          expand = function(args)
-            require("snippy").expand_snippet(args.body)
-          end,
-        },
-        mapping = cmp.mapping.preset.insert({
-          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-          ["<C-f>"] = cmp.mapping.scroll_docs(4),
-          ["<C-space>"] = cmp.mapping.complete(),
-          ["<cr>"] = cmp.mapping.confirm({ select = false }),
-          ["<tab>"] = function(fallback)
-            if cmp.visible() then
-              cmp.mapping.select_next_item()
-            else
-              fallback()
-            end
-          end,
-          ["<S-tab>"] = function(fallback)
-            if cmp.visible() then
-              cmp.mapping.select_prev_item()
-            else
-              fallback()
-            end
-          end,
-        }),
-        sources = cmp.config.sources({
-          { name = "nvim_lsp" },
-          { name = "snippy" },
-        }, {
-          { name = "path" },
-          { name = "buffer" },
-        }),
-      })
     end,
   },
 }
