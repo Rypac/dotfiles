@@ -47,6 +47,7 @@ dotfiles_link() {
     link nvim/init.lua "$XDG_CONFIG_HOME/nvim/init.lua"
     link nvim/plugins "$XDG_CONFIG_HOME/nvim/lua/plugins"
     link ranger "$XDG_CONFIG_HOME/ranger"
+    link stylua "$XDG_CONFIG_HOME/stylua"
     link tig "$XDG_CONFIG_HOME/tig"
     link tmux "$XDG_CONFIG_HOME/tmux"
     link vim "$HOME/.vim"
