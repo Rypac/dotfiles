@@ -1,5 +1,10 @@
 return {
   {
+    "echasnovski/mini.ai",
+    event = "BufReadPost",
+    config = true,
+  },
+  {
     "echasnovski/mini.bracketed",
     event = "BufReadPost",
     config = true,
@@ -28,6 +33,11 @@ return {
   },
   {
     "echasnovski/mini.pairs",
+    event = "BufReadPost",
+    config = true,
+  },
+  {
+    "echasnovski/mini.splitjoin",
     event = "BufReadPost",
     config = true,
   },
