@@ -58,6 +58,7 @@ return {
       "BufNewFile",
     },
     cmd = "Gitsigns",
+    opts = {},
     keys = {
       { "<leader>hs", "<cmd>Gitsigns stage_hunk<cr>", desc = "Stage Hunk", mode = { "n", "v" } },
       { "<leader>hr", "<cmd>Gitsigns reset_hunk<cr>", desc = "Reset Hunk", mode = { "n", "v" } },
@@ -72,7 +73,6 @@ return {
       { "<leader>hts", "<cmd>Gitsigns toggle_signs<cr>", desc = "Signs" },
       { "<leader>htw", "<cmd>Gitsigns toggle_word_diff<cr>", desc = "Word Diff" },
     },
-    config = true,
   },
   {
     "folke/zen-mode.nvim",

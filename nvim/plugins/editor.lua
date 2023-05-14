@@ -2,17 +2,17 @@ return {
   {
     "echasnovski/mini.ai",
     event = "BufReadPost",
-    config = true,
+    opts = {},
   },
   {
     "echasnovski/mini.bracketed",
     event = "BufReadPost",
-    config = true,
+    opts = {},
   },
   {
     "echasnovski/mini.comment",
     event = "BufReadPost",
-    config = true,
+    opts = {},
   },
   {
     "echasnovski/mini.completion",
@@ -26,7 +26,7 @@ return {
   {
     "echasnovski/mini.jump",
     event = "BufReadPost",
-    config = true,
+    opts = {},
   },
   {
     "echasnovski/mini.move",
@@ -43,12 +43,12 @@ return {
   {
     "echasnovski/mini.pairs",
     event = "BufReadPost",
-    config = true,
+    opts = {},
   },
   {
     "echasnovski/mini.splitjoin",
     event = "BufReadPost",
-    config = true,
+    opts = {},
   },
   {
     "echasnovski/mini.surround",
