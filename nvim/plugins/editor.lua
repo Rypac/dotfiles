@@ -2,23 +2,17 @@ return {
   {
     "echasnovski/mini.bracketed",
     event = "BufReadPost",
-    config = function()
-      require("mini.bracketed").setup()
-    end,
+    config = true,
   },
   {
     "echasnovski/mini.comment",
     event = "BufReadPost",
-    config = function()
-      require("mini.comment").setup()
-    end,
+    config = true,
   },
   {
     "echasnovski/mini.jump",
     event = "BufReadPost",
-    config = function()
-      require("mini.jump").setup()
-    end,
+    config = true,
   },
   {
     "echasnovski/mini.move",
@@ -31,35 +25,31 @@ return {
         line_up = "",
       },
     },
-    config = function(_, opts)
-      require("mini.move").setup(opts)
-    end,
   },
   {
     "echasnovski/mini.pairs",
     event = "BufReadPost",
-    config = function()
-      require("mini.pairs").setup()
-    end,
+    config = true,
   },
   {
     "echasnovski/mini.surround",
     event = "BufReadPost",
-    config = function()
-      require("mini.surround").setup({
-        mappings = {
-          add = "ys",
-          delete = "ds",
-          find = "",
-          find_left = "",
-          highlight = "",
-          replace = "cs",
-          update_n_lines = "",
-        },
-        search_method = "cover_or_next",
-      })
+    opts = {
+      mappings = {
+        add = "ys",
+        delete = "ds",
+        find = "",
+        find_left = "",
+        highlight = "",
+        replace = "cs",
+        update_n_lines = "",
+      },
+      search_method = "cover_or_next",
+    },
+    config = function(_, opts)
+      require("mini.surround").setup(opts)
 
-      vim.keymap.del('x', 'ys')
+      vim.keymap.del("x", "ys")
       vim.keymap.set("x", "S", [[:<C-u>lua MiniSurround.add('visual')<CR>]], { silent = true })
       vim.keymap.set("n", "yss", "ys_", { remap = true })
     end,
