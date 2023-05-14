@@ -1,7 +1,7 @@
 {
     "formatters": {
         "Cabal": {
-            "command": ["cabal-fmt", "--stdout"],
+            "command": ["cabal-fmt"],
             "selector": "source.cabal"
         },
         "Haskell": {
@@ -21,7 +21,7 @@
             "selector": "text.html.markdown"
         },
         "Python": {
-            "command": ["black", "-"],
+            "command": ["black", "--stdin-filename", "$file", "-"],
             "selector": "source.python"
         },
         "Rust": {
@@ -29,7 +29,7 @@
             "selector": "source.rust"
         },
         "Swift": {
-            "command": ["swiftformat", "--indent", "$tab_size"],
+            "command": ["swiftformat", "--indent", "$tab_size", "--stdinpath", "$file"],
             "selector": "source.swift"
         }
     }
