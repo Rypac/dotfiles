@@ -40,6 +40,12 @@ return {
     },
   },
   {
+    "echasnovski/mini.tabline",
+    opts = {
+      use_icons = false,
+    },
+  },
+  {
     "folke/which-key.nvim",
     event = "VeryLazy",
     opts = {
