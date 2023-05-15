@@ -2,12 +2,37 @@ return {
   {
     "echasnovski/mini.ai",
     event = "BufReadPost",
-    opts = {},
+    opts = function()
+      local gen_spec = require("mini.ai").gen_spec
+      return {
+        custom_textobjects = {
+          c = gen_spec.treesitter({
+            a = "@class.outer",
+            i = "@class.inner",
+          }),
+          m = gen_spec.treesitter({
+            a = "@function.outer",
+            i = "@function.inner",
+          }),
+          o = gen_spec.treesitter({
+            a = { "@conditional.outer", "@loop.outer" },
+            i = { "@conditional.inner", "@loop.inner" },
+          }),
+        },
+      }
+    end,
   },
   {
     "echasnovski/mini.bracketed",
     event = "BufReadPost",
-    opts = {},
+    opts = {
+      comment = {
+        suffix = "/",
+      },
+      oldfile = {
+        suffix = "",
+      },
+    },
   },
   {
     "echasnovski/mini.comment",

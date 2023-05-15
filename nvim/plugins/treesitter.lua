@@ -90,42 +90,28 @@ return {
     },
     opts = {
       textobjects = {
-        select = {
-          enable = true,
-          keymaps = {
-            ["am"] = { query = "@function.outer", desc = "a function" },
-            ["im"] = { query = "@function.inner", desc = "inner function" },
-            ["ac"] = { query = "@class.outer", desc = "a class" },
-            ["ic"] = { query = "@class.inner", desc = "inner class" },
-          },
-        },
-        swap = {
-          enable = true,
-          swap_next = {
-            ["<leader>csn"] = { query = "@parameter.inner", desc = "Swap next parameter" },
-          },
-          swap_previous = {
-            ["<leader>csp"] = { query = "@parameter.inner", desc = "Swap previous parameter" },
-          },
-        },
         move = {
           enable = true,
           set_jumps = true,
           goto_next_start = {
+            ["]c"] = { query = "@class.outer", desc = "Next class start" },
             ["]m"] = { query = "@function.outer", desc = "Next function start" },
-            ["]]"] = { query = "@class.outer", desc = "Next class start" },
+            ["]o"] = { query = { "@conditional.inner", "@conditional.outer" }, desc = "Next conditional start" },
           },
           goto_next_end = {
+            ["]C"] = { query = "@class.outer", desc = "Next class end" },
             ["]M"] = { query = "@function.outer", desc = "Next function end" },
-            ["]["] = { query = "@class.outer", desc = "Next class end" },
+            ["]O"] = { query = { "@conditional.inner", "@conditional.outer" }, desc = "Next conditional end" },
           },
           goto_previous_start = {
+            ["[c"] = { query = "@class.outer", desc = "Previous class start" },
             ["[m"] = { query = "@function.outer", desc = "Previous function start" },
-            ["[["] = { query = "@class.outer", desc = "Previous class start" },
+            ["[o"] = { query = { "@conditional.inner", "@conditional.outer" }, desc = "Previous conditional start" },
           },
           goto_previous_end = {
+            ["[C"] = { query = "@class.outer", desc = "Previous class end" },
             ["[M"] = { query = "@function.outer", desc = "Previous function end" },
-            ["[]"] = { query = "@class.outer", desc = "Previous class end" },
+            ["[O"] = { query = { "@conditional.inner", "@conditional.outer" }, desc = "Previous conditional end" },
           },
         },
       },
