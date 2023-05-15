@@ -1,5 +1,39 @@
 return {
   {
+    "echasnovski/mini.bufremove",
+    keys = {
+      {
+        "<leader>bd",
+        function()
+          require("mini.bufremove").delete()
+        end,
+        desc = "Delete buffer",
+      },
+      {
+        "<leader>bx",
+        function()
+          require("mini.bufremove").wipeout()
+        end,
+        desc = "Wipeout buffer",
+      },
+      {
+        "<leader>bh",
+        function()
+          require("mini.bufremove").unshow()
+        end,
+        desc = "Unshow buffer",
+      },
+      {
+        "<leader>bH",
+        function()
+          require("mini.bufremove").unshow_in_window()
+        end,
+        desc = "Unshow buffer in window",
+      },
+    },
+    opts = {},
+  },
+  {
     "echasnovski/mini.statusline",
     opts = {
       use_icons = false,
@@ -17,6 +51,7 @@ return {
         ["g"] = { name = "+goto" },
         ["]"] = { name = "+next" },
         ["["] = { name = "+previous" },
+        ["<leader>b"] = { name = "+buffer" },
         ["<leader>c"] = { name = "+code" },
         ["<leader>f"] = { name = "+find" },
         ["<leader>g"] = { name = "+git" },
