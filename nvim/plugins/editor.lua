@@ -44,14 +44,18 @@ return {
     event = "InsertEnter",
     opts = {
       delay = {
-        completion = 9999999,
+        completion = 10000000,
       },
     },
   },
   {
     "echasnovski/mini.jump",
     event = "BufReadPost",
-    opts = {},
+    opts = {
+      delay = {
+        highlight = 10000000,
+      },
+    },
   },
   {
     "echasnovski/mini.move",
