@@ -70,6 +70,7 @@ return {
         ["<leader>ght"] = { name = "+thread" },
         ["<leader>h"] = { name = "+hunk" },
         ["<leader>ht"] = { name = "+toggle" },
+        ["<leader>o"] = { name = "+options" },
       },
     },
     config = function(_, opts)

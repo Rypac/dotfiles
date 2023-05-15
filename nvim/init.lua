@@ -34,6 +34,15 @@ vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste silently" })
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Copy to clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete silently" })
 
+vim.keymap.set("n", "<leader>oc", "<cmd>set invcursorline<cr>", { desc = "Toggle cursor line" })
+vim.keymap.set("n", "<leader>oh", "<cmd>set invhlsearch<cr>", { desc = "Toggle search highlight" })
+vim.keymap.set("n", "<leader>ol", "<cmd>set invlinebreak<cr>", { desc = "Toggle line break" })
+vim.keymap.set("n", "<leader>on", "<cmd>set invnumber<cr>", { desc = "Toggle line numbers" })
+vim.keymap.set("n", "<leader>or", "<cmd>set invrelativenumber<cr>", { desc = "Toggle relative numbers" })
+vim.keymap.set("n", "<leader>ot", "<cmd>set showtabline=2<cr>", { desc = "Show tab line" })
+vim.keymap.set("n", "<leader>oT", "<cmd>set showtabline=1<cr>", { desc = "Hide tab line" })
+vim.keymap.set("n", "<leader>ow", "<cmd>set invwrap<cr>", { desc = "Toggle line wrap" })
+
 -- Highlight yanks
 vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function()
