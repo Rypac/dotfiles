@@ -4,6 +4,7 @@ vim.opt.number = true
 vim.opt.signcolumn = "yes"
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+vim.opt.showmode = false
 vim.opt.wrap = false
 
 -- Editing
