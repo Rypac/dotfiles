@@ -1,5 +1,6 @@
 -- UI
 vim.opt.breakindent = true
+vim.opt.linebreak = true
 vim.opt.number = true
 vim.opt.signcolumn = "yes"
 vim.opt.splitbelow = true
