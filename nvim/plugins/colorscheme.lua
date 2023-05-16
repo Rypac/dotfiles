@@ -13,21 +13,21 @@ local colorscheme = function(opts)
       end
 
       require("mini.colors")
-        .get_colorscheme(opts.colorscheme, { new_name = "custom-" .. opts.colorscheme })
+        .get_colorscheme(opts.colorscheme, { new_name = "cterm-" .. opts.colorscheme })
         :add_cterm_attributes()
         :add_terminal_colors()
         :write()
     end,
     config = function()
+      if vim.env.TERM_PROGRAM ~= "Apple_Terminal" then
+        vim.opt.termguicolors = true
+      end
+
       if opts.config then
         opts.config()
       end
 
-      if vim.env.TERM_PROGRAM == "Apple_Terminal" then
-        vim.cmd("colorscheme custom-" .. opts.colorscheme)
-      else
-        vim.cmd("colorscheme " .. opts.colorscheme)
-      end
+      vim.cmd("colorscheme " .. opts.colorscheme)
     end,
   }
 end
@@ -51,42 +51,28 @@ return {
     end,
   },
   colorscheme({
-    "navarasu/onedark.nvim",
-    colorscheme = "onedark",
-  }),
-  colorscheme({
-    "shaunsingh/nord.nvim",
-    colorscheme = "nord",
-    config = function()
-      vim.g.nord_contrast = true
-      vim.g.nord_italic = false
-    end,
-  }),
-  colorscheme({
     "sainnhe/gruvbox-material",
     colorscheme = "gruvbox-material",
     enabled = true,
     config = function()
-      vim.g.gruvbox_material_background = "medium"
-      vim.g.gruvbox_material_foreground = "mix"
-      vim.g.gruvbox_material_statusline_style = "mix"
+      vim.g.gruvbox_material_background = "hard"
+      vim.g.gruvbox_material_better_performance = 1
     end,
-  }),
-  colorscheme({
-    "catppuccin/nvim",
-    name = "catppuccin",
-    colorscheme = "catppuccin",
-  }),
-  colorscheme({
-    "EdenEast/nightfox.nvim",
-    colorscheme = "nightfox",
   }),
   colorscheme({
     "sainnhe/everforest",
     colorscheme = "everforest",
+    config = function()
+      vim.g.everforest_background = "hard"
+      vim.g.everforest_better_performance = 1
+    end,
   }),
   colorscheme({
-    "rebelot/kanagawa.nvim",
-    colorscheme = "kanagawa",
+    "sainnhe/sonokai",
+    colorscheme = "sonokai",
+    config = function()
+      vim.g.sonokai_style = "maia"
+      vim.g.sonokai_better_performance = 1
+    end,
   }),
 }
