@@ -10,11 +10,25 @@ return {
         desc = "Delete buffer",
       },
       {
+        "<leader>bD",
+        function()
+          require("mini.bufremove").delete(nil, true)
+        end,
+        desc = "Delete buffer ignoring changes",
+      },
+      {
         "<leader>bx",
         function()
           require("mini.bufremove").wipeout()
         end,
         desc = "Wipeout buffer",
+      },
+      {
+        "<leader>bX",
+        function()
+          require("mini.bufremove").wipeout(nil, true)
+        end,
+        desc = "Wipeout buffer ignoring changes",
       },
       {
         "<leader>bh",
