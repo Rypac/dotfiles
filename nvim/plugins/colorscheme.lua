@@ -15,7 +15,6 @@ local colorscheme = function(opts)
       require("mini.colors")
         .get_colorscheme(opts.colorscheme, { new_name = "cterm-" .. opts.colorscheme })
         :add_cterm_attributes()
-        :add_terminal_colors()
         :write()
     end,
     config = function()
@@ -27,7 +26,11 @@ local colorscheme = function(opts)
         opts.config()
       end
 
-      vim.cmd("colorscheme " .. opts.colorscheme)
+      if vim.env.TERM_PROGRAM ~= "Apple_Terminal" then
+        vim.cmd("colorscheme " .. opts.colorscheme)
+      else
+        require("mini.colors").get_colorscheme(opts.colorscheme):add_cterm_attributes():apply()
+      end
     end,
   }
 end
