@@ -48,6 +48,11 @@ return {
     opts = {},
   },
   {
+    "echasnovski/mini.starter",
+    event = "VimEnter",
+    opts = {},
+  },
+  {
     "echasnovski/mini.statusline",
     opts = {
       use_icons = false,
