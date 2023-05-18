@@ -124,7 +124,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     event = {
-      "BufReadPre",
+      "BufReadPost",
       "BufNewFile",
     },
     opts = {

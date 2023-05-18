@@ -1,7 +1,7 @@
 return {
   {
     "echasnovski/mini.ai",
-    event = "BufReadPost",
+    event = "VeryLazy",
     opts = function()
       local gen_spec = require("mini.ai").gen_spec
       return {
@@ -24,7 +24,7 @@ return {
   },
   {
     "echasnovski/mini.bracketed",
-    event = "BufReadPost",
+    event = "VeryLazy",
     opts = {
       comment = {
         suffix = "/",
@@ -36,12 +36,12 @@ return {
   },
   {
     "echasnovski/mini.comment",
-    event = "BufReadPost",
+    event = "VeryLazy",
     opts = {},
   },
   {
     "echasnovski/mini.completion",
-    event = "InsertEnter",
+    event = "VeryLazy",
     opts = {
       delay = {
         completion = 10000000,
@@ -50,7 +50,7 @@ return {
   },
   {
     "echasnovski/mini.jump",
-    event = "BufReadPost",
+    event = "VeryLazy",
     opts = {
       delay = {
         highlight = 10000000,
@@ -59,7 +59,7 @@ return {
   },
   {
     "echasnovski/mini.move",
-    event = "BufReadPost",
+    event = "VeryLazy",
     opts = {
       mappings = {
         line_right = "",
@@ -71,17 +71,17 @@ return {
   },
   {
     "echasnovski/mini.pairs",
-    event = "BufReadPost",
+    event = "VeryLazy",
     opts = {},
   },
   {
     "echasnovski/mini.splitjoin",
-    event = "BufReadPost",
+    event = "VeryLazy",
     opts = {},
   },
   {
     "echasnovski/mini.surround",
-    event = "BufReadPost",
+    event = "VeryLazy",
     opts = {
       mappings = {
         add = "ys",
@@ -98,13 +98,13 @@ return {
       require("mini.surround").setup(opts)
 
       vim.keymap.del("x", "ys")
-      vim.keymap.set("x", "S", [[:<C-u>lua MiniSurround.add('visual')<CR>]], { silent = true })
+      vim.keymap.set("x", "S", ":<C-u>lua MiniSurround.add('visual')<cr>", { silent = true })
       vim.keymap.set("n", "yss", "ys_", { remap = true })
     end,
   },
   {
     "mg979/vim-visual-multi",
-    event = "BufReadPost",
+    event = "VeryLazy",
     keys = {
       { "<M-j>", ":call vm#commands#add_cursor_down(0, v:count1)<cr>" },
       { "<M-k>", ":call vm#commands#add_cursor_up(0, v:count1)<cr>" },
