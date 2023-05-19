@@ -60,7 +60,7 @@ set smartindent
 
 set nofoldenable
 set foldlevel=99
-set foldmethod=indent
+set foldmethod=manual
 
 " Ignore certain files and directories
 set wildignore+=*~,*/.git/*,*/node_modules/*
@@ -80,19 +80,6 @@ endif
 if maparg('<C-L>', 'n') ==# ''
   nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
-
-" Buffers
-nnoremap <Space> :buffers<CR>:buffer<Space>
-nnoremap gb :bNext<CR>
-nnoremap gB :bprevious<CR>
-nnoremap ]b :bNext<CR>
-nnoremap [b :bprevious<CR>
-
-" Tabs
-nnoremap <C-w>t :tab split<CR>
-nnoremap <C-w><C-t> :tab split<CR>
-nnoremap ]t :tabNext<CR>
-nnoremap [t :tabprevious<CR>
 
 " }}}
 
