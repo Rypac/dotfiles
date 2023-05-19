@@ -20,9 +20,24 @@ vim.api.nvim_create_autocmd("FileType", {
   desc = "Automatically fold Haskell pragmas, exports and imports",
   pattern = "haskell",
   callback = function()
-    vim.cmd("silent! 1/^{-# LANGUAGE /normal! zfip``")
-    vim.cmd("silent! 1/^module /normal! zfip``")
-    vim.cmd("silent! 1/^import /normal! zfip``")
-    vim.cmd("let @/ = ''")
+    vim.cmd([[
+      silent! normal! m`G
+      silent! /\_^{-#\s\+LANGUAGE\s\+/normal! mlzf}``m`
+      silent! /\_^module\s\+\_.\+)\s\+where\s*\_$/normal! mevgnzf``m`
+      silent! /\_^import\s\+/normal! mizf}``m`
+      let @/ = ""
+    ]])
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  desc = "Automatically fold Java, Kotlin and Swift imports",
+  pattern = { "java", "kotlin", "swift" },
+  callback = function()
+    vim.cmd([[
+      silent! normal! m`G
+      silent! /\_^import\s\+/normal! mizf}``m`
+      let @/ = ""
+    ]])
   end,
 })
