@@ -22,7 +22,7 @@ dotfiles_link() {
                     ln -fns "$f" "$destination/$name"
                 fi
             done
-        else
+        elif [ -f "$origin" ]; then
             destination_parent="$(dirname "$destination")"
 
             if [ ! -d "$destination_parent" ]; then
@@ -44,8 +44,9 @@ dotfiles_link() {
     link ghc "$XDG_CONFIG_HOME/ghc"
     link gnupg "$HOME/.gnupg"
     link npm "$XDG_CONFIG_HOME/npm"
-    link nvim/init.lua "$XDG_CONFIG_HOME/nvim/init.lua"
-    link nvim/plugins "$XDG_CONFIG_HOME/nvim/lua/plugins"
+    link nvim "$XDG_CONFIG_HOME/nvim"
+    link nvim/lua "$XDG_CONFIG_HOME/nvim/lua"
+    link nvim/lua/plugins "$XDG_CONFIG_HOME/nvim/lua/plugins"
     link ranger "$XDG_CONFIG_HOME/ranger"
     link stylua "$XDG_CONFIG_HOME/stylua"
     link tig "$XDG_CONFIG_HOME/tig"
