@@ -1,9 +1,18 @@
 vim.g.mapleader = " "
 
--- Silent copy/paste/delete
-vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste silently" })
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Copy to clipboard" })
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete silently" })
+-- Navigation
+vim.keymap.set({ "n", "x" }, "j", [[v:count == 0 ? "gj" : "j"]], { expr = true })
+vim.keymap.set({ "n", "x" }, "k", [[v:count == 0 ? "gk" : "k"]], { expr = true })
+
+-- Copy/paste
+vim.keymap.set("n", "<leader>p", [["+p]], { desc = "Paste from clipboard" })
+vim.keymap.set("n", "<leader>P", [["+P]], { desc = "Paste from clipboard" })
+vim.keymap.set("x", "<leader>p", [["+P]], { desc = "Paste from clipboard" })
+vim.keymap.set({ "n", "x" }, "<leader>y", [["+y]], { desc = "Copy to clipboard" })
+vim.keymap.set({ "n", "x" }, "<leader>d", [["_d]], { desc = "Delete silently" })
+
+-- Search and replace
+vim.keymap.set("v", "<C-r>", [["hy:%s/\V<C-r>h//g<left><left>]], { desc = "Replace selected text" })
 
 -- Option toggling
 vim.keymap.set("n", "<leader>ob", "<cmd>lua vim.o.bg = vim.o.bg == 'dark' and 'light' or 'dark'<cr>", { desc = "Toggle background colour" })
