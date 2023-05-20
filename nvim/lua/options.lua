@@ -21,6 +21,7 @@ vim.opt.tabstop = 2
 vim.opt.foldenable = false
 vim.opt.foldlevel = 99
 vim.opt.foldmethod = "manual"
+vim.opt.foldtext = "getline(v:foldstart)"
 
 -- General
 vim.opt.swapfile = false
