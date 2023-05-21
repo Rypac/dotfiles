@@ -27,9 +27,9 @@ return {
     {
       "<leader>E",
       function()
-        require("oil").open_float()
+        require("oil").toggle_float()
       end,
-      desc = "Open Directory (Float)",
+      desc = "Toggle Directory (Float)",
     },
   },
   init = function()
