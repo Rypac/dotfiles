@@ -3,7 +3,7 @@ return {
   dependencies = {
     "nvim-tree/nvim-web-devicons",
   },
-  cmd = "Oil",
+  lazy = false,
   opts = {
     skip_confirm_for_simple_edits = true,
     columns = vim.env.TERM_PROGRAM ~= "Apple_Terminal" and { "icon" } or {},
@@ -32,4 +32,8 @@ return {
       desc = "Open Directory (Float)",
     },
   },
+  init = function()
+    vim.g.loaded_netrw = 1
+    vim.g.loaded_netrwPlugin = 1
+  end,
 }
