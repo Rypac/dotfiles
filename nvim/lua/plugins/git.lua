@@ -21,6 +21,7 @@ return {
     "sindrets/diffview.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
     },
     cmd = {
       "DiffviewOpen",
@@ -30,7 +31,7 @@ return {
       "DiffviewToggleFiles",
     },
     opts = {
-      use_icons = false,
+      use_icons = vim.env.TERM_PROGRAM ~= "Apple_Terminal",
     },
     keys = {
       { "<leader>gdo", "<cmd>DiffviewOpen<cr>", desc = "Diff" },
