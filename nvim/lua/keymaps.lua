@@ -37,6 +37,7 @@ vim.keymap.set("n", "<leader>oi", "<cmd>setlocal invignorecase<cr>", { desc = "T
 vim.keymap.set("n", "<leader>ol", "<cmd>setlocal invlinebreak<cr>", { desc = "Toggle line break" })
 vim.keymap.set("n", "<leader>on", "<cmd>setlocal invnumber<cr>", { desc = "Toggle line numbers" })
 vim.keymap.set("n", "<leader>or", "<cmd>setlocal invrelativenumber<cr>", { desc = "Toggle relative numbers" })
-vim.keymap.set("n", "<leader>os", "<cmd>setlocal invspell<cr>", { desc = "Toggle spelling" })
+vim.keymap.set("n", "<leader>os", "<cmd>lua vim.o.signcolumn = vim.o.signcolumn == 'yes' and 'no' or 'yes'<cr>", { desc = "Toggle sign column" })
+vim.keymap.set("n", "<leader>oS", "<cmd>setlocal invspell<cr>", { desc = "Toggle spelling" })
 vim.keymap.set("n", "<leader>ot", "<cmd>lua vim.o.showtabline = vim.o.showtabline == 1 and 2 or 1<cr>", { desc = "Toggle tab line" })
 vim.keymap.set("n", "<leader>ow", "<cmd>setlocal invwrap<cr>", { desc = "Toggle line wrap" })

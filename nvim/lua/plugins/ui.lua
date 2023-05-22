@@ -96,15 +96,15 @@ return {
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
-    opts = {
-      plugins = {
-        spelling = true,
-      },
-      defaults = {
-        mode = { "n", "v" },
-        ["g"] = { name = "+goto" },
-        ["]"] = { name = "+next" },
-        ["["] = { name = "+previous" },
+    opts = {},
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
+    config = function(_, opts)
+      local wk = require("which-key")
+      wk.setup(opts)
+      wk.register({
         ["<leader>b"] = { name = "+buffer" },
         ["<leader>c"] = { name = "+code" },
         ["<leader>f"] = { name = "+find" },
@@ -115,15 +115,7 @@ return {
         ["<leader>o"] = { name = "+option" },
         ["<leader>t"] = { name = "+tab" },
         ["<leader>x"] = { name = "+trouble" },
-      },
-    },
-    config = function(_, opts)
-      vim.opt.timeout = true
-      vim.opt.timeoutlen = 300
-
-      local wk = require("which-key")
-      wk.setup(opts)
-      wk.register(opts.defaults)
+      })
     end,
   },
   {
@@ -134,8 +126,9 @@ return {
         backdrop = 1,
         width = 100,
         options = {
-          number = false,
           cursorline = false,
+          number = false,
+          signcolumn = "no",
         },
       },
     },
