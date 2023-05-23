@@ -1,5 +1,20 @@
 return {
   {
+    "stevearc/aerial.nvim",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    cmd = {
+      "AerialToggle",
+      "AerialOpen",
+      "AerialClose",
+    },
+    opts = {},
+    keys = {
+      { "<leader>s", "<cmd>AerialToggle<cr>", desc = "Toggle symbol outline" },
+    },
+  },
+  {
     "echasnovski/mini.bufremove",
     keys = {
       {
