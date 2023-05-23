@@ -35,6 +35,7 @@ return {
     },
   },
   keys = {
+    { "<C-p>", telescope("files"), desc = "Find Files" },
     { "<leader>/", telescope("live_grep"), desc = "Grep" },
     { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
     { "<leader><space>", telescope("files"), desc = "Find Files" },
