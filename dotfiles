@@ -85,11 +85,6 @@ dotfiles_provision() {
         find "$dir" -type f -exec chmod 600 {} \;
     done
 
-    # Manually enable XDG support
-    for xdgdir in "$XDG_CONFIG_HOME/emacs" "$XDG_DATA_HOME/tig"; do
-        mkdir -p "$xdgdir"
-    done
-
     # Remove last login message from new terminal sessions
     if [ ! -f ~/.hushlogin ]; then
         touch ~/.hushlogin
