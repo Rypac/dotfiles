@@ -60,14 +60,7 @@ return {
   {
     "echasnovski/mini.move",
     event = "VeryLazy",
-    opts = {
-      mappings = {
-        line_right = "",
-        line_left = "",
-        line_down = "",
-        line_up = "",
-      },
-    },
+    opts = {},
   },
   {
     "echasnovski/mini.pairs",
@@ -106,10 +99,8 @@ return {
     "mg979/vim-visual-multi",
     event = "VeryLazy",
     keys = {
-      { "<M-j>", ":call vm#commands#add_cursor_down(0, v:count1)<cr>" },
-      { "<M-k>", ":call vm#commands#add_cursor_up(0, v:count1)<cr>" },
-      { "<M-Down>", ":call vm#commands#add_cursor_down(0, v:count1)<cr>" },
-      { "<M-Up>", ":call vm#commands#add_cursor_up(0, v:count1)<cr>" },
+      { "<C-j>", ":call vm#commands#add_cursor_down(0, v:count1)<cr>" },
+      { "<C-k>", ":call vm#commands#add_cursor_up(0, v:count1)<cr>" },
       { "<C-LeftMouse>", "<Plug>(VM-Mouse-Cursor)" },
       { "<C-RightMouse>", "<Plug>(VM-Mouse-Word)" },
       { "<M-C-RightMouse>", "<Plug>(VM-Mouse-Column)" },
