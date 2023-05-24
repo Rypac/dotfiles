@@ -1,14 +1,17 @@
-vim.api.nvim_create_autocmd("TextYankPost", {
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+
+autocmd("TextYankPost", {
   desc = "Highlight yanked text",
-  pattern = "*",
+  group = augroup("HighlightYanks", { clear = true }),
   callback = function()
     vim.highlight.on_yank({ higroup = "IncSearch", timeout = 200 })
   end,
 })
 
-vim.api.nvim_create_autocmd("TermOpen", {
+autocmd("TermOpen", {
   desc = "Start builtin terminal in Insert mode and configure UI",
-  pattern = "*",
+  group = augroup("TerminalOpen", { clear = true }),
   callback = function()
     vim.cmd("startinsert")
     vim.opt_local.number = false
@@ -16,8 +19,9 @@ vim.api.nvim_create_autocmd("TermOpen", {
   end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
   desc = "Automatically fold Haskell pragmas, exports and imports",
+  group = augroup("HaskellFolds", { clear = true }),
   pattern = "haskell",
   callback = function()
     vim.cmd([[
@@ -31,8 +35,9 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
   desc = "Automatically fold Java, Kotlin and Swift imports",
+  group = augroup("ImportFolds", { clear = true }),
   pattern = { "java", "kotlin", "swift" },
   callback = function()
     vim.cmd([[
