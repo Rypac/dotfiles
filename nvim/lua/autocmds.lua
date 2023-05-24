@@ -20,6 +20,15 @@ autocmd("TermOpen", {
 })
 
 autocmd("FileType", {
+  desc = "Start Git commits in Insert mode",
+  group = augroup("GitCommit", { clear = true }),
+  pattern = { "gitcommit", "gitrebase" },
+  callback = function()
+    vim.cmd("startinsert")
+  end,
+})
+
+autocmd("FileType", {
   desc = "Automatically fold Haskell pragmas, exports and imports",
   group = augroup("HaskellFolds", { clear = true }),
   pattern = "haskell",
