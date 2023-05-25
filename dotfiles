@@ -45,7 +45,7 @@ dotfiles_link() {
     link gnupg "$HOME/.gnupg"
     link npm "$XDG_CONFIG_HOME/npm"
     link nvim "$XDG_CONFIG_HOME/nvim"
-    link nvim/lua "$XDG_CONFIG_HOME/nvim/lua"
+    link nvim/lua/core "$XDG_CONFIG_HOME/nvim/lua/core"
     link nvim/lua/plugins "$XDG_CONFIG_HOME/nvim/lua/plugins"
     link ranger "$XDG_CONFIG_HOME/ranger"
     link stylua "$XDG_CONFIG_HOME/stylua"
