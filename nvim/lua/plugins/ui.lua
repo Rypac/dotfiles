@@ -124,7 +124,6 @@ return {
         ["<leader>c"] = { name = "+code" },
         ["<leader>f"] = { name = "+find" },
         ["<leader>g"] = { name = "+git" },
-        ["<leader>gd"] = { name = "+diff" },
         ["<leader>h"] = { name = "+hunk" },
         ["<leader>ht"] = { name = "+toggle" },
         ["<leader>o"] = { name = "+option" },

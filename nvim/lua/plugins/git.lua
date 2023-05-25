@@ -13,7 +13,7 @@ return {
       { "<leader>gp", "<cmd>Git pull<cr>", desc = "Pull" },
       { "<leader>gP", "<cmd>Git push<cr>", desc = "Push" },
       { "<leader>gr", "<cmd>Git rebase<cr>", desc = "Rebase" },
-      { "<leader>gr", "<cmd>Git revert<cr>", desc = "Revert" },
+      { "<leader>gR", "<cmd>Git revert<cr>", desc = "Revert" },
       { "<leader>gm", "<cmd>Git merge<cr>", desc = "Merge" },
     },
   },
@@ -34,9 +34,9 @@ return {
       use_icons = vim.env.TERM_PROGRAM ~= "Apple_Terminal",
     },
     keys = {
-      { "<leader>gdo", "<cmd>DiffviewOpen<cr>", desc = "Diff" },
-      { "<leader>gdf", "<cmd>DiffviewFileHistory %<cr>", desc = "File History" },
-      { "<leader>gdb", "<cmd>DiffviewFileHistory<cr>", desc = "Branch History" },
+      { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Diff" },
+      { "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", desc = "File History" },
+      { "<leader>gH", "<cmd>DiffviewFileHistory<cr>", desc = "Branch History" },
     },
   },
 }
