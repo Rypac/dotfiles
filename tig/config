@@ -1,6 +1,16 @@
 set tab-size = 2
+set ignore-case = yes
 set line-graphics = utf-8
 set diff-options = -m
+
+# File history view
+bind blame H >sh -c "tig \"$(git rev-parse --show-toplevel)/%(file)\""
+bind blob H >sh -c "tig \"$(git rev-parse --show-toplevel)/%(file)\""
+bind diff H >sh -c "tig \"$(git rev-parse --show-toplevel)/%(file)\""
+bind status H >sh -c "tig \"$(git rev-parse --show-toplevel)/%(file)\""
+bind tree H >sh -c "tig \"$(git rev-parse --show-toplevel)/%(file)\""
+
+bind diff S ?git format-patch -1 -N %(commit)
 
 bind status A !git commit --amend
 bind status P !git push origin
@@ -13,7 +23,7 @@ bind stash D !?git stash drop %(stash)
 
 bind main ! !git revert %(commit)
 bind main U !git rebase -i %(commit)
-bind main S !git format-patch -1 %(commit)
+bind main S !git format-patch -1 -N %(commit)
 bind main A !git checkout -b "%(prompt Enter new branch name: )"
 bind main T !git tag %(prompt Enter tag name: ) %(commit)
 bind main B @sh -c "open 'https://'$(git remote -v | grep -Eo 'github.com[:/].[^ ]+' | head -1 | sed 's/.git//' | tr : /)'/commit/%(commit)'"
