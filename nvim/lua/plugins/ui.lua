@@ -72,6 +72,7 @@ return {
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
+    lazy = false,
     opts = {
       use_icons = vim.env.TERM_PROGRAM ~= "Apple_Terminal",
     },
@@ -81,6 +82,7 @@ return {
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
+    lazy = false,
     opts = {
       show_icons = vim.env.TERM_PROGRAM ~= "Apple_Terminal",
     },

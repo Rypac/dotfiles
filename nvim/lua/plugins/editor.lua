@@ -4,7 +4,10 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
     },
-    event = "VeryLazy",
+    event = {
+      "BufReadPost",
+      "BufNewFile",
+    },
     opts = function()
       local gen_spec = require("mini.ai").gen_spec
       return {
@@ -56,7 +59,7 @@ return {
   },
   {
     "echasnovski/mini.completion",
-    event = "VeryLazy",
+    event = "InsertEnter",
     opts = {
       delay = {
         completion = 10000000,
@@ -79,7 +82,7 @@ return {
   },
   {
     "echasnovski/mini.pairs",
-    event = "VeryLazy",
+    event = "InsertEnter",
     opts = {},
   },
   {
