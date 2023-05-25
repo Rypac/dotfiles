@@ -121,7 +121,15 @@ return {
     },
   },
   keys = {
-    { "<leader>cf", "<cmd>Format<cr>", desc = "Format Document" },
-    { "<leader>cF", "<cmd>FormatWrite<cr>", desc = "Format and Save Document" },
+    {
+      "<leader>cf",
+      "<cmd>Format<cr>",
+      desc = "Format Document",
+    },
+    {
+      "<leader>cF",
+      "<cmd>FormatWrite<cr>",
+      desc = "Format and Save Document",
+    },
   },
 }
