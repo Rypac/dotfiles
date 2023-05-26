@@ -1,19 +1,10 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
-autocmd("TextYankPost", {
-  desc = "Highlight yanked text",
-  group = augroup("HighlightYanks", { clear = true }),
-  callback = function()
-    vim.highlight.on_yank({ higroup = "IncSearch", timeout = 200 })
-  end,
-})
-
 autocmd("TermOpen", {
-  desc = "Start builtin terminal in Insert mode and configure UI",
-  group = augroup("TerminalOpen", { clear = true }),
+  desc = "Configure UI for builtin terminal",
+  group = augroup("ConfigureTerminal", { clear = true }),
   callback = function()
-    vim.cmd("startinsert")
     vim.opt_local.number = false
     vim.opt_local.signcolumn = "no"
   end,
