@@ -41,6 +41,18 @@ return {
     end,
   },
   {
+    "echasnovski/mini.basics",
+    lazy = false,
+    opts = {
+      options = {
+        extra_ui = true,
+      },
+      mappings = {
+        option_toggle_prefix = "<leader>o",
+      },
+    },
+  },
+  {
     "echasnovski/mini.bracketed",
     event = "VeryLazy",
     opts = {
@@ -49,6 +61,54 @@ return {
       },
       oldfile = {
         suffix = "",
+      },
+    },
+  },
+  {
+    "echasnovski/mini.bufremove",
+    opts = {},
+    keys = {
+      {
+        "<leader>bd",
+        function()
+          require("mini.bufremove").delete()
+        end,
+        desc = "Delete buffer",
+      },
+      {
+        "<leader>bD",
+        function()
+          require("mini.bufremove").delete(nil, true)
+        end,
+        desc = "Delete buffer ignoring changes",
+      },
+      {
+        "<leader>bx",
+        function()
+          require("mini.bufremove").wipeout()
+        end,
+        desc = "Wipeout buffer",
+      },
+      {
+        "<leader>bX",
+        function()
+          require("mini.bufremove").wipeout(nil, true)
+        end,
+        desc = "Wipeout buffer ignoring changes",
+      },
+      {
+        "<leader>bh",
+        function()
+          require("mini.bufremove").unshow()
+        end,
+        desc = "Unshow buffer",
+      },
+      {
+        "<leader>bH",
+        function()
+          require("mini.bufremove").unshow_in_window()
+        end,
+        desc = "Unshow buffer in window",
       },
     },
   },
@@ -91,6 +151,21 @@ return {
     opts = {},
   },
   {
+    "echasnovski/mini.starter",
+    event = "VimEnter",
+    opts = {},
+  },
+  {
+    "echasnovski/mini.statusline",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    lazy = false,
+    opts = {
+      use_icons = vim.env.TERM_PROGRAM ~= "Apple_Terminal",
+    },
+  },
+  {
     "echasnovski/mini.surround",
     event = "VeryLazy",
     opts = {
@@ -114,34 +189,13 @@ return {
     end,
   },
   {
-    "mg979/vim-visual-multi",
-    event = "VeryLazy",
-    keys = {
-      {
-        "<C-j>",
-        ":call vm#commands#add_cursor_down(0, v:count1)<cr>",
-        desc = "Add cursor down",
-      },
-      {
-        "<C-k>",
-        ":call vm#commands#add_cursor_up(0, v:count1)<cr>",
-        desc = "Add cursor up",
-      },
-      {
-        "<C-LeftMouse>",
-        "<Plug>(VM-Mouse-Cursor)",
-      },
-      {
-        "<C-RightMouse>",
-        "<Plug>(VM-Mouse-Word)",
-      },
-      {
-        "<M-C-RightMouse>",
-        "<Plug>(VM-Mouse-Column)",
-      },
+    "echasnovski/mini.tabline",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
     },
-    config = function()
-      vim.g.VM_theme = "nord"
-    end,
+    lazy = false,
+    opts = {
+      show_icons = vim.env.TERM_PROGRAM ~= "Apple_Terminal",
+    },
   },
 }
