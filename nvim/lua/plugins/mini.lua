@@ -41,6 +41,11 @@ return {
     end,
   },
   {
+    "echasnovski/mini.align",
+    event = "VeryLazy",
+    opts = {},
+  },
+  {
     "echasnovski/mini.basics",
     lazy = false,
     opts = {
