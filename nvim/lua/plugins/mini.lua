@@ -151,6 +151,11 @@ return {
     opts = {},
   },
   {
+    "echasnovski/mini.sessions",
+    lazy = false,
+    opts = {},
+  },
+  {
     "echasnovski/mini.starter",
     event = "VimEnter",
     opts = {},
