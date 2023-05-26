@@ -18,10 +18,6 @@ local colorscheme = function(opts)
         :write()
     end,
     config = function()
-      if vim.env.TERM_PROGRAM ~= "Apple_Terminal" then
-        vim.opt.termguicolors = true
-      end
-
       if opts.config then
         opts.config()
       end

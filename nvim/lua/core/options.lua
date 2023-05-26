@@ -18,9 +18,3 @@ vim.opt.foldtext = "getline(v:foldstart)"
 -- General
 vim.opt.swapfile = false
 vim.opt.wildignore = { ".git/", "node_modules/" }
-
--- Netrw
-vim.g.netrw_alto = 0
-vim.g.netrw_banner = 0
-vim.g.netrw_preview = 1
-vim.g.netrw_winsize = 30
