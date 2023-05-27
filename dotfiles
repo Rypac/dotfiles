@@ -117,11 +117,15 @@ dotfiles_environment() {
 
 sourced=0
 if [ -n "$ZSH_VERSION" ]; then
-    case $ZSH_EVAL_CONTEXT in *:file) sourced=1 ;; esac
+    case $ZSH_EVAL_CONTEXT in
+        *:file) sourced=1 ;;
+    esac
 elif [ -n "$BASH_VERSION" ]; then
     (return 0 2>/dev/null) && sourced=1
 else
-    case ${0##*/} in sh | -sh | dash | -dash | ksh | -ksh) sourced=1 ;; esac
+    case ${0##*/} in
+        sh | -sh | dash | -dash | ksh | -ksh) sourced=1 ;;
+    esac
 fi
 
 if [ "$sourced" -eq 0 ]; then
