@@ -185,8 +185,13 @@ return {
         items = {
           starter.sections.sessions(5),
           starter.sections.recent_files(5, false, false),
+          section("Telescope", {
+            { "Find file", "Telescope find_files" },
+            { "Recent files", "Telescope oldfiles" },
+            { "Search text", "Telescope live_grep" },
+          }),
           section("Builtin actions", {
-            { "Edit new buffer", "enew" },
+            { "Edit new buffer", "enew | startinsert" },
             { "Browse files", "Oil" },
             { "Manage plugins", "Lazy" },
             { "Quit Neovim", "qall" },
