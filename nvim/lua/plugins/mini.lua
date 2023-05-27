@@ -169,16 +169,7 @@ return {
   {
     "echasnovski/mini.starter",
     event = "VimEnter",
-    keys = {
-      {
-        "<leader>~",
-        function()
-          require("mini.starter").open()
-        end,
-        desc = "Open Start Page",
-      },
-    },
-    config = function()
+    opts = function()
       local section = function(name, items)
         return vim.tbl_map(function(item)
           return {
@@ -190,7 +181,7 @@ return {
       end
 
       local starter = require("mini.starter")
-      starter.setup({
+      return {
         items = {
           starter.sections.sessions(5),
           starter.sections.recent_files(5, false, false),
@@ -207,8 +198,17 @@ return {
           }),
         },
         footer = "",
-      })
+      }
     end,
+    keys = {
+      {
+        "<leader>~",
+        function()
+          require("mini.starter").open()
+        end,
+        desc = "Open Start Page",
+      },
+    },
   },
   {
     "echasnovski/mini.statusline",
