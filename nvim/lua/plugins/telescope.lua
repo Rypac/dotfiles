@@ -147,6 +147,11 @@ return {
       desc = "Options",
     },
     {
+      "<leader>fp",
+      "<cmd>Telescope builtin<cr>",
+      desc = "Pickers",
+    },
+    {
       "<leader>fq",
       "<cmd>Telescope quickfix<cr>",
       desc = "Quickfix",
@@ -231,6 +236,26 @@ return {
         },
       }),
       desc = "Goto Symbol (Workspace)",
+    },
+    {
+      "<leader>g?",
+      "<cmd>Telescope git_status<cr>",
+      desc = "Status",
+    },
+    {
+      "<leader>gB",
+      "<cmd>Telescope git_branches<cr>",
+      desc = "Branches",
+    },
+    {
+      "<leader>gc",
+      "<cmd>Telescope git_commits<cr>",
+      desc = "Commits",
+    },
+    {
+      "<leader>gS",
+      "<cmd>Telescope git_stash<cr>",
+      desc = "Stashes",
     },
   },
   config = function(_, opts)
