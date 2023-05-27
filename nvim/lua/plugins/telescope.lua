@@ -177,7 +177,7 @@ return {
     },
     {
       "<leader>fU",
-      telescope("colorscheme", { enable_preview = true }),
+      "<cmd>Telescope colorscheme enable_preview=true<cr>",
       desc = "Colorscheme",
     },
     {
