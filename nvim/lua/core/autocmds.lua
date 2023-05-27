@@ -13,7 +13,7 @@ autocmd("TermOpen", {
 autocmd("FileType", {
   desc = "Start Git commits in Insert mode",
   group = augroup("GitCommit", { clear = true }),
-  pattern = { "gitcommit", "gitrebase" },
+  pattern = "gitcommit",
   callback = function()
     vim.cmd("startinsert")
   end,
