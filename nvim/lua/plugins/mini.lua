@@ -156,6 +156,15 @@ return {
     "echasnovski/mini.sessions",
     lazy = false,
     opts = {},
+    keys = {
+      {
+        "<leader>f~",
+        function()
+          require("mini.sessions").select()
+        end,
+        desc = "Sessions",
+      },
+    },
   },
   {
     "echasnovski/mini.starter",
