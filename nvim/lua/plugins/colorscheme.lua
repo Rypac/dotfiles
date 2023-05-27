@@ -72,7 +72,6 @@ return {
     colorscheme = "sonokai",
     lazy = true,
     config = function()
-      vim.g.sonokai_style = "maia"
       vim.g.sonokai_better_performance = 1
     end,
   }),
