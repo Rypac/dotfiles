@@ -160,7 +160,6 @@ return {
   {
     "echasnovski/mini.starter",
     event = "VimEnter",
-    opts = {},
     keys = {
       {
         "<leader>~",
@@ -170,6 +169,32 @@ return {
         desc = "Open Start Page",
       },
     },
+    config = function()
+      local section = function(name, items)
+        return vim.tbl_map(function(item)
+          return {
+            name = item[1],
+            action = item[2],
+            section = name,
+          }
+        end, items)
+      end
+
+      local starter = require("mini.starter")
+      starter.setup({
+        items = {
+          starter.sections.sessions(5),
+          starter.sections.recent_files(5, false, false),
+          section("Builtin actions", {
+            { "Edit new buffer", "enew" },
+            { "Browse files", "Oil" },
+            { "Manage plugins", "Lazy" },
+            { "Quit Neovim", "qall" },
+          }),
+        },
+        footer = "",
+      })
+    end,
   },
   {
     "echasnovski/mini.statusline",
