@@ -5,7 +5,7 @@ local colorscheme = function(opts)
     dependencies = {
       "echasnovski/mini.colors",
     },
-    lazy = not (opts.enabled or false),
+    lazy = opts.lazy,
     priority = 1000,
     build = function()
       if opts.config then
@@ -52,7 +52,7 @@ return {
   colorscheme({
     "sainnhe/gruvbox-material",
     colorscheme = "gruvbox-material",
-    enabled = true,
+    lazy = false,
     config = function()
       vim.g.gruvbox_material_background = "hard"
       vim.g.gruvbox_material_better_performance = 1
@@ -61,6 +61,7 @@ return {
   colorscheme({
     "sainnhe/everforest",
     colorscheme = "everforest",
+    lazy = true,
     config = function()
       vim.g.everforest_background = "hard"
       vim.g.everforest_better_performance = 1
@@ -69,6 +70,7 @@ return {
   colorscheme({
     "sainnhe/sonokai",
     colorscheme = "sonokai",
+    lazy = true,
     config = function()
       vim.g.sonokai_style = "maia"
       vim.g.sonokai_better_performance = 1
