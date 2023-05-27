@@ -161,6 +161,15 @@ return {
     "echasnovski/mini.starter",
     event = "VimEnter",
     opts = {},
+    keys = {
+      {
+        "<leader>~",
+        function()
+          require("mini.starter").open()
+        end,
+        desc = "Open Start Page",
+      },
+    },
   },
   {
     "echasnovski/mini.statusline",
