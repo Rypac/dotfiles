@@ -21,6 +21,7 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons",
+    "debugloop/telescope-undo.nvim",
   },
   cmd = "Telescope",
   opts = {
@@ -176,6 +177,11 @@ return {
       desc = "Word (cwd)",
     },
     {
+      "<leader>fu",
+      "<cmd>Telescope undo<cr>",
+      desc = "Undo",
+    },
+    {
       "<leader>fU",
       "<cmd>Telescope colorscheme enable_preview=true<cr>",
       desc = "Colorscheme",
@@ -227,4 +233,9 @@ return {
       desc = "Goto Symbol (Workspace)",
     },
   },
+  config = function(_, opts)
+    local telescope = require("telescope")
+    telescope.setup(opts)
+    telescope.load_extension("undo")
+  end,
 }
