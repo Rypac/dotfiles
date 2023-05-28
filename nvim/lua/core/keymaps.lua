@@ -1,12 +1,5 @@
 vim.g.mapleader = " "
 
--- Copy/paste
-vim.keymap.set("n", "<leader>p", [["+p]], { desc = "Paste from clipboard" })
-vim.keymap.set("n", "<leader>P", [["+P]], { desc = "Paste from clipboard" })
-vim.keymap.set("x", "<leader>p", [["+P]], { desc = "Paste from clipboard" })
-vim.keymap.set({ "n", "x" }, "<leader>y", [["+y]], { desc = "Copy to clipboard" })
-vim.keymap.set({ "n", "x" }, "<leader>d", [["_d]], { desc = "Delete silently" })
-
 -- Search and replace
 vim.keymap.set("v", "<C-r>", [["hy:%s/\V<C-r>h//g<left><left>]], { desc = "Replace selected text" })
 
