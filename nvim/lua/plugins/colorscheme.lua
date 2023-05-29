@@ -40,15 +40,6 @@ return {
       vim.cmd([[colorscheme nord]])
     end,
   },
-  {
-    "dracula/vim",
-    name = "dracula",
-    lazy = true,
-    priority = 1000,
-    config = function()
-      vim.cmd([[colorscheme dracula]])
-    end,
-  },
   colorscheme({
     "sainnhe/gruvbox-material",
     colorscheme = "gruvbox-material",
@@ -65,14 +56,6 @@ return {
     config = function()
       vim.g.everforest_background = "hard"
       vim.g.everforest_better_performance = 1
-    end,
-  }),
-  colorscheme({
-    "sainnhe/sonokai",
-    colorscheme = "sonokai",
-    lazy = true,
-    config = function()
-      vim.g.sonokai_better_performance = 1
     end,
   }),
   colorscheme({
