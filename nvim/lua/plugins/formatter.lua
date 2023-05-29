@@ -18,12 +18,11 @@ return {
       },
       haskell = {
         function()
-          local util = require("formatter.util")
           return {
             exe = "fourmolu",
             args = {
               "--stdin-input-file",
-              util.escape_path(util.get_current_buffer_file_path()),
+              vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)),
             },
             stdin = true,
           }
@@ -40,13 +39,12 @@ return {
       },
       lua = {
         function()
-          local util = require("formatter.util")
           return {
             exe = "stylua",
             args = {
               "--search-parent-directories",
               "--stdin-filepath",
-              util.escape_path(util.get_current_buffer_file_path()),
+              vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)),
               "--",
               "-",
             },
@@ -56,12 +54,11 @@ return {
       },
       python = {
         function()
-          local util = require("formatter.util")
           return {
             exe = "black",
             args = {
               "--stdin-filename",
-              util.escape_path(util.get_current_buffer_file_path()),
+              vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)),
               "--quiet",
               "--",
               "-",
@@ -89,12 +86,11 @@ return {
       },
       swift = {
         function()
-          local util = require("formatter.util")
           return {
             exe = "swiftformat",
             args = {
               "--stdinpath",
-              util.escape_path(util.get_current_buffer_file_path()),
+              vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)),
             },
             stdin = true,
           }
