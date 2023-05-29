@@ -1,4 +1,4 @@
--- Automatically fold Haskell imports, exports and language pragmas
+-- Automatically fold imports, exports and language pragmas
 vim.cmd([[
   silent! normal! m`G
   silent! /\_^{-#\s\+LANGUAGE\s\+/normal! mlzf}``m`
