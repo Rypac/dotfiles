@@ -28,6 +28,10 @@
             "command": ["rustfmt"],
             "selector": "source.rust"
         },
+        "Shell": {
+            "command": ["shfmt", "--simplify", "--indent", "$tab_size", "--case-indent", "--", "-"],
+            "selector": "source.shell.bash"
+        },
         "Swift": {
             "command": ["swiftformat", "--indent", "$tab_size", "--stdinpath", "$file"],
             "selector": "source.swift"
