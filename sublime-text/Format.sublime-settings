@@ -1,7 +1,7 @@
 {
     "formatters": {
         "Cabal": {
-            "command": ["cabal-fmt"],
+            "command": ["cabal-fmt", "--indent", "$tab_size"],
             "selector": "source.cabal"
         },
         "Haskell": {
