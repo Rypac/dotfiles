@@ -16,10 +16,6 @@
             "command": ["stylua", "--indent-type", "Spaces", "--indent-width", "$tab_size", "--stdin-filepath", "$file", "-"],
             "selector": "source.lua"
         },
-        "Markdown": {
-            "command": ["prettier", "--parser", "markdown", "--tab-width", "$tab_size"],
-            "selector": "text.html.markdown"
-        },
         "Python": {
             "command": ["black", "--stdin-filename", "$file", "-"],
             "selector": "source.python"
