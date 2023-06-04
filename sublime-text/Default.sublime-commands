@@ -26,6 +26,10 @@
         "caption": "View: Open in New Window"
     },
     {
+        "command": "open_in_browser",
+        "caption": "View: Open in Browser"
+    },
+    {
         "command": "toggle_view_scratch",
         "caption": "View: Toggle Scratch"
     },
@@ -45,6 +49,6 @@
     },
     {
         "command": "dash",
-        "caption": "Dash: Open Documentation for Selection",
+        "caption": "Dash: Open Documentation for Selection"
     }
 ]
