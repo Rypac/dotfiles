@@ -15,10 +15,6 @@
         "sourcekit-lsp": {
             "command": ["xcrun", "sourcekit-lsp"],
             "selector": "source.swift"
-        },
-        "marksman": {
-            "command": ["marksman"],
-            "selector": "text.html.markdown"
         }
     }
 }
