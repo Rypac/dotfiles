@@ -9,7 +9,7 @@
             "selector": "source.haskell"
         },
         "JSON": {
-            "command": ["jq", "--indent", "$tab_size", "."],
+            "command": ["jq", "--indent", "$tab_size"],
             "selector": "source.json"
         },
         "Lua": {
