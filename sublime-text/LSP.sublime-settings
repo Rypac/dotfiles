@@ -8,10 +8,6 @@
                 "haskell.plugin.rename.config.crossModule": true
             }
         },
-        "rust-analyzer": {
-            "command": ["rust-analyzer"],
-            "selector": "source.rust"
-        },
         "sourcekit-lsp": {
             "command": ["xcrun", "sourcekit-lsp"],
             "selector": "source.swift"
