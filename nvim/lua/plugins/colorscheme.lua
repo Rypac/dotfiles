@@ -58,9 +58,4 @@ return {
       vim.g.everforest_better_performance = 1
     end,
   }),
-  colorscheme({
-    "projekt0n/github-nvim-theme",
-    colorscheme = "github_light",
-    lazy = true,
-  }),
 }
