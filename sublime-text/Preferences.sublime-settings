@@ -6,10 +6,4 @@
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": "all",
 	"neovintageous_build_version": 12700,
-	"ignored_packages":
-	[
-		"Six",
-		"Vintage",
-		"Vintageous",
-	],
 }
