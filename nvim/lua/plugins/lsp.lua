@@ -1,5 +1,5 @@
 local on_attach = function(client, bufnr)
-  keys = {
+  local keys = {
     {
       "gr",
       "<cmd>Telescope lsp_references<cr>",
@@ -106,8 +106,8 @@ local on_attach = function(client, bufnr)
   }
 
   for _, key in pairs(keys) do
-    has_capability = key.capability and client.server_capabilities[key.capability]
-    has_fallback = key.fallback or false
+    local has_capability = key.capability and client.server_capabilities[key.capability]
+    local has_fallback = key.fallback or false
 
     if has_capability or not has_fallback then
       vim.keymap.set(key.mode or "n", key[1], key[2], {

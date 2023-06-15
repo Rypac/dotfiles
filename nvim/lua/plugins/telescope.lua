@@ -259,8 +259,8 @@ return {
     },
   },
   config = function(_, opts)
-    local telescope = require("telescope")
-    telescope.setup(opts)
-    telescope.load_extension("undo")
+    local ts = require("telescope")
+    ts.setup(opts)
+    ts.load_extension("undo")
   end,
 }
