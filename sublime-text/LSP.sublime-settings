@@ -8,6 +8,14 @@
                 "haskell.plugin.rename.config.crossModule": true
             }
         },
+        "lua-language-server": {
+            "command": ["lua-language-server"],
+            "selector": "source.lua",
+            "settings": {
+                "Lua.workspace.checkThirdParty": false,
+                "Lua.telemetry.enable": false
+            }
+        },
         "sourcekit-lsp": {
             "command": ["xcrun", "sourcekit-lsp"],
             "selector": "source.swift"
