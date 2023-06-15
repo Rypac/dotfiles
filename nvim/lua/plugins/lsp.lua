@@ -93,6 +93,7 @@ local on_attach = function(client, bufnr)
       end,
       desc = "Format Document",
       capability = "documentFormattingProvider",
+      fallback = true,
     },
     {
       "<leader>cf",
@@ -102,6 +103,7 @@ local on_attach = function(client, bufnr)
       desc = "Format Range",
       mode = "v",
       capability = "documentRangeFormattingProvider",
+      fallback = true,
     },
   }
 
@@ -149,6 +151,10 @@ return {
           },
         },
         lua_ls = {
+          on_attach = function(client, _)
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
+          end,
           settings = {
             Lua = {
               runtime = {
@@ -176,7 +182,13 @@ return {
       local servers = opts.servers or {}
       for server, server_opts in pairs(servers) do
         local merged_opts = vim.tbl_deep_extend("force", {}, server_opts, {
-          on_attach = on_attach,
+          on_attach = function(...)
+            if server_opts.on_attach then
+              server_opts.on_attach(...)
+            end
+
+            on_attach(...)
+          end,
         })
         lspconfig[server].setup(merged_opts)
       end

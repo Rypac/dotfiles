@@ -11,6 +11,10 @@
         "lua-language-server": {
             "command": ["lua-language-server"],
             "selector": "source.lua",
+            "disabled_capabilities": {
+                "documentFormattingProvider": true,
+                "documentRangeFormattingProvider": true
+            },
             "settings": {
                 "Lua.workspace.checkThirdParty": false,
                 "Lua.telemetry.enable": false
