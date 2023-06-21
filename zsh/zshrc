@@ -193,7 +193,7 @@ function haskell-script() {
         '-- stack script'*|'{- stack script'*)
             stack --silent =(cat <(echo '#!/usr/bin/env stack') "$1") "${@:2}" ;;
         *)
-            stack --silent --resolver lts script "$@" ;;
+            runghc "$@" ;;
     esac
 }
 
