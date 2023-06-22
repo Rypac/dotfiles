@@ -47,6 +47,9 @@ return {
       mappings = {
         option_toggle_prefix = "<leader>o",
       },
+      autocommands = {
+        basic = false,
+      },
     },
   },
   {
