@@ -31,7 +31,6 @@ export BUNDLE_USER_HOME="$XDG_CONFIG_HOME/bundle"
 export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
 
 # Homebrew
-export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_BUNDLE_FILE="$DOTFILES_HOME/mac/Brewfile"
 
 # SQLite
