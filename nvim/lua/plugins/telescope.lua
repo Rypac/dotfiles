@@ -21,7 +21,6 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons",
-    "debugloop/telescope-undo.nvim",
   },
   cmd = "Telescope",
   opts = {
@@ -258,9 +257,4 @@ return {
       desc = "Stashes",
     },
   },
-  config = function(_, opts)
-    local ts = require("telescope")
-    ts.setup(opts)
-    ts.load_extension("undo")
-  end,
 }
