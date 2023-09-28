@@ -141,6 +141,11 @@ return {
     opts = {},
   },
   {
+    "echasnovski/mini.operators",
+    event = "VeryLazy",
+    opts = {},
+  },
+  {
     "echasnovski/mini.pairs",
     event = "InsertEnter",
     opts = {},
