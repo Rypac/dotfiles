@@ -1,8 +1,5 @@
 return {
   "stevearc/aerial.nvim",
-  dependencies = {
-    "nvim-tree/nvim-web-devicons",
-  },
   cmd = {
     "AerialToggle",
     "AerialOpen",
