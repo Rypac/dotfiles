@@ -51,7 +51,6 @@ dotfiles_link() {
     link stylua "$XDG_CONFIG_HOME/stylua"
     link tig "$XDG_CONFIG_HOME/tig"
     link tmux "$XDG_CONFIG_HOME/tmux"
-    link wezterm "$XDG_CONFIG_HOME/wezterm"
     link zsh/zshenv "$HOME/.zshenv"
     link zsh/zprofile "$XDG_CONFIG_HOME/zsh/.zprofile"
     link zsh/zshrc "$XDG_CONFIG_HOME/zsh/.zshrc"
