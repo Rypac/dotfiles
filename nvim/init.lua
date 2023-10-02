@@ -1,10 +1,24 @@
 -- UI
+vim.opt.breakindent = true
 vim.opt.cursorline = false
+vim.opt.linebreak = true
+vim.opt.mouse = "a"
+vim.opt.number = true
+vim.opt.ruler = false
+vim.opt.splitbelow = true
+vim.opt.splitkeep = "screen"
+vim.opt.splitright = true
 vim.opt.termguicolors = vim.env.TERM_PROGRAM ~= "Apple_Terminal"
 
 -- Editing
+vim.opt.ignorecase = true
+vim.opt.infercase = true
+vim.opt.smartcase = true
+
+-- Indentation
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
+vim.opt.smartindent = true
 vim.opt.softtabstop = 2
 vim.opt.tabstop = 2
 
@@ -16,8 +30,11 @@ vim.opt.foldminlines = 0
 vim.opt.foldtext = "getline(v:foldstart)"
 
 -- General
+vim.opt.backup = false
 vim.opt.swapfile = false
+vim.opt.undofile = true
 vim.opt.wildignore = { ".git/", "node_modules/" }
+vim.opt.writebackup = false
 
 -- Keybindings
 vim.g.mapleader = " "
