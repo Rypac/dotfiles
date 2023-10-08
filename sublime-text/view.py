@@ -4,7 +4,7 @@ import sublime
 import sublime_plugin
 
 
-class OpenViewInNewWindowCommand(sublime_plugin.TextCommand):
+class OpenInNewWindowCommand(sublime_plugin.TextCommand):
     def run(self, edit: sublime.Edit):
         sublime.run_command("new_window")
         new_window = sublime.active_window()
@@ -16,7 +16,7 @@ class OpenViewInNewWindowCommand(sublime_plugin.TextCommand):
         return (name := self.view.file_name()) is not None and len(name) > 0
 
 
-class OpenViewInFocusModeCommand(sublime_plugin.TextCommand):
+class OpenInFocusModeCommand(sublime_plugin.TextCommand):
     def run(self, edit: sublime.Edit):
         sublime.run_command("new_window")
         new_window = sublime.active_window()
@@ -26,6 +26,11 @@ class OpenViewInFocusModeCommand(sublime_plugin.TextCommand):
 
     def is_visible(self) -> bool:
         return (name := self.view.file_name()) is not None and len(name) > 0
+
+
+class ToggleScratchCommand(sublime_plugin.TextCommand):
+    def run(self, edit: sublime.Edit):
+        self.view.set_scratch(not self.view.is_scratch())
 
 
 class SplitToNextGroupCommand(sublime_plugin.WindowCommand):

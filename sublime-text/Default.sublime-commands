@@ -18,19 +18,28 @@
         "caption": "Draw Centered: Toggle"
     },
     {
+        "command": "open_dir",
+        "args": {"dir": "$file_path", "file": "$file_name"},
+        "caption": "View: Reveal in Finder"
+    },
+    {
         "command": "open_and_focus_side_bar",
         "caption": "View: Open and Focus Side Bar"
     },
     {
-        "command": "open_view_in_new_window",
+        "command": "open_in_new_window",
         "caption": "View: Open in New Window"
+    },
+    {
+        "command": "open_in_focus_mode",
+        "caption": "View: Open in Focus Mode"
     },
     {
         "command": "open_in_browser",
         "caption": "View: Open in Browser"
     },
     {
-        "command": "toggle_view_scratch",
+        "command": "toggle_scratch",
         "caption": "View: Toggle Scratch"
     },
     {
