@@ -2,19 +2,19 @@
     "clients": {
         "bash-language-server": {
             "command": ["bash-language-server", "start"],
-            "selector": "source.shell.bash"
+            "selector": "source.shell.bash",
         },
         "haskell-language-server": {
             "command": ["haskell-language-server-wrapper", "--lsp"],
             "selector": "source.haskell",
             "settings": {
                 "haskell.formattingProvider": "fourmolu",
-                "haskell.plugin.rename.config.crossModule": true
-            }
+                "haskell.plugin.rename.config.crossModule": true,
+            },
         },
         "sourcekit-lsp": {
             "command": ["xcrun", "sourcekit-lsp"],
-            "selector": "source.swift"
-        }
-    }
+            "selector": "source.swift",
+        },
+    },
 }
