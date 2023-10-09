@@ -4,6 +4,10 @@
             "command": ["cabal-fmt", "--indent", "$tab_size"],
             "selector": "source.cabal",
         },
+        "Go": {
+            "command": ["gofmt", "-s"],
+            "selector": "source.go",
+        },
         "Haskell": {
             "command": ["fourmolu", "--indentation", "$tab_size", "--stdin-input-file", "$file"],
             "selector": "source.haskell",
@@ -31,6 +35,10 @@
         "Swift": {
             "command": ["swiftformat", "--indent", "$tab_size", "--stdinpath", "$file"],
             "selector": "source.swift",
+        },
+        "Terraform": {
+            "command": ["terraform", "fmt", "-"],
+            "selector": "source.terraform",
         },
     },
 }
