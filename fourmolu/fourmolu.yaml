@@ -5,7 +5,7 @@ indentation: 2
 column-limit: none
 
 # Styling of arrows in type signatures (choices: trailing, leading, or leading-args)
-function-arrows: leading
+function-arrows: trailing
 
 # How to place commas in multi-line lists, records, etc. (choices: leading or trailing)
 comma-style: leading
