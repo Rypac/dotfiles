@@ -1,5 +1,9 @@
 {
     "clients": {
+        "bash-language-server": {
+            "command": ["bash-language-server", "start"],
+            "selector": "source.shell.bash"
+        },
         "haskell-language-server": {
             "command": ["haskell-language-server-wrapper", "--lsp"],
             "selector": "source.haskell",
