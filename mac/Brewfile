@@ -1,6 +1,8 @@
 tap "homebrew/bundle"
 tap "homebrew/cask-versions"
 brew "bash"
+brew "node"
+brew "bash-language-server"
 brew "bat"
 brew "black"
 brew "curl"
