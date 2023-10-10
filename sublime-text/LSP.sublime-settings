@@ -12,6 +12,13 @@
                 "haskell.plugin.rename.config.crossModule": true,
             },
         },
+        "marksman": {
+            "command": ["marksman", "server"],
+            "selector": "text.html.markdown",
+            "initializationOptions": {
+                "preferredTextSyncKind": 2,
+            },
+        },
         "sourcekit-lsp": {
             "command": ["xcrun", "sourcekit-lsp"],
             "selector": "source.swift",
