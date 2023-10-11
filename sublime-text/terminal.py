@@ -1,5 +1,8 @@
+from __future__ import annotations
+
 import sublime
 import sublime_plugin
+
 import os
 import subprocess
 
@@ -36,7 +39,7 @@ class OpenTerminalCommand(sublime_plugin.WindowCommand):
         except Exception as e:
             sublime.error_message("Terminal: " + str(e))
 
-    def is_visible(self, paths=[], in_folder=False):
+    def is_visible(self, paths=[], in_folder=False) -> bool:
         if in_folder:
             return bool(self.window.folders())
 
