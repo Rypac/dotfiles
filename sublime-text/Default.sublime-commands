@@ -59,5 +59,14 @@
     {
         "command": "dash",
         "caption": "Dash: Open Documentation for Selection"
+    },
+    {
+        "command": "open_terminal",
+        "caption": "Terminal: Open"
+    },
+    {
+        "command": "open_terminal",
+        "args": { "in_folder": true },
+        "caption": "Terminal: Open in Project Folder"
     }
 ]

@@ -14,6 +14,11 @@
         "args": { "files": [] },
         "caption": "Open File"
     },
+    {
+        "command": "open_terminal",
+        "args": { "paths": [] },
+        "caption": "Open Terminal Here"
+    },
     { "caption": "-", "id": "window" },
     {
         "command": "open_file_in_new_window",

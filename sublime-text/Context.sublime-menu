@@ -1,4 +1,9 @@
 [
+    { "caption": "-", "id": "file" },
+    {
+        "command": "open_terminal",
+        "caption": "Open Terminal Here"
+    },
     { "caption": "-", "id": "window" },
     {
         "command": "open_in_new_window",
