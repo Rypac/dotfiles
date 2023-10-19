@@ -10,24 +10,6 @@ class OpenAndFocusSideBarCommand(sublime_plugin.WindowCommand):
         sublime.set_timeout(lambda: self.window.run_command("focus_side_bar"), 100)
 
 
-class CopyFilePathCommand(sublime_plugin.WindowCommand):
-    def run(self, files: list[str]):
-        sublime.set_clipboard(files[0])
-        self.window.status_message("Copied file path")
-
-    def is_visible(self, files: list[str]) -> bool:
-        return len(files) == 1 and len(files[0]) > 0
-
-
-class CopyFolderPathCommand(sublime_plugin.WindowCommand):
-    def run(self, dirs: list[str]):
-        sublime.set_clipboard(dirs[0])
-        self.window.status_message("Copied folder path")
-
-    def is_visible(self, dirs: list[str]) -> bool:
-        return len(dirs) == 1 and len(dirs[0]) > 0
-
-
 class OpenFileInNewWindowCommand(sublime_plugin.ApplicationCommand):
     def run(self, files: list[str]):
         sublime.run_command("new_window")

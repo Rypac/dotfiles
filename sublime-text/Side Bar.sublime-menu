@@ -1,15 +1,5 @@
 [
     {
-        "command": "copy_file_path",
-        "args": { "files": [] },
-        "caption": "Copy File Path"
-    },
-    {
-        "command": "copy_folder_path",
-        "args": { "dirs": [] },
-        "caption": "Copy Folder Path"
-    },
-    {
         "command": "launch_file",
         "args": { "files": [] },
         "caption": "Open File"
