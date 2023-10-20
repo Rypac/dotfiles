@@ -68,5 +68,17 @@
         "command": "open_terminal",
         "args": { "in_folder": true },
         "caption": "Terminal: Open in Project Folder"
+    },
+    {
+        "command": "list_packages",
+        "caption": "List Packages"
+    },
+    {
+        "command": "enable_package",
+        "caption": "Enable Package"
+    },
+    {
+        "command": "disable_package",
+        "caption": "Disable Package"
     }
 ]
