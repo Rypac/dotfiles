@@ -29,3 +29,6 @@ class DashCommand(sublime_plugin.TextCommand):
             subprocess.run(["/usr/bin/open", "-g", dash_url], check=True)
         except Exception as e:
             sublime.error_message(str(e))
+
+    def is_visible(self) -> bool:
+        return sublime.platform() == "osx"
