@@ -69,14 +69,23 @@ class ListPackagesInputHandler(sublime_plugin.ListInputHandler, PackageViewer):
     def name(self) -> str:
         return "name"
 
-    def list_items(self) -> [str]:
+    def list_items(self) -> [str | sublime.ListInputItem]:
         installed_packages = self.installed_packages()
 
         settings = sublime.load_settings("Preferences.sublime-settings")
         ignored_packages = set(settings.get("ignored_packages", []))
 
         if self.filter is PackageFilter.ALL:
-            return sorted(installed_packages)
+            return [
+                sublime.ListInputItem(
+                    text=package,
+                    value=package,
+                    annotation="Enabled"
+                    if package not in ignored_packages
+                    else "Disabled",
+                )
+                for package in sorted(installed_packages)
+            ]
         elif self.filter is PackageFilter.ENABLED:
             return sorted(installed_packages - ignored_packages)
         elif self.filter is PackageFilter.DISABLED:
