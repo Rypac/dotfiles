@@ -156,21 +156,6 @@ function serve() {
     python3 -m http.server "$@"
 }
 
-# Encrypt a file to myself using GPG
-function encrypt() {
-    gpg --encrypt --recipient ryan@rypac.org --armour --output - "$@"
-}
-
-# Decrypt a GPG encrypted file
-function decrypt() {
-    gpg --decrypt --quiet "$@"
-}
-
-# Reset currently active YubiKey
-function reset-yubikey() {
-    gpg-connect-agent 'scd serialno' 'learn --force' /bye
-}
-
 # Run a Haskell script in Cabal or Stack
 function haskell-script() {
     if [ ! -f "$1" ]; then
