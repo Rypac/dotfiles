@@ -151,11 +151,6 @@ function nmpurge() {
     find "${@:-.}" -type d -name node_modules -prune -exec rm -rf '{}' +
 }
 
-# Start a simple fileserver
-function serve() {
-    python3 -m http.server "$@"
-}
-
 # Run a Haskell script in Cabal or Stack
 function haskell-script() {
     if [ ! -f "$1" ]; then
