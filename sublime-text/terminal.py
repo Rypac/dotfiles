@@ -40,6 +40,9 @@ class OpenTerminalCommand(sublime_plugin.WindowCommand):
             sublime.error_message("Terminal: " + str(e))
 
     def is_visible(self, paths=[], in_folder=False) -> bool:
+        if sublime.platform() != "osx":
+            return False
+
         if in_folder:
             return bool(self.window.folders())
 
