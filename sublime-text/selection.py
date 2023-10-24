@@ -19,7 +19,7 @@ class OpenSelectionCommand(sublime_plugin.TextCommand):
 
         for region in self.view.sel():
             selection_text = self.view.substr(region)
-            new_view.insert(edit, 0, selection_text)
+            new_view.run_command("append", {"characters": selection_text})
 
     def is_visible(self) -> bool:
         return any(not region.empty() for region in self.view.sel())
