@@ -80,5 +80,13 @@
     {
         "command": "disable_package",
         "caption": "Disable Package"
-    }
+    },
+    {
+        "command": "switch_window",
+        "caption": "Switch: Window"
+    },
+    {
+        "command": "switch_to_previous_window",
+        "caption": "Switch: To Previous Window"
+    },
 ]
