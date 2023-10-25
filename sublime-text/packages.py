@@ -69,6 +69,9 @@ class ListPackagesInputHandler(sublime_plugin.ListInputHandler, PackageViewer):
     def name(self) -> str:
         return "name"
 
+    def placeholder(self) -> str | None:
+        return "Choose a package" if self.filter is not PackageFilter.ALL else None
+
     def list_items(self) -> [str | sublime.ListInputItem]:
         installed_packages = self.installed_packages()
 
