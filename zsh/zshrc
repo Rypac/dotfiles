@@ -60,13 +60,7 @@ autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 if (( $+commands[fzf] )); then
-    # Auto-completion
-    if [[ $- == *i* ]]; then
-        source "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh" 2>/dev/null
-    fi
-
-    # Key bindings
-    source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
+    eval "$(fzf --zsh)"
 
     if (( $+commands[rg] )); then
         export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
