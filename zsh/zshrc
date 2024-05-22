@@ -106,15 +106,6 @@ if (( $+commands[bat] )); then
     alias cat=bat
 fi
 
-# Prevent nested ranger sessions
-function ranger() {
-    if [ -z "$RANGER_LEVEL" ]; then
-        command ranger "$@"
-    else
-        exit
-    fi
-}
-
 # Create a new directory and automatically naviate there
 function mkcd() {
     mkdir -p "$@" && cd "$_"
