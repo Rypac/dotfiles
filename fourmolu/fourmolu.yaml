@@ -37,6 +37,9 @@ in-style: right-align
 # Whether to put parentheses around a single constraint (choices: auto, always, or never)
 single-constraint-parens: always
 
+# Whether to put parentheses around a single deriving class (choices: auto, always, or never)
+single-deriving-parens: always
+
 # Output Unicode syntax (choices: detect, always, or never)
 unicode: never
 
