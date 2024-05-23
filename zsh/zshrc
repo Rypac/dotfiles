@@ -98,10 +98,6 @@ function pbclear() {
     printf '' | pbcopy
 }
 
-if (( $+commands[lazygit] )); then
-    alias lg=lazygit
-fi
-
 if (( $+commands[bat] )); then
     alias cat=bat
 fi
