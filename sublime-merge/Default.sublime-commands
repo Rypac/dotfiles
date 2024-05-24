@@ -8,5 +8,10 @@
         "caption": "Cleanup Branches",
         "command": "git",
         "args": { "argv": ["branch-clean"] }
-    }
+    },
+    {
+        "caption": "Rebase onto… ",
+        "command": "git",
+        "args": {"argv": ["rebase", "$select_branch", "--onto", "$select_branch"]},
+    },
 ]
