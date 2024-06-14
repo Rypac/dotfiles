@@ -50,7 +50,7 @@ zle -N zle-keymap-select
 
 # Setup Homebrew shell environment
 if [ -x /opt/homebrew/bin/brew ]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+    source <(/opt/homebrew/bin/brew shellenv)
 
     fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
 fi
@@ -60,7 +60,7 @@ autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 if (( $+commands[fzf] )); then
-    eval "$(fzf --zsh)"
+    source <(fzf --zsh)
 
     if (( $+commands[rg] )); then
         export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
@@ -76,7 +76,7 @@ if (( $+commands[fzf] )); then
 fi
 
 if (( $+commands[zoxide] )); then
-    eval "$(zoxide init zsh)"
+    source <(zoxide init zsh)
 fi
 
 if (( $+commands[pyenv] )); then
@@ -168,11 +168,11 @@ fi
 path=("$XDG_BIN_HOME" $path)
 
 # Source dotfiles management functions
-. "$DOTFILES_HOME/dotfiles"
+source "$DOTFILES_HOME/dotfiles"
 
 # Source local zshrc
 if [ -r "$ZDOTDIR/.zshrc.local" ]; then
-    . "$ZDOTDIR/.zshrc.local"
+    source "$ZDOTDIR/.zshrc.local"
 fi
 
 # Remove duplicate entries from paths
