@@ -1,0 +1,44 @@
+{
+    "formatters": {
+        "Cabal": {
+            "command": ["cabal-gild", "--stdin", "$file"],
+            "selector": "source.cabal"
+        },
+        "Go": {
+            "command": ["gofmt", "-s"],
+            "selector": "source.go"
+        },
+        "Haskell": {
+            "command": ["fourmolu", "--indentation", "$tab_size", "--stdin-input-file", "$file"],
+            "selector": "source.haskell"
+        },
+        "JSON": {
+            "command": ["jq", "--indent", "$tab_size"],
+            "selector": "source.json"
+        },
+        "Lua": {
+            "command": ["stylua", "--indent-type", "Spaces", "--indent-width", "$tab_size", "--stdin-filepath", "$file", "-"],
+            "selector": "source.lua"
+        },
+        "Python": {
+            "command": ["ruff", "format", "--no-cache", "--stdin-filename", "$file", "-"],
+            "selector": "source.python"
+        },
+        "Rust": {
+            "command": ["rustfmt"],
+            "selector": "source.rust"
+        },
+        "Shell": {
+            "command": ["shfmt", "--simplify", "--indent", "$tab_size", "--case-indent", "--", "-"],
+            "selector": "source.shell.bash"
+        },
+        "Swift": {
+            "command": ["swift-format", "--assume-filename", "$file"],
+            "selector": "source.swift"
+        },
+        "Terraform": {
+            "command": ["terraform", "fmt", "-"],
+            "selector": "source.terraform"
+        }
+    }
+}

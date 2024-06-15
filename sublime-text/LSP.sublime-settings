@@ -1,0 +1,17 @@
+{
+    "clients": {
+        "haskell-language-server": {
+            "command": ["haskell-language-server-wrapper", "--lsp"],
+            "selector": "source.haskell",
+            "settings": {
+                "haskell.formattingProvider": "fourmolu",
+                "haskell.cabalFormattingProvider": "cabal-gild",
+                "haskell.plugin.rename.config.crossModule": true
+            }
+        },
+        "sourcekit-lsp": {
+            "command": ["xcrun", "sourcekit-lsp"],
+            "selector": "source.swift"
+        }
+    }
+}
