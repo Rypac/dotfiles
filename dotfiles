@@ -38,6 +38,7 @@ dotfiles_link() {
     # Source XDG environment variables
     . "$DOTFILES_HOME/zsh/zshenv"
 
+    link bin "$XDG_BIN_HOME"
     link fourmolu "$XDG_CONFIG_HOME"
     link git "$XDG_CONFIG_HOME/git"
     link ghc "$XDG_CONFIG_HOME/ghc"
