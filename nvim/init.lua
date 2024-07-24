@@ -93,3 +93,16 @@ vim.api.nvim_create_autocmd("FileType", {
     })
   end
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  desc = "Start Swift LSP",
+  group = start_lsp_group,
+  pattern = "swift",
+  callback = function()
+    vim.lsp.start({
+      name = "swift-language-server",
+      cmd = {"xcrun", "sourcekit-lsp"},
+      root_dir = vim.fs.root(0, {"*.xcodeproj", "*.xcworkspace", "Package.swift"})
+    })
+  end
+})
