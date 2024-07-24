@@ -64,3 +64,32 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- fzf
 vim.opt.runtimepath:append("/opt/homebrew/opt/fzf")
 vim.keymap.set("n", "<leader>e", "<cmd>FZF<cr>", { desc = "Fuzzy Finder" })
+
+-- LSP
+local start_lsp_group = vim.api.nvim_create_augroup("StartLSP", { clear = true })
+
+vim.api.nvim_create_autocmd("FileType", {
+  desc = "Start Haskell LSP",
+  group = start_lsp_group,
+  pattern = {"haskell", "lhaskell", "cabal"},
+  callback = function()
+    vim.lsp.start({
+      name = "haskell-language-server",
+      cmd = {"haskell-language-server-wrapper", "--lsp"},
+      root_dir = vim.fs.root(0, {"hie.yaml", "stack.yaml", "cabal.project", "*.cabal", "package.yaml"}),
+      init_options = {
+        haskell = {
+          formattingProvider = "fourmolu",
+          cabalFormattingProvider = "cabal-gild",
+          plugin = {
+            rename = {
+              config = {
+                crossModule = true
+              }
+            }
+          }
+        }
+      }
+    })
+  end
+})
