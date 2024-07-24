@@ -1,7 +1,7 @@
 [
     { "id": "rebase", "caption": "-" },
     {
-        "caption": "Rebase onto…",
+        "caption": "Rebase $short_commit onto…",
         "command": "show_command_palette",
         "args": {
             "command": "git",
