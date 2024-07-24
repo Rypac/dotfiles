@@ -60,3 +60,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank()
   end,
 })
+
+-- fzf
+vim.opt.runtimepath:append("/opt/homebrew/opt/fzf")
+vim.keymap.set("n", "<leader>e", "<cmd>FZF<cr>", { desc = "Fuzzy Finder" })
