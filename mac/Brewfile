@@ -1,5 +1,4 @@
 tap "homebrew/bundle"
-brew "bat"
 brew "curl"
 brew "fourmolu"
 brew "fzf"
