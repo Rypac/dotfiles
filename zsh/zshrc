@@ -102,6 +102,10 @@ if (( $+commands[bat] )); then
     alias cat=bat
 fi
 
+if (( $+commands[lazygit] )); then
+    alias lg=lazygit
+fi
+
 # Create a new directory and automatically naviate there
 function mkcd() {
     mkdir -p "$@" && cd "$_"
