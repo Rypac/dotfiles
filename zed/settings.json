@@ -1,11 +1,19 @@
 {
+  "features": {
+    "inline_completion_provider": "none"
+  },
   "base_keymap": "SublimeText",
   "vim_mode": true,
+  "vim": {
+    "use_multiline_find": true
+  },
+  "buffer_font_family": "Menlo",
+  "buffer_font_size": 12,
+  "cursor_blink": false,
   "telemetry": {
     "diagnostics": false,
     "metrics": false
   },
-  "buffer_font_size": 14,
   "lsp": {
     "hls": {
       "initialization_options": {
