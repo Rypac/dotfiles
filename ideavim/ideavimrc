@@ -1,0 +1,39 @@
+" Vim Options
+set hlsearch
+set ignorecase
+set incsearch
+set smartcase
+set visualbell
+
+" Idea Options
+set ideajoin
+
+" Plugins
+set commentary
+set exchange
+set highlightedyank
+set multiple-cursors
+set surround
+set textobj-entire
+
+" Keybindings
+let mapleader=" "
+
+noremap <C-[> <esc>
+nnoremap <silent> <C-l> :nohlsearch<cr><C-l>
+
+nmap <C-j> <Action>(MoveStatementDown)
+vmap <C-j> <Action>(MoveStatementDown)
+nmap <C-k> <Action>(MoveStatementUp)
+vmap <C-k> <Action>(MoveStatementUp)
+
+nma <C-n> <Plug>NextWholeOccurrence
+xmap <C-n> <Plug>NextWholeOccurrence
+nmap g<C-n> <Plug>NextOccurrence
+xmap g<C-n> <Plug>NextOccurrence
+xmap <C-s> <Plug>SkipOccurrence
+xmap <C-p> <Plug>RemoveOccurrence
+nmap <leader><C-n> <Plug>AllWholeOccurrences
+xmap <leader><C-n> <Plug>AllWholeOccurrences
+nmap <leader>g<C-n> <Plug>AllOccurrences
+xmap <leader>g<C-n> <Plug>AllOccurrences
