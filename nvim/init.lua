@@ -1,14 +1,16 @@
 -- UI
 vim.opt.breakindent = true
 vim.opt.cursorline = false
+vim.opt.inccommand = 'split'
 vim.opt.linebreak = true
-vim.opt.mouse = "a"
+vim.opt.mouse = 'a'
 vim.opt.number = true
 vim.opt.ruler = false
 vim.opt.splitbelow = true
-vim.opt.splitkeep = "screen"
+vim.opt.splitkeep = 'screen'
 vim.opt.splitright = true
-vim.opt.termguicolors = vim.env.TERM_PROGRAM ~= "Apple_Terminal"
+vim.opt.termguicolors = vim.env.TERM_PROGRAM ~= 'Apple_Terminal'
+vim.cmd('colorscheme retrobox')
 
 -- Editing
 vim.opt.ignorecase = true
@@ -25,62 +27,84 @@ vim.opt.tabstop = 2
 -- Folding
 vim.opt.foldenable = false
 vim.opt.foldlevel = 99
-vim.opt.foldmethod = "manual"
+vim.opt.foldmethod = 'manual'
 vim.opt.foldminlines = 0
-vim.opt.foldtext = "getline(v:foldstart)"
+vim.opt.foldtext = 'getline(v:foldstart)'
 
 -- General
 vim.opt.backup = false
 vim.opt.swapfile = false
 vim.opt.undofile = true
-vim.opt.wildignore = { ".git/", "node_modules/" }
+vim.opt.wildignore = { '.git/', 'node_modules/' }
 vim.opt.writebackup = false
 
 -- Keybindings
-vim.g.mapleader = " "
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 -- Search and replace
-vim.keymap.set("v", "<C-r>", [["hy:%s/\V<C-r>h//g<left><left>]], { desc = "Replace selected text" })
+vim.keymap.set('v', '<C-r>', [['hy:%s/\V<C-r>h//g<left><left>]], { desc = 'Replace selected text' })
+
+-- Formatting
+vim.keymap.set('n', '<leader>i', 'gg0VGgq', { desc = 'Format file' })
+
+-- Option toggling
+vim.keymap.set('n', '<leader>ob', '<cmd>lua vim.o.bg = vim.o.bg == "dark" and "light" or "dark"<cr>', { desc = 'Toggle background colour' })
+vim.keymap.set('n', '<leader>oc', '<cmd>setlocal cursorline!<cr>', { desc = 'Toggle cursor line' })
+vim.keymap.set('n', '<leader>oC', '<cmd>setlocal cursorcolumn!<cr>', { desc = 'Toggle cursor column' })
+vim.keymap.set('n', '<leader>oh', '<cmd>setlocal hlsearch!<cr>', { desc = 'Toggle search highlight' })
+vim.keymap.set('n', '<leader>oi', '<cmd>setlocal ignorecase!<cr>', { desc = 'Toggle ignore case' })
+vim.keymap.set('n', '<leader>ol', '<cmd>setlocal linebreak!<cr>', { desc = 'Toggle line break' })
+vim.keymap.set('n', '<leader>on', '<cmd>setlocal number!<cr>', { desc = 'Toggle line numbers' })
+vim.keymap.set('n', '<leader>or', '<cmd>setlocal relativenumber!<cr>', { desc = 'Toggle relative numbers' })
+vim.keymap.set('n', '<leader>os', '<cmd>setlocal spell!<cr>', { desc = 'Toggle spelling' })
+vim.keymap.set('n', '<leader>ot', '<cmd>lua vim.o.showtabline = vim.o.showtabline == 1 and 2 or 1<cr>', { desc = 'Toggle tab line' })
+vim.keymap.set('n', '<leader>ow', '<cmd>setlocal wrap!<cr>', { desc = 'Toggle line wrap' })
+
+-- Terminal
+vim.keymap.set('t', '<esc><esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
+-- Diagnostic
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic quickfix list' })
 
 -- Auto commands
-vim.api.nvim_create_autocmd("TermOpen", {
-  desc = "Configure UI for builtin terminal",
-  group = vim.api.nvim_create_augroup("ConfigureTerminal", { clear = true }),
+vim.api.nvim_create_autocmd('TermOpen', {
+  desc = 'Configure UI for builtin terminal',
+  group = vim.api.nvim_create_augroup('ConfigureTerminal', { clear = true }),
   callback = function()
-    vim.cmd("startinsert")
+    vim.cmd('startinsert')
     vim.opt_local.number = false
-    vim.opt_local.signcolumn = "no"
+    vim.opt_local.signcolumn = 'no'
   end,
 })
 
-vim.api.nvim_create_autocmd("TextYankPost", {
-  desc = "Highlight yanked text",
-  group = vim.api.nvim_create_augroup("HighlightYankedText", { clear = true }),
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight yanked text',
+  group = vim.api.nvim_create_augroup('HighlightYankedText', { clear = true }),
   callback = function()
     vim.highlight.on_yank()
   end,
 })
 
 -- fzf
-vim.opt.runtimepath:append("/opt/homebrew/opt/fzf")
-vim.keymap.set("n", "<leader>e", "<cmd>FZF<cr>", { desc = "Fuzzy Finder" })
+vim.opt.runtimepath:append('/opt/homebrew/opt/fzf')
+vim.keymap.set('n', '<leader>e', '<cmd>FZF<cr>', { desc = 'Fuzzy Finder' })
+vim.keymap.set('n', '<leader><leader>', '<cmd>FZF<cr>', { desc = 'Fuzzy Finder' })
 
 -- LSP
-local start_lsp_group = vim.api.nvim_create_augroup("StartLSP", { clear = true })
-
-vim.api.nvim_create_autocmd("FileType", {
-  desc = "Start Haskell LSP",
-  group = start_lsp_group,
-  pattern = {"haskell", "lhaskell", "cabal"},
+vim.api.nvim_create_autocmd('FileType', {
+  desc = 'Start Haskell LSP',
+  group = vim.api.nvim_create_augroup('StartHaskellLsp', { clear = true }),
+  pattern = {'haskell', 'lhaskell', 'cabal'},
   callback = function()
     vim.lsp.start({
-      name = "haskell-language-server",
-      cmd = {"haskell-language-server-wrapper", "--lsp"},
-      root_dir = vim.fs.root(0, {"hie.yaml", "stack.yaml", "cabal.project", "*.cabal", "package.yaml"}),
+      name = 'haskell-language-server',
+      cmd = {'haskell-language-server-wrapper', '--lsp'},
+      root_dir = vim.fs.root(0, {'hie.yaml', 'stack.yaml', 'cabal.project', '*.cabal', 'package.yaml'}),
       init_options = {
         haskell = {
-          formattingProvider = "fourmolu",
-          cabalFormattingProvider = "cabal-gild",
+          formattingProvider = 'fourmolu',
+          cabalFormattingProvider = 'cabal-gild',
           plugin = {
             rename = {
               config = {
@@ -91,18 +115,22 @@ vim.api.nvim_create_autocmd("FileType", {
         }
       }
     })
+
+    vim.opt_local.signcolumn = 'yes'
   end
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-  desc = "Start Swift LSP",
-  group = start_lsp_group,
-  pattern = "swift",
+vim.api.nvim_create_autocmd('FileType', {
+  desc = 'Start Swift LSP',
+  group = vim.api.nvim_create_augroup('StartSwiftLsp', { clear = true }),
+  pattern = 'swift',
   callback = function()
     vim.lsp.start({
-      name = "swift-language-server",
-      cmd = {"xcrun", "sourcekit-lsp"},
-      root_dir = vim.fs.root(0, {"*.xcodeproj", "*.xcworkspace", "Package.swift"})
+      name = 'swift-language-server',
+      cmd = {'xcrun', 'sourcekit-lsp'},
+      root_dir = vim.fs.root(0, {'*.xcodeproj', '*.xcworkspace', 'Package.swift'})
     })
+
+    vim.opt_local.signcolumn = 'yes'
   end
 })
