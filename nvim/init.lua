@@ -1,7 +1,6 @@
 -- UI
 vim.opt.breakindent = true
 vim.opt.cursorline = false
-vim.opt.inccommand = 'split'
 vim.opt.linebreak = true
 vim.opt.mouse = 'a'
 vim.opt.number = true
@@ -10,17 +9,20 @@ vim.opt.splitbelow = true
 vim.opt.splitkeep = 'screen'
 vim.opt.splitright = true
 vim.opt.termguicolors = vim.env.TERM_PROGRAM ~= 'Apple_Terminal'
+vim.opt.wrap = false
 vim.cmd('colorscheme retrobox')
 
 -- Editing
 vim.opt.ignorecase = true
+vim.opt.inccommand = 'split'
+vim.opt.incsearch = true
 vim.opt.infercase = true
 vim.opt.smartcase = true
+vim.opt.smartindent = true
 
 -- Indentation
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
-vim.opt.smartindent = true
 vim.opt.softtabstop = 2
 vim.opt.tabstop = 2
 
@@ -37,6 +39,7 @@ vim.opt.swapfile = false
 vim.opt.undofile = true
 vim.opt.wildignore = { '.git/', 'node_modules/' }
 vim.opt.writebackup = false
+vim.cmd('filetype plugin indent on')
 
 -- Keybindings
 vim.g.mapleader = ' '
@@ -49,17 +52,17 @@ vim.keymap.set('v', '<C-r>', [['hy:%s/\V<C-r>h//g<left><left>]], { desc = 'Repla
 vim.keymap.set('n', '<leader>i', 'gg0VGgq', { desc = 'Format file' })
 
 -- Option toggling
-vim.keymap.set('n', '<leader>ob', '<cmd>lua vim.o.bg = vim.o.bg == "dark" and "light" or "dark"<cr>', { desc = 'Toggle background colour' })
-vim.keymap.set('n', '<leader>oc', '<cmd>setlocal cursorline!<cr>', { desc = 'Toggle cursor line' })
-vim.keymap.set('n', '<leader>oC', '<cmd>setlocal cursorcolumn!<cr>', { desc = 'Toggle cursor column' })
-vim.keymap.set('n', '<leader>oh', '<cmd>setlocal hlsearch!<cr>', { desc = 'Toggle search highlight' })
-vim.keymap.set('n', '<leader>oi', '<cmd>setlocal ignorecase!<cr>', { desc = 'Toggle ignore case' })
-vim.keymap.set('n', '<leader>ol', '<cmd>setlocal linebreak!<cr>', { desc = 'Toggle line break' })
-vim.keymap.set('n', '<leader>on', '<cmd>setlocal number!<cr>', { desc = 'Toggle line numbers' })
-vim.keymap.set('n', '<leader>or', '<cmd>setlocal relativenumber!<cr>', { desc = 'Toggle relative numbers' })
-vim.keymap.set('n', '<leader>os', '<cmd>setlocal spell!<cr>', { desc = 'Toggle spelling' })
-vim.keymap.set('n', '<leader>ot', '<cmd>lua vim.o.showtabline = vim.o.showtabline == 1 and 2 or 1<cr>', { desc = 'Toggle tab line' })
-vim.keymap.set('n', '<leader>ow', '<cmd>setlocal wrap!<cr>', { desc = 'Toggle line wrap' })
+vim.keymap.set('n', '<leader>ob', '<cmd>lua vim.o.bg = vim.o.bg == "dark" and "light" or "dark"<cr>', { desc = 'Toggle "background"' })
+vim.keymap.set('n', '<leader>oc', '<cmd>setlocal cursorline! cursorline?<cr>', { desc = 'Toggle "cursorline"' })
+vim.keymap.set('n', '<leader>oC', '<cmd>setlocal cursorcolumn! cursorcolumn?<cr>', { desc = 'Toggle "cursorcolumn"' })
+vim.keymap.set('n', '<leader>oh', '<cmd>setlocal hlsearch! hlsearch?<cr>', { desc = 'Toggle search highlight' })
+vim.keymap.set('n', '<leader>oi', '<cmd>setlocal ignorecase! ignorecase?<cr>', { desc = 'Toggle "ignorecase"' })
+vim.keymap.set('n', '<leader>ol', '<cmd>setlocal linebreak! linebreak?<cr>', { desc = 'Toggle "linebreak"' })
+vim.keymap.set('n', '<leader>on', '<cmd>setlocal number! number?<cr>', { desc = 'Toggle "number"' })
+vim.keymap.set('n', '<leader>or', '<cmd>setlocal relativenumber! relativenumber?<cr>', { desc = 'Toggle "relativenumber"' })
+vim.keymap.set('n', '<leader>os', '<cmd>setlocal spell! spell?<cr>', { desc = 'Toggle "spell"' })
+vim.keymap.set('n', '<leader>ot', '<cmd>lua vim.o.showtabline = vim.o.showtabline == 1 and 2 or 1<cr>', { desc = 'Toggle "tabline"' })
+vim.keymap.set('n', '<leader>ow', '<cmd>setlocal wrap! wrap?<cr>', { desc = 'Toggle "wrap"' })
 
 -- Terminal
 vim.keymap.set('t', '<esc><esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
