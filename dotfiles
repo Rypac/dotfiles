@@ -47,6 +47,7 @@ dotfiles_link() {
     link npm "$XDG_CONFIG_HOME/npm"
     link nvim "$XDG_CONFIG_HOME/nvim"
     link nvim/ftplugin "$XDG_CONFIG_HOME/nvim/after/ftplugin"
+    link nvim/plugin "$XDG_CONFIG_HOME/nvim/after/plugin"
     link tig "$XDG_CONFIG_HOME/tig"
     link zed "$XDG_CONFIG_HOME/zed"
     link zsh/zshenv "$HOME/.zshenv"
