@@ -14,9 +14,3 @@ vim.api.nvim_buf_create_user_command(
 )
 
 vim.opt_local.formatprg = 'swift-format --assume-filename %'
-
-vim.lsp.start({
-  name = 'swift-language-server',
-  cmd = {'xcrun', 'sourcekit-lsp'},
-  root_dir = vim.fs.root(0, 'Package.swift')
-})

@@ -40,3 +40,16 @@ vim.keymap.set('n', '<Leader>ow', '<cmd>setlocal wrap! wrap?<cr>', { desc = 'Tog
 
 -- Diagnostic
 vim.keymap.set('n', '<Leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic quickfix list' })
+
+-- LSP
+vim.keymap.set('n', 'gy', vim.lsp.buf.type_definition)
+vim.keymap.set('n', 'gY', vim.lsp.buf.implementation)
+vim.keymap.set('n', 'grr', vim.lsp.buf.references)
+vim.keymap.set('n', 'gri', vim.lsp.buf.incoming_calls)
+vim.keymap.set('n', 'gro', vim.lsp.buf.outgoing_calls)
+vim.keymap.set('n', 'grs', vim.lsp.buf.document_symbol)
+vim.keymap.set('n', 'grn', vim.lsp.buf.rename)
+vim.keymap.set('n', 'g<Space>', vim.lsp.buf.code_action)
+vim.keymap.set('n', 'gra', vim.lsp.buf.code_action)
+vim.keymap.set('n', 'grt', '<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<cr>')
+

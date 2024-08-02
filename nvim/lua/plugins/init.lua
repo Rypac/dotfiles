@@ -89,6 +89,13 @@ later(
 
 later(
   function()
+    add('neovim/nvim-lspconfig')
+    require('plugins.lspconfig')
+  end
+)
+
+later(
+  function()
     add('stevearc/oil.nvim')
     require('plugins.oil')
   end

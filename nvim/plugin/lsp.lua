@@ -4,26 +4,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local client = vim.lsp.get_client_by_id(args.data.client_id)
 
     if client.supports_method('textDocument/definition') then
-      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = args.buf })
+      vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
     end
 
     if client.supports_method('textDocument/declaration') then
-      vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = args.buf })
-    end
-
-    if client.supports_method('textDocument/typeDefinition') then
-      vim.keymap.set('n', 'gy', vim.lsp.buf.type_definition, { buffer = args.buf })
-    end
-
-    if client.supports_method('textDocument/implementation') then
-      vim.keymap.set('n', 'gY', vim.lsp.buf.implementation, { buffer = args.buf })
+      vim.keymap.set('n', 'gD', vim.lsp.buf.declaration)
     end
 
     if client.supports_method('textDocument/formatting') then
-      vim.keymap.set('n', 'g=', vim.lsp.buf.format, { buffer = args.buf })
+      vim.keymap.set('n', 'g=', vim.lsp.buf.format)
 
       vim.api.nvim_create_autocmd('BufWritePre', {
-        group = vim.api.nvim_create_augroup('LspFormatOnSave', { clear = true }),
+        group = vim.api.nvim_create_augroup('LspFormatOnSave-' .. args.buf, { clear = true }),
         buffer = args.buf,
         callback = function()
           vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
@@ -32,23 +24,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 
     if client.supports_method('textDocument/rangeFormatting') then
-      vim.keymap.set('v', 'g=', vim.lsp.buf.format, { buffer = args.buf })
+      vim.keymap.set('v', 'g=', vim.lsp.buf.format)
     end
 
-    if client.supports_method('textDocument/references') then
-      vim.keymap.set('n', 'grr', vim.lsp.buf.references, { buffer = args.buf })
-    end
-
-    if client.supports_method('textDocument/rename') then
-      vim.keymap.set('n', 'grn', vim.lsp.buf.rename, { buffer = args.buf })
-    end
-
-    if client.supports_method('textDocument/codeAction') then
-      vim.keymap.set('n', 'gra', vim.lsp.buf.code_action, { buffer = args.buf })
-    end
-
-    if client.supports_method('textDocument/inlayHint') then
-      vim.keymap.set('n', 'g/', '<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<cr>')
+    if client.supports_method('textDocument/codeLens') then
+      vim.api.nvim_create_autocmd({ 'BufEnter', 'CursorHold', 'InsertLeave' }, {
+        group = vim.api.nvim_create_augroup('LspCodeLens-' .. args.buf, { clear = true }),
+        buffer = args.buf,
+        callback = function()
+          vim.lsp.codelens.refresh({ bufnr = args.buf })
+        end
+      })
     end
 
     if client.supports_method('textDocument/completion') then
@@ -58,5 +44,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 
     vim.api.nvim_buf_set_option(args.buf, 'signcolumn', 'yes')
+  end
+})
+
+vim.api.nvim_create_autocmd('LspDetach', {
+  group = vim.api.nvim_create_augroup('LspCleanup', { clear = true }),
+  callback = function(args)
+    pcall(vim.api.nvim_del_augroup_by_name, 'LspFormatOnSave-' .. args.buf)
+    pcall(vim.api.nvim_del_augroup_by_name, 'LspCodeLens-' .. args.buf)
   end
 })
