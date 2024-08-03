@@ -40,12 +40,21 @@ vim.opt.writebackup = false
 
 -- [[ Autocommands ]]
 
--- Highlight yanked text
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight yanked text',
   group = vim.api.nvim_create_augroup('HighlightYankedText', { clear = true }),
   callback = function()
     vim.highlight.on_yank()
+  end
+})
+
+vim.api.nvim_create_autocmd('TermOpen', {
+  desc = 'Configure UI for builtin terminal',
+  group = vim.api.nvim_create_augroup('ConfigureTerminal', { clear = true }),
+  callback = function()
+    vim.cmd('startinsert')
+    vim.opt_local.number = false
+    vim.opt_local.signcolumn = 'no'
   end
 })
 
@@ -64,15 +73,15 @@ vim.keymap.set('i', '<C-Space>', '<C-x><C-o>', { desc = 'Clear search highlights
 vim.keymap.set('n', 'g=', [[gggqG<C-o><C-o>]], { desc = 'Format file' })
 vim.keymap.set('x', 'g=', 'gq', { desc = 'Format selection' })
 
--- Buffers
+-- Buffer navigation
 vim.keymap.set('n', 'gb', '<Cmd>bnext<CR>', { desc = 'Next buffer' })
 vim.keymap.set('n', 'gB', '<Cmd>bprevious<CR>', { desc = 'Previous buffer' })
-
--- Square bracket navigation
 vim.keymap.set('n', ']b', '<Cmd>bnext<CR>', { desc = 'Next buffer' })
 vim.keymap.set('n', '[b', '<Cmd>bprevious<CR>', { desc = 'Previous buffer' })
 vim.keymap.set('n', ']B', '<Cmd>blast<CR>', { desc = 'Last buffer' })
 vim.keymap.set('n', '[B', '<Cmd>bfirst<CR>', { desc = 'First buffer' })
+
+-- Tab navigation
 vim.keymap.set('n', ']t', '<Cmd>tabnext<CR>', { desc = 'Next tab' })
 vim.keymap.set('n', '[t', '<Cmd>tabprevious<CR>', { desc = 'Previous tab' })
 vim.keymap.set('n', ']T', '<Cmd>tablast<CR>', { desc = 'Last tab' })
