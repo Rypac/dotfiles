@@ -70,8 +70,7 @@ vim.keymap.set('n', '<Esc>', '<Cmd>nohlsearch<CR>', { desc = 'Clear search highl
 vim.keymap.set('i', '<C-Space>', '<C-x><C-o>', { desc = 'Clear search highlights' })
 
 -- Formatting
-vim.keymap.set('n', 'g=', [[gggqG<C-o><C-o>]], { desc = 'Format file' })
-vim.keymap.set('x', 'g=', 'gq', { desc = 'Format selection' })
+vim.keymap.set('n', 'g=', 'mqgggqG`q', { desc = 'Format file' })
 
 -- Buffer navigation
 vim.keymap.set('n', 'gb', '<Cmd>bnext<CR>', { desc = 'Next buffer' })

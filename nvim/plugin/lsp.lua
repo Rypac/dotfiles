@@ -32,10 +32,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
       })
     end
 
-    if client.supports_method('textDocument/rangeFormatting') then
-      vim.keymap.set('v', 'g=', vim.lsp.buf.format)
-    end
-
     if client.supports_method('textDocument/codeLens') then
       vim.api.nvim_create_autocmd({ 'BufEnter', 'CursorHold', 'InsertLeave' }, {
         group = vim.api.nvim_create_augroup('LspCodeLens', { clear = true }),
