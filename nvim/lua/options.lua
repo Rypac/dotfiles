@@ -21,7 +21,7 @@ vim.opt.smartindent = true
 
 -- Completions
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect', 'noinsert' }
-vim.opt.shortmess:append({ c = true })
+vim.opt.shortmess:append({ c = true, C = true })
 
 -- Indentation
 vim.opt.expandtab = true
@@ -40,5 +40,5 @@ vim.opt.foldtext = 'getline(v:foldstart)'
 vim.opt.backup = false
 vim.opt.swapfile = false
 vim.opt.undofile = true
-vim.opt.wildignore = { '.git/', 'node_modules/', 'dist-newstyle/' }
+vim.opt.wildignore = { '.git/', '.build/', 'dist-newstyle/', 'node_modules/' }
 vim.opt.writebackup = false
