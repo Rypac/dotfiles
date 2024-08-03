@@ -25,6 +25,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.api.nvim_create_autocmd('LspDetach', {
         group = vim.api.nvim_create_augroup('LspFormatOnSaveCleanup', { clear = true }),
         buffer = args.buf,
+        once = true,
         callback = function(event)
           vim.api.nvim_clear_autocmds({ group = 'LspFormatOnSave', buffer = event.buf })
         end
@@ -47,6 +48,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.api.nvim_create_autocmd('LspDetach', {
         group = vim.api.nvim_create_augroup('LspCodeLensCleanup', { clear = true }),
         buffer = args.buf,
+        once = true,
         callback = function(event)
           vim.lsp.codelens.clear(event.data.client_id, event.buf)
           vim.api.nvim_clear_autocmds({ group = 'LspCodeLens', buffer = event.buf })
@@ -77,6 +79,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
       vim.api.nvim_create_autocmd('LspDetach', {
         group = vim.api.nvim_create_augroup('LspHighlightCleanup', { clear = true }),
+        buffer = args.buf,
+        once = true,
         callback = function(event)
           vim.lsp.buf.clear_references()
           vim.api.nvim_clear_autocmds({ group = 'LspHighlight', buffer = event.buf })
