@@ -16,3 +16,19 @@ vim.api.nvim_create_autocmd('TermClose', {
     vim.cmd('bdelete! ' .. args.buf)
   end
 })
+
+vim.api.nvim_create_user_command(
+  'Lazygit',
+  'terminal lazygit',
+  {
+    desc = 'Open lazygit in a terminal'
+  }
+)
+
+vim.api.nvim_create_user_command(
+  'Tig',
+  'terminal tig',
+  {
+    desc = 'Open tig in a terminal'
+  }
+)
