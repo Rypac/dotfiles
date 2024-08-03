@@ -7,3 +7,12 @@ vim.api.nvim_create_autocmd('TermOpen', {
     vim.opt_local.signcolumn = 'no'
   end
 })
+
+vim.api.nvim_create_autocmd('TermClose', {
+  desc = 'Clear terminal on exiting TUI apps',
+  pattern = { 'term://*lazygit', 'term://*tig' },
+  group = vim.api.nvim_create_augroup('CleanupTerminal', { clear = true }),
+  callback = function(args)
+    vim.cmd('bdelete! ' .. args.buf)
+  end
+})
