@@ -48,6 +48,16 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end
 })
 
+vim.api.nvim_create_autocmd({ 'FocusGained', 'TermClose', 'TermLeave' }, {
+  desc = 'Reload file on focus change',
+  group = vim.api.nvim_create_augroup('ReoladFile', { clear = true }),
+  callback = function()
+    if vim.o.buftype ~= 'nofile' then
+      vim.cmd('checktime')
+    end
+  end
+})
+
 vim.api.nvim_create_autocmd('TermOpen', {
   desc = 'Configure UI for builtin terminal',
   group = vim.api.nvim_create_augroup('ConfigureTerminal', { clear = true }),
@@ -55,6 +65,36 @@ vim.api.nvim_create_autocmd('TermOpen', {
     vim.cmd('startinsert')
     vim.opt_local.number = false
     vim.opt_local.signcolumn = 'no'
+  end
+})
+
+vim.api.nvim_create_autocmd({ 'VimResized' }, {
+  desc = 'Resize splits on window resize',
+  group = vim.api.nvim_create_augroup('ResizeSplits', { clear = true }),
+  callback = function()
+    local current_tab = vim.fn.tabpagenr()
+    vim.cmd('tabdo wincmd =')
+    vim.cmd('tabnext ' .. current_tab)
+  end
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  desc = 'Close windows with "q"',
+  group = vim.api.nvim_create_augroup('CloseWithQ', { clear = true }),
+  pattern = { 'help', 'checkhealth' },
+  callback = function(event)
+    vim.bo[event.buf].buflisted = false
+    vim.keymap.set('n', 'q', '<Cmd>close<CR>', { buffer = event.buf, silent = true, desc = 'Quit buffer' })
+  end
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  desc = 'Wrap and spell',
+  group = vim.api.nvim_create_augroup('WrapSpell', { clear = true }),
+  pattern = { 'text', 'markdown', 'gitcommit' },
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.spell = true
   end
 })
 
