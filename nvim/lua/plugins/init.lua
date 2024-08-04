@@ -38,6 +38,13 @@ now(
 
 later(
   function()
+    add('echasnovski/mini.extra')
+    require('plugins.mini_extra')
+  end
+)
+
+later(
+  function()
     add('echasnovski/mini.ai')
     require('plugins.mini_ai')
   end
