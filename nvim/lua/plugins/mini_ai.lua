@@ -1,5 +1,6 @@
 local ai = require('mini.ai')
 ai.setup({
+  n_lines = 200,
   custom_textobjects = {
     a = ai.gen_spec.treesitter({
       a = '@parameter.outer',
@@ -9,21 +10,14 @@ ai.setup({
       a = '@class.outer',
       i = '@class.inner'
     }),
-    C = ai.gen_spec.treesitter({
-      a = '@comment.outer',
-      i = '@comment.inner'
-    }),
     f = ai.gen_spec.treesitter({
-      a = '@call.outer',
-      i = '@call.inner'
-    }),
-    m = ai.gen_spec.treesitter({
       a = '@function.outer',
       i = '@function.inner'
     }),
     o = ai.gen_spec.treesitter({
-      a = { '@conditional.outer', '@loop.outer' },
-      i = { '@conditional.inner', '@loop.inner' }
-    })
+      a = { '@block.outer', '@conditional.outer', '@loop.outer' },
+      i = { '@block.inner', '@conditional.inner', '@loop.inner' }
+    }),
+    u = ai.gen_spec.function_call(),
   }
 })
