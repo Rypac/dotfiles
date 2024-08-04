@@ -88,6 +88,53 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end
 })
 
+vim.api.nvim_create_user_command(
+  'LspStart',
+  'edit',
+  {
+    desc = 'Start LSP'
+  }
+)
+
+vim.api.nvim_create_user_command(
+  'LspRestart',
+  function()
+    vim.lsp.stop_client(vim.lsp.get_clients())
+    vim.cmd('edit')
+  end,
+  {
+    desc = 'Restart LSP'
+  }
+)
+
+vim.api.nvim_create_user_command(
+  'LspStop',
+  function()
+    vim.lsp.stop_client(vim.lsp.get_clients())
+  end,
+  {
+    desc = 'Stop LSP'
+  }
+)
+
+vim.api.nvim_create_user_command(
+  'LspInfo',
+  'checkhealth lsp',
+  {
+    desc = 'Open LSP healthcheck'
+  }
+)
+
+vim.api.nvim_create_user_command(
+  'LspLog',
+  function()
+    vim.cmd('tabnew ' .. vim.lsp.log.get_filename())
+  end,
+  {
+    desc = 'Open LSP logs'
+  }
+)
+
 vim.api.nvim_create_autocmd('FileType', {
   desc = 'Start Haskell Language Server',
   group = vim.api.nvim_create_augroup('LspStartHaskellLanguageServer', { clear = true }),
