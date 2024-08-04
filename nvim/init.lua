@@ -63,13 +63,17 @@ vim.api.nvim_create_autocmd('TermOpen', {
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Move by visible lines
+vim.keymap.set({ 'n', 'x' }, 'j', [[v:count == 0 ? 'gj' : 'j']], { expr = true })
+vim.keymap.set({ 'n', 'x' }, 'k', [[v:count == 0 ? 'gk' : 'k']], { expr = true })
+
 -- Clear search highlights
 vim.keymap.set('n', '<Esc>', '<Cmd>nohlsearch<CR>', { desc = 'Clear search highlights' })
 
 -- Open completion popup
 vim.keymap.set('i', '<C-Space>', '<C-x><C-o>', { desc = 'Clear search highlights' })
 
--- Formatting
+-- Format entire buffer
 vim.keymap.set('n', 'g=', 'mqgggqG`q', { desc = 'Format file' })
 
 -- Buffer navigation
