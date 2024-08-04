@@ -17,3 +17,6 @@ vim.api.nvim_buf_create_user_command(
 )
 
 vim.opt_local.formatprg = 'fourmolu --quiet --stdin-input-file %'
+
+local lsp_config = require('lsp.hls')
+vim.lsp.start(lsp_config)

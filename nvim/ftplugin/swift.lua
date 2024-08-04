@@ -14,3 +14,6 @@ vim.api.nvim_buf_create_user_command(
 )
 
 vim.opt_local.formatprg = 'swift-format --assume-filename %'
+
+local lsp_config = require('lsp.sourcekit')
+vim.lsp.start(lsp_config)
