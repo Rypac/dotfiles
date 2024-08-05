@@ -1,4 +1,5 @@
 local ai = require('mini.ai')
+local extra = require('mini.extra')
 ai.setup({
   n_lines = 200,
   custom_textobjects = {
@@ -19,5 +20,10 @@ ai.setup({
       i = { '@block.inner', '@conditional.inner', '@loop.inner' }
     }),
     u = ai.gen_spec.function_call(),
+    i = extra.gen_ai_spec.indent(),
+    e = extra.gen_ai_spec.buffer(),
+    L = extra.gen_ai_spec.line(),
+    D = extra.gen_ai_spec.diagnostic(),
+    N = extra.gen_ai_spec.number(),
   }
 })

@@ -17,13 +17,6 @@ local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 
 now(
   function()
-    add('echasnovski/mini.icons')
-    require('plugins.mini_icons')
-  end
-)
-
-now(
-  function()
     add('echasnovski/mini.statusline')
     require('plugins.mini_statusline')
   end
@@ -47,13 +40,6 @@ later(
   function()
     add('echasnovski/mini.ai')
     require('plugins.mini_ai')
-  end
-)
-
-later(
-  function()
-    add('echasnovski/mini.move')
-    require('plugins.mini_move')
   end
 )
 

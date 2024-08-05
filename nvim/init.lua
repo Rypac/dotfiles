@@ -11,6 +11,7 @@ vim.opt.shortmess:append({ I = true })
 vim.opt.splitbelow = true
 vim.opt.splitkeep = 'screen'
 vim.opt.splitright = true
+vim.opt.updatetime = 1000
 vim.opt.wrap = false
 vim.cmd('colorscheme retrobox')
 
@@ -20,6 +21,11 @@ vim.opt.inccommand = 'split'
 vim.opt.infercase = true
 vim.opt.smartcase = true
 vim.opt.smartindent = true
+
+-- Folding
+vim.opt.foldmethod = 'indent'
+vim.opt.foldminlines = 0
+vim.opt.foldlevel = 99
 
 -- Completions
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect', 'noinsert' }
@@ -68,7 +74,7 @@ vim.api.nvim_create_autocmd('TermOpen', {
   end
 })
 
-vim.api.nvim_create_autocmd({ 'VimResized' }, {
+vim.api.nvim_create_autocmd('VimResized', {
   desc = 'Resize splits on window resize',
   group = vim.api.nvim_create_augroup('ResizeSplits', { clear = true }),
   callback = function()
@@ -88,16 +94,6 @@ vim.api.nvim_create_autocmd('FileType', {
   end
 })
 
-vim.api.nvim_create_autocmd('FileType', {
-  desc = 'Wrap and spell',
-  group = vim.api.nvim_create_augroup('WrapSpell', { clear = true }),
-  pattern = { 'text', 'markdown', 'gitcommit' },
-  callback = function()
-    vim.opt_local.wrap = true
-    vim.opt_local.spell = true
-  end
-})
-
 -- [[ Keymaps ]]
 
 vim.g.mapleader = ' '
@@ -107,11 +103,17 @@ vim.g.maplocalleader = ' '
 vim.keymap.set({ 'n', 'x' }, 'j', [[v:count == 0 ? 'gj' : 'j']], { expr = true })
 vim.keymap.set({ 'n', 'x' }, 'k', [[v:count == 0 ? 'gk' : 'k']], { expr = true })
 
+-- Move lines
+vim.keymap.set('n', '<C-j>', '<Cmd>m .+1<CR>==', { desc = 'Move line down' })
+vim.keymap.set('n', '<C-k>', '<Cmd>m .-2<CR>==', { desc = 'Move line up' })
+vim.keymap.set('x', '<C-j>', ":m '>+1<CR>gv=gv", { desc = 'Move line(s) down' })
+vim.keymap.set('x', '<C-k>', ":m '<-2<CR>gv=gv", { desc = 'Move line(s) up' })
+
 -- Clear search highlights
-vim.keymap.set('n', '<Esc>', '<Cmd>nohlsearch<CR>', { desc = 'Clear search highlights' })
+vim.keymap.set({ 'i', 'n' }, '<Esc>', '<Cmd>nohlsearch<CR><Esc>', { desc = 'Escape and clear search highlights' })
 
 -- Open completion popup
-vim.keymap.set('i', '<C-Space>', '<C-x><C-o>', { desc = 'Clear search highlights' })
+vim.keymap.set('i', '<C-Space>', function() return vim.o.omnifunc ~= '' and '<C-x><C-o>' or '<C-x><C-n>' end, { expr = true, desc = 'Open completion popup' })
 
 -- Format entire buffer
 vim.keymap.set('n', 'g=', 'mqgggqG`q', { desc = 'Format file' })
