@@ -28,6 +28,8 @@ vim.opt.smartindent = true
 
 -- Folding
 vim.opt.foldmethod = 'indent'
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.opt.foldtext = ''
 vim.opt.foldlevel = 99
 
 -- Completions
