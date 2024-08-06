@@ -1,5 +1,5 @@
 require('mini.statusline').setup({
-  show_icons = false
+  use_icons = false
 })
 
 vim.opt.showmode = false

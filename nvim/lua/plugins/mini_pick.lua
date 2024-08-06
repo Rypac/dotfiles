@@ -11,17 +11,9 @@ pick.setup({
 vim.ui.select = pick.ui_select
 
 pick.registry.config = function()
-  return pick.builtin.file(nil, {
+  return pick.builtin.files(nil, {
     source = {
       cwd = vim.fn.stdpath('config')
-    }
-  })
-end
-
-pick.registry.dotfiles = function()
-  return pick.builtin.file(nil, {
-    source = {
-      cwd = vim.env.HOME .. '.dotfiles/nvim'
     }
   })
 end
@@ -50,7 +42,7 @@ vim.keymap.set('n', '<Leader>L', "<cmd>Pick buf_lines scope='all'<cr>", { desc =
 vim.keymap.set('n', '<Leader>O', '<cmd>Pick options<cr>', { desc = 'Find options' })
 vim.keymap.set('n', '<Leader>s', '<cmd>Pick spellsuggest<cr>', { desc = 'Find spelling suggestions' })
 vim.keymap.set('n', '<Leader>t', '<cmd>Pick treesitter<cr>', { desc = 'Find treesitter nodes' })
-vim.keymap.set('n', '<Leader>.', '<cmd>Pick dotfiles<cr>', { desc = 'Find neovim configuration' })
+vim.keymap.set('n', '<Leader>.', '<cmd>Pick config<cr>', { desc = 'Find neovim configuration' })
 vim.keymap.set('n', "<Leader>'", '<cmd>Pick marks<cr>', { desc = 'Find marks' })
 vim.keymap.set('n', '<Leader>"', '<cmd>Pick registers<cr>', { desc = 'Find registers' })
 vim.keymap.set('n', '<Leader>?', '<cmd>Pick help<cr>', { desc = 'Find help' })

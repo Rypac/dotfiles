@@ -22,13 +22,6 @@ now(
   end
 )
 
-now(
-  function()
-    add('echasnovski/mini.tabline')
-    require('plugins.mini_tabline')
-  end
-)
-
 later(
   function()
     add('echasnovski/mini.extra')

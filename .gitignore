@@ -16,3 +16,6 @@ Brewfile.lock.json
 # Windows
 Thumbs.db
 ehthumbs.db
+
+# neovim
+nvim/spell

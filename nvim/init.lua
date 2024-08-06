@@ -8,12 +8,16 @@ vim.opt.mouse = 'a'
 vim.opt.number = true
 vim.opt.ruler = false
 vim.opt.shortmess:append({ I = true })
+vim.opt.showcmd = false
 vim.opt.splitbelow = true
-vim.opt.splitkeep = 'screen'
 vim.opt.splitright = true
 vim.opt.updatetime = 1000
 vim.opt.wrap = false
 vim.cmd('colorscheme retrobox')
+
+-- Display whitespace characters
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Editing
 vim.opt.ignorecase = true
@@ -24,11 +28,10 @@ vim.opt.smartindent = true
 
 -- Folding
 vim.opt.foldmethod = 'indent'
-vim.opt.foldminlines = 0
 vim.opt.foldlevel = 99
 
 -- Completions
-vim.opt.completeopt = { 'menu', 'menuone', 'noselect', 'noinsert' }
+vim.opt.completeopt = { 'menu', 'menuone', 'noinsert' }
 vim.opt.shortmess:append({ c = true, C = true })
 
 -- Indentation
@@ -41,43 +44,12 @@ vim.opt.tabstop = 2
 vim.opt.backup = false
 vim.opt.swapfile = false
 vim.opt.undofile = true
-vim.opt.wildignore:append({ '.git/', '.build/', 'dist-newstyle/', 'node_modules/' })
 vim.opt.writebackup = false
-
--- [[ Autocommands ]]
-
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight yanked text',
-  group = vim.api.nvim_create_augroup('HighlightYankedText', { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end
-})
-
-vim.api.nvim_create_autocmd('TermOpen', {
-  desc = 'Configure UI for builtin terminal',
-  group = vim.api.nvim_create_augroup('ConfigureTerminal', { clear = true }),
-  callback = function()
-    vim.cmd('startinsert')
-    vim.opt_local.number = false
-    vim.opt_local.signcolumn = 'no'
-  end
-})
-
-vim.api.nvim_create_autocmd('FileType', {
-  desc = 'Close windows with "q"',
-  group = vim.api.nvim_create_augroup('CloseWithQ', { clear = true }),
-  pattern = { 'help', 'checkhealth' },
-  callback = function(event)
-    vim.bo[event.buf].buflisted = false
-    vim.keymap.set('n', 'q', '<Cmd>close<CR>', { buffer = event.buf, silent = true, desc = 'Quit buffer' })
-  end
-})
 
 -- [[ Keymaps ]]
 
 vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.maplocalleader = '\\'
 
 -- Move by visible lines
 vim.keymap.set({ 'n', 'x' }, 'j', [[v:count == 0 ? 'gj' : 'j']], { expr = true })
@@ -92,15 +64,10 @@ vim.keymap.set('x', '<C-k>', ":m '<-2<CR>gv=gv", { desc = 'Move line(s) up' })
 -- Clear search highlights
 vim.keymap.set({ 'i', 'n' }, '<Esc>', '<Cmd>nohlsearch<CR><Esc>', { desc = 'Escape and clear search highlights' })
 
--- Open completion popup
-vim.keymap.set('i', '<C-Space>', function() return vim.o.omnifunc ~= '' and '<C-x><C-o>' or '<C-x><C-n>' end, { expr = true, desc = 'Open completion popup' })
-
 -- Format entire buffer
 vim.keymap.set('n', 'g=', 'mqgggqG`q', { desc = 'Format file' })
 
 -- Buffer navigation
-vim.keymap.set('n', 'gb', '<Cmd>bnext<CR>', { desc = 'Next buffer' })
-vim.keymap.set('n', 'gB', '<Cmd>bprevious<CR>', { desc = 'Previous buffer' })
 vim.keymap.set('n', ']b', '<Cmd>bnext<CR>', { desc = 'Next buffer' })
 vim.keymap.set('n', '[b', '<Cmd>bprevious<CR>', { desc = 'Previous buffer' })
 vim.keymap.set('n', ']B', '<Cmd>blast<CR>', { desc = 'Last buffer' })

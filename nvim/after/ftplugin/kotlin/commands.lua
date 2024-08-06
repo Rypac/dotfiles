@@ -1,6 +1,6 @@
 vim.api.nvim_buf_create_user_command(
   0,
-  "FoldImports",
+  'FoldImports',
   function()
     vim.cmd([[
       silent! normal! m`G
@@ -9,11 +9,6 @@ vim.api.nvim_buf_create_user_command(
     ]])
   end,
   {
-    desc = "Fold imports"
+    desc = 'Fold imports'
   }
 )
-
-vim.opt_local.formatprg = 'swift-format --assume-filename %'
-
-local lsp_config = require('lsp.sourcekit')
-vim.lsp.start(lsp_config)

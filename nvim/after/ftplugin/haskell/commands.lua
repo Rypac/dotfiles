@@ -1,6 +1,6 @@
 vim.api.nvim_buf_create_user_command(
   0,
-  "FoldImports",
+  'FoldImports',
   function()
     vim.cmd([[
       silent! normal! m`G
@@ -12,11 +12,6 @@ vim.api.nvim_buf_create_user_command(
     ]])
   end,
   {
-    desc = "Fold imports, exports and language pragmas"
+    desc = 'Fold imports, exports and language pragmas'
   }
 )
-
-vim.opt_local.formatprg = 'fourmolu --quiet --stdin-input-file %'
-
-local lsp_config = require('lsp.hls')
-vim.lsp.start(lsp_config)

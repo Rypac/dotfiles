@@ -100,9 +100,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 
     if client.supports_method('textDocument/completion') then
-      -- Supported on neovim v0.11 and up
-      -- vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
-      -- vim.keymap.set('i', '<C-Space>', '<cmd>lua vim.lsp.completion.trigger()<cr>')
+      if vim.fn.has('nvim-0.11') == 1 then
+        vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+      end
     end
 
     if client.supports_method('textDocument/documentHighlight') then

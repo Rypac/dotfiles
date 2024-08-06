@@ -35,6 +35,24 @@ dotfiles_link() {
         fi
     }
 
+    link_dir() {
+        target="$1"
+        origin="$DOTFILES_HOME/$target"
+        destination="$2"
+
+        if [ -L "$destination" ]; then
+            echo "Linking $target to $destination"
+        elif [ -d "$destination" ]; then
+            echo "$destination already exists"
+        elif [ -d "$origin" ]; then
+            echo "Linking $target to $destination"
+
+            ln -fns "$origin" "$destination"
+        else
+            echo "$target is not a directory"
+        fi
+    }
+
     # Source XDG environment variables
     . "$DOTFILES_HOME/zsh/zshenv"
 
@@ -45,12 +63,7 @@ dotfiles_link() {
     link ideavim "$XDG_CONFIG_HOME/ideavim"
     link lazygit "$XDG_CONFIG_HOME/lazygit"
     link npm "$XDG_CONFIG_HOME/npm"
-    link nvim "$XDG_CONFIG_HOME/nvim"
-    link nvim/lua "$XDG_CONFIG_HOME/nvim/lua"
-    link nvim/lua/lsp "$XDG_CONFIG_HOME/nvim/lua/lsp"
-    link nvim/lua/plugins "$XDG_CONFIG_HOME/nvim/lua/plugins"
-    link nvim/plugin "$XDG_CONFIG_HOME/nvim/after/plugin"
-    link nvim/ftplugin "$XDG_CONFIG_HOME/nvim/after/ftplugin"
+    link_dir nvim "$XDG_CONFIG_HOME/nvim"
     link zsh/zshenv "$HOME/.zshenv"
     link zsh/zprofile "$XDG_CONFIG_HOME/zsh/.zprofile"
     link zsh/zshrc "$XDG_CONFIG_HOME/zsh/.zshrc"
