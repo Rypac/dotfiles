@@ -19,15 +19,17 @@ set textobj-entire
 " Keybindings
 let mapleader=" "
 
-noremap <C-[> <esc>
-nnoremap <silent> <C-l> :nohlsearch<cr><C-l>
+map <C-[> <Esc>
+
+nnoremap <silent> <Esc> :nohlsearch<CR><Esc>
+nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
 
 nmap <C-j> <Action>(MoveStatementDown)
-vmap <C-j> <Action>(MoveStatementDown)
+xmap <C-j> <Action>(MoveStatementDown)
 nmap <C-k> <Action>(MoveStatementUp)
-vmap <C-k> <Action>(MoveStatementUp)
+xmap <C-k> <Action>(MoveStatementUp)
 
-nma <C-n> <Plug>NextWholeOccurrence
+nmap <C-n> <Plug>NextWholeOccurrence
 xmap <C-n> <Plug>NextWholeOccurrence
 nmap g<C-n> <Plug>NextOccurrence
 xmap g<C-n> <Plug>NextOccurrence
