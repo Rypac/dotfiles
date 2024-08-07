@@ -29,6 +29,18 @@ now(
   end
 )
 
+now(
+  function()
+    add('sainnhe/gruvbox-material')
+    require('plugins.gruvbox_material')
+
+    if not pcall(vim.cmd, 'colorscheme mini-gruvbox-material-' .. vim.o.background) then
+      vim.cmd('GenerateColorscheme gruvbox-material')
+      vim.cmd('colorscheme mini-gruvbox-material-' .. vim.o.background)
+    end
+  end
+)
+
 later(
   function()
     add('echasnovski/mini.extra')
