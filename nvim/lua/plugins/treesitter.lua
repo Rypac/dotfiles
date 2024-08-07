@@ -29,5 +29,44 @@ require('nvim-treesitter.configs').setup({
   },
   indent = {
     enable = true
+  },
+  textobjects = {
+    move = {
+      enable = true,
+      set_jumps = true,
+      goto_next_start = {
+        [']a'] = '@parameter.outer',
+        [']c'] = '@class.outer',
+        [']f'] = '@function.outer',
+        [']o'] = { '@conditional.inner', '@conditional.outer' }
+      },
+      goto_next_end = {
+        [']A'] = '@parameter.outer',
+        [']C'] = '@class.outer',
+        [']F'] = '@function.outer',
+        [']O'] = { '@conditional.inner', '@conditional.outer' }
+      },
+      goto_previous_start = {
+        ['[a'] = '@parameter.outer',
+        ['[c'] = '@class.outer',
+        ['[f'] = '@function.outer',
+        ['[o'] = { '@conditional.inner', '@conditional.outer' }
+      },
+      goto_previous_end = {
+        ['[A'] = '@parameter.outer',
+        ['[C'] = '@class.outer',
+        ['[F'] = '@function.outer',
+        ['[O'] = { '@conditional.inner', '@conditional.outer' }
+      }
+    },
+    swap = {
+      enable = true,
+      swap_next = {
+        ['<Leader>a'] = '@parameter.inner'
+      },
+      swap_previous = {
+        ['<Leader>A'] = '@parameter.inner'
+      }
+    }
   }
 })
