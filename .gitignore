@@ -20,3 +20,9 @@ ehthumbs.db
 # neovim
 nvim/colors
 nvim/spell
+
+# ignore local-only neovim overrides
+nvim/plugin/aaa_*.lua
+nvim/plugin/zzz_*.lua
+nvim/after/ftplugin/*/aaa_*.lua
+nvim/after/ftplugin/*/zzz_*.lua
