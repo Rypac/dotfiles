@@ -18,4 +18,5 @@ Thumbs.db
 ehthumbs.db
 
 # neovim
+nvim/colors
 nvim/spell

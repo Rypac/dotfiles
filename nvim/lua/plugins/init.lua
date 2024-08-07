@@ -22,6 +22,13 @@ now(
   end
 )
 
+now(
+  function()
+    add('echasnovski/mini.colors')
+    require('plugins.mini_colors')
+  end
+)
+
 later(
   function()
     add('echasnovski/mini.extra')
