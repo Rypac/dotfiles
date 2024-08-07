@@ -26,7 +26,7 @@ bindkey '^K' kill-line
 bindkey '^U' backward-kill-line
 bindkey '^Y' yank
 bindkey '^[^?' backward-kill-word
-bindkey "^?" backward-delete-char
+bindkey '^?' backward-delete-char
 
 # Enable line editor
 autoload -Uz edit-command-line
