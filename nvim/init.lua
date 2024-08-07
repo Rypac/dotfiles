@@ -95,6 +95,7 @@ vim.keymap.set('n', '<Leader>ot', '<Cmd>lua vim.o.showtabline = vim.o.showtablin
 vim.keymap.set('n', '<Leader>ow', '<Cmd>setlocal wrap! wrap?<CR>', { desc = 'Toggle "wrap"' })
 
 -- Diagnostic
+vim.keymap.set('n', '<Leader>e', vim.diagnostic.open_float, { desc = 'Open diagnostic information in float' })
 vim.keymap.set('n', '<Leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic quickfix list' })
 
 -- LSP
@@ -105,7 +106,7 @@ vim.keymap.set('n', 'gri', vim.lsp.buf.incoming_calls)
 vim.keymap.set('n', 'gro', vim.lsp.buf.outgoing_calls)
 vim.keymap.set('n', 'grs', vim.lsp.buf.document_symbol)
 vim.keymap.set('n', 'grn', vim.lsp.buf.rename)
-vim.keymap.set('n', 'g<Space>', vim.lsp.buf.code_action)
+vim.keymap.set('n', 'g.', vim.lsp.buf.code_action)
 vim.keymap.set('n', 'gra', vim.lsp.buf.code_action)
 vim.keymap.set('n', 'grt', '<Cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>')
 
