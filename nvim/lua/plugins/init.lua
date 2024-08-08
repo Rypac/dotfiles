@@ -34,9 +34,9 @@ now(
     add('sainnhe/gruvbox-material')
     require('plugins.gruvbox_material')
 
-    if not pcall(vim.cmd, 'colorscheme mini-gruvbox-material-' .. vim.o.background) then
+    if not pcall(vim.cmd, 'colorscheme mini-gruvbox-material') then
       vim.cmd('GenerateColorscheme gruvbox-material')
-      vim.cmd('colorscheme mini-gruvbox-material-' .. vim.o.background)
+      vim.cmd('colorscheme mini-gruvbox-material')
     end
   end
 )

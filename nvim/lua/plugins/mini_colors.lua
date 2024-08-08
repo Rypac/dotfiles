@@ -6,7 +6,7 @@ vim.api.nvim_create_user_command(
     local name = opts.args
 
     require('mini.colors')
-      .get_colorscheme(name, { new_name = 'mini-' .. name .. '-' .. vim.o.background })
+      .get_colorscheme(name, { new_name = 'mini-' .. name })
       :add_cterm_attributes()
       :add_terminal_colors()
       :write()
