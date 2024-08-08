@@ -18,13 +18,13 @@ brew bundle dump
 
 Launch Agents are background tasks which run in the context of an interactive user session.
 
-All of the `.plist` files in the [launch-agents](./launch-agents) directory will be automatically symlinked into the `~/Library/LaunchAgents` directory.
+All of the `.plist` files in the [LaunchAgents](./LaunchAgents) directory will be automatically symlinked into the `~/Library/LaunchAgents` directory.
 
 ## Services
 
 Services are actions that appear in the `Services` menu.
 
-All of the `.workflow` files in [services](./services) will be automatically symlinked into the `~/Library/Services` directory.
+All of the `.workflow` files in [Services](./Services) will be automatically symlinked into the `~/Library/Services` directory.
 
 ## Themes
 
