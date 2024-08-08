@@ -9,20 +9,13 @@ dotfiles_link() {
         origin="$DOTFILES_HOME/$target"
         destination="$2"
 
-        if [ -d "$origin" ]; then
-            if [ ! -d "$destination" ]; then
-                mkdir -p "$destination"
-            fi
-
-            echo "Linking $target/* to $destination"
-
-            for f in "$origin"/* "$origin"/.[^.]*; do
-                if [ -f "$f" ]; then
-                    name="$(basename "$f")"
-                    ln -fns "$f" "$destination/$name"
-                fi
-            done
-        elif [ -f "$origin" ]; then
+        if [ -L "$destination" ]; then
+            echo "Linking $target to $destination"
+        elif [ -f "$destination" ]; then
+            echo "WARNING: $destination already exists"
+        elif [ -d "$destination" ]; then
+            echo "WARNING: $destination already exists"
+        else
             destination_parent="$(dirname "$destination")"
 
             if [ ! -d "$destination_parent" ]; then
@@ -35,45 +28,54 @@ dotfiles_link() {
         fi
     }
 
-    link_dir() {
+    link_contents() {
         target="$1"
         origin="$DOTFILES_HOME/$target"
         destination="$2"
 
-        if [ -L "$destination" ]; then
-            echo "Linking $target to $destination"
-        elif [ -d "$destination" ]; then
-            echo "$destination already exists"
-        elif [ -d "$origin" ]; then
-            echo "Linking $target to $destination"
-
-            ln -fns "$origin" "$destination"
-        else
-            echo "$target is not a directory"
+        if [ ! -d "$destination" ]; then
+            mkdir -p "$destination"
         fi
+
+        echo "Linking $target/* to $destination"
+
+        for f in "$origin"/*; do
+            if [ -f "$f" ]; then
+                name="$(basename "$f")"
+                ln -fns "$f" "$destination/$name"
+            fi
+        done
+
+        for d in "$origin"/*/; do
+            if [ -d "$d" ]; then
+                name="$(basename "$d")"
+                ln -fns "$f" "$destination/$name"
+            fi
+        done
     }
 
     # Source XDG environment variables
     . "$DOTFILES_HOME/zsh/.zshenv"
 
-    link bin "$XDG_BIN_HOME"
-    link fourmolu "$XDG_CONFIG_HOME"
+    # Link common dotfiles
+    link_contents bin "$XDG_BIN_HOME"
+    link fourmolu/fourmolu.yaml "$XDG_CONFIG_HOME/fourmolu.yaml"
     link git "$XDG_CONFIG_HOME/git"
     link ghc "$XDG_CONFIG_HOME/ghc"
     link ideavim "$XDG_CONFIG_HOME/ideavim"
     link lazygit "$XDG_CONFIG_HOME/lazygit"
     link npm "$XDG_CONFIG_HOME/npm"
-    link_dir nvim "$XDG_CONFIG_HOME/nvim"
+    link nvim "$XDG_CONFIG_HOME/nvim"
+    link zsh "$XDG_CONFIG_HOME/zsh"
     link zsh/.zshenv "$HOME/.zshenv"
-    link zsh/.zprofile "$XDG_CONFIG_HOME/zsh/.zprofile"
-    link zsh/.zshrc "$XDG_CONFIG_HOME/zsh/.zshrc"
 
+    # Link host-specific dotfiles
     if [ "$(uname)" = Linux ]; then
         link sublime-merge "$XDG_CONFIG_HOME/sublime-merge/Packages/User"
         link sublime-text "$XDG_CONFIG_HOME/sublime-text/Packages/User"
     elif [ "$(uname)" = Darwin ]; then
-        link mac/LaunchAgents "$HOME/Library/LaunchAgents"
-        link mac/Services "$HOME/Library/Services"
+        link_contents mac/LaunchAgents "$HOME/Library/LaunchAgents"
+        link_contents mac/Services "$HOME/Library/Services"
         link sublime-merge "$HOME/Library/Application Support/Sublime Merge/Packages/User"
         link sublime-text "$HOME/Library/Application Support/Sublime Text/Packages/User"
     fi

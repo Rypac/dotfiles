@@ -17,12 +17,19 @@ Brewfile.lock.json
 Thumbs.db
 ehthumbs.db
 
-# neovim
+# Dotfiles specific ignores
+ghc/ghci_history
+
+lazygit/state.yml
+
 nvim/colors
 nvim/spell
-
-# ignore local-only neovim overrides
 nvim/plugin/aaa_*.lua
 nvim/plugin/zzz_*.lua
 nvim/after/ftplugin/*/aaa_*.lua
 nvim/after/ftplugin/*/zzz_*.lua
+
+zsh/*
+!zsh/.zprofile
+!zsh/.zshenv
+!zsh/.zshrc
