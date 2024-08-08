@@ -1,0 +1,16 @@
+{
+    "color_scheme": "auto",
+    "ensure_newline_at_eof_on_save": true,
+    "highlight_modified_tabs": true,
+    "translate_tabs_to_spaces": true,
+    "trim_trailing_white_space_on_save": "all",
+    "neovintageous_build_version": 13200,
+    "vintageous_use_super_keys": false,
+    "ignored_packages":
+    [
+        "NeoVintageous",
+        "Six",
+        "Vintage",
+        "Vintageous",
+    ],
+}
