@@ -54,7 +54,7 @@ dotfiles_link() {
     }
 
     # Source XDG environment variables
-    . "$DOTFILES_HOME/zsh/zshenv"
+    . "$DOTFILES_HOME/zsh/.zshenv"
 
     link bin "$XDG_BIN_HOME"
     link fourmolu "$XDG_CONFIG_HOME"
@@ -64,9 +64,9 @@ dotfiles_link() {
     link lazygit "$XDG_CONFIG_HOME/lazygit"
     link npm "$XDG_CONFIG_HOME/npm"
     link_dir nvim "$XDG_CONFIG_HOME/nvim"
-    link zsh/zshenv "$HOME/.zshenv"
-    link zsh/zprofile "$XDG_CONFIG_HOME/zsh/.zprofile"
-    link zsh/zshrc "$XDG_CONFIG_HOME/zsh/.zshrc"
+    link zsh/.zshenv "$HOME/.zshenv"
+    link zsh/.zprofile "$XDG_CONFIG_HOME/zsh/.zprofile"
+    link zsh/.zshrc "$XDG_CONFIG_HOME/zsh/.zshrc"
 
     if [ "$(uname)" = Linux ]; then
         link sublime-merge "$XDG_CONFIG_HOME/sublime-merge/Packages/User"
@@ -81,8 +81,8 @@ dotfiles_link() {
 
 dotfiles_provision() {
     # Source environment variables
-    . "$DOTFILES_HOME/zsh/zshenv"
-    . "$DOTFILES_HOME/zsh/zprofile"
+    . "$DOTFILES_HOME/zsh/.zshenv"
+    . "$DOTFILES_HOME/zsh/.zprofile"
 
     # Bootstrap XDG directories
     for xdgdir in "$XDG_BIN_HOME" "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_CACHE_HOME" "$XDG_STATE_HOME"; do
@@ -119,8 +119,8 @@ dotfiles_provision() {
 }
 
 dotfiles_environment() {
-    . "$DOTFILES_HOME/zsh/zshenv"
-    . "$DOTFILES_HOME/zsh/zprofile"
+    . "$DOTFILES_HOME/zsh/.zshenv"
+    . "$DOTFILES_HOME/zsh/.zprofile"
 
     if [ "$(uname)" = Darwin ]; then
         . "$DOTFILES_HOME/mac/Environment"
