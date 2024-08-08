@@ -128,12 +128,12 @@ function man-preview() {
 
 # Remove .DS_Store files recursively in a directory, default .
 function dspurge() {
-    find "${@:-.}" -type f -name .DS_Store -delete
+    find "${@:-.}" -type f -name .DS_Store -print -delete
 }
 
 # Remove node_modules directories recursively in a directory, default .
 function nmpurge() {
-    find "${@:-.}" -type d -name node_modules -prune -exec rm -rf '{}' +
+    find "${@:-.}" -type d -name node_modules -prune -print -exec rm -rI -- {} +
 }
 
 # Run a Haskell script in Cabal or Stack
