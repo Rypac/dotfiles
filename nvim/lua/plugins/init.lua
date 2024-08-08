@@ -24,19 +24,13 @@ now(
 
 now(
   function()
-    add('echasnovski/mini.colors')
-    require('plugins.mini_colors')
-  end
-)
+    local colorscheme_name = 'gruvbox-' .. vim.o.background .. '-hard-mix'
+    if not pcall(vim.cmd, 'colorscheme ' .. colorscheme_name) then
+      add('echasnovski/mini.colors')
+      add('sainnhe/gruvbox-material')
+      require('plugins.gruvbox_material')
 
-now(
-  function()
-    add('sainnhe/gruvbox-material')
-    require('plugins.gruvbox_material')
-
-    if not pcall(vim.cmd, 'colorscheme mini-gruvbox-material') then
-      vim.cmd('GenerateColorscheme gruvbox-material')
-      vim.cmd('colorscheme mini-gruvbox-material')
+      vim.cmd('colorscheme ' .. colorscheme_name)
     end
   end
 )
