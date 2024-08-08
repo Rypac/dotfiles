@@ -136,6 +136,11 @@ function nmpurge() {
     find "${@:-.}" -type d -name node_modules -prune -print -exec rm -rI -- {} +
 }
 
+# Remove broken symlinks recursively in a directory, default .
+function symprune() {
+    find -L "${@:-.}" -type l -print -exec rm -- {} +
+}
+
 # Run a Haskell script in Cabal or Stack
 function haskell-script() {
     if [ ! -f "$1" ]; then
