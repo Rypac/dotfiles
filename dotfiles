@@ -106,7 +106,7 @@ dotfiles_provision() {
 
     if [ "$(uname)" = Darwin ]; then
         # Set preferences
-        . "$DOTFILES_HOME/mac/Preferences"
+        . "$DOTFILES_HOME/mac/preferences.sh"
 
         # Update Homebrew and install packages
         if command -v brew >/dev/null 2>&1; then
@@ -125,7 +125,7 @@ dotfiles_environment() {
     . "$DOTFILES_HOME/zsh/.zprofile"
 
     if [ "$(uname)" = Darwin ]; then
-        . "$DOTFILES_HOME/mac/Environment"
+        . "$DOTFILES_HOME/mac/environment.sh"
     fi
 }
 
