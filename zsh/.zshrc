@@ -163,6 +163,33 @@ function haskell-script() {
     esac
 }
 
+# Update apps installed via brew
+function update-apps() {
+    if (( $+commands[brew] )); then
+        brew update
+        brew upgrade
+        brew bundle --file="$DOTFILES_HOME/mac/Brewfile"
+        brew cleanup --prune=all
+    fi
+}
+
+# Update anything Haskell related
+function update-haskell() {
+    if (( $+commands[ghcup] )); then
+        ghcup gc
+    fi
+
+    if (( $+commands[cabal] )); then
+        cabal update
+    fi
+}
+
+# Update everything
+function update-all() {
+    update-apps
+    update-haskell
+}
+
 # Load plugins
 for plugin (
     "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
