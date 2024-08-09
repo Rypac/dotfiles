@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 #
 # Export the contents of a SQLite database as JSON
 
@@ -16,11 +16,10 @@ echo '{}' >"$json_file"
 for table in $(sqlite3 "$database" "SELECT name FROM sqlite_schema WHERE type='table' ORDER BY name"); do
     json_file_content="$(cat "$json_file")"
 
-    jq \
+    echo "$json_file_content" | jq \
         --arg table_name "$table" \
         --argjson table_content "$(sqlite3 "$database" '.mode json' "SELECT * FROM $table")" \
         '.+={($table_name): $table_content}' \
-        <<<"$json_file_content" \
         >"$json_file"
 done
 
