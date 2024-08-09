@@ -24,12 +24,6 @@ export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export NODE_REPL_HISTORY="$XDG_STATE_HOME/node_repl_history"
 
-# Ruby
-export GEM_HOME="$XDG_DATA_HOME/gem"
-export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
-export BUNDLE_USER_HOME="$XDG_CONFIG_HOME/bundle"
-export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
-
 # Homebrew
 export HOMEBREW_BUNDLE_FILE="$DOTFILES_HOME/mac/Brewfile"
 
