@@ -59,6 +59,7 @@ dotfiles_link() {
 
     # Link common dotfiles
     link_contents bin "$XDG_BIN_HOME"
+    link alacritty "$XDG_CONFIG_HOME/alacritty"
     link fourmolu/fourmolu.yaml "$XDG_CONFIG_HOME/fourmolu.yaml"
     link git "$XDG_CONFIG_HOME/git"
     link ghc "$XDG_CONFIG_HOME/ghc"
