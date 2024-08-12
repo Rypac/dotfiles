@@ -88,5 +88,5 @@
     {
         "command": "switch_to_previous_window",
         "caption": "Switch: To Previous Window"
-    },
+    }
 ]

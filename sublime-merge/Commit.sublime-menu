@@ -5,12 +5,12 @@
         "command": "show_command_palette",
         "args": {
             "command": "git",
-            "args": {"argv": ["rebase", "$commit~1", "--onto", "$select_branch"]},
-        },
+            "args": {"argv": ["rebase", "$commit~1", "--onto", "$select_branch"]}
+        }
     },
     {
         "caption": "Start Interactive Rebase…",
         "command": "git",
-        "args": {"argv": ["rebase", "-i", "$commit~1"]},
-    },
+        "args": {"argv": ["rebase", "-i", "$commit~1"]}
+    }
 ]

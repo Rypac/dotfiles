@@ -4,11 +4,10 @@
     "highlight_modified_tabs": true,
     "translate_tabs_to_spaces": true,
     "trim_trailing_white_space_on_save": "all",
-    "ignored_packages":
-    [
+    "ignored_packages": [
         "NeoVintageous",
         "Six",
         "Vintage",
-        "Vintageous",
-    ],
+        "Vintageous"
+    ]
 }

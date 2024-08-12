@@ -7,5 +7,5 @@
     {
         "caption": "Blame",
         "command": "blame", "args": { "path": "$path" }
-    },
+    }
 ]
