@@ -4,6 +4,9 @@ export EDITOR=nvim
 export PAGER=less
 export LESSHISTFILE=-
 
+# Use a more readable grey for autosuggestions
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=243'
+
 # Options
 setopt inc_append_history
 
@@ -65,14 +68,6 @@ if (( $+commands[fzf] )); then
     if (( $+commands[rg] )); then
         export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
     fi
-
-    function preview() {
-        if (( $+commands[bat] )); then
-            fzf --preview 'bat --style=full --color=always {}'
-        else
-            fzf --preview 'cat {}'
-        fi
-    }
 fi
 
 if (( $+commands[zoxide] )); then
@@ -88,23 +83,24 @@ alias ls='ls -G'
 alias ll='ls -lhF --color=auto'
 alias la='ls -lahF --color=auto'
 
-# Function abbreviations
+# Command abbreviations
 alias f=finder
 alias ql=quick-look
 alias manp=man-preview
+alias lg=lazygit
 
 # Clear the clipboard
 function pbclear() {
     printf '' | pbcopy
 }
 
-if (( $+commands[bat] )); then
-    alias cat=bat
-fi
-
-if (( $+commands[lazygit] )); then
-    alias lg=lazygit
-fi
+function preview() {
+    if (( $+commands[bat] )); then
+        fzf --preview 'bat --style=full --color=always {}'
+    else
+        fzf --preview 'cat {}'
+    fi
+}
 
 # Create a new directory and automatically naviate there
 function mkcd() {
