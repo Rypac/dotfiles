@@ -1,1 +1,1 @@
-vim.opt_local.formatprg = 'swift-format --assume-filename %'
+vim.opt_local.formatprg = "swift-format --assume-filename %"

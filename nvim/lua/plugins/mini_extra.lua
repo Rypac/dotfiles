@@ -1,1 +1,1 @@
-require('mini.extra').setup()
+require("mini.extra").setup()

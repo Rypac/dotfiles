@@ -1,1 +1,1 @@
-vim.opt_local.formatprg = 'cabal-gild --stdin %'
+vim.opt_local.formatprg = "cabal-gild --stdin %"

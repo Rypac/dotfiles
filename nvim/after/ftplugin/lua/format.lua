@@ -1,1 +1,1 @@
-vim.opt_local.formatprg = 'stylua --indent-type Spaces --indent-width 2 --stdin-filepath % -'
+vim.opt_local.formatprg = "stylua --search-parent-directories --stdin-filepath % -"

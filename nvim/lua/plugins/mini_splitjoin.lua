@@ -1,1 +1,1 @@
-require('mini.splitjoin').setup()
+require("mini.splitjoin").setup()
