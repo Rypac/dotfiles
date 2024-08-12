@@ -199,9 +199,6 @@ fi
 # Ensure local executable directory is first on path
 path=("$XDG_BIN_HOME" $path)
 
-# Source dotfiles management functions
-source "$DOTFILES_HOME/dotfiles"
-
 # Source local zshrc
 if [ -r "$ZDOTDIR/.zshrc.local" ]; then
     source "$ZDOTDIR/.zshrc.local"

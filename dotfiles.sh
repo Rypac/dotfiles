@@ -57,8 +57,11 @@ dotfiles_link() {
     # Source XDG environment variables
     . "$DOTFILES_HOME/zsh/.zshenv"
 
+    # Link executables
+    link dotfiles.sh "$XDG_BIN_HOME/dotfiles"
+    link bin/sqlite-to-json.sh "$XDG_BIN_HOME/sqlite-to-json"
+
     # Link common dotfiles
-    link_contents bin "$XDG_BIN_HOME"
     link alacritty "$XDG_CONFIG_HOME/alacritty"
     link fourmolu/fourmolu.yaml "$XDG_CONFIG_HOME/fourmolu.yaml"
     link git "$XDG_CONFIG_HOME/git"
