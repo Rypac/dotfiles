@@ -24,7 +24,6 @@ vim.opt.ignorecase = true
 vim.opt.inccommand = 'split'
 vim.opt.infercase = true
 vim.opt.smartcase = true
-vim.opt.smartindent = true
 
 -- Folding
 vim.opt.foldmethod = 'indent'
@@ -39,8 +38,8 @@ vim.opt.shortmess:append({ c = true, C = true })
 -- Indentation
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
-vim.opt.softtabstop = 2
 vim.opt.tabstop = 2
+vim.opt.smartindent = true
 
 -- General
 vim.opt.backup = false
@@ -64,27 +63,24 @@ vim.keymap.set('x', '<C-j>', ":m '>+1<CR>gv=gv", { desc = 'Move line(s) down' })
 vim.keymap.set('x', '<C-k>', ":m '<-2<CR>gv=gv", { desc = 'Move line(s) up' })
 
 -- Clear search highlights
-vim.keymap.set({ 'i', 'n' }, '<Esc>', '<Cmd>nohlsearch<CR><Esc>', { desc = 'Escape and clear search highlights' })
+vim.keymap.set({ 'i', 'n' }, '<Esc>', '<Cmd>nohlsearch<CR><Esc>')
 
 -- Format entire buffer
 vim.keymap.set('n', 'g=', 'mqgggqG`q', { desc = 'Format file' })
 
--- Buffer navigation
+-- Navigation
 vim.keymap.set('n', ']b', '<Cmd>bnext<CR>', { desc = 'Next buffer' })
 vim.keymap.set('n', '[b', '<Cmd>bprevious<CR>', { desc = 'Previous buffer' })
 vim.keymap.set('n', ']B', '<Cmd>blast<CR>', { desc = 'Last buffer' })
 vim.keymap.set('n', '[B', '<Cmd>bfirst<CR>', { desc = 'First buffer' })
-
--- Tab navigation
 vim.keymap.set('n', ']t', '<Cmd>tabnext<CR>', { desc = 'Next tab' })
 vim.keymap.set('n', '[t', '<Cmd>tabprevious<CR>', { desc = 'Previous tab' })
 vim.keymap.set('n', ']T', '<Cmd>tablast<CR>', { desc = 'Last tab' })
 vim.keymap.set('n', '[T', '<Cmd>tabfirst<CR>', { desc = 'First tab' })
 
 -- Option toggling
-vim.keymap.set('n', '<Leader>ob', '<Cmd>lua vim.o.bg = vim.o.bg == "dark" and "light" or "dark"<CR>', { desc = 'Toggle "background"' })
+vim.keymap.set('n', '<Leader>ob', '<Cmd>lua vim.o.bg = vim.o.bg == "dark" and "light" or "dark"<CR><Cmd>set background?<CR>', { desc = 'Toggle "background"' })
 vim.keymap.set('n', '<Leader>oc', '<Cmd>setlocal cursorline! cursorline?<CR>', { desc = 'Toggle "cursorline"' })
-vim.keymap.set('n', '<Leader>oC', '<Cmd>setlocal cursorcolumn! cursorcolumn?<CR>', { desc = 'Toggle "cursorcolumn"' })
 vim.keymap.set('n', '<Leader>oh', '<Cmd>setlocal hlsearch! hlsearch?<CR>', { desc = 'Toggle search highlight' })
 vim.keymap.set('n', '<Leader>oi', '<Cmd>setlocal ignorecase! ignorecase?<CR>', { desc = 'Toggle "ignorecase"' })
 vim.keymap.set('n', '<Leader>ol', '<Cmd>setlocal linebreak! linebreak?<CR>', { desc = 'Toggle "linebreak"' })
@@ -95,12 +91,12 @@ vim.keymap.set('n', '<Leader>ot', '<Cmd>lua vim.o.showtabline = vim.o.showtablin
 vim.keymap.set('n', '<Leader>ow', '<Cmd>setlocal wrap! wrap?<CR>', { desc = 'Toggle "wrap"' })
 
 -- Diagnostic
-vim.keymap.set('n', '<Leader>e', vim.diagnostic.open_float, { desc = 'Open diagnostic information in float' })
-vim.keymap.set('n', '<Leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic quickfix list' })
+vim.keymap.set('n', '<Leader>e', vim.diagnostic.open_float, { desc = 'Open diagnostic in float' })
+vim.keymap.set('n', '<Leader>q', vim.diagnostic.setloclist, { desc = 'Open quickfix list' })
 
 -- LSP
-vim.keymap.set('n', 'gy', vim.lsp.buf.type_definition)
-vim.keymap.set('n', 'gY', vim.lsp.buf.implementation)
+vim.keymap.set('n', 'gry', vim.lsp.buf.type_definition)
+vim.keymap.set('n', 'grY', vim.lsp.buf.implementation)
 vim.keymap.set('n', 'grr', vim.lsp.buf.references)
 vim.keymap.set('n', 'gri', vim.lsp.buf.incoming_calls)
 vim.keymap.set('n', 'gro', vim.lsp.buf.outgoing_calls)
