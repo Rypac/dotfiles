@@ -35,7 +35,7 @@ bindkey '^?' backward-delete-char
 autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '^X^E' edit-command-line
-bindkey -M vicmd '^V' edit-command-line
+bindkey -M vicmd ' ' edit-command-line
 
 # Display keymap aware prompt
 function zle-line-init zle-keymap-select {
