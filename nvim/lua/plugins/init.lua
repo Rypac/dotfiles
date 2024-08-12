@@ -24,26 +24,16 @@ now(
 
 now(
   function()
-    local set_colorscheme = 'colorscheme gruvbox-' .. vim.o.background
-    if not pcall(vim.cmd, set_colorscheme) then
-      add('echasnovski/mini.colors')
-      add('sainnhe/gruvbox-material')
-      require('plugins.gruvbox_material')
-      vim.cmd(set_colorscheme)
-    end
-  end
-)
-
-later(
-  function()
-    add('echasnovski/mini.extra')
-    require('plugins.mini_extra')
+    add('sainnhe/gruvbox-material')
+    add('echasnovski/mini.colors')
+    require('plugins.gruvbox_material')
   end
 )
 
 later(
   function()
     add('echasnovski/mini.ai')
+    add('echasnovski/mini.extra')
     require('plugins.mini_ai')
   end
 )
@@ -51,6 +41,7 @@ later(
 later(
   function()
     add('echasnovski/mini.pick')
+    add('echasnovski/mini.extra')
     require('plugins.mini_pick')
   end
 )
