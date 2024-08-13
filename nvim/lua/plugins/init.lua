@@ -33,14 +33,17 @@ now(function()
 end)
 
 later(function()
-  add("echasnovski/mini.ai")
   add("echasnovski/mini.extra")
+  require("plugins.mini_extra")
+end)
+
+later(function()
+  add("echasnovski/mini.ai")
   require("plugins.mini_ai")
 end)
 
 later(function()
   add("echasnovski/mini.pick")
-  add("echasnovski/mini.extra")
   require("plugins.mini_pick")
 end)
 
