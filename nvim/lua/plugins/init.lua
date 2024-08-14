@@ -21,60 +21,64 @@ require("mini.deps").setup({
 
 local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 
+local source = function(path)
+  dofile(vim.fn.stdpath("config") .. "/lua/" .. path .. ".lua")
+end
+
 now(function()
   add("echasnovski/mini.statusline")
-  require("plugins.mini_statusline")
+  source("plugins/mini_statusline")
 end)
 
 now(function()
   add("sainnhe/gruvbox-material")
   add("echasnovski/mini.colors")
-  require("plugins.gruvbox_material")
+  source("plugins/gruvbox_material")
 end)
 
 now(function()
   add("echasnovski/mini.sessions")
-  require("plugins.mini_sessions")
+  source("plugins/mini_sessions")
 end)
 
 now(function()
   add("echasnovski/mini.starter")
-  require("plugins.mini_starter")
+  source("plugins/mini_starter")
 end)
 
 later(function()
   add("echasnovski/mini.extra")
-  require("plugins.mini_extra")
+  source("plugins/mini_extra")
 end)
 
 later(function()
   add("echasnovski/mini.ai")
-  require("plugins.mini_ai")
+  source("plugins/mini_ai")
 end)
 
 later(function()
   add("echasnovski/mini.jump2d")
-  require("plugins.mini_jump2d")
+  source("plugins/mini_jump2d")
 end)
 
 later(function()
   add("echasnovski/mini.pairs")
-  require("plugins.mini_pairs")
+  source("plugins/mini_pairs")
 end)
 
 later(function()
   add("echasnovski/mini.pick")
-  require("plugins.mini_pick")
+  source("plugins/mini_pick")
 end)
 
 later(function()
   add("echasnovski/mini.splitjoin")
-  require("plugins.mini_splitjoin")
+  source("plugins/mini_splitjoin")
 end)
 
 later(function()
   add("echasnovski/mini.surround")
-  require("plugins.mini_surround")
+  source("plugins/mini_surround")
 end)
 
 later(function()
@@ -88,12 +92,12 @@ later(function()
     },
   })
   add("nvim-treesitter/nvim-treesitter-textobjects")
-  require("plugins.treesitter")
+  source("plugins/treesitter")
 end)
 
 later(function()
   add("stevearc/oil.nvim")
-  require("plugins.oil")
+  source("plugins/oil")
 end)
 
 later(function()
