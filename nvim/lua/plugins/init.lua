@@ -43,6 +43,11 @@ later(function()
 end)
 
 later(function()
+  add("echasnovski/mini.jump2d")
+  require("plugins.mini_jump2d")
+end)
+
+later(function()
   add("echasnovski/mini.pairs")
   require("plugins.mini_pairs")
 end)
