@@ -1,125 +1,116 @@
--- [[ Options ]]
-
--- UI
-vim.opt.breakindent = true
-vim.opt.cursorline = false
-vim.opt.linebreak = true
-vim.opt.mouse = "a"
-vim.opt.number = true
-vim.opt.ruler = false
-vim.opt.shortmess:append({ I = true })
-vim.opt.showcmd = false
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-vim.opt.updatetime = 1000
-vim.opt.wrap = false
-vim.cmd("colorscheme retrobox")
-
--- Display whitespace characters
-vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
-
--- Editing
-vim.opt.ignorecase = true
-vim.opt.inccommand = "split"
-vim.opt.infercase = true
-vim.opt.smartcase = true
-
--- Folding
-vim.opt.foldmethod = "indent"
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.opt.foldtext = ""
-vim.opt.foldlevel = 99
-
--- Completions
-vim.opt.completeopt = { "menu", "menuone", "noinsert" }
-vim.opt.shortmess:append({ c = true, C = true })
-
--- Indentation
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
-vim.opt.smartindent = true
-
--- General
-vim.opt.backup = false
-vim.opt.swapfile = false
-vim.opt.undofile = true
-vim.opt.writebackup = false
-
--- [[ Keymaps ]]
-
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
--- Move by visible lines
-vim.keymap.set({ "n", "x" }, "j", [[v:count == 0 ? 'gj' : 'j']], { expr = true })
-vim.keymap.set({ "n", "x" }, "k", [[v:count == 0 ? 'gk' : 'k']], { expr = true })
-
--- Move lines
-vim.keymap.set("n", "<C-j>", "<Cmd>m .+1<CR>==", { desc = "Move line down" })
-vim.keymap.set("n", "<C-k>", "<Cmd>m .-2<CR>==", { desc = "Move line up" })
-vim.keymap.set("x", "<C-j>", ":m '>+1<CR>gv=gv", { desc = "Move line(s) down" })
-vim.keymap.set("x", "<C-k>", ":m '<-2<CR>gv=gv", { desc = "Move line(s) up" })
-
--- Clear search highlights
-vim.keymap.set({ "i", "n" }, "<Esc>", "<Cmd>nohlsearch<CR><Esc>")
-
--- Format entire buffer
-vim.keymap.set("n", "g=", "mqgggqG`q", { desc = "Format file" })
-
--- Navigation
-vim.keymap.set("n", "]b", "<Cmd>bnext<CR>", { desc = "Next buffer" })
-vim.keymap.set("n", "[b", "<Cmd>bprevious<CR>", { desc = "Previous buffer" })
-vim.keymap.set("n", "]B", "<Cmd>blast<CR>", { desc = "Last buffer" })
-vim.keymap.set("n", "[B", "<Cmd>bfirst<CR>", { desc = "First buffer" })
-vim.keymap.set("n", "]t", "<Cmd>tabnext<CR>", { desc = "Next tab" })
-vim.keymap.set("n", "[t", "<Cmd>tabprevious<CR>", { desc = "Previous tab" })
-vim.keymap.set("n", "]T", "<Cmd>tablast<CR>", { desc = "Last tab" })
-vim.keymap.set("n", "[T", "<Cmd>tabfirst<CR>", { desc = "First tab" })
-
--- Option toggling
-vim.keymap.set(
-  "n",
-  "<Leader>ob",
-  '<Cmd>lua vim.o.bg = vim.o.bg == "dark" and "light" or "dark"<CR><Cmd>set background?<CR>'
-)
-vim.keymap.set("n", "<Leader>oc", "<Cmd>setlocal cursorline! cursorline?<CR>")
-vim.keymap.set("n", "<Leader>oh", "<Cmd>setlocal hlsearch! hlsearch?<CR>")
-vim.keymap.set("n", "<Leader>oi", "<Cmd>setlocal ignorecase! ignorecase?<CR>")
-vim.keymap.set("n", "<Leader>ol", "<Cmd>setlocal linebreak! linebreak?<CR>")
-vim.keymap.set("n", "<Leader>on", "<Cmd>setlocal number! number?<CR>")
-vim.keymap.set("n", "<Leader>or", "<Cmd>setlocal relativenumber! relativenumber?<CR>")
-vim.keymap.set("n", "<Leader>os", "<Cmd>setlocal spell! spell?<CR>")
-vim.keymap.set(
-  "n",
-  "<Leader>ot",
-  "<Cmd>lua vim.o.showtabline = vim.o.showtabline == 1 and 2 or 1<CR>"
-)
-vim.keymap.set("n", "<Leader>ow", "<Cmd>setlocal wrap! wrap?<CR>")
-
--- Diagnostic
-vim.keymap.set("n", "<Leader>e", vim.diagnostic.open_float, { desc = "Open diagnostic in float" })
-vim.keymap.set("n", "<Leader>q", vim.diagnostic.setloclist, { desc = "Open quickfix list" })
-
--- LSP
-vim.keymap.set("n", "gry", vim.lsp.buf.type_definition)
-vim.keymap.set("n", "grY", vim.lsp.buf.implementation)
-vim.keymap.set("n", "grr", vim.lsp.buf.references)
-vim.keymap.set("n", "gri", vim.lsp.buf.incoming_calls)
-vim.keymap.set("n", "gro", vim.lsp.buf.outgoing_calls)
-vim.keymap.set("n", "grs", vim.lsp.buf.document_symbol)
-vim.keymap.set("n", "grn", vim.lsp.buf.rename)
-vim.keymap.set("n", "g.", vim.lsp.buf.code_action)
-vim.keymap.set("n", "gra", vim.lsp.buf.code_action)
-vim.keymap.set(
-  "n",
-  "grt",
-  "<Cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>"
-)
-
--- [[ Plugins ]]
-
-if not pcall(require, "plugins") then
-  vim.notify("No plugins loaded", vim.log.levels.INFO)
+local path_package = vim.fn.stdpath("data") .. "/site/"
+local mini_path = path_package .. "pack/deps/start/mini.deps"
+if not vim.loop.fs_stat(mini_path) then
+  vim.cmd('echo "Installing `mini.deps`" | redraw')
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/echasnovski/mini.deps",
+    mini_path,
+  })
+  vim.cmd("packadd mini.deps | helptags ALL")
+  vim.cmd('echo "Installed `mini.deps`" | redraw')
 end
+
+require("mini.deps").setup({
+  path = {
+    package = path_package,
+  },
+})
+
+local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
+
+local source = function(path)
+  dofile(vim.fn.stdpath("config") .. "/lua/user/" .. path)
+end
+
+now(function()
+  source("config/options.lua")
+  source("config/autocmds.lua")
+  source("config/keymaps.lua")
+end)
+
+now(function()
+  add("sainnhe/gruvbox-material")
+  add("echasnovski/mini.colors")
+  source("plugins/gruvbox_material.lua")
+end)
+
+now(function()
+  add("echasnovski/mini.sessions")
+  source("plugins/mini_sessions.lua")
+end)
+
+now(function()
+  add("echasnovski/mini.starter")
+  source("plugins/mini_starter.lua")
+end)
+
+now(function()
+  add("echasnovski/mini.statusline")
+  source("plugins/mini_statusline.lua")
+end)
+
+later(function()
+  add("echasnovski/mini.extra")
+  source("plugins/mini_extra.lua")
+end)
+
+later(function()
+  add("echasnovski/mini.ai")
+  source("plugins/mini_ai.lua")
+end)
+
+later(function()
+  add("echasnovski/mini.jump2d")
+  source("plugins/mini_jump2d.lua")
+end)
+
+later(function()
+  add("echasnovski/mini.pairs")
+  source("plugins/mini_pairs.lua")
+end)
+
+later(function()
+  add("echasnovski/mini.pick")
+  source("plugins/mini_pick.lua")
+end)
+
+later(function()
+  add("echasnovski/mini.splitjoin")
+  source("plugins/mini_splitjoin.lua")
+end)
+
+later(function()
+  add("echasnovski/mini.surround")
+  source("plugins/mini_surround.lua")
+end)
+
+later(function()
+  add("echasnovski/mini.visits")
+  source("plugins/mini_visits.lua")
+end)
+
+later(function()
+  add({
+    source = "nvim-treesitter/nvim-treesitter",
+    checkout = "master",
+    hooks = {
+      post_checkout = function()
+        vim.cmd("TSUpdate")
+      end,
+    },
+  })
+  add("nvim-treesitter/nvim-treesitter-textobjects")
+  source("plugins/treesitter.lua")
+end)
+
+later(function()
+  add("stevearc/oil.nvim")
+  source("plugins/oil.lua")
+end)
+
+later(function()
+  add("tpope/vim-fugitive")
+end)
