@@ -28,6 +28,27 @@ pick.registry.config = function()
   })
 end
 
+pick.registry.projects = function()
+  return MiniExtra.pickers.explorer({
+    cwd = vim.fn.expand("~/Developer/Projects"),
+    filter = function(data)
+      return data.fs_type == "directory"
+    end,
+  }, {
+    source = {
+      choose = function(item)
+        vim.schedule(function()
+          pick.builtin.files(nil, {
+            source = {
+              cwd = item.path,
+            },
+          })
+        end)
+      end,
+    },
+  })
+end
+
 vim.keymap.set("n", "<Leader><CR>", "<Cmd>Pick resume<CR>")
 vim.keymap.set("n", "<Leader><Leader>", "<Cmd>Pick files<CR>")
 vim.keymap.set("n", "<Leader>b", "<Cmd>Pick buffers<CR>")
