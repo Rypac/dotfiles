@@ -32,6 +32,11 @@ now(function()
   require("plugins.gruvbox_material")
 end)
 
+now(function()
+  add("echasnovski/mini.sessions")
+  require("plugins.mini_sessions")
+end)
+
 later(function()
   add("echasnovski/mini.extra")
   require("plugins.mini_extra")
