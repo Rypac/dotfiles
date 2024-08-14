@@ -43,6 +43,11 @@ later(function()
 end)
 
 later(function()
+  add("echasnovski/mini.pairs")
+  require("plugins.mini_pairs")
+end)
+
+later(function()
   add("echasnovski/mini.pick")
   require("plugins.mini_pick")
 end)
