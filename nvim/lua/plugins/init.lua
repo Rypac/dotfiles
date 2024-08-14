@@ -37,6 +37,11 @@ now(function()
   require("plugins.mini_sessions")
 end)
 
+now(function()
+  add("echasnovski/mini.starter")
+  require("plugins.mini_starter")
+end)
+
 later(function()
   add("echasnovski/mini.extra")
   require("plugins.mini_extra")
