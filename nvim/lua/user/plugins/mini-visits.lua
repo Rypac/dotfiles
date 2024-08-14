@@ -38,7 +38,9 @@ vim.keymap.set("n", "<Leader>vd", function()
   vim.ui.select(MiniVisits.list_labels(), {
     prompt = "Select a label to remove:",
   }, function(label)
-    MiniVisits.remove_label(label)
+    if label ~= nil then
+      MiniVisits.remove_label(label)
+    end
   end)
 end, {
   desc = "Remove label",
