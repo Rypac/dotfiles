@@ -106,10 +106,16 @@ later(function()
   source("plugins/treesitter.lua")
 end)
 
-later(function()
+local oil = function()
   add("stevearc/oil.nvim")
   source("plugins/oil.lua")
-end)
+end
+
+if vim.fn.argc() == 1 and vim.fn.isdirectory(vim.fn.argv(0)) then
+  now(oil)
+else
+  later(oil)
+end
 
 later(function()
   add("tpope/vim-fugitive")
