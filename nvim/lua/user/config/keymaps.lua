@@ -1,65 +1,64 @@
+local map = vim.keymap.set
+
 -- Move by visible lines
-vim.keymap.set({ "n", "x" }, "j", [[v:count == 0 ? 'gj' : 'j']], { expr = true })
-vim.keymap.set({ "n", "x" }, "k", [[v:count == 0 ? 'gk' : 'k']], { expr = true })
+map({ "n", "x" }, "j", [[v:count == 0 ? 'gj' : 'j']], { expr = true })
+map({ "n", "x" }, "k", [[v:count == 0 ? 'gk' : 'k']], { expr = true })
 
 -- Move lines
-vim.keymap.set("n", "<C-j>", "<Cmd>m .+1<CR>==", { desc = "Move line down" })
-vim.keymap.set("n", "<C-k>", "<Cmd>m .-2<CR>==", { desc = "Move line up" })
-vim.keymap.set("x", "<C-j>", ":m '>+1<CR>gv=gv", { desc = "Move line(s) down" })
-vim.keymap.set("x", "<C-k>", ":m '<-2<CR>gv=gv", { desc = "Move line(s) up" })
+map("n", "<C-j>", "<Cmd>m .+1<CR>==", { desc = "Move line down" })
+map("n", "<C-k>", "<Cmd>m .-2<CR>==", { desc = "Move line up" })
+map("x", "<C-j>", ":m '>+1<CR>gv=gv", { desc = "Move line(s) down" })
+map("x", "<C-k>", ":m '<-2<CR>gv=gv", { desc = "Move line(s) up" })
 
 -- Clear search highlights
-vim.keymap.set({ "i", "n" }, "<Esc>", "<Cmd>nohlsearch<CR><Esc>")
+map({ "i", "n" }, "<Esc>", "<Cmd>nohlsearch<CR><Esc>")
 
 -- Format entire buffer
-vim.keymap.set("n", "g=", "mqgggqG`q", { desc = "Format file" })
+map("n", "g=", "mqgggqG`q", { desc = "Format file" })
 
--- Navigation
-vim.keymap.set("n", "]b", "<Cmd>bnext<CR>", { desc = "Next buffer" })
-vim.keymap.set("n", "[b", "<Cmd>bprevious<CR>", { desc = "Previous buffer" })
-vim.keymap.set("n", "]B", "<Cmd>blast<CR>", { desc = "Last buffer" })
-vim.keymap.set("n", "[B", "<Cmd>bfirst<CR>", { desc = "First buffer" })
-vim.keymap.set("n", "]t", "<Cmd>tabnext<CR>", { desc = "Next tab" })
-vim.keymap.set("n", "[t", "<Cmd>tabprevious<CR>", { desc = "Previous tab" })
-vim.keymap.set("n", "]T", "<Cmd>tablast<CR>", { desc = "Last tab" })
-vim.keymap.set("n", "[T", "<Cmd>tabfirst<CR>", { desc = "First tab" })
+-- Buffer navigation
+map("n", "]b", "<Cmd>bnext<CR>", { desc = "Next buffer" })
+map("n", "[b", "<Cmd>bprevious<CR>", { desc = "Previous buffer" })
+map("n", "]B", "<Cmd>blast<CR>", { desc = "Last buffer" })
+map("n", "[B", "<Cmd>bfirst<CR>", { desc = "First buffer" })
+
+-- Tab navigation
+map("n", "]t", "<Cmd>tabnext<CR>", { desc = "Next tab" })
+map("n", "[t", "<Cmd>tabprevious<CR>", { desc = "Previous tab" })
+map("n", "]T", "<Cmd>tablast<CR>", { desc = "Last tab" })
+map("n", "[T", "<Cmd>tabfirst<CR>", { desc = "First tab" })
 
 -- Option toggling
-vim.keymap.set(
+map(
   "n",
   "<Leader>ob",
   '<Cmd>lua vim.o.bg = vim.o.bg == "dark" and "light" or "dark"<CR><Cmd>set background?<CR>'
 )
-vim.keymap.set("n", "<Leader>oc", "<Cmd>setlocal cursorline! cursorline?<CR>")
-vim.keymap.set("n", "<Leader>oh", "<Cmd>setlocal hlsearch! hlsearch?<CR>")
-vim.keymap.set("n", "<Leader>oi", "<Cmd>setlocal ignorecase! ignorecase?<CR>")
-vim.keymap.set("n", "<Leader>ol", "<Cmd>setlocal linebreak! linebreak?<CR>")
-vim.keymap.set("n", "<Leader>on", "<Cmd>setlocal number! number?<CR>")
-vim.keymap.set("n", "<Leader>or", "<Cmd>setlocal relativenumber! relativenumber?<CR>")
-vim.keymap.set("n", "<Leader>os", "<Cmd>setlocal spell! spell?<CR>")
-vim.keymap.set(
-  "n",
-  "<Leader>ot",
-  "<Cmd>lua vim.o.showtabline = vim.o.showtabline == 1 and 2 or 1<CR>"
-)
-vim.keymap.set("n", "<Leader>ow", "<Cmd>setlocal wrap! wrap?<CR>")
+map("n", "<Leader>oc", "<Cmd>setlocal cursorline! cursorline?<CR>")
+map("n", "<Leader>oC", "<Cmd>setlocal cursorcolumn! cursorcolumn?<CR>")
+map("n", "<Leader>oh", "<Cmd>setlocal hlsearch! hlsearch?<CR>")
+map("n", "<Leader>oi", "<Cmd>setlocal ignorecase! ignorecase?<CR>")
+map("n", "<Leader>ol", "<Cmd>setlocal linebreak! linebreak?<CR>")
+map("n", "<Leader>on", "<Cmd>setlocal number! number?<CR>")
+map("n", "<Leader>or", "<Cmd>setlocal relativenumber! relativenumber?<CR>")
+map("n", "<Leader>os", "<Cmd>setlocal spell! spell?<CR>")
+map("n", "<Leader>oS", "<Cmd>lua vim.o.signcolumn = vim.o.signcolumn == 'yes' and 'auto' or 'yes'<CR>")
+map("n", "<Leader>ot", "<Cmd>lua vim.o.showtabline = vim.o.showtabline == 1 and 2 or 1<CR>")
+map("n", "<Leader>ow", "<Cmd>setlocal wrap! wrap?<CR>")
 
 -- Diagnostic
-vim.keymap.set("n", "<Leader>e", vim.diagnostic.open_float, { desc = "Open diagnostic in float" })
-vim.keymap.set("n", "<Leader>q", vim.diagnostic.setloclist, { desc = "Open quickfix list" })
+map("n", "<Leader>e", vim.diagnostic.open_float, { desc = "Open diagnostic in float" })
+map("n", "<Leader>q", vim.diagnostic.setloclist, { desc = "Open quickfix list" })
 
 -- LSP
-vim.keymap.set("n", "gry", vim.lsp.buf.type_definition)
-vim.keymap.set("n", "grY", vim.lsp.buf.implementation)
-vim.keymap.set("n", "grr", vim.lsp.buf.references)
-vim.keymap.set("n", "gri", vim.lsp.buf.incoming_calls)
-vim.keymap.set("n", "gro", vim.lsp.buf.outgoing_calls)
-vim.keymap.set("n", "grs", vim.lsp.buf.document_symbol)
-vim.keymap.set("n", "grn", vim.lsp.buf.rename)
-vim.keymap.set("n", "g.", vim.lsp.buf.code_action)
-vim.keymap.set("n", "gra", vim.lsp.buf.code_action)
-vim.keymap.set(
-  "n",
-  "grt",
-  "<Cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>"
-)
+map("n", "gra", vim.lsp.buf.code_action)
+map("n", "grf", vim.lsp.buf.format)
+map("n", "gri", vim.lsp.buf.incoming_calls)
+map("n", "gro", vim.lsp.buf.outgoing_calls)
+map("n", "grn", vim.lsp.buf.rename)
+map("n", "grr", vim.lsp.buf.references)
+map("n", "grs", vim.lsp.buf.document_symbol)
+map("n", "grS", vim.lsp.buf.workspace_symbol)
+map("n", "grt", "<Cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>")
+map("n", "gry", vim.lsp.buf.type_definition)
+map("n", "grY", vim.lsp.buf.implementation)
