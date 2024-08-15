@@ -1,3 +1,7 @@
+pcall(function()
+  vim.loader.enable()
+end)
+
 local path_package = vim.fn.stdpath("data") .. "/site/"
 local mini_path = path_package .. "pack/deps/start/mini.deps"
 if not vim.loop.fs_stat(mini_path) then
@@ -85,11 +89,6 @@ end)
 later(function()
   add("echasnovski/mini.surround")
   source("plugins/mini-surround.lua")
-end)
-
-later(function()
-  add("echasnovski/mini.visits")
-  source("plugins/mini-visits.lua")
 end)
 
 later(function()

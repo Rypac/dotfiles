@@ -11,7 +11,6 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.updatetime = 1000
 vim.opt.wrap = false
-vim.cmd("colorscheme retrobox")
 
 -- Display whitespace characters
 vim.opt.list = true

@@ -45,7 +45,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "VimEnter", "UIEnter", "ColorScheme" }, {
+vim.api.nvim_create_autocmd({ "UIEnter", "ColorScheme" }, {
   desc = "Sync terminal background with colorscheme",
   group = augroup("SyncTerminalBackground"),
   callback = function()
@@ -56,7 +56,7 @@ vim.api.nvim_create_autocmd({ "VimEnter", "UIEnter", "ColorScheme" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "UILeave", "VimLeave" }, {
+vim.api.nvim_create_autocmd("UILeave", {
   desc = "Reset terminal background",
   group = augroup("ResetTerminalBackground"),
   callback = function()
