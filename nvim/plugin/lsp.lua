@@ -26,7 +26,7 @@ end, {
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup("LspConfiguration", { clear = true }),
+  group = vim.api.nvim_create_augroup("UserLspConfiguration", { clear = true }),
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
 
@@ -42,7 +42,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.keymap.set("n", "g=", vim.lsp.buf.format, { buffer = args.buf })
 
       vim.api.nvim_create_autocmd("BufWritePre", {
-        group = vim.api.nvim_create_augroup("LspFormatOnSave", { clear = true }),
+        group = vim.api.nvim_create_augroup("UserLspFormatOnSave", { clear = true }),
         buffer = args.buf,
         callback = function()
           vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
@@ -50,7 +50,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       })
 
       vim.api.nvim_create_autocmd("LspDetach", {
-        group = vim.api.nvim_create_augroup("LspFormatOnSaveCleanup", { clear = true }),
+        group = vim.api.nvim_create_augroup("UserLspFormatOnSaveCleanup", { clear = true }),
         buffer = args.buf,
         once = true,
         callback = function(event)
@@ -61,7 +61,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     if client.supports_method("textDocument/codeLens") then
       vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
-        group = vim.api.nvim_create_augroup("LspCodeLens", { clear = true }),
+        group = vim.api.nvim_create_augroup("UserLspCodeLens", { clear = true }),
         buffer = args.buf,
         callback = function()
           vim.lsp.codelens.refresh({ bufnr = args.buf })
@@ -69,7 +69,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       })
 
       vim.api.nvim_create_autocmd("LspDetach", {
-        group = vim.api.nvim_create_augroup("LspCodeLensCleanup", { clear = true }),
+        group = vim.api.nvim_create_augroup("UserLspCodeLensCleanup", { clear = true }),
         buffer = args.buf,
         once = true,
         callback = function(event)
@@ -86,7 +86,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     if client.supports_method("textDocument/documentHighlight") then
-      local highlight_augroup = vim.api.nvim_create_augroup("LspHighlight", { clear = true })
+      local highlight_augroup = vim.api.nvim_create_augroup("UserLspHighlight", { clear = true })
 
       vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
         group = highlight_augroup,
@@ -101,7 +101,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       })
 
       vim.api.nvim_create_autocmd("LspDetach", {
-        group = vim.api.nvim_create_augroup("LspHighlightCleanup", { clear = true }),
+        group = vim.api.nvim_create_augroup("UserLspHighlightCleanup", { clear = true }),
         buffer = args.buf,
         once = true,
         callback = function(event)
