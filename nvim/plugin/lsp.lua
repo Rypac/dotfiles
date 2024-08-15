@@ -45,7 +45,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspFormatOnSave", { clear = true }),
         buffer = args.buf,
         callback = function()
-          vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
+          vim.lsp.buf.format({
+            bufnr = args.buf,
+            id = client.id,
+            filter = function()
+              return vim.g.autoformat ~= false and vim.b[args.buf].autoformat ~= false
+            end,
+          })
         end,
       })
 

@@ -36,6 +36,7 @@ map(
 )
 map("n", "<Leader>oc", "<Cmd>setlocal cursorline! cursorline?<CR>")
 map("n", "<Leader>oC", "<Cmd>setlocal cursorcolumn! cursorcolumn?<CR>")
+map("n", "<Leader>of", "<Cmd>lua vim.b.autoformat = vim.b.autoformat == false<CR>")
 map("n", "<Leader>oh", "<Cmd>setlocal hlsearch! hlsearch?<CR>")
 map("n", "<Leader>oi", "<Cmd>setlocal ignorecase! ignorecase?<CR>")
 map("n", "<Leader>ol", "<Cmd>setlocal linebreak! linebreak?<CR>")
