@@ -31,15 +31,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local client = vim.lsp.get_client_by_id(args.data.client_id)
 
     if client.supports_method("textDocument/definition") then
-      vim.keymap.set("n", "gd", vim.lsp.buf.definition)
+      vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = args.buf })
     end
 
     if client.supports_method("textDocument/declaration") then
-      vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
+      vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = args.buf })
     end
 
     if client.supports_method("textDocument/formatting") then
-      vim.keymap.set("n", "g=", vim.lsp.buf.format)
+      vim.keymap.set("n", "g=", vim.lsp.buf.format, { buffer = args.buf })
 
       vim.api.nvim_create_autocmd("BufWritePre", {
         group = vim.api.nvim_create_augroup("LspFormatOnSave", { clear = true }),
