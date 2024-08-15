@@ -1,7 +1,3 @@
--- Set leader key
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
 -- Move by visible lines
 vim.keymap.set({ "n", "x" }, "j", [[v:count == 0 ? 'gj' : 'j']], { expr = true })
 vim.keymap.set({ "n", "x" }, "k", [[v:count == 0 ? 'gk' : 'k']], { expr = true })
