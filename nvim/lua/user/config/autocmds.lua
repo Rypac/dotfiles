@@ -1,8 +1,10 @@
+local autocmd = vim.api.nvim_create_autocmd
+
 local augroup = function(name)
   vim.api.nvim_create_augroup("User" .. name, { clear = true })
 end
 
-vim.api.nvim_create_autocmd("TextYankPost", {
+autocmd("TextYankPost", {
   desc = "Highlight yanked text",
   group = augroup("HighlightYankedText"),
   callback = function()
@@ -10,7 +12,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
   desc = 'Close windows with "q"',
   group = augroup("CloseWithQ"),
   pattern = { "help", "checkhealth" },
@@ -25,7 +27,7 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
-vim.api.nvim_create_autocmd("VimResized", {
+autocmd("VimResized", {
   desc = "Resize splits on window resize",
   group = augroup("ResizeSplits"),
   callback = function()
@@ -35,7 +37,7 @@ vim.api.nvim_create_autocmd("VimResized", {
   end,
 })
 
-vim.api.nvim_create_autocmd("TermOpen", {
+autocmd("TermOpen", {
   desc = "Configure UI for builtin terminal",
   group = augroup("ConfigureTerminal"),
   callback = function()
@@ -45,7 +47,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "UIEnter", "ColorScheme" }, {
+autocmd({ "UIEnter", "ColorScheme" }, {
   desc = "Sync terminal background with colorscheme",
   group = augroup("SyncTerminalBackground"),
   callback = function()
@@ -56,7 +58,7 @@ vim.api.nvim_create_autocmd({ "UIEnter", "ColorScheme" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd("UILeave", {
+autocmd("UILeave", {
   desc = "Reset terminal background",
   group = augroup("ResetTerminalBackground"),
   callback = function()
