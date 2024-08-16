@@ -29,20 +29,23 @@ vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfiguration", { clear = true }),
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
+    local methods = vim.lsp.protocol.Methods.textDocument_inlayHint
 
-    if client.supports_method("textDocument/definition") then
+    if client.supports_method(methods.textDocument_definition) then
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = args.buf })
     end
 
-    if client.supports_method("textDocument/declaration") then
+    if client.supports_method(methods.textDocument_declaration) then
       vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = args.buf })
     end
 
-    if client.supports_method("textDocument/formatting") then
+    if client.supports_method(methods.textDocument_formatting) then
       vim.keymap.set("n", "g=", vim.lsp.buf.format, { buffer = args.buf })
 
+      local format_augroup = vim.api.nvim_create_augroup("UserLspFormatOnSave", { clear = true })
+
       vim.api.nvim_create_autocmd("BufWritePre", {
-        group = vim.api.nvim_create_augroup("UserLspFormatOnSave", { clear = true }),
+        group = format_augroup,
         buffer = args.buf,
         callback = function()
           vim.lsp.buf.format({
@@ -64,13 +67,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspFormatOnSaveCleanup", { clear = true }),
         buffer = args.buf,
         once = true,
-        callback = function(event)
-          vim.api.nvim_clear_autocmds({ group = "LspFormatOnSave", buffer = event.buf })
+        callback = function()
+          vim.api.nvim_clear_autocmds({ group = format_augroup, buffer = args.buf })
         end,
       })
     end
 
-    if client.supports_method("textDocument/codeLens") then
+    if client.supports_method(methods.textDocument_codeLens) then
       vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
         group = vim.api.nvim_create_augroup("UserLspCodeLens", { clear = true }),
         buffer = args.buf,
@@ -78,25 +81,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
           vim.lsp.codelens.refresh({ bufnr = args.buf })
         end,
       })
-
-      vim.api.nvim_create_autocmd("LspDetach", {
-        group = vim.api.nvim_create_augroup("UserLspCodeLensCleanup", { clear = true }),
-        buffer = args.buf,
-        once = true,
-        callback = function(event)
-          vim.lsp.codelens.clear(event.data.client_id, event.buf)
-          vim.api.nvim_clear_autocmds({ group = "LspCodeLens", buffer = event.buf })
-        end,
-      })
     end
 
-    if client.supports_method("textDocument/completion") then
+    if client.supports_method(methods.textDocument_completion) then
       if vim.fn.has("nvim-0.11") == 1 then
         vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
       end
     end
 
-    if client.supports_method("textDocument/documentHighlight") then
+    if client.supports_method(methods.textDocument_documentHighlight) then
       local highlight_augroup = vim.api.nvim_create_augroup("UserLspHighlight", { clear = true })
 
       vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
@@ -115,9 +108,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspHighlightCleanup", { clear = true }),
         buffer = args.buf,
         once = true,
-        callback = function(event)
+        callback = function()
           vim.lsp.buf.clear_references()
-          vim.api.nvim_clear_autocmds({ group = "LspHighlight", buffer = event.buf })
+          vim.api.nvim_clear_autocmds({ group = highlight_augroup, buffer = args.buf })
         end,
       })
     end
