@@ -49,7 +49,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
             bufnr = args.buf,
             id = client.id,
             filter = function()
-              return vim.g.autoformat ~= false and vim.b[args.buf].autoformat ~= false
+              local autoformat_buffer = vim.b[args.buf].autoformat
+              if autoformat_buffer ~= nil then
+                return autoformat_buffer ~= false
+              else
+                return vim.g.autoformat ~= false
+              end
             end,
           })
         end,
