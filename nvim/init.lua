@@ -30,6 +30,7 @@ local source = function(path)
 end
 
 now(function()
+  source("config/globals.lua")
   source("config/options.lua")
   source("config/autocmds.lua")
   source("config/keymaps.lua")
