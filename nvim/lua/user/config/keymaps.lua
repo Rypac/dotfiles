@@ -14,7 +14,13 @@ map("x", "<C-k>", ":m '<-2<CR>gv=gv", { desc = "Move line(s) up" })
 map({ "i", "n" }, "<Esc>", "<Cmd>nohlsearch<CR><Esc>")
 
 -- Format entire buffer
-map("n", "g=", "mqgggqG`q", { desc = "Format file" })
+map("n", "g=", function()
+  local saved_view = vim.fn.winsaveview()
+  vim.cmd("normal! gggqG")
+  vim.fn.winrestview(saved_view)
+end, {
+  desc = "Format file",
+})
 
 -- Buffer navigation
 map("n", "]b", "<Cmd>bnext<CR>", { desc = "Next buffer" })
