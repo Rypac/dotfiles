@@ -1,4 +1,5 @@
-require("oil").setup({
+local oil = require("oil")
+oil.setup({
   skip_confirm_for_simple_edits = true,
   view_options = {
     show_hidden = true,
@@ -8,4 +9,26 @@ require("oil").setup({
   },
 })
 
-vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
+vim.keymap.set("n", "-", function()
+  oil.open()
+end, {
+  desc = "Open parent directory",
+})
+
+vim.keymap.set("n", "<Leader>-", function()
+  oil.open()
+end, {
+  desc = "Open parent directory",
+})
+
+vim.keymap.set("n", "<Leader>_", function()
+  oil.toggle_float()
+end, {
+  desc = "Open parent directory in floating window",
+})
+
+vim.keymap.set("n", "<Leader>~", function()
+  oil.open(vim.uv.cwd())
+end, {
+  desc = "Open current working directory",
+})
