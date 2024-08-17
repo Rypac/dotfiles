@@ -48,11 +48,6 @@ now(function()
 end)
 
 now(function()
-  add("echasnovski/mini.starter")
-  source("plugins/mini-starter.lua")
-end)
-
-now(function()
   add("echasnovski/mini.statusline")
   source("plugins/mini-statusline.lua")
 end)
