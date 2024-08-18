@@ -81,3 +81,6 @@ opt.undofile = true
 
 -- Disable creation of backups before overwriting a file
 opt.writebackup = false
+
+-- Save local options in sessions
+opt.sessionoptions:append("localoptions")
