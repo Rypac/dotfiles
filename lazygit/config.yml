@@ -1,3 +1,5 @@
+os:
+  editPreset: nvim
 gui:
   showFileTree: false
   showRandomTip: false
