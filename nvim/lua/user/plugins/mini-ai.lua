@@ -23,7 +23,5 @@ ai.setup({
     i = extra.gen_ai_spec.indent(),
     e = extra.gen_ai_spec.buffer(),
     L = extra.gen_ai_spec.line(),
-    D = extra.gen_ai_spec.diagnostic(),
-    N = extra.gen_ai_spec.number(),
   },
 })
