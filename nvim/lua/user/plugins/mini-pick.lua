@@ -28,27 +28,6 @@ pick.registry.config = function()
   })
 end
 
-pick.registry.projects = function()
-  return MiniExtra.pickers.explorer({
-    cwd = vim.fn.expand("~/Developer/Projects"),
-    filter = function(data)
-      return data.fs_type == "directory"
-    end,
-  }, {
-    source = {
-      choose = function(item)
-        vim.schedule(function()
-          pick.builtin.files(nil, {
-            source = {
-              cwd = item.path,
-            },
-          })
-        end)
-      end,
-    },
-  })
-end
-
 local map_picker = function(keymap, action)
   vim.keymap.set("n", "<Leader>" .. keymap, "<Cmd>Pick " .. action .. "<CR>")
 end
