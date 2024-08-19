@@ -33,6 +33,10 @@ map("n", "]t", "<Cmd>tabnext<CR>", { desc = "Next tab" })
 map("n", "[t", "<Cmd>tabprevious<CR>", { desc = "Previous tab" })
 map("n", "]T", "<Cmd>tablast<CR>", { desc = "Last tab" })
 map("n", "[T", "<Cmd>tabfirst<CR>", { desc = "First tab" })
+for tab = 1, 9 do
+  map("n", "<C-" .. tab .. ">", tab .. "gt", { desc = "Go to tab " .. tab })
+  map("i", "<C-" .. tab .. ">", "<C-o>" .. tab .. "gt", { desc = "Go to tab " .. tab })
+end
 
 -- Option toggling
 map(

@@ -28,6 +28,34 @@ pick.registry.config = function()
   })
 end
 
+pick.registry.tabpages = function()
+  local tabpages = vim.api.nvim_list_tabpages()
+
+  return pick.start({
+    source = {
+      name = "Tabs",
+      items = vim.tbl_map(function(tabpage)
+        local tabpage_number = vim.api.nvim_tabpage_get_number(tabpage)
+        local window = vim.api.nvim_tabpage_get_win(tabpage)
+        local buffer = vim.api.nvim_win_get_buf(window)
+        local name = vim.api.nvim_buf_get_name(buffer)
+        return {
+          text = string.format("%2d \0 %s", tabpage_number, name),
+          bufnr = buffer,
+          tabpage = tabpage,
+        }
+      end, tabpages),
+      choose = function(item)
+        if item ~= nil then
+          vim.schedule(function()
+            vim.api.nvim_set_current_tabpage(item.tabpage)
+          end)
+        end
+      end,
+    },
+  })
+end
+
 for keymap, action in pairs({
   ["<Leader>"] = "files",
   ["<CR>"] = "resume",
@@ -57,6 +85,7 @@ for keymap, action in pairs({
   ["r"] = "lsp scope='document_symbol'",
   ["R"] = "lsp scope='workspace_symbol'",
   ["S"] = "options",
+  ["t"] = "tabpages",
   ["x"] = "treesitter",
   [","] = "config",
   ["="] = "spellsuggest",
