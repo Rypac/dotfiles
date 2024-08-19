@@ -61,6 +61,7 @@ map("n", "<Leader>ow", "<Cmd>setlocal wrap! wrap?<CR>")
 map("n", "<Leader>e", vim.diagnostic.open_float, { desc = "Open diagnostic in float" })
 
 -- LSP
+map("n", "g.", vim.lsp.buf.code_action)
 map("n", "gra", vim.lsp.buf.code_action)
 map("n", "grf", vim.lsp.buf.format)
 map("n", "gri", vim.lsp.buf.incoming_calls)
@@ -71,7 +72,7 @@ map("n", "grs", vim.lsp.buf.document_symbol)
 map("n", "grS", vim.lsp.buf.workspace_symbol)
 map("n", "grt", "<Cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>")
 map("n", "gry", vim.lsp.buf.type_definition)
-map("n", "grY", vim.lsp.buf.implementation)
+map("n", "grI", vim.lsp.buf.implementation)
 
 -- Ftplugins
 map("n", "<Leader>.", "<Cmd>Ftplugin<CR>", { desc = "Edit ftplugin for buffer filetype" })
