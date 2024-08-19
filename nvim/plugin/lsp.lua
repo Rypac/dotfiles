@@ -52,12 +52,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
             bufnr = args.buf,
             id = client.id,
             filter = function()
-              local autoformat_buffer = vim.b[args.buf].autoformat
-              if autoformat_buffer ~= nil then
-                return autoformat_buffer ~= false
-              else
-                return vim.g.autoformat ~= false
-              end
+              return vim.g.autoformat ~= false and vim.b[args.buf].autoformat ~= false
             end,
           })
         end,
@@ -95,7 +90,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
         group = highlight_augroup,
         buffer = args.buf,
-        callback = vim.lsp.buf.document_highlight,
+        callback = function()
+          if vim.g.document_highlight ~= false and vim.b[args.buf].document_highlight ~= false then
+            vim.lsp.buf.document_highlight()
+          end
+        end,
       })
 
       vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
