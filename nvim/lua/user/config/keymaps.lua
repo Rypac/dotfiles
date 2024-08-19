@@ -72,3 +72,6 @@ map("n", "grS", vim.lsp.buf.workspace_symbol)
 map("n", "grt", "<Cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>")
 map("n", "gry", vim.lsp.buf.type_definition)
 map("n", "grY", vim.lsp.buf.implementation)
+
+-- Ftplugins
+map("n", "<Leader>.", "<Cmd>Ftplugin<CR>", { desc = "Edit ftplugin for buffer filetype" })
