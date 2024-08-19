@@ -28,35 +28,42 @@ pick.registry.config = function()
   })
 end
 
-local map_picker = function(keymap, action)
+for keymap, action in pairs({
+  ["<Leader>"] = "files",
+  ["<CR>"] = "resume",
+  ["b"] = "buffers",
+  ["B"] = "git_branches",
+  ["C"] = "git_commits",
+  ["d"] = "diagnostic scope='buffer'",
+  ["D"] = "diagnostic scope='all'",
+  ["f"] = "grep_live",
+  ["F"] = "grep",
+  ["gd"] = "lsp scope='definition'",
+  ["gD"] = "lsp scope='declaration'",
+  ["gi"] = "lsp scope='implementation'",
+  ["gr"] = "lsp scope='references'",
+  ["gs"] = "lsp scope='document_symbol'",
+  ["gS"] = "lsp scope='workspace_symbol'",
+  ["gy"] = "lsp scope='type_definition'",
+  ["h"] = "history scope=':'",
+  ["H"] = "git_hunks",
+  ["j"] = "list scope='jump'",
+  ["K"] = "keymaps",
+  ["l"] = "buf_lines scope='current'",
+  ["L"] = "buf_lines scope='all'",
+  ["p"] = "files",
+  ["P"] = "commands",
+  ["q"] = "list scope='quickfix'",
+  ["r"] = "lsp scope='document_symbol'",
+  ["R"] = "lsp scope='workspace_symbol'",
+  ["S"] = "options",
+  ["x"] = "treesitter",
+  [","] = "config",
+  ["="] = "spellsuggest",
+  ["'"] = "marks",
+  ['"'] = "registers",
+  ["/"] = "explorer",
+  ["?"] = "help",
+}) do
   vim.keymap.set("n", "<Leader>" .. keymap, "<Cmd>Pick " .. action .. "<CR>")
 end
-
-map_picker("<CR>", "resume")
-map_picker("<Leader>", "files")
-map_picker("b", "buffers")
-map_picker("B", "git_branches")
-map_picker("c", "commands")
-map_picker("C", "git_commits")
-map_picker("d", "diagnostic")
-map_picker("f", "grep_live")
-map_picker("F", "grep")
-map_picker("gd", "lsp scope='definition'")
-map_picker("gD", "lsp scope='declaration'")
-map_picker("gr", "lsp scope='references'")
-map_picker("gi", "lsp scope='implementation'")
-map_picker("h", "history scope=':'")
-map_picker("H", "git_hunks")
-map_picker("k", "keymaps")
-map_picker("l", "buf_lines scope='current'")
-map_picker("L", "buf_lines scope='all'")
-map_picker("O", "options")
-map_picker("r", "lsp scope='document_symbol'")
-map_picker("R", "lsp scope='workspace_symbol'")
-map_picker("t", "treesitter")
-map_picker("=", "spellsuggest")
-map_picker(".", "config")
-map_picker("'", "marks scope='global'")
-map_picker('"', "registers")
-map_picker("/", "explorer")
-map_picker("?", "help")

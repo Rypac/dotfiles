@@ -59,7 +59,6 @@ map("n", "<Leader>ow", "<Cmd>setlocal wrap! wrap?<CR>")
 
 -- Diagnostic
 map("n", "<Leader>e", vim.diagnostic.open_float, { desc = "Open diagnostic in float" })
-map("n", "<Leader>q", vim.diagnostic.setloclist, { desc = "Open quickfix list" })
 
 -- LSP
 map("n", "gra", vim.lsp.buf.code_action)
