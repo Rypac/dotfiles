@@ -52,6 +52,10 @@ now(function()
   source("plugins/mini-statusline.lua")
 end)
 
+now(function()
+  add("tpope/vim-fugitive")
+end)
+
 later(function()
   add("echasnovski/mini.extra")
   source("plugins/mini-extra.lua")
@@ -106,7 +110,3 @@ if vim.fn.argc() == 1 and vim.fn.isdirectory(vim.fn.argv(0)) then
 else
   later(oil)
 end
-
-later(function()
-  add("tpope/vim-fugitive")
-end)
