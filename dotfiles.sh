@@ -70,6 +70,7 @@ dotfiles_link() {
     link lazygit "$XDG_CONFIG_HOME/lazygit"
     link npm "$XDG_CONFIG_HOME/npm"
     link nvim "$XDG_CONFIG_HOME/nvim"
+    link tig "$XDG_CONFIG_HOME/tig"
     link zsh "$XDG_CONFIG_HOME/zsh"
     link zsh/.zshenv "$HOME/.zshenv"
 

@@ -1,0 +1,135 @@
+set tab-size = 2
+set ignore-case = smart-case
+set line-graphics = utf-8
+set diff-options = -m
+
+bind generic v  none
+bind generic vm view-main
+bind generic vd view-diff
+bind generic vl view-log
+bind generic vL view-reflog
+bind generic vt view-tree
+bind generic vb view-blob
+bind generic vx view-blame
+bind generic vr view-refs
+bind generic vs view-status
+bind generic vu view-stage
+bind generic vy view-stash
+bind generic vg view-grep
+bind generic vp view-pager
+bind generic vh view-help
+
+bind generic vv show-version
+bind generic V  :source ~/.config/tig/config
+
+bind generic g  none
+bind generic gg move-first-line
+bind generic gj next
+bind generic gk previous
+bind generic gp parent
+bind generic gP back
+bind generic gn view-next
+bind generic K  view-help
+bind generic G  move-last-line
+bind main    G  move-last-line
+
+bind generic <C-f> scroll-page-down
+bind generic <C-b> scroll-page-up
+
+bind generic o  none
+bind generic oo :toggle sort-order
+bind generic os :toggle sort-field
+bind generic on :toggle line-number
+bind generic od :toggle date
+bind generic oa :toggle author
+bind generic og :toggle line-graphics
+bind generic of :toggle file-name
+bind generic op :toggle ignore-space
+bind generic oi :toggle id
+bind generic ot :toggle commit-title-overflow
+bind generic oF :toggle file-filter
+bind generic or :toggle commit-title-refs
+
+bind generic F ?git fetch --prune --all
+bind main    F ?git fetch --prune --all
+
+bind generic p  none
+bind generic pl ?git pull
+bind generic pL ?git pull --rebase
+bind generic pu ?git push
+bind generic pU ?git push --force-with-lease
+
+bind main M ?git merge %(branch)
+bind refs M ?git merge %(branch)
+
+bind generic r  none
+bind generic ri !git rebase --interactive --autosquash %(commit)^
+bind generic rf ?git rebase --autosquash %(commit)^
+bind generic rr ?git rebase --continue
+bind generic rs ?git rebase --skip
+bind generic re ?git rebase --edit-todo
+bind generic ra ?git rebase --abort
+bind generic r<Space> !git rebase "%(prompt git rebase )"
+
+bind generic c   none
+bind generic cc  !git commit
+bind generic ca  !git commit --amend
+bind generic ce  ?git commit --amend --no-edit
+bind generic cw  !git commit --amend --only
+bind main    cf  ?git commit --fixup=%(commit)
+bind main    cF  ?sh -c "git commit --fixup=%(commit) && git rebase --autosquash %(commit)^"
+bind main    cs  ?git commit --squash=%(commit)
+bind main    cS  ?sh -c "git commit --squash=%(commit) && git rebase --autosquash %(commit)^"
+bind main    crc ?git revert %(commit)
+bind main    crn ?git revert --no-commit %(commit)
+bind main    !   ?git revert %(commit)
+
+bind main    coo ?git checkout %(commit)
+bind refs    coo ?git checkout %(branch)
+bind generic cob !git checkout -b "%(prompt Enter new branch name: )"
+bind generic co<Space> !git checkout "%(prompt git checkout )"
+bind generic cb<Space> !git branch "%(prompt git branch )"
+
+bind generic U @git reset
+bind generic S @git add -A
+bind status  - status-update
+bind status  s status-update
+bind status  S @git add -A
+bind status  U @git reset
+bind status  X status-revert
+bind status  D ?@rm %(file)
+bind stage   - status-update
+bind stage   X status-revert
+
+bind generic czz !git stash push --all
+bind generic czZ !git stash push --all --message "%(prompt Enter stash name: )"
+bind generic czw !git stash push --keep-index
+bind generic czW !git stash push --keep-index --message "%(prompt Enter stash name: )"
+bind generic czs !git stash push --stashed
+bind generic czS !git stash push --stashed --message "%(prompt Enter stash name: )"
+bind generic cza ?git stash apply --index
+bind generic czA ?git stash apply
+bind generic czp ?git stash pop --index
+bind generic czP ?git stash pop
+bind generic cz<Space> !git stash "%(prompt git stash )"
+bind stash   D   ?git stash drop %(stash)
+
+bind generic ^ ?@git reset HEAD^
+bind main    z ?@git reset %(commit)
+bind diff    z ?@git reset %(commit)
+bind log     z ?@git reset %(commit)
+bind reflog  z ?@git reset %(commit)
+bind refs    z ?@git reset %(branch)
+bind status  z ?@git reset HEAD
+bind main    Z ?@git reset --hard %(commit)
+bind diff    Z ?@git reset --hard %(commit)
+bind log     Z ?@git reset --hard %(commit)
+bind reflog  Z ?@git reset --hard %(commit)
+bind refs    Z ?@git reset --hard %(branch)
+bind status  Z ?@git reset --hard HEAD
+
+bind blame  H >sh -c "tig \"$(git rev-parse --show-toplevel)/%(file)\""
+bind blob   H >sh -c "tig \"$(git rev-parse --show-toplevel)/%(file)\""
+bind diff   H >sh -c "tig \"$(git rev-parse --show-toplevel)/%(file)\""
+bind status H >sh -c "tig \"$(git rev-parse --show-toplevel)/%(file)\""
+bind tree   H >sh -c "tig \"$(git rev-parse --show-toplevel)/%(file)\""
