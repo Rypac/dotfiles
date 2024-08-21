@@ -39,12 +39,18 @@ bindkey -M vicmd ' ' edit-command-line
 
 # Display keymap aware prompt
 function zle-line-init zle-keymap-select {
-    local mode='I'
+    local mode='%(!.#.$)'
     if [ "$KEYMAP" = vicmd ]; then
-        mode='N'
+        mode=':'
     fi
 
-    PROMPT="%F{blue}[$mode] %B%F{cyan}%1~%f%b %(?.%F{green}.%F{red})%(!.#.$)%f "
+    local userhost=''
+    if [ -n "$SSH_CONNECTION" ]; then
+        userhost='%F{cyan}%n@%m%f '
+    fi
+
+    PROMPT="${userhost}%F{blue}%1~%f %F{%(?.green.red)}$mode%f "
+
     zle reset-prompt
 }
 
