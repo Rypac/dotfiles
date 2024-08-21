@@ -64,24 +64,24 @@ bind refs M ?git merge %(branch)
 
 bind generic r  none
 bind generic ri !git rebase --interactive --autosquash %(commit)^
-bind generic rf ?git rebase --autosquash %(commit)^
-bind generic rr ?git rebase --continue
-bind generic rs ?git rebase --skip
-bind generic re ?git rebase --edit-todo
-bind generic ra ?git rebase --abort
+bind generic rf !git rebase --autosquash %(commit)^
+bind generic rr !git rebase --continue
+bind generic rs !git rebase --skip
+bind generic re !git rebase --edit-todo
+bind generic ra !git rebase --abort
 bind generic r<Space> !git rebase "%(prompt git rebase )"
 
 bind generic c   none
 bind generic cc  !git commit
 bind generic ca  !git commit --amend
-bind generic ce  ?git commit --amend --no-edit
+bind generic ce  !git commit --amend --no-edit
 bind generic cw  !git commit --amend --only
-bind main    cf  ?git commit --fixup=%(commit)
-bind main    cF  ?sh -c "git commit --fixup=%(commit) && git rebase --autosquash %(commit)^"
-bind main    cs  ?git commit --squash=%(commit)
-bind main    cS  ?sh -c "git commit --squash=%(commit) && git rebase --autosquash %(commit)^"
-bind main    crc ?git revert %(commit)
-bind main    crn ?git revert --no-commit %(commit)
+bind main    cf  !git commit --fixup=%(commit)
+bind main    cF  !sh -c "git commit --fixup=%(commit) && git rebase --autosquash %(commit)^"
+bind main    cs  !git commit --squash=%(commit)
+bind main    cS  !sh -c "git commit --squash=%(commit) && git rebase --autosquash %(commit)^"
+bind main    crc !git revert %(commit)
+bind main    crn !git revert --no-commit %(commit)
 bind main    !   ?git revert %(commit)
 
 bind main    coo ?git checkout %(commit)
