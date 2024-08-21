@@ -3,6 +3,10 @@ set ignore-case = smart-case
 set line-graphics = utf-8
 set diff-options = -m
 
+color cursor      black green
+color title-focus black blue
+color title-blur  black blue  reverse
+
 bind generic v  none
 bind generic vm view-main
 bind generic vd view-diff
