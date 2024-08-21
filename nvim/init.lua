@@ -43,6 +43,11 @@ now(function()
 end)
 
 now(function()
+  add("sainnhe/everforest")
+  add("echasnovski/mini.colors")
+end)
+
+now(function()
   add("echasnovski/mini.sessions")
   source("plugins/mini-sessions.lua")
 end)
