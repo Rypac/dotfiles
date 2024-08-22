@@ -20,14 +20,6 @@ pick.setup({
 
 vim.ui.select = pick.ui_select
 
-pick.registry.config = function()
-  return pick.builtin.files(nil, {
-    source = {
-      cwd = vim.fn.stdpath("config"),
-    },
-  })
-end
-
 local function picker_move_to_item(index)
   local move_to_start = vim.api.nvim_replace_termcodes("<C-g>", true, false, true)
   vim.api.nvim_feedkeys(move_to_start, "n", false)
@@ -38,7 +30,7 @@ local function picker_move_to_item(index)
   end
 end
 
-local function picker_delete_item(callback)
+local function picker_remove_item(callback)
   local matches = pick.get_picker_matches()
   if not callback(matches.current) then
     picker_move_to_item(matches.current_ind)
@@ -54,6 +46,14 @@ local function picker_delete_item(callback)
   pick.set_picker_items(updated_items)
 
   picker_move_to_item(math.min(matches.current_ind, #updated_items))
+end
+
+pick.registry.config = function()
+  return pick.builtin.files(nil, {
+    source = {
+      cwd = vim.fn.stdpath("config"),
+    },
+  })
 end
 
 pick.registry.tabpages = function()
@@ -85,7 +85,7 @@ pick.registry.tabpages = function()
       delete = {
         char = "<C-d>",
         func = function()
-          picker_delete_item(function(match)
+          picker_remove_item(function(match)
             if match.tabpage == vim.api.nvim_get_current_tabpage() then
               return false
             end
@@ -99,13 +99,13 @@ pick.registry.tabpages = function()
   })
 end
 
-local function buffers()
-  pick.builtin.buffers(nil, {
+pick.registry.buffers_plus = function()
+  return pick.builtin.buffers(nil, {
     mappings = {
       wipeout = {
         char = "<C-d>",
         func = function()
-          picker_delete_item(function(match)
+          picker_remove_item(function(match)
             vim.api.nvim_buf_delete(match.bufnr, {})
             return true
           end)
@@ -115,15 +115,15 @@ local function buffers()
   })
 end
 
-local function marks()
+pick.registry.marks_plus = function()
   local buffer = vim.api.nvim_get_current_buf()
 
-  MiniExtra.pickers.marks(nil, {
+  return MiniExtra.pickers.marks(nil, {
     mappings = {
       delete = {
         char = "<C-d>",
         func = function()
-          picker_delete_item(function(match)
+          picker_remove_item(function(match)
             local mark = string.sub(match.text, 1, 1)
             return vim.api.nvim_buf_del_mark(buffer, mark) or vim.api.nvim_del_mark(mark)
           end)
@@ -136,7 +136,7 @@ end
 for keymap, action in pairs({
   ["<Leader>"] = "files",
   ["<CR>"] = "resume",
-  ["b"] = buffers,
+  ["b"] = "buffers_plus",
   ["B"] = "git_branches",
   ["C"] = "git_commits",
   ["d"] = "diagnostic scope='buffer'",
@@ -166,12 +166,10 @@ for keymap, action in pairs({
   ["x"] = "treesitter",
   [","] = "config",
   ["="] = "spellsuggest",
-  ["'"] = marks,
+  ["'"] = "marks_plus",
   ['"'] = "registers",
   ["/"] = "explorer",
   ["?"] = "help",
 }) do
-  local lhs = "<Leader>" .. keymap
-  local rhs = type(action) == "string" and "<Cmd>Pick " .. action .. "<CR>" or action
-  vim.keymap.set("n", lhs, rhs)
+  vim.keymap.set("n", "<Leader>" .. keymap, "<Cmd>Pick " .. action .. "<CR>")
 end
