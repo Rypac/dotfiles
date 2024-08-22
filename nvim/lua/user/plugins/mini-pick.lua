@@ -56,10 +56,64 @@ pick.registry.tabpages = function()
   })
 end
 
+local function picker_delete_item(callback)
+  local matches = pick.get_picker_matches()
+  if not callback(matches.current) then
+    return
+  end
+
+  local updated_items = {}
+  for index, item in ipairs(pick.get_picker_items()) do
+    if index ~= matches.current_ind then
+      table.insert(updated_items, item)
+    end
+  end
+  pick.set_picker_items(updated_items)
+
+  local key = vim.api.nvim_replace_termcodes("<C-n>", true, false, true)
+  for index = 1, math.min(matches.current_ind, #updated_items) - 1 do
+    vim.api.nvim_feedkeys(key, "n", false)
+  end
+end
+
+local function buffers()
+  pick.builtin.buffers(nil, {
+    mappings = {
+      wipeout = {
+        char = "<C-d>",
+        func = function()
+          picker_delete_item(function(match)
+            vim.api.nvim_buf_delete(match.bufnr, {})
+            return true
+          end)
+        end,
+      },
+    },
+  })
+end
+
+local function marks()
+  local buffer = vim.api.nvim_get_current_buf()
+
+  MiniExtra.pickers.marks(nil, {
+    mappings = {
+      delete = {
+        char = "<C-d>",
+        func = function()
+          picker_delete_item(function(match)
+            local mark = string.sub(match.text, 1, 1)
+            return vim.api.nvim_buf_del_mark(buffer, mark) or vim.api.nvim_del_mark(mark)
+          end)
+        end,
+      },
+    },
+  })
+end
+
 for keymap, action in pairs({
   ["<Leader>"] = "files",
   ["<CR>"] = "resume",
-  ["b"] = "buffers",
+  ["b"] = buffers,
   ["B"] = "git_branches",
   ["C"] = "git_commits",
   ["d"] = "diagnostic scope='buffer'",
@@ -89,10 +143,12 @@ for keymap, action in pairs({
   ["x"] = "treesitter",
   [","] = "config",
   ["="] = "spellsuggest",
-  ["'"] = "marks",
+  ["'"] = marks,
   ['"'] = "registers",
   ["/"] = "explorer",
   ["?"] = "help",
 }) do
-  vim.keymap.set("n", "<Leader>" .. keymap, "<Cmd>Pick " .. action .. "<CR>")
+  local lhs = "<Leader>" .. keymap
+  local rhs = type(action) == "string" and "<Cmd>Pick " .. action .. "<CR>" or action
+  vim.keymap.set("n", lhs, rhs)
 end
