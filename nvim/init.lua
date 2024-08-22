@@ -92,6 +92,11 @@ later(function()
 end)
 
 later(function()
+  add("cbochs/grapple.nvim")
+  source("plugins/grapple.lua")
+end)
+
+later(function()
   add({
     source = "nvim-treesitter/nvim-treesitter",
     checkout = "master",
