@@ -28,6 +28,34 @@ pick.registry.config = function()
   })
 end
 
+local function picker_move_to_item(index)
+  local move_to_start = vim.api.nvim_replace_termcodes("<C-g>", true, false, true)
+  vim.api.nvim_feedkeys(move_to_start, "n", false)
+
+  local move_down = vim.api.nvim_replace_termcodes("<C-n>", true, false, true)
+  for index = 1, index - 1 do
+    vim.api.nvim_feedkeys(move_down, "n", false)
+  end
+end
+
+local function picker_delete_item(callback)
+  local matches = pick.get_picker_matches()
+  if not callback(matches.current) then
+    picker_move_to_item(matches.current_ind)
+    return
+  end
+
+  local updated_items = {}
+  for index, item in ipairs(pick.get_picker_items()) do
+    if index ~= matches.current_ind then
+      table.insert(updated_items, item)
+    end
+  end
+  pick.set_picker_items(updated_items)
+
+  picker_move_to_item(math.min(matches.current_ind, #updated_items))
+end
+
 pick.registry.tabpages = function()
   local tabpages = vim.api.nvim_list_tabpages()
 
@@ -53,27 +81,22 @@ pick.registry.tabpages = function()
         end
       end,
     },
+    mappings = {
+      delete = {
+        char = "<C-d>",
+        func = function()
+          picker_delete_item(function(match)
+            if match.tabpage == vim.api.nvim_get_current_tabpage() then
+              return false
+            end
+
+            vim.cmd("tabclose " .. vim.api.nvim_tabpage_get_number(match.tabpage))
+            return true
+          end)
+        end,
+      },
+    },
   })
-end
-
-local function picker_delete_item(callback)
-  local matches = pick.get_picker_matches()
-  if not callback(matches.current) then
-    return
-  end
-
-  local updated_items = {}
-  for index, item in ipairs(pick.get_picker_items()) do
-    if index ~= matches.current_ind then
-      table.insert(updated_items, item)
-    end
-  end
-  pick.set_picker_items(updated_items)
-
-  local key = vim.api.nvim_replace_termcodes("<C-n>", true, false, true)
-  for index = 1, math.min(matches.current_ind, #updated_items) - 1 do
-    vim.api.nvim_feedkeys(key, "n", false)
-  end
 end
 
 local function buffers()
