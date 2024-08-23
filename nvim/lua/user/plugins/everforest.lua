@@ -1,4 +1,4 @@
-vim.g.everforest_background = "medium"
+vim.g.everforest_background = "hard"
 vim.g.everforest_better_performance = 1
 
 if vim.env.TERM_PROGRAM ~= "Apple_Terminal" then
