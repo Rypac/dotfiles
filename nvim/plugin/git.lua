@@ -1,3 +1,8 @@
+if vim.g.loaded_user_git ~= nil then
+  return
+end
+vim.g.loaded_user_git = 1
+
 vim.api.nvim_create_user_command("Tig", function(opts)
   if opts.args ~= "" then
     vim.cmd("terminal tig " .. opts.args)

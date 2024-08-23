@@ -1,3 +1,8 @@
+if vim.g.loaded_user_lsp ~= nil then
+  return
+end
+vim.g.loaded_user_lsp = 1
+
 vim.api.nvim_create_user_command("LspStart", "edit", {
   desc = "Start LSP",
 })
