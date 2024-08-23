@@ -33,6 +33,7 @@ now(function()
   source("config/globals.lua")
   source("config/options.lua")
   source("config/autocmds.lua")
+  source("config/commands.lua")
   source("config/keymaps.lua")
 end)
 
