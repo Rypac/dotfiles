@@ -1,7 +1,7 @@
 local M = {}
 
 M.config = function(name, local_config)
-  local ok, default_config = pcall(require, "user.lsp." .. name)
+  local ok, default_config = pcall(require, "user.lspconfig." .. name)
   if not ok then
     vim.notify("Cannot access configuration for " .. name .. ".", vim.log.levels.WARN)
     return

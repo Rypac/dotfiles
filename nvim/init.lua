@@ -26,7 +26,7 @@ require("mini.deps").setup({
 local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 
 local source = function(path)
-  dofile(vim.fn.stdpath("config") .. "/lua/user/" .. path)
+  dofile(vim.fn.stdpath("config") .. "/lua/" .. path)
 end
 
 now(function()
