@@ -29,6 +29,10 @@ end
 
 local function picker_remove_item(callback)
   local matches = pick.get_picker_matches()
+  if matches.current == nil then
+    return
+  end
+
   if not callback(matches.current) then
     picker_move_to_item(matches.current_ind)
     return
