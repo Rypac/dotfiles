@@ -1,4 +1,34 @@
 local pick = require("mini.pick")
+
+local function picker_move_to_item(index)
+  local home = vim.api.nvim_replace_termcodes("<Home>", true, false, true)
+  local down = vim.api.nvim_replace_termcodes("<Down>", true, false, true)
+
+  vim.api.nvim_feedkeys(home, "n", false)
+  for index = 1, index - 1 do
+    vim.api.nvim_feedkeys(down, "n", false)
+  end
+end
+
+local function select_item(index)
+  return {
+    char = "<C-" .. index .. ">",
+    func = function()
+      local matches = pick.get_picker_matches()
+      if index > #pick.get_picker_matches().all_inds then
+        picker_move_to_item(matches.current_ind)
+        return
+      end
+
+      picker_move_to_item(index)
+
+      local choose_mapping = pick.config.mappings.choose or "<CR>"
+      local choose = vim.api.nvim_replace_termcodes(choose_mapping, true, false, true)
+      vim.api.nvim_feedkeys(choose, "n", false)
+    end,
+  }
+end
+
 pick.setup({
   source = {
     show = pick.default_show,
@@ -16,16 +46,20 @@ pick.setup({
       }
     end,
   },
+  mappings = {
+    select_item_1 = select_item(1),
+    select_item_2 = select_item(2),
+    select_item_3 = select_item(3),
+    select_item_4 = select_item(4),
+    select_item_5 = select_item(5),
+    select_item_6 = select_item(6),
+    select_item_7 = select_item(7),
+    select_item_8 = select_item(8),
+    select_item_9 = select_item(9),
+  },
 })
 
 vim.ui.select = pick.ui_select
-
-local function picker_move_to_item(index)
-  vim.api.nvim_input("<Home>")
-  for index = 1, index - 1 do
-    vim.api.nvim_input("<Down>")
-  end
-end
 
 local function picker_remove_item(callback)
   local matches = pick.get_picker_matches()
