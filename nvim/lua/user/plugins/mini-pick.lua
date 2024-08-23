@@ -210,7 +210,7 @@ for keymap, action in pairs({
   ["b"] = "buffers_plus",
   ["B"] = "git_branches",
   ["C"] = "git_commits",
-  ["d"] = "diagnostic scope='buffer'",
+  ["d"] = "diagnostic scope='current'",
   ["D"] = "diagnostic scope='all'",
   ["f"] = "grep_live",
   ["F"] = "grep",
