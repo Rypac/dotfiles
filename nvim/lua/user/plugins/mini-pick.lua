@@ -134,6 +134,42 @@ pick.registry.marks_plus = function()
   })
 end
 
+pick.registry.grapple = function()
+  local grapple = require("grapple")
+  local tags = {}
+  for index, tag in ipairs(grapple.tags()) do
+    table.insert(tags, {
+      text = string.format("%2d \0 %s", index, tag.path),
+      path = tag.path,
+    })
+  end
+
+  return pick.start({
+    source = {
+      name = "Grapple",
+      items = tags,
+      choose = function(item)
+        if item ~= nil then
+          vim.schedule(function()
+            grapple.select({ path = item.path })
+          end)
+        end
+      end,
+    },
+    mappings = {
+      delete = {
+        char = "<C-d>",
+        func = function()
+          picker_remove_item(function(match)
+            grapple.untag({ path = match.path })
+            return true
+          end)
+        end,
+      },
+    },
+  })
+end
+
 for keymap, action in pairs({
   ["<Leader>"] = "files",
   ["<CR>"] = "resume",
@@ -165,6 +201,7 @@ for keymap, action in pairs({
   ["S"] = "options",
   ["t"] = "tabpages",
   ["x"] = "treesitter",
+  ["_"] = "grapple",
   [","] = "config",
   ["="] = "spellsuggest",
   ["'"] = "marks_plus",
