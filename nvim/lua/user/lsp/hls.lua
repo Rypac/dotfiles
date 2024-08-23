@@ -1,9 +1,11 @@
 return {
   name = "haskell-language-server",
   cmd = { "haskell-language-server-wrapper", "--lsp" },
-  root_dir = vim.fs.root(0, function(name, path)
-    return name:match("%.cabal$") ~= nil
-  end),
+  root_dir = function()
+    return vim.fs.root(0, function(name, path)
+      return name:match("%.cabal$") ~= nil
+    end)
+  end,
   settings = {
     haskell = {
       formattingProvider = "fourmolu",

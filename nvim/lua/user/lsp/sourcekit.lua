@@ -1,5 +1,7 @@
 return {
   name = "swift-language-server",
   cmd = { "xcrun", "sourcekit-lsp" },
-  root_dir = vim.fs.root(0, "Package.swift"),
+  root_dir = function()
+    return vim.fs.root(0, "Package.swift")
+  end,
 }
