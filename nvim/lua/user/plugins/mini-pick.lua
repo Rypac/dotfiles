@@ -21,12 +21,9 @@ pick.setup({
 vim.ui.select = pick.ui_select
 
 local function picker_move_to_item(index)
-  local move_to_start = vim.api.nvim_replace_termcodes("<C-g>", true, false, true)
-  vim.api.nvim_feedkeys(move_to_start, "n", false)
-
-  local move_down = vim.api.nvim_replace_termcodes("<C-n>", true, false, true)
+  vim.api.nvim_input("<Home>")
   for index = 1, index - 1 do
-    vim.api.nvim_feedkeys(move_down, "n", false)
+    vim.api.nvim_input("<Down>")
   end
 end
 
