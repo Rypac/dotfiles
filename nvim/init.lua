@@ -93,8 +93,8 @@ later(function()
 end)
 
 later(function()
-  add("cbochs/grapple.nvim")
-  source("plugins/grapple.lua")
+  add("echasnovski/mini.visits")
+  source("plugins/mini-visits.lua")
 end)
 
 later(function()

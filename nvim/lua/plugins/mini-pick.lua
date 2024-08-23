@@ -174,40 +174,70 @@ pick.registry.marks_plus = function(local_opts, opts)
   )
 end
 
-pick.registry.grapple = function()
-  local grapple = require("grapple")
-  local tags = {}
-  for index, tag in ipairs(grapple.tags()) do
-    table.insert(tags, {
-      text = string.format("%2d \0 %s", index, tag.path),
-      path = tag.path,
-    })
-  end
+pick.registry.visit_bookmarks = function(local_opts, opts)
+  local_opts = vim.tbl_deep_extend("force", local_opts or {}, { filter = "bookmark" })
 
-  return pick.start({
-    source = {
-      name = "Grapple",
-      items = tags,
-      choose = function(item)
-        if item ~= nil then
-          vim.schedule(function()
-            grapple.select({ path = item.path })
-          end)
-        end
-      end,
-    },
-    mappings = {
-      delete = {
-        char = "<C-d>",
-        func = function()
-          picker_remove_item(function(match)
-            grapple.untag({ path = match.path })
-            return true
-          end)
-        end,
+  return MiniExtra.pickers.visit_paths(
+    local_opts,
+    vim.tbl_deep_extend("force", opts or {}, {
+      source = {
+        name = local_opts.cwd ~= "" and "Bookmarks (cwd)" or "Bookmarks (all)",
       },
-    },
-  })
+      mappings = {
+        remove = {
+          char = "<C-d>",
+          func = function()
+            picker_remove_item(function(path)
+              MiniVisits.remove_label("bookmark", path, local_opts.cwd)
+              return true
+            end)
+          end,
+        },
+      },
+    })
+  )
+end
+
+pick.registry.visit_paths_plus = function(local_opts, opts)
+  local_opts = local_opts or {}
+
+  return MiniExtra.pickers.visit_paths(
+    local_opts,
+    vim.tbl_deep_extend("force", opts or {}, {
+      mappings = {
+        remove = {
+          char = "<C-d>",
+          func = function()
+            picker_remove_item(function(path)
+              MiniVisits.remove_path(path, local_opts.cwd)
+              return true
+            end)
+          end,
+        },
+      },
+    })
+  )
+end
+
+pick.registry.visit_labels_plus = function(local_opts, opts)
+  local_opts = local_opts or {}
+
+  return MiniExtra.pickers.visit_labels(
+    local_opts,
+    vim.tbl_deep_extend("force", opts or {}, {
+      mappings = {
+        remove = {
+          char = "<C-d>",
+          func = function()
+            picker_remove_item(function(label)
+              MiniVisits.remove_label(label, "", local_opts.cwd)
+              return true
+            end)
+          end,
+        },
+      },
+    })
+  )
 end
 
 for keymap, action in pairs({
@@ -218,6 +248,7 @@ for keymap, action in pairs({
   ["C"] = "git_commits",
   ["d"] = "diagnostic scope='current'",
   ["D"] = "diagnostic scope='all'",
+  ["e"] = "visit_paths_plus recency_weight=0",
   ["f"] = "grep_live",
   ["F"] = "grep",
   ["gd"] = "lsp scope='definition'",
@@ -240,8 +271,10 @@ for keymap, action in pairs({
   ["R"] = "lsp scope='workspace_symbol'",
   ["S"] = "options",
   ["t"] = "tabpages",
+  ["v"] = "visit_paths_plus",
+  ["V"] = "visit_labels_plus",
   ["x"] = "treesitter",
-  ["_"] = "grapple",
+  ["_"] = "visit_bookmarks cwd=''",
   [","] = "config",
   ["="] = "spellsuggest",
   ["'"] = "marks_plus",

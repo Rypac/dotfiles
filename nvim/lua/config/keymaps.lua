@@ -62,7 +62,7 @@ map("n", "<Leader>ot", "<Cmd>lua vim.o.showtabline = vim.o.showtabline == 1 and 
 map("n", "<Leader>ow", "<Cmd>setlocal wrap! wrap?<CR>")
 
 -- Diagnostic
-map("n", "<Leader>e", vim.diagnostic.open_float, { desc = "Open diagnostic in float" })
+map("n", "<Leader>k", vim.diagnostic.open_float, { desc = "Open diagnostic in float" })
 
 -- LSP
 map("n", "g.", vim.lsp.buf.code_action)
