@@ -6,7 +6,7 @@ vim.g.loaded_user_session = 1
 local function session_name_completion(arg, _, _)
   local session_names = vim.tbl_map(function(session)
     return session.name
-  end, MiniSessions.detected)
+  end, require("mini.sessions").detected)
 
   return vim.tbl_filter(function(name)
     return vim.startswith(name, arg)
@@ -17,9 +17,9 @@ vim.api.nvim_create_user_command("SessionLoad", function(opts)
   local session_name = opts.args
   local read_opts = { force = opts.bang }
   if session_name ~= "" then
-    MiniSessions.read(session_name, read_opts)
+    require("mini.sessions").read(session_name, read_opts)
   else
-    MiniSessions.select("read", read_opts)
+    require("mini.sessions").select("read", read_opts)
   end
 end, {
   desc = "Load a session",
@@ -32,9 +32,9 @@ vim.api.nvim_create_user_command("SessionSave", function(opts)
   local session_name = opts.args
   local write_opts = { force = opts.bang }
   if session_name ~= "" then
-    MiniSessions.write(session_name, write_opts)
+    require("mini.sessions").write(session_name, write_opts)
   else
-    MiniSessions.write(nil, write_opts)
+    require("mini.sessions").write(nil, write_opts)
   end
 end, {
   desc = "Save a session",
@@ -49,7 +49,7 @@ vim.api.nvim_create_user_command("SessionClose", function(opts)
     return
   end
 
-  MiniSessions.write(nil, { force = true, verbose = false })
+  require("mini.sessions").write(nil, { force = true, verbose = false })
   vim.cmd("silent! %bwipeout" .. (opts.bang and "!" or ""))
   vim.v.this_session = ""
 
@@ -63,9 +63,9 @@ vim.api.nvim_create_user_command("SessionDelete", function(opts)
   local session_name = opts.args
   local delete_opts = { force = opts.bang }
   if session_name ~= "" then
-    MiniSessions.delete(session_name, delete_opts)
+    require("mini.sessions").delete(session_name, delete_opts)
   else
-    MiniSessions.select("delete", delete_opts)
+    require("mini.sessions").select("delete", delete_opts)
   end
 end, {
   desc = "Delete a session",

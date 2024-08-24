@@ -3,27 +3,28 @@ pcall(function()
 end)
 
 local path_package = vim.fn.stdpath("data") .. "/site/"
-local mini_path = path_package .. "pack/deps/start/mini.deps"
-if not vim.loop.fs_stat(mini_path) then
+local deps_path = path_package .. "pack/deps/start/mini.deps"
+if not vim.loop.fs_stat(deps_path) then
   vim.cmd('echo "Installing `mini.deps`" | redraw')
   vim.fn.system({
     "git",
     "clone",
     "--filter=blob:none",
     "https://github.com/echasnovski/mini.deps",
-    mini_path,
+    deps_path,
   })
   vim.cmd("packadd mini.deps | helptags ALL")
   vim.cmd('echo "Installed `mini.deps`" | redraw')
 end
 
-require("mini.deps").setup({
+local deps = require("mini.deps")
+deps.setup({
   path = {
     package = path_package,
   },
 })
 
-local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
+local add, now, later = deps.add, deps.now, deps.later
 
 local source = function(path)
   dofile(vim.fn.stdpath("config") .. "/lua/" .. path)

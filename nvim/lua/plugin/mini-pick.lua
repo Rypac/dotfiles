@@ -156,7 +156,7 @@ end
 pick.registry.marks_plus = function(local_opts, opts)
   local buffer = vim.api.nvim_get_current_buf()
 
-  return MiniExtra.pickers.marks(
+  return require("mini.extra").pickers.marks(
     local_opts,
     vim.tbl_deep_extend("force", opts or {}, {
       mappings = {
@@ -177,7 +177,7 @@ end
 pick.registry.visit_bookmarks = function(local_opts, opts)
   local_opts = vim.tbl_deep_extend("force", local_opts or {}, { filter = "bookmark" })
 
-  return MiniExtra.pickers.visit_paths(
+  return require("mini.extra").pickers.visit_paths(
     local_opts,
     vim.tbl_deep_extend("force", opts or {}, {
       source = {
@@ -188,7 +188,7 @@ pick.registry.visit_bookmarks = function(local_opts, opts)
           char = "<C-d>",
           func = function()
             picker_remove_item(function(path)
-              MiniVisits.remove_label("bookmark", path, local_opts.cwd)
+              require("mini.visits").remove_label("bookmark", path, local_opts.cwd)
               return true
             end)
           end,
@@ -201,7 +201,7 @@ end
 pick.registry.visit_paths_plus = function(local_opts, opts)
   local_opts = local_opts or {}
 
-  return MiniExtra.pickers.visit_paths(
+  return require("mini.extra").pickers.visit_paths(
     local_opts,
     vim.tbl_deep_extend("force", opts or {}, {
       mappings = {
@@ -209,7 +209,7 @@ pick.registry.visit_paths_plus = function(local_opts, opts)
           char = "<C-d>",
           func = function()
             picker_remove_item(function(path)
-              MiniVisits.remove_path(path, local_opts.cwd)
+              require("mini.visits").remove_path(path, local_opts.cwd)
               return true
             end)
           end,
@@ -222,7 +222,7 @@ end
 pick.registry.visit_labels_plus = function(local_opts, opts)
   local_opts = local_opts or {}
 
-  return MiniExtra.pickers.visit_labels(
+  return require("mini.extra").pickers.visit_labels(
     local_opts,
     vim.tbl_deep_extend("force", opts or {}, {
       mappings = {
@@ -230,7 +230,7 @@ pick.registry.visit_labels_plus = function(local_opts, opts)
           char = "<C-d>",
           func = function()
             picker_remove_item(function(label)
-              MiniVisits.remove_label(label, "", local_opts.cwd)
+              require("mini.visits").remove_label(label, "", local_opts.cwd)
               return true
             end)
           end,
