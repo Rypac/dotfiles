@@ -5,7 +5,7 @@ local function picker_move_to_item(index)
   local down = vim.api.nvim_replace_termcodes("<Down>", true, false, true)
 
   vim.api.nvim_feedkeys(home, "n", false)
-  for index = 1, index - 1 do
+  for _ = 1, index - 1 do
     vim.api.nvim_feedkeys(down, "n", false)
   end
 end
@@ -15,7 +15,11 @@ local function select_item(index)
     char = "<C-" .. index .. ">",
     func = function()
       local matches = pick.get_picker_matches()
-      if index > #pick.get_picker_matches().all_inds then
+      if matches == nil then
+        return
+      end
+
+      if index > #matches.all_inds then
         picker_move_to_item(matches.current_ind)
         return
       end
@@ -35,8 +39,8 @@ pick.setup({
   },
   window = {
     config = function()
-      height = math.floor(0.618 * vim.o.lines)
-      width = math.floor(0.618 * vim.o.columns)
+      local height = math.floor(0.618 * vim.o.lines)
+      local width = math.floor(0.618 * vim.o.columns)
       return {
         anchor = "NW",
         height = height,
@@ -63,7 +67,7 @@ vim.ui.select = pick.ui_select
 
 local function picker_remove_item(callback)
   local matches = pick.get_picker_matches()
-  if matches.current == nil then
+  if not matches or matches.current == nil then
     return
   end
 
@@ -72,8 +76,13 @@ local function picker_remove_item(callback)
     return
   end
 
+  local items = pick.get_picker_items()
+  if not items then
+    return
+  end
+
   local updated_items = {}
-  for index, item in ipairs(pick.get_picker_items()) do
+  for index, item in ipairs(items) do
     if index ~= matches.current_ind then
       table.insert(updated_items, item)
     end

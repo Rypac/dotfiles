@@ -87,7 +87,7 @@ vim.api.nvim_create_autocmd("User", {
     local function map_split(lhs, split, desc)
       vim.keymap.set("n", lhs, function()
         local entry = files.get_fs_entry()
-        if entry.fs_type == "file" then
+        if entry and entry.fs_type == "file" then
           files.close()
           vim.cmd(split .. " " .. entry.path)
         end

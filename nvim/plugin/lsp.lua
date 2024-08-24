@@ -34,7 +34,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfiguration", { clear = true }),
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
-    local methods = vim.lsp.protocol.Methods.textDocument_inlayHint
+    if not client then
+      return
+    end
+
+    local methods = vim.lsp.protocol.Methods
 
     if client.supports_method(methods.textDocument_definition) then
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = args.buf })
@@ -119,6 +123,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
       })
     end
 
-    vim.api.nvim_buf_set_option(args.buf, "signcolumn", "yes")
+    vim.api.nvim_set_option_value("signcolumn", "yes", { scope = "local" })
   end,
 })

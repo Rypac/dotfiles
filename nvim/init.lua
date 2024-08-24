@@ -4,7 +4,7 @@ end)
 
 local path_package = vim.fn.stdpath("data") .. "/site/"
 local deps_path = path_package .. "pack/deps/start/mini.deps"
-if not vim.loop.fs_stat(deps_path) then
+if not vim.uv.fs_stat(deps_path) then
   vim.cmd('echo "Installing `mini.deps`" | redraw')
   vim.fn.system({
     "git",

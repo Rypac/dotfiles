@@ -20,7 +20,7 @@ M.config = function(name, local_config)
     return client_config
   end
 
-  return vim.tbl_deep_extend("keep", local_config, client_config)
+  return vim.tbl_deep_extend("force", client_config, local_config)
 end
 
 return M

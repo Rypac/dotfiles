@@ -51,9 +51,9 @@ autocmd({ "UIEnter", "ColorScheme" }, {
   desc = "Sync terminal background with colorscheme",
   group = augroup("SyncTerminalBackground"),
   callback = function()
-    local normal = vim.api.nvim_get_hl_by_name("Normal", true)
-    if normal.background ~= nil then
-      io.write(string.format("\027]11;#%06x\027\\", normal.background))
+    local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
+    if normal.bg ~= nil then
+      io.write(string.format("\027]11;#%06x\027\\", normal.bg))
     end
   end,
 })
