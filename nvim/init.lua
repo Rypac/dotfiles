@@ -49,6 +49,11 @@ now(function()
 end)
 
 now(function()
+  add("echasnovski/mini.files")
+  source("plugins/mini-files.lua")
+end)
+
+now(function()
   add("echasnovski/mini.sessions")
   source("plugins/mini-sessions.lua")
 end)
@@ -115,14 +120,3 @@ later(function()
   add("nvim-treesitter/nvim-treesitter-textobjects")
   source("plugins/treesitter.lua")
 end)
-
-local oil = function()
-  add("stevearc/oil.nvim")
-  source("plugins/oil.lua")
-end
-
-if vim.fn.argc() == 1 and vim.fn.isdirectory(vim.fn.argv(0)) then
-  now(oil)
-else
-  later(oil)
-end
