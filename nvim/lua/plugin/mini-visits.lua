@@ -4,7 +4,7 @@ visits.setup({
 })
 
 vim.keymap.set("n", "+", function()
-  local has_bookmark = vim.tbl_contains(visits.list_labels(), "bookmark")
+  local has_bookmark = vim.list_contains(visits.list_labels(), "bookmark")
   if not has_bookmark then
     visits.add_label("bookmark")
   else
