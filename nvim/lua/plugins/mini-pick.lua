@@ -134,38 +134,44 @@ pick.registry.tabpages = function()
   })
 end
 
-pick.registry.buffers_plus = function()
-  return pick.builtin.buffers(nil, {
-    mappings = {
-      wipeout = {
-        char = "<C-d>",
-        func = function()
-          picker_remove_item(function(match)
-            vim.api.nvim_buf_delete(match.bufnr, {})
-            return true
-          end)
-        end,
+pick.registry.buffers_plus = function(local_opts, opts)
+  return pick.builtin.buffers(
+    local_opts,
+    vim.tbl_deep_extend("force", opts or {}, {
+      mappings = {
+        wipeout = {
+          char = "<C-d>",
+          func = function()
+            picker_remove_item(function(match)
+              vim.api.nvim_buf_delete(match.bufnr, {})
+              return true
+            end)
+          end,
+        },
       },
-    },
-  })
+    })
+  )
 end
 
-pick.registry.marks_plus = function()
+pick.registry.marks_plus = function(local_opts, opts)
   local buffer = vim.api.nvim_get_current_buf()
 
-  return MiniExtra.pickers.marks(nil, {
-    mappings = {
-      delete = {
-        char = "<C-d>",
-        func = function()
-          picker_remove_item(function(match)
-            local mark = string.sub(match.text, 1, 1)
-            return vim.api.nvim_buf_del_mark(buffer, mark) or vim.api.nvim_del_mark(mark)
-          end)
-        end,
+  return MiniExtra.pickers.marks(
+    local_opts,
+    vim.tbl_deep_extend("force", opts or {}, {
+      mappings = {
+        delete = {
+          char = "<C-d>",
+          func = function()
+            picker_remove_item(function(match)
+              local mark = string.sub(match.text, 1, 1)
+              return vim.api.nvim_buf_del_mark(buffer, mark) or vim.api.nvim_del_mark(mark)
+            end)
+          end,
+        },
       },
-    },
-  })
+    })
+  )
 end
 
 pick.registry.grapple = function()
