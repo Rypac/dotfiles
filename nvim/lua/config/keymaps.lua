@@ -4,12 +4,6 @@ local map = vim.keymap.set
 map({ "n", "x" }, "j", [[v:count == 0 ? 'gj' : 'j']], { expr = true })
 map({ "n", "x" }, "k", [[v:count == 0 ? 'gk' : 'k']], { expr = true })
 
--- Move lines
-map("n", "<C-j>", "<Cmd>m .+1<CR>==", { desc = "Move line down" })
-map("n", "<C-k>", "<Cmd>m .-2<CR>==", { desc = "Move line up" })
-map("x", "<C-j>", ":m '>+1<CR>gv=gv", { desc = "Move line(s) down" })
-map("x", "<C-k>", ":m '<-2<CR>gv=gv", { desc = "Move line(s) up" })
-
 -- Clear search highlights
 map({ "i", "n" }, "<Esc>", "<Cmd>nohlsearch<CR><Esc>")
 

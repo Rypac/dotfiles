@@ -73,6 +73,11 @@ later(function()
 end)
 
 later(function()
+  add("echasnovski/mini.move")
+  source("plugins/mini-move.lua")
+end)
+
+later(function()
   add("echasnovski/mini.pairs")
   source("plugins/mini-pairs.lua")
 end)
