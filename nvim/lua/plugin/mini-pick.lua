@@ -87,7 +87,7 @@ local function picker_remove_item(callback)
       table.insert(updated_items, item)
     end
   end
-  pick.set_picker_items(updated_items)
+  pick.set_picker_items(updated_items, { do_match = false })
 
   picker_move_to_item(math.min(matches.current_ind, #updated_items))
 end
@@ -238,8 +238,34 @@ pick.registry.visit_labels_plus = function(local_opts, opts)
         remove = {
           char = "<C-d>",
           func = function()
-            picker_remove_item(function(label)
-              require("mini.visits").remove_label(label, "", local_opts.cwd)
+            picker_remove_item(function(item)
+              local picker_opts = pick.get_picker_opts()
+              if not picker_opts then
+                return false
+              end
+
+              local name = picker_opts.source.name
+              if not name then
+                return false
+              end
+
+              if string.match(name, "^Visit labels") ~= nil then
+                require("mini.visits").remove_label(item, "", local_opts.cwd)
+                return true
+              end
+
+              local _, label_start = string.find(name, '^Paths for "')
+              local label_end, _ = string.find(name, '" label$')
+              if label_start == nil or label_end == nil then
+                return false
+              end
+
+              local label = string.sub(name, label_start + 1, label_end - 1)
+              if label == "" then
+                return false
+              end
+
+              require("mini.visits").remove_label(label, item, local_opts.cwd)
               return true
             end)
           end,
@@ -281,8 +307,10 @@ for keymap, action in pairs({
   ["R"] = "lsp scope='workspace_symbol'",
   ["S"] = "options",
   ["t"] = "tabpages",
-  ["v"] = "visit_labels_plus",
-  ["V"] = "visit_labels_plus cwd=''",
+  ["vl"] = "visit_labels_plus",
+  ["vL"] = "visit_labels_plus cwd=''",
+  ["vv"] = "visit_paths_plus",
+  ["vV"] = "visit_paths_plus cwd=''",
   ["x"] = "treesitter",
   ["_"] = "visit_bookmarks cwd=''",
   [","] = "config",

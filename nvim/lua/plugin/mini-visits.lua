@@ -24,3 +24,27 @@ end, {
 })
 
 vim.keymap.set("n", "_", "<Cmd>Pick visit_bookmarks<CR>", { desc = "Select bookmark" })
+
+vim.keymap.set("n", "<Leader>va", function()
+  visits.add_label()
+end, {
+  desc = "Add label (cwd)",
+})
+
+vim.keymap.set("n", "<Leader>vA", function()
+  visits.add_label(nil, nil, "")
+end, {
+  desc = "Add label (all)",
+})
+
+vim.keymap.set("n", "<Leader>vd", function()
+  visits.remove_label()
+end, {
+  desc = "Remove label (cwd)",
+})
+
+vim.keymap.set("n", "<Leader>vD", function()
+  visits.remove_label(nil, nil, "")
+end, {
+  desc = "Remove label (all)",
+})
