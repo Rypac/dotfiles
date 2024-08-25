@@ -1,9 +1,10 @@
 local visits = require("mini.visits")
-visits.setup({
-  silent = true,
-})
+visits.setup()
 
 vim.keymap.set("n", "+", function()
+  local silent = visits.config.silent
+  visits.config.silent = true
+
   local has_bookmark = vim.list_contains(visits.list_labels(), "bookmark")
   if not has_bookmark then
     visits.add_label("bookmark")
@@ -11,6 +12,7 @@ vim.keymap.set("n", "+", function()
     visits.remove_label("bookmark")
   end
 
+  visits.config.silent = silent
   vim.b.bookmark = not has_bookmark
   vim.cmd("redrawstatus")
 end, {
