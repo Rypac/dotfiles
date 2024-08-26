@@ -97,8 +97,14 @@ vim.api.nvim_create_autocmd("User", {
       })
     end
 
-    map_split("gs", "split", "Open in horizontal split")
-    map_split("gv", "vsplit", "Open in vertical split")
-    map_split("gt", "tabnew", "Open in new tabpage")
+    for _, lhs in ipairs({ "gs", "<C-w>s", "<C-w>S", "<C-w><C-s>" }) do
+      map_split(lhs, "split", "Open in horizontal split")
+    end
+    for _, lhs in ipairs({ "gv", "<C-w>v", "<C-w><C-v>" }) do
+      map_split(lhs, "vsplit", "Open in vertical split")
+    end
+    for _, lhs in ipairs({ "gt", "<C-w>T" }) do
+      map_split(lhs, "tabnew", "Open in new tabpage")
+    end
   end,
 })
