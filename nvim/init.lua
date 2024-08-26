@@ -79,6 +79,11 @@ later(function()
 end)
 
 later(function()
+  add("echasnovski/mini.misc")
+  source("plugin/mini-misc.lua")
+end)
+
+later(function()
   add("echasnovski/mini.move")
   source("plugin/mini-move.lua")
 end)

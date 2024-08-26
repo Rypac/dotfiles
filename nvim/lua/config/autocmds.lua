@@ -46,22 +46,3 @@ autocmd("TermOpen", {
     vim.cmd("startinsert!")
   end,
 })
-
-autocmd({ "UIEnter", "ColorScheme" }, {
-  desc = "Sync terminal background with colorscheme",
-  group = augroup("SyncTerminalBackground"),
-  callback = function()
-    local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
-    if normal.bg ~= nil then
-      io.write(string.format("\027]11;#%06x\027\\", normal.bg))
-    end
-  end,
-})
-
-autocmd("UILeave", {
-  desc = "Reset terminal background",
-  group = augroup("ResetTerminalBackground"),
-  callback = function()
-    io.write("\027]111\027\\")
-  end,
-})
