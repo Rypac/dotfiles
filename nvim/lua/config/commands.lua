@@ -1,15 +1,17 @@
 local command = vim.api.nvim_create_user_command
 
 command("ReloadConfig", function()
-  for name, _ in pairs(package.loaded) do
-    if name:match("^user") then
-      package.loaded[name] = nil
+  for loaded_name, _ in pairs(package.loaded) do
+    for _, target_package in ipairs({ "user", "mini", "nvim%-treesitter" }) do
+      if loaded_name:match("^" .. target_package) then
+        package.loaded[loaded_name] = nil
+      end
     end
   end
 
   dofile(vim.env.MYVIMRC)
 
-  vim.notify("Neovim configuration reloaded: " .. vim.env.MYVIMRC, vim.log.levels.INFO)
+  vim.notify("Reloaded " .. vim.env.MYVIMRC, vim.log.levels.INFO)
 end, {
   desc = "Reload neovim configuration",
 })
