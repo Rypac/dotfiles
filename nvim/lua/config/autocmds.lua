@@ -12,21 +12,6 @@ autocmd("TextYankPost", {
   end,
 })
 
-autocmd("FileType", {
-  desc = 'Close windows with "q"',
-  group = augroup("CloseWithQ"),
-  pattern = { "help", "checkhealth" },
-  callback = function(event)
-    vim.bo[event.buf].buflisted = false
-    vim.keymap.set(
-      "n",
-      "q",
-      "<Cmd>close<CR>",
-      { buffer = event.buf, silent = true, desc = "Quit buffer" }
-    )
-  end,
-})
-
 autocmd("VimResized", {
   desc = "Resize splits on window resize",
   group = augroup("ResizeSplits"),
