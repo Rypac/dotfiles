@@ -1,6 +1,4 @@
-pcall(function()
-  vim.loader.enable()
-end)
+vim.loader.enable()
 
 local path_package = vim.fn.stdpath("data") .. "/site/"
 local mini_path = path_package .. "pack/deps/start/mini.nvim"
@@ -40,62 +38,29 @@ end)
 
 now(function()
   add("sainnhe/gruvbox-material")
-  source("plugin/gruvbox-material.lua")
-end)
-
-now(function()
   add("sainnhe/everforest")
-end)
-
-now(function()
-  source("plugin/mini-files.lua")
-end)
-
-now(function()
-  source("plugin/mini-sessions.lua")
-end)
-
-now(function()
-  source("plugin/mini-statusline.lua")
+  source("plugin/gruvbox-material.lua")
 end)
 
 now(function()
   add("tpope/vim-fugitive")
 end)
 
+now(function()
+  source("plugin/mini-files.lua")
+  source("plugin/mini-sessions.lua")
+  source("plugin/mini-statusline.lua")
+end)
+
 later(function()
   source("plugin/mini-extra.lua")
-end)
-
-later(function()
   source("plugin/mini-ai.lua")
-end)
-
-later(function()
   source("plugin/mini-misc.lua")
-end)
-
-later(function()
   source("plugin/mini-move.lua")
-end)
-
-later(function()
   source("plugin/mini-pairs.lua")
-end)
-
-later(function()
   source("plugin/mini-pick.lua")
-end)
-
-later(function()
   source("plugin/mini-splitjoin.lua")
-end)
-
-later(function()
   source("plugin/mini-surround.lua")
-end)
-
-later(function()
   source("plugin/mini-visits.lua")
 end)
 
