@@ -1,8 +1,7 @@
 [window]
 padding = { x = 4, y = 4 }
-dynamic_padding = true
 title = "Terminal"
-resize_increments = true
+option_as_alt = "Both"
 
 [font]
 size = 12.0
