@@ -111,10 +111,10 @@ bind generic czw !git stash push --keep-index
 bind generic czW !git stash push --keep-index --message "%(prompt Enter stash name: )"
 bind generic czs !git stash push --stashed
 bind generic czS !git stash push --stashed --message "%(prompt Enter stash name: )"
-bind generic cza ?git stash apply --index
-bind generic czA ?git stash apply
-bind generic czp ?git stash pop --index
-bind generic czP ?git stash pop
+bind generic cza !git stash apply --index
+bind generic czA !git stash apply
+bind generic czp !git stash pop --index
+bind generic czP !git stash pop
 bind generic cz<Space> !git stash "%(prompt git stash )"
 bind stash   D   ?git stash drop %(stash)
 
