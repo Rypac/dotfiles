@@ -7,20 +7,11 @@ M.config = function(name, local_config)
     return
   end
 
-  if local_config then
-    config = vim.tbl_deep_extend("force", config, local_config)
+  if not local_config then
+    return config()
   end
 
-  local client_config = {}
-  for key, value in pairs(config) do
-    if key == "root_dir" and vim.is_callable(value) then
-      client_config[key] = value()
-    else
-      client_config[key] = value
-    end
-  end
-
-  return client_config
+  return vim.tbl_deep_extend("force", config(), local_config)
 end
 
 M.start = function(name, config, opts)
