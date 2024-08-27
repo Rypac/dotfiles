@@ -15,6 +15,6 @@ require("mini.surround").setup({
 
 vim.keymap.del("x", "ys")
 vim.keymap.set("n", "yss", "ys_", { remap = true })
-vim.keymap.set("x", "S", [[:<C-u>lua require('mini.surround').add('visual')<CR>]], {
+vim.keymap.set("x", "S", [[:<C-u>lua require("mini.surround").add("visual")<CR>]], {
   silent = true,
 })

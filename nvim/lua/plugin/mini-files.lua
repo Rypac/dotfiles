@@ -23,12 +23,6 @@ end, {
   desc = "Open parent directory",
 })
 
-vim.keymap.set("n", "<Leader>-", function()
-  files.open()
-end, {
-  desc = "Open current working directory in last used state",
-})
-
 vim.keymap.set("n", "<Leader>~", function()
   files.open(nil, false)
 end, {

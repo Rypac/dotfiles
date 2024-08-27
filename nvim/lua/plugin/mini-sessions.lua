@@ -1,5 +1,4 @@
-require("mini.sessions").setup()
+local sessions = require("mini.sessions")
+sessions.setup()
 
-vim.keymap.set("n", "<Leader>O", "<Cmd>lua require('mini.sessions').select()<CR>", {
-  desc = "Select session",
-})
+vim.keymap.set("n", "<Leader>s", sessions.select, { desc = "Load session" })

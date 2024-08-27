@@ -1,7 +1,25 @@
 local visits = require("mini.visits")
 visits.setup()
 
-vim.keymap.set("n", "+", function()
+vim.keymap.set("n", "<C-j>", function()
+  require("mini.pick").registry.visit_paths_plus({ recency_weight = 1 })
+end, {
+  desc = "Select recent",
+})
+
+vim.keymap.set("n", "<C-k>", function()
+  require("mini.pick").registry.visit_bookmarks()
+end, {
+  desc = "Select bookmark",
+})
+
+vim.keymap.set("n", "<C-0>", function()
+  visits.iterate_paths("forward", nil, { filter = "bookmark", wrap = true })
+end, {
+  desc = "Cycle bookmarks",
+})
+
+vim.keymap.set("n", "<C-h>", function()
   local silent = visits.config.silent
   visits.config.silent = true
 
@@ -18,14 +36,6 @@ vim.keymap.set("n", "+", function()
 end, {
   desc = "Toggle bookmark",
 })
-
-vim.keymap.set("n", "<C-0>", function()
-  visits.iterate_paths("forward", nil, { filter = "bookmark", wrap = true })
-end, {
-  desc = "Cycle bookmarks",
-})
-
-vim.keymap.set("n", "_", "<Cmd>Pick visit_bookmarks<CR>", { desc = "Select bookmark" })
 
 vim.keymap.set("n", "<Leader>va", function()
   visits.add_label()

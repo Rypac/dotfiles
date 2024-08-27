@@ -1,7 +1,5 @@
 local statusline = require("mini.statusline")
-statusline.setup({
-  use_icons = false,
-})
+statusline.setup({ use_icons = false })
 
 vim.api.nvim_create_autocmd("BufEnter", {
   desc = "Update bookmarked state for statusline",

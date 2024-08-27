@@ -1,8 +1,8 @@
 local map = vim.keymap.set
 
 -- Move by visible lines
-map({ "n", "x" }, "j", [[v:count == 0 ? 'gj' : 'j']], { expr = true })
-map({ "n", "x" }, "k", [[v:count == 0 ? 'gk' : 'k']], { expr = true })
+map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
+map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 
 -- Clear search highlights
 map({ "i", "n" }, "<Esc>", "<Cmd>nohlsearch<CR><Esc>")
@@ -40,20 +40,20 @@ map(
 )
 map("n", "<Leader>oc", "<Cmd>setlocal cursorline! cursorline?<CR>")
 map("n", "<Leader>oC", "<Cmd>setlocal cursorcolumn! cursorcolumn?<CR>")
-map("n", "<Leader>of", "<Cmd>lua vim.b.autoformat = vim.b.autoformat == false<CR>")
+map("n", "<Leader>of", "<Cmd>lua vim.b.lsp_autoformat = vim.b.lsp_autoformat == false<CR>")
 map("n", "<Leader>oh", "<Cmd>setlocal hlsearch! hlsearch?<CR>")
 map("n", "<Leader>oi", "<Cmd>setlocal ignorecase! ignorecase?<CR>")
 map("n", "<Leader>ol", "<Cmd>setlocal linebreak! linebreak?<CR>")
 map("n", "<Leader>on", "<Cmd>setlocal number! number?<CR>")
 map("n", "<Leader>or", "<Cmd>setlocal relativenumber! relativenumber?<CR>")
-map("n", "<Leader>os", "<Cmd>setlocal spell! spell?<CR>")
 map(
   "n",
-  "<Leader>oS",
+  "<Leader>os",
   "<Cmd>lua vim.o.signcolumn = vim.o.signcolumn == 'yes' and 'auto' or 'yes'<CR>"
 )
 map("n", "<Leader>ot", "<Cmd>lua vim.o.showtabline = vim.o.showtabline == 1 and 2 or 1<CR>")
 map("n", "<Leader>ow", "<Cmd>setlocal wrap! wrap?<CR>")
+map("n", "<Leader>oz", "<Cmd>setlocal spell! spell?<CR>")
 
 -- Diagnostic
 map("n", "<Leader>k", vim.diagnostic.open_float, { desc = "Open diagnostic in float" })
