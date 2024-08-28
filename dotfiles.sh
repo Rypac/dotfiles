@@ -67,7 +67,6 @@ dotfiles_link() {
     link git "$XDG_CONFIG_HOME/git"
     link ghc "$XDG_CONFIG_HOME/ghc"
     link ideavim "$XDG_CONFIG_HOME/ideavim"
-    link lazygit "$XDG_CONFIG_HOME/lazygit"
     link npm "$XDG_CONFIG_HOME/npm"
     link nvim "$XDG_CONFIG_HOME/nvim"
     link tig "$XDG_CONFIG_HOME/tig"

@@ -93,7 +93,6 @@ alias la='ls -lahF --color=auto'
 alias f=finder
 alias ql=quick-look
 alias manp=man-preview
-alias lg=lazygit
 
 # Clear the clipboard
 function pbclear() {
