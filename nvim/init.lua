@@ -38,8 +38,12 @@ end)
 
 now(function()
   add("sainnhe/gruvbox-material")
-  add("sainnhe/everforest")
   source("plugin/gruvbox-material.lua")
+
+  add("sainnhe/everforest")
+  source("plugin/everforest.lua")
+
+  require("user.colorscheme").apply("everforest")
 end)
 
 now(function()
