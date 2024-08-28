@@ -25,9 +25,9 @@ autocmd("VimResized", {
 autocmd("TermOpen", {
   desc = "Configure UI for builtin terminal",
   group = augroup("ConfigureTerminal"),
-  callback = function()
+  callback = vim.schedule_wrap(function()
     vim.opt_local.number = false
     vim.opt_local.signcolumn = "no"
     vim.cmd("startinsert!")
-  end,
+  end),
 })
