@@ -1,8 +1,3 @@
-if vim.g.loaded_user_session ~= nil then
-  return
-end
-vim.g.loaded_user_session = 1
-
 local function session_name_completion(arg, _, _)
   local session_names = vim.tbl_map(function(session)
     return session.name
