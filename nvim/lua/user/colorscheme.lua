@@ -6,23 +6,27 @@ M.apply = function(name)
     return
   end
 
-  if not pcall(vim.cmd, "colorscheme " .. name .. "-" .. vim.o.background) then
-    local original_background = vim.o.background
-
-    for _, background in ipairs({ "dark", "light" }) do
-      vim.o.background = background
-
-      require("mini.colors")
-        .get_colorscheme("gruvbox-material", { new_name = name .. "-" .. background })
-        :add_cterm_attributes()
-        :add_terminal_colors()
-        :write()
-    end
-
-    vim.o.background = original_background
-
-    vim.cmd("colorscheme " .. name .. "-" .. vim.o.background)
+  local colorscheme_name = name .. "-" .. vim.o.background
+  if not pcall(vim.cmd, "colorscheme " .. colorscheme_name) then
+    M.write(name)
+    vim.cmd("colorscheme " .. colorscheme_name)
   end
+end
+
+M.write = function(name)
+  local original_background = vim.o.background
+
+  for _, background in ipairs({ "dark", "light" }) do
+    vim.o.background = background
+
+    require("mini.colors")
+      .get_colorscheme(name, { new_name = name .. "-" .. background })
+      :add_cterm_attributes()
+      :add_terminal_colors()
+      :write()
+  end
+
+  vim.o.background = original_background
 end
 
 return M
