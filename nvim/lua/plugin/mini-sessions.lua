@@ -1,4 +1,4 @@
 local sessions = require("mini.sessions")
 sessions.setup()
 
-vim.keymap.set("n", "<Leader>s", sessions.select, { desc = "Load session" })
+vim.keymap.set("n", "<Leader>O", sessions.select, { desc = "Load session" })

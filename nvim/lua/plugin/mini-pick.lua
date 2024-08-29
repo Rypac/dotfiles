@@ -301,7 +301,7 @@ for keymap, action in pairs({
   ["q"] = "list scope='quickfix'",
   ["r"] = "lsp scope='document_symbol'",
   ["R"] = "lsp scope='workspace_symbol'",
-  ["O"] = "options",
+  ["s"] = "options",
   ["t"] = "tabpages",
   ["vl"] = "visit_labels_plus",
   ["vL"] = "visit_labels_plus cwd=''",
