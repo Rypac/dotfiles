@@ -54,6 +54,10 @@ bind generic ot :toggle commit-title-overflow
 bind generic oF :toggle file-filter
 bind generic or :toggle commit-title-refs
 
+bind main w :!git diff %(commit)
+bind main W :!git diff %(branch)
+bind refs w :!git diff %(branch)
+
 bind generic F ?git fetch --prune --all
 bind main    F ?git fetch --prune --all
 
@@ -81,6 +85,7 @@ bind generic c<Space>  !git commit "%(prompt git commit )"
 bind generic cb<Space> !git branch "%(prompt git branch )"
 bind generic cm<Space> !git merge "%(prompt git merge )"
 bind generic cr<Space> !git revert "%(prompt git revert )"
+bind generic cv<Space> !git commit --verbose "%(prompt git commit -v )"
 bind generic cz<Space> !git stash "%(prompt git stash )"
 
 bind generic cc  !git commit
@@ -89,10 +94,14 @@ bind generic ca  !git commit --amend
 bind generic cva !git commit --amend --verbose
 bind generic ce  !git commit --amend --no-edit
 bind generic cw  !git commit --amend --only
+bind generic cRa !git commit --reset-author --amend
+bind generic cRe !git commit --reset-author --amend --no-edit
+bind generic cRw !git commit --reset-author --amend --only
 bind main    cf  !git commit --fixup=%(commit)
 bind main    cF  !sh -c "git commit --fixup=%(commit) && git rebase --autosquash %(commit)^"
-bind main    cs  !git commit --squash=%(commit)
-bind main    cS  !sh -c "git commit --squash=%(commit) && git rebase --autosquash %(commit)^"
+bind main    cs  !git commit --no-edit --squash=%(commit)
+bind main    cS  !sh -c "git commit --no-edit --squash=%(commit) && git rebase --autosquash %(commit)^"
+bind main    cA  !git commit --edit --squash=%(commit)
 bind main    crc !git revert %(commit)
 bind main    crn !git revert --no-commit %(commit)
 bind main    !   ?git revert %(commit)
