@@ -100,5 +100,32 @@ vim.api.nvim_create_autocmd("User", {
     for _, lhs in ipairs({ "gt", "<C-w>T" }) do
       map_split(lhs, "tabnew", "Open in new tabpage")
     end
+
+    vim.keymap.set("n", "<C-;>", function()
+      local entry = files.get_fs_entry()
+      if not entry then
+        return
+      end
+
+      local path
+      if entry.fs_type == "file" then
+        path = vim.fs.dirname(entry.path)
+      else
+        path = entry.paty
+      end
+
+      if path and vim.fn.isdirectory(path) ~= 0 then
+        files.close()
+        require("mini.pick").builtin.grep_live(nil, {
+          source = {
+            name = 'Search in "' .. vim.fs.basename(path) .. '"',
+            cwd = path,
+          },
+        })
+      end
+    end, {
+      desc = "Search in path",
+      buffer = args.data.buf_id,
+    })
   end,
 })

@@ -33,6 +33,44 @@ local function select_item(index)
   }
 end
 
+local function search_path()
+  return {
+    char = "<C-;>",
+    func = function()
+      local matches = pick.get_picker_matches()
+      if matches == nil or matches.current == nil then
+        return
+      end
+
+      local path
+      if type(matches.current) == "table" then
+        path = matches.current.path
+      else
+        path = matches.current
+      end
+
+      if not path then
+        return
+      end
+
+      if vim.fn.isdirectory(path) == 0 then
+        path = vim.fs.dirname(path)
+      end
+
+      if vim.fn.isdirectory(path) == 0 then
+        return
+      end
+
+      pick.builtin.grep_live(nil, {
+        source = {
+          name = 'Search in "' .. vim.fs.basename(path) .. '"',
+          cwd = path,
+        },
+      })
+    end,
+  }
+end
+
 pick.setup({
   source = {
     show = pick.default_show,
@@ -60,6 +98,7 @@ pick.setup({
     select_item_7 = select_item(7),
     select_item_8 = select_item(8),
     select_item_9 = select_item(9),
+    search = search_path(),
   },
 })
 
