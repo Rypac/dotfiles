@@ -48,6 +48,7 @@ end)
 
 now(function()
   add("tpope/vim-fugitive")
+  source("plugin/fugitive.lua")
 end)
 
 now(function()
