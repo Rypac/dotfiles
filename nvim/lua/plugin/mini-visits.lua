@@ -20,14 +20,20 @@ end, {
 })
 
 vim.keymap.set("n", "<C-h>", function()
+  local path = vim.api.nvim_buf_get_name(0)
+  if path == "" then
+    return
+  end
+
   local silent = visits.config.silent
   visits.config.silent = true
 
-  local has_bookmark = vim.list_contains(visits.list_labels(), "bookmark")
+  local cwd = vim.uv.cwd()
+  local has_bookmark = #visits.list_labels(path, cwd, { filter = "bookmark" }) > 0
   if not has_bookmark then
-    visits.add_label("bookmark")
+    visits.add_label("bookmark", path, cwd)
   else
-    visits.remove_label("bookmark")
+    visits.remove_label("bookmark", path, cwd)
   end
 
   visits.config.silent = silent
