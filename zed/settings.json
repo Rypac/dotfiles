@@ -1,0 +1,58 @@
+{
+  "auto_update": false,
+  "features": {
+    "inline_completion_provider": "none"
+  },
+  "assistant": {
+    "version": "2",
+    "enabled": false
+  },
+  "collaboration_panel": {
+    "button": false
+  },
+  "chat_panel": {
+    "button": "never"
+  },
+  "notification_panel": {
+    "button": false
+  },
+  "base_keymap": "SublimeText",
+  "vim_mode": true,
+  "vim": {
+    "use_multiline_find": true,
+    "use_smartcase_find": true
+  },
+  "buffer_font_family": "Menlo",
+  "buffer_font_size": 12,
+  "cursor_blink": false,
+  "terminal": {
+    "blinking": "off",
+    "line_height": "standard"
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "languages": {
+    "Markdown": {
+      "soft_wrap": "editor_width"
+    }
+  },
+  "lsp": {
+    "hls": {
+      "initialization_options": {
+        "haskell": {
+          "formattingProvider": "fourmolu",
+          "cabalFormattingProvider": "cabal-gild",
+          "plugin": {
+            "rename": {
+              "config": {
+                "crossModule": true
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

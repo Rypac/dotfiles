@@ -29,6 +29,10 @@ nvim/plugin/zzz_*.lua
 nvim/after/ftplugin/*/aaa_*.lua
 nvim/after/ftplugin/*/zzz_*.lua
 
+zed/*
+!zed/keymap.json
+!zed/settings.json
+
 zsh/*
 !zsh/.zprofile
 !zsh/.zshenv
