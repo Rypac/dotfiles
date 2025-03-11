@@ -95,6 +95,10 @@ function pbclear() {
     printf '' | pbcopy
 }
 
+if (( $+commands[nvim] )); then
+    alias vim=nvim
+fi
+
 function preview() {
     if (( $+commands[bat] )); then
         fzf --preview 'bat --style=full --color=always {}'
