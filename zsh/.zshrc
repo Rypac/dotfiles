@@ -80,10 +80,6 @@ if (( $+commands[zoxide] )); then
     source <(zoxide init zsh)
 fi
 
-if (( $+commands[pyenv] )); then
-    path=("$PYENV_ROOT/shims" $path)
-fi
-
 # List directory contents
 alias ls='ls -G'
 alias ll='ls -lhF --color=auto'
