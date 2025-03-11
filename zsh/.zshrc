@@ -204,10 +204,5 @@ fi
 # Ensure local executable directory is first on path
 path=("$XDG_BIN_HOME" $path)
 
-# Source local zshrc
-if [ -r "$ZDOTDIR/.zshrc.local" ]; then
-    source "$ZDOTDIR/.zshrc.local"
-fi
-
 # Remove duplicate entries from paths
 typeset -U path manpath infopath

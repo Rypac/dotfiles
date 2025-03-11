@@ -29,8 +29,3 @@ export HOMEBREW_BUNDLE_FILE="$DOTFILES_HOME/mac/Brewfile"
 
 # SQLite
 export SQLITE_HISTORY="$XDG_STATE_HOME/sqlite_history"
-
-# Source local zshenv
-if [ -r "$ZDOTDIR/.zshenv.local" ]; then
-    . "$ZDOTDIR/.zshenv.local"
-fi

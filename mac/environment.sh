@@ -11,7 +11,7 @@ if [ -x /usr/libexec/path_helper ]; then
     eval "$(/usr/libexec/path_helper -s)"
 fi
 
-for zshfile in "$HOME/.zshenv" "$ZDOTDIR/.zshenv.local" "$ZDOTDIR/.zprofile" "$ZDOTDIR/.zprofile.local"; do
+for zshfile in "$HOME/.zshenv" "$ZDOTDIR/.zprofile"; do
     # Skip the file if it doesn't exist
     if [ ! -r "$zshfile" ]; then
         continue
