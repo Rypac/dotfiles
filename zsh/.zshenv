@@ -13,10 +13,6 @@ DOTFILES_HOME="$HOME/.dotfiles"
 export GHCUP_USE_XDG_DIRS=1
 export STACK_XDG=1
 
-# Rust
-export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-export CARGO_HOME="$XDG_DATA_HOME/cargo"
-
 # Python
 export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
 
