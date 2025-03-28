@@ -75,9 +75,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     if client.supports_method(methods.textDocument_completion) then
-      if vim.fn.has("nvim-0.11") == 1 then
-        vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
-      end
+      vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
     end
 
     if client.supports_method(methods.textDocument_documentHighlight) then

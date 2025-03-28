@@ -16,12 +16,6 @@ end, {
   desc = "Format file",
 })
 
--- Buffer navigation
-map("n", "]b", "<Cmd>bnext<CR>", { desc = "Next buffer" })
-map("n", "[b", "<Cmd>bprevious<CR>", { desc = "Previous buffer" })
-map("n", "]B", "<Cmd>blast<CR>", { desc = "Last buffer" })
-map("n", "[B", "<Cmd>bfirst<CR>", { desc = "First buffer" })
-
 -- Tab navigation
 map("n", "]t", "<Cmd>tabnext<CR>", { desc = "Next tab" })
 map("n", "[t", "<Cmd>tabprevious<CR>", { desc = "Previous tab" })
@@ -60,12 +54,8 @@ map("n", "<Leader>k", vim.diagnostic.open_float, { desc = "Open diagnostic in fl
 
 -- LSP
 map("n", "g.", vim.lsp.buf.code_action)
-map("n", "gra", vim.lsp.buf.code_action)
 map("n", "grf", vim.lsp.buf.format)
-map("n", "gri", vim.lsp.buf.incoming_calls)
 map("n", "gro", vim.lsp.buf.outgoing_calls)
-map("n", "grn", vim.lsp.buf.rename)
-map("n", "grr", vim.lsp.buf.references)
 map("n", "grs", vim.lsp.buf.document_symbol)
 map("n", "grS", vim.lsp.buf.workspace_symbol)
 map("n", "grt", "<Cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>")

@@ -58,7 +58,7 @@ opt.foldtext = ""
 opt.foldlevel = 99
 
 -- Display popup menus for completions but don't insert without manual selection
-opt.completeopt = { "menu", "menuone", "noinsert" }
+opt.completeopt = { "menu", "menuone", "noinsert", "popup", "fuzzy" }
 
 -- Hide completion messages
 opt.shortmess:append({ c = true, C = true })

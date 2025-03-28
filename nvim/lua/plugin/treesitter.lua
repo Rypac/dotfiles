@@ -18,7 +18,6 @@ require("nvim-treesitter.configs").setup({
     "rust",
     "sql",
     "swift", -- Requires node to be installed
-    "terraform",
     "toml",
     "vim",
     "vimdoc",
