@@ -1,7 +1,7 @@
 {
   "auto_update": false,
   "features": {
-    "inline_completion_provider": "none"
+    "edit_prediction_provider": "none"
   },
   "assistant": {
     "version": "2",
@@ -32,11 +32,6 @@
   "telemetry": {
     "diagnostics": false,
     "metrics": false
-  },
-  "languages": {
-    "Markdown": {
-      "soft_wrap": "editor_width"
-    }
   },
   "lsp": {
     "hls": {
