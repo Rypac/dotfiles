@@ -38,15 +38,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     local methods = vim.lsp.protocol.Methods
 
-    if client.supports_method(methods.textDocument_definition) then
+    if client:supports_method(methods.textDocument_definition) then
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = args.buf })
     end
 
-    if client.supports_method(methods.textDocument_declaration) then
+    if client:supports_method(methods.textDocument_declaration) then
       vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = args.buf })
     end
 
-    if client.supports_method(methods.textDocument_formatting) then
+    if client:supports_method(methods.textDocument_formatting) then
       vim.keymap.set("n", "g=", vim.lsp.buf.format, { buffer = args.buf })
 
       vim.api.nvim_create_autocmd("BufWritePre", {
@@ -64,7 +64,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
       })
     end
 
-    if client.supports_method(methods.textDocument_codeLens) then
+    if client:supports_method(methods.textDocument_foldingRange) then
+      local win = vim.api.nvim_get_current_win()
+      vim.wo[win][0].foldmethod = "expr"
+      vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
+    end
+
+    if client:supports_method(methods.textDocument_codeLens) then
       vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
         group = lsp_group,
         buffer = args.buf,
@@ -74,11 +80,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
       })
     end
 
-    if client.supports_method(methods.textDocument_completion) then
+    if client:supports_method(methods.textDocument_completion) then
       vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
     end
 
-    if client.supports_method(methods.textDocument_documentHighlight) then
+    if client:supports_method(methods.textDocument_documentHighlight) then
       vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
         group = lsp_group,
         buffer = args.buf,
