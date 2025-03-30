@@ -33,6 +33,11 @@
     "diagnostics": false,
     "metrics": false
   },
+  "languages": {
+    "Kotlin": {
+      "enable_language_server": false
+    }
+  },
   "lsp": {
     "hls": {
       "initialization_options": {

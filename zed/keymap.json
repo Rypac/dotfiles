@@ -1,24 +1,16 @@
 [
   {
-    "context": "Editor && vim_mode == normal",
+    "context": "Editor && VimControl && !menu",
     "bindings": {
       "alt-k": "editor::MoveLineUp",
-      "alt-j": "editor::MoveLineDown",
-      "ctrl-n": ["editor::SelectNext", { "replace_newest": false }],
-      "ctrl-p": ["editor::SelectPrevious", { "replace_newest": true }],
-      "g ctrl-n": "editor::SelectAllMatches"
+      "alt-j": "editor::MoveLineDown"
     }
   },
   {
-    "context": "Editor && vim_mode == visual",
+    "context": "Editor && vim_mode == visual && !menu",
     "bindings": {
-      "alt-k": "editor::MoveLineUp",
-      "alt-j": "editor::MoveLineDown",
-      "ctrl-n": ["editor::SelectNext", { "replace_newest": false }],
-      "ctrl-s": ["editor::SelectNext", { "replace_newest": true }],
-      "ctrl-p": ["editor::SelectPrevious", { "replace_newest": true }],
-      "g ctrl-n": "editor::SelectAllMatches",
-      "shift-s": ["vim::PushOperator", { "AddSurrounds": {} }]
+      "shift-s": ["vim::PushAddSurrounds", {}],
+      "shift-x": "vim::Exchange"
     }
   }
 ]
