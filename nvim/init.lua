@@ -38,13 +38,9 @@ now(function()
 end)
 
 now(function()
-  add("sainnhe/gruvbox-material")
-  source("plugin/gruvbox-material.lua")
-
-  add("sainnhe/everforest")
-  source("plugin/everforest.lua")
-
-  require("user.colorscheme").apply("everforest")
+  if vim.env.TERM_PROGRAM ~= "Apple_Terminal" then
+    vim.cmd("colorscheme randomhue")
+  end
 end)
 
 now(function()
