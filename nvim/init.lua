@@ -38,9 +38,10 @@ now(function()
 end)
 
 now(function()
-  if vim.env.TERM_PROGRAM ~= "Apple_Terminal" then
-    vim.cmd("colorscheme simple")
-  end
+  add("sainnhe/everforest")
+  source("plugin/everforest.lua")
+
+  require("user.colorscheme").apply("everforest")
 end)
 
 now(function()
