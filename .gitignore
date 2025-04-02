@@ -29,6 +29,8 @@ nvim/plugin/zzz_*.lua
 nvim/after/ftplugin/*/aaa_*.lua
 nvim/after/ftplugin/*/zzz_*.lua
 
+sublime-text/Package Control.*
+
 zed/*
 !zed/keymap.json
 !zed/settings.json
