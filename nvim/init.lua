@@ -39,7 +39,7 @@ end)
 
 now(function()
   if vim.env.TERM_PROGRAM ~= "Apple_Terminal" then
-    vim.cmd("colorscheme randomhue")
+    vim.cmd("colorscheme simple")
   end
 end)
 
