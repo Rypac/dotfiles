@@ -59,7 +59,9 @@ dotfiles_link() {
 
     # Link executables
     link dotfiles.sh "$XDG_BIN_HOME/dotfiles"
+    link bin/haskell-script.sh "$XDG_BIN_HOME/haskell-script"
     link bin/sqlite-to-json.sh "$XDG_BIN_HOME/sqlite-to-json"
+    link bin/update-all.sh "$XDG_BIN_HOME/update-all"
 
     # Link common dotfiles
     link fourmolu/fourmolu.yaml "$XDG_CONFIG_HOME/fourmolu.yaml"

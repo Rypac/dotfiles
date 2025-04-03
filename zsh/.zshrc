@@ -81,6 +81,10 @@ if (( $+commands[zoxide] )); then
     source <(zoxide init zsh)
 fi
 
+if (( $+commands[nvim] )); then
+    alias vim=nvim
+fi
+
 # List directory contents
 alias ls='ls -G'
 alias ll='ls -lhF --color=auto'
@@ -95,10 +99,6 @@ alias manp=man-preview
 function pbclear() {
     printf '' | pbcopy
 }
-
-if (( $+commands[nvim] )); then
-    alias vim=nvim
-fi
 
 function preview() {
     if (( $+commands[bat] )); then
@@ -141,55 +141,6 @@ function nmpurge() {
 # Remove broken symlinks recursively in a directory, default .
 function symprune() {
     find -L "${@:-.}" -type l -print -exec rm -- {} +
-}
-
-# Run a Haskell script in Cabal or Stack
-function haskell-script() {
-    if [ ! -f "$1" ]; then
-        return 1
-    fi
-
-    case "$(head -1 "$1")" in
-        '#!/usr/bin/env runghc')
-            runghc "$@" ;;
-        '#!/usr/bin/env runhaskell')
-            runhaskell "$@" ;;
-        '#!/usr/bin/env cabal'|'{- cabal:')
-            cabal run -v0 "$@" ;;
-        '#!/usr/bin/env stack')
-            stack --silent "$@" ;;
-        '-- stack script'*|'{- stack script'*)
-            stack --silent =(cat <(echo '#!/usr/bin/env stack') "$1") "${@:2}" ;;
-        *)
-            runghc "$@" ;;
-    esac
-}
-
-# Update apps installed via brew
-function update-apps() {
-    if (( $+commands[brew] )); then
-        brew update
-        brew upgrade
-        brew bundle --file="$DOTFILES_HOME/mac/Brewfile"
-        brew cleanup --prune=all
-    fi
-}
-
-# Update anything Haskell related
-function update-haskell() {
-    if (( $+commands[ghcup] )); then
-        ghcup gc
-    fi
-
-    if (( $+commands[cabal] )); then
-        cabal update
-    fi
-}
-
-# Update everything
-function update-all() {
-    update-apps
-    update-haskell
 }
 
 # Load plugins
