@@ -1,6 +1,3 @@
-[core]
-	editor = nvim
-
 [user]
 	name = Ryan Davis
 	email = ryan@rypac.org
