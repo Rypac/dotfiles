@@ -66,6 +66,7 @@ dotfiles_link() {
     link fourmolu/fourmolu.yaml "$XDG_CONFIG_HOME/fourmolu.yaml"
     link git "$XDG_CONFIG_HOME/git"
     link ghc "$XDG_CONFIG_HOME/ghc"
+    link ghostty "$XDG_CONFIG_HOME/ghostty"
     link ideavim "$XDG_CONFIG_HOME/ideavim"
     link npm "$XDG_CONFIG_HOME/npm"
     link nvim "$XDG_CONFIG_HOME/nvim"
