@@ -62,7 +62,6 @@ dotfiles_link() {
     link bin/sqlite-to-json.sh "$XDG_BIN_HOME/sqlite-to-json"
 
     # Link common dotfiles
-    link alacritty "$XDG_CONFIG_HOME/alacritty"
     link fourmolu/fourmolu.yaml "$XDG_CONFIG_HOME/fourmolu.yaml"
     link git "$XDG_CONFIG_HOME/git"
     link ghc "$XDG_CONFIG_HOME/ghc"
