@@ -13,6 +13,9 @@ comma-style: leading
 # Styling of import/export lists (choices: leading, trailing, or diff-friendly)
 import-export-style: diff-friendly
 
+# Rules for grouping import declarations
+import-grouping: legacy
+
 # Whether to full-indent or half-indent 'where' bindings past the preceding body
 indent-wheres: false
 
@@ -40,6 +43,18 @@ single-constraint-parens: always
 # Whether to put parentheses around a single deriving class (choices: auto, always, or never)
 single-deriving-parens: always
 
+# Whether to sort constraints
+sort-constraints: false
+
+# Whether to sort derived classes
+sort-derived-classes: false
+
+# Whether to sort deriving clauses
+sort-deriving-clauses: false
+
+# Whether to place section operators (those that are infixr 0, such as $) in trailing position, continuing the expression indented below
+trailing-section-operators: true
+
 # Output Unicode syntax (choices: detect, always, or never)
 unicode: never
 
@@ -51,3 +66,6 @@ fixities: []
 
 # Module reexports Fourmolu should know about
 reexports: []
+
+# Modules defined by the current Cabal package for import grouping
+local-modules: []
