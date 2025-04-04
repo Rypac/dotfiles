@@ -33,7 +33,7 @@ end, {
   desc = "Format the current buffer",
 })
 
-command("UserColorscheme", function(opts)
+command("ApplyColorscheme", function(opts)
   vim.cmd("colorscheme " .. opts.args)
 
   if vim.env.TERM_PROGRAM == "Apple_Terminal" then
