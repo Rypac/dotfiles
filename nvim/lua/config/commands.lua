@@ -25,6 +25,14 @@ end, {
   complete = "filetype",
 })
 
+command("Format", function()
+  local saved_view = vim.fn.winsaveview()
+  vim.cmd("normal! gggqG")
+  vim.fn.winrestview(saved_view)
+end, {
+  desc = "Format the current buffer",
+})
+
 command("UserColorscheme", function(opts)
   vim.cmd("colorscheme " .. opts.args)
 

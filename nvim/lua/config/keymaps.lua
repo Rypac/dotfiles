@@ -8,13 +8,7 @@ map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 map({ "i", "n" }, "<Esc>", "<Cmd>nohlsearch<CR><Esc>")
 
 -- Format entire buffer
-map("n", "g=", function()
-  local saved_view = vim.fn.winsaveview()
-  vim.cmd("normal! gggqG")
-  vim.fn.winrestview(saved_view)
-end, {
-  desc = "Format file",
-})
+map("n", "g=", "<Cmd>Format<CR>", { desc = "Format buffer" })
 
 -- Tab navigation
 map("n", "]t", "<Cmd>tabnext<CR>", { desc = "Next tab" })
