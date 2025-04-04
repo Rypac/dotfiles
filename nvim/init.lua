@@ -38,10 +38,7 @@ now(function()
 end)
 
 now(function()
-  add("sainnhe/everforest")
-  source("plugin/everforest.lua")
-
-  require("user.colorscheme").apply("everforest")
+  vim.cmd("UserColorscheme iceberg")
 end)
 
 now(function()
