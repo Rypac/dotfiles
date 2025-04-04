@@ -5,7 +5,7 @@
 if command -v brew >/dev/null 2>&1; then
     brew update
     brew upgrade
-    brew bundle --file="$DOTFILES_HOME/mac/Brewfile"
+    brew bundle
     brew cleanup --prune=all
 fi
 
