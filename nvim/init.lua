@@ -38,7 +38,13 @@ now(function()
 end)
 
 now(function()
-  vim.cmd("ApplyColorscheme iceberg")
+  add("sainnhe/everforest")
+  source("plugin/everforest.lua")
+
+  add("sainnhe/gruvbox-material")
+  source("plugin/gruvbox-material.lua")
+
+  vim.cmd("ApplyColorscheme everforest")
 end)
 
 now(function()
