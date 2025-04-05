@@ -1,5 +1,10 @@
 {
   "auto_update": false,
+  "theme": {
+    "mode": "system",
+    "dark": "One Dark",
+    "light": "One Light"
+  },
   "assistant": {
     "default_model": {
       "provider": "ollama",
