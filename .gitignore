@@ -22,9 +22,6 @@ ghc/ghci_history
 
 lazygit/state.yml
 
-nvim/colors/*
-!nvim/colors/iceberg.lua
-!nvim/colors/simple.lua
 nvim/spell
 nvim/plugin/aaa_*.lua
 nvim/plugin/zzz_*.lua
