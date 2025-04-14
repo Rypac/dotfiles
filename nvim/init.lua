@@ -38,7 +38,7 @@ now(function()
 end)
 
 now(function()
-  vim.cmd("ApplyColorscheme simple")
+  vim.cmd("ApplyColorscheme iceberg")
 end)
 
 now(function()
