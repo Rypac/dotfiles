@@ -43,8 +43,5 @@ map("n", "<Leader>ot", "<Cmd>lua vim.o.showtabline = vim.o.showtabline == 1 and 
 map("n", "<Leader>ow", "<Cmd>setlocal wrap! wrap?<CR>")
 map("n", "<Leader>oz", "<Cmd>setlocal spell! spell?<CR>")
 
--- Diagnostic
-map("n", "<Leader>k", vim.diagnostic.open_float, { desc = "Open diagnostic in float" })
-
 -- Ftplugins
 map("n", "<Leader>.", "<Cmd>Ftplugin<CR>", { desc = "Edit ftplugin for buffer filetype" })

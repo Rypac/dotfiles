@@ -4,10 +4,6 @@ vim.lsp.enable({
   "sourcekit",
 }, vim.g.lsp_autostart ~= false)
 
-vim.diagnostic.config({
-  virtual_text = true,
-})
-
 vim.api.nvim_create_user_command("LspStart", "edit", {
   desc = "Start LSP",
 })

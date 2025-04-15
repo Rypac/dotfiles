@@ -35,6 +35,7 @@ now(function()
   source("config/commands.lua")
   source("config/keymaps.lua")
   source("config/lsp.lua")
+  source("config/diagnostics.lua")
 end)
 
 now(function()
