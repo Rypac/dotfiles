@@ -46,15 +46,5 @@ map("n", "<Leader>oz", "<Cmd>setlocal spell! spell?<CR>")
 -- Diagnostic
 map("n", "<Leader>k", vim.diagnostic.open_float, { desc = "Open diagnostic in float" })
 
--- LSP
-map("n", "g.", vim.lsp.buf.code_action)
-map("n", "grf", vim.lsp.buf.format)
-map("n", "gro", vim.lsp.buf.outgoing_calls)
-map("n", "grs", vim.lsp.buf.document_symbol)
-map("n", "grS", vim.lsp.buf.workspace_symbol)
-map("n", "grt", "<Cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>")
-map("n", "gry", vim.lsp.buf.type_definition)
-map("n", "grI", vim.lsp.buf.implementation)
-
 -- Ftplugins
 map("n", "<Leader>.", "<Cmd>Ftplugin<CR>", { desc = "Edit ftplugin for buffer filetype" })
