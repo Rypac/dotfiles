@@ -1,5 +1,5 @@
-local miniclue = require("mini.clue")
-miniclue.setup({
+local clue = require("mini.clue")
+clue.setup({
   triggers = {
     -- Leader triggers
     { mode = "n", keys = "<Leader>" },
@@ -32,11 +32,11 @@ miniclue.setup({
     { mode = "x", keys = "z" },
   },
   clues = {
-    miniclue.gen_clues.builtin_completion(),
-    miniclue.gen_clues.g(),
-    miniclue.gen_clues.marks(),
-    miniclue.gen_clues.registers(),
-    miniclue.gen_clues.windows(),
-    miniclue.gen_clues.z(),
+    clue.gen_clues.builtin_completion(),
+    clue.gen_clues.g(),
+    clue.gen_clues.marks(),
+    clue.gen_clues.registers(),
+    clue.gen_clues.windows(),
+    clue.gen_clues.z(),
   },
 })
