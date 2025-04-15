@@ -44,3 +44,35 @@ end, {
   nargs = "?",
   complete = "color",
 })
+
+command("Lazygit", function(opts)
+  if opts.args ~= "" then
+    vim.cmd("terminal lazygit " .. opts.args)
+  else
+    vim.cmd("terminal lazygit")
+  end
+end, {
+  desc = "Open lazygit in a terminal",
+  nargs = "*",
+  complete = function(arg, _, _)
+    return vim.tbl_filter(function(name)
+      return vim.startswith(name, arg)
+    end, { "status", "branch", "log", "stash" })
+  end,
+})
+
+command("Tig", function(opts)
+  if opts.args ~= "" then
+    vim.cmd("terminal tig " .. opts.args)
+  else
+    vim.cmd("terminal tig")
+  end
+end, {
+  desc = "Open tig in a terminal",
+  nargs = "*",
+  complete = function(arg, _, _)
+    return vim.tbl_filter(function(name)
+      return vim.startswith(name, arg)
+    end, { "show", "reflog", "blame", "grep", "refs", "stash", "status" })
+  end,
+})
