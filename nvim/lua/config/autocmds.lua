@@ -31,12 +31,3 @@ autocmd("TermOpen", {
     vim.cmd("startinsert!")
   end),
 })
-
-autocmd("TermClose", {
-  desc = "Clear terminal on exiting git",
-  pattern = { "term://*lazygit*", "term://*tig*" },
-  group = augroup("QuitGitClient"),
-  callback = function(args)
-    vim.cmd("bdelete! " .. args.buf)
-  end,
-})
