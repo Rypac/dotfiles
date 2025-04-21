@@ -38,5 +38,9 @@ clue.setup({
     clue.gen_clues.registers(),
     clue.gen_clues.windows(),
     clue.gen_clues.z(),
+    { mode = "n", keys = "<Leader>g", desc = "+LSP" },
+    { mode = "n", keys = "<Leader>o", desc = "+Options" },
+    { mode = "n", keys = "<Leader>s", desc = "+Session" },
+    { mode = "n", keys = "<Leader>v", desc = "+Visits" },
   },
 })

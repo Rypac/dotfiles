@@ -21,27 +21,45 @@ for tab = 1, 9 do
 end
 
 -- Option toggling
+for key, option in pairs({
+  c = "cursorline",
+  C = "cursorcolumn",
+  h = "hlsearch",
+  i = "ignorecase",
+  l = "linebreak",
+  n = "number",
+  r = "relativenumber",
+  w = "wrap",
+  z = "spell",
+}) do
+  map("n", "<Leader>o" .. key, "<Cmd>setlocal " .. option .. "! " .. option .. "?<CR>", {
+    desc = "Toggle '" .. option .. "'",
+  })
+end
 map(
   "n",
   "<Leader>ob",
-  "<Cmd>lua vim.o.background = vim.o.background == 'dark' and 'light' or 'dark'<CR><Cmd>set background?<CR>"
+  "<Cmd>lua vim.o.background = vim.o.background == 'dark' and 'light' or 'dark'<CR><Cmd>set background?<CR>",
+  { desc = "Toggle 'background'" }
 )
-map("n", "<Leader>oc", "<Cmd>setlocal cursorline! cursorline?<CR>")
-map("n", "<Leader>oC", "<Cmd>setlocal cursorcolumn! cursorcolumn?<CR>")
-map("n", "<Leader>of", "<Cmd>lua vim.b.lsp_autoformat = vim.b.lsp_autoformat == false<CR>")
-map("n", "<Leader>oh", "<Cmd>setlocal hlsearch! hlsearch?<CR>")
-map("n", "<Leader>oi", "<Cmd>setlocal ignorecase! ignorecase?<CR>")
-map("n", "<Leader>ol", "<Cmd>setlocal linebreak! linebreak?<CR>")
-map("n", "<Leader>on", "<Cmd>setlocal number! number?<CR>")
-map("n", "<Leader>or", "<Cmd>setlocal relativenumber! relativenumber?<CR>")
+map(
+  "n",
+  "<Leader>of",
+  "<Cmd>lua vim.b.lsp_autoformat = vim.b.lsp_autoformat == false<CR>",
+  { desc = "Toggle 'autoformat'" }
+)
 map(
   "n",
   "<Leader>os",
-  "<Cmd>lua vim.o.signcolumn = vim.o.signcolumn == 'yes' and 'auto' or 'yes'<CR>"
+  "<Cmd>lua vim.o.signcolumn = vim.o.signcolumn == 'yes' and 'auto' or 'yes'<CR>",
+  { desc = "Toggle 'signcolumn'" }
 )
-map("n", "<Leader>ot", "<Cmd>lua vim.o.showtabline = vim.o.showtabline == 1 and 2 or 1<CR>")
-map("n", "<Leader>ow", "<Cmd>setlocal wrap! wrap?<CR>")
-map("n", "<Leader>oz", "<Cmd>setlocal spell! spell?<CR>")
+map(
+  "n",
+  "<Leader>ot",
+  "<Cmd>lua vim.o.showtabline = vim.o.showtabline == 1 and 2 or 1<CR>",
+  { desc = "Toggle 'tabline" }
+)
 
 -- Ftplugins
 map("n", "<Leader>.", "<Cmd>Ftplugin<CR>", { desc = "Edit ftplugin for buffer filetype" })

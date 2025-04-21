@@ -1,8 +1,6 @@
 local sessions = require("mini.sessions")
 sessions.setup()
 
-vim.keymap.set("n", "<Leader>O", sessions.select, { desc = "Load session" })
-
 local function session_name_completion(arg, _, _)
   local session_names = vim.tbl_map(function(session)
     return session.name
@@ -73,3 +71,8 @@ end, {
   nargs = "?",
   complete = session_name_completion,
 })
+
+vim.keymap.set("n", "<Leader>sc", "<Cmd>SessionClose<CR>", { desc = "Close session" })
+vim.keymap.set("n", "<Leader>sd", "<Cmd>SessionDelete<CR>", { desc = "Delete session" })
+vim.keymap.set("n", "<Leader>sl", "<Cmd>SessionLoad<CR>", { desc = "Load session" })
+vim.keymap.set("n", "<Leader>ss", "<Cmd>SessionSave<CR>", { desc = "Save session" })
