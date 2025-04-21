@@ -12,3 +12,6 @@ font-thicken = true
 font-thicken-strength = 64
 adjust-cell-height = 8%
 adjust-cell-width = -8%
+
+# Keybindings
+macos-option-as-alt = left
