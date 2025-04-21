@@ -50,6 +50,7 @@ end)
 now(function()
   source("plugin/mini-files.lua")
   source("plugin/mini-sessions.lua")
+  source("plugin/mini-starter.lua")
   source("plugin/mini-statusline.lua")
 end)
 
