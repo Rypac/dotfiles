@@ -7,8 +7,17 @@ map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 -- Clear search highlights
 map({ "i", "n" }, "<Esc>", "<Cmd>nohlsearch<CR><Esc>")
 
+-- System clipboard
+map("x", "<Leader>y", '"+y', { desc = "Copy to clipboard" })
+map("n", "<Leader>y", '"+yy', { desc = "Copy to clipboard" })
+map({ "n", "x" }, "<Leader>p", '"+p', { desc = "Paste from clipboard" })
+
 -- Format entire buffer
 map("n", "g=", "<Cmd>Format<CR>", { desc = "Format buffer" })
+
+-- Search in visual selection
+map("n", "<C-/>", "/\\%V", { desc = "Search in selection" })
+map("x", "<C-/>", "<Esc>/\\%V", { desc = "Search in selection" })
 
 -- Tab navigation
 map("n", "]t", "<Cmd>tabnext<CR>", { desc = "Next tab" })

@@ -27,6 +27,12 @@ clue.setup({
     -- Window commands
     { mode = "n", keys = "<C-w>" },
 
+    -- Bracket commands
+    { mode = "n", keys = "[" },
+    { mode = "x", keys = "[" },
+    { mode = "n", keys = "]" },
+    { mode = "x", keys = "]" },
+
     -- `z` key
     { mode = "n", keys = "z" },
     { mode = "x", keys = "z" },
@@ -38,7 +44,8 @@ clue.setup({
     clue.gen_clues.registers(),
     clue.gen_clues.windows(),
     clue.gen_clues.z(),
-    { mode = "n", keys = "<Leader>g", desc = "+LSP" },
+    { mode = "n", keys = "<Leader>g", desc = "+Git" },
+    { mode = "n", keys = "<Leader>l", desc = "+LSP" },
     { mode = "n", keys = "<Leader>o", desc = "+Options" },
     { mode = "n", keys = "<Leader>s", desc = "+Session" },
     { mode = "n", keys = "<Leader>v", desc = "+Visits" },
