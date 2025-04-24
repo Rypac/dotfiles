@@ -33,7 +33,7 @@
             "selector": "source.shell.bash"
         },
         "Swift": {
-            "command": ["swift-format", "--assume-filename", "$file"],
+            "command": ["swift", "format", "--assume-filename", "$file"],
             "selector": "source.swift"
         },
         "Terraform": {
