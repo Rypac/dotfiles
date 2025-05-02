@@ -18,7 +18,7 @@ require("codecompanion").setup({
       return require("codecompanion.adapters").extend("ollama", {
         schema = {
           model = {
-            default = "gemma3:4b",
+            default = "qwen3:latest",
           },
         },
       })
@@ -28,7 +28,17 @@ require("codecompanion").setup({
         name = "qwen",
         schema = {
           model = {
-            default = "qwen2.5-coder:7b",
+            default = "qwen2.5-coder:latest",
+          },
+        },
+      })
+    end,
+    qwen3 = function()
+      return require("codecompanion.adapters").extend("ollama", {
+        name = "qwen3",
+        schema = {
+          model = {
+            default = "qwen3:latest",
           },
         },
       })
@@ -38,7 +48,7 @@ require("codecompanion").setup({
         name = "gemma3",
         schema = {
           model = {
-            default = "gemma3:4b",
+            default = "gemma3:latest",
           },
         },
       })
