@@ -24,9 +24,13 @@
   "notification_panel": {
     "button": false
   },
+  "journal": {
+    "path": "~/Documents"
+  },
   "base_keymap": "SublimeText",
   "vim_mode": true,
   "vim": {
+    "use_system_clipboard": "never",
     "use_multiline_find": true,
     "use_smartcase_find": true
   },
