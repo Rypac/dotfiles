@@ -1,13 +1,19 @@
 [
   {
-    "context": "Editor && VimControl && !menu",
+    "context": "VimControl && !menu",
     "bindings": {
       "alt-k": "editor::MoveLineUp",
       "alt-j": "editor::MoveLineDown"
     }
   },
   {
-    "context": "Editor && vim_mode == visual && !menu",
+    "context": "vim_mode == normal || vim_mode == visual",
+    "bindings": {
+      "s": "vim::PushSneak"
+    }
+  },
+  {
+    "context": "vim_mode == visual",
     "bindings": {
       "shift-s": ["vim::PushAddSurrounds", {}],
       "shift-x": "vim::Exchange"
