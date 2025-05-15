@@ -1,10 +1,10 @@
 from __future__ import annotations
 
-import sublime
-import sublime_plugin
-
 import os
 import subprocess
+
+import sublime
+import sublime_plugin
 
 
 class OpenTerminalCommand(sublime_plugin.WindowCommand):

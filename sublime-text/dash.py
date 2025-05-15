@@ -1,10 +1,10 @@
 from __future__ import annotations
 
-import sublime
-import sublime_plugin
-
 import subprocess
 from urllib.parse import quote
+
+import sublime
+import sublime_plugin
 
 
 class DashCommand(sublime_plugin.TextCommand):

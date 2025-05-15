@@ -1,10 +1,10 @@
 from __future__ import annotations
 
+import os
+from enum import Enum, auto
+
 import sublime
 import sublime_plugin
-
-from enum import Enum, auto
-import os
 
 
 class PackageViewer:

@@ -1,7 +1,7 @@
+import os
+
 import sublime
 import sublime_plugin
-
-import os
 
 
 class GotoBookmarkInputHandler(sublime_plugin.ListInputHandler):
