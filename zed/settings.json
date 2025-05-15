@@ -5,10 +5,10 @@
     "dark": "One Dark",
     "light": "One Light"
   },
-  "assistant": {
+  "agent": {
     "default_model": {
       "provider": "ollama",
-      "model": "gemma3:12b"
+      "model": "gemma3:latest"
     },
     "version": "2"
   },
@@ -53,12 +53,6 @@
       "enable_language_server": false
     },
     "Python": {
-      "enable_language_server": false
-    },
-    "TOML": {
-      "enable_language_server": false
-    },
-    "YAML": {
       "enable_language_server": false
     }
   },
