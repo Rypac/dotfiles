@@ -56,7 +56,20 @@
       "enable_language_server": false
     },
     "Python": {
-      "enable_language_server": false
+      "language_servers": ["ruff"],
+      "formatter": [
+        {
+          "code_actions": {
+            "source.organizeImports.ruff": true,
+            "source.fixAll.ruff": true
+          }
+        },
+        {
+          "language_server": {
+            "name": "ruff"
+          }
+        }
+      ]
     }
   },
   "lsp": {
