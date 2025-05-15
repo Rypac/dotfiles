@@ -7,14 +7,21 @@ set visualbell
 
 " Idea Options
 set ideajoin
+set ideamarks
 
 " Plugins
+set argtextobj
 set commentary
 set exchange
 set highlightedyank
+set matchit
+set mini-ai
 set multiple-cursors
+set sneak
 set surround
 set textobj-entire
+set textobj-indent
+set vim-paragraph-motion
 
 " Keybindings
 let mapleader=" "
@@ -24,18 +31,133 @@ map <C-[> <Esc>
 nnoremap <silent> <Esc> :nohlsearch<CR><Esc>
 nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
 
-nmap <C-j> <Action>(MoveStatementDown)
-xmap <C-j> <Action>(MoveStatementDown)
-nmap <C-k> <Action>(MoveStatementUp)
-xmap <C-k> <Action>(MoveStatementUp)
+" Moving Lines
+nmap <A-j> <Action>(MoveStatementDown)
+xmap <A-j> <Action>(MoveStatementDown)
+nmap <A-k> <Action>(MoveStatementUp)
+xmap <A-k> <Action>(MoveStatementUp)
 
+" Multiple Cursors
 nmap <C-n> <Plug>NextWholeOccurrence
 xmap <C-n> <Plug>NextWholeOccurrence
 nmap g<C-n> <Plug>NextOccurrence
 xmap g<C-n> <Plug>NextOccurrence
-xmap <C-s> <Plug>SkipOccurrence
+xmap <C-x> <Plug>SkipOccurrence
 xmap <C-p> <Plug>RemoveOccurrence
 nmap <leader><C-n> <Plug>AllWholeOccurrences
 xmap <leader><C-n> <Plug>AllWholeOccurrences
 nmap <leader>g<C-n> <Plug>AllOccurrences
 xmap <leader>g<C-n> <Plug>AllOccurrences
+
+" Brackets
+nmap [b <Action>(PreviousTab)
+nmap ]b <Action>(NextTab)
+nmap [c <Action>(JumpToLastChange)
+nmap ]c <Action>(JumpToNextChange)
+nmap [e <Action>(GotoPreviousError)
+nmap ]e <Action>(GotoNextError)
+nmap [m <Action>(MethodUp)
+nmap ]m <Action>(MethodDown)
+nmap [o <Action>(PreviousOccurence)
+nmap ]o <Action>(NextOccurence)
+nmap [u <Action>(GotoPrevElementUnderCaretUsage)
+nmap ]u <Action>(GotoNextElementUnderCaretUsage)
+
+" Goto
+nmap <leader>A <Action>(GotoAction)
+nmap <leader>C <Action>(GotoClass)
+nmap <leader>F <Action>(GotoFile)
+nmap <leader>S <Action>(GotoSymbol)
+nmap <leader>T <Action>(GotoTest)
+
+" Menu
+nmap <leader>ma <Action>(AnalyzeMenu)
+nmap <leader>mb <Action>(BuildMenu)
+nmap <leader>mc <Action>(CodeMenu)
+nmap <leader>mf <Action>(FindMenuGroup)
+nmap <leader>mg <Action>(GoToMenu)
+nmap <leader>mm <Action>(MainMenu)
+nmap <leader>ms <Action>(ScopeViewPopupMenu)
+nmap <leader>mt <Action>(EditorTabPopupMenu)
+nmap <leader>mw <Action>(ToolWindowsGroup)
+
+" Run Actions
+nmap <leader>ra <Action>(RunAnything)
+nmap <leader>rc <Action>(ContextRun)
+nmap <leader>rC <Action>(ChooseRunConfiguration)
+nmap <leader>rd <Action>(DebugClass)
+nmap <leader>rf <Action>(RerunFailedTests)
+nmap <leader>rm <Action>(RunMenu)
+nmap <leader>rn <Action>(RunClass)
+nmap <leader>rr <Action>(Rerun)
+nmap <leader>rs <Action>(Stop)
+nmap <leader>rt <Action>(RunTests)
+
+" Debug
+nmap <leader>dc <Action>(ContextDebug)
+nmap <leader>dC <Action>(RunToCursor)
+nmap <leader>dd <Action>(ToggleLineBreakpoint)
+nmap <leader>de <Action>(EditBreakpoint)
+nmap <leader>di <Action>(StepInto)
+nmap <leader>dm <Action>(XDebugger.MuteBreakpoints)
+nmap <leader>do <Action>(StepOver)
+nmap <leader>dr <Action>(Resume)
+nmap <leader>dR <Action>(EvaluateExpression)
+nmap <leader>ds <Action>(Stop)
+nmap <leader>dt <Action>(ActivateDebugToolWindow)
+nmap <leader>dv <Action>(ViewBreakpoints)
+nmap <leader>dx <Action>(Debug)
+
+" Language Actions
+nmap <leader>la <Action>(ShowIntentionActions)
+nmap <leader>lc <Action>(ChangeSignature)
+nmap <leader>lC <Action>(IntroduceConstant)
+nmap <leader>le <Action>(EncapsulateFields)
+nmap <leader>lf <Action>(IntroduceField)
+nmap <leader>lG <Action>(Generate)
+nmap <leader>li <Action>(Inline)
+nmap <leader>lI <Action>(InspectCode)
+nmap <leader>ll <Action>(Refactorings.QuickListPopupAction)
+nmap <leader>lm <Action>(ExtractMethod)
+nmap <leader>lo <Action>(IntroduceParameterObject)
+nmap <leader>lp <Action>(IntroduceParameter)
+nmap <leader>lR <Action>(ReformatCode)
+nmap <leader>lr <Action>(RenameElement)
+nmap <leader>lv <Action>(IntroduceVariable)
+
+" Bookmarks
+nmap <leader>bb <Action>(ToggleBookmark)
+nmap <leader>be <Action>(EditBookmark)
+nmap <leader>bm <Action>(Bookmarks)
+nmap <leader>bn <Action>(GotoNextBookmark)
+nmap <leader>bp <Action>(GotoPreviousBookmark)
+nmap <leader>bs <Action>(ShowBookmarks)
+nmap <leader>bt <Action>(ActivateBookmarksToolWindow)
+
+" Git
+nmap <leader>ga <Action>(Annotate)
+nmap <leader>gb <Action>(Git.Branches)
+nmap <leader>gc <Action>(Vcs.Show.Local.Changes)
+nmap <leader>gf <Action>(Git.Fetch)
+nmap <leader>gg <Action>(CheckinProject)
+nmap <leader>gm <Action>(VcsGroups)
+nmap <leader>go <Action>(Github.View.Pull.Request)
+nmap <leader>gp <Action>(Git.Commit.And.Push.Executor)
+nmap <leader>gP <Action>(Vcs.Push)
+nmap <leader>gr <Action>(Vcs.RollbackChangedLines)
+nmap <leader>gt <Action>(ActivateVersionControlToolWindow)
+nmap <leader>gu <Action>(Vcs.UpdateProject)
+
+" Tool Windows
+nmap <leader>ta <Action>(ActivateAIAssistantToolWindow)
+nmap <leader>tb <Action>(ActivateBookmarksToolWindow)
+nmap <leader>tc <Action>(ActivateCommitToolWindow)
+nmap <leader>td <Action>(ActivateDebugToolWindow)
+nmap <leader>tf <Action>(ActivateFindToolWindow)
+nmap <leader>tg <Action>(ActivateVersionControlToolWindow)
+nmap <leader>tj <Action>(JsonPathEvaluateAction)
+nmap <leader>tm <Action>(ToolWindowsGroup)
+nmap <leader>tp <Action>(ActivateProblemsViewToolWindow)
+nmap <leader>tr <Action>(ActivateRunToolWindow)
+nmap <leader>tt <Action>(ActivateTerminalToolWindow)
+nmap <leader>tT <Action>(ActivateTODOToolWindow)
