@@ -39,7 +39,10 @@
   "cursor_blink": false,
   "terminal": {
     "blinking": "off",
-    "line_height": "standard"
+    "line_height": "standard",
+    "env": {
+      "VISUAL": "zed"
+    }
   },
   "telemetry": {
     "diagnostics": false,
