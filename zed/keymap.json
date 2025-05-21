@@ -18,5 +18,12 @@
       "shift-s": ["vim::PushAddSurrounds", {}],
       "shift-x": "vim::Exchange"
     }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-k cmd-r": "task::Spawn",
+      "cmd-k cmd-g": ["task::Spawn", { "task_name": "Lazygit" }]
+    }
   }
 ]

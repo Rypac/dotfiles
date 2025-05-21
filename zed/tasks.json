@@ -1,0 +1,37 @@
+[
+  {
+    "label": "Lazygit",
+    "command": "lazygit",
+    "args": ["-p", "$ZED_WORKTREE_ROOT"],
+    "reveal_target": "center",
+    "hide": "on_success"
+  },
+  {
+    "label": "Tig",
+    "command": "tig",
+    "args": ["-C", "$ZED_WORKTREE_ROOT"],
+    "reveal_target": "center",
+    "hide": "on_success"
+  },
+  {
+    "label": "Sublime Merge",
+    "command": "smerge",
+    "args": ["$ZED_WORKTREE_ROOT"],
+    "reveal": "never",
+    "hide": "always"
+  },
+  {
+    "label": "Sublime Merge – Blame",
+    "command": "smerge",
+    "args": ["blame", "$ZED_FILE"],
+    "reveal": "never",
+    "hide": "always"
+  },
+  {
+    "label": "Sublime Merge – History",
+    "command": "smerge",
+    "args": ["log", "$ZED_FILE"],
+    "reveal": "never",
+    "hide": "always"
+  }
+]
