@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import sys
+
 import sublime
 import sublime_plugin
 
@@ -65,6 +67,17 @@ class SplitToNextGroupCommand(sublime_plugin.WindowCommand):
         return len(sheets) > 0
 
 
+class CloseViewOrPaneCommand(sublime_plugin.WindowCommand):
+    def run(self):
+        active_group = self.window.active_group()
+        if self.window.num_views_in_group(active_group) > 0:
+            self.window.run_command("close")
+        elif "Origami.origami" in sys.modules:
+            self.window.run_command("destroy_pane", {"direction": "self"})
+        else:
+            self.window.run_command("close_pane")
+
+
 class CloseGroupCommand(sublime_plugin.WindowCommand):
     def run(self):
         active_group = self.window.active_group()
@@ -72,7 +85,10 @@ class CloseGroupCommand(sublime_plugin.WindowCommand):
             if not view.is_dirty():
                 view.close()
 
-        self.window.run_command("close_pane")
+        if "Origami.origami" in sys.modules:
+            self.window.run_command("destroy_pane", {"direction": "self"})
+        else:
+            self.window.run_command("close_pane")
 
     def is_visible(self) -> bool:
         return self.window.num_groups() > 1

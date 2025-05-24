@@ -1,4 +1,10 @@
 [
+    // Default
+    {
+        "keys": ["super+w"],
+        "command": "close_view_or_pane"
+    },
+
     // Finder
     {
         "keys": ["super+option+j"],
