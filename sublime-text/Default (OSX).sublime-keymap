@@ -10,12 +10,6 @@
         "args": { "dir": "$file_path", "file": "$file_name" }
     },
 
-    // Projects
-    {
-        "keys": ["super+shift+o"],
-        "command": "prompt_select_workspace"
-    },
-
     // Font
     {
         "keys": ["super+shift+plus"],
@@ -42,14 +36,14 @@
         ]
     },
     {
-        "keys": ["super+option+l"],
+        "keys": ["super+option+i"],
         "command": "format_file",
         "context": [
             { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true }
         ]
     },
     {
-        "keys": ["super+option+l"],
+        "keys": ["super+option+i"],
         "command": "format_selection",
         "context": [
             { "key": "selection_empty", "operator": "equal", "operand": false, "match_all": true }
@@ -58,7 +52,7 @@
 
     // LSP
     {
-        "keys": ["super+option+l"],
+        "keys": ["super+option+i"],
         "command": "lsp_format_document",
         "context": [
             { "key": "lsp.session_with_capability", "operator": "equal", "operand": "documentFormattingProvider | documentRangeFormattingProvider" },
@@ -66,7 +60,7 @@
         ]
     },
     {
-        "keys": ["super+option+l"],
+        "keys": ["super+option+i"],
         "command": "lsp_format_document_range",
         "context": [
             { "key": "lsp.session_with_capability", "operator": "equal", "operand": "documentRangeFormattingProvider" },
