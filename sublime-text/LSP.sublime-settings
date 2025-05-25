@@ -9,6 +9,14 @@
                 "haskell.plugin.rename.config.crossModule": true
             }
         },
+        "ruff": {
+            "command": ["ruff", "server"],
+            "schemes": ["file", "buffer"],
+            "selector": "source.python",
+            "initializationOptions": {
+                "logLevel": "error"
+            }
+        },
         "sourcekit-lsp": {
             "command": ["xcrun", "sourcekit-lsp"],
             "selector": "source.swift"
