@@ -68,5 +68,55 @@
                 "caption": "Switch Window…"
             }
         ]
+    },
+    {
+        "id": "help",
+        "children": [
+            { "caption": "-" },
+            {
+                "caption": "Usage",
+                "children": [
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/tab_multi-select.html" }, "caption": "Tab Multi-Select" },
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/git_integration.html" }, "caption": "Git Integration" },
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/incremental_diff.html" }, "caption": "Incremental Diff" },
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/indexing.html" }, "caption": "Indexing" },
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/command_line.html" }, "caption": "Command Line Interface" },
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/column_selection.html" }, "caption": "Column Selection" },
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/multiple_selection_with_the_keyboard.html" }, "caption": "Multiple Selection with the Keyboard" },
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/completions.html" }, "caption": "Completions" },
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/distraction_free.html" }, "caption": "Distraction Free Mode" },
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/vintage.html" }, "caption": "Vintage Mode" },
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/projects.html" }, "caption": "Projects" }
+                ]
+            },
+            {
+                "caption": "Customisation",
+                "children": [
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/settings.html" }, "caption": "Settings" },
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/key_bindings.html" }, "caption": "Key Bindings" },
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/font.html" }, "caption": "Font Settings" },
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/indentation.html" }, "caption": "Indentation" },
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/spell_checking.html" }, "caption": "Spell Checking" },
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/build_systems.html" }, "caption": "Build Systems" },
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/packages.html" }, "caption": "Packages" },
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/selectors.html" }, "caption": "Selectors" },
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/file_patterns.html" }, "caption": "File Patterns" }
+                ]
+            },
+            {
+                "caption": "Package Development",
+                "children": [
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/color_schemes.html" }, "caption": "Color Schemes" },
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/themes.html" }, "caption": "Themes" },
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/menus.html" }, "caption": "Menus" },
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/api_environments.html" }, "caption": "API Environments" },
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/api_reference.html" }, "caption": "API Reference" },
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/syntax.html" }, "caption": "Syntax Definitions" },
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/scope_naming.html" }, "caption": "Scope Naming" },
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/minihtml.html" }, "caption": "minihtml Reference" },
+                    { "command": "open_url", "args": { "url": "https://www.sublimetext.com/docs/porting_guide.html" }, "caption": "Plugin Porting Guide" }
+                ]
+            }
+        ]
     }
 ]
