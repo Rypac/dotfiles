@@ -32,7 +32,8 @@
                     },
                     { "caption": "-" },
                     {
-                        "command": "set_view_font_size",
+                        "command": "show_overlay",
+                        "args": { "overlay": "command_palette", "command": "set_view_font_size" },
                         "caption": "Set…"
                     },
                     {
@@ -50,6 +51,21 @@
                     { "command": "set_setting", "args": { "setting": "font_size", "value": 22 }, "caption": "22", "checkbox": true },
                     { "command": "set_setting", "args": { "setting": "font_size", "value": 24 }, "caption": "24", "checkbox": true }
                 ]
+            }
+        ]
+    },
+    {
+        "id": "goto",
+        "children": [
+            {
+                "command": "show_overlay",
+                "args": { "overlay": "command_palette", "command": "goto_bookmark" },
+                "caption": "Goto Bookmark…"
+            },
+            {
+                "command": "show_overlay",
+                "args": { "overlay": "command_palette", "command": "switch_window" },
+                "caption": "Switch Window…"
             }
         ]
     }

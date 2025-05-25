@@ -41,9 +41,11 @@ class GotoBookmarkCommand(sublime_plugin.WindowCommand):
         return "View Bookmark"
 
     def input(self, args):
-        if args.get("bookmark") is None:
-            return GotoBookmarkInputHandler(self.window)
-        return None
+        return (
+            GotoBookmarkInputHandler(self.window)
+            if args.get("bookmark") is None
+            else None
+        )
 
     def run(self, bookmark=None):
         if not bookmark:
