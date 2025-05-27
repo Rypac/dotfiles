@@ -71,15 +71,15 @@
     },
     {
         "command": "list_packages",
-        "caption": "List Packages"
+        "caption": "Packages: List Packages"
     },
     {
         "command": "enable_package",
-        "caption": "Enable Package"
+        "caption": "Packages: Enable Package"
     },
     {
         "command": "disable_package",
-        "caption": "Disable Package"
+        "caption": "Packages: Disable Package"
     },
     {
         "command": "switch_window",
