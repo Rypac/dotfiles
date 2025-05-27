@@ -49,14 +49,14 @@ class WindowInputHandler(sublime_plugin.ListInputHandler):
 
     def list_items(self):
         def active_file(window):
-            view = window.active_view()
-            if not view:
+            if not (view := window.active_view()):
                 return (None, None)
-            try:
-                file = Path(view.file_name())
-                return (file.parent, file.name)
-            except:
+
+            if not (file_name := view.file_name()):
                 return (None, view.name())
+
+            file = Path(file_name)
+            return (file.parent, file.name)
 
         def active_folder(folders, active_file_path):
             if active_file_path:
