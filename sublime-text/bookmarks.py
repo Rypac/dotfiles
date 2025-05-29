@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import os
 
 import sublime
@@ -8,13 +10,13 @@ class GotoBookmarkInputHandler(sublime_plugin.ListInputHandler):
     def __init__(self, window: sublime.Window):
         self.window = window
 
-    def name(self):
+    def name(self) -> str:
         return "bookmark"
 
-    def placeholder(self):
+    def placeholder(self) -> str:
         return "Choose a bookmark"
 
-    def list_items(self):
+    def list_items(self) -> list[str] | list[sublime.ListInputItem]:
         items = []
         for view in self.window.views():
             view_name = (
@@ -37,10 +39,10 @@ class GotoBookmarkInputHandler(sublime_plugin.ListInputHandler):
 
 
 class GotoBookmarkCommand(sublime_plugin.WindowCommand):
-    def input_description(self):
+    def input_description(self) -> str:
         return "View Bookmark"
 
-    def input(self, args):
+    def input(self, args) -> sublime_plugin.CommandInputHandler | None:
         return (
             GotoBookmarkInputHandler(self.window)
             if args.get("bookmark") is None
