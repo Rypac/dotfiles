@@ -57,6 +57,10 @@
         "caption": "Goto: Bookmark"
     },
     {
+        "command": "save_all_existing",
+        "caption": "File: Save All Existing"
+    },
+    {
         "command": "dash",
         "caption": "Dash: Open Documentation for Selection"
     },
