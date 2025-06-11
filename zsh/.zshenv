@@ -13,6 +13,9 @@ DOTFILES_HOME="$HOME/.dotfiles"
 export GHCUP_USE_XDG_DIRS=1
 export STACK_XDG=1
 
+# Python
+export PYTHON_HISTORY="$XDG_STATE_HOME/python_history"
+
 # Node
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export NODE_REPL_HISTORY="$XDG_STATE_HOME/node_repl_history"
