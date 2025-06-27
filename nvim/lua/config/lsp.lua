@@ -1,6 +1,7 @@
 vim.lsp.enable({
   "hls",
   "lua_ls",
+  "ruff",
   "sourcekit",
 }, vim.g.lsp_autostart ~= false)
 
