@@ -11,6 +11,7 @@ require("nvim-treesitter.configs").setup({
     "git_rebase",
     "gitattributes",
     "gitignore",
+    "go",
     "haskell",
     "html",
     "java",
