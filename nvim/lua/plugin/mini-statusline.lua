@@ -17,4 +17,4 @@ statusline.section_location = function()
   return vim.b.bookmark == true and line_number .. " •" or line_number
 end
 
-vim.opt.showmode = false
+vim.o.showmode = false
