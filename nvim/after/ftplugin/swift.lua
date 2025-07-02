@@ -1,7 +1,7 @@
-vim.opt_local.shiftwidth = 2
-vim.opt_local.tabstop = 2
+vim.bo.shiftwidth = 2
+vim.bo.tabstop = 2
 
-vim.opt_local.foldmethod = "expr"
-vim.opt_local.formatprg = "swift format --assume-filename %"
+vim.wo.foldmethod = "expr"
+vim.bo.formatprg = "swift format --assume-filename %"
 
-vim.opt_local.commentstring = "// %s"
+vim.bo.commentstring = "// %s"

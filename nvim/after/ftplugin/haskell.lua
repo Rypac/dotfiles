@@ -1,2 +1,2 @@
-vim.opt_local.foldmethod = "expr"
-vim.opt_local.formatprg = "fourmolu --quiet --stdin-input-file %"
+vim.wo.foldmethod = "expr"
+vim.bo.formatprg = "fourmolu --quiet --stdin-input-file %"

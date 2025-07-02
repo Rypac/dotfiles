@@ -26,8 +26,8 @@ autocmd("TermOpen", {
   desc = "Configure UI for builtin terminal",
   group = augroup("ConfigureTerminal"),
   callback = vim.schedule_wrap(function()
-    vim.opt_local.number = false
-    vim.opt_local.signcolumn = "no"
+    vim.wo.number = false
+    vim.wo.signcolumn = "no"
     vim.cmd("startinsert!")
   end),
 })

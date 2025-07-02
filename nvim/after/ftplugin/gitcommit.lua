@@ -1,4 +1,4 @@
-vim.opt_local.wrap = true
-vim.opt_local.spell = true
+vim.wo.wrap = true
+vim.wo.spell = true
 
 vim.cmd("startinsert!")

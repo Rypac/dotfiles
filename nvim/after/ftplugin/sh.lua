@@ -1,2 +1,2 @@
-vim.opt_local.foldmethod = "expr"
-vim.opt_local.formatprg = "shfmt --indent 4 --case-indent --simplify --filename % -- -"
+vim.wo.foldmethod = "expr"
+vim.bo.formatprg = "shfmt --indent 4 --case-indent --simplify --filename % -- -"

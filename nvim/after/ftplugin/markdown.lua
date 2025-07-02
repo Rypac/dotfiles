@@ -1,3 +1,3 @@
-vim.opt_local.wrap = true
-vim.opt_local.spell = true
-vim.opt_local.foldmethod = "expr"
+vim.wo.wrap = true
+vim.wo.spell = true
+vim.wo.foldmethod = "expr"

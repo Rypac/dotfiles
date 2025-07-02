@@ -1,2 +1,2 @@
-vim.opt_local.foldmethod = "expr"
-vim.opt_local.formatprg = "stylua --search-parent-directories --stdin-filepath % -"
+vim.wo.foldmethod = "expr"
+vim.bo.formatprg = "stylua --search-parent-directories --stdin-filepath % -"
