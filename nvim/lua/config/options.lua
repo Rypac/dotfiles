@@ -1,86 +1,84 @@
-local opt = vim.opt
-
 -- Disable text wrapping
-opt.wrap = false
+vim.opt.wrap = false
 
 -- Keep wrapped lines indented
-opt.breakindent = true
+vim.opt.breakindent = true
 
 -- Wrap lines at words rather than the last character that fits
-opt.linebreak = true
+vim.opt.linebreak = true
 
 -- Enable mouse support in all modes
-opt.mouse = "a"
+vim.opt.mouse = "a"
 
 -- Display line numbers
-opt.number = true
+vim.opt.number = true
 
 -- Hide the line and column number of the cursor position
-opt.ruler = false
+vim.opt.ruler = false
 
 -- Do not show the intro screen when opening without arguments
-opt.shortmess:append({ I = true })
+vim.opt.shortmess:append({ I = true })
 
 -- Hide partial commands
-opt.showcmd = false
+vim.opt.showcmd = false
 
 -- Open new splits below and to the right of current window
-opt.splitbelow = true
-opt.splitright = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 
 -- Reduce time to execute 'CursorHold' autocommand
-opt.updatetime = 1000
+vim.opt.updatetime = 1000
 
 -- Display whitespace characters
-opt.list = true
-opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.opt.list = true
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Use case-insensitive searching unless uppercase letters are used
-opt.ignorecase = true
-opt.smartcase = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- Autocorrect casing for completions
-opt.infercase = true
+vim.opt.infercase = true
 
 -- Display live preview of substitutions
-opt.inccommand = "split"
+vim.opt.inccommand = "split"
 
 -- Default to indentation based folding
-opt.foldmethod = "indent"
+vim.opt.foldmethod = "indent"
 
 -- Use treesitter for 'expr' foldmethod when enabled
-opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
 -- Display folded line normally with highlighting and no line wrapping
-opt.foldtext = ""
+vim.opt.foldtext = ""
 
 -- Keep all folds expanded by default
-opt.foldlevel = 99
+vim.opt.foldlevel = 99
 
 -- Display popup menus for completions but don't insert without manual selection
-opt.completeopt = { "menu", "menuone", "noinsert", "popup", "fuzzy" }
+vim.opt.completeopt = { "menu", "menuone", "noinsert", "popup", "fuzzy" }
 
 -- Hide completion messages
-opt.shortmess:append({ c = true, C = true })
+vim.opt.shortmess:append({ c = true, C = true })
 
 -- Insert spaces instead of tabs
-opt.expandtab = true
+vim.opt.expandtab = true
 
 -- Use 2 spaces as default indentation
-opt.shiftwidth = 2
-opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
 
 -- Automatically indent when starting a new line
-opt.smartindent = true
+vim.opt.smartindent = true
 
 -- Disable swapfiles
-opt.swapfile = false
+vim.opt.swapfile = false
 
 -- Persist undo history to a file
-opt.undofile = true
+vim.opt.undofile = true
 
 -- Disable creation of backups before overwriting a file
-opt.writebackup = false
+vim.opt.writebackup = false
 
 -- Save local options in sessions
-opt.sessionoptions:append("localoptions")
+vim.opt.sessionoptions:append("localoptions")
