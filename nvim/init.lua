@@ -70,16 +70,20 @@ later(function()
   source("plugin/mini-visits.lua")
 end)
 
-later(function()
+now(function()
   add({
     source = "nvim-treesitter/nvim-treesitter",
-    checkout = "master",
+    checkout = "main",
     hooks = {
       post_checkout = function()
         vim.cmd("TSUpdate")
       end,
     },
   })
-  add("nvim-treesitter/nvim-treesitter-textobjects")
-  source("plugin/treesitter.lua")
+  add({
+    source = "nvim-treesitter/nvim-treesitter-textobjects",
+    checkout = "main",
+  })
+  source("plugin/nvim-treesitter.lua")
+  source("plugin/nvim-treesitter-textobjects.lua")
 end)
