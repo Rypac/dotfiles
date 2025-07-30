@@ -9,8 +9,7 @@
     "default_model": {
       "provider": "ollama",
       "model": "gemma3:latest"
-    },
-    "version": "2"
+    }
   },
   "features": {
     "edit_prediction_provider": "none"
