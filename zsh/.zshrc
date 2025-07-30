@@ -8,6 +8,7 @@ export LESSHISTFILE=-
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=243'
 
 # Options
+setopt hist_ignore_space
 setopt inc_append_history
 
 # Enable vi mode
