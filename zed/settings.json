@@ -7,8 +7,8 @@
   },
   "agent": {
     "default_model": {
-      "provider": "ollama",
-      "model": "gemma3:latest"
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4"
     }
   },
   "features": {
