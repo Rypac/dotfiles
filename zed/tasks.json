@@ -33,5 +33,14 @@
     "args": ["log", "$ZED_FILE"],
     "reveal": "never",
     "hide": "always"
+  },
+  {
+    "label": "Claude",
+    "command": "claude",
+    "reveal": "always",
+    "reveal_target": "center",
+    "hide": "on_success",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false
   }
 ]
