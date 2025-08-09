@@ -29,3 +29,8 @@ export HOMEBREW_BUNDLE_FILE="$DOTFILES_HOME/mac/Brewfile"
 
 # SQLite
 export SQLITE_HISTORY="$XDG_STATE_HOME/sqlite_history"
+
+# Claude
+export CLAUDE_CONFIG_DIR="$XDG_CONFIG_HOME/claude"
+export DISABLE_ERROR_REPORTING=1
+export DISABLE_TELEMETRY=1
