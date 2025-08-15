@@ -37,7 +37,7 @@ vim.api.nvim_create_user_command("Repl", function(args)
   elseif language == "swift" then
     command = { "swift", "repl" }
   elseif language == "python" then
-    command = { "python" }
+    command = { "python3" }
   elseif language == "javascript" then
     command = { "node" }
   elseif language == "lua" then
