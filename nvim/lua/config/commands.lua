@@ -2,7 +2,7 @@ local command = vim.api.nvim_create_user_command
 
 command("ReloadConfig", function()
   for loaded_name, _ in pairs(package.loaded) do
-    for _, target_package in ipairs({ "codecompanion", "mini", "nvim-treesitter" }) do
+    for _, target_package in ipairs({ "mini", "nvim-treesitter" }) do
       if loaded_name:match("^" .. string.gsub(target_package, "%-", "%%%-")) then
         package.loaded[loaded_name] = nil
       end
