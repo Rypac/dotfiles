@@ -1,3 +1,13 @@
+require("mini.deps").add({
+  source = "nvim-treesitter/nvim-treesitter",
+  checkout = "main",
+  hooks = {
+    post_checkout = function()
+      vim.cmd("TSUpdate")
+    end,
+  },
+})
+
 require("nvim-treesitter").install({
   "bash",
   "c",

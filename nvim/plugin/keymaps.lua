@@ -12,9 +12,6 @@ map("x", "<Leader>y", '"+y', { desc = "Copy to clipboard" })
 map("n", "<Leader>y", '"+yy', { desc = "Copy to clipboard" })
 map({ "n", "x" }, "<Leader>p", '"+p', { desc = "Paste from clipboard" })
 
--- Format entire buffer
-map("n", "g=", "<Cmd>Format<CR>", { desc = "Format buffer" })
-
 -- Search in visual selection
 map("n", "<C-/>", "/\\%V", { desc = "Search in selection" })
 map("x", "<C-/>", "<Esc>/\\%V", { desc = "Search in selection" })
@@ -69,6 +66,3 @@ map(
   "<Cmd>lua vim.o.showtabline = vim.o.showtabline == 1 and 2 or 1<CR>",
   { desc = "Toggle 'tabline" }
 )
-
--- Ftplugins
-map("n", "<Leader>.", "<Cmd>Ftplugin<CR>", { desc = "Edit ftplugin for buffer filetype" })

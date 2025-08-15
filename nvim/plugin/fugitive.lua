@@ -1,3 +1,5 @@
+require("mini.deps").add("tpope/vim-fugitive")
+
 vim.api.nvim_create_user_command("Gstash", "Gllog -g stash", {
   desc = "Show git stash list",
 })

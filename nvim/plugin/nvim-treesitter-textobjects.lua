@@ -1,3 +1,8 @@
+require("mini.deps").add({
+  source = "nvim-treesitter/nvim-treesitter-textobjects",
+  checkout = "main",
+})
+
 require("nvim-treesitter-textobjects").setup()
 
 vim.keymap.set({ "n", "x", "o" }, "]a", function()
