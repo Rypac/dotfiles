@@ -27,7 +27,7 @@ require("nvim-treesitter").install({
   "query",
   "rust",
   "sql",
-  -- "swift", -- Requires node to be installed
+  "swift", -- Requires node to be installed
   "toml",
   "vim",
   "vimdoc",
