@@ -38,3 +38,6 @@ vim.api.nvim_create_autocmd("TermClose", {
     vim.cmd("bdelete! " .. args.buf)
   end,
 })
+
+vim.keymap.set("n", "<Leader>gg", "<Cmd>Lazygit<CR>", { desc = "Lazygit" })
+vim.keymap.set("n", "<Leader>gt", "<Cmd>Tig<CR>", { desc = "Tig" })
