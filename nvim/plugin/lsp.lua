@@ -4,7 +4,7 @@ vim.lsp.enable({
   "lua_ls",
   "ruff",
   "sourcekit",
-}, vim.g.lsp_autostart ~= false)
+})
 
 vim.api.nvim_create_user_command("LspStart", "edit", {
   desc = "Start LSP",
