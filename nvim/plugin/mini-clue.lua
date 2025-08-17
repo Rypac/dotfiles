@@ -42,6 +42,7 @@ clue.setup({
     clue.gen_clues.g(),
     clue.gen_clues.marks(),
     clue.gen_clues.registers(),
+    clue.gen_clues.square_brackets(),
     clue.gen_clues.windows(),
     clue.gen_clues.z(),
     { mode = "n", keys = "<Leader>g", desc = "+Git" },
