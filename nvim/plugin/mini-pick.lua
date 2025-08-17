@@ -316,7 +316,6 @@ end
 
 for keymap, action in pairs({
   ["<Leader>"] = { "files", desc = "Files" },
-  ["<CR>"] = { "resume", desc = "Resume" },
   ["b"] = { "buffers_plus", desc = "Buffers" },
   ["B"] = { "git_branches", desc = "Branches" },
   ["c"] = { "commands", desc = "Commands" },
@@ -329,6 +328,7 @@ for keymap, action in pairs({
   ["h"] = { "history scope=':'", desc = "History" },
   ["H"] = { "git_hunks", desc = "Hunks" },
   ["j"] = { "list scope='jump'", desc = "Jumps" },
+  ["K"] = { "keymaps", desc = "Keymaps" },
   ["ld"] = { "lsp scope='definition'", desc = "Definition" },
   ["lD"] = { "lsp scope='declaration'", desc = "Declaration" },
   ["li"] = { "lsp scope='implementation'", desc = "Implementation" },
@@ -352,6 +352,7 @@ for keymap, action in pairs({
   ['"'] = { "registers", desc = "Registers" },
   ["/"] = { "explorer", desc = "Explorer" },
   ["?"] = { "help", desc = "Help" },
+  ["\\"] = { "resume", desc = "Resume" },
 }) do
   vim.keymap.set("n", "<Leader>" .. keymap, "<Cmd>Pick " .. action[1] .. "<CR>", { desc = action.desc })
 end
