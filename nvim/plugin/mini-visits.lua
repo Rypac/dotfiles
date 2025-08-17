@@ -2,24 +2,22 @@ local visits = require("mini.visits")
 visits.setup()
 
 vim.keymap.set("n", "<C-j>", function()
-  require("mini.pick").registry.visit_paths_plus({ recency_weight = 1 })
-end, {
-  desc = "Select recent",
-})
-
-vim.keymap.set("n", "<C-k>", function()
   require("mini.pick").registry.visit_bookmarks()
 end, {
   desc = "Select bookmark",
 })
 
 vim.keymap.set("n", "<C-0>", function()
-  visits.iterate_paths("forward", nil, { filter = "bookmark", wrap = true })
+  if vim.v.count == 0 then
+    visits.iterate_paths("forward", nil, { filter = "bookmark", wrap = true })
+  else
+    visits.iterate_paths("first", nil, { filter = "bookmark", n_times = vim.v.count })
+  end
 end, {
   desc = "Cycle bookmarks",
 })
 
-vim.keymap.set("n", "<C-h>", function()
+vim.keymap.set("n", "<C-k>", function()
   local path = vim.api.nvim_buf_get_name(0)
   if path == "" then
     return
