@@ -85,16 +85,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
       local win = vim.api.nvim_get_current_win()
       vim.wo[win][0].foldmethod = "expr"
       vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
-
-      vim.api.nvim_create_autocmd("LspNotify", {
-        group = lsp_group,
-        buffer = args.buf,
-        callback = function(args)
-          if args.data.method == methods.textDocument_didOpen then
-            vim.lsp.foldclose("imports", vim.fn.bufwinid(args.buf))
-          end
-        end,
-      })
     end
 
     if client:supports_method(methods.textDocument_codeLens) then
@@ -132,6 +122,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     vim.api.nvim_set_option_value("signcolumn", "yes", { scope = "local" })
+  end,
+})
+
+vim.api.nvim_create_autocmd("LspNotify", {
+  desc = "Automatically fold imports",
+  group = lsp_group,
+  callback = function(args)
+    if args.data.method == "textDocument/didOpen" then
+      local win = vim.fn.bufwinid(args.buf)
+      vim.schedule(function()
+        vim.lsp.foldclose("imports", win)
+      end)
+    end
   end,
 })
 
