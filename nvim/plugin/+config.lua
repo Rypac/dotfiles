@@ -56,7 +56,7 @@ vim.o.foldtext = ""
 vim.o.foldlevel = 99
 
 -- Display popup menus for completions but don't insert without manual selection
-vim.o.completeopt = "menu,menuone,noinsert,popup,fuzzy"
+vim.o.completeopt = "menuone,noselect,popup,fuzzy"
 
 -- Hide completion messages
 vim.opt.shortmess:append({ c = true, C = true })
