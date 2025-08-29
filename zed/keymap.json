@@ -7,7 +7,10 @@
 
       "f": ["vim::PushFindForward", { "before": false, "multiline": true }],
       "t": ["vim::PushFindForward", { "before": true, "multiline": true }],
-      "shift-f": ["vim::PushFindBackward", { "after": false, "multiline": true }],
+      "shift-f": [
+        "vim::PushFindBackward",
+        { "after": false, "multiline": true }
+      ],
       "shift-t": ["vim::PushFindBackward", { "after": true, "multiline": true }]
     }
   },
@@ -28,7 +31,10 @@
     "context": "Workspace",
     "bindings": {
       "cmd-k cmd-r": "task::Spawn",
-      "cmd-k cmd-g": ["task::Spawn", { "task_name": "Lazygit" }]
+      "cmd-k cmd-g": ["task::Spawn", { "task_name": "Lazygit" }],
+      "cmd-k cmd-m": ["task::Spawn", { "task_name": "Sublime Merge" }],
+      "cmd-k cmd-y": ["task::Spawn", { "task_name": "Sublime Merge – Blame" }],
+      "cmd-k cmd-h": ["task::Spawn", { "task_name": "Sublime Merge – History" }]
     }
   }
 ]
