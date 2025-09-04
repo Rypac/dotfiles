@@ -1,5 +1,6 @@
 # Theme
 window-theme = auto
+theme = light:iceberg-light,dark:iceberg-dark
 
 # Padding
 window-padding-x = 4
