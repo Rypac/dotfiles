@@ -26,6 +26,12 @@
         "command": "decrease_view_font_size"
     },
 
+    // Focus
+    {
+        "keys": ["super+k", "super+o"],
+        "command": "toggle_focus_mode"
+    },
+
     // Format
     {
         "keys": ["super+k", "super+f"],
