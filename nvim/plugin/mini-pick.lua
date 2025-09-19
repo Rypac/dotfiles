@@ -102,8 +102,6 @@ pick.setup({
   },
 })
 
-vim.ui.select = pick.ui_select
-
 local function picker_remove_item(callback)
   local matches = pick.get_picker_matches()
   if not matches or matches.current == nil then
