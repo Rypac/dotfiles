@@ -3,7 +3,9 @@ vim.api.nvim_create_autocmd("ColorScheme", {
   group = vim.api.nvim_create_augroup("TransparentBackground", { clear = true }),
   pattern = "*",
   callback = function()
-    vim.api.nvim_set_hl(0, "Normal", { ctermbg = "NONE", bg = "NONE" })
+    if vim.env.TERM_PROGRAM == "Apple_Terminal" then
+      vim.api.nvim_set_hl(0, "Normal", { ctermbg = "NONE", bg = "NONE" })
+    end
   end,
 })
 
