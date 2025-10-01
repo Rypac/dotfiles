@@ -1,24 +1,11 @@
 {
   "auto_update": false,
-  "theme": {
-    "mode": "system",
-    "dark": "Ayu Mirage",
-    "light": "One Light"
-  },
-  "agent": {
-    "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-sonnet-4"
-    }
-  },
+  "disable_ai": true,
   "features": {
     "edit_prediction_provider": "none"
   },
   "collaboration_panel": {
     "button": false
-  },
-  "chat_panel": {
-    "button": "never"
   },
   "notification_panel": {
     "button": false
