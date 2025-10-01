@@ -41,7 +41,7 @@
       "enable_language_server": false
     },
     "Python": {
-      "language_servers": ["ruff"],
+      "language_servers": ["ty", "ruff"],
       "formatter": [
         {
           "code_actions": {
