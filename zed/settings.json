@@ -35,7 +35,8 @@
   },
   "languages": {
     "Kotlin": {
-      "enable_language_server": false
+      "enable_language_server": false,
+      "language_servers": ["kotlin-lsp"]
     },
     "Lua": {
       "enable_language_server": false
