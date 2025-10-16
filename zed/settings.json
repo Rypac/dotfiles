@@ -10,6 +10,9 @@
   "notification_panel": {
     "button": false
   },
+  "outline_panel": {
+    "dock": "right"
+  },
   "journal": {
     "path": "~/Documents"
   },
@@ -45,10 +48,10 @@
       "language_servers": ["ty", "ruff"],
       "formatter": [
         {
-          "code_actions": {
-            "source.organizeImports.ruff": true,
-            "source.fixAll.ruff": true
-          }
+          "code_action": "source.organizeImports.ruff"
+        },
+        {
+          "code_action": "source.fixAll.ruff"
         },
         {
           "language_server": {
