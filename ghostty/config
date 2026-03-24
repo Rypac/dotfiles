@@ -2,15 +2,11 @@
 window-theme = auto
 
 # Padding
-window-padding-x = 4
+window-padding-x = 8
 
 # Font
 font-family = Menlo
 font-size = 12
-font-thicken = true
-font-thicken-strength = 64
-adjust-cell-height = 8%
-adjust-cell-width = -8%
 
 # Keybindings
 macos-option-as-alt = left
