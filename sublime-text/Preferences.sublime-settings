@@ -1,6 +1,8 @@
 {
     "color_scheme": "auto",
+    "click_through": "native",
     "disable_plugin_host_3.3": true,
+    "disable_plugin_host_3.8": true,
     "ensure_newline_at_eof_on_save": true,
     "highlight_modified_tabs": true,
     "translate_tabs_to_spaces": true,
