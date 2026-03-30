@@ -22,6 +22,7 @@ ghc/ghci_history
 
 lazygit/state.yml
 
+nvim/nvim-pack-lock.json
 nvim/spell
 nvim/plugin/aaa_*.lua
 nvim/plugin/zzz_*.lua

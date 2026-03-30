@@ -1,12 +1,16 @@
-require("mini.deps").add({
-  source = "nvim-treesitter/nvim-treesitter",
-  checkout = "main",
-  hooks = {
-    post_checkout = function()
+vim.api.nvim_create_autocmd("PackChanged", {
+  callback = function(event)
+    if event.data.spec.name == "nvim-treesitter" and event.data.kind == "update" then
+      if not event.data.active then
+        vim.cmd.packadd("nvim-treesitter")
+      end
+
       vim.cmd("TSUpdate")
-    end,
-  },
+    end
+  end,
 })
+
+vim.pack.add({ "https://github.com/nvim-treesitter/nvim-treesitter" })
 
 require("nvim-treesitter").install({
   "bash",
