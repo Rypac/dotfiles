@@ -163,12 +163,8 @@ vim.keymap.set("n", "grS", vim.lsp.buf.workspace_symbol, {
   desc = "vim.lsp.buf.workspace_symbol()",
 })
 
-vim.keymap.set("n", "grt", function()
+vim.keymap.set("n", "grh", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end, {
   desc = "vim.lsp.inlay_lint.enable()",
-})
-
-vim.keymap.set("n", "gry", vim.lsp.buf.type_definition, {
-  desc = "vim.lsp.buf.type_definition()",
 })
