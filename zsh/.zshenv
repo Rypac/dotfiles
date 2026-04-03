@@ -9,10 +9,6 @@ export XDG_STATE_HOME="$HOME/.local/state"
 ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 DOTFILES_HOME="$HOME/.dotfiles"
 
-# Haskell
-export GHCUP_USE_XDG_DIRS=1
-export STACK_XDG=1
-
 # Python
 export PYTHON_HISTORY="$XDG_STATE_HOME/python_history"
 
