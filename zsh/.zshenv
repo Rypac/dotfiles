@@ -16,10 +16,6 @@ export STACK_XDG=1
 # Python
 export PYTHON_HISTORY="$XDG_STATE_HOME/python_history"
 
-# Go
-export GOPATH="$XDG_DATA_HOME/go"
-export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
-
 # Homebrew
 export HOMEBREW_BUNDLE_FILE="$DOTFILES_HOME/mac/Brewfile"
 
