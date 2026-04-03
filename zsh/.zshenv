@@ -20,10 +20,6 @@ export PYTHON_HISTORY="$XDG_STATE_HOME/python_history"
 export GOPATH="$XDG_DATA_HOME/go"
 export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
 
-# Node
-export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
-export NODE_REPL_HISTORY="$XDG_STATE_HOME/node_repl_history"
-
 # Homebrew
 export HOMEBREW_BUNDLE_FILE="$DOTFILES_HOME/mac/Brewfile"
 
