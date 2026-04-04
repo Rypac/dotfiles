@@ -1,7 +1,6 @@
-from __future__ import annotations
-
 import os
 from pathlib import Path
+from typing import override
 
 import sublime
 import sublime_plugin
@@ -41,13 +40,16 @@ def recent_window_history() -> list[sublime.Window]:
 
 
 class WindowInputHandler(sublime_plugin.ListInputHandler):
+    @override
     def name(self) -> str:
         return "window_id"
 
+    @override
     def placeholder(self) -> str:
         return "Choose a window"
 
-    def list_items(self):
+    @override
+    def list_items(self) -> list[sublime.ListInputItem]:
         def active_file(window):
             if not (view := window.active_view()):
                 return (None, None)
@@ -119,12 +121,15 @@ class WindowInputHandler(sublime_plugin.ListInputHandler):
 
 
 class SwitchWindowCommand(sublime_plugin.ApplicationCommand):
+    @override
     def input_description(self) -> str:
         return "Switch Window"
 
+    @override
     def input(self, args) -> WindowInputHandler | None:
         return WindowInputHandler() if args.get("window_id") is None else None
 
+    @override
     def run(self, window_id: int | None = None):
         for window in sublime.windows():
             if window.id() == window_id:
@@ -133,6 +138,7 @@ class SwitchWindowCommand(sublime_plugin.ApplicationCommand):
 
 
 class SwitchToPreviousWindowCommand(sublime_plugin.ApplicationCommand):
+    @override
     def run(self):
         if previous_window := next(iter(recent_window_history()), None):
             previous_window.bring_to_front()

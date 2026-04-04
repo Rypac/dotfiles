@@ -1,6 +1,6 @@
-from __future__ import annotations
-
 import os
+
+from typing import override
 
 import sublime
 import sublime_plugin
@@ -10,12 +10,15 @@ class GotoBookmarkInputHandler(sublime_plugin.ListInputHandler):
     def __init__(self, window: sublime.Window):
         self.window = window
 
+    @override
     def name(self) -> str:
         return "bookmark"
 
+    @override
     def placeholder(self) -> str:
         return "Choose a bookmark"
 
+    @override
     def list_items(self) -> list[str] | list[sublime.ListInputItem]:
         items = []
         for view in self.window.views():
@@ -39,9 +42,11 @@ class GotoBookmarkInputHandler(sublime_plugin.ListInputHandler):
 
 
 class GotoBookmarkCommand(sublime_plugin.WindowCommand):
+    @override
     def input_description(self) -> str:
         return "View Bookmark"
 
+    @override
     def input(self, args) -> sublime_plugin.CommandInputHandler | None:
         return (
             GotoBookmarkInputHandler(self.window)
@@ -49,6 +54,7 @@ class GotoBookmarkCommand(sublime_plugin.WindowCommand):
             else None
         )
 
+    @override
     def run(self, bookmark=None):
         if not bookmark:
             return

@@ -1,7 +1,6 @@
-from __future__ import annotations
-
 import os
 from enum import Enum, auto
+from typing import override
 
 import sublime
 import sublime_plugin
@@ -66,40 +65,48 @@ class ListPackagesInputHandler(sublime_plugin.ListInputHandler, PackageViewer):
     def __init__(self, filter: PackageFilter):
         self.filter = filter
 
+    @override
     def name(self) -> str:
         return "name"
 
+    @override
     def placeholder(self) -> str | None:
         return "Choose a package" if self.filter is not PackageFilter.ALL else None
 
+    @override
     def list_items(self) -> list[str] | list[sublime.ListInputItem]:
         installed_packages = self.installed_packages()
 
         settings = sublime.load_settings("Preferences.sublime-settings")
         ignored_packages = set(settings.get("ignored_packages", []))
 
-        if self.filter is PackageFilter.ALL:
-            return [
-                sublime.ListInputItem(
-                    text=package,
-                    value=package,
-                    annotation="Enabled"
-                    if package not in ignored_packages
-                    else "Disabled",
-                )
-                for package in sorted(installed_packages)
-            ]
-        elif self.filter is PackageFilter.ENABLED:
-            return sorted(installed_packages - ignored_packages)
-        elif self.filter is PackageFilter.DISABLED:
-            return sorted(installed_packages & ignored_packages)
+        match self.filter:
+            case PackageFilter.ALL:
+                return [
+                    sublime.ListInputItem(
+                        text=package,
+                        value=package,
+                        annotation="Enabled"
+                        if package not in ignored_packages
+                        else "Disabled",
+                    )
+                    for package in sorted(installed_packages)
+                ]
+
+            case PackageFilter.ENABLED:
+                return sorted(installed_packages - ignored_packages)
+
+            case PackageFilter.DISABLED:
+                return sorted(installed_packages & ignored_packages)
 
 
 class ListPackagesCommand(sublime_plugin.ApplicationCommand, PackageViewer):
+    @override
     def run(self, **kwargs):
         installed_packages = sorted(self.installed_packages())
         print(f"Installed packages: {installed_packages}")
 
+    @override
     def input(self, args) -> sublime_plugin.CommandInputHandler | None:
         return (
             ListPackagesInputHandler(filter=PackageFilter.ALL)
@@ -109,12 +116,14 @@ class ListPackagesCommand(sublime_plugin.ApplicationCommand, PackageViewer):
 
 
 class EnablePackageCommand(sublime_plugin.ApplicationCommand, PackageManager):
+    @override
     def run(self, **kwargs):
         if name := kwargs.get("name"):
             self.update_package(package=name, enabled=True)
         else:
             print("Specify package to enable with 'name' argument")
 
+    @override
     def input(self, args) -> sublime_plugin.CommandInputHandler | None:
         return (
             ListPackagesInputHandler(filter=PackageFilter.DISABLED)
@@ -124,12 +133,14 @@ class EnablePackageCommand(sublime_plugin.ApplicationCommand, PackageManager):
 
 
 class DisablePackageCommand(sublime_plugin.ApplicationCommand, PackageManager):
+    @override
     def run(self, **kwargs):
         if name := kwargs.get("name"):
             self.update_package(package=name, enabled=False)
         else:
             print("Specify package to disable with 'name' argument")
 
+    @override
     def input(self, args) -> sublime_plugin.CommandInputHandler | None:
         return (
             ListPackagesInputHandler(filter=PackageFilter.ENABLED)

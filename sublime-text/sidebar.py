@@ -1,16 +1,18 @@
-from __future__ import annotations
+from typing import override
 
 import sublime
 import sublime_plugin
 
 
 class OpenAndFocusSideBarCommand(sublime_plugin.WindowCommand):
+    @override
     def run(self):
         self.window.set_sidebar_visible(True)
         sublime.set_timeout(lambda: self.window.run_command("focus_side_bar"), 100)
 
 
 class OpenFileInNewWindowCommand(sublime_plugin.ApplicationCommand):
+    @override
     def run(self, files: list[str]):
         sublime.run_command("new_window")
         new_window = sublime.active_window()
@@ -20,11 +22,13 @@ class OpenFileInNewWindowCommand(sublime_plugin.ApplicationCommand):
 
         new_window.set_sidebar_visible(False)
 
+    @override
     def is_visible(self, files: list[str]) -> bool:
         return len(files) > 0
 
 
 class OpenFolderInNewWindowCommand(sublime_plugin.ApplicationCommand):
+    @override
     def run(self, dirs: list[str]):
         sublime.run_command("new_window")
         new_window = sublime.active_window()
@@ -37,11 +41,13 @@ class OpenFolderInNewWindowCommand(sublime_plugin.ApplicationCommand):
 
         new_window.set_project_data(project)
 
+    @override
     def is_visible(self, dirs: list[str]) -> bool:
         return len(dirs) > 0
 
 
 class OpenFileInFocusModeCommand(sublime_plugin.ApplicationCommand):
+    @override
     def run(self, files: list[str]):
         sublime.run_command("new_window")
         new_window = sublime.active_window()
@@ -49,29 +55,34 @@ class OpenFileInFocusModeCommand(sublime_plugin.ApplicationCommand):
         new_window.run_command("open_file", {"file": files[0]})
         new_window.run_command("toggle_focus_mode")
 
+    @override
     def is_visible(self, files: list[str]) -> bool:
         return len(files) == 1
 
 
 class LaunchFileCommand(sublime_plugin.ApplicationCommand):
+    @override
     def run(self, files: list[str]):
         import os
         import subprocess
 
-        platform = sublime.platform()
-
         try:
-            if platform == "windows":
-                os.startfile(files[0])
-            elif platform == "osx":
-                subprocess.run(["/usr/bin/open", *files], check=True)
-            elif platform == "linux":
-                subprocess.run(["/usr/bin/xdg-open", files[0]], check=True)
+            match sublime.platform():
+                case "windows":
+                    os.startfile(files[0])
+                case "osx":
+                    subprocess.run(["/usr/bin/open", *files], check=True)
+                case "linux":
+                    subprocess.run(["/usr/bin/xdg-open", files[0]], check=True)
+                case _:
+                    pass
         except Exception as e:
             sublime.error_message(str(e))
 
+    @override
     def is_visible(self, files: list[str]) -> bool:
         return len(files) > 0
 
+    @override
     def is_enabled(self, files: list[str]) -> bool:
         return sublime.platform() == "osx" or len(files) == 1

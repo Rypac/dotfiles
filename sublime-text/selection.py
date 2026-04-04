@@ -1,10 +1,11 @@
-from __future__ import annotations
+from typing import override
 
 import sublime
 import sublime_plugin
 
 
 class OpenSelectionCommand(sublime_plugin.TextCommand):
+    @override
     def run(self, edit: sublime.Edit, new_window: bool = False):
         if new_window:
             sublime.run_command("new_window")
@@ -21,11 +22,13 @@ class OpenSelectionCommand(sublime_plugin.TextCommand):
             selection_text = self.view.substr(region)
             new_view.run_command("append", {"characters": selection_text})
 
+    @override
     def is_visible(self) -> bool:
         return any(not region.empty() for region in self.view.sel())
 
 
 class ClearSelectionCommand(sublime_plugin.TextCommand):
+    @override
     def run(self, edit: sublime.Edit):
         selection = self.view.sel()
         carets = [region.b for region in selection]
@@ -34,5 +37,6 @@ class ClearSelectionCommand(sublime_plugin.TextCommand):
         for caret in carets:
             selection.add(caret)
 
+    @override
     def is_visible(self) -> bool:
         return any(not region.empty() for region in self.view.sel())
