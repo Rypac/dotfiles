@@ -6,14 +6,19 @@
         "caption": "Reveal in Finder"
     },
     {
-        "command": "reveal_tab_in_side_bar",
+        "command": "open_tab_in_terminal",
         "args": { "group": -1, "index": -1 },
-        "caption": "Reveal in Side Bar"
+        "caption": "Open Terminal Here…"
     },
     {
         "command": "copy_tab_file_path",
         "args": { "group": -1, "index": -1 },
-        "caption": "Copy Path"
+        "caption": "Copy File Path"
+    },
+    {
+        "command": "reveal_tab_in_side_bar",
+        "args": { "group": -1, "index": -1 },
+        "caption": "Reveal in Side Bar"
     },
     { "caption": "-", "id": "window" },
     {

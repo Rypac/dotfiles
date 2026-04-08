@@ -20,6 +20,20 @@ class TabContextCommand(WindowCommand):
         return view.file_name() if (view := self.view(group, index)) else None
 
 
+class OpenTabInTerminalCommand(TabContextCommand):
+    @override
+    def run(self, group: int = -1, index: int = -1):
+        import os
+
+        if path := self.file_name(group, index):
+            dir, _ = os.path.split(path)
+            self.window.run_command("open_terminal", {"dir": dir})
+
+    @override
+    def is_visible(self, group: int = -1, index: int = -1) -> bool:
+        return (name := self.file_name(group, index)) is not None and len(name) > 0
+
+
 class RevealTabInFinderCommand(TabContextCommand):
     @override
     def run(self, group: int = -1, index: int = -1):
