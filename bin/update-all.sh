@@ -9,6 +9,11 @@ if command -v brew >/dev/null 2>&1; then
     brew cleanup --prune=all
 fi
 
+if command -v uv >/dev/null 2>&1; then
+    uv python upgrade
+    uv tool upgrade --all
+fi
+
 if command -v ghcup >/dev/null 2>&1; then
     ghcup gc
 fi
