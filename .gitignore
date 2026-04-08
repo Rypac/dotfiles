@@ -18,8 +18,6 @@ Thumbs.db
 ehthumbs.db
 
 # Dotfiles specific ignores
-ghc/ghci_history
-
 lazygit/state.yml
 
 nvim/nvim-pack-lock.json
