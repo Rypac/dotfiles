@@ -31,11 +31,6 @@ nvim/after/ftplugin/*/zzz_*.lua
 
 sublime-text/Package Control.*
 
-zed/*
-!zed/keymap.json
-!zed/settings.json
-!zed/tasks.json
-
 zsh/*
 !zsh/.zprofile
 !zsh/.zshenv
