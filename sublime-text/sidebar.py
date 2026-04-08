@@ -1,17 +1,17 @@
 from typing import override
 
 import sublime
-import sublime_plugin
+from sublime_plugin import ApplicationCommand, WindowCommand
 
 
-class OpenAndFocusSideBarCommand(sublime_plugin.WindowCommand):
+class OpenAndFocusSideBarCommand(WindowCommand):
     @override
     def run(self):
         self.window.set_sidebar_visible(True)
         sublime.set_timeout(lambda: self.window.run_command("focus_side_bar"), 100)
 
 
-class OpenFileInNewWindowCommand(sublime_plugin.ApplicationCommand):
+class OpenFileInNewWindowCommand(ApplicationCommand):
     @override
     def run(self, files: list[str]):
         sublime.run_command("new_window")
@@ -27,7 +27,7 @@ class OpenFileInNewWindowCommand(sublime_plugin.ApplicationCommand):
         return len(files) > 0
 
 
-class OpenFolderInNewWindowCommand(sublime_plugin.ApplicationCommand):
+class OpenFolderInNewWindowCommand(ApplicationCommand):
     @override
     def run(self, dirs: list[str]):
         sublime.run_command("new_window")
@@ -46,7 +46,7 @@ class OpenFolderInNewWindowCommand(sublime_plugin.ApplicationCommand):
         return len(dirs) > 0
 
 
-class OpenFileInFocusModeCommand(sublime_plugin.ApplicationCommand):
+class OpenFileInFocusModeCommand(ApplicationCommand):
     @override
     def run(self, files: list[str]):
         sublime.run_command("new_window")
@@ -60,7 +60,7 @@ class OpenFileInFocusModeCommand(sublime_plugin.ApplicationCommand):
         return len(files) == 1
 
 
-class LaunchFileCommand(sublime_plugin.ApplicationCommand):
+class LaunchFileCommand(ApplicationCommand):
     @override
     def run(self, files: list[str]):
         import os

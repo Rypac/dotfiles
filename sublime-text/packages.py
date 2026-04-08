@@ -3,10 +3,11 @@ from enum import Enum, auto
 from typing import override
 
 import sublime
-import sublime_plugin
+from sublime import ListInputItem
+from sublime_plugin import ApplicationCommand, CommandInputHandler, ListInputHandler
 
 
-class PackageViewer:
+class PackageManager:
     def installed_packages(self) -> set[str]:
         installed_packages_path = sublime.installed_packages_path()
         installed_packages = set(
@@ -27,8 +28,6 @@ class PackageViewer:
 
         return installed_packages | packages
 
-
-class PackageManager(PackageViewer):
     def update_package(self, package: str, enabled: bool):
         state = "enabled" if enabled else "disabled"
 
@@ -61,7 +60,7 @@ class PackageFilter(Enum):
     DISABLED = auto()
 
 
-class ListPackagesInputHandler(sublime_plugin.ListInputHandler, PackageViewer):
+class ListPackagesInputHandler(ListInputHandler, PackageManager):
     def __init__(self, filter: PackageFilter):
         self.filter = filter
 
@@ -74,7 +73,7 @@ class ListPackagesInputHandler(sublime_plugin.ListInputHandler, PackageViewer):
         return "Choose a package" if self.filter is not PackageFilter.ALL else None
 
     @override
-    def list_items(self) -> list[str] | list[sublime.ListInputItem]:
+    def list_items(self) -> list[str] | list[ListInputItem]:
         installed_packages = self.installed_packages()
 
         settings = sublime.load_settings("Preferences.sublime-settings")
@@ -83,7 +82,7 @@ class ListPackagesInputHandler(sublime_plugin.ListInputHandler, PackageViewer):
         match self.filter:
             case PackageFilter.ALL:
                 return [
-                    sublime.ListInputItem(
+                    ListInputItem(
                         text=package,
                         value=package,
                         annotation="Enabled"
@@ -100,14 +99,14 @@ class ListPackagesInputHandler(sublime_plugin.ListInputHandler, PackageViewer):
                 return sorted(installed_packages & ignored_packages)
 
 
-class ListPackagesCommand(sublime_plugin.ApplicationCommand, PackageViewer):
+class ListPackagesCommand(ApplicationCommand, PackageManager):
     @override
     def run(self, **kwargs):
         installed_packages = sorted(self.installed_packages())
         print(f"Installed packages: {installed_packages}")
 
     @override
-    def input(self, args) -> sublime_plugin.CommandInputHandler | None:
+    def input(self, args: dict) -> CommandInputHandler | None:
         return (
             ListPackagesInputHandler(filter=PackageFilter.ALL)
             if args.get("name") is None
@@ -115,7 +114,7 @@ class ListPackagesCommand(sublime_plugin.ApplicationCommand, PackageViewer):
         )
 
 
-class EnablePackageCommand(sublime_plugin.ApplicationCommand, PackageManager):
+class EnablePackageCommand(ApplicationCommand, PackageManager):
     @override
     def run(self, **kwargs):
         if name := kwargs.get("name"):
@@ -124,7 +123,7 @@ class EnablePackageCommand(sublime_plugin.ApplicationCommand, PackageManager):
             print("Specify package to enable with 'name' argument")
 
     @override
-    def input(self, args) -> sublime_plugin.CommandInputHandler | None:
+    def input(self, args: dict) -> CommandInputHandler | None:
         return (
             ListPackagesInputHandler(filter=PackageFilter.DISABLED)
             if args.get("name") is None
@@ -132,7 +131,7 @@ class EnablePackageCommand(sublime_plugin.ApplicationCommand, PackageManager):
         )
 
 
-class DisablePackageCommand(sublime_plugin.ApplicationCommand, PackageManager):
+class DisablePackageCommand(ApplicationCommand, PackageManager):
     @override
     def run(self, **kwargs):
         if name := kwargs.get("name"):
@@ -141,7 +140,7 @@ class DisablePackageCommand(sublime_plugin.ApplicationCommand, PackageManager):
             print("Specify package to disable with 'name' argument")
 
     @override
-    def input(self, args) -> sublime_plugin.CommandInputHandler | None:
+    def input(self, args: dict) -> CommandInputHandler | None:
         return (
             ListPackagesInputHandler(filter=PackageFilter.ENABLED)
             if args.get("name") is None

@@ -39,6 +39,10 @@
         "caption": "View: Open in Browser"
     },
     {
+        "command": "toggle_read_only",
+        "caption": "View: Toggle Read Only"
+    },
+    {
         "command": "toggle_scratch",
         "caption": "View: Toggle Scratch"
     },

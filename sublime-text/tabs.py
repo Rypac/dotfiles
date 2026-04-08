@@ -1,18 +1,19 @@
 from typing import override
 
 import sublime
-import sublime_plugin
+from sublime import Sheet, View
+from sublime_plugin import WindowCommand
 
 
-class TabContextCommand(sublime_plugin.WindowCommand):
-    def sheet(self, group: int, index: int) -> sublime.Sheet | None:
+class TabContextCommand(WindowCommand):
+    def sheet(self, group: int, index: int) -> Sheet | None:
         if group < 0 or index < 0:
             return None
 
         sheets = self.window.sheets_in_group(int(group))
         return sheets[index] if -1 < index < len(sheets) else None
 
-    def view(self, group: int, index: int) -> sublime.View | None:
+    def view(self, group: int, index: int) -> View | None:
         return sheet.view() if (sheet := self.sheet(group, index)) else None
 
     def file_name(self, group: int, index: int) -> str | None:
@@ -80,7 +81,7 @@ class OpenTabInFocusModeCommand(TabContextCommand):
 
 
 class SplitTabToNextGroupCommand(TabContextCommand):
-    def clone_view(self, view: sublime.View):
+    def clone_view(self, view: View):
         group, index = self.window.get_view_index(view)
         self.window.run_command("clone_file")
 

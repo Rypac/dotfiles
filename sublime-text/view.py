@@ -2,12 +2,13 @@ import sys
 from typing import override
 
 import sublime
-import sublime_plugin
+from sublime import Edit, View
+from sublime_plugin import TextCommand, WindowCommand
 
 
-class OpenInNewWindowCommand(sublime_plugin.TextCommand):
+class OpenInNewWindowCommand(TextCommand):
     @override
-    def run(self, edit: sublime.Edit):
+    def run(self, edit: Edit):
         sublime.run_command("new_window")
         new_window = sublime.active_window()
 
@@ -19,9 +20,9 @@ class OpenInNewWindowCommand(sublime_plugin.TextCommand):
         return (name := self.view.file_name()) is not None and len(name) > 0
 
 
-class OpenInFocusModeCommand(sublime_plugin.TextCommand):
+class OpenInFocusModeCommand(TextCommand):
     @override
-    def run(self, edit: sublime.Edit):
+    def run(self, edit: Edit):
         sublime.run_command("new_window")
         new_window = sublime.active_window()
 
@@ -33,14 +34,28 @@ class OpenInFocusModeCommand(sublime_plugin.TextCommand):
         return (name := self.view.file_name()) is not None and len(name) > 0
 
 
-class ToggleScratchCommand(sublime_plugin.TextCommand):
+class ToggleScratchCommand(TextCommand):
     @override
-    def run(self, edit: sublime.Edit):
+    def run(self, edit: Edit):
         self.view.set_scratch(not self.view.is_scratch())
 
+    @override
+    def is_checked(self) -> bool:
+        return self.view.is_scratch()
 
-class SplitToNextGroupCommand(sublime_plugin.WindowCommand):
-    def clone_view(self, view: sublime.View):
+
+class ToggleReadOnlyCommand(TextCommand):
+    @override
+    def run(self, edit: Edit):
+        self.view.set_read_only(not self.view.is_read_only())
+
+    @override
+    def is_checked(self) -> bool:
+        return self.view.is_read_only()
+
+
+class SplitToNextGroupCommand(WindowCommand):
+    def clone_view(self, view: View):
         group, index = self.window.get_view_index(view)
         self.window.run_command("clone_file")
 
@@ -73,7 +88,7 @@ class SplitToNextGroupCommand(sublime_plugin.WindowCommand):
         return len(sheets) > 0
 
 
-class CloseViewOrPaneCommand(sublime_plugin.WindowCommand):
+class CloseViewOrPaneCommand(WindowCommand):
     @override
     def run(self):
         active_group = self.window.active_group()
@@ -85,7 +100,7 @@ class CloseViewOrPaneCommand(sublime_plugin.WindowCommand):
             self.window.run_command("close_pane")
 
 
-class CloseGroupCommand(sublime_plugin.WindowCommand):
+class CloseGroupCommand(WindowCommand):
     @override
     def run(self):
         active_group = self.window.active_group()

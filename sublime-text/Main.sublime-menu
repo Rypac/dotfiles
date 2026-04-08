@@ -18,6 +18,18 @@
     {
         "id": "view",
         "children": [
+            { "caption": "-", "id": "settings" },
+            { "caption": "-" },
+            {
+                "command": "toggle_read_only",
+                "caption": "Read Only",
+                "checkbox": true
+            },
+            {
+                "command": "toggle_scratch",
+                "caption": "Scratch",
+                "checkbox": true
+            },
             { "caption": "-", "id": "font" },
             {
                 "caption": "Font Size",

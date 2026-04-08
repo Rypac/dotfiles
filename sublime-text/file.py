@@ -1,9 +1,9 @@
 from typing import override
 
-import sublime_plugin
+from sublime_plugin import WindowCommand
 
 
-class SaveAllExistingCommand(sublime_plugin.WindowCommand):
+class SaveAllExistingCommand(WindowCommand):
     @override
     def run(self):
         for view in self.window.views():

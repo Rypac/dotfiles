@@ -1,12 +1,13 @@
 from typing import override
 
 import sublime
-import sublime_plugin
+from sublime import Edit
+from sublime_plugin import TextCommand
 
 
-class OpenSelectionCommand(sublime_plugin.TextCommand):
+class OpenSelectionCommand(TextCommand):
     @override
-    def run(self, edit: sublime.Edit, new_window: bool = False):
+    def run(self, edit: Edit, new_window: bool = False):
         if new_window:
             sublime.run_command("new_window")
             window = sublime.active_window()
@@ -27,9 +28,9 @@ class OpenSelectionCommand(sublime_plugin.TextCommand):
         return any(not region.empty() for region in self.view.sel())
 
 
-class ClearSelectionCommand(sublime_plugin.TextCommand):
+class ClearSelectionCommand(TextCommand):
     @override
-    def run(self, edit: sublime.Edit):
+    def run(self, edit: Edit):
         selection = self.view.sel()
         carets = [region.b for region in selection]
 

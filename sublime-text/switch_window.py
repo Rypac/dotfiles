@@ -3,11 +3,12 @@ from pathlib import Path
 from typing import override
 
 import sublime
-import sublime_plugin
 from Default.history_list import jump_history_dict
+from sublime import ListInputItem, Window
+from sublime_plugin import ApplicationCommand, ListInputHandler
 
 
-def recent_window_history() -> list[sublime.Window]:
+def recent_window_history() -> list[Window]:
     active_window = sublime.active_window()
 
     inactive_windows = {
@@ -39,7 +40,7 @@ def recent_window_history() -> list[sublime.Window]:
     return sorted_windows
 
 
-class WindowInputHandler(sublime_plugin.ListInputHandler):
+class WindowInputHandler(ListInputHandler):
     @override
     def name(self) -> str:
         return "window_id"
@@ -49,7 +50,7 @@ class WindowInputHandler(sublime_plugin.ListInputHandler):
         return "Choose a window"
 
     @override
-    def list_items(self) -> list[sublime.ListInputItem]:
+    def list_items(self) -> list[ListInputItem]:
         def active_file(window):
             if not (view := window.active_view()):
                 return (None, None)
@@ -109,7 +110,7 @@ class WindowInputHandler(sublime_plugin.ListInputHandler):
                 kind = [sublime.KIND_ID_AMBIGUOUS, "S", "Scratch"]
                 second_line = "Scratch Window"
 
-            return sublime.ListInputItem(
+            return ListInputItem(
                 text=title or "untitled",
                 value=window.id(),
                 annotation=f"Window {window.id()}",
@@ -120,13 +121,13 @@ class WindowInputHandler(sublime_plugin.ListInputHandler):
         return [create_item(window) for window in recent_window_history()]
 
 
-class SwitchWindowCommand(sublime_plugin.ApplicationCommand):
+class SwitchWindowCommand(ApplicationCommand):
     @override
     def input_description(self) -> str:
         return "Switch Window"
 
     @override
-    def input(self, args) -> WindowInputHandler | None:
+    def input(self, args: dict) -> WindowInputHandler | None:
         return WindowInputHandler() if args.get("window_id") is None else None
 
     @override
@@ -137,7 +138,7 @@ class SwitchWindowCommand(sublime_plugin.ApplicationCommand):
                 break
 
 
-class SwitchToPreviousWindowCommand(sublime_plugin.ApplicationCommand):
+class SwitchToPreviousWindowCommand(ApplicationCommand):
     @override
     def run(self):
         if previous_window := next(iter(recent_window_history()), None):
