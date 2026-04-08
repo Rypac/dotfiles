@@ -4,6 +4,7 @@ vim.lsp.enable({
   "lua_ls",
   "ruff",
   "sourcekit",
+  "ty",
 })
 
 vim.api.nvim_create_user_command("LspStart", "edit", {

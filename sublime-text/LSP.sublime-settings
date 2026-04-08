@@ -20,6 +20,17 @@
         "sourcekit-lsp": {
             "command": ["xcrun", "sourcekit-lsp"],
             "selector": "source.swift"
+        },
+        "ty": {
+            "command": ["ty", "server"],
+            "schemes": ["file", "buffer"],
+            "selector": "source.python",
+            "settings": {
+                "ty.configuration.rules.unresolved-import": "warn"
+            },
+            "initializationOptions": {
+                "logLevel": "error"
+            }
         }
     }
 }
