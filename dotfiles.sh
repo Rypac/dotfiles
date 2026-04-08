@@ -68,7 +68,6 @@ dotfiles_link() {
     link ghostty "$XDG_CONFIG_HOME/ghostty"
     link ideavim "$XDG_CONFIG_HOME/ideavim"
     link lazygit "$XDG_CONFIG_HOME/lazygit"
-    link npm "$XDG_CONFIG_HOME/npm"
     link nvim "$XDG_CONFIG_HOME/nvim"
     link tig "$XDG_CONFIG_HOME/tig"
     link zsh "$XDG_CONFIG_HOME/zsh"
