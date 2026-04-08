@@ -64,7 +64,6 @@ dotfiles_link() {
     link bin/update-all.sh "$XDG_BIN_HOME/update-all"
 
     # Link common dotfiles
-    link fourmolu/fourmolu.yaml "$XDG_CONFIG_HOME/fourmolu.yaml"
     link git "$XDG_CONFIG_HOME/git"
     link ghc "$XDG_CONFIG_HOME/ghc"
     link ghostty "$XDG_CONFIG_HOME/ghostty"
