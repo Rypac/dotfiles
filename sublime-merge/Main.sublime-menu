@@ -14,27 +14,27 @@
                     {
                         "caption": "Pull Requests",
                         "command": "git",
-                        "args": { "argv": ["forge", "prs"] }
+                        "args": { "argv": ["forge", "pr"] }
                     },
                     {
                         "caption": "Issues",
                         "command": "git",
-                        "args": { "argv": ["forge", "issues"] }
+                        "args": { "argv": ["forge", "issue"] }
                     },
                     {
                         "caption": "Releases",
                         "command": "git",
-                        "args": { "argv": ["forge", "releases"] }
+                        "args": { "argv": ["forge", "release"] }
                     },
                      {
                         "caption": "Branches",
                         "command": "git",
-                        "args": { "argv": ["forge", "branches"] }
+                        "args": { "argv": ["forge", "branch"] }
                     },
                     {
                         "caption": "Tags",
                         "command": "git",
-                        "args": { "argv": ["forge", "tags"] }
+                        "args": { "argv": ["forge", "tag"] }
                     },
                     {
                         "caption": "Milestones",

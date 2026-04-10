@@ -9,22 +9,17 @@ git-forge — open your Git remote in a browser.
 Usage (via git):
     git forge                          # repository home
     git forge commit <sha>             # specific commit
-    git forge branch [<name>]          # branch (default: current)
-    git forge branches                 # branch list
-    git forge tag <name>               # specific tag
-    git forge tags                     # tag list
+    git forge branch [<name>]          # branch or branch list
+    git forge tag [<name>]             # tag or tag list
     git forge diff <ref1> [<ref2>]     # diff between refs / branches
-    git forge pr [<number>]            # specific pull request
-    git forge prs                      # pull request list
-    git forge issue [<number>]         # specific issue
-    git forge issues                   # issue list
+    git forge pr [<number>]            # pull request or pull request list
+    git forge issue [<number>]         # issue or issue list
     git forge file <path> [--line <n>] # file, optionally at a line
-    git forge release [<tag>]          # tagged release
-    git forge releases                 # tagged release
+    git forge release [<tag>]          # release or release list
     git forge actions                  # CI / pipeline runs
     git forge wiki                     # project wiki
-    git forge settings                 # repository settings
     git forge milestones               # milestone list
+    git forge settings                 # repository settings
 
 Supported forges: GitHub, GitLab, Bitbucket.
 """
@@ -99,8 +94,8 @@ class GitForge(Protocol):
     def releases(self) -> str: ...
     def actions(self) -> str: ...
     def wiki(self) -> str: ...
-    def settings(self) -> str: ...
     def milestones(self) -> str: ...
+    def settings(self) -> str: ...
 
 
 @dataclass(frozen=True)
@@ -162,11 +157,11 @@ class GithubForge(GitForge):
     def wiki(self) -> str:
         return f"{self.remote.url}/wiki"
 
-    def settings(self) -> str:
-        return f"{self.remote.url}/settings"
-
     def milestones(self) -> str:
         return f"{self.remote.url}/milestones"
+
+    def settings(self) -> str:
+        return f"{self.remote.url}/settings"
 
 
 @dataclass(frozen=True)
@@ -225,11 +220,11 @@ class GitlabForge(GitForge):
     def wiki(self) -> str:
         return f"{self.remote.url}/-/wikis"
 
-    def settings(self) -> str:
-        return f"{self.remote.url}/-/edit"
-
     def milestones(self) -> str:
         return f"{self.remote.url}/-/milestones"
+
+    def settings(self) -> str:
+        return f"{self.remote.url}/-/edit"
 
 
 @dataclass(frozen=True)
@@ -288,11 +283,11 @@ class BitbucketForge(GitForge):
     def wiki(self) -> str:
         return f"{self.remote.url}/wiki"
 
-    def settings(self) -> str:
-        return f"{self.remote.url}/admin"
-
     def milestones(self) -> str:
         return f"{self.remote.url}/issues?milestone"
+
+    def settings(self) -> str:
+        return f"{self.remote.url}/admin"
 
 
 # ---------------------------------------------------------------------------
@@ -385,17 +380,18 @@ def build_parser() -> ArgumentParser:
     parser_commit.add_argument("sha", help="Commit SHA (full or abbreviated)")
 
     # -- branch ---------------------------------------------------------------
-    subparsers.add_parser("branches", help="Open branch list")
     parser_branch = subparsers.add_parser(
         "branch",
-        help="Open a branch (default: current)",
+        help="Open a branch, or the branch list when omitted",
     )
     parser_branch.add_argument("name", nargs="?", help="Branch name")
 
     # -- tags -----------------------------------------------------------------
-    subparsers.add_parser("tags", help="Open the tag list")
-    parser_tag = subparsers.add_parser("tag", help="Open a specific tag")
-    parser_tag.add_argument("name", help="Tag name")
+    parser_tag = subparsers.add_parser(
+        "tag",
+        help="Open a tag, or the tag list when omitted",
+    )
+    parser_tag.add_argument("name", nargs="?", help="Tag name")
 
     # -- diff -----------------------------------------------------------------
     parser_diff = subparsers.add_parser("diff", help="Open a diff between two refs")
@@ -415,18 +411,24 @@ def build_parser() -> ArgumentParser:
     parser_file.add_argument("--line", "-l", type=int, help="Jump to a specific line")
 
     # -- pr -------------------------------------------------------------------
-    subparsers.add_parser("prs", help="Open pull request list")
-    parser_pr = subparsers.add_parser("pr", help="Open a pull request")
+    parser_pr = subparsers.add_parser(
+        "pr",
+        help="Open a pull request, or the pull request list when omitted",
+    )
     parser_pr.add_argument("number", nargs="?", type=int, help="PR number")
 
     # -- issues ---------------------------------------------------------------
-    subparsers.add_parser("issues", help="Open issue list")
-    parser_issue = subparsers.add_parser("issue", help="Open an issue")
+    parser_issue = subparsers.add_parser(
+        "issue",
+        help="Open an issue, or the issue list when omitted",
+    )
     parser_issue.add_argument("number", nargs="?", type=int, help="Issue number")
 
     # -- releases -------------------------------------------------------------
-    subparsers.add_parser("releases", help="Open releases")
-    parser_release = subparsers.add_parser("release", help="Open a specific release")
+    parser_release = subparsers.add_parser(
+        "release",
+        help="Open a release, or the release list when omitted",
+    )
     parser_release.add_argument("tag", nargs="?", help="Release tag")
 
     # -- actions --------------------------------------------------------------
@@ -435,11 +437,11 @@ def build_parser() -> ArgumentParser:
     # -- wiki -----------------------------------------------------------------
     subparsers.add_parser("wiki", help="Open the project wiki")
 
-    # -- settings -------------------------------------------------------------
-    subparsers.add_parser("settings", help="Open repository settings")
-
     # -- milestones -----------------------------------------------------------
     subparsers.add_parser("milestones", help="Open milestone list")
+
+    # -- settings -------------------------------------------------------------
+    subparsers.add_parser("settings", help="Open repository settings")
 
     return parser
 
@@ -452,16 +454,13 @@ def resolve_url(args: Namespace, forge: GitForge) -> str:
         return forge.commit(args.sha)
 
     elif args.command == "branch":
-        name = args.name or git_current_branch() or "HEAD"
-        return forge.branch(name)
-
-    elif args.command == "branches":
+        if args.name:
+            return forge.branch(args.name)
         return forge.branches()
 
     elif args.command == "tag":
-        return forge.tag(args.name)
-
-    elif args.command == "tags":
+        if args.name:
+            return forge.tag(args.name)
         return forge.tags()
 
     elif args.command == "diff":
@@ -478,21 +477,18 @@ def resolve_url(args: Namespace, forge: GitForge) -> str:
         return forge.file(args.path, args.line)
 
     elif args.command == "pr":
-        return forge.pull_request(args.number)
-
-    elif args.command == "prs":
+        if args.number is not None:
+            return forge.pull_request(args.number)
         return forge.pull_requests()
 
     elif args.command == "issue":
-        return forge.issue(args.number)
-
-    elif args.command == "issues":
+        if args.number is not None:
+            return forge.issue(args.number)
         return forge.issues()
 
     elif args.command == "release":
-        return forge.release(args.tag)
-
-    elif args.command == "releases":
+        if args.tag:
+            return forge.release(args.tag)
         return forge.releases()
 
     elif args.command == "actions":
@@ -501,11 +497,11 @@ def resolve_url(args: Namespace, forge: GitForge) -> str:
     elif args.command == "wiki":
         return forge.wiki()
 
-    elif args.command == "settings":
-        return forge.settings()
-
     elif args.command == "milestones":
         return forge.milestones()
+
+    elif args.command == "settings":
+        return forge.settings()
 
     else:
         raise SystemExit(f"error: unknown command '{args.command}'.")

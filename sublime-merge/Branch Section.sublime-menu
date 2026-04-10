@@ -2,6 +2,6 @@
     {
         "caption": "Open Branches in Remote…",
         "command": "git",
-        "args": { "argv": ["forge", "branches"] }
+        "args": { "argv": ["forge", "branch"] }
     }
 ]
