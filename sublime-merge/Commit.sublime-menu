@@ -1,9 +1,9 @@
 [
     { "id": "forge", "caption": "-" },
     {
-        "caption": "Open $short_commit in Remote…",
+        "caption": "Open Commit in Remote…",
         "command": "git",
-        "args": {"argv": ["forge", "commit", "$commit"]}
+        "args": { "argv": ["forge", "commit", "$commit"] }
     },
     { "id": "rebase", "caption": "-" },
     {
@@ -11,12 +11,12 @@
         "command": "show_command_palette",
         "args": {
             "command": "git",
-            "args": {"argv": ["rebase", "$commit~1", "--onto", "$select_branch"]}
+            "args": { "argv": ["rebase", "$commit~1", "--onto", "$select_branch"] }
         }
     },
     {
         "caption": "Start Interactive Rebase…",
         "command": "git",
-        "args": {"argv": ["rebase", "-i", "$commit~1"]}
+        "args": { "argv": ["rebase", "-i", "$commit~1"] }
     }
 ]

@@ -1,6 +1,6 @@
 [
     {
-        "caption": "Open Remote",
+        "caption": "Open Remote…",
         "command": "git",
         "args": { "argv": ["forge", "--remote", "$remote"] }
     }
