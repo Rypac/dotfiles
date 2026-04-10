@@ -48,10 +48,6 @@
 
     // Navigation
     {
-        "keys": ["super+k", "super+shift+b"],
-        "command": "view_tree"
-    },
-    {
         "keys": ["super+option+j"],
         "command": "open_dir",
         "args": { "path": "$working_dir/$path" },
