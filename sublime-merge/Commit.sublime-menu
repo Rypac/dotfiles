@@ -1,4 +1,10 @@
 [
+    { "id": "forge", "caption": "-" },
+    {
+        "caption": "Open $short_commit in Remote…",
+        "command": "git",
+        "args": {"argv": ["forge", "commit", "$commit"]}
+    },
     { "id": "rebase", "caption": "-" },
     {
         "caption": "Rebase $short_commit onto…",

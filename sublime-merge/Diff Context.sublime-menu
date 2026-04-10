@@ -1,11 +1,19 @@
 [
+    { "id": "forge", "caption": "-" },
+    {
+        "caption": "Open in Remote…",
+        "command": "git",
+        "args": { "argv": ["forge", "file", "$path"] }
+    },
     { "id": "end", "caption": "-" },
     {
         "caption": "File History",
-        "command": "search", "args": { "query": "file:\"$path\"" }
+        "command": "search",
+        "args": { "query": "file:\"$path\"" }
     },
     {
         "caption": "Blame",
-        "command": "blame", "args": { "path": "$path" }
+        "command": "blame",
+        "args": { "path": "$path" }
     }
 ]

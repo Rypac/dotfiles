@@ -1,0 +1,63 @@
+[
+    {
+        "id": "repository",
+        "children": [
+            {
+                "caption": "Open in Remote…",
+                "command": "git",
+                "args": { "argv": ["forge"] }
+            },
+            { "caption": "-", "id": "forge" },
+            {
+                "caption": "Remote",
+                "children": [
+                    {
+                        "caption": "Pull Requests",
+                        "command": "git",
+                        "args": { "argv": ["forge", "prs"] }
+                    },
+                    {
+                        "caption": "Issues",
+                        "command": "git",
+                        "args": { "argv": ["forge", "issues"] }
+                    },
+                    {
+                        "caption": "Releases",
+                        "command": "git",
+                        "args": { "argv": ["forge", "releases"] }
+                    },
+                     {
+                        "caption": "Branches",
+                        "command": "git",
+                        "args": { "argv": ["forge", "branches"] }
+                    },
+                    {
+                        "caption": "Tags",
+                        "command": "git",
+                        "args": { "argv": ["forge", "tags"] }
+                    },
+                    {
+                        "caption": "Milestones",
+                        "command": "git",
+                        "args": { "argv": ["forge", "milestones"] }
+                    },
+                    {
+                        "caption": "Wiki",
+                        "command": "git",
+                        "args": { "argv": ["forge", "wiki"] }
+                    },
+                    {
+                        "caption": "Actions",
+                        "command": "git",
+                        "args": { "argv": ["forge", "actions"] }
+                    },
+                    {
+                        "caption": "Settings",
+                        "command": "git",
+                        "args": { "argv": ["forge", "settings"] }
+                    }
+                ]
+            }
+        ]
+    }
+]
