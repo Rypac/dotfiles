@@ -1,5 +1,50 @@
 [
     {
+        "caption": "Open Repository in Remote",
+        "command": "git",
+        "args": { "argv": ["forge"] }
+    },
+    {
+        "caption": "Open Commit in Remote…",
+        "command": "git",
+        "args": { "argv": ["forge", "commit", "$select_commit"] }
+    },
+    {
+        "caption": "Open Branch in Remote…",
+        "command": "git",
+        "args": { "argv": ["forge", "branch", "$select_local_branch"] }
+    },
+    {
+        "caption": "Open Branches in Remote",
+        "command": "git",
+        "args": { "argv": ["forge", "branch"] }
+    },
+    {
+        "caption": "Open Tag in Remote…",
+        "command": "git",
+        "args": { "argv": ["forge", "tag", "$select_tag"] }
+    },
+    {
+        "caption": "Open Tags in Remote",
+        "command": "git",
+        "args": { "argv": ["forge", "tag"] }
+    },
+    {
+        "caption": "Open Pull Requests",
+        "command": "git",
+        "args": { "argv": ["forge", "pr"] }
+    },
+    {
+        "caption": "Open Issues",
+        "command": "git",
+        "args": { "argv": ["forge", "issue"] }
+    },
+    {
+        "caption": "Open Releases",
+        "command": "git",
+        "args": { "argv": ["forge", "release"] }
+    },
+    {
         "caption": "Cleanup Repo",
         "command": "git",
         "args": { "argv": ["gc"] }
