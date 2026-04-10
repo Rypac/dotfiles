@@ -11,6 +11,8 @@ Usage (via git):
     git forge commit <sha>             # specific commit
     git forge branch [<name>]          # branch (default: current)
     git forge branches                 # branch list
+    git forge tag <name>               # specific tag
+    git forge tags                     # tag list
     git forge diff <ref1> [<ref2>]     # diff between refs / branches
     git forge pr [<number>]            # specific pull request
     git forge prs                      # pull request list
@@ -19,7 +21,6 @@ Usage (via git):
     git forge file <path> [--line <n>] # file, optionally at a line
     git forge release [<tag>]          # tagged release
     git forge releases                 # tagged release
-    git forge tags                     # tag list
     git forge actions                  # CI / pipeline runs
     git forge wiki                     # project wiki
     git forge settings                 # repository settings
@@ -86,6 +87,8 @@ class GitForge(Protocol):
     def commit(self, sha: str) -> str: ...
     def branch(self, name: str) -> str: ...
     def branches(self) -> str: ...
+    def tag(self, name: str) -> str: ...
+    def tags(self) -> str: ...
     def diff(self, base: str, head: str) -> str: ...
     def file(self, path: str, line: int | None) -> str: ...
     def pull_request(self, number: int) -> str: ...
@@ -94,7 +97,6 @@ class GitForge(Protocol):
     def issues(self) -> str: ...
     def release(self, tag: str) -> str: ...
     def releases(self) -> str: ...
-    def tags(self) -> str: ...
     def actions(self) -> str: ...
     def wiki(self) -> str: ...
     def settings(self) -> str: ...
@@ -116,6 +118,12 @@ class GithubForge(GitForge):
 
     def branches(self) -> str:
         return f"{self.remote.url}/branches"
+
+    def tag(self, name: str) -> str:
+        return f"{self.remote.url}/tree/{url_quote(name, safe='/@')}"
+
+    def tags(self) -> str:
+        return f"{self.remote.url}/tags"
 
     def diff(self, base: str, head: str) -> str:
         return f"{self.remote.url}/compare/{url_quote(base, safe='/@')}...{url_quote(head, safe='/@')}"
@@ -148,9 +156,6 @@ class GithubForge(GitForge):
     def releases(self) -> str:
         return f"{self.remote.url}/releases"
 
-    def tags(self) -> str:
-        return f"{self.remote.url}/tags"
-
     def actions(self) -> str:
         return f"{self.remote.url}/actions"
 
@@ -180,6 +185,12 @@ class GitlabForge(GitForge):
     def branches(self) -> str:
         return f"{self.remote.url}/-/branches"
 
+    def tag(self, name: str) -> str:
+        return f"{self.remote.url}/-/tree/{url_quote(name, safe='/@')}"
+
+    def tags(self) -> str:
+        return f"{self.remote.url}/-/tags"
+
     def diff(self, base: str, head: str) -> str:
         return f"{self.remote.url}/-/compare/{url_quote(base, safe='/@')}...{url_quote(head, safe='/@')}"
 
@@ -207,9 +218,6 @@ class GitlabForge(GitForge):
 
     def releases(self) -> str:
         return f"{self.remote.url}/-/releases"
-
-    def tags(self) -> str:
-        return f"{self.remote.url}/-/tags"
 
     def actions(self) -> str:
         return f"{self.remote.url}/-/pipelines"
@@ -240,6 +248,12 @@ class BitbucketForge(GitForge):
     def branches(self) -> str:
         return f"{self.remote.url}/branches"
 
+    def tag(self, name: str) -> str:
+        return f"{self.remote.url}/src/{url_quote(name, safe='/@')}"
+
+    def tags(self) -> str:
+        return f"{self.remote.url}/refs/tags"
+
     def diff(self, base: str, head: str) -> str:
         return f"{self.remote.url}/branches/compare/{url_quote(head, safe='/@')}%0D{url_quote(base, safe='/@')}"
 
@@ -267,9 +281,6 @@ class BitbucketForge(GitForge):
 
     def releases(self) -> str:
         return f"{self.remote.url}/downloads"
-
-    def tags(self) -> str:
-        return f"{self.remote.url}/src/?tags"
 
     def actions(self) -> str:
         return f"{self.remote.url}/pipelines"
@@ -381,6 +392,11 @@ def build_parser() -> ArgumentParser:
     )
     parser_branch.add_argument("name", nargs="?", help="Branch name")
 
+    # -- tags -----------------------------------------------------------------
+    subparsers.add_parser("tags", help="Open the tag list")
+    parser_tag = subparsers.add_parser("tag", help="Open a specific tag")
+    parser_tag.add_argument("name", help="Tag name")
+
     # -- diff -----------------------------------------------------------------
     parser_diff = subparsers.add_parser("diff", help="Open a diff between two refs")
     parser_diff.add_argument(
@@ -413,9 +429,6 @@ def build_parser() -> ArgumentParser:
     parser_release = subparsers.add_parser("release", help="Open a specific release")
     parser_release.add_argument("tag", nargs="?", help="Release tag")
 
-    # -- tags -----------------------------------------------------------------
-    subparsers.add_parser("tags", help="Open the tag list")
-
     # -- actions --------------------------------------------------------------
     subparsers.add_parser("actions", help="Open CI / pipeline runs")
 
@@ -444,6 +457,12 @@ def resolve_url(args: Namespace, forge: GitForge) -> str:
 
     elif args.command == "branches":
         return forge.branches()
+
+    elif args.command == "tag":
+        return forge.tag(args.name)
+
+    elif args.command == "tags":
+        return forge.tags()
 
     elif args.command == "diff":
         if len(args.refs) == 1 and ".." in args.refs[0]:
@@ -475,9 +494,6 @@ def resolve_url(args: Namespace, forge: GitForge) -> str:
 
     elif args.command == "releases":
         return forge.releases()
-
-    elif args.command == "tags":
-        return forge.tags()
 
     elif args.command == "actions":
         return forge.actions()
