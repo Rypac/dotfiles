@@ -10,6 +10,7 @@ Usage (via git):
     git forge                          # repository home
     git forge commit <sha>             # specific commit
     git forge branch [<name>]          # branch (default: current)
+    git forge branches                 # branch list
     git forge diff <ref1> [<ref2>]     # diff between refs / branches
     git forge pr [<number>]            # specific pull request
     git forge prs                      # pull request list
@@ -84,6 +85,7 @@ class GitForge(Protocol):
     def home(self) -> str: ...
     def commit(self, sha: str) -> str: ...
     def branch(self, name: str) -> str: ...
+    def branches(self) -> str: ...
     def diff(self, base: str, head: str) -> str: ...
     def file(self, path: str, line: int | None) -> str: ...
     def pull_request(self, number: int) -> str: ...
@@ -111,6 +113,9 @@ class GithubForge(GitForge):
 
     def branch(self, name: str) -> str:
         return f"{self.remote.url}/tree/{url_quote(name, safe='/@')}"
+
+    def branches(self) -> str:
+        return f"{self.remote.url}/branches"
 
     def diff(self, base: str, head: str) -> str:
         return f"{self.remote.url}/compare/{url_quote(base, safe='/@')}...{url_quote(head, safe='/@')}"
@@ -172,6 +177,9 @@ class GitlabForge(GitForge):
     def branch(self, name: str) -> str:
         return f"{self.remote.url}/-/tree/{url_quote(name, safe='/@')}"
 
+    def branches(self) -> str:
+        return f"{self.remote.url}/-/branches"
+
     def diff(self, base: str, head: str) -> str:
         return f"{self.remote.url}/-/compare/{url_quote(base, safe='/@')}...{url_quote(head, safe='/@')}"
 
@@ -228,6 +236,9 @@ class BitbucketForge(GitForge):
 
     def branch(self, name: str) -> str:
         return f"{self.remote.url}/src/{url_quote(name, safe='/@')}"
+
+    def branches(self) -> str:
+        return f"{self.remote.url}/branches"
 
     def diff(self, base: str, head: str) -> str:
         return f"{self.remote.url}/branches/compare/{url_quote(head, safe='/@')}%0D{url_quote(base, safe='/@')}"
@@ -363,6 +374,7 @@ def build_parser() -> ArgumentParser:
     parser_commit.add_argument("sha", help="Commit SHA (full or abbreviated)")
 
     # -- branch ---------------------------------------------------------------
+    subparsers.add_parser("branches", help="Open branch list")
     parser_branch = subparsers.add_parser(
         "branch",
         help="Open a branch (default: current)",
@@ -387,7 +399,7 @@ def build_parser() -> ArgumentParser:
     parser_file.add_argument("--line", "-l", type=int, help="Jump to a specific line")
 
     # -- pr -------------------------------------------------------------------
-    subparsers.add_parser("prs", help="Open pull-request list")
+    subparsers.add_parser("prs", help="Open pull request list")
     parser_pr = subparsers.add_parser("pr", help="Open a pull request")
     parser_pr.add_argument("number", nargs="?", type=int, help="PR number")
 
@@ -429,6 +441,9 @@ def resolve_url(args: Namespace, forge: GitForge) -> str:
     elif args.command == "branch":
         name = args.name or git_current_branch() or "HEAD"
         return forge.branch(name)
+
+    elif args.command == "branches":
+        return forge.branches()
 
     elif args.command == "diff":
         if len(args.refs) == 1 and ".." in args.refs[0]:
