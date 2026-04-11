@@ -28,6 +28,7 @@ from __future__ import annotations
 
 from argparse import ArgumentParser, Namespace
 from dataclasses import dataclass
+from enum import Enum
 from typing import Protocol
 from urllib.parse import quote as url_quote
 
@@ -351,6 +352,64 @@ def git_current_branch() -> str | None:
 
 
 # ---------------------------------------------------------------------------
+# Output
+# ---------------------------------------------------------------------------
+
+
+class OutputMode(str, Enum):
+    OPEN = "open"
+    COPY = "copy"
+    PRINT = "print"
+
+
+def resolve_output_mode(args: Namespace) -> OutputMode:
+    if args.open:
+        return OutputMode.OPEN
+    elif args.copy:
+        return OutputMode.COPY
+    elif args.print:
+        return OutputMode.PRINT
+    else:
+        return OutputMode.OPEN
+
+
+def handle_output(mode: OutputMode, url: str) -> None:
+    if mode is OutputMode.OPEN:
+        import webbrowser
+
+        webbrowser.open(url)
+    elif mode is OutputMode.COPY:
+        copy_to_clipboard(url)
+    elif mode is OutputMode.PRINT:
+        print(url)
+    else:
+        raise SystemExit(f"error: unsupported output mode: {mode.value}")
+
+
+def copy_to_clipboard(url: str) -> None:
+    import subprocess
+    import sys
+
+    if sys.platform == "darwin":
+        subprocess.run(["pbcopy"], input=url, text=True, check=True)
+    elif sys.platform == "win32":
+        subprocess.run(["clip"], input=url, text=True, check=True)
+    else:
+        for clipboard_command in (
+            ["wl-copy"],
+            ["xclip", "-selection", "clipboard"],
+            ["xsel", "--clipboard", "--input"],
+        ):
+            try:
+                subprocess.run(clipboard_command, input=url, text=True, check=True)
+                break
+            except FileNotFoundError:
+                continue
+        else:
+            raise SystemExit("error: no clipboard utility found")
+
+
+# ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
 
@@ -366,11 +425,26 @@ def build_parser() -> ArgumentParser:
         metavar="NAME",
         help="Git remote to use (default: origin)",
     )
-    parser.add_argument(
-        "--print",
-        dest="print_only",
+
+    # -- output --
+    output_group = parser.add_mutually_exclusive_group()
+    output_group.add_argument(
+        "--open",
+        dest="open",
         action="store_true",
-        help="Print the URL instead of opening it",
+        help="Open URL in default browser",
+    )
+    output_group.add_argument(
+        "--print",
+        dest="print",
+        action="store_true",
+        help="Print the URL",
+    )
+    output_group.add_argument(
+        "--copy",
+        dest="copy",
+        action="store_true",
+        help="Copy URL to the clipboard",
     )
 
     subparsers = parser.add_subparsers(dest="command")
@@ -522,12 +596,8 @@ def main(argv: list[str] | None = None) -> None:
 
     url = resolve_url(args, forge)
 
-    if args.print_only:
-        print(url)
-    else:
-        import webbrowser
-
-        webbrowser.open(url)
+    output_mode = resolve_output_mode(args)
+    handle_output(output_mode, url)
 
 
 if __name__ == "__main__":
