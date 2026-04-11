@@ -3,5 +3,10 @@
         "caption": "Open in Remote…",
         "command": "git",
         "args": { "argv": ["forge", "file", "$path"] }
+    },
+    {
+        "caption": "Copy URL to Remote",
+        "command": "git",
+        "args": { "argv": ["forge", "--copy", "file", "$path"] }
     }
 ]

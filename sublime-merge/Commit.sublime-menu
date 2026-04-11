@@ -5,6 +5,11 @@
         "command": "git",
         "args": { "argv": ["forge", "commit", "$commit"] }
     },
+    {
+        "caption": "Copy Commit URL to Remote",
+        "command": "git",
+        "args": { "argv": ["forge", "--copy", "commit", "$commit"] }
+    },
     { "id": "rebase", "caption": "-" },
     {
         "caption": "Rebase $short_commit onto…",
