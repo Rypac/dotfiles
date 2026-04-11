@@ -53,14 +53,19 @@ def parse_remote(url: str) -> Remote:
     import re
 
     for remote_pattern in (
-        r"https://([^/]+)/([^/]+)/(.+?)(\.git)?$",
-        r"git@([^:]+):([^/]+)/(.+?)(\.git)?$",
+        r"https://([^/]+)/(.+?)(\.git)?$",
+        r"git@([^:]+):(.+?)(\.git)?$",
     ):
         if match := re.match(remote_pattern, url):
+            host = match.group(1)
+            path = match.group(2)
+
+            namespace, repository = path.rsplit("/", 1)
+
             return Remote(
-                host=match.group(1),
-                namespace=match.group(2),
-                repository=match.group(3),
+                host=host,
+                namespace=namespace,
+                repository=repository,
             )
     else:
         raise SystemExit(f"error: unsupported remote URL: {url}")
