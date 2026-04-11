@@ -86,7 +86,7 @@ class GitForge(Protocol):
     def tag(self, name: str) -> str: ...
     def tags(self) -> str: ...
     def diff(self, base: str, head: str) -> str: ...
-    def file(self, path: str, line: int | None) -> str: ...
+    def file(self, path: str, ref: str, line: int | None) -> str: ...
     def pull_request(self, number: int) -> str: ...
     def pull_requests(self) -> str: ...
     def issue(self, number: int) -> str: ...
@@ -124,12 +124,8 @@ class GithubForge(GitForge):
     def diff(self, base: str, head: str) -> str:
         return f"{self.remote.url}/compare/{url_quote(base, safe='/@')}...{url_quote(head, safe='/@')}"
 
-    def file(self, path: str, line: int | None) -> str:
-        # Resolve current branch so the link doesn't use a detached HEAD SHA.
-        branch = git_current_branch() or "HEAD"
-        url = (
-            f"{self.remote.url}/blob/{url_quote(branch, safe='/@')}/{path.lstrip('/')}"
-        )
+    def file(self, path: str, ref: str, line: int | None) -> str:
+        url = f"{self.remote.url}/blob/{url_quote(ref, safe='/@')}/{path.lstrip('/')}"
         if line is not None:
             url += f"#L{line}"
         return url
@@ -190,9 +186,8 @@ class GitlabForge(GitForge):
     def diff(self, base: str, head: str) -> str:
         return f"{self.remote.url}/-/compare/{url_quote(base, safe='/@')}...{url_quote(head, safe='/@')}"
 
-    def file(self, path: str, line: int | None) -> str:
-        branch = git_current_branch() or "HEAD"
-        url = f"{self.remote.url}/-/blob/{url_quote(branch, safe='/@')}/{path.lstrip('/')}"
+    def file(self, path: str, ref: str, line: int | None) -> str:
+        url = f"{self.remote.url}/-/blob/{url_quote(ref, safe='/@')}/{path.lstrip('/')}"
         if line is not None:
             url += f"#L{line}"
         return url
@@ -253,9 +248,8 @@ class BitbucketForge(GitForge):
     def diff(self, base: str, head: str) -> str:
         return f"{self.remote.url}/branches/compare/{url_quote(head, safe='/@')}%0D{url_quote(base, safe='/@')}"
 
-    def file(self, path: str, line: int | None) -> str:
-        branch = git_current_branch() or "HEAD"
-        url = f"{self.remote.url}/src/{url_quote(branch, safe='/@')}/{path.lstrip('/')}"
+    def file(self, path: str, ref: str, line: int | None) -> str:
+        url = f"{self.remote.url}/src/{url_quote(ref, safe='/@')}/{path.lstrip('/')}"
         if line is not None:
             url += f"#lines-{line}"
         return url
@@ -483,6 +477,11 @@ def build_parser() -> ArgumentParser:
     )
     parser_file.add_argument("path", help="File path relative to repository root")
     parser_file.add_argument("--line", "-l", type=int, help="Jump to a specific line")
+    parser_file.add_argument(
+        "--ref",
+        type=str,
+        help="Stable ref to use for file (default current branch)",
+    )
 
     # -- pr -------------------------------------------------------------------
     parser_pr = subparsers.add_parser(
@@ -548,7 +547,8 @@ def resolve_url(args: Namespace, forge: GitForge) -> str:
             raise SystemExit("error: diff requires 'base..head' or two ref arguments.")
 
     elif args.command == "file":
-        return forge.file(args.path, args.line)
+        ref = args.ref or git_current_branch() or "HEAD"
+        return forge.file(args.path, ref, args.line)
 
     elif args.command == "pr":
         if args.number is not None:
