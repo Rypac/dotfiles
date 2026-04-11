@@ -292,16 +292,19 @@ class BitbucketForge(GitForge):
 
 
 def resolve_forge(remote: Remote) -> GitForge:
-    forges = {
-        "github.com": "github",
-        "gitlab.com": "gitlab",
-        "bitbucket.org": "bitbucket",
-    }
+    if config := git_config(f"forge.host.{remote.host}.type"):
+        forge = config.lower()
+    else:
+        default_forges = {
+            "github.com": "github",
+            "gitlab.com": "gitlab",
+            "bitbucket.org": "bitbucket",
+        }
 
-    if remote.host not in forges:
-        raise SystemExit(f"error: unsupported forge: {remote.host}")
-
-    forge = forges[remote.host]
+        try:
+            forge = default_forges[remote.host]
+        except KeyError:
+            raise SystemExit(f"error: unsupported forge: {remote.host}")
 
     if forge == "github":
         return GithubForge(remote)
@@ -321,6 +324,13 @@ def resolve_forge(remote: Remote) -> GitForge:
 def git(*args: str) -> str:
     result = subprocess.run(["git", *args], capture_output=True, text=True, check=True)
     return result.stdout.strip()
+
+
+def git_config(key: str) -> str | None:
+    try:
+        return git("config", "--get", key)
+    except CalledProcessError:
+        return None
 
 
 def git_remote_url(remote: str) -> str:
