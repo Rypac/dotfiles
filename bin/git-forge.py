@@ -26,26 +26,27 @@ Supported forges: GitHub, GitLab, Bitbucket.
 
 from __future__ import annotations
 
+import subprocess
 from argparse import ArgumentParser, Namespace
 from dataclasses import dataclass
-from enum import Enum
+from subprocess import CalledProcessError
 from typing import Protocol
 from urllib.parse import quote as url_quote
 
 # ---------------------------------------------------------------------------
-# Domain model
+# Remote
 # ---------------------------------------------------------------------------
 
 
 @dataclass(frozen=True)
 class Remote:
     host: str
-    owner: str
+    namespace: str
     repository: str
 
     @property
     def url(self):
-        return f"https://{self.host}/{self.owner}/{self.repository}"
+        return f"https://{self.host}/{self.namespace}/{self.repository}"
 
 
 def parse_remote(url: str) -> Remote:
@@ -58,15 +59,15 @@ def parse_remote(url: str) -> Remote:
         if match := re.match(remote_pattern, url):
             return Remote(
                 host=match.group(1),
-                owner=match.group(2),
+                namespace=match.group(2),
                 repository=match.group(3),
             )
-
-    raise SystemExit(f"error: unsupported remote URL: {url}")
+    else:
+        raise SystemExit(f"error: unsupported remote URL: {url}")
 
 
 # ---------------------------------------------------------------------------
-# Forge protocol and implementations
+# Forge
 # ---------------------------------------------------------------------------
 
 
@@ -125,7 +126,7 @@ class GithubForge(GitForge):
         return f"{self.remote.url}/compare/{url_quote(base, safe='/@')}...{url_quote(head, safe='/@')}"
 
     def file(self, path: str, ref: str, line: int | None) -> str:
-        url = f"{self.remote.url}/blob/{url_quote(ref, safe='/@')}/{path.lstrip('/')}"
+        url = f"{self.remote.url}/blob/{url_quote(ref, safe='/@')}/{url_quote(path.lstrip('/'))}"
         if line is not None:
             url += f"#L{line}"
         return url
@@ -187,7 +188,7 @@ class GitlabForge(GitForge):
         return f"{self.remote.url}/-/compare/{url_quote(base, safe='/@')}...{url_quote(head, safe='/@')}"
 
     def file(self, path: str, ref: str, line: int | None) -> str:
-        url = f"{self.remote.url}/-/blob/{url_quote(ref, safe='/@')}/{path.lstrip('/')}"
+        url = f"{self.remote.url}/-/blob/{url_quote(ref, safe='/@')}/{url_quote(path.lstrip('/'))}"
         if line is not None:
             url += f"#L{line}"
         return url
@@ -246,10 +247,10 @@ class BitbucketForge(GitForge):
         return f"{self.remote.url}/refs/tags"
 
     def diff(self, base: str, head: str) -> str:
-        return f"{self.remote.url}/branches/compare/{url_quote(head, safe='/@')}%0D{url_quote(base, safe='/@')}"
+        return f"{self.remote.url}/branches/compare/{url_quote(head, safe='/@')}..{url_quote(base, safe='/@')}"
 
     def file(self, path: str, ref: str, line: int | None) -> str:
-        url = f"{self.remote.url}/src/{url_quote(ref, safe='/@')}/{path.lstrip('/')}"
+        url = f"{self.remote.url}/src/{url_quote(ref, safe='/@')}/{url_quote(path.lstrip('/'))}"
         if line is not None:
             url += f"#lines-{line}"
         return url
@@ -285,11 +286,6 @@ class BitbucketForge(GitForge):
         return f"{self.remote.url}/admin"
 
 
-# ---------------------------------------------------------------------------
-# Forge registry
-# ---------------------------------------------------------------------------
-
-
 def resolve_forge(remote: Remote) -> GitForge:
     forges = {
         "github.com": "github",
@@ -297,10 +293,10 @@ def resolve_forge(remote: Remote) -> GitForge:
         "bitbucket.org": "bitbucket",
     }
 
-    forge = next(
-        (forge for host, forge in forges.items() if host == remote.host),
-        "github",
-    )
+    if remote.host not in forges:
+        raise SystemExit(f"error: unsupported forge: {remote.host}")
+
+    forge = forges[remote.host]
 
     if forge == "github":
         return GithubForge(remote)
@@ -313,94 +309,89 @@ def resolve_forge(remote: Remote) -> GitForge:
 
 
 # ---------------------------------------------------------------------------
-# Git helpers
+# Git
 # ---------------------------------------------------------------------------
 
 
 def git(*args: str) -> str:
-    """Run a git command and return stripped stdout, raising on failure."""
-    import subprocess
-
-    result = subprocess.run(
-        ["git", *args],
-        capture_output=True,
-        text=True,
-    )
-    if result.returncode != 0:
-        raise RuntimeError(result.stderr.strip() or f"git {' '.join(args)} failed")
+    result = subprocess.run(["git", *args], capture_output=True, text=True, check=True)
     return result.stdout.strip()
 
 
 def git_remote_url(remote: str) -> str:
     try:
         return git("remote", "get-url", remote)
-    except RuntimeError:
+    except CalledProcessError:
         raise SystemExit(f"error: remote '{remote}' not found.")
 
 
 def git_current_branch() -> str | None:
     try:
         return git("rev-parse", "--abbrev-ref", "HEAD")
-    except RuntimeError:
+    except CalledProcessError:
         return None
 
 
+def git_head() -> str:
+    try:
+        return git("rev-parse", "HEAD")
+    except CalledProcessError:
+        raise SystemExit("error: unable to reach HEAD.")
+
+
 # ---------------------------------------------------------------------------
-# Output
+# Action
 # ---------------------------------------------------------------------------
 
 
-class OutputMode(str, Enum):
-    OPEN = "open"
-    COPY = "copy"
-    PRINT = "print"
+class UrlAction(Protocol):
+    def execute(self, url: str) -> None: ...
 
 
-def resolve_output_mode(args: Namespace) -> OutputMode:
-    if args.open:
-        return OutputMode.OPEN
-    elif args.copy:
-        return OutputMode.COPY
-    elif args.print:
-        return OutputMode.PRINT
-    else:
-        return OutputMode.OPEN
-
-
-def handle_output(mode: OutputMode, url: str) -> None:
-    if mode is OutputMode.OPEN:
+class OpenUrlAction(UrlAction):
+    def execute(self, url: str) -> None:
         import webbrowser
 
         webbrowser.open(url)
-    elif mode is OutputMode.COPY:
-        copy_to_clipboard(url)
-    elif mode is OutputMode.PRINT:
-        print(url)
-    else:
-        raise SystemExit(f"error: unsupported output mode: {mode.value}")
 
 
-def copy_to_clipboard(url: str) -> None:
-    import subprocess
-    import sys
+class CopyUrlAction(UrlAction):
+    def execute(self, url: str) -> None:
+        import sys
 
-    if sys.platform == "darwin":
-        subprocess.run(["pbcopy"], input=url, text=True, check=True)
-    elif sys.platform == "win32":
-        subprocess.run(["clip"], input=url, text=True, check=True)
-    else:
-        for clipboard_command in (
-            ["wl-copy"],
-            ["xclip", "-selection", "clipboard"],
-            ["xsel", "--clipboard", "--input"],
-        ):
-            try:
-                subprocess.run(clipboard_command, input=url, text=True, check=True)
-                break
-            except FileNotFoundError:
-                continue
+        if sys.platform == "darwin":
+            subprocess.run(["pbcopy"], input=url, text=True, check=True)
+        elif sys.platform == "win32":
+            subprocess.run(["clip"], input=url, text=True, check=True)
         else:
-            raise SystemExit("error: no clipboard utility found")
+            for clipboard_command in (
+                ["wl-copy"],
+                ["xclip", "-selection", "clipboard"],
+                ["xsel", "--clipboard", "--input"],
+            ):
+                try:
+                    subprocess.run(clipboard_command, input=url, text=True, check=True)
+                    break
+                except (FileNotFoundError, CalledProcessError):
+                    continue
+            else:
+                raise SystemExit("error: no clipboard utility found")
+
+
+class PrintUrlAction(UrlAction):
+    def execute(self, url: str) -> None:
+        print(url)
+
+
+def resolve_url_action(args: Namespace) -> UrlAction:
+    if args.open_url:
+        return OpenUrlAction()
+    elif args.copy_url:
+        return CopyUrlAction()
+    elif args.print_url:
+        return PrintUrlAction()
+    else:
+        return OpenUrlAction()
 
 
 # ---------------------------------------------------------------------------
@@ -424,19 +415,19 @@ def build_parser() -> ArgumentParser:
     output_group = parser.add_mutually_exclusive_group()
     output_group.add_argument(
         "--open",
-        dest="open",
+        dest="open_url",
         action="store_true",
         help="Open URL in default browser",
     )
     output_group.add_argument(
         "--print",
-        dest="print",
+        dest="print_url",
         action="store_true",
         help="Print the URL",
     )
     output_group.add_argument(
         "--copy",
-        dest="copy",
+        dest="copy_url",
         action="store_true",
         help="Copy URL to the clipboard",
     )
@@ -547,7 +538,7 @@ def resolve_url(args: Namespace, forge: GitForge) -> str:
             raise SystemExit("error: diff requires 'base..head' or two ref arguments.")
 
     elif args.command == "file":
-        ref = args.ref or git_current_branch() or "HEAD"
+        ref = args.ref or git_current_branch() or git_head()
         return forge.file(args.path, ref, args.line)
 
     elif args.command == "pr":
@@ -592,12 +583,12 @@ def main(argv: list[str] | None = None) -> None:
 
     remote_url = git_remote_url(args.remote)
     remote = parse_remote(remote_url)
-    forge = resolve_forge(remote)
 
+    forge = resolve_forge(remote)
     url = resolve_url(args, forge)
 
-    output_mode = resolve_output_mode(args)
-    handle_output(output_mode, url)
+    action = resolve_url_action(args)
+    action.execute(url)
 
 
 if __name__ == "__main__":
