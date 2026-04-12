@@ -16,10 +16,6 @@ Usage (via git):
     git forge issue [<number>]         # issue or issue list
     git forge file <path> [--line <n>] # file, optionally at a line
     git forge release [<tag>]          # release or release list
-    git forge actions                  # CI / pipeline runs
-    git forge wiki                     # project wiki
-    git forge milestones               # milestone list
-    git forge settings                 # repository settings
 
 Supported forges: GitHub, GitLab, Bitbucket.
 """
@@ -99,10 +95,6 @@ class GitForge(Protocol):
     def issues(self) -> str: ...
     def release(self, tag: str) -> str: ...
     def releases(self) -> str: ...
-    def actions(self) -> str: ...
-    def wiki(self) -> str: ...
-    def milestones(self) -> str: ...
-    def settings(self) -> str: ...
 
 
 @dataclass(frozen=True)
@@ -154,18 +146,6 @@ class GithubForge(GitForge):
     def releases(self) -> str:
         return f"{self.remote.url}/releases"
 
-    def actions(self) -> str:
-        return f"{self.remote.url}/actions"
-
-    def wiki(self) -> str:
-        return f"{self.remote.url}/wiki"
-
-    def milestones(self) -> str:
-        return f"{self.remote.url}/milestones"
-
-    def settings(self) -> str:
-        return f"{self.remote.url}/settings"
-
 
 @dataclass(frozen=True)
 class GitlabForge(GitForge):
@@ -216,18 +196,6 @@ class GitlabForge(GitForge):
     def releases(self) -> str:
         return f"{self.remote.url}/-/releases"
 
-    def actions(self) -> str:
-        return f"{self.remote.url}/-/pipelines"
-
-    def wiki(self) -> str:
-        return f"{self.remote.url}/-/wikis"
-
-    def milestones(self) -> str:
-        return f"{self.remote.url}/-/milestones"
-
-    def settings(self) -> str:
-        return f"{self.remote.url}/-/edit"
-
 
 @dataclass(frozen=True)
 class BitbucketForge(GitForge):
@@ -277,18 +245,6 @@ class BitbucketForge(GitForge):
 
     def releases(self) -> str:
         return f"{self.remote.url}/downloads"
-
-    def actions(self) -> str:
-        return f"{self.remote.url}/pipelines"
-
-    def wiki(self) -> str:
-        return f"{self.remote.url}/wiki"
-
-    def milestones(self) -> str:
-        return f"{self.remote.url}/issues?milestone"
-
-    def settings(self) -> str:
-        return f"{self.remote.url}/admin"
 
 
 def resolve_forge(remote: Remote) -> GitForge:
@@ -470,22 +426,6 @@ def register_commands(parser: ArgumentParser) -> Callable[[Namespace, GitForge],
         if args.tag:
             return forge.release(args.tag)
         return forge.releases()
-
-    @command(help="Open CI / pipeline runs")
-    def actions(_: Namespace, forge: GitForge) -> str:
-        return forge.actions()
-
-    @command(help="Open the project wiki")
-    def wiki(_: Namespace, forge: GitForge) -> str:
-        return forge.wiki()
-
-    @command(help="Open milestone list")
-    def milestones(_: Namespace, forge: GitForge) -> str:
-        return forge.milestones()
-
-    @command(help="Open repository settings")
-    def settings(_: Namespace, forge: GitForge) -> str:
-        return forge.settings()
 
     return command_handler
 
