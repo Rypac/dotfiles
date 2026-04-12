@@ -23,6 +23,7 @@ Supported forges: GitHub, GitLab, Bitbucket.
 from __future__ import annotations
 
 import builtins
+import re
 import subprocess
 from argparse import ArgumentParser, Namespace
 from dataclasses import dataclass
@@ -42,13 +43,11 @@ class Remote:
     repository: str
 
     @property
-    def url(self):
+    def url(self) -> str:
         return f"https://{self.host}/{self.namespace}/{self.repository}"
 
 
 def parse_remote(url: str) -> Remote:
-    import re
-
     for remote_pattern in (
         r"https://([^/]+)/(.+?)(\.git)?$",
         r"git@([^:]+):(.+?)(\.git)?$",
@@ -64,8 +63,8 @@ def parse_remote(url: str) -> Remote:
                 namespace=namespace,
                 repository=repository,
             )
-    else:
-        raise SystemExit(f"error: unsupported remote URL: {url}")
+
+    raise SystemExit(f"error: unsupported remote URL: {url}")
 
 
 # ---------------------------------------------------------------------------
@@ -98,9 +97,9 @@ class GitForge(Protocol):
     def releases(self) -> str: ...
 
 
-@dataclass(frozen=True)
 class GithubForge(GitForge):
-    remote: Remote
+    def __init__(self, remote: Remote) -> None:
+        self.remote = remote
 
     def home(self) -> str:
         return self.remote.url
@@ -148,9 +147,9 @@ class GithubForge(GitForge):
         return f"{self.remote.url}/releases"
 
 
-@dataclass(frozen=True)
 class GitlabForge(GitForge):
-    remote: Remote
+    def __init__(self, remote: Remote) -> None:
+        self.remote = remote
 
     def home(self) -> str:
         return self.remote.url
@@ -198,9 +197,9 @@ class GitlabForge(GitForge):
         return f"{self.remote.url}/-/releases"
 
 
-@dataclass(frozen=True)
 class BitbucketForge(GitForge):
-    remote: Remote
+    def __init__(self, remote: Remote) -> None:
+        self.remote = remote
 
     def home(self) -> str:
         return self.remote.url
