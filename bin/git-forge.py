@@ -449,8 +449,8 @@ def register_actions(parser: ArgumentParser) -> Callable[[Namespace, str], None]
 
         return decorator
 
-    def action_handler(namespace: Namespace, url: str) -> None:
-        namespace.action_fn(url)
+    def action_handler(args: Namespace, url: str) -> None:
+        args.action_fn(url)
 
     # -- actions --
 
