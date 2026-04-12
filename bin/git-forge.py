@@ -22,6 +22,7 @@ Supported forges: GitHub, GitLab, Bitbucket.
 
 from __future__ import annotations
 
+import builtins
 import subprocess
 from argparse import ArgumentParser, Namespace
 from dataclasses import dataclass
@@ -490,7 +491,7 @@ def register_actions(parser: ArgumentParser) -> Callable[[Namespace, str], None]
 
     @action(help="Print URL")
     def print(url: str) -> None:
-        __builtins__.print(url)
+        builtins.print(url)
 
     return action_handler
 
