@@ -22,7 +22,6 @@ Supported forges: GitHub, GitLab, Bitbucket.
 
 from __future__ import annotations
 
-import builtins
 import re
 import subprocess
 from argparse import ArgumentParser, Namespace
@@ -333,15 +332,15 @@ def build_parser() -> ArgumentParser:
 
 
 def register_commands(parser: ArgumentParser) -> Callable[[Namespace, GitForge], str]:
-    command_parser = parser.add_subparsers(dest="command")
+    command_subparsers = parser.add_subparsers(dest="command")
 
     def command(**kwargs):
         def decorator(fn):
             command_name = kwargs.pop("name", fn.__name__)
-            p = command_parser.add_parser(command_name, **kwargs)
+            command_parser = command_subparsers.add_parser(command_name, **kwargs)
             for flags, argument_kwargs in reversed(getattr(fn, "_arguments", [])):
-                p.add_argument(*flags, **argument_kwargs)
-            p.set_defaults(command_fn=fn)
+                command_parser.add_argument(*flags, **argument_kwargs)
+            command_parser.set_defaults(command_fn=fn)
             return fn
 
         return decorator
@@ -433,42 +432,36 @@ def register_commands(parser: ArgumentParser) -> Callable[[Namespace, GitForge],
 
 
 def register_actions(parser: ArgumentParser) -> Callable[[Namespace, str], None]:
-    action_group_wrapper = parser.add_argument_group("action arguments")
-    action_group = action_group_wrapper.add_mutually_exclusive_group()
+    action_group_container = parser.add_argument_group("action arguments")
+    action_group = action_group_container.add_mutually_exclusive_group()
 
-    def action(help: str, default: bool = False):
+    def action(*flags: str, help: str, default: bool = False):
         def decorator(fn):
             action_group.add_argument(
-                f"--{fn.__name__}",
+                *flags,
                 dest="action_fn",
                 action="store_const",
                 const=fn,
+                default=fn if default else None,
                 help=help,
             )
-
-            if default:
-                action_group.set_defaults(action_fn=fn)
-
             return fn
 
         return decorator
 
     def action_handler(namespace: Namespace, url: str) -> None:
-        if action := namespace.action_fn:
-            action(url)
-        else:
-            parser.print_help()
+        namespace.action_fn(url)
 
     # -- actions --
 
-    @action(help="Open URL in default browser", default=True)
-    def open(url: str) -> None:
+    @action("--open", "-o", help="Open URL in default browser", default=True)
+    def open_url(url: str) -> None:
         import webbrowser
 
         webbrowser.open(url)
 
-    @action(help="Copy URL to the clipboard")
-    def copy(url: str) -> None:
+    @action("--copy", "-c", help="Copy URL to the clipboard")
+    def copy_url(url: str) -> None:
         import sys
 
         if sys.platform == "darwin":
@@ -489,9 +482,9 @@ def register_actions(parser: ArgumentParser) -> Callable[[Namespace, str], None]
             else:
                 raise SystemExit("error: no clipboard utility found")
 
-    @action(help="Print URL")
-    def print(url: str) -> None:
-        builtins.print(url)
+    @action("--print", "-p", help="Print URL")
+    def print_url(url: str) -> None:
+        print(url)
 
     return action_handler
 
