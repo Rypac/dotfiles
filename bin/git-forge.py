@@ -30,7 +30,7 @@ import subprocess
 from argparse import ArgumentParser, Namespace
 from dataclasses import dataclass
 from subprocess import CalledProcessError
-from typing import Protocol
+from typing import Callable, Protocol
 from urllib.parse import quote as url_quote
 
 # ---------------------------------------------------------------------------
@@ -360,18 +360,18 @@ def git_head() -> str:
 
 
 class UrlAction(Protocol):
-    def execute(self, url: str) -> None: ...
+    def __call__(self, url: str) -> None: ...
 
 
 class OpenUrlAction(UrlAction):
-    def execute(self, url: str) -> None:
+    def __call__(self, url: str) -> None:
         import webbrowser
 
         webbrowser.open(url)
 
 
 class CopyUrlAction(UrlAction):
-    def execute(self, url: str) -> None:
+    def __call__(self, url: str) -> None:
         import sys
 
         if sys.platform == "darwin":
@@ -394,7 +394,7 @@ class CopyUrlAction(UrlAction):
 
 
 class PrintUrlAction(UrlAction):
-    def execute(self, url: str) -> None:
+    def __call__(self, url: str) -> None:
         print(url)
 
 
@@ -419,6 +419,7 @@ def build_parser() -> ArgumentParser:
         prog="git forge",
         description="Open your Git remote in a browser.",
     )
+
     parser.add_argument(
         "--remote",
         default="origin",
@@ -447,102 +448,79 @@ def build_parser() -> ArgumentParser:
         help="Copy URL to the clipboard",
     )
 
-    subparsers = parser.add_subparsers(dest="command")
+    return parser
 
-    # -- commit ---------------------------------------------------------------
-    parser_commit = subparsers.add_parser("commit", help="Open a specific commit")
-    parser_commit.add_argument("sha", help="Commit SHA (full or abbreviated)")
 
-    # -- branch ---------------------------------------------------------------
-    parser_branch = subparsers.add_parser(
-        "branch",
-        help="Open a branch, or the branch list when omitted",
+# ---------------------------------------------------------------------------
+# Command
+# ---------------------------------------------------------------------------
+
+
+def register_commands(parser: ArgumentParser) -> Callable[[Namespace, GitForge], str]:
+    command_parser = parser.add_subparsers(dest="command")
+
+    # -- command builders --
+
+    def command(**kwargs):
+        def decorator(fn):
+            command_name = kwargs.pop("name", fn.__name__)
+            p = command_parser.add_parser(command_name, **kwargs)
+            for flags, argument_kwargs in reversed(getattr(fn, "_arguments", [])):
+                p.add_argument(*flags, **argument_kwargs)
+            p.set_defaults(fn=fn)
+            return fn
+
+        return decorator
+
+    def argument(*flags, **kwargs):
+        def decorator(fn):
+            if not hasattr(fn, "_arguments"):
+                fn._arguments = []
+            fn._arguments.append((flags, kwargs))
+            return fn
+
+        return decorator
+
+    # -- commands --
+
+    @command(help="Open a specific commit")
+    @argument("sha", help="Commit SHA (full or abbreviated)")
+    def commit(args: Namespace, forge: GitForge) -> str:
+        return forge.commit(args.sha)
+
+    @command(help="Open a branch, or the branch list when omitted")
+    def branch(args: Namespace, forge: GitForge) -> str:
+        if args.name:
+            return forge.branch(args.name)
+        return forge.branches()
+
+    @command(help="Open a file in the remote browser")
+    @argument("path", help="File path relative to repository root")
+    @argument("--line", type=int, help="Jump to a specific line")
+    @argument(
+        "--ref",
+        type=str,
+        help="Stable ref to use for file (default current branch)",
     )
-    parser_branch.add_argument("name", nargs="?", help="Branch name")
+    def file(args: Namespace, forge: GitForge) -> str:
+        ref = args.ref or git_current_branch() or git_head()
+        return forge.file(args.path, ref, args.line)
 
-    # -- tags -----------------------------------------------------------------
-    parser_tag = subparsers.add_parser(
-        "tag",
-        help="Open a tag, or the tag list when omitted",
-    )
-    parser_tag.add_argument("name", nargs="?", help="Tag name")
+    @command(help="Open a tag, or the tag list when omitted")
+    @argument("name", nargs="?", help="Branch name")
+    def tag(args: Namespace, forge: GitForge) -> str:
+        if args.name:
+            return forge.tag(args.name)
+        return forge.tags()
 
-    # -- diff -----------------------------------------------------------------
-    parser_diff = subparsers.add_parser("diff", help="Open a diff between two refs")
-    parser_diff.add_argument(
+    @command(help="Open a diff between two refs")
+    @argument(
         "refs",
         nargs="+",
         metavar="REF",
         help="One arg 'base..head', or two args 'base' 'head'",
     )
-
-    # -- file -----------------------------------------------------------------
-    parser_file = subparsers.add_parser(
-        "file",
-        help="Open a file in the remote browser",
-    )
-    parser_file.add_argument("path", help="File path relative to repository root")
-    parser_file.add_argument("--line", "-l", type=int, help="Jump to a specific line")
-    parser_file.add_argument(
-        "--ref",
-        type=str,
-        help="Stable ref to use for file (default current branch)",
-    )
-
-    # -- pr -------------------------------------------------------------------
-    parser_pr = subparsers.add_parser(
-        "pr",
-        help="Open a pull request, or the pull request list when omitted",
-    )
-    parser_pr.add_argument("number", nargs="?", type=int, help="PR number")
-
-    # -- issues ---------------------------------------------------------------
-    parser_issue = subparsers.add_parser(
-        "issue",
-        help="Open an issue, or the issue list when omitted",
-    )
-    parser_issue.add_argument("number", nargs="?", type=int, help="Issue number")
-
-    # -- releases -------------------------------------------------------------
-    parser_release = subparsers.add_parser(
-        "release",
-        help="Open a release, or the release list when omitted",
-    )
-    parser_release.add_argument("tag", nargs="?", help="Release tag")
-
-    # -- actions --------------------------------------------------------------
-    subparsers.add_parser("actions", help="Open CI / pipeline runs")
-
-    # -- wiki -----------------------------------------------------------------
-    subparsers.add_parser("wiki", help="Open the project wiki")
-
-    # -- milestones -----------------------------------------------------------
-    subparsers.add_parser("milestones", help="Open milestone list")
-
-    # -- settings -------------------------------------------------------------
-    subparsers.add_parser("settings", help="Open repository settings")
-
-    return parser
-
-
-def resolve_url(args: Namespace, forge: GitForge) -> str:
-    if args.command is None:
-        return forge.home()
-
-    elif args.command == "commit":
-        return forge.commit(args.sha)
-
-    elif args.command == "branch":
-        if args.name:
-            return forge.branch(args.name)
-        return forge.branches()
-
-    elif args.command == "tag":
-        if args.name:
-            return forge.tag(args.name)
-        return forge.tags()
-
-    elif args.command == "diff":
+    def diff(args: Namespace, forge: GitForge) -> str:
         if len(args.refs) == 1 and ".." in args.refs[0]:
             base, _, head = args.refs[0].partition("..")
             return forge.diff(base, head)
@@ -552,39 +530,49 @@ def resolve_url(args: Namespace, forge: GitForge) -> str:
         else:
             raise SystemExit("error: diff requires 'base..head' or two ref arguments.")
 
-    elif args.command == "file":
-        ref = args.ref or git_current_branch() or git_head()
-        return forge.file(args.path, ref, args.line)
-
-    elif args.command == "pr":
+    @command(help="Open a pull request, or the pull request list when omitted")
+    @argument("number", nargs="?", type=int, help="PR number")
+    def pr(args: Namespace, forge: GitForge) -> str:
         if args.number is not None:
             return forge.pull_request(args.number)
         return forge.pull_requests()
 
-    elif args.command == "issue":
+    @command(help="Open an issue, or the issue list when omitted")
+    @argument("number", nargs="?", type=int, help="Issue number")
+    def issue(args: Namespace, forge: GitForge) -> str:
         if args.number is not None:
             return forge.issue(args.number)
         return forge.issues()
 
-    elif args.command == "release":
+    @command(help="Open a release, or the release list when omitted")
+    @argument("tag", nargs="?", help="Release tag")
+    def release(args: Namespace, forge: GitForge) -> str:
         if args.tag:
             return forge.release(args.tag)
         return forge.releases()
 
-    elif args.command == "actions":
+    @command(help="Open CI / pipeline runs")
+    def actions(_: Namespace, forge: GitForge) -> str:
         return forge.actions()
 
-    elif args.command == "wiki":
+    @command(help="Open the project wiki")
+    def wiki(_: Namespace, forge: GitForge) -> str:
         return forge.wiki()
 
-    elif args.command == "milestones":
+    @command(help="Open milestone list")
+    def milestones(_: Namespace, forge: GitForge) -> str:
         return forge.milestones()
 
-    elif args.command == "settings":
+    @command(help="Open repository settings")
+    def settings(_: Namespace, forge: GitForge) -> str:
         return forge.settings()
 
-    else:
-        raise SystemExit(f"error: unknown command '{args.command}'.")
+    # -- command runner --
+
+    def run_command(args: Namespace, forge: GitForge) -> str:
+        return args.fn(args, forge) if args.command else forge.home()
+
+    return run_command
 
 
 # ---------------------------------------------------------------------------
@@ -594,16 +582,18 @@ def resolve_url(args: Namespace, forge: GitForge) -> str:
 
 def main(argv: list[str] | None = None) -> None:
     parser = build_parser()
+    execute_command = register_commands(parser)
+
     args = parser.parse_args(argv)
 
     remote_url = git_remote_url(args.remote)
     remote = parse_remote(remote_url)
 
     forge = resolve_forge(remote)
-    url = resolve_url(args, forge)
+    url = execute_command(args, forge)
 
     action = resolve_url_action(args)
-    action.execute(url)
+    action(url)
 
 
 if __name__ == "__main__":
