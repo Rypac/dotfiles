@@ -355,61 +355,6 @@ def git_head() -> str:
 
 
 # ---------------------------------------------------------------------------
-# Action
-# ---------------------------------------------------------------------------
-
-
-class UrlAction(Protocol):
-    def __call__(self, url: str) -> None: ...
-
-
-class OpenUrlAction(UrlAction):
-    def __call__(self, url: str) -> None:
-        import webbrowser
-
-        webbrowser.open(url)
-
-
-class CopyUrlAction(UrlAction):
-    def __call__(self, url: str) -> None:
-        import sys
-
-        if sys.platform == "darwin":
-            subprocess.run(["pbcopy"], input=url, text=True, check=True)
-        elif sys.platform == "win32":
-            subprocess.run(["clip"], input=url, text=True, check=True)
-        else:
-            for clipboard_command in (
-                ["wl-copy"],
-                ["xclip", "-selection", "clipboard"],
-                ["xsel", "--clipboard", "--input"],
-            ):
-                try:
-                    subprocess.run(clipboard_command, input=url, text=True, check=True)
-                    break
-                except (FileNotFoundError, CalledProcessError):
-                    continue
-            else:
-                raise SystemExit("error: no clipboard utility found")
-
-
-class PrintUrlAction(UrlAction):
-    def __call__(self, url: str) -> None:
-        print(url)
-
-
-def resolve_url_action(args: Namespace) -> UrlAction:
-    if args.open_url:
-        return OpenUrlAction()
-    elif args.copy_url:
-        return CopyUrlAction()
-    elif args.print_url:
-        return PrintUrlAction()
-    else:
-        return OpenUrlAction()
-
-
-# ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
 
@@ -427,39 +372,11 @@ def build_parser() -> ArgumentParser:
         help="Git remote to use (default: origin)",
     )
 
-    # -- output --
-    output_group = parser.add_mutually_exclusive_group()
-    output_group.add_argument(
-        "--open",
-        dest="open_url",
-        action="store_true",
-        help="Open URL in default browser",
-    )
-    output_group.add_argument(
-        "--print",
-        dest="print_url",
-        action="store_true",
-        help="Print the URL",
-    )
-    output_group.add_argument(
-        "--copy",
-        dest="copy_url",
-        action="store_true",
-        help="Copy URL to the clipboard",
-    )
-
     return parser
-
-
-# ---------------------------------------------------------------------------
-# Command
-# ---------------------------------------------------------------------------
 
 
 def register_commands(parser: ArgumentParser) -> Callable[[Namespace, GitForge], str]:
     command_parser = parser.add_subparsers(dest="command")
-
-    # -- command builders --
 
     def command(**kwargs):
         def decorator(fn):
@@ -467,7 +384,7 @@ def register_commands(parser: ArgumentParser) -> Callable[[Namespace, GitForge],
             p = command_parser.add_parser(command_name, **kwargs)
             for flags, argument_kwargs in reversed(getattr(fn, "_arguments", [])):
                 p.add_argument(*flags, **argument_kwargs)
-            p.set_defaults(fn=fn)
+            p.set_defaults(command_fn=fn)
             return fn
 
         return decorator
@@ -480,6 +397,9 @@ def register_commands(parser: ArgumentParser) -> Callable[[Namespace, GitForge],
             return fn
 
         return decorator
+
+    def command_handler(args: Namespace, forge: GitForge) -> str:
+        return args.command_fn(args, forge) if args.command else forge.home()
 
     # -- commands --
 
@@ -567,12 +487,71 @@ def register_commands(parser: ArgumentParser) -> Callable[[Namespace, GitForge],
     def settings(_: Namespace, forge: GitForge) -> str:
         return forge.settings()
 
-    # -- command runner --
+    return command_handler
 
-    def run_command(args: Namespace, forge: GitForge) -> str:
-        return args.fn(args, forge) if args.command else forge.home()
 
-    return run_command
+def register_actions(parser: ArgumentParser) -> Callable[[Namespace, str], None]:
+    action_group_wrapper = parser.add_argument_group("action arguments")
+    action_group = action_group_wrapper.add_mutually_exclusive_group()
+
+    def action(help: str, default: bool = False):
+        def decorator(fn):
+            name = fn.__name__
+            action_group.add_argument(
+                f"--{name}",
+                dest="action_fn",
+                action="store_const",
+                const=fn,
+                help=help,
+            )
+            if default:
+                action_group.set_defaults(action_fn=fn)
+
+            return fn
+
+        return decorator
+
+    def action_handler(namespace: Namespace, url: str) -> None:
+        if action := namespace.action_fn:
+            action(url)
+        else:
+            parser.print_help()
+
+    # -- actions --
+
+    @action(help="Open URL in default browser", default=True)
+    def open(url: str) -> None:
+        import webbrowser
+
+        webbrowser.open(url)
+
+    @action(help="Copy URL to the clipboard")
+    def copy(url: str) -> None:
+        import sys
+
+        if sys.platform == "darwin":
+            subprocess.run(["pbcopy"], input=url, text=True, check=True)
+        elif sys.platform == "win32":
+            subprocess.run(["clip"], input=url, text=True, check=True)
+        else:
+            for clipboard_command in (
+                ["wl-copy"],
+                ["xclip", "-selection", "clipboard"],
+                ["xsel", "--clipboard", "--input"],
+            ):
+                try:
+                    subprocess.run(clipboard_command, input=url, text=True, check=True)
+                    break
+                except (FileNotFoundError, CalledProcessError):
+                    continue
+            else:
+                raise SystemExit("error: no clipboard utility found")
+
+    @action(help="Print URL")
+    def print(url: str) -> None:
+        __builtins__.print(url)
+
+    return action_handler
 
 
 # ---------------------------------------------------------------------------
@@ -582,18 +561,16 @@ def register_commands(parser: ArgumentParser) -> Callable[[Namespace, GitForge],
 
 def main(argv: list[str] | None = None) -> None:
     parser = build_parser()
-    execute_command = register_commands(parser)
-
+    command_handler = register_commands(parser)
+    action_handler = register_actions(parser)
     args = parser.parse_args(argv)
 
     remote_url = git_remote_url(args.remote)
     remote = parse_remote(remote_url)
-
     forge = resolve_forge(remote)
-    url = execute_command(args, forge)
 
-    action = resolve_url_action(args)
-    action(url)
+    url = command_handler(args, forge)
+    action_handler(args, url)
 
 
 if __name__ == "__main__":
