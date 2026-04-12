@@ -63,7 +63,7 @@ def parse_remote(url: str) -> Remote:
                 repository=repository,
             )
 
-    raise SystemExit(f"error: unsupported remote URL: {url}")
+    raise SystemExit(f"error: unsupported remote: {url}")
 
 
 # ---------------------------------------------------------------------------
@@ -288,13 +288,13 @@ def git_remote_url(remote: str) -> str:
     try:
         return git("remote", "get-url", remote)
     except CalledProcessError:
-        raise SystemExit(f"error: remote '{remote}' not found.")
+        raise SystemExit(f"error: remote '{remote}' not found")
 
 
 def git_current_branch() -> str | None:
     try:
         branch = git("rev-parse", "--abbrev-ref", "HEAD")
-        return None if branch == "HEAD" else branch
+        return branch if branch != "HEAD" else None
     except CalledProcessError:
         return None
 
@@ -303,7 +303,7 @@ def git_head() -> str:
     try:
         return git("rev-parse", "HEAD")
     except CalledProcessError:
-        raise SystemExit("error: unable to reach HEAD.")
+        raise SystemExit("error: unable to reach HEAD")
 
 
 # ---------------------------------------------------------------------------
@@ -401,7 +401,7 @@ def register_commands(parser: ArgumentParser) -> Callable[[Namespace, GitForge],
             base, head = args.refs
             return forge.diff(base, head)
         else:
-            raise SystemExit("error: diff requires 'base..head' or two ref arguments.")
+            raise SystemExit("error: diff requires 'base..head' or two ref arguments")
 
     @command(help="Open a pull request, or the pull request list when omitted")
     @argument("number", nargs="?", type=int, help="PR number")
