@@ -247,28 +247,24 @@ class BitbucketForge(GitForge):
 
 
 def resolve_forge(remote: Remote) -> GitForge:
+    forge_registry = {
+        "github": (GithubForge, "github.com"),
+        "gitlab": (GitlabForge, "gitlab.com"),
+        "bitbucket": (BitbucketForge, "bitbucket.org"),
+    }
+
     if config := git_config(f"forge.host.{remote.host}.type"):
-        forge = config.lower()
-    else:
-        default_forges = {
-            "github.com": "github",
-            "gitlab.com": "gitlab",
-            "bitbucket.org": "bitbucket",
-        }
-
         try:
-            forge = default_forges[remote.host]
+            forge, _ = forge_registry[config.lower()]
+            return forge(remote)
         except KeyError:
-            raise SystemExit(f"error: unsupported forge: {remote.host}")
+            raise SystemExit(f"error: unsupported forge: {config.lower()}")
 
-    if forge == "github":
-        return GithubForge(remote)
-    elif forge == "gitlab":
-        return GitlabForge(remote)
-    elif forge == "bitbucket":
-        return BitbucketForge(remote)
-    else:
-        raise SystemExit(f"error: unsupported forge: {forge}")
+    for forge, host in forge_registry.values():
+        if host == remote.host:
+            return forge(remote)
+
+    raise SystemExit(f"error: unsupported forge: {remote.host}")
 
 
 # ---------------------------------------------------------------------------
