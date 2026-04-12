@@ -299,7 +299,8 @@ def git_remote_url(remote: str) -> str:
 
 def git_current_branch() -> str | None:
     try:
-        return git("rev-parse", "--abbrev-ref", "HEAD")
+        branch = git("rev-parse", "--abbrev-ref", "HEAD")
+        return None if branch == "HEAD" else branch
     except CalledProcessError:
         return None
 
