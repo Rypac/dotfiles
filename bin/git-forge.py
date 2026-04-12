@@ -365,6 +365,7 @@ def register_commands(parser: ArgumentParser) -> Callable[[Namespace, GitForge],
         return forge.commit(args.sha)
 
     @command(help="Open a branch, or the branch list when omitted")
+    @argument("name", nargs="?", help="Branch name")
     def branch(args: Namespace, forge: GitForge) -> str:
         if args.name:
             return forge.branch(args.name)
@@ -383,7 +384,7 @@ def register_commands(parser: ArgumentParser) -> Callable[[Namespace, GitForge],
         return forge.file(args.path, ref, args.line)
 
     @command(help="Open a tag, or the tag list when omitted")
-    @argument("name", nargs="?", help="Branch name")
+    @argument("name", nargs="?", help="Tag name")
     def tag(args: Namespace, forge: GitForge) -> str:
         if args.name:
             return forge.tag(args.name)
