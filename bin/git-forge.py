@@ -436,14 +436,14 @@ def register_actions(parser: ArgumentParser) -> Callable[[Namespace, str], None]
 
     def action(help: str, default: bool = False):
         def decorator(fn):
-            name = fn.__name__
             action_group.add_argument(
-                f"--{name}",
+                f"--{fn.__name__}",
                 dest="action_fn",
                 action="store_const",
                 const=fn,
                 help=help,
             )
+
             if default:
                 action_group.set_defaults(action_fn=fn)
 
