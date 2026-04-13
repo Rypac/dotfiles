@@ -39,6 +39,10 @@
         "Terraform": {
             "command": ["terraform", "fmt", "-"],
             "selector": "source.terraform"
+        },
+        "ZSH": {
+            "command": ["shfmt", "--language-dialect", "zsh", "--simplify", "--indent", "$tab_size", "--case-indent", "--", "-"],
+            "selector": "source.shell.zsh"
         }
     }
 }
