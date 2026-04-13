@@ -123,7 +123,7 @@ class GithubForge:
         return f"{self.remote.url}/compare/{url_quote(base, safe='/@')}...{url_quote(head, safe='/@')}"
 
     def file(self, path: str, ref: str, line: int | None) -> str:
-        url = f"{self.remote.url}/blob/{url_quote(ref, safe='/@')}/{url_quote(path.lstrip('/'))}"
+        url = f"{self.remote.url}/blob/{url_quote(ref, safe='/@')}/{url_quote(path.lstrip('/'), safe='/')}"
         if line is not None:
             url += f"#L{line}"
         return url
@@ -173,7 +173,7 @@ class GitlabForge:
         return f"{self.remote.url}/-/compare/{url_quote(base, safe='/@')}...{url_quote(head, safe='/@')}"
 
     def file(self, path: str, ref: str, line: int | None) -> str:
-        url = f"{self.remote.url}/-/blob/{url_quote(ref, safe='/@')}/{url_quote(path.lstrip('/'))}"
+        url = f"{self.remote.url}/-/blob/{url_quote(ref, safe='/@')}/{url_quote(path.lstrip('/'), safe='/')}"
         if line is not None:
             url += f"#L{line}"
         return url
@@ -223,7 +223,7 @@ class BitbucketForge:
         return f"{self.remote.url}/branches/compare/{url_quote(head, safe='/@')}..{url_quote(base, safe='/@')}"
 
     def file(self, path: str, ref: str, line: int | None) -> str:
-        url = f"{self.remote.url}/src/{url_quote(ref, safe='/@')}/{url_quote(path.lstrip('/'))}"
+        url = f"{self.remote.url}/src/{url_quote(ref, safe='/@')}/{url_quote(path.lstrip('/'), safe='/')}"
         if line is not None:
             url += f"#lines-{line}"
         return url
