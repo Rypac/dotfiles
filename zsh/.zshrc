@@ -69,19 +69,19 @@ fi
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
-if (( $+commands[fzf] )); then
+if (($+commands[fzf])); then
     source <(fzf --zsh)
 
-    if (( $+commands[rg] )); then
+    if (($+commands[rg])); then
         export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
     fi
 fi
 
-if (( $+commands[zoxide] )); then
+if (($+commands[zoxide])); then
     source <(zoxide init zsh)
 fi
 
-if (( $+commands[nvim] )); then
+if (($+commands[nvim])); then
     alias vim=nvim
 fi
 
@@ -102,7 +102,7 @@ function pbclear() {
 }
 
 function preview() {
-    if (( $+commands[bat] )); then
+    if (($+commands[bat])); then
         fzf --preview 'bat --style=full --color=always {}'
     else
         fzf --preview 'cat {}'
@@ -121,7 +121,7 @@ function finder() {
 
 # View a file or directory in QuickLook.app
 function quick-look() {
-    (( $# > 0 )) && qlmanage -p $* &>/dev/null &
+    (($# > 0)) && qlmanage -p $* &>/dev/null &
 }
 
 # View a man page in Preview.app
@@ -145,14 +145,15 @@ function symprune() {
 }
 
 # Load plugins
-for plugin (
-    "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-    "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-); if [ -f "$plugin" ]; then
-    source "$plugin"
-else
-    echo "Failed to load plugin $plugin"
-fi
+for plugin in \
+    "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" \
+    "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"; do
+    if [ -f "$plugin" ]; then
+        source "$plugin"
+    else
+        echo "Failed to load plugin $plugin"
+    fi
+done
 
 # Ensure local executable directory is first on path
 path=("$XDG_BIN_HOME" $path)
