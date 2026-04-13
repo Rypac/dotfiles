@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+#
 # /// script
 # requires-python = ">=3.8"
 # dependencies = []
@@ -301,7 +302,7 @@ def git_current_branch() -> str | None:
 
 def git_head() -> str:
     try:
-        return git("rev-parse", "HEAD")
+        return git("rev-parse", "--short", "HEAD")
     except CalledProcessError:
         raise SystemExit("error: unable to reach HEAD")
 
@@ -371,12 +372,16 @@ def register_commands(parser: ArgumentParser) -> Callable[[Namespace, GitForge],
     @argument("path", help="File path relative to repository root")
     @argument("--line", type=int, help="Jump to a specific line")
     @argument(
-        "--ref",
-        type=str,
-        help="Stable ref to use for file (default current branch)",
+        "--permalink",
+        nargs="?",
+        const="HEAD",
+        help="Use permanent link to file (HEAD if empty)",
     )
     def file(args: Namespace, forge: GitForge) -> str:
-        ref = args.ref or git_current_branch() or git_head()
+        if permalink := args.permalink:
+            ref = git_head() if permalink == "HEAD" else permalink
+        else:
+            ref = git_current_branch() or git_head()
         return forge.file(args.path, ref, args.line)
 
     @command(help="Open a tag, or the tag list when omitted")
