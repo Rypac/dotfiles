@@ -302,7 +302,7 @@ def git_current_branch() -> str | None:
 
 def git_head() -> str:
     try:
-        return git("rev-parse", "--short", "HEAD")
+        return git("rev-parse", "HEAD")
     except CalledProcessError:
         raise SystemExit("error: unable to reach HEAD")
 
