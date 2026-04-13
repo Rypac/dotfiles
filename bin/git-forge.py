@@ -97,7 +97,7 @@ class GitForge(Protocol):
     def releases(self) -> str: ...
 
 
-class GithubForge(GitForge):
+class GithubForge:
     def __init__(self, remote: Remote) -> None:
         self.remote = remote
 
@@ -147,7 +147,7 @@ class GithubForge(GitForge):
         return f"{self.remote.url}/releases"
 
 
-class GitlabForge(GitForge):
+class GitlabForge:
     def __init__(self, remote: Remote) -> None:
         self.remote = remote
 
@@ -197,7 +197,7 @@ class GitlabForge(GitForge):
         return f"{self.remote.url}/-/releases"
 
 
-class BitbucketForge(GitForge):
+class BitbucketForge:
     def __init__(self, remote: Remote) -> None:
         self.remote = remote
 
