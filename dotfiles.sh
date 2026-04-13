@@ -60,9 +60,9 @@ dotfiles_link() {
     # Link executables
     link dotfiles.sh "$XDG_BIN_HOME/dotfiles"
     link bin/git-forge.py "$XDG_BIN_HOME/git-forge"
-    link bin/haskell-script.sh "$XDG_BIN_HOME/haskell-script"
+    link bin/haskell-script.zsh "$XDG_BIN_HOME/haskell-script"
     link bin/sqlite-to-json.sh "$XDG_BIN_HOME/sqlite-to-json"
-    link bin/update-all.sh "$XDG_BIN_HOME/update-all"
+    link bin/update-all.zsh "$XDG_BIN_HOME/update-all"
 
     # Link common dotfiles
     link git "$XDG_CONFIG_HOME/git"

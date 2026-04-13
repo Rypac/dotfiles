@@ -1,23 +1,23 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 #
 # Update all apps and tools
 
-if command -v brew >/dev/null 2>&1; then
+if (($+commands[brew])); then
     brew update
     brew upgrade
     brew bundle
     brew cleanup --prune=all
 fi
 
-if command -v uv >/dev/null 2>&1; then
+if (($+commands[uv])); then
     uv python upgrade
     uv tool upgrade --all
 fi
 
-if command -v ghcup >/dev/null 2>&1; then
+if (($+commands[ghcup])); then
     ghcup gc
 fi
 
-if command -v cabal >/dev/null 2>&1; then
+if (($+commands[cabal])); then
     cabal update
 fi
