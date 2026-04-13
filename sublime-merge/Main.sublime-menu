@@ -59,5 +59,86 @@
                 ]
             }
         ]
+    },
+    {
+        "id": "help",
+        "children": [
+            { "caption": "-", "id": "documentation" },
+            {
+                "caption": "Usage",
+                "children": [
+                    {
+                        "caption": "Frequently Asked Questions",
+                        "command": "open_url",
+                        "args": { "url": "https://www.sublimemerge.com/docs/faq" }
+                    },
+                    {
+                        "caption": "Getting Started with Sublime Merge",
+                        "command": "open_url",
+                        "args": { "url": "https://www.sublimemerge.com/docs/getting_started" }
+                    },
+                    {
+                        "caption": "Diff Context",
+                        "command": "open_url",
+                        "args": { "url": "https://www.sublimemerge.com/docs/diff_context" }
+                    },
+                    {
+                        "caption": "Command Line",
+                        "command": "open_url",
+                        "args": { "url": "https://www.sublimemerge.com/docs/command_line" }
+                    },
+                    {
+                        "caption": "Linux Package Manager Repositories",
+                        "command": "open_url",
+                        "args": { "url": "https://www.sublimemerge.com/docs/linux_repositories" }
+                    }
+                ]
+            },
+            {
+                "caption": "Customization",
+                "children": [
+                    {
+                        "caption": "Key Bindings",
+                        "command": "open_url",
+                        "args": { "url": "https://www.sublimemerge.com/docs/key_bindings" }
+                    },
+                    {
+                        "caption": "Command Palette",
+                        "command": "open_url",
+                        "args": { "url": "https://www.sublimemerge.com/docs/command_palette" }
+                    },
+                    {
+                        "caption": "Custom Commands",
+                        "command": "open_url",
+                        "args": { "url": "https://www.sublimemerge.com/docs/custom_commands" }
+                    }
+                ]
+            },
+            {
+                "caption": "Package Development",
+                "children": [
+                    {
+                        "caption": "Themes",
+                        "command": "open_url",
+                        "args": { "url": "https://www.sublimemerge.com/docs/themes" }
+                    },
+                    {
+                        "caption": "Menus",
+                        "command": "open_url",
+                        "args": { "url": "https://www.sublimemerge.com/docs/menus" }
+                    },
+                    {
+                        "caption": "Packages",
+                        "command": "open_url",
+                        "args": { "url": "https://www.sublimemerge.com/docs/packages" }
+                    },
+                    {
+                        "caption": "minihtml Reference",
+                        "command": "open_url",
+                        "args": { "url": "https://www.sublimemerge.com/docs/minihtml" }
+                    }
+                ]
+            }
+        ]
     }
 ]
