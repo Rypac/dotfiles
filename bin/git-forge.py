@@ -27,6 +27,7 @@ import re
 import subprocess
 from argparse import ArgumentParser, Namespace
 from dataclasses import dataclass
+from pathlib import Path
 from subprocess import CalledProcessError
 from typing import Callable, Protocol
 from urllib.parse import quote as url_quote
@@ -241,33 +242,37 @@ class BitbucketForge:
         return f"{self.remote.url}/issues"
 
     def release(self, tag: str) -> str:
-        return f"{self.remote.url}/downloads"
+        # Bitbucket has no per-release page; link to the tag instead
+        return f"{self.remote.url}/src/{url_quote(tag, safe='')}"
 
     def releases(self) -> str:
         return f"{self.remote.url}/downloads"
 
 
+_FORGE_BY_TYPE: dict[str, type[GitForge]] = {
+    "github": GithubForge,
+    "gitlab": GitlabForge,
+    "bitbucket": BitbucketForge,
+}
+
+_FORGE_BY_HOST: dict[str, type[GitForge]] = {
+    "github.com": GithubForge,
+    "gitlab.com": GitlabForge,
+    "bitbucket.org": BitbucketForge,
+}
+
+
 def resolve_forge(remote: Remote) -> GitForge:
-    config_forge_registry: dict[str, type[GitForge]] = {
-        "github": GithubForge,
-        "gitlab": GitlabForge,
-        "bitbucket": BitbucketForge,
-    }
-
-    hosted_forge_registry: dict[str, type[GitForge]] = {
-        "github.com": GithubForge,
-        "gitlab.com": GitlabForge,
-        "bitbucket.org": BitbucketForge,
-    }
-
     if config := git_config(f"forge.host.{remote.host}.type"):
-        if (forge_class := config_forge_registry.get(config.lower())) is None:
+        try:
+            return _FORGE_BY_TYPE[config.lower()](remote)
+        except KeyError:
             raise SystemExit(f"error: unsupported forge type: {config.lower()!r}")
-        return forge_class(remote)
 
-    if (forge_class := hosted_forge_registry.get(remote.host)) is None:
+    try:
+        return _FORGE_BY_HOST[remote.host](remote)
+    except KeyError:
         raise SystemExit(f"error: unsupported forge: {remote.host!r}")
-    return forge_class(remote)
 
 
 # ---------------------------------------------------------------------------
@@ -309,162 +314,248 @@ def git_head() -> str:
         raise SystemExit("error: unable to reach HEAD")
 
 
-# ---------------------------------------------------------------------------
-# CLI
-# ---------------------------------------------------------------------------
+def git_root() -> str:
+    try:
+        return git("rev-parse", "--show-toplevel")
+    except CalledProcessError:
+        raise SystemExit("error: unable to determine repository root")
 
 
-def build_parser() -> ArgumentParser:
-    parser = ArgumentParser(
-        prog="git forge",
-        description="Open your Git remote in a browser.",
+def repository_relative_path(path: str) -> str:
+    repo_root = Path(git_root())
+    candidate = Path(path)
+    resolved = (
+        candidate.resolve()
+        if candidate.is_absolute()
+        else (Path.cwd() / candidate).resolve()
     )
 
-    parser.add_argument(
-        "--remote",
-        default="origin",
-        metavar="NAME",
-        help="Git remote to use (default: origin)",
-    )
+    try:
+        relative_path = resolved.relative_to(repo_root)
+    except ValueError:
+        raise SystemExit(f"error: file path is outside repository: {path}")
 
-    return parser
+    return relative_path.as_posix()
 
 
-def register_commands(parser: ArgumentParser) -> Callable[[Namespace, GitForge], str]:
-    command_subparsers = parser.add_subparsers(dest="command")
+# ---------------------------------------------------------------------------
+# CLI — command protocol and registry
+# ---------------------------------------------------------------------------
 
-    def command(**kwargs):
-        def decorator(fn):
-            command_name = kwargs.pop("name", fn.__name__)
-            command_parser = command_subparsers.add_parser(command_name, **kwargs)
-            for flags, argument_kwargs in reversed(getattr(fn, "_arguments", [])):
-                command_parser.add_argument(*flags, **argument_kwargs)
-            command_parser.set_defaults(command_fn=fn)
-            return fn
 
-        return decorator
+class Command(Protocol):
+    name: str
+    help: str
 
-    def argument(*flags, **kwargs):
-        def decorator(fn):
-            if not hasattr(fn, "_arguments"):
-                fn._arguments = []
-            fn._arguments.append((flags, kwargs))
-            return fn
+    def add_arguments(self, parser: ArgumentParser) -> None: ...
+    def __call__(self, args: Namespace, forge: GitForge) -> str: ...
 
-        return decorator
 
-    def command_handler(args: Namespace, forge: GitForge) -> str:
-        return args.command_fn(args, forge) if args.command else forge.home()
+_COMMANDS: list[Command] = []
 
-    # -- commands --
 
-    @command(help="Open a specific commit")
-    @argument("sha", help="Commit SHA (full or abbreviated)")
-    def commit(args: Namespace, forge: GitForge) -> str:
+def command(cls: type) -> type:
+    _COMMANDS.append(cls())
+    return cls
+
+
+# ---------------------------------------------------------------------------
+# CLI — commands
+# ---------------------------------------------------------------------------
+
+
+@command
+class CommitCommand:
+    name = "commit"
+    help = "Open a specific commit"
+
+    def add_arguments(self, parser: ArgumentParser) -> None:
+        parser.add_argument("sha", help="Commit SHA (full or abbreviated)")
+
+    def __call__(self, args: Namespace, forge: GitForge) -> str:
         return forge.commit(args.sha)
 
-    @command(help="Open a branch, or the branch list when omitted")
-    @argument("name", nargs="?", help="Branch name")
-    def branch(args: Namespace, forge: GitForge) -> str:
-        if args.name:
-            return forge.branch(args.name)
-        return forge.branches()
 
-    @command(help="Open a file in the remote browser")
-    @argument("path", help="File path relative to repository root")
-    @argument("--line", type=int, help="Jump to a specific line")
-    @argument(
-        "--permalink",
-        nargs="?",
-        const="HEAD",
-        help="Use permanent link to file (HEAD if empty)",
-    )
-    def file(args: Namespace, forge: GitForge) -> str:
-        if permalink := args.permalink:
-            ref = git_head() if permalink == "HEAD" else permalink
-        else:
-            ref = git_current_branch() or git_head()
-        return forge.file(args.path, ref, args.line)
+@command
+class BranchCommand:
+    name = "branch"
+    help = "Open a branch, or the branch list when omitted"
 
-    @command(help="Open a tag, or the tag list when omitted")
-    @argument("name", nargs="?", help="Tag name")
-    def tag(args: Namespace, forge: GitForge) -> str:
-        if args.name:
-            return forge.tag(args.name)
-        return forge.tags()
+    def add_arguments(self, parser: ArgumentParser) -> None:
+        parser.add_argument("name", nargs="?", help="Branch name")
 
-    @command(help="Open a diff between two refs")
-    @argument(
-        "refs",
-        nargs="+",
-        metavar="REF",
-        help="One arg 'base..head', or two args 'base' 'head'",
-    )
-    def diff(args: Namespace, forge: GitForge) -> str:
-        if len(args.refs) == 1 and ".." in args.refs[0]:
+    def __call__(self, args: Namespace, forge: GitForge) -> str:
+        return forge.branch(args.name) if args.name is not None else forge.branches()
+
+
+@command
+class TagCommand:
+    name = "tag"
+    help = "Open a tag, or the tag list when omitted"
+
+    def add_arguments(self, parser: ArgumentParser) -> None:
+        parser.add_argument("name", nargs="?", help="Tag name")
+
+    def __call__(self, args: Namespace, forge: GitForge) -> str:
+        return forge.tag(args.name) if args.name is not None else forge.tags()
+
+
+@command
+class DiffCommand:
+    name = "diff"
+    help = "Open a diff between two refs"
+
+    def add_arguments(self, parser: ArgumentParser) -> None:
+        parser.add_argument(
+            "refs",
+            nargs="+",
+            metavar="REF",
+            help="One arg 'base..head', or two args 'base' 'head'",
+        )
+
+    def __call__(self, args: Namespace, forge: GitForge) -> str:
+        if len(args.refs) == 1:
+            if "..." in args.refs[0]:
+                raise SystemExit("error: use '..' not '...' to separate diff refs")
+            elif ".." not in args.refs[0]:
+                raise SystemExit("error: use '..' to separate diff refs")
+
             base, _, head = args.refs[0].partition("..")
+            if not base or not head:
+                raise SystemExit("error: diff refs must include both base and head")
             return forge.diff(base, head)
+
         elif len(args.refs) == 2:
             base, head = args.refs
+            if not base or not head:
+                raise SystemExit("error: diff refs must include both base and head")
             return forge.diff(base, head)
+
         else:
             raise SystemExit("error: diff requires 'base..head' or two ref arguments")
 
-    @command(help="Open a pull request, or the pull request list when omitted")
-    @argument("number", nargs="?", type=int, help="PR number")
-    def pr(args: Namespace, forge: GitForge) -> str:
-        if args.number is not None:
-            return forge.pull_request(args.number)
-        return forge.pull_requests()
 
-    @command(help="Open an issue, or the issue list when omitted")
-    @argument("number", nargs="?", type=int, help="Issue number")
-    def issue(args: Namespace, forge: GitForge) -> str:
-        if args.number is not None:
-            return forge.issue(args.number)
-        return forge.issues()
+@command
+class FileCommand:
+    name = "file"
+    help = "Open a file in the remote browser"
 
-    @command(help="Open a release, or the release list when omitted")
-    @argument("tag", nargs="?", help="Release tag")
-    def release(args: Namespace, forge: GitForge) -> str:
-        if args.tag:
-            return forge.release(args.tag)
-        return forge.releases()
+    def add_arguments(self, parser: ArgumentParser) -> None:
+        parser.add_argument("path", help="File path relative to repository root")
+        parser.add_argument("--line", type=int, help="Jump to a specific line")
+        parser.add_argument(
+            "--permalink",
+            nargs="?",
+            const="HEAD",
+            help="Use permanent link to file (HEAD if empty)",
+        )
 
-    return command_handler
+    def __call__(self, args: Namespace, forge: GitForge) -> str:
+        if args.line is not None and args.line < 1:
+            raise SystemExit("error: --line must be >= 1")
+
+        if (permalink := args.permalink) is not None:
+            ref = git_head() if permalink == "HEAD" else permalink
+        else:
+            ref = git_current_branch() or git_head()
+
+        return forge.file(repository_relative_path(args.path), ref, args.line)
 
 
-def register_actions(parser: ArgumentParser) -> Callable[[Namespace, str], None]:
-    action_group_container = parser.add_argument_group("action arguments")
-    action_group = action_group_container.add_mutually_exclusive_group()
+@command
+class PullRequestCommand:
+    name = "pr"
+    help = "Open a pull request, or the pull request list when omitted"
 
-    def action(*flags: str, help: str, default: bool = False):
-        def decorator(fn):
-            action_group.add_argument(
-                *flags,
-                dest="action_fn",
-                action="store_const",
-                const=fn,
-                default=fn if default else None,
-                help=help,
-            )
-            return fn
+    def add_arguments(self, parser: ArgumentParser) -> None:
+        parser.add_argument("number", nargs="?", type=int, help="PR number")
 
-        return decorator
+    def __call__(self, args: Namespace, forge: GitForge) -> str:
+        return (
+            forge.pull_request(args.number)
+            if args.number is not None
+            else forge.pull_requests()
+        )
 
-    def action_handler(args: Namespace, url: str) -> None:
-        args.action_fn(url)
 
-    # -- actions --
+@command
+class IssueCommand:
+    name = "issue"
+    help = "Open an issue, or the issue list when omitted"
 
-    @action("--open", "-o", help="Open URL in default browser", default=True)
-    def open_url(url: str) -> None:
+    def add_arguments(self, parser: ArgumentParser) -> None:
+        parser.add_argument("number", nargs="?", type=int, help="Issue number")
+
+    def __call__(self, args: Namespace, forge: GitForge) -> str:
+        return forge.issue(args.number) if args.number is not None else forge.issues()
+
+
+@command
+class ReleaseCommand:
+    name = "release"
+    help = "Open a release, or the release list when omitted"
+
+    def add_arguments(self, parser: ArgumentParser) -> None:
+        parser.add_argument("tag", nargs="?", help="Release tag")
+
+    def __call__(self, args: Namespace, forge: GitForge) -> str:
+        return forge.release(args.tag) if args.tag else forge.releases()
+
+
+# ---------------------------------------------------------------------------
+# CLI — action protocol and registry
+# ---------------------------------------------------------------------------
+
+
+class Action(Protocol):
+    flags: tuple[str, ...]
+    help: str
+
+    def __call__(self, url: str) -> None: ...
+
+
+_ACTIONS: list[Action] = []
+_DEFAULT_ACTION: Action | None = None
+
+
+def action(
+    cls: type | None = None,
+    *,
+    default: bool = False,
+) -> type | Callable[[type], type]:
+    def decorator(cls: type) -> type:
+        global _DEFAULT_ACTION
+        instance = cls()
+        _ACTIONS.append(instance)
+        if default:
+            _DEFAULT_ACTION = instance
+        return cls
+
+    return decorator(cls) if cls is not None else decorator
+
+
+# ---------------------------------------------------------------------------
+# CLI — actions
+# ---------------------------------------------------------------------------
+
+
+@action(default=True)
+class OpenAction:
+    flags = ("--open", "-o")
+    help = "Open URL in default browser (default)"
+
+    def __call__(self, url: str) -> None:
         import webbrowser
 
         webbrowser.open(url)
 
-    @action("--copy", "-c", help="Copy URL to the clipboard")
-    def copy_url(url: str) -> None:
+
+@action
+class CopyAction:
+    flags = ("--copy", "-c")
+    help = "Copy URL to the clipboard"
+
+    def __call__(self, url: str) -> None:
         import sys
 
         if sys.platform == "darwin":
@@ -485,11 +576,52 @@ def register_actions(parser: ArgumentParser) -> Callable[[Namespace, str], None]
             else:
                 raise SystemExit("error: no clipboard utility found")
 
-    @action("--print", "-p", help="Print URL")
-    def print_url(url: str) -> None:
+
+@action
+class PrintAction:
+    flags = ("--print", "-p")
+    help = "Print URL"
+
+    def __call__(self, url: str) -> None:
         print(url)
 
-    return action_handler
+
+# ---------------------------------------------------------------------------
+# CLI - parser
+# ---------------------------------------------------------------------------
+
+
+def build_parser() -> ArgumentParser:
+    parser = ArgumentParser(
+        prog="git forge",
+        description="Open your Git remote in a browser.",
+    )
+
+    parser.add_argument(
+        "--remote",
+        default="origin",
+        metavar="NAME",
+        help="Git remote to use (default: origin)",
+    )
+
+    subparsers = parser.add_subparsers(dest="command")
+    for command in _COMMANDS:
+        command_parser = subparsers.add_parser(command.name, help=command.help)
+        command.add_arguments(command_parser)
+        command_parser.set_defaults(command_fn=command)
+
+    group = parser.add_argument_group("action arguments").add_mutually_exclusive_group()
+    parser.set_defaults(action_fn=_DEFAULT_ACTION)
+    for action in _ACTIONS:
+        group.add_argument(
+            *action.flags,
+            dest="action_fn",
+            action="store_const",
+            const=action,
+            help=action.help,
+        )
+
+    return parser
 
 
 # ---------------------------------------------------------------------------
@@ -499,16 +631,15 @@ def register_actions(parser: ArgumentParser) -> Callable[[Namespace, str], None]
 
 def main(argv: list[str] | None = None) -> None:
     parser = build_parser()
-    command_handler = register_commands(parser)
-    action_handler = register_actions(parser)
     args = parser.parse_args(argv)
 
     remote_url = git_remote_url(args.remote)
     remote = parse_remote(remote_url)
     forge = resolve_forge(remote)
 
-    url = command_handler(args, forge)
-    action_handler(args, url)
+    command_fn = getattr(args, "command_fn", None)
+    url = command_fn(args, forge) if command_fn else forge.home()
+    args.action_fn(url)
 
 
 if __name__ == "__main__":
