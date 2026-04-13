@@ -1,4 +1,5 @@
 [
+    { "id": "forge", "caption": "-" },
     {
         "caption": "Open in Remote…",
         "command": "git",
@@ -8,5 +9,10 @@
         "caption": "Copy URL to Remote",
         "command": "git",
         "args": { "argv": ["forge", "--copy", "file", "$path"] }
+    },
+    {
+        "caption": "Copy Permalink to Remote",
+        "command": "git",
+        "args": { "argv": ["forge", "--copy", "file", "$path", "--permalink", "$commit"] }
     }
 ]
