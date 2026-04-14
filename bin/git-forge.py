@@ -23,6 +23,7 @@ Supported forges: GitHub, GitLab, Bitbucket.
 
 from __future__ import annotations
 
+import logging
 import re
 import subprocess
 from argparse import ArgumentParser, Namespace
@@ -31,6 +32,8 @@ from pathlib import Path
 from subprocess import CalledProcessError
 from typing import Callable, Protocol
 from urllib.parse import quote as url_quote
+
+logger = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
 # Remote
@@ -598,6 +601,7 @@ def build_parser() -> ArgumentParser:
         description="Open your Git remote in a browser.",
     )
 
+    parser.add_argument("--verbose", "-v", action="store_true")
     parser.add_argument(
         "--remote",
         default="origin",
@@ -634,6 +638,11 @@ def run(argv: list[str] | None = None) -> None:
     parser = build_parser()
     args = parser.parse_args(argv)
 
+    logging.basicConfig(
+        level=logging.DEBUG if args.verbose else logging.INFO,
+        format="%(levelname)s: %(message)s",
+    )
+
     remote_url = git_remote_url(args.remote)
     remote = parse_remote(remote_url)
     forge = resolve_forge(remote)
@@ -644,18 +653,16 @@ def run(argv: list[str] | None = None) -> None:
 
 
 def main(argv: list[str] | None = None) -> int:
-    import sys
-
     try:
         run(argv)
         return 0
 
     except ValueError as e:
-        print(f"Error: {e}", file=sys.stderr)
+        logger.error(e)
         return 2
 
     except Exception as e:
-        print(f"Error: {e}", file=sys.stderr)
+        logger.error(e)
         return 1
 
 
