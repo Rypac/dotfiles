@@ -601,7 +601,6 @@ def build_parser() -> ArgumentParser:
         description="Open your Git remote in a browser.",
     )
 
-    parser.add_argument("--verbose", "-v", action="store_true")
     parser.add_argument(
         "--remote",
         default="origin",
@@ -638,10 +637,7 @@ def main(argv: list[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
 
-    logging.basicConfig(
-        level=logging.DEBUG if args.verbose else logging.INFO,
-        format="%(levelname)s: %(message)s",
-    )
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
     try:
         remote_url = git_remote_url(args.remote)
