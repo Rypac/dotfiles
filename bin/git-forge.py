@@ -353,6 +353,17 @@ class Command(Protocol):
     def __call__(self, args: Namespace, forge: GitForge) -> str: ...
 
 
+class HomeCommand:
+    name = "home"
+    help = "Open repository homepage"
+
+    def add_arguments(self, parser: ArgumentParser) -> None:
+        pass
+
+    def __call__(self, _: Namespace, forge: GitForge) -> str:
+        return forge.home()
+
+
 class CommitCommand:
     name = "commit"
     help = "Open a specific commit"
@@ -559,7 +570,9 @@ def build_parser() -> ArgumentParser:
     )
 
     subparsers = parser.add_subparsers(dest="command")
+    parser.set_defaults(command_fn=HomeCommand())
     for command in [
+        HomeCommand(),
         CommitCommand(),
         BranchCommand(),
         TagCommand(),
@@ -607,8 +620,7 @@ def main(argv: list[str] | None = None) -> int:
         remote = parse_remote(remote_url)
         forge = resolve_forge(remote)
 
-        command_fn = getattr(args, "command_fn", None)
-        url = command_fn(args, forge) if command_fn else forge.home()
+        url = args.command_fn(args, forge)
         args.action_fn(url)
         return 0
 
