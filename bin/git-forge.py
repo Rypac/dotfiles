@@ -30,7 +30,7 @@ from argparse import ArgumentParser, Namespace
 from dataclasses import dataclass
 from pathlib import Path
 from subprocess import CalledProcessError
-from typing import Callable, Protocol
+from typing import Protocol
 from urllib.parse import quote as url_quote
 
 logger = logging.getLogger(__name__)
@@ -252,28 +252,27 @@ class BitbucketForge:
         return f"{self.remote.url}/downloads"
 
 
-_FORGE_BY_TYPE: dict[str, type[GitForge]] = {
-    "github": GithubForge,
-    "gitlab": GitlabForge,
-    "bitbucket": BitbucketForge,
-}
-
-_FORGE_BY_HOST: dict[str, type[GitForge]] = {
-    "github.com": GithubForge,
-    "gitlab.com": GitlabForge,
-    "bitbucket.org": BitbucketForge,
-}
-
-
 def resolve_forge(remote: Remote) -> GitForge:
     if config := git_config_get(f"forge.host.{remote.host}.type"):
+        forge_by_type = {
+            "github": GithubForge,
+            "gitlab": GitlabForge,
+            "bitbucket": BitbucketForge,
+        }
+
         try:
-            return _FORGE_BY_TYPE[config.lower()](remote)
+            return forge_by_type[config.lower()](remote)
         except KeyError:
             raise ValueError(f"Unsupported forge type: {config.lower()!r}")
 
+    forge_by_host = {
+        "github.com": GithubForge,
+        "gitlab.com": GitlabForge,
+        "bitbucket.org": BitbucketForge,
+    }
+
     try:
-        return _FORGE_BY_HOST[remote.host](remote)
+        return forge_by_host[remote.host](remote)
     except KeyError:
         raise ValueError(f"Unsupported forge host: {remote.host!r}")
 
@@ -342,7 +341,7 @@ def repository_relative_path(path: str) -> str:
 
 
 # ---------------------------------------------------------------------------
-# CLI — command protocol and registry
+# CLI — commands
 # ---------------------------------------------------------------------------
 
 
@@ -354,20 +353,6 @@ class Command(Protocol):
     def __call__(self, args: Namespace, forge: GitForge) -> str: ...
 
 
-_COMMANDS: list[Command] = []
-
-
-def command(cls: type) -> type:
-    _COMMANDS.append(cls())
-    return cls
-
-
-# ---------------------------------------------------------------------------
-# CLI — commands
-# ---------------------------------------------------------------------------
-
-
-@command
 class CommitCommand:
     name = "commit"
     help = "Open a specific commit"
@@ -379,7 +364,6 @@ class CommitCommand:
         return forge.commit(args.sha)
 
 
-@command
 class BranchCommand:
     name = "branch"
     help = "Open a branch, or the branch list when omitted"
@@ -391,7 +375,6 @@ class BranchCommand:
         return forge.branch(args.name) if args.name is not None else forge.branches()
 
 
-@command
 class TagCommand:
     name = "tag"
     help = "Open a tag, or the tag list when omitted"
@@ -403,7 +386,6 @@ class TagCommand:
         return forge.tag(args.name) if args.name is not None else forge.tags()
 
 
-@command
 class DiffCommand:
     name = "diff"
     help = "Open a diff between two refs"
@@ -438,7 +420,6 @@ class DiffCommand:
             raise ValueError("Requires 'base..head' or two ref arguments")
 
 
-@command
 class FileCommand:
     name = "file"
     help = "Open a file in the remote browser"
@@ -466,7 +447,6 @@ class FileCommand:
         return forge.file(repository_relative_path(args.path), ref, args.line)
 
 
-@command
 class PullRequestCommand:
     name = "pr"
     help = "Open a pull request, or the pull request list when omitted"
@@ -482,7 +462,6 @@ class PullRequestCommand:
         )
 
 
-@command
 class IssueCommand:
     name = "issue"
     help = "Open an issue, or the issue list when omitted"
@@ -494,7 +473,6 @@ class IssueCommand:
         return forge.issue(args.number) if args.number is not None else forge.issues()
 
 
-@command
 class ReleaseCommand:
     name = "release"
     help = "Open a release, or the release list when omitted"
@@ -507,7 +485,7 @@ class ReleaseCommand:
 
 
 # ---------------------------------------------------------------------------
-# CLI — action protocol and registry
+# CLI — actions
 # ---------------------------------------------------------------------------
 
 
@@ -518,32 +496,6 @@ class Action(Protocol):
     def __call__(self, url: str) -> None: ...
 
 
-_ACTIONS: list[Action] = []
-_DEFAULT_ACTION: Action | None = None
-
-
-def action(
-    cls: type | None = None,
-    *,
-    default: bool = False,
-) -> type | Callable[[type], type]:
-    def decorator(cls: type) -> type:
-        global _DEFAULT_ACTION
-        instance = cls()
-        _ACTIONS.append(instance)
-        if default:
-            _DEFAULT_ACTION = instance
-        return cls
-
-    return decorator(cls) if cls is not None else decorator
-
-
-# ---------------------------------------------------------------------------
-# CLI — actions
-# ---------------------------------------------------------------------------
-
-
-@action(default=True)
 class OpenAction:
     flags = ("--open", "-o")
     help = "Open URL in default browser (default)"
@@ -554,7 +506,6 @@ class OpenAction:
         webbrowser.open(url)
 
 
-@action
 class CopyAction:
     flags = ("--copy", "-c")
     help = "Copy URL to the clipboard"
@@ -581,7 +532,6 @@ class CopyAction:
                 raise RuntimeError("No clipboard utility found")
 
 
-@action
 class PrintAction:
     flags = ("--print", "-p")
     help = "Print URL"
@@ -609,14 +559,27 @@ def build_parser() -> ArgumentParser:
     )
 
     subparsers = parser.add_subparsers(dest="command")
-    for command in _COMMANDS:
+    for command in [
+        CommitCommand(),
+        BranchCommand(),
+        TagCommand(),
+        DiffCommand(),
+        FileCommand(),
+        PullRequestCommand(),
+        IssueCommand(),
+        ReleaseCommand(),
+    ]:
         command_parser = subparsers.add_parser(command.name, help=command.help)
         command.add_arguments(command_parser)
         command_parser.set_defaults(command_fn=command)
 
     group = parser.add_argument_group("action arguments").add_mutually_exclusive_group()
-    parser.set_defaults(action_fn=_DEFAULT_ACTION)
-    for action in _ACTIONS:
+    parser.set_defaults(action_fn=OpenAction())
+    for action in [
+        OpenAction(),
+        CopyAction(),
+        PrintAction(),
+    ]:
         group.add_argument(
             *action.flags,
             dest="action_fn",
