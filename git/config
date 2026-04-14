@@ -27,6 +27,9 @@
 [pull]
 	ff = only
 
+[rebase]
+	autoStash = true
+
 [merge]
 	tool = smerge
 
