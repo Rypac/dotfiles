@@ -45,7 +45,7 @@
         "args": { "argv": ["forge", "release"] }
     },
     {
-        "caption": "Cleanup Repo",
+        "caption": "Cleanup Repository",
         "command": "git",
         "args": { "argv": ["gc"] }
     },
@@ -57,6 +57,16 @@
     {
         "caption": "Rebase onto…",
         "command": "git",
-        "args": { "argv": ["rebase", "$select_branch", "--onto", "$select_branch"] }
+        "args": { "argv": ["rebase", "$select_branch", "--onto", "$select_ref"] }
+    },
+    {
+        "caption": "Rebase onto Commit…",
+        "command": "git",
+        "args": { "argv": ["rebase", "$select_branch", "--onto", "$select_commit"] }
+    },
+    {
+        "caption": "Create Fixup Commit…",
+        "command": "git",
+        "args": { "argv": ["commit", "--fixup", "$select_commit"] }
     }
 ]
