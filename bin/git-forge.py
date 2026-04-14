@@ -448,6 +448,7 @@ class FileCommand:
             nargs="?",
             const="HEAD",
             help="Use permanent link to file (HEAD if empty)",
+            metavar="REF",
         )
 
     def __call__(self, args: Namespace, forge: GitForge) -> str:
@@ -499,7 +500,7 @@ class ReleaseCommand:
         parser.add_argument("tag", nargs="?", help="Release tag")
 
     def __call__(self, args: Namespace, forge: GitForge) -> str:
-        return forge.release(args.tag) if args.tag else forge.releases()
+        return forge.release(args.tag) if args.tag is not None else forge.releases()
 
 
 # ---------------------------------------------------------------------------
