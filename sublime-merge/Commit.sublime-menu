@@ -1,4 +1,28 @@
 [
+    { "id": "rebase", "caption": "-" },
+    {
+        "caption": "Fixup $short_commit",
+        "command": "git",
+        "args": { "argv": ["commit", "--fixup", "$commit"] }
+    },
+    {
+        "caption": "Rebase (autosquash)",
+        "command": "git",
+        "args": { "argv": ["rebase", "--autosquash", "$commit^"] }
+    },
+    {
+        "caption": "Rebase (interactive)…",
+        "command": "git",
+        "args": { "argv": ["rebase", "--interactive", "--autosquash", "$commit^"] }
+    },
+    {
+        "caption": "Rebase onto…",
+        "command": "show_command_palette",
+        "args": {
+            "command": "git",
+            "args": { "argv": ["rebase", "$commit^", "--onto", "$select_ref"] }
+        }
+    },
     { "id": "forge", "caption": "-" },
     {
         "caption": "Open Commit in Remote…",
@@ -10,18 +34,5 @@
         "command": "git",
         "args": { "argv": ["forge", "--copy", "commit", "$commit"] }
     },
-    { "id": "rebase", "caption": "-" },
-    {
-        "caption": "Rebase $short_commit onto…",
-        "command": "show_command_palette",
-        "args": {
-            "command": "git",
-            "args": { "argv": ["rebase", "$commit~1", "--onto", "$select_branch"] }
-        }
-    },
-    {
-        "caption": "Start Interactive Rebase…",
-        "command": "git",
-        "args": { "argv": ["rebase", "-i", "$commit~1"] }
-    }
+    { "caption": "-" }
 ]
