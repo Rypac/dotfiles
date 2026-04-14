@@ -65,7 +65,7 @@ def parse_remote(url: str) -> Remote:
                 repository=repository,
             )
 
-    raise SystemExit(f"error: unsupported remote: {url}")
+    raise ValueError(f"Unsupported remote: {url}")
 
 
 # ---------------------------------------------------------------------------
@@ -263,16 +263,16 @@ _FORGE_BY_HOST: dict[str, type[GitForge]] = {
 
 
 def resolve_forge(remote: Remote) -> GitForge:
-    if config := git_config(f"forge.host.{remote.host}.type"):
+    if config := git_config_get(f"forge.host.{remote.host}.type"):
         try:
             return _FORGE_BY_TYPE[config.lower()](remote)
         except KeyError:
-            raise SystemExit(f"error: unsupported forge type: {config.lower()!r}")
+            raise ValueError(f"Unsupported forge type: {config.lower()!r}")
 
     try:
         return _FORGE_BY_HOST[remote.host](remote)
     except KeyError:
-        raise SystemExit(f"error: unsupported forge: {remote.host!r}")
+        raise ValueError(f"Unsupported forge host: {remote.host!r}")
 
 
 # ---------------------------------------------------------------------------
@@ -285,7 +285,7 @@ def git(*args: str) -> str:
     return result.stdout.strip()
 
 
-def git_config(key: str) -> str | None:
+def git_config_get(key: str) -> str | None:
     try:
         return git("config", "--get", key)
     except CalledProcessError:
@@ -295,30 +295,30 @@ def git_config(key: str) -> str | None:
 def git_remote_url(remote: str) -> str:
     try:
         return git("remote", "get-url", remote)
-    except CalledProcessError:
-        raise SystemExit(f"error: remote '{remote}' not found")
+    except CalledProcessError as e:
+        raise RuntimeError(f"Remote '{remote}' not found") from e
 
 
 def git_current_branch() -> str | None:
     try:
         branch = git("rev-parse", "--abbrev-ref", "HEAD")
         return branch if branch != "HEAD" else None
-    except CalledProcessError:
-        return None
+    except CalledProcessError as e:
+        raise RuntimeError("Unable to get current branch") from e
 
 
 def git_head() -> str:
     try:
         return git("rev-parse", "HEAD")
-    except CalledProcessError:
-        raise SystemExit("error: unable to reach HEAD")
+    except CalledProcessError as e:
+        raise RuntimeError("Unable to reach HEAD") from e
 
 
 def git_root() -> str:
     try:
         return git("rev-parse", "--show-toplevel")
-    except CalledProcessError:
-        raise SystemExit("error: unable to determine repository root")
+    except CalledProcessError as e:
+        raise RuntimeError("Unable to determine repository root") from e
 
 
 def repository_relative_path(path: str) -> str:
@@ -332,8 +332,8 @@ def repository_relative_path(path: str) -> str:
 
     try:
         relative_path = resolved.relative_to(repo_root)
-    except ValueError:
-        raise SystemExit(f"error: file path is outside repository: {path}")
+    except ValueError as e:
+        raise ValueError(f"File path is outside repository: {path}") from e
 
     return relative_path.as_posix()
 
@@ -416,23 +416,23 @@ class DiffCommand:
     def __call__(self, args: Namespace, forge: GitForge) -> str:
         if len(args.refs) == 1:
             if "..." in args.refs[0]:
-                raise SystemExit("error: use '..' not '...' to separate diff refs")
+                raise ValueError("Use '..' not '...' to separate diff refs")
             elif ".." not in args.refs[0]:
-                raise SystemExit("error: use '..' to separate diff refs")
+                raise ValueError("Use '..' to separate diff refs")
 
             base, _, head = args.refs[0].partition("..")
             if not base or not head:
-                raise SystemExit("error: diff refs must include both base and head")
+                raise ValueError("Refs must include both base and head")
             return forge.diff(base, head)
 
         elif len(args.refs) == 2:
             base, head = args.refs
             if not base or not head:
-                raise SystemExit("error: diff refs must include both base and head")
+                raise ValueError("Refs must include both base and head")
             return forge.diff(base, head)
 
         else:
-            raise SystemExit("error: diff requires 'base..head' or two ref arguments")
+            raise ValueError("Requires 'base..head' or two ref arguments")
 
 
 @command
@@ -453,7 +453,7 @@ class FileCommand:
 
     def __call__(self, args: Namespace, forge: GitForge) -> str:
         if args.line is not None and args.line < 1:
-            raise SystemExit("error: --line must be >= 1")
+            raise ValueError("line must be >= 1")
 
         if (permalink := args.permalink) is not None:
             ref = git_head() if permalink == "HEAD" else permalink
@@ -575,7 +575,7 @@ class CopyAction:
                 except (FileNotFoundError, CalledProcessError):
                     continue
             else:
-                raise SystemExit("error: no clipboard utility found")
+                raise RuntimeError("No clipboard utility found")
 
 
 @action
@@ -630,7 +630,7 @@ def build_parser() -> ArgumentParser:
 # ---------------------------------------------------------------------------
 
 
-def main(argv: list[str] | None = None) -> None:
+def run(argv: list[str] | None = None) -> None:
     parser = build_parser()
     args = parser.parse_args(argv)
 
@@ -643,7 +643,23 @@ def main(argv: list[str] | None = None) -> None:
     args.action_fn(url)
 
 
+def main(argv: list[str] | None = None) -> int:
+    import sys
+
+    try:
+        run(argv)
+        return 0
+
+    except ValueError as e:
+        print(f"Error: {e}", file=sys.stderr)
+        return 2
+
+    except Exception as e:
+        print(f"Error: {e}", file=sys.stderr)
+        return 1
+
+
 if __name__ == "__main__":
     import sys
 
-    main(sys.argv[1:])
+    sys.exit(main(sys.argv[1:]))
