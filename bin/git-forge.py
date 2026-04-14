@@ -634,7 +634,7 @@ def build_parser() -> ArgumentParser:
 # ---------------------------------------------------------------------------
 
 
-def run(argv: list[str] | None = None) -> None:
+def main(argv: list[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
 
@@ -643,18 +643,14 @@ def run(argv: list[str] | None = None) -> None:
         format="%(levelname)s: %(message)s",
     )
 
-    remote_url = git_remote_url(args.remote)
-    remote = parse_remote(remote_url)
-    forge = resolve_forge(remote)
-
-    command_fn = getattr(args, "command_fn", None)
-    url = command_fn(args, forge) if command_fn else forge.home()
-    args.action_fn(url)
-
-
-def main(argv: list[str] | None = None) -> int:
     try:
-        run(argv)
+        remote_url = git_remote_url(args.remote)
+        remote = parse_remote(remote_url)
+        forge = resolve_forge(remote)
+
+        command_fn = getattr(args, "command_fn", None)
+        url = command_fn(args, forge) if command_fn else forge.home()
+        args.action_fn(url)
         return 0
 
     except ValueError as e:
