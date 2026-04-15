@@ -35,26 +35,6 @@
                         "caption": "Tags",
                         "command": "git",
                         "args": { "argv": ["forge", "tag"] }
-                    },
-                    {
-                        "caption": "Milestones",
-                        "command": "git",
-                        "args": { "argv": ["forge", "milestones"] }
-                    },
-                    {
-                        "caption": "Wiki",
-                        "command": "git",
-                        "args": { "argv": ["forge", "wiki"] }
-                    },
-                    {
-                        "caption": "Actions",
-                        "command": "git",
-                        "args": { "argv": ["forge", "actions"] }
-                    },
-                    {
-                        "caption": "Settings",
-                        "command": "git",
-                        "args": { "argv": ["forge", "settings"] }
                     }
                 ]
             }
