@@ -383,7 +383,9 @@ class BranchCommand:
         parser.add_argument("name", nargs="?", help="Branch name")
 
     def __call__(self, args: Namespace, forge: GitForge) -> str:
-        return forge.branch(args.name) if args.name is not None else forge.branches()
+        return (
+            forge.branch(name) if (name := args.name) is not None else forge.branches()
+        )
 
 
 class TagCommand:
@@ -394,7 +396,7 @@ class TagCommand:
         parser.add_argument("name", nargs="?", help="Tag name")
 
     def __call__(self, args: Namespace, forge: GitForge) -> str:
-        return forge.tag(args.name) if args.name is not None else forge.tags()
+        return forge.tag(name) if (name := args.name) is not None else forge.tags()
 
 
 class DiffCommand:
@@ -447,7 +449,7 @@ class FileCommand:
         )
 
     def __call__(self, args: Namespace, forge: GitForge) -> str:
-        if args.line is not None and args.line < 1:
+        if (line := args.line) is not None and line < 1:
             raise ValueError("line must be >= 1")
 
         if (permalink := args.permalink) is not None:
@@ -455,7 +457,7 @@ class FileCommand:
         else:
             ref = git_current_branch() or git_head()
 
-        return forge.file(repository_relative_path(args.path), ref, args.line)
+        return forge.file(repository_relative_path(args.path), ref, line)
 
 
 class PullRequestCommand:
@@ -467,8 +469,8 @@ class PullRequestCommand:
 
     def __call__(self, args: Namespace, forge: GitForge) -> str:
         return (
-            forge.pull_request(args.number)
-            if args.number is not None
+            forge.pull_request(number)
+            if (number := args.number) is not None
             else forge.pull_requests()
         )
 
@@ -481,7 +483,11 @@ class IssueCommand:
         parser.add_argument("number", nargs="?", type=int, help="Issue number")
 
     def __call__(self, args: Namespace, forge: GitForge) -> str:
-        return forge.issue(args.number) if args.number is not None else forge.issues()
+        return (
+            forge.issue(number)
+            if (number := args.number) is not None
+            else forge.issues()
+        )
 
 
 class ReleaseCommand:
@@ -492,7 +498,7 @@ class ReleaseCommand:
         parser.add_argument("tag", nargs="?", help="Release tag")
 
     def __call__(self, args: Namespace, forge: GitForge) -> str:
-        return forge.release(args.tag) if args.tag is not None else forge.releases()
+        return forge.release(tag) if (tag := args.tag) is not None else forge.releases()
 
 
 # ---------------------------------------------------------------------------
