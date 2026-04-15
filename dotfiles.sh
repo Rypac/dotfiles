@@ -49,7 +49,7 @@ dotfiles_link() {
         for d in "$origin"/*/; do
             if [ -d "$d" ]; then
                 name="$(basename "$d")"
-                ln -fns "$f" "$destination/$name"
+                ln -fns "$d" "$destination/$name"
             fi
         done
     }
