@@ -1,6 +1,5 @@
 gui:
   showFileTree: false
-  showCommandLog: false
 
 update:
   method: never
