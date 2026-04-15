@@ -103,7 +103,7 @@ class GitForge(Protocol):
 
 class GithubForge:
     def __init__(self, remote: Remote) -> None:
-        self.remote = remote
+        self.remote: Remote = remote
 
     def home(self) -> str:
         return self.remote.url
@@ -153,7 +153,7 @@ class GithubForge:
 
 class GitlabForge:
     def __init__(self, remote: Remote) -> None:
-        self.remote = remote
+        self.remote: Remote = remote
 
     def home(self) -> str:
         return self.remote.url
@@ -203,7 +203,7 @@ class GitlabForge:
 
 class BitbucketForge:
     def __init__(self, remote: Remote) -> None:
-        self.remote = remote
+        self.remote: Remote = remote
 
     def home(self) -> str:
         return self.remote.url
