@@ -80,7 +80,6 @@ dotfiles_link() {
         link sublime-text "$XDG_CONFIG_HOME/sublime-text/Packages/User"
     elif [ "$(uname)" = Darwin ]; then
         link_contents mac/LaunchAgents "$HOME/Library/LaunchAgents"
-        link_contents mac/Services "$HOME/Library/Services"
         link sublime-merge "$HOME/Library/Application Support/Sublime Merge/Packages/User"
         link sublime-text "$HOME/Library/Application Support/Sublime Text/Packages/User"
     fi
