@@ -16,6 +16,8 @@
 	orphan = !git branch --merged | egrep -v \"(^\\*|master|main)\"
 	branch-clean = !git branch --merged | egrep -v \"(^\\*|master|main)\" | xargs git branch -d
 
+	fast-forward = !git fetch $(git config branch.$1.remote) $(git rev-parse --abbrev-ref $1@{upstream} | cut -d/ -f2-):$1
+
 	subdiff = !git diff && git submodule foreach 'git diff'
 	subpush = push --recurse-submodules=on-demand
 	subinit = submodule update --init --recursive

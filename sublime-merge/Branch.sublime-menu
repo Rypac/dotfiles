@@ -1,5 +1,10 @@
 [
     {
+        "caption": "Fast-Forward $branch",
+        "command": "git",
+        "args": { "argv": ["fast-forward", "$branch"] }
+    },
+    {
         "caption": "Open $branch in Remote…",
         "command": "git",
         "args": { "argv": ["forge", "branch", "$branch"] }

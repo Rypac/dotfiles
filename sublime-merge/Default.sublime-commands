@@ -68,5 +68,10 @@
         "caption": "Create Fixup Commit…",
         "command": "git",
         "args": { "argv": ["commit", "--fixup", "$select_commit"] }
+    },
+    {
+        "caption": "Fast-Forward Branch…",
+        "command": "git",
+        "args": { "argv": ["fast-forward", "$select_local_branch"] }
     }
 ]
