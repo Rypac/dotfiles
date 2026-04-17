@@ -1,1 +1,1 @@
-vim.pack.add({ "https://github.com/nvim-mini/mini.nvim" })
+vim.pack.add({ "https://github.com/Rypac/mini.nvim" })
