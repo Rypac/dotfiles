@@ -1,4 +1,4 @@
-vim.pack.add({ "https://github.com/tpope/vim-fugitive" })
+vim.pack.add({ "https://github.com/Rypac/vim-fugitive" })
 
 vim.api.nvim_create_user_command("Gstash", "Gllog -g stash", {
   desc = "Show git stash list",
