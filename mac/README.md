@@ -6,7 +6,7 @@ This contains macOS specific configuration. The majority of these are applied au
 
 All software that can be installed in an automated way is managed by [Homebrew](https://brew.sh).
 
-The list of apps and utilities are defined in [Brewfile](./Brewfile) and managed automatically using [`brew bundle`][bundle]. This will install and upgrade all formulae listed in the Brewfile.
+The list of apps and utilities are defined in [Brewfile](./Brewfile) and managed automatically using [`brew bundle`](https://docs.brew.sh/Brew-Bundle-and-Brewfile). This will install and upgrade all formulae listed in the Brewfile.
 
 This Brewfile should act as the canonical list of all software installed on the system. If something is installed or removed manually, the Brewfile can be kept up to date with the system by generating and overwriting the file stored in this directory using:
 
