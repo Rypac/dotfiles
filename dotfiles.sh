@@ -59,6 +59,7 @@ dotfiles_link() {
 
     # Link executables
     link dotfiles.sh "$XDG_BIN_HOME/dotfiles"
+    link bin/create-sublime-package.sh "$XDG_BIN_HOME/create-sublime-package"
     link bin/git-forge.py "$XDG_BIN_HOME/git-forge"
     link bin/haskell-script.zsh "$XDG_BIN_HOME/haskell-script"
     link bin/sqlite-to-json.sh "$XDG_BIN_HOME/sqlite-to-json"
