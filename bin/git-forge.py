@@ -252,12 +252,63 @@ class BitbucketForge:
         return f"{self.remote.url}/downloads"
 
 
+class CodebergForge:
+    def __init__(self, remote: Remote) -> None:
+        self.remote: Remote = remote
+
+    def home(self) -> str:
+        return self.remote.url
+
+    def commit(self, sha: str) -> str:
+        return f"{self.remote.url}/commit/{sha}"
+
+    def branch(self, name: str) -> str:
+        return f"{self.remote.url}/src/branch/{url_quote(name, safe='/@')}"
+
+    def branches(self) -> str:
+        return f"{self.remote.url}/branches"
+
+    def tag(self, name: str) -> str:
+        return f"{self.remote.url}/src/tag/{url_quote(name, safe='/@')}"
+
+    def tags(self) -> str:
+        return f"{self.remote.url}/tags"
+
+    def diff(self, base: str, head: str) -> str:
+        return f"{self.remote.url}/compare/{url_quote(head, safe='/@')}...{url_quote(base, safe='/@')}"
+
+    def file(self, path: str, ref: str, line: int | None) -> str:
+        url = f"{self.remote.url}/src/{url_quote(ref, safe='/@')}/{url_quote(path.lstrip('/'), safe='/')}"
+        if line is not None:
+            url += f"#L{line}"
+        return url
+
+    def pull_request(self, number: int) -> str:
+        return f"{self.remote.url}/pulls/{number}"
+
+    def pull_requests(self) -> str:
+        return f"{self.remote.url}/pulls"
+
+    def issue(self, number: int) -> str:
+        return f"{self.remote.url}/issues/{number}"
+
+    def issues(self) -> str:
+        return f"{self.remote.url}/issues"
+
+    def release(self, tag: str) -> str:
+        return f"{self.remote.url}/releases/tag/{url_quote(tag, safe='')}"
+
+    def releases(self) -> str:
+        return f"{self.remote.url}/releases"
+
+
 def resolve_forge(remote: Remote) -> GitForge:
     if config := git_config_get(f"forge.host.{remote.host}.type"):
         forge_by_type = {
             "github": GithubForge,
             "gitlab": GitlabForge,
             "bitbucket": BitbucketForge,
+            "codeberg": CodebergForge,
         }
 
         try:
@@ -269,6 +320,7 @@ def resolve_forge(remote: Remote) -> GitForge:
         "github.com": GithubForge,
         "gitlab.com": GitlabForge,
         "bitbucket.org": BitbucketForge,
+        "codeberg.org": CodebergForge,
     }
 
     try:
