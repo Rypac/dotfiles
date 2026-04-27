@@ -26,6 +26,12 @@
         "command": "decrease_view_font_size"
     },
 
+    // Date
+    {
+        "keys": ["super+shift+m"],
+        "command": "insert_date_header"
+    },
+
     // Focus
     {
         "keys": ["super+k", "super+o"],
