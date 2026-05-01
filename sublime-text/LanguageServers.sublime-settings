@@ -4,8 +4,7 @@
         "selector": "source.haskell",
         "settings": {
             "haskell.formattingProvider": "fourmolu",
-            "haskell.cabalFormattingProvider": "cabal-gild",
-            "haskell.plugin.rename.config.crossModule": true
+            "haskell.cabalFormattingProvider": "cabal-gild"
         }
     },
     "ruff": {
