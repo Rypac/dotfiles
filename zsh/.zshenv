@@ -17,6 +17,3 @@ export HOMEBREW_BUNDLE_FILE="$DOTFILES_HOME/mac/Brewfile"
 
 # SQLite
 export SQLITE_HISTORY="$XDG_STATE_HOME/sqlite_history"
-
-# Codex
-export CODEX_HOME="$XDG_CONFIG_HOME/codex"
