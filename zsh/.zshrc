@@ -85,6 +85,10 @@ if (($+commands[nvim])); then
     alias vim=nvim
 fi
 
+if (($+commands[bat])); then
+    alias cat='bat --paging=never'
+fi
+
 # List directory contents
 alias ls='ls -G'
 alias ll='ls -lhF --color=auto'
@@ -101,9 +105,10 @@ function pbclear() {
     printf '' | pbcopy
 }
 
+# Preview current directory with fzf
 function preview() {
     if (($+commands[bat])); then
-        fzf --preview 'bat --style=full --color=always {}'
+        fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'
     else
         fzf --preview 'cat {}'
     fi
