@@ -65,10 +65,6 @@
         "caption": "File: Save All Existing"
     },
     {
-        "command": "dash",
-        "caption": "Dash: Open Documentation for Selection"
-    },
-    {
         "command": "open_terminal",
         "caption": "Terminal: Open"
     },
