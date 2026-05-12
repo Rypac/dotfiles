@@ -61,6 +61,10 @@
         "caption": "Goto: Bookmark"
     },
     {
+        "command": "align_cursors",
+        "caption": "Align Cursors"
+    },
+    {
         "command": "save_all_existing",
         "caption": "File: Save All Existing"
     },
