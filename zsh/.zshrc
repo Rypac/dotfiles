@@ -81,14 +81,6 @@ if (($+commands[zoxide])); then
     source <(zoxide init zsh)
 fi
 
-if (($+commands[nvim])); then
-    alias vim=nvim
-fi
-
-if (($+commands[bat])); then
-    alias cat='bat --paging=never'
-fi
-
 # List directory contents
 alias ls='ls -G'
 alias ll='ls -lhF --color=auto'
