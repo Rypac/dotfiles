@@ -72,7 +72,9 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 
 if (($+commands[fzf])); then
     source <(fzf --zsh)
 
-    if (($+commands[rg])); then
+    if (($+commands[fd])); then
+        export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
+    elif (($+commands[rg])); then
         export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
     fi
 fi
@@ -97,10 +99,40 @@ function pbclear() {
     printf '' | pbcopy
 }
 
+# Change to a directory from a list ordered by frecency
+function zd() {
+    local dir=$(
+        zoxide query --list --score |
+            fzf --height 40% --layout reverse --info inline \
+                --nth 2.. --no-sort --query "$*" \
+                --bind 'enter:become:echo {2..}'
+    ) && cd "$dir"
+}
+
+# Search for text in files and open in nvim
+function fe() (
+    local reload='reload:rg --column --color=always --smart-case {q} || :'
+    local opener='if [[ $FZF_SELECT_COUNT -eq 0 ]]; then
+            nvim {1} +{2}     # No selection. Open the current line in Vim.
+        else
+            nvim +cw -q {+f}  # Build quickfix list for the selected items.
+        fi'
+    fzf --disabled --ansi --multi \
+        --bind "start:$reload" \
+        --bind "change:$reload" \
+        --bind "enter:become:$opener" \
+        --bind "ctrl-o:execute:$opener" \
+        --bind 'alt-a:select-all,alt-d:deselect-all,ctrl-/:toggle-preview' \
+        --delimiter : \
+        --preview 'bat --style=full --color=always --highlight-line {2} {1}' \
+        --preview-window '~4,+{2}+4/3,<80(up)' \
+        --query "$*"
+)
+
 # Preview current directory with fzf
 function preview() {
     if (($+commands[bat])); then
-        fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'
+        fzf --preview 'bat --style=numbers --color=always --pager=never --line-range=:500 {}'
     else
         fzf --preview 'cat {}'
     fi
