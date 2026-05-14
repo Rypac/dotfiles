@@ -7,33 +7,6 @@ vim.lsp.enable({
   "ty",
 })
 
-vim.api.nvim_create_user_command("LspStart", "edit", {
-  desc = "Start LSP",
-})
-
-vim.api.nvim_create_user_command("LspRestart", function()
-  vim.lsp.stop_client(vim.lsp.get_clients())
-  vim.cmd("edit")
-end, {
-  desc = "Restart LSP",
-})
-
-vim.api.nvim_create_user_command("LspStop", function()
-  vim.lsp.stop_client(vim.lsp.get_clients())
-end, {
-  desc = "Stop LSP",
-})
-
-vim.api.nvim_create_user_command("LspInfo", "checkhealth vim.lsp", {
-  desc = "Open LSP healthcheck",
-})
-
-vim.api.nvim_create_user_command("LspLog", function()
-  vim.cmd("tabnew " .. vim.lsp.log.get_filename())
-end, {
-  desc = "Open LSP logs",
-})
-
 local lsp_group = vim.api.nvim_create_augroup("UserLspConfiguration", { clear = true })
 
 vim.api.nvim_create_autocmd("LspAttach", {
