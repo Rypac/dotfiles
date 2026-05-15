@@ -1,6 +1,6 @@
 return {
   filetypes = { "kotlin" },
-  cmd = { "kotlin-lsp", "--stdio" },
+  cmd = { "intellij-server", "--stdio" },
   root_markers = {
     "settings.gradle",
     "settings.gradle.kts",
