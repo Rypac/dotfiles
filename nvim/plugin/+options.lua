@@ -55,6 +55,9 @@ vim.o.foldtext = ""
 -- Keep all folds expanded by default
 vim.o.foldlevel = 99
 
+-- Provide completions from buffer and omnifunc
+vim.o.complete = '.,w,b,o'
+
 -- Display popup menus for completions but don't insert without manual selection
 vim.o.completeopt = "menuone,noselect,popup,fuzzy"
 
