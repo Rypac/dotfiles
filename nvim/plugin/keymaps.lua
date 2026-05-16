@@ -2,9 +2,6 @@
 vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
 vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 
--- Clear search highlights
-vim.keymap.set({ "i", "n" }, "<Esc>", "<Cmd>nohlsearch<CR><Esc>")
-
 -- System clipboard
 vim.keymap.set("x", "<Leader>y", '"+y', { desc = "Copy to clipboard" })
 vim.keymap.set("n", "<Leader>y", '"+yy', { desc = "Copy to clipboard" })
