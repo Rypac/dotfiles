@@ -40,19 +40,21 @@ vim.api.nvim_create_autocmd("LspAttach", {
         buffer = args.buf,
       })
 
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = lsp_group,
-        buffer = args.buf,
-        callback = function()
-          vim.lsp.buf.format({
-            bufnr = args.buf,
-            id = client.id,
-            filter = function()
-              return vim.g.lsp_autoformat ~= false and vim.b[args.buf].lsp_autoformat ~= false
-            end,
-          })
-        end,
-      })
+      if not client:supports_method(methods.textDocument_willSaveWaitUntil) then
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          group = lsp_group,
+          buffer = args.buf,
+          callback = function()
+            vim.lsp.buf.format({
+              bufnr = args.buf,
+              id = client.id,
+              filter = function()
+                return vim.g.lsp_autoformat ~= false and vim.b[args.buf].lsp_autoformat ~= false
+              end,
+            })
+          end,
+        })
+      end
     end
 
     if client:supports_method(methods.textDocument_foldingRange) then
