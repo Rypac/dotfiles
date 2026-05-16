@@ -40,4 +40,5 @@ vim.api.nvim_create_autocmd("TermClose", {
 })
 
 vim.keymap.set("n", "<Leader>gg", "<Cmd>Lazygit<CR>", { desc = "Lazygit" })
+vim.keymap.set("n", "<Leader>gh", "<Cmd>Lazygit --filter %<CR>", { desc = "Lazygit (history)" })
 vim.keymap.set("n", "<Leader>gt", "<Cmd>Tig<CR>", { desc = "Tig" })
