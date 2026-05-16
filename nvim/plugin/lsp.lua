@@ -71,6 +71,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
     end
 
+    if client:supports_method(methods.textDocument_inlineCompletion) then
+      vim.lsp.inline_completion.enable(true, { bufnr = args.buf })
+
+      vim.keymap.set("i", "<Tab>", function()
+        if not vim.lsp.inline_completion.get({ bufnr = args.buf }) then
+          return "<Tab>"
+        end
+      end, {
+        expr = true,
+        desc = "Accept the current inline completion",
+      })
+    end
+
     if client:supports_method(methods.textDocument_documentHighlight) then
       vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
         group = lsp_group,
