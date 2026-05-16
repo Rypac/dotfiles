@@ -4,8 +4,9 @@ vim.api.nvim_create_autocmd("FileType", {
     if vim.treesitter.language.add(args.match) then
       vim.treesitter.start(args.buf, args.match)
 
-      vim.wo.foldmethod = "expr"
-      vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+      local win = vim.api.nvim_get_current_win()
+      vim.wo[win][0].foldmethod = "expr"
+      vim.wo[win][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
     end
   end,
 })
