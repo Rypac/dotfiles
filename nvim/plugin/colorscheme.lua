@@ -9,4 +9,4 @@ vim.api.nvim_create_autocmd("ColorScheme", {
   end,
 })
 
-vim.cmd("colorscheme iceberg")
+vim.cmd("colorscheme miniwinter")
