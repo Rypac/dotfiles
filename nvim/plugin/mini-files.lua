@@ -6,12 +6,6 @@ files.setup({
       return files.config.options.show_hidden_files or not vim.startswith(fs_entry.name, ".")
     end,
   },
-  mappings = {
-    go_in = "",
-    go_in_plus = "l",
-    go_out = "h",
-    go_out_plus = "",
-  },
   options = {
     show_hidden_files = true,
   },
