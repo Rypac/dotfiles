@@ -17,6 +17,12 @@ Brewfile.lock.json
 Thumbs.db
 ehthumbs.db
 
+# Editors
+/.nova
+/.sublime
+/.vscode
+/.zed
+
 # Dotfiles specific ignores
 lazygit/state.yml
 
