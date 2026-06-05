@@ -23,7 +23,13 @@
 	subinit = submodule update --init --recursive
 	subpull = submodule update --init --remote --merge
 
+[fetch]
+	all = true
+	prune = true
+	pruneTags = true
+
 [push]
+	autoSetupRemote = true
 	default = simple
 
 [pull]
@@ -42,8 +48,15 @@
 [commit]
 	gpgsign = true
 
+[diff]
+	algorithm = histogram
+
+[branch]
+	sort = -committerdate
+
 [tag]
 	gpgsign = true
+	sort = version:refname
 
 [gpg]
 	format = ssh
