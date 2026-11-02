@@ -37,6 +37,7 @@
 
 [rebase]
 	autoStash = true
+	updateRefs = true
 
 [merge]
 	tool = smerge
