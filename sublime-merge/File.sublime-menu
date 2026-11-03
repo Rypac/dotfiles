@@ -3,16 +3,16 @@
     {
         "caption": "Open in Remote…",
         "command": "git",
-        "args": { "argv": ["forge", "file", "$path"] }
+        "args": { "argv": ["forge", "file", "$path", "--open"] }
     },
     {
         "caption": "Copy URL to Remote",
         "command": "git",
-        "args": { "argv": ["forge", "--copy", "file", "$path"] }
+        "args": { "argv": ["forge", "file", "$path", "--copy"] }
     },
     {
         "caption": "Copy Permalink to Remote",
         "command": "git",
-        "args": { "argv": ["forge", "--copy", "file", "$path", "--permalink", "$commit"] }
+        "args": { "argv": ["forge", "file", "$path", "--permalink", "$commit", "--copy"] }
     }
 ]

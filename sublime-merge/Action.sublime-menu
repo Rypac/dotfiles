@@ -2,6 +2,6 @@
     {
         "caption": "Open Repository in Remote",
         "command": "git",
-        "args": { "argv": ["forge"] }
+        "args": { "argv": ["forge", "--open"] }
     }
 ]

@@ -7,6 +7,6 @@
     {
         "caption": "Open $branch in Remote…",
         "command": "git",
-        "args": { "argv": ["forge", "branch", "$branch"] }
+        "args": { "argv": ["forge", "branch", "$branch", "--open"] }
     }
 ]

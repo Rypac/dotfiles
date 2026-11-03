@@ -5,7 +5,7 @@
             {
                 "caption": "Open in Remote…",
                 "command": "git",
-                "args": { "argv": ["forge"] }
+                "args": { "argv": ["forge", "--open"] }
             },
             { "caption": "-", "id": "forge" },
             {
@@ -14,27 +14,27 @@
                     {
                         "caption": "Pull Requests",
                         "command": "git",
-                        "args": { "argv": ["forge", "pr"] }
+                        "args": { "argv": ["forge", "pr", "--open"] }
                     },
                     {
                         "caption": "Issues",
                         "command": "git",
-                        "args": { "argv": ["forge", "issue"] }
+                        "args": { "argv": ["forge", "issue", "--open"] }
                     },
                     {
                         "caption": "Releases",
                         "command": "git",
-                        "args": { "argv": ["forge", "release"] }
+                        "args": { "argv": ["forge", "release", "--open"] }
                     },
                      {
                         "caption": "Branches",
                         "command": "git",
-                        "args": { "argv": ["forge", "branch"] }
+                        "args": { "argv": ["forge", "branch", "--open"] }
                     },
                     {
                         "caption": "Tags",
                         "command": "git",
-                        "args": { "argv": ["forge", "tag"] }
+                        "args": { "argv": ["forge", "tag", "--open"] }
                     }
                 ]
             }

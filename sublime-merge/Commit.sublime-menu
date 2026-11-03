@@ -27,12 +27,12 @@
     {
         "caption": "Open Commit in Remote…",
         "command": "git",
-        "args": { "argv": ["forge", "commit", "$commit"] }
+        "args": { "argv": ["forge", "commit", "$commit", "--open"] }
     },
     {
         "caption": "Copy Commit URL to Remote",
         "command": "git",
-        "args": { "argv": ["forge", "--copy", "commit", "$commit"] }
+        "args": { "argv": ["forge", "commit", "$commit", "--copy"] }
     },
     { "caption": "-" }
 ]

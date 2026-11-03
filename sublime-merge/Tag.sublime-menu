@@ -2,6 +2,6 @@
     {
         "caption": "Open Tag $tag_name in Remote…",
         "command": "git",
-        "args": { "argv": ["forge", "tag", "$tag_name"] }
+        "args": { "argv": ["forge", "tag", "$tag_name", "--open"] }
     }
 ]

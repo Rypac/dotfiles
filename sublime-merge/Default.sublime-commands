@@ -2,47 +2,47 @@
     {
         "caption": "Open Repository in Remote",
         "command": "git",
-        "args": { "argv": ["forge"] }
+        "args": { "argv": ["forge", "--open"] }
     },
     {
         "caption": "Open Commit in Remote…",
         "command": "git",
-        "args": { "argv": ["forge", "commit", "$select_commit"] }
+        "args": { "argv": ["forge", "commit", "$select_commit", "--open"] }
     },
     {
         "caption": "Open Branch in Remote…",
         "command": "git",
-        "args": { "argv": ["forge", "branch", "$select_local_branch"] }
+        "args": { "argv": ["forge", "branch", "$select_local_branch", "--open"] }
     },
     {
         "caption": "Open Branches in Remote",
         "command": "git",
-        "args": { "argv": ["forge", "branch"] }
+        "args": { "argv": ["forge", "branch", "--open"] }
     },
     {
         "caption": "Open Tag in Remote…",
         "command": "git",
-        "args": { "argv": ["forge", "tag", "$select_tag"] }
+        "args": { "argv": ["forge", "tag", "$select_tag", "--open"] }
     },
     {
         "caption": "Open Tags in Remote",
         "command": "git",
-        "args": { "argv": ["forge", "tag"] }
+        "args": { "argv": ["forge", "tag", "--open"] }
     },
     {
         "caption": "Open Pull Requests",
         "command": "git",
-        "args": { "argv": ["forge", "pr"] }
+        "args": { "argv": ["forge", "pr", "--open"] }
     },
     {
         "caption": "Open Issues",
         "command": "git",
-        "args": { "argv": ["forge", "issue"] }
+        "args": { "argv": ["forge", "issue", "--open"] }
     },
     {
         "caption": "Open Releases",
         "command": "git",
-        "args": { "argv": ["forge", "release"] }
+        "args": { "argv": ["forge", "release", "--open"] }
     },
     {
         "caption": "Cleanup Repository",
